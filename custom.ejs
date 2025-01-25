@@ -1,17 +1,19 @@
 ```{=html}
 <% const categories = ['Fundamentals', 'Distributed Systems', 'Data Management', 'Scalability', 'High Availability', 'Security', 'Performance', 'Infrastructure', 'Modern Architecture Patterns', 'API Design', 'Cloud Native', 'Real-Time Systems', 'Domain-Specific']; %>
-<div class="category-list">
-  <% categories.forEach(category => { %>
-    <section class="category-section">
-      <h3><%= category %></h3>
-      <ul>
-        <% items.filter(item => item.categories[0] === category)
-              .forEach(item => { %>
-          <li><a href="<%- item.path %>"><%= item.title %></a></li>
-        <% }); %>
-      </ul>
-    </section>
-  <% }); %>
+<div>
+  <div class="category-list">
+    <% categories.forEach(category => { %>
+      <section class="category-section">
+        <h3><%= category %></h3>
+        <ul>
+          <% items.filter(item => item.categories[0] === category)
+                .forEach(item => { %>
+            <li><a href="<%- item.path %>"><%= item.title %></a></li>
+          <% }); %>
+        </ul>
+      </section>
+    <% }); %>
+  </div>
 </div>
 <style>
   .listing-no-matching {

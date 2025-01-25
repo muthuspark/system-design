@@ -10,56 +10,56 @@ Social networks have become ubiquitous in modern life, connecting billions of pe
 A typical social network architecture can be broken down into several key components:
 
 #### **1. Frontend:**
-- **User Interface (UI):** Web and mobile applications that allow users to interact with the platform.
-  - **Web App:** Developed using modern web frameworks like React, Angular, or Vue.
-  - **Mobile App:** Native (iOS and Android) or cross-platform (e.g., Flutter, React Native).
 
-- **API Calls:** Communicate with the backend via RESTful or GraphQL APIs.
+-   **User Interface (UI):** Web and mobile applications that allow users to interact with the platform.
+    -   **Web App:** Developed using modern web frameworks like React, Angular, or Vue.
+    -   **Mobile App:** Native (iOS and Android) or cross-platform (e.g., Flutter, React Native).
+-   **API Calls:** Communicate with the backend via RESTful or GraphQL APIs.
 
 #### **2. Backend:**
-- **Web Servers (Application Layer):**
-  - **Microservices Architecture:** Split functionalities into multiple services to allow for scalability and fault tolerance.
-  - **Languages & Frameworks:** Node.js, Java, Python, Ruby on Rails, etc.
-  - **API Gateway:** For routing, load balancing, and API management (e.g., Kong, NGINX, AWS API Gateway).
 
-- **Core Services:**
-  - **User Service:** Manages user profiles, authentication, and authorization.
-  - **Feed Service:** Generates and serves posts on the user's feed.
-  - **Friendship Service:** Manages friend requests, relationships, and social graph.
-  - **Post/Content Service:** Manages the creation, editing, deletion, and retrieval of posts.
-  - **Messaging Service:** Handles private messages between users, including real-time communication (using WebSockets, for instance).
-  - **Notification Service:** Sends notifications about new posts, messages, friend requests, etc.
-  - **Search Service:** Provides search capabilities to find users, posts, groups, etc. (Could use Elasticsearch or similar tools).
-  - **Media Service:** Handles media uploads and serves images, videos, etc. (e.g., using a CDN for media delivery).
-
-- **Database Layer:**
-  - **Relational Databases (SQL):** For user profiles, relationships, posts (e.g., MySQL, PostgreSQL).
-  - **NoSQL Databases:** For feeds and messages, where quick read/write performance is required (e.g., MongoDB, Cassandra).
-  - **Search Database:** For full-text search (e.g., Elasticsearch).
-  - **Cache Layer:** Use Redis or Memcached for caching frequently accessed data (e.g., user feeds, notifications).
-  - **Data Warehouse:** Store logs, analytics data, and large-scale user activity data (e.g., BigQuery, Snowflake).
-
-- **Message Queues:**
-  - **RabbitMQ, Kafka, or SQS** to manage asynchronous processing (e.g., processing posts, notifications, and messaging queues).
+-   **Web Servers (Application Layer):**
+    -   **Microservices Architecture:** Split functionalities into multiple services to allow for scalability and fault tolerance.
+    -   **Languages & Frameworks:** Node.js, Java, Python, Ruby on Rails, etc.
+    -   **API Gateway:** For routing, load balancing, and API management (e.g., Kong, NGINX, AWS API Gateway).
+-   **Core Services:**
+    -   **User Service:** Manages user profiles, authentication, and authorization.
+    -   **Feed Service:** Generates and serves posts on the user's feed.
+    -   **Friendship Service:** Manages friend requests, relationships, and social graph.
+    -   **Post/Content Service:** Manages the creation, editing, deletion, and retrieval of posts.
+    -   **Messaging Service:** Handles private messages between users, including real-time communication (using WebSockets, for instance).
+    -   **Notification Service:** Sends notifications about new posts, messages, friend requests, etc.
+    -   **Search Service:** Provides search capabilities to find users, posts, groups, etc. (Could use Elasticsearch or similar tools).
+    -   **Media Service:** Handles media uploads and serves images, videos, etc. (e.g., using a CDN for media delivery).
+-   **Database Layer:**
+    -   **Relational Databases (SQL):** For user profiles, relationships, posts (e.g., MySQL, PostgreSQL).
+    -   **NoSQL Databases:** For feeds and messages, where quick read/write performance is required (e.g., MongoDB, Cassandra).
+    -   **Search Database:** For full-text search (e.g., Elasticsearch).
+    -   **Cache Layer:** Use Redis or Memcached for caching frequently accessed data (e.g., user feeds, notifications).
+    -   **Data Warehouse:** Store logs, analytics data, and large-scale user activity data (e.g., BigQuery, Snowflake).
+-   **Message Queues:**
+    -   **RabbitMQ, Kafka, or SQS** to manage asynchronous processing (e.g., processing posts, notifications, and messaging queues).
 
 #### **3. Infrastructure:**
-- **Load Balancers:** Distribute incoming traffic across multiple servers to balance load (e.g., HAProxy, AWS ELB).
-- **Kubernetes:** Container orchestration for managing microservices and ensuring scalability and fault tolerance.
-- **Docker:** Containerization of microservices for easier deployment and scaling.
+
+-   **Load Balancers:** Distribute incoming traffic across multiple servers to balance load (e.g., HAProxy, AWS ELB).
+-   **Kubernetes:** Container orchestration for managing microservices and ensuring scalability and fault tolerance.
+-   **Docker:** Containerization of microservices for easier deployment and scaling.
 
 #### **4. Third-party Integrations:**
-- **Authentication Services:** Use OAuth or SSO for third-party logins (Google, Facebook, etc.).
-- **Payment Gateways:** If there’s a monetization model (e.g., Stripe, PayPal).
-- **Analytics:** Tools like Google Analytics or custom analytics service to track user behavior and engagement.
+
+-   **Authentication Services:** Use OAuth or SSO for third-party logins (Google, Facebook, etc.).
+-   **Payment Gateways:** If there’s a monetization model (e.g., Stripe, PayPal).
+-   **Analytics:** Tools like Google Analytics or custom analytics service to track user behavior and engagement.
 
 #### **5. Security:**
-- **Authentication & Authorization:**
-  - OAuth2 for third-party login (Google, Facebook).
-  - JWT (JSON Web Tokens) for session management.
-  - Multi-factor Authentication (MFA) for additional security.
-  
-- **Data Encryption:** Encrypt sensitive data at rest and in transit using TLS/SSL.
-- **Access Control:** Role-based access control (RBAC) for restricting access to certain features (admin, regular user, etc.).
+
+-   **Authentication & Authorization:**
+    -   OAuth2 for third-party login (Google, Facebook).
+    -   JWT (JSON Web Tokens) for session management.
+    -   Multi-factor Authentication (MFA) for additional security.
+-   **Data Encryption:** Encrypt sensitive data at rest and in transit using TLS/SSL.
+-   **Access Control:** Role-based access control (RBAC) for restricting access to certain features (admin, regular user, etc.).
 
 ## Architectural Diagram
 
@@ -146,17 +146,17 @@ graph LR
     J -.-> Q
 ```
 
-- **Frontend**: The user interacts with the Web & Mobile apps, which communicate through the API Gateway to the backend services.
-- **Backend**: Core services handle various responsibilities such as user profiles, feeds, posts, messaging, notifications, and search.
-- **Databases**: Different types of databases store various kinds of data—relational for user info, NoSQL for high performance reads/writes, search for full-text search, and cache for frequently accessed data.
-- **Infrastructure**: Load balancing, container orchestration (Kubernetes), and Docker are used for scalability, deployment, and fault tolerance.
-- **Third-party Integrations**: Authentication, payment gateways, and analytics for extending the platform’s functionality.
-- **Media Upload and Storage:** Media Service is responsible for handling media uploads. Uploaded media (e.g., images, videos) is stored in Media Storage (CDN/S3).
-Redis (Cache) is used to cache frequently accessed media.
+-   **Frontend**: The user interacts with the Web & Mobile apps, which communicate through the API Gateway to the backend services.
+-   **Backend**: Core services handle various responsibilities such as user profiles, feeds, posts, messaging, notifications, and search.
+-   **Databases**: Different types of databases store various kinds of data—relational for user info, NoSQL for high performance reads/writes, search for full-text search, and cache for frequently accessed data.
+-   **Infrastructure**: Load balancing, container orchestration (Kubernetes), and Docker are used for scalability, deployment, and fault tolerance.
+-   **Third-party Integrations**: Authentication, payment gateways, and analytics for extending the platform’s functionality.
+-   **Media Upload and Storage:** Media Service is responsible for handling media uploads. Uploaded media (e.g., images, videos) is stored in Media Storage (CDN/S3). Redis (Cache) is used to cache frequently accessed media.
 
 ## Data Flow
 
 ### 1. User Signup/Authentication
+
 The user registers via the frontend (mobile/web), which makes an API call to the user service to store user details. The user’s session is created using JWT.
 
 ```{mermaid}
@@ -182,15 +182,15 @@ sequenceDiagram
     API-->>UI: Grants Access if Valid
 ```
 
-- **User fills the signup or login form** on the frontend (web or mobile app).
-- **The form data is sent to the API Gateway**, which routes the request to the Authentication Service.
-- **Authentication Service checks or stores the credentials** in the user database, verifying if the user exists or creating a new one if signing up.
-- **The Authentication Service responds** with a success or failure message and issues a JWT (JSON Web Token) if successful.
-- **The token is sent back to the frontend**, and subsequent requests use this token for authorization.
-- **The token is validated** by the authentication service on every request to verify the user's identity before granting access to protected resources.
-
+-   **User fills the signup or login form** on the frontend (web or mobile app).
+-   **The form data is sent to the API Gateway**, which routes the request to the Authentication Service.
+-   **Authentication Service checks or stores the credentials** in the user database, verifying if the user exists or creating a new one if signing up.
+-   **The Authentication Service responds** with a success or failure message and issues a JWT (JSON Web Token) if successful.
+-   **The token is sent back to the frontend**, and subsequent requests use this token for authorization.
+-   **The token is validated** by the authentication service on every request to verify the user's identity before granting access to protected resources.
 
 ### 2. Posting Content
+
 The user uploads a post with text or media. The frontend sends the request to the post service, which stores the post in the database. The feed service updates the user's feed and relevant friends’ feeds.
 
 The below diagram captures the complete flow of data and services involved when a user posts content, including media uploads and feed updates.
@@ -224,16 +224,17 @@ sequenceDiagram
     FeedService-->>UI: Feed Updated for User and Friends
 ```
 
-- **User creates a post** with text and/or media on the frontend (Web/Mobile App).
-- **The frontend sends the post data** to the API Gateway, which routes it to the Post Service.
-- **Post Service stores the post metadata** (text, timestamps, and post details) in the Post Database.
-- **If the post includes media**, the Post Service sends the media to the Media Service, which uploads the media to a CDN (Content Delivery Network) and returns the media URL.
-- **The Post Service responds back to the frontend** with a success message and the Post ID and Media URL.
-- **The Post Service notifies the Feed Service** about the new post.
-- **The Feed Service updates the feeds** of the user and their friends by interacting with the Feed Database.
-- **The updated feeds are sent back to the user**, showing the post in the feed and ensuring friends’ feeds are updated as well.
+-   **User creates a post** with text and/or media on the frontend (Web/Mobile App).
+-   **The frontend sends the post data** to the API Gateway, which routes it to the Post Service.
+-   **Post Service stores the post metadata** (text, timestamps, and post details) in the Post Database.
+-   **If the post includes media**, the Post Service sends the media to the Media Service, which uploads the media to a CDN (Content Delivery Network) and returns the media URL.
+-   **The Post Service responds back to the frontend** with a success message and the Post ID and Media URL.
+-   **The Post Service notifies the Feed Service** about the new post.
+-   **The Feed Service updates the feeds** of the user and their friends by interacting with the Feed Database.
+-   **The updated feeds are sent back to the user**, showing the post in the feed and ensuring friends’ feeds are updated as well.
 
 ### 3. Real-time Messaging
+
 The user sends a message via WebSocket, which the messaging service handles in real time.
 
 The below sequence demonstrates how real-time messaging works, leveraging WebSocket connections for instant, two-way communication between users. The message queue is optional and can be used to handle high traffic and ensure reliable delivery.
@@ -261,19 +262,19 @@ sequenceDiagram
     Receiver-->>User: Message Delivered Notification
 ```
 
-- **User sends a message** (text or media) via the frontend app (Web or Mobile). This communication happens through a WebSocket connection.
-- **The WebSocket connection forwards the message** to the Messaging Service in real time. WebSockets provide a persistent connection, allowing messages to be sent instantly.
-- **The Messaging Service stores the message** in the Message Database. This ensures the message is persisted for history or future retrieval.
-- Depending on the architecture:
-   - **With Message Queue**: The message is added to a message queue (e.g., RabbitMQ, Kafka) to ensure reliable delivery and asynchronous processing. The message is then delivered to the intended recipient via their WebSocket connection.
-   - **Without Message Queue**: The Messaging Service directly delivers the message to the recipient through their active WebSocket connection.
-
-- **The Message Database acknowledges** that the message has been successfully stored.
-- **The Messaging Service sends an acknowledgment** back to the user (sender), indicating the message was successfully sent.
-- **The recipient receives the message** via their WebSocket connection and gets a notification or the message directly in their chat interface in real time.
-- **The recipient's frontend sends a delivery notification** back to the sender, confirming that the message was delivered successfully.
+-   **User sends a message** (text or media) via the frontend app (Web or Mobile). This communication happens through a WebSocket connection.
+-   **The WebSocket connection forwards the message** to the Messaging Service in real time. WebSockets provide a persistent connection, allowing messages to be sent instantly.
+-   **The Messaging Service stores the message** in the Message Database. This ensures the message is persisted for history or future retrieval.
+-   Depending on the architecture:
+    -   **With Message Queue**: The message is added to a message queue (e.g., RabbitMQ, Kafka) to ensure reliable delivery and asynchronous processing. The message is then delivered to the intended recipient via their WebSocket connection.
+    -   **Without Message Queue**: The Messaging Service directly delivers the message to the recipient through their active WebSocket connection.
+-   **The Message Database acknowledges** that the message has been successfully stored.
+-   **The Messaging Service sends an acknowledgment** back to the user (sender), indicating the message was successfully sent.
+-   **The recipient receives the message** via their WebSocket connection and gets a notification or the message directly in their chat interface in real time.
+-   **The recipient's frontend sends a delivery notification** back to the sender, confirming that the message was delivered successfully.
 
 ### Notification
+
 When a user receives a message or interaction on their post, the notification service pushes a notification to the frontend.
 
 The below sequence demonstrates how notifications work in real time for interactions on posts or messages. The notification service is responsible for handling all interactions and delivering notifications to users efficiently.
@@ -297,15 +298,13 @@ sequenceDiagram
     ReceiverUI-->>UserB: Display Notification in Real Time
 ```
 
-- **User A initiates an interaction**: User A sends a message, likes a post, or comments on a post through the frontend (Web/Mobile app). 
-- **The frontend sends the interaction data** to the corresponding service (Post Service for post interactions, Message Service for direct messages).
-- **The Post/Message Service triggers the Notification Service**, informing it about the interaction that occurred (e.g., a comment on a post, a like, or a message sent).
-- **The Notification Service stores the notification** in the Notification Database for tracking purposes, so the notification can be retrieved or displayed later if necessary.
-- **The Notification Service confirms the storage** of the notification with the Post/Message Service to complete the interaction flow.
-- **The Notification Service pushes the notification** to the recipient (User B) through the frontend (WebSocket or Push Notifications).
-- **User B’s frontend displays the notification** in real time, alerting them about the interaction (message, post like, comment, etc.).
-l
-## More Data Flows
+-   **User A initiates an interaction**: User A sends a message, likes a post, or comments on a post through the frontend (Web/Mobile app).
+-   **The frontend sends the interaction data** to the corresponding service (Post Service for post interactions, Message Service for direct messages).
+-   **The Post/Message Service triggers the Notification Service**, informing it about the interaction that occurred (e.g., a comment on a post, a like, or a message sent).
+-   **The Notification Service stores the notification** in the Notification Database for tracking purposes, so the notification can be retrieved or displayed later if necessary.
+-   **The Notification Service confirms the storage** of the notification with the Post/Message Service to complete the interaction flow.
+-   **The Notification Service pushes the notification** to the recipient (User B) through the frontend (WebSocket or Push Notifications).
+-   **User B’s frontend displays the notification** in real time, alerting them about the interaction (message, post like, comment, etc.). l \## More Data Flows
 
 Here are additional **key data flows** within the system:
 
@@ -339,15 +338,15 @@ sequenceDiagram
 
 ```
 
-   - **Flow**: User updates their profile (e.g., username, bio, profile picture).
-   - **Data Flow**:
-     1. **User submits profile changes** via frontend.
-     2. **Frontend sends data to the API Gateway**.
-     3. **API Gateway forwards the data to the User Service**.
-     4. **User Service updates the User Database**.
-     5. **Updated data is stored** (e.g., profile info in SQL DB, media in CDN).
-     6. **User Service responds to the frontend**, confirming the changes.
-     7. **Feeds and friend profiles may be updated** to reflect the new info (e.g., updated profile picture).
+-   **Flow**: User updates their profile (e.g., username, bio, profile picture).
+-   **Data Flow**:
+    1.  **User submits profile changes** via frontend.
+    2.  **Frontend sends data to the API Gateway**.
+    3.  **API Gateway forwards the data to the User Service**.
+    4.  **User Service updates the User Database**.
+    5.  **Updated data is stored** (e.g., profile info in SQL DB, media in CDN).
+    6.  **User Service responds to the frontend**, confirming the changes.
+    7.  **Feeds and friend profiles may be updated** to reflect the new info (e.g., updated profile picture).
 
 ### 2. **Content Moderation**
 
@@ -376,15 +375,15 @@ sequenceDiagram
     end
 ```
 
-   - **Flow**: A post or comment is flagged for inappropriate content and reviewed by the moderation service.
-   - **Data Flow**:
-     1. **User flags a post** via the frontend.
-     2. **Frontend sends a flag request** to the API Gateway.
-     3. **API Gateway forwards the request** to the Moderation Service.
-     4. **Moderation Service evaluates the content** (can use AI or manual review).
-     5. **Moderation Service may flag the content** in the database.
-     6. **If flagged, content is hidden** from users or removed.
-     7. **Notification sent to the user** who posted the content and the reporting user about the moderation result.
+-   **Flow**: A post or comment is flagged for inappropriate content and reviewed by the moderation service.
+-   **Data Flow**:
+    1.  **User flags a post** via the frontend.
+    2.  **Frontend sends a flag request** to the API Gateway.
+    3.  **API Gateway forwards the request** to the Moderation Service.
+    4.  **Moderation Service evaluates the content** (can use AI or manual review).
+    5.  **Moderation Service may flag the content** in the database.
+    6.  **If flagged, content is hidden** from users or removed.
+    7.  **Notification sent to the user** who posted the content and the reporting user about the moderation result.
 
 ### 3. **Search and Discovery**
 
@@ -407,37 +406,38 @@ sequenceDiagram
 
 ```
 
-   - **Flow**: Users search for content, friends, or groups.
-   - **Data Flow**:
-     1. **User enters search query** on the frontend.
-     2. **Frontend sends the search request** to the API Gateway.
-     3. **API Gateway routes the request** to the Search Service.
-     4. **Search Service queries the Search Database** (e.g., Elasticsearch, full-text search).
-     5. **Search results are retrieved** (posts, users, groups, etc.) from the database.
-     6. **Search results are sent back** to the frontend and displayed to the user.
+-   **Flow**: Users search for content, friends, or groups.
+-   **Data Flow**:
+    1.  **User enters search query** on the frontend.
+    2.  **Frontend sends the search request** to the API Gateway.
+    3.  **API Gateway routes the request** to the Search Service.
+    4.  **Search Service queries the Search Database** (e.g., Elasticsearch, full-text search).
+    5.  **Search results are retrieved** (posts, users, groups, etc.) from the database.
+    6.  **Search results are sent back** to the frontend and displayed to the user.
 
 ### 4. **Friendship Management**
 
-   - **Flow**: Users send friend requests, accept/decline requests, or unfriend each other.
-   - **Data Flow**:
-     1. **User sends a friend request** via the frontend.
-     2. **Friendship request data** is sent to the API Gateway.
-     3. **API Gateway forwards the request** to the Friendship Service.
-     4. **Friendship Service updates the Friendship Database** (pending requests, acceptances, and rejections).
-     5. **If accepted, feeds are updated** (new posts from the friend are added to each other’s feed).
-     6. **Notifications are pushed** to both users (for request sent and accepted).
-     7. **Frontend updates user’s friend list** and displays the friend’s posts in their feed.
+-   **Flow**: Users send friend requests, accept/decline requests, or unfriend each other.
+-   **Data Flow**:
+    1.  **User sends a friend request** via the frontend.
+    2.  **Friendship request data** is sent to the API Gateway.
+    3.  **API Gateway forwards the request** to the Friendship Service.
+    4.  **Friendship Service updates the Friendship Database** (pending requests, acceptances, and rejections).
+    5.  **If accepted, feeds are updated** (new posts from the friend are added to each other’s feed).
+    6.  **Notifications are pushed** to both users (for request sent and accepted).
+    7.  **Frontend updates user’s friend list** and displays the friend’s posts in their feed.
 
 ### 5. **Likes, Comments, and Reactions**
-   - **Flow**: Users interact with posts by liking, commenting, or reacting.
-   - **Data Flow**:
-     1. **User interacts with a post** (likes, comments, reacts).
-     2. **Interaction data is sent** to the API Gateway.
-     3. **Post Service receives the interaction**.
-     4. **Interaction is stored** in the Post Database (like count, comment text, etc.).
-     5. **Post Service updates the Feed Service**, notifying the original poster or friends.
-     6. **Notification Service pushes notifications** to the user who posted the content, informing them about the interaction.
-     7. **Frontend updates the UI** to reflect the new like, comment, or reaction.
+
+-   **Flow**: Users interact with posts by liking, commenting, or reacting.
+-   **Data Flow**:
+    1.  **User interacts with a post** (likes, comments, reacts).
+    2.  **Interaction data is sent** to the API Gateway.
+    3.  **Post Service receives the interaction**.
+    4.  **Interaction is stored** in the Post Database (like count, comment text, etc.).
+    5.  **Post Service updates the Feed Service**, notifying the original poster or friends.
+    6.  **Notification Service pushes notifications** to the user who posted the content, informing them about the interaction.
+    7.  **Frontend updates the UI** to reflect the new like, comment, or reaction.
 
 ### 6. **Media Upload and Streaming**
 
@@ -474,52 +474,56 @@ sequenceDiagram
     CDN-->>U: Direct media stream
 ```
 
-   - **Flow**: Users upload media (photos, videos) or view media (playback).
-   - **Data Flow**:
-     1. **User uploads media** (e.g., photo or video).
-     2. **Frontend sends media data** to the API Gateway.
-     3. **API Gateway forwards the data** to the Media Service.
-     4. **Media Service uploads the media** to the CDN (Content Delivery Network) for efficient storage and retrieval.
-     5. **Media metadata (e.g., URL, file type, size)** is stored in the Post Database.
-     6. **Frontend retrieves the media URL** for display in posts or feeds.
-     7. **If media is requested for playback** (e.g., videos), it is streamed directly from the CDN to the user via the frontend.
+-   **Flow**: Users upload media (photos, videos) or view media (playback).
+-   **Data Flow**:
+    1.  **User uploads media** (e.g., photo or video).
+    2.  **Frontend sends media data** to the API Gateway.
+    3.  **API Gateway forwards the data** to the Media Service.
+    4.  **Media Service uploads the media** to the CDN (Content Delivery Network) for efficient storage and retrieval.
+    5.  **Media metadata (e.g., URL, file type, size)** is stored in the Post Database.
+    6.  **Frontend retrieves the media URL** for display in posts or feeds.
+    7.  **If media is requested for playback** (e.g., videos), it is streamed directly from the CDN to the user via the frontend.
 
 ### 7. **Analytics and Logging**
-   - **Flow**: System logs user interactions for analytics (e.g., number of views, engagement metrics).
-   - **Data Flow**:
-     1. **User interacts with the platform** (views posts, clicks links, etc.).
-     2. **Frontend logs interaction events** and sends them to the API Gateway.
-     3. **API Gateway forwards the data** to the Analytics Service.
-     4. **Analytics Service stores data** in the Analytics Database.
-     5. **Administrators or analytics dashboards** retrieve data for reporting and insights.
+
+-   **Flow**: System logs user interactions for analytics (e.g., number of views, engagement metrics).
+-   **Data Flow**:
+    1.  **User interacts with the platform** (views posts, clicks links, etc.).
+    2.  **Frontend logs interaction events** and sends them to the API Gateway.
+    3.  **API Gateway forwards the data** to the Analytics Service.
+    4.  **Analytics Service stores data** in the Analytics Database.
+    5.  **Administrators or analytics dashboards** retrieve data for reporting and insights.
 
 ### 8. **User Privacy and Security**
-   - **Flow**: User updates privacy settings (e.g., who can see their posts).
-   - **Data Flow**:
-     1. **User updates privacy settings** via the frontend.
-     2. **Privacy settings data** is sent to the API Gateway.
-     3. **API Gateway forwards the settings** to the User Service.
-     4. **User Service updates the User Database** with the new privacy settings.
-     5. **Post Service and Feed Service** check these settings before displaying posts or feeds to other users (e.g., restrict posts to friends-only).
-     6. **Notification Service ensures notifications** respect privacy settings (e.g., notifications are sent only to allowed users).
+
+-   **Flow**: User updates privacy settings (e.g., who can see their posts).
+-   **Data Flow**:
+    1.  **User updates privacy settings** via the frontend.
+    2.  **Privacy settings data** is sent to the API Gateway.
+    3.  **API Gateway forwards the settings** to the User Service.
+    4.  **User Service updates the User Database** with the new privacy settings.
+    5.  **Post Service and Feed Service** check these settings before displaying posts or feeds to other users (e.g., restrict posts to friends-only).
+    6.  **Notification Service ensures notifications** respect privacy settings (e.g., notifications are sent only to allowed users).
 
 ### 9. **Group or Event Management**
-   - **Flow**: Users create or manage groups/events (join, invite, leave).
-   - **Data Flow**:
-     1. **User creates or joins a group/event** via the frontend.
-     2. **Frontend sends group/event request** to the API Gateway.
-     3. **Group/Event Service handles** the request and updates the database.
-     4. **Group members or event attendees are notified** through the Notification Service.
-     5. **Feed Service updates group/event posts** in the feed for members/attendees.
-     6. **Group/Event Service stores data** in the Group/Event Database.
+
+-   **Flow**: Users create or manage groups/events (join, invite, leave).
+-   **Data Flow**:
+    1.  **User creates or joins a group/event** via the frontend.
+    2.  **Frontend sends group/event request** to the API Gateway.
+    3.  **Group/Event Service handles** the request and updates the database.
+    4.  **Group members or event attendees are notified** through the Notification Service.
+    5.  **Feed Service updates group/event posts** in the feed for members/attendees.
+    6.  **Group/Event Service stores data** in the Group/Event Database.
 
 ### 10. **Push Notifications**
-   - **Flow**: Push notifications are sent for real-time updates (likes, comments, messages, friend requests).
-   - **Data Flow**:
-     1. **Notification triggered** (e.g., a new like or message).
-     2. **Notification Service identifies recipient** of the notification.
-     3. **Notification is pushed** to the frontend (mobile/web) using push notification services (e.g., Firebase Cloud Messaging, Apple Push Notification Service).
-     4. **Frontend receives the notification** and displays it in real time.
+
+-   **Flow**: Push notifications are sent for real-time updates (likes, comments, messages, friend requests).
+-   **Data Flow**:
+    1.  **Notification triggered** (e.g., a new like or message).
+    2.  **Notification Service identifies recipient** of the notification.
+    3.  **Notification is pushed** to the frontend (mobile/web) using push notification services (e.g., Firebase Cloud Messaging, Apple Push Notification Service).
+    4.  **Frontend receives the notification** and displays it in real time.
 
 These data flows represent various interactions and processes within a typical social network architecture, where different services collaborate to provide a seamless experience for users.
 
@@ -622,12 +626,12 @@ erDiagram
 
 Key aspects of the ERD:
 
-1. Uses UUID for distributed system scalability
-2. Implements soft deletion and timestamps for data tracking
-3. Stores JSON metadata for flexibility
-4. Includes OAuth integration fields
-5. Uses array types for media and attachments
-6. Maintains referential integrity with foreign keys
+1.  Uses UUID for distributed system scalability
+2.  Implements soft deletion and timestamps for data tracking
+3.  Stores JSON metadata for flexibility
+4.  Includes OAuth integration fields
+5.  Uses array types for media and attachments
+6.  Maintains referential integrity with foreign keys
 
 ## Search Engine of Social Network
 
@@ -691,97 +695,97 @@ graph TB
     class M,N,O pipeline
 ```
 
-Lets understand the diagram by breaking it down into its main layers and components:
-
-- Client Layer
-
-    - Web/Mobile Client: Entry point for user interactions
-    - Search UI Component: Handles search input, autocomplete, and result display
-    - This layer manages user interactions and formats search requests before sending them to the API
-
-- API Layer
-
-    - API Gateway: Central entry point for all API requests, handles authentication and routing
-    - Search Service: Core service that orchestrates the search functionality
-    - Rate Limiter: Prevents abuse by limiting the number of requests per user/time period
-
-- Search Core
-    - Elasticsearch Cluster: Main search engine that indexes and searches data
-        - Handles distributed search across multiple nodes
-        - Maintains indices for users, posts, and other content
-        - Provides full-text search capabilities
-    - Search Query Builder: Constructs optimized search queries
-        - Translates user queries into Elasticsearch DSL
-        - Applies relevance scoring and boosting
-        - Handles complex query scenarios (fuzzy matching, filters)
-    - Result Formatter: Processes and formats search results
-        - Combines results from different indices
-        - Adds highlighting and snippets
-        - Formats response according to API specifications
-    - Search Analytics: Monitors and improves search performance
-        - Tracks popular searches
-        - Analyzes query patterns
-        - Provides insights for optimization
-
-- Data Layer
-    - MongoDB - Posts: Stores post-related data
-    - PostgreSQL - Users: Stores user information
-    - Redis Cache: Caches frequent search results
-        - Improves response time for common searches
-        - Reduces load on Elasticsearch
-
-- Indexing Pipeline
-    - Data Change Detector: Monitors databases for changes
-        - Detects updates in MongoDB and PostgreSQL
-        - Triggers reindexing when needed
-    - Index Manager: Manages Elasticsearch indices
-        - Handles index creation and updates
-        - Manages mappings and settings
-    - Document Processor: Prepares data for indexing
-        - Transforms documents to match index structure
-        - Handles data enrichment
-
 The diagram shows the flow of data:
 
-1. Search request starts at the Client Layer
-2. Flows through the API Layer with rate limiting
-3. Gets processed in the Search Core
-4. Results are formatted and returned
-5. Meanwhile, the Indexing Pipeline ensures data stays fresh
+1.  Search request starts at the Client Layer
+2.  Flows through the API Layer with rate limiting
+3.  Gets processed in the Search Core
+4.  Results are formatted and returned
+5.  Meanwhile, the Indexing Pipeline ensures data stays fresh
 
 The arrows in the diagram show:
 
-- Solid lines: Direct communication paths
-- Data flow from databases to search indices
-- Analytics feedback loop for optimization
-- Caching mechanisms for performance
+-   Solid lines: Direct communication paths
+-   Data flow from databases to search indices
+-   Analytics feedback loop for optimization
+-   Caching mechanisms for performance
 
-The color coding indicates:
-- Services (pink fill)
-- Databases (blue fill)
-- Pipeline components (yellow fill)
+The color coding indicates: - Services (pink fill) - Databases (blue fill) - Pipeline components (yellow fill)
+Lets understand the diagram by breaking it down into its main layers and components:
+
+-   Client Layer
+
+    -   Web/Mobile Client: Entry point for user interactions
+    -   Search UI Component: Handles search input, autocomplete, and result display
+    -   This layer manages user interactions and formats search requests before sending them to the API
+
+-   API Layer
+
+    -   API Gateway: Central entry point for all API requests, handles authentication and routing
+    -   Search Service: Core service that orchestrates the search functionality
+    -   Rate Limiter: Prevents abuse by limiting the number of requests per user/time period
+
+-   Search Core
+
+    -   Elasticsearch Cluster: Main search engine that indexes and searches data
+        -   Handles distributed search across multiple nodes
+        -   Maintains indices for users, posts, and other content
+        -   Provides full-text search capabilities
+    -   Search Query Builder: Constructs optimized search queries
+        -   Translates user queries into Elasticsearch DSL
+        -   Applies relevance scoring and boosting
+        -   Handles complex query scenarios (fuzzy matching, filters)
+    -   Result Formatter: Processes and formats search results
+        -   Combines results from different indices
+        -   Adds highlighting and snippets
+        -   Formats response according to API specifications
+    -   Search Analytics: Monitors and improves search performance
+        -   Tracks popular searches
+        -   Analyzes query patterns
+        -   Provides insights for optimization
+
+-   Data Layer
+
+    -   MongoDB - Posts: Stores post-related data
+    -   PostgreSQL - Users: Stores user information
+    -   Redis Cache: Caches frequent search results
+        -   Improves response time for common searches
+        -   Reduces load on Elasticsearch
+
+-   Indexing Pipeline
+
+    -   Data Change Detector: Monitors databases for changes
+        -   Detects updates in MongoDB and PostgreSQL
+        -   Triggers reindexing when needed
+    -   Index Manager: Manages Elasticsearch indices
+        -   Handles index creation and updates
+        -   Manages mappings and settings
+    -   Document Processor: Prepares data for indexing
+        -   Transforms documents to match index structure
+        -   Handles data enrichment
 
 This architecture provides:
 
-- Scalability through distributed search
-- High availability with replicated indices
-- Real-time search capabilities
-- Performance optimization through caching
-- Robust monitoring and analytics
-- Data consistency through the indexing pipeline
+-   Scalability through distributed search
+-   High availability with replicated indices
+-   Real-time search capabilities
+-   Performance optimization through caching
+-   Robust monitoring and analytics
+-   Data consistency through the indexing pipeline
 
 The design prioritizes both search relevance and system performance while maintaining data consistency across the platform.
 
 ## Scalability & Performance:
 
-- **Horizontal Scaling:** Add more instances of services as needed.
-- **Sharding:** Split data across multiple databases or storage units for scalability (e.g., user data sharding, partitioning large datasets).
-- **CDN (Content Delivery Network):** Use a CDN to cache static resources (e.g., images, videos, stylesheets) and reduce latency (e.g., AWS CloudFront, Cloudflare).
-- **Caching:** Use caching for high-traffic endpoints to reduce the load on the backend (e.g., user feeds, search results).
-- **Asynchronous Processing:** Use queues and workers for time-consuming tasks (e.g., processing media uploads, sending emails).
+-   **Horizontal Scaling:** Add more instances of services as needed.
+-   **Sharding:** Split data across multiple databases or storage units for scalability (e.g., user data sharding, partitioning large datasets).
+-   **CDN (Content Delivery Network):** Use a CDN to cache static resources (e.g., images, videos, stylesheets) and reduce latency (e.g., AWS CloudFront, Cloudflare).
+-   **Caching:** Use caching for high-traffic endpoints to reduce the load on the backend (e.g., user feeds, search results).
+-   **Asynchronous Processing:** Use queues and workers for time-consuming tasks (e.g., processing media uploads, sending emails).
 
 ### 4. **High Availability & Fault Tolerance:**
-- **Replication:** Use database replication to ensure high availability and prevent data loss.
-- **Backup Systems:** Regular backups of critical data to avoid data loss in case of failures.
-- **Monitoring & Alerting:** Use tools like Prometheus, Grafana, or New Relic to monitor system health and set up alerts for anomalies.
-- **Failover Systems:** Use automatic failover and load balancing to ensure services remain available during failures.
+
+-   **Replication:** Use database replication to ensure high availability and prevent data loss.
+-   **Backup Systems:** Regular backups of critical data to avoid data loss in case of failures.
+-   **Monitoring & Alerting:** Use tools like Prometheus, Grafana, or New Relic to monitor system health and set up alerts for anomalies.
+-   **Failover Systems:** Use automatic failover and load balancing to ensure services remain available during failures.

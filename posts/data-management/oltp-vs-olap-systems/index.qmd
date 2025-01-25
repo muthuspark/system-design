@@ -84,20 +84,20 @@ graph TD
 
 **Key components:**
 
-1. Load balancer distributes traffic
-2. Multiple app servers for high availability
-3. Redis cache reduces database load
-4. Primary database handles writes
-5. Read replicas scale query performance
-6. Backup system ensures data safety
+1.  Load balancer distributes traffic
+2.  Multiple app servers for high availability
+3.  Redis cache reduces database load
+4.  Primary database handles writes
+5.  Read replicas scale query performance
+6.  Backup system ensures data safety
 
 **The architecture prioritizes:**
 
-- High availability
-- Scalability
-- Data consistency
-- Performance
-- Fault tolerance
+-   High availability
+-   Scalability
+-   Data consistency
+-   Performance
+-   Fault tolerance
 
 ## OLAP Systems
 
@@ -185,30 +185,30 @@ graph TD
 
 **Key components:**
 
-1. Multiple data sources feed into ETL pipeline
-2. Data warehouse stores transformed data
-3. OLAP server processes analytical queries
-4. BI tools provide user interface
-5. Caching improves query performance
-6. Metadata store manages cube definitions
+1.  Multiple data sources feed into ETL pipeline
+2.  Data warehouse stores transformed data
+3.  OLAP server processes analytical queries
+4.  BI tools provide user interface
+5.  Caching improves query performance
+6.  Metadata store manages cube definitions
 
 **This architecture optimizes for:**
 
-- Complex analytical queries
-- Historical data analysis
-- Data aggregation
-- Multi-dimensional analysis
-- Query performance
+-   Complex analytical queries
+-   Historical data analysis
+-   Data aggregation
+-   Multi-dimensional analysis
+-   Query performance
 
 ## Key Differences Summarized:
 
 | Feature | OLTP | OLAP |
-|::-----------------|::----------:----------------|::----------:-------------------|
-| **Purpose** | Transaction processing | Analytical processing |
-| **Data** | Operational, current | Historical, aggregated |
-| **Data Structure** | Normalized relational database | Denormalized data warehouse/data mart |
-| **Query Type** | Simple, short | Complex, aggregations |
-| **Concurrency** | High concurrency control | Less stringent concurrency control |
+|:--------|:--------|:--------|
+| **Purpose** | Transaction processing | Analytical processing | 
+| **Data** | Operational, current | Historical, aggregated | 
+| **Data Structure** | Normalized relational database | Denormalized data warehouse/data mart | 
+| **Query Type** | Simple, short | Complex, aggregations | 
+| **Concurrency** | High concurrency control | Less stringent concurrency control | 
 | **Performance** | Transaction throughput, response time | Query response time, scalability |
 
 ## OLTP and OLAP Software Solutions
@@ -216,42 +216,42 @@ graph TD
 ### OLTP Software Solutions
 
 | Category | Software | Key Features | Use Cases |
-|:----------|:----------|:--------------|:-----------|
-| **Relational Databases** | MySQL | - Open-source<br>- High performance<br>- Replication<br>- Partitioning | - E-commerce<br>- Banking<br>- Web applications |
-| | PostgreSQL | - ACID compliance<br>- JSON support<br>- Extensions<br>- GIS features | - Complex transactions<br>- Location services<br>- Enterprise apps |
-| | Oracle | - RAC clusters<br>- High availability<br>- Advanced security | - Large enterprises<br>- Financial institutions |
-| **Caching** | Redis | - In-memory store<br>- Pub/sub<br>- Multiple data types | - Session management<br>- Real-time analytics |
-| | Memcached | - Distributed caching<br>- Key-value store<br>- High throughput | - Page caching<br>- Session storage |
-| **Load Balancers** | NGINX | - Reverse proxy<br>- HTTP server<br>- SSL termination | - Traffic distribution<br>- Web serving |
-| | HAProxy | - TCP/HTTP balancing<br>- Health checking | - Application routing |
+|:----------------|:----------------|:-------------------|:----------------|
+| **Relational Databases** | MySQL | \- Open-source<br>- High performance<br>- Replication<br>- Partitioning | \- E-commerce<br>- Banking<br>- Web applications |
+|  | PostgreSQL | \- ACID compliance<br>- JSON support<br>- Extensions<br>- GIS features | \- Complex transactions<br>- Location services<br>- Enterprise apps |
+|  | Oracle | \- RAC clusters<br>- High availability<br>- Advanced security | \- Large enterprises<br>- Financial institutions |
+| **Caching** | Redis | \- In-memory store<br>- Pub/sub<br>- Multiple data types | \- Session management<br>- Real-time analytics |
+|  | Memcached | \- Distributed caching<br>- Key-value store<br>- High throughput | \- Page caching<br>- Session storage |
+| **Load Balancers** | NGINX | \- Reverse proxy<br>- HTTP server<br>- SSL termination | \- Traffic distribution<br>- Web serving |
+|  | HAProxy | \- TCP/HTTP balancing<br>- Health checking | \- Application routing |
 
 ### OLAP Software Solutions
 
 | Category | Software | Key Features | Use Cases |
-|:----------|:----------|:--------------|:-----------|
-| **Data Warehouses** | Snowflake | - Cloud-native<br>- Storage/compute separation | - Enterprise analytics |
-| | Amazon Redshift | - Columnar storage<br>- AWS integration | - Big data analytics |
-| | Google BigQuery | - Serverless<br>- Pay-per-query | - Data warehousing |
-| **ETL Tools** | Apache NiFi | - Visual workflow<br>- Real-time processing | - Data routing |
-| | Informatica | - Metadata management<br>- Data quality | - Data integration |
-| | Talend | - Code generation<br>- Open-source options | - Data migration |
-| **BI Tools** | Tableau | - Visual analytics<br>- Interactive dashboards | - Business reporting |
-| | Power BI | - Microsoft integration<br>- DAX language | - Enterprise BI |
-| | Looker | - LookML modeling<br>- Git integration | - Data exploration |
+|:----------------|:----------------|:-------------------|:----------------|
+| **Data Warehouses** | Snowflake | \- Cloud-native<br>- Storage/compute separation | \- Enterprise analytics |
+|  | Amazon Redshift | \- Columnar storage<br>- AWS integration | \- Big data analytics |
+|  | Google BigQuery | \- Serverless<br>- Pay-per-query | \- Data warehousing |
+| **ETL Tools** | Apache NiFi | \- Visual workflow<br>- Real-time processing | \- Data routing |
+|  | Informatica | \- Metadata management<br>- Data quality | \- Data integration |
+|  | Talend | \- Code generation<br>- Open-source options | \- Data migration |
+| **BI Tools** | Tableau | \- Visual analytics<br>- Interactive dashboards | \- Business reporting |
+|  | Power BI | \- Microsoft integration<br>- DAX language | \- Enterprise BI |
+|  | Looker | \- LookML modeling<br>- Git integration | \- Data exploration |
 
 ### Integration Software
 
 | Category | Software | Key Features | Use Cases |
-|:----------|:----------|:--------------|:-----------|
-| **Message Queues** | Apache Kafka | - Stream processing<br>- High throughput | - Real-time pipelines |
-| | RabbitMQ | - Message broker<br>- Multiple protocols | - Async processing |
-| **API Management** | Kong | - API gateway<br>- Plugin architecture | - Microservices |
-| | Apigee | - API analytics<br>- Developer portal | - Enterprise APIs |
+|:----------------|:----------------|:-------------------|:----------------|
+| **Message Queues** | Apache Kafka | \- Stream processing<br>- High throughput | \- Real-time pipelines |
+|  | RabbitMQ | \- Message broker<br>- Multiple protocols | \- Async processing |
+| **API Management** | Kong | \- API gateway<br>- Plugin architecture | \- Microservices |
+|  | Apigee | \- API analytics<br>- Developer portal | \- Enterprise APIs |
 
 ### Selection Criteria
 
 | System Type | Key Considerations |
-|:------------|:-------------------|
-| **OLTP** | - Transaction volume<br>- Concurrency needs<br>- Data consistency<br>- Scaling requirements |
-| **OLAP** | - Data volume<br>- Query complexity<br>- Reporting needs<br>- Integration requirements |
-| **Integration** | - Sync requirements<br>- Real-time vs batch<br>- Security needs<br>- Monitoring capabilities |
+|:----------------------------|:------------------------------------------|
+| **OLTP** | \- Transaction volume<br>- Concurrency needs<br>- Data consistency<br>- Scaling requirements |
+| **OLAP** | \- Data volume<br>- Query complexity<br>- Reporting needs<br>- Integration requirements |
+| **Integration** | \- Sync requirements<br>- Real-time vs batch<br>- Security needs<br>- Monitoring capabilities |

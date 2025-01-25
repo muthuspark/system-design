@@ -9,30 +9,26 @@ website:
   reader-mode: true
   page-navigation: true
   open-graph: true
-  page-footer: "Copyright 2025, Muthukrishnan" 
-  # page-footer:
-  #   left: |
-  #     System Design Notes written by Muthukrishnan
+  page-footer:
+    left: |
+      "Copyright 2025, Muthukrishnan" 
   favicon: favicon.ico
   site-url: https://system-design.muthu.co/
   site-path: '/'
-  # navbar:
-  #   background: primary
-  #   search: true
-  #   right:
-  #     - about.qmd
-  #     - icon: github
-  #       href: https://github.com/muthuspark
-  #     - icon: twitter
-  #       href: https://twitter.com/krimuthu
   navbar:
-    search: true
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/muthuspark
+      - icon: twitter
+        href: https://twitter.com/krimuthu
 
 format:
   html:
-    theme: none
+    theme: litera
     css: styles.css
     mermaid:
       theme: neutral
+    minimal: true
 
 editor: visual
