@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Service Level Agreements – System Design Handbook</title>
+<title>Service Level Agreements – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Service Level Agreements – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Service Level Agreements – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -122,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">graph TB
     A[Service Definition] --&gt; B(SLOs);
     B --&gt; C{SLIs};
     C --&gt; D[Measurement Methodology];
@@ -137,29 +103,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<h2 id="example-sla-in-code-simplified" class="anchored">Example SLA in Code (Simplified)</h2>
-<p>While a full SLA is a legal document best handled by legal professionals, we can represent a simplified version using a structured data format like JSON:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"serviceName"</span><span class="fu">:</span> <span class="st">"Website Hosting"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"serviceProvider"</span><span class="fu">:</span> <span class="st">"Acme Hosting"</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"customer"</span><span class="fu">:</span> <span class="st">"Example Corp"</span><span class="fu">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"slo"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"uptime"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"99.9%"</span><span class="fu">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"measurement"</span><span class="fu">:</span> <span class="st">"Average uptime per month"</span><span class="fu">,</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"penalty"</span><span class="fu">:</span> <span class="st">"10% credit for each percentage point below 99.9%"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"responseTime"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"200ms"</span><span class="fu">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"measurement"</span><span class="fu">:</span> <span class="st">"Average response time as measured by Pingdom"</span><span class="fu">,</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"penalty"</span><span class="fu">:</span> <span class="st">"5% credit for each 100ms above 200ms"</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"reportingFrequency"</span><span class="fu">:</span> <span class="st">"Monthly"</span><span class="fu">,</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"escalationProcedure"</span><span class="fu">:</span> <span class="st">"Contact support@acmehosting.com"</span><span class="fu">,</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"term"</span><span class="fu">:</span> <span class="st">"1 year"</span><span class="fu">,</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"renewal"</span><span class="fu">:</span> <span class="st">"Automatic unless cancelled 30 days prior"</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This diagram shows a Service Level Agreement (SLA) framework flow:</p>
+<ol type="1">
+<li>Service Definition establishes the core service</li>
+<li>SLOs (Service Level Objectives) define performance targets</li>
+<li>SLIs (Service Level Indicators) provide specific metrics</li>
+<li>Measurement Methodology details how metrics are collected</li>
+<li>Reporting tracks performance against objectives</li>
+<li>Penalties define consequences for missing targets</li>
+<li>Escalation Procedures handle issues</li>
+<li>Term &amp; Termination connects back to Service Definition</li>
+</ol>
+<p>The flow demonstrates how service quality is defined, measured, monitored, and enforced in a structured way.</p>
 <h2 id="benefits-of-implementing-slas" class="anchored">Benefits of Implementing SLAs</h2>
 <p>Implementing well-defined SLAs offers numerous benefits:</p>
 <ul>
@@ -170,8 +125,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Better Resource Allocation:</strong> SLAs can help optimize resource allocation and improve operational efficiency.</li>
 <li><strong>Stronger Business Relationships:</strong> SLAs foster trust and transparency between service providers and customers.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Service Level Agreements are vital contracts that define expectations for service delivery. They outline specific service objectives, measurement methods, and consequences for underperformance. A well-defined SLA includes clear service definitions, measurable SLOs and SLIs, reporting mechanisms, penalty clauses, and escalation procedures. Implementing SLAs leads to improved service quality, increased accountability, and stronger business relationships.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

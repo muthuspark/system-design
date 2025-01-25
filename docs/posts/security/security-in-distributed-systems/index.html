@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Security in Distributed Systems – System Design Handbook</title>
+<title>Security in Distributed Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Security in Distributed Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Security in Distributed Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="security-in-distributed-systems-a-deep-dive">Security in Distributed Systems: A Deep Dive</h1>
 <p>Distributed systems, with their inherent complexity and interconnectedness, present unique security challenges not found in monolithic applications. Ensuring security in these environments requires a multifaceted approach, addressing vulnerabilities at every layer, from the underlying infrastructure to the application logic. This post explores the key aspects of security in distributed systems, examining common threats and mitigation strategies.</p>
 <h2 id="understanding-the-expanded-attack-surface" class="anchored">Understanding the Expanded Attack Surface</h2>
 <p>The distributed nature of these systems significantly expands the attack surface. Unlike a single server, a distributed system comprises numerous components, often geographically dispersed and interacting through various networks. This introduces several new avenues for exploitation:</p>
@@ -142,13 +141,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  decrypted_data <span class="op">=</span> f.decrypt(encrypted_data).decode()</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> decrypted_data</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a key (keep this secret!)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>key <span class="op">=</span> Fernet.generate_key()</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Encrypt some data</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>encrypted_data <span class="op">=</span> encrypt_data(<span class="st">"My Secret Data"</span>, key)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Decrypt the data</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>decrypted_data <span class="op">=</span> decrypt_data(encrypted_data, key)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Original data: </span><span class="sc">{</span>decrypted_data<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -183,10 +182,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Comprehensive auditing and logging mechanisms are crucial for tracking system activities, identifying security breaches, and conducting post-incident analysis. Logs should be securely stored and protected from unauthorized access.</p>
 <h3 id="regular-security-assessments" class="anchored">6. Regular Security Assessments</h3>
 <p>Regular security assessments, including penetration testing and vulnerability scanning, help identify and address potential weaknesses in the system.</p>
-<h2 id="conclusion" class="anchored">Conclusion</h2>
-<p>Implementing robust security in distributed systems requires a layered approach that considers all aspects of the system’s architecture and functionality. The strategies and considerations outlined in this post provide a solid foundation for building secure and resilient distributed applications.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored the unique security challenges posed by distributed systems, including expanded attack surfaces, network dependencies, and data protection concerns. Key security considerations like authentication, authorization, data encryption, secure inter-service communication, intrusion detection, auditing, and regular security assessments were discussed in detail, along with illustrative examples and diagrams. A multi-layered approach incorporating these elements is crucial for mitigating the risks inherent in distributed systems.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

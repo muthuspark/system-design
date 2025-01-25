@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Container Orchestration – System Design Handbook</title>
+<title>Container Orchestration – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Container Orchestration – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Container Orchestration – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="container-orchestration-mastering-the-art-of-managing-containers-at-scale">Container Orchestration: Mastering the Art of Managing Containers at Scale</h1>
 <p>Containerization has revolutionized software development and deployment. However, managing a single container is vastly different from managing hundreds or thousands. This is where container orchestration comes in. It automates the deployment, scaling, and management of containerized applications across a cluster of machines. This blog post dives deep into the world of container orchestration, exploring its core concepts, benefits, and popular tools.</p>
 <h2 id="what-is-container-orchestration" class="anchored">What is Container Orchestration?</h2>
 <p>Imagine trying to manage a symphony orchestra without a conductor. Chaos would ensue. Similarly, managing numerous containers across multiple servers without orchestration would be a nightmare. Container orchestration acts as that conductor, ensuring that your containers are deployed, scaled, and monitored effectively. It handles tasks such as:</p>
@@ -144,6 +143,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This diagram shows the basic architecture of a Kubernetes cluster. The master node manages the cluster, while worker nodes run the containers.</p>
 <h3 id="docker-swarm-a-simpler-alternative" class="anchored">Docker Swarm: A Simpler Alternative</h3>
 <p>Docker Swarm, integrated into the Docker platform, provides a simpler approach to container orchestration. It’s well-suited for smaller deployments and teams familiar with Docker. However, its features and scalability are less extensive than Kubernetes.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+    subgraph "Manager Node"
+        M1[Manager Leader]
+        M2[Raft Consensus]
+        M3[Service Orchestration]
+        M1 --- M2
+        M2 --- M3
+    end
+
+    subgraph "Worker Node 1"
+        W1[Container 1]
+        W2[Container 2]
+        W3[Docker Engine]
+        W1 &amp; W2 --- W3
+    end
+
+    subgraph "Worker Node 2"
+        X1[Container 3]
+        X2[Container 4]
+        X3[Docker Engine]
+        X1 &amp; X2 --- X3
+    end
+
+    subgraph "Overlay Network"
+        N1[Load Balancer]
+        N2[Service Discovery]
+        N1 --- N2
+    end
+
+    M3 --&gt;|Orchestrate| W3 &amp; X3
+    N1 --&gt;|Route| W1 &amp; W2 &amp; X1 &amp; X2
+    N2 ---|Register| M1
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Let me break down each component of the Docker Swarm architecture:</p>
+<p><strong>Manager Node</strong> - Manager Leader: Controls the entire swarm cluster - Raft Consensus: Maintains consistency across managers in case of failures - Service Orchestration: Schedules containers and manages service lifecycle</p>
+<p><strong>Worker Nodes</strong> - Containers: Run application workloads - Docker Engine: Manages container lifecycle on each node - Reports health and status to manager</p>
+<p><strong>Overlay Network</strong> - Load Balancer: Distributes incoming traffic across containers - Service Discovery: Tracks service locations and enables container communication - Creates mesh network for inter-container and inter-node communication</p>
+<p><strong>Key Interactions</strong> - Manager orchestrates workloads across workers - Workers execute containers and report status - Overlay network enables service mesh communication - Load balancer routes external traffic to appropriate containers - Service discovery maintains registry of all running services</p>
 <h3 id="other-tools" class="anchored">Other Tools</h3>
 <p>Other container orchestration platforms include:</p>
 <ul>
@@ -181,8 +229,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Simplified Management:</strong> Streamlines the process of managing complex containerized applications.</li>
 <li><strong>Cost Optimization:</strong> Optimizes resource utilization, leading to cost savings.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Container orchestration is essential for effectively managing and scaling containerized applications. Tools like Kubernetes provide powerful capabilities for automating deployment, scaling, and management, leading to increased efficiency, reliability, and scalability. Understanding the core concepts and choosing the right tool are critical steps in leveraging the full potential of containerization.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Eventual Consistency – System Design Handbook</title>
+<title>Eventual Consistency – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Eventual Consistency – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Eventual Consistency – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-eventual-consistency-a-deep-dive">Understanding Eventual Consistency: A Deep Dive</h1>
 <p>Eventual consistency is a consistency model used in distributed systems where data consistency is eventually reached, but not immediately after an update. Unlike strong consistency, where all nodes see the same data at all times, eventual consistency allows for temporary discrepancies. This trade-off between immediate consistency and availability often leads to significant performance improvements, making it a popular choice for many large-scale applications.</p>
 <h2 id="what-is-eventual-consistency" class="anchored">What is Eventual Consistency?</h2>
 <p>In essence, eventual consistency guarantees that if no new updates are made to the data, eventually all nodes will reflect the same state. The “eventually” part is crucial – there’s no defined timeframe for when this consistency will be achieved. The time it takes can vary significantly depending on network latency, system load, and the specific implementation.</p>
@@ -139,10 +138,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> threading</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated message queue</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>message_queue <span class="op">=</span> []</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Shared counter (in-memory for simplicity - in a real system this would be a distributed database)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>counter <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> increment_counter():</span>
@@ -181,8 +180,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h2 id="choosing-the-right-consistency-model" class="anchored">Choosing the Right Consistency Model</h2>
 <p>The choice between eventual consistency and strong consistency depends heavily on the application’s requirements. Strong consistency is essential when data integrity is paramount, while eventual consistency is often a better choice for applications where high availability and scalability are more important than immediate data consistency.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Eventual consistency is a powerful consistency model suitable for highly scalable and available distributed systems. It prioritizes availability and performance over immediate data consistency, providing a trade-off that is often worthwhile for many applications. However, it requires careful consideration of conflict resolution strategies and application design to handle temporary data inconsistencies. Understanding its strengths and limitations is vital for choosing the right consistency model for your specific needs.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

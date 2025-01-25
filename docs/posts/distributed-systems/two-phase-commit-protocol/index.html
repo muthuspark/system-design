@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Two-Phase Commit Protocol – System Design Handbook</title>
+<title>Two-Phase Commit Protocol – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Two-Phase Commit Protocol – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Two-Phase Commit Protocol – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-the-two-phase-commit-protocol-2pc">Understanding the Two-Phase Commit Protocol (2PC)</h1>
 <p>The Two-Phase Commit (2PC) protocol is a critical component in distributed systems, ensuring data consistency across multiple databases or resources when performing transactions that span multiple nodes. Imagine a scenario where you’re transferring money between two bank accounts located on different servers. You wouldn’t want one account debited without the other being credited, leading to data corruption and financial inconsistencies. This is where 2PC comes in to save the day. It guarantees atomicity – either all participating nodes successfully commit the transaction, or none do. Let’s dive deep into how it works.</p>
 <h2 id="phases-of-2pc" class="anchored">Phases of 2PC</h2>
 <p>The Two-Phase Commit protocol, as its name suggests, involves two distinct phases:</p>
@@ -107,20 +106,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">    graph LR
-    A[Transaction Manager (TM)] --&gt; B(Prepare Message);
-    B --&gt; C{Resource Manager 1};
-    B --&gt; D{Resource Manager 2};
-    C --&gt; E[Vote: Yes/No];
-    D --&gt; F[Vote: Yes/No];
-    E --&gt; A;
-    F --&gt; A;
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant TM as Transaction Manager
+    participant RM1 as Resource Manager 1
+    participant RM2 as Resource Manager 2
+
+    Note over TM,RM2: Phase 1: Prepare
+    TM-&gt;&gt;RM1: Prepare
+    TM-&gt;&gt;RM2: Prepare
+    RM1--&gt;&gt;TM: Vote Yes
+    RM2--&gt;&gt;TM: Vote Yes
+
+    Note over TM,RM2: Phase 2: Commit
+    TM-&gt;&gt;RM1: Commit
+    TM-&gt;&gt;RM2: Commit
+    RM1--&gt;&gt;TM: Acknowledgment
+    RM2--&gt;&gt;TM: Acknowledgment
+
+    Note over TM: Transaction Complete
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The Two-Phase Commit diagram illustrates the distributed transaction protocol:</p>
+<p>Phase 1 (Prepare):</p>
+<ul>
+<li>Transaction Manager (TM) sends prepare message to both Resource Managers (RMs)</li>
+<li>Each RM verifies if it can commit its part</li>
+<li>RMs respond with “Vote Yes” if ready to commit</li>
+<li>If any RM votes “No”, TM would initiate rollback</li>
+</ul>
+<p>Phase 2 (Commit):</p>
+<ul>
+<li>After receiving all “Yes” votes, TM sends commit messages</li>
+<li>RMs finalize their transactions</li>
+<li>RMs send acknowledgments to TM</li>
+<li>Transaction completes successfully</li>
+</ul>
+<p>Key Points:</p>
+<ul>
+<li>Ensures atomic transactions across distributed systems</li>
+<li>All participants must agree before committing</li>
+<li>Protocol handles failure scenarios (though not shown in diagram)</li>
+<li>Provides consistency but can impact performance due to waiting for all responses</li>
+</ul>
 <p><strong>Phase 2: The Commit/Abort Phase</strong></p>
 <ol type="1">
 <li><p><strong>TM Decision:</strong> The TM collects all the votes from the RMs. If all votes are “Yes,” it proceeds to commit; otherwise, it aborts the transaction.</p></li>
@@ -132,24 +163,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">    graph LR
-    A[Transaction Manager (TM)] --&gt; B{All Votes Yes?};
-    B -- Yes --&gt; C(Commit Message);
-    B -- No --&gt; D(Abort Message);
-    C --&gt; E{Resource Manager 1};
-    C --&gt; F{Resource Manager 2};
-    D --&gt; G{Resource Manager 1};
-    D --&gt; H{Resource Manager 2};
-    E --&gt; I[Commit];
-    F --&gt; J[Commit];
-    G --&gt; K[Abort];
-    H --&gt; L[Abort];
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant TM as Transaction Manager
+    participant RM1 as Resource Manager 1
+    participant RM2 as Resource Manager 2
+
+    rect rgb(240, 255, 240)
+        Note over TM,RM2: Success Scenario
+        TM-&gt;&gt;RM1: Prepare
+        TM-&gt;&gt;RM2: Prepare
+        RM1--&gt;&gt;TM: Vote Yes
+        RM2--&gt;&gt;TM: Vote Yes
+        Note over TM: Decision: Commit
+        TM-&gt;&gt;RM1: Commit
+        TM-&gt;&gt;RM2: Commit
+        RM1--&gt;&gt;TM: Ack
+        RM2--&gt;&gt;TM: Ack
+        Note over TM: Transaction Complete
+    end
+
+    rect rgb(255, 240, 240)
+        Note over TM,RM2: Failure Scenario
+        TM-&gt;&gt;RM1: Prepare
+        TM-&gt;&gt;RM2: Prepare
+        RM1--&gt;&gt;TM: Vote Yes
+        RM2--&gt;&gt;TM: Vote No
+        Note over TM: Decision: Abort
+        TM-&gt;&gt;RM1: Abort
+        TM-&gt;&gt;RM2: Abort
+        RM1--&gt;&gt;TM: Ack
+        RM2--&gt;&gt;TM: Ack
+        Note over TM: Transaction Aborted
+    end
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>Success Scenario (Green):</p>
+<ol type="1">
+<li><p>Prepare Phase:</p>
+<ul>
+<li>TM sends prepare messages</li>
+<li>Both RMs vote Yes</li>
+<li>TM decides to commit</li>
+</ul></li>
+<li><p>Commit Phase:</p>
+<ul>
+<li>TM sends commit messages</li>
+<li>RMs execute changes</li>
+<li>RMs acknowledge completion</li>
+</ul></li>
+</ol>
+<p>Failure Scenario (Red):</p>
+<ol type="1">
+<li><p>Prepare Phase:</p>
+<ul>
+<li>TM sends prepare messages</li>
+<li>RM1 votes Yes</li>
+<li>RM2 votes No</li>
+<li>TM decides to abort</li>
+</ul></li>
+<li><p>Abort Phase:</p>
+<ul>
+<li>TM sends abort messages</li>
+<li>RMs rollback changes</li>
+<li>RMs acknowledge abort</li>
+</ul></li>
+</ol>
+<p>Key Features:</p>
+<ul>
+<li>Atomic: All operations either complete or none do</li>
+<li>Consistent: All RMs must agree before committing</li>
+<li>Isolated: Intermediate states not visible</li>
+<li>Durable: Changes persist after completion</li>
+</ul>
 <h2 id="code-example-conceptual-python" class="anchored">Code Example (Conceptual Python)</h2>
 <p>This is a simplified illustration, omitting error handling and network communication details for clarity:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TransactionManager:</span>
@@ -174,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># ... some database interaction or resource check ...</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"yes"</span>  <span class="co"># or "no"</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Example Usage</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>resource_managers <span class="op">=</span> [ResourceManager(), ResourceManager()]</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>transaction_manager <span class="op">=</span> TransactionManager()</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>votes <span class="op">=</span> transaction_manager.prepare(resource_managers)</span>
@@ -187,8 +276,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Network Partitions:</strong> Network issues can disrupt communication between the TM and RMs, resulting in potential inconsistencies.</li>
 </ul>
 <p>These limitations have led to the development of alternative protocols like Three-Phase Commit (3PC) and Paxos, which address some of the challenges of 2PC. However, 2PC remains a widely used and understood approach for ensuring data consistency in distributed transactions.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The Two-Phase Commit protocol is a crucial mechanism for maintaining data consistency in distributed transactions. It works by coordinating multiple resource managers through a prepare phase and a commit/abort phase, ensuring atomicity. While effective, 2PC has limitations including blocking, single point of failure vulnerability, and susceptibility to network partitions. These issues highlight the trade-offs between consistency and performance in distributed systems.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

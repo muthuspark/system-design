@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cloud Cost Optimization – System Design Handbook</title>
+<title>Cloud Cost Optimization – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Cloud Cost Optimization – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Cloud Cost Optimization – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="cloud-cost-optimization-a-comprehensive-guide">Cloud Cost Optimization: A Comprehensive Guide</h1>
 <p>Cloud computing offers unparalleled scalability and flexibility, but uncontrolled spending can quickly negate its benefits. Cloud cost optimization isn’t just about saving money; it’s about maximizing the return on your cloud investment. This comprehensive guide dives deep into strategies and techniques to effectively manage and reduce your cloud expenses.</p>
 <h2 id="understanding-your-cloud-spending" class="anchored">Understanding Your Cloud Spending</h2>
 <p>Before you can optimize, you need to understand where your money is going. Most cloud providers offer detailed billing reports and cost analysis tools. Leverage these to identify your top spenders:</p>
@@ -139,13 +138,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Storage Optimization] --&gt; B(Storage Classes);
-    A --&gt; C(Data Lifecycle Management);
-    A --&gt; D(Data Deduplication &amp; Compression);
-    B --&gt; E[Choose appropriate tiers (e.g., S3 Glacier)];
-    C --&gt; F[Automate data migration];
-    D --&gt; G[Reduce storage size];
-
+    A[Storage Optimization] --&gt; B[Storage Classes]
+    A --&gt; C[Data Lifecycle Management]
+    A --&gt; D[Data Deduplication &amp; Compression]
+    B --&gt; E[Choose appropriate tiers]
+    C --&gt; F[Automate data migration]
+    D --&gt; G[Reduce storage size]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -174,8 +172,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h2 id="automation-and-tools" class="anchored">Automation and Tools</h2>
 <p>Automate as much of your cost optimization as possible using scripting and cloud provider tools. This reduces manual effort and ensures consistency. Many cloud providers offer tools for cost analysis, resource tagging, and automated rightsizing.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Cloud cost optimization is a continuous process requiring a multi-faceted approach. By understanding your spending patterns, implementing the strategies outlined above, and leveraging automation, you can significantly reduce your cloud expenses and maximize the value of your cloud investment. This involves rightsizing instances, leveraging reserved instances or savings plans, optimizing storage and databases, and meticulously monitoring your resource utilization. The key is a proactive and data-driven approach.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

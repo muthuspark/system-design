@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scalability Basics – System Design Handbook</title>
+<title>Scalability Basics – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -41,8 +75,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Scalability Basics – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Scalability Basics – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -179,8 +213,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <h2 id="code-example-illustrative---python-with-load-balancing-using-a-simple-round-robin" class="anchored">Code Example (Illustrative - Python with Load Balancing using a simple round-robin):</h2>
 <p>This is a highly simplified example. Real-world load balancing requires much more sophisticated techniques.</p>
-<p>```python servers = [“server1”, “server2”, “server3”] server_index = 0</p>
-<p>def get_server(): global server_index server = servers[server_index] server_index = (server_index + 1) % len(servers) return server</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>servers <span class="op">=</span> [<span class="st">"server1"</span>, <span class="st">"server2"</span>, <span class="st">"server3"</span>] </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>server_index <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_server(): </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> server_index server <span class="op">=</span> servers[server_index] </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    server_index <span class="op">=</span> (server_index <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="bu">len</span>(servers) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> server</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="considerations" class="anchored">Considerations</h2>
 <p>Choosing the right scaling strategy depends on factors such as:</p>
 <ul>
@@ -189,8 +230,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Traffic patterns:</strong> Understanding peak usage times is essential for effective resource allocation.</li>
 <li><strong>Data storage needs:</strong> Scaling databases can be a major bottleneck.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post covered fundamental concepts of scalability, differentiating between vertical and horizontal scaling. We explored key strategies like load balancing, caching, database sharding, and microservices architectures, along with illustrative code examples and diagrams to enhance understanding. Successfully scaling an application requires a careful consideration of these factors and choosing the right approach based on specific needs and constraints.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

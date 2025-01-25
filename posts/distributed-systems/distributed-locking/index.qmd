@@ -4,7 +4,7 @@ categories: [ "Distributed Systems" ]
 ---
 
 
-Distributed systems, while offering scalability and resilience, introduce a new set of challenges. One prominent issue is managing concurrent access to shared resources.  Imagine multiple services trying to update the same database record simultaneously – chaos ensues! This is where distributed locking comes to the rescue.  This post delves deep into the intricacies of distributed locking, exploring various techniques and their trade-offs.
+Distributed systems, while offering scalability and resilience, introduce a new set of challenges. One prominent issue is managing concurrent access to shared resources.  Imagine multiple services trying to update the same database record simultaneously – chaos ensues! This is where distributed locking comes to the rescue.  This post goes deep into the intricacies of distributed locking, exploring various techniques and their trade-offs.
 
 ## Understanding the Problem: Race Conditions in Distributed Systems
 
@@ -13,15 +13,20 @@ Before we dive into solutions, let's understand the problem.  A race condition o
 Consider a simple scenario: two services, Service A and Service B, both need to decrement a counter stored in a database.  If they both read the counter (say, 5), then decrement it independently and write it back, the final value might be 4 instead of 3, losing a decrement operation. This is a classic race condition.
 
 ```{mermaid}
-graph LR
-    A[Service A] --> R{Read Counter (5)};
-    B[Service B] --> R;
-    R --> A1{Decrement (4)};
-    R --> B1{Decrement (4)};
-    A1 --> W1{Write Counter (4)};
-    B1 --> W2{Write Counter (4)};
-    W1 --> C[Counter: 4];
-    W2 --> C;
+sequenceDiagram
+    participant A as Service A
+    participant DB as Database
+    participant B as Service B
+
+    Note over DB: Initial Counter = 5
+    A->>DB: Read Counter
+    B->>DB: Read Counter
+    Note over A,B: Both services read value 5
+    A->>A: Decrement (5 -> 4)
+    B->>B: Decrement (5 -> 4)
+    A->>DB: Write Counter = 4
+    B->>DB: Write Counter = 4
+    Note over DB: Final Counter = 4 (Should be 3)
 ```
 
 ##  Distributed Locking Mechanisms: A Comparative Analysis
@@ -56,6 +61,7 @@ graph LR
 
 
 **Advantages:**  Simple to implement, relies on well-tested database features.
+
 **Disadvantages:**  Performance bottleneck if the database becomes a single point of contention; susceptible to deadlocks if not handled carefully.
 
 ### 2. Distributed Locks with Redis
@@ -96,24 +102,27 @@ except Exception as e:
 ```
 
 **Advantages:**  Faster than database locks, scalable and flexible.
+
 **Disadvantages:** Requires a Redis instance; requires careful handling of lock expiration and failure scenarios (e.g., process crashes while holding the lock).
 
 
 ### 3. ZooKeeper
 
-ZooKeeper, a highly reliable distributed coordination service, provides robust distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks.  The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock.
+ZooKeeper, a highly reliable distributed coordination service, provides robust distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks.  The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock.  For more information, see the [ZooKeeper documentation](https://zookeeper.apache.org/doc/r3.6.1/zookeeperProgrammers.html#sc RECIPES).
 
 
 **Advantages:**  Highly reliable, handles failures gracefully, built-in features for distributed coordination.
+
 **Disadvantages:**  Adds complexity to the system, requires a ZooKeeper cluster.
 
 
 ### 4. Etcd
 
-Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for robust lock management.
+Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for robust lock management.  For more information, see the [Etcd documentation](https://etcd.io/).
 
 
 **Advantages:**  High availability, scalability, simple API.
+
 **Disadvantages:**  Adds complexity to the system, requires an Etcd cluster.
 
 
@@ -126,7 +135,5 @@ The best approach depends on your specific needs and constraints:
 * **Applications requiring extremely high reliability and fault tolerance:** ZooKeeper is a strong contender.
 
 
-## Summary
 
-This post explored the critical problem of race conditions in distributed systems and presented several techniques for implementing distributed locks: database locks, Redis-based locks, and locks using distributed coordination services like ZooKeeper and Etcd.  Each approach has its own trade-offs in terms of complexity, performance, and reliability, requiring careful consideration based on the specific application requirements.  The choice of the right mechanism is vital for ensuring data consistency and application correctness in a distributed environment.
 

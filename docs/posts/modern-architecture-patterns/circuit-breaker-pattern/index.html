@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Circuit Breaker Pattern – System Design Handbook</title>
+<title>Circuit Breaker Pattern – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Circuit Breaker Pattern – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Circuit Breaker Pattern – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,11 +88,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-the-circuit-breaker-pattern-a-deep-dive">Understanding the Circuit Breaker Pattern: A Deep Dive</h1>
 <p>The Circuit Breaker pattern is a powerful tool in distributed systems for handling failures gracefully and preventing cascading failures. It’s especially valuable when dealing with external services or APIs that might be unreliable or temporarily unavailable. Instead of repeatedly trying to access a failing service and potentially overwhelming your system, the circuit breaker monitors the service’s health and intervenes to protect your application.</p>
 <h2 id="how-the-circuit-breaker-works" class="anchored">How the Circuit Breaker Works</h2>
 <p>The core idea behind the circuit breaker is simple: it acts like an electrical circuit breaker. When a fault is detected, the circuit “trips,” preventing further attempts to access the failing service. After a period of time, the circuit breaker attempts to “reconnect” to the service. If the service is operational, the circuit closes, allowing requests through. If it continues to fail, the circuit breaker remains open.</p>
-<p>Let’s visualize this with a Mermaid diagram:</p>
+<p>Let’s visualize this with a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -101,40 +100,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="mermaid mermaid-js">stateDiagram-v2
     [*] --&gt; Closed
     Closed --&gt; Open : Failure Threshold Reached
-    Open --&gt; Half-Open : Timeout Period Elapsed
-    Half-Open --&gt; Closed : Success
-    Half-Open --&gt; Open : Failure
+    Open --&gt; HalfOpen : Timeout Elapsed
+    HalfOpen --&gt; Closed : Success
+    HalfOpen --&gt; Open : Failure
     Open --&gt; [*] : Circuit Breaker Disabled (Manual Reset)
     Closed --&gt; [*] : Circuit Breaker Disabled (Manual Reset)
     
     state Closed {
-      : Normal Operation;
-      Request --&gt; Success : Service Available
-      Request --&gt; Failure : Service Unavailable
+      [*] --&gt; NormalOperation
+      NormalOperation : Normal Operation
+      NormalOperation --&gt; Success : Service Available
+      NormalOperation --&gt; Failure : Service Unavailable
     }
 
     state Open {
-        : Service Unavailable (Circuit Open);
-        Request --&gt; Error : Service Unavailable
+        [*] --&gt; ServiceUnavailable
+        ServiceUnavailable : Circuit Open
+        ServiceUnavailable --&gt; Error : Service Unavailable
     }
 
-    state Half-Open {
-        : Testing Service Availability;
-        Request --&gt; Success : Service Available
-        Request --&gt; Failure : Service Unavailable
+    state HalfOpen {
+        [*] --&gt; TestingService
+        TestingService : Testing Service Availability
+        TestingService --&gt; Success : Service Available
+        TestingService --&gt; Failure : Service Unavailable
     }
+
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>This diagram showcases the three main states of a circuit breaker:</p>
+<p>This diagram shows how a system handles service failures:</p>
+<p><strong>States:</strong></p>
 <ul>
-<li><strong>Closed:</strong> The circuit breaker is in its normal operating state, allowing requests to pass through to the external service.</li>
-<li><strong>Open:</strong> The circuit breaker has detected too many failures and has “tripped.” Requests are immediately rejected (usually with a fallback mechanism), preventing further cascading failures.</li>
-<li><strong>Half-Open:</strong> After a timeout period, the circuit breaker transitions to the half-open state. It allows a limited number of requests through to test the service’s availability. If these requests succeed, the circuit closes; otherwise, it remains open.</li>
+<li>Closed: Normal operations, requests processed. Tracks failed requests.</li>
+<li>Open: All requests blocked after failure threshold hit. Prevents system overload.</li>
+<li>HalfOpen: Test state after timeout. Allows limited requests to check service recovery.</li>
 </ul>
+<p><strong>Key Transitions:</strong></p>
+<ol type="1">
+<li>Closed → Open: Too many failures trigger circuit “trip”</li>
+<li>Open → HalfOpen: Timeout allows recovery attempt</li>
+<li>HalfOpen → Closed: Service restored after successful test</li>
+<li>HalfOpen → Open: Service still failing, returns to blocked state</li>
+</ol>
+<p>Each state contains internal logic for request handling and specific failure/success behaviors. Manual reset option exists to disable circuit breaker if needed.</p>
 <h2 id="implementing-the-circuit-breaker" class="anchored">Implementing the Circuit Breaker</h2>
 <p>The implementation can vary depending on the programming language and framework. Many libraries and frameworks offer ready-made implementations, but understanding the core logic is crucial. Let’s explore a simplified example in Python:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
@@ -180,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">raise</span></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Example Usage</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> external_service():</span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate a flaky service</span></span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> time.time() <span class="op">%</span> <span class="dv">2</span> <span class="op">&lt;</span> <span class="dv">1</span>:</span>
@@ -202,8 +214,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Concurrency:</strong> Implementations should handle concurrent requests appropriately to avoid race conditions.</li>
 <li><strong>Integration with Libraries:</strong> Many libraries provide more comprehensive and refined implementations.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The Circuit Breaker pattern is a crucial component of robust and resilient distributed systems. By monitoring the health of external services and preventing cascading failures, it enhances the overall stability and reliability of applications. Understanding its operation and implementing it correctly are vital steps in building fault-tolerant applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

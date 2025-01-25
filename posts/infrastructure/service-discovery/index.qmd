@@ -111,7 +111,5 @@ While service discovery offers numerous benefits, there are potential challenges
 * **Network Issues:**  Network problems can disrupt communication between services and the registry.
 
 
-## Summary
 
-Service discovery is fundamental for building robust and scalable microservices architectures.  It offers a centralized and dynamic way for services to locate each other, enhancing scalability, resilience, and overall system health. Various tools and approaches exist, each with its own trade-offs. Careful consideration of your application's specific needs and the challenges involved is crucial for selecting and implementing the most appropriate solution.
 

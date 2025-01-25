@@ -5,13 +5,14 @@ project:
     port: 4200
 
 website:
-  title: "System Design Handbook"
+  title: "System Design Notes"
   reader-mode: true
   page-navigation: true
   open-graph: true
-  page-footer:
-    left: |
-      System Design Handbook written by Muthukrishnan
+  page-footer: "Copyright 2025, Muthukrishnan" 
+  # page-footer:
+  #   left: |
+  #     System Design Notes written by Muthukrishnan
   favicon: favicon.ico
   site-url: https://system-design.muthu.co/
   site-path: '/'

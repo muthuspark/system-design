@@ -120,7 +120,5 @@ class Participant:
 
 Despite its improvements over 2PC, 3PC is not a silver bullet. It still suffers from performance overhead and the possibility of blocking scenarios (though less likely).  Network partitions can still cause problems, particularly during the pre-commit or commit phases, potentially leading to inconsistent states.  The added complexity compared to 2PC also adds to the maintenance overhead.
 
-## Summary
 
-The Three-Phase Commit protocol aims to enhance the reliability of distributed transactions compared to Two-Phase Commit by introducing a pre-commit phase. This allows for potential independent commit decisions by participants in case of coordinator failure, decreasing the likelihood of blocking scenarios. However, it’s crucial to understand that 3PC doesn't fully eliminate the complexities and potential for failures inherent in distributed systems.  It presents a trade-off between increased resilience and added complexity.
 

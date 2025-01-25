@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Rate Limiting – System Design Handbook</title>
+<title>Rate Limiting – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Rate Limiting – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Rate Limiting – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-and-implementing-rate-limiting">Understanding and Implementing Rate Limiting</h1>
 <p>Rate limiting is a crucial technique for protecting your APIs and servers from overload. It’s the practice of controlling the rate at which a client can access a resource. Without it, a malicious actor or even a simple surge in legitimate traffic can bring your system to its knees. This post will delve deep into rate limiting, exploring its different approaches, implementation strategies, and best practices.</p>
 <h2 id="why-is-rate-limiting-important" class="anchored">Why is Rate Limiting Important?</h2>
 <p>The importance of rate limiting stems from several key factors:</p>
@@ -209,8 +208,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Implement robust error handling:</strong> Provide informative error messages to clients when rate limits are exceeded.</p></li>
 <li><p><strong>Consider different granularity levels:</strong> Limit requests based on IP address, user ID, API key, or any combination thereof.</p></li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post provided a comprehensive overview of rate limiting, exploring its importance, various algorithms (Fixed Window, Sliding Window, Leaky Bucket, Token Bucket), implementation strategies (Network, Application, Database layers), and best practices. Understanding and implementing rate limiting is crucial for building robust and scalable applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Load Balancing Algorithms – System Design Handbook</title>
+<title>Load Balancing Algorithms – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Load Balancing Algorithms – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Load Balancing Algorithms – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="load-balancing-algorithms-a-deep-dive">Load Balancing Algorithms: A Deep Dive</h1>
 <p>Load balancing is a crucial aspect of any system architecture designed to handle a significant volume of requests. Without it, a single server could become overwhelmed, leading to slowdowns, outages, and an overall degraded user experience. Load balancing distributes incoming traffic across multiple servers, ensuring that no single server is overloaded while maximizing resource utilization and minimizing latency. This post delves into the various algorithms employed in load balancing, explaining their strengths and weaknesses with illustrative examples.</p>
 <h2 id="types-of-load-balancers" class="anchored">Types of Load Balancers</h2>
 <p>Before diving into algorithms, it’s important to understand the different types of load balancers:</p>
@@ -100,107 +65,156 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Several algorithms are used to distribute traffic effectively. Here are some of the most common:</p>
 <h3 id="round-robin" class="anchored">1. Round Robin</h3>
 <p>This is the simplest algorithm. It distributes requests sequentially to each server in a predefined order.</p>
-<p><strong>Advantages:</strong> Simple to implement and understand. <strong>Disadvantages:</strong> Doesn’t account for server load or capacity. A slow server will still receive requests, potentially leading to bottlenecks.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-A[Client] --&gt; B(Load Balancer);
-B --&gt; C{Server 1};
-B --&gt; D{Server 2};
-B --&gt; E{Server 3};
-style B fill:#f9f,stroke:#333,stroke-width:2px
+    C[Client]
+    LB((Load Balancer))
+    S1[Server 1]
+    S2[Server 2]
+    S3[Server 3]
+    
+    C --&gt; LB
+    LB --&gt;|1st Request| S1
+    LB --&gt;|2nd Request| S2
+    LB --&gt;|3rd Request| S3
+
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Example (Conceptual Python):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>servers <span class="op">=</span> [<span class="st">"server1"</span>, <span class="st">"server2"</span>, <span class="st">"server3"</span>]</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>server_index <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_next_server():</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">global</span> server_index</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  server <span class="op">=</span> servers[server_index]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  server_index <span class="op">=</span> (server_index <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="bu">len</span>(servers)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> server</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_next_server()) <span class="co"># Output: server1</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_next_server()) <span class="co"># Output: server2</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_next_server()) <span class="co"># Output: server3</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_next_server()) <span class="co"># Output: server1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The round-robin load balancer diagram shows:</p>
+<ol type="1">
+<li>Components:</li>
+</ol>
+<ul>
+<li>Client : Source of requests</li>
+<li>Load Balancer : Central circular node handling distribution</li>
+<li>Servers 1-3 : Backend servers handling requests</li>
+</ul>
+<ol start="2" type="1">
+<li>Request Flow:</li>
+</ol>
+<ul>
+<li>All requests first hit the load balancer</li>
+<li>Requests are distributed sequentially:
+<ul>
+<li>1st request → Server 1</li>
+<li>2nd request → Server 2</li>
+<li>3rd request → Server 3</li>
+<li>4th request would go back to Server 1</li>
+</ul></li>
+</ul>
+<p>This pattern ensures even distribution of traffic across all servers.</p>
 <h3 id="least-connections" class="anchored">2. Least Connections</h3>
 <p>This algorithm directs requests to the server with the fewest active connections.</p>
-<p><strong>Advantages:</strong> More efficient than Round Robin as it prioritizes less busy servers. <strong>Disadvantages:</strong> Requires monitoring of server load, adding complexity. Doesn’t consider server capacity.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-A[Client] --&gt; B(Load Balancer);
-B -- Least Connections --&gt; C{Server 1 (2 connections)};
-B -- Least Connections --&gt; D{Server 2 (1 connection)};
-B -- Least Connections --&gt; E{Server 3 (5 connections)};
-style B fill:#f9f,stroke:#333,stroke-width:2px
+    C[Client]
+    LB((Load Balancer))
+    
+    subgraph "Server Pool"
+        S1["Server 1
+        2 connections"]
+        S2["Server 2
+        1 connection"]
+        S3["Server 3
+        5 connections"]
+    end
+    
+    C --&gt; LB
+    LB --&gt;|New Request| S2
+    LB -.-&gt; S1
+    LB -.-&gt; S3
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The least connections load balancer diagram shows:</p>
+<p>Components:</p>
+<ul>
+<li>Client : Request source</li>
+<li>Load Balancer : Traffic distributor</li>
+<li>Servers : Backend servers with connection counts
+<ul>
+<li>Server 1: 2 connections</li>
+<li>Server 2: 1 connection</li>
+<li>Server 3: 5 connections</li>
+</ul></li>
+</ul>
+<p>Traffic Flow:</p>
+<ul>
+<li>Solid line: New request routed to Server 2 (lowest connections)</li>
+<li>Dotted lines: Alternative paths not chosen</li>
+<li>Selection based on minimum active connections (1 &lt; 2 &lt; 5)</li>
+</ul>
+<p>This demonstrates how the load balancer prioritizes less busy servers for better resource utilization.</p>
 <h3 id="weighted-round-robin" class="anchored">3. Weighted Round Robin</h3>
 <p>Similar to Round Robin, but each server is assigned a weight reflecting its capacity. Servers with higher weights receive proportionally more requests.</p>
-<p><strong>Advantages:</strong> Considers server capacity, allowing for better resource utilization. <strong>Disadvantages:</strong> Still doesn’t account for real-time server load. Requires careful weight configuration.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-A[Client] --&gt; B(Load Balancer);
-B -- Weight: 2 --&gt; C{Server 1};
-B -- Weight: 1 --&gt; D{Server 2};
-B -- Weight: 3 --&gt; E{Server 3};
-style B fill:#f9f,stroke:#333,stroke-width:2px
+<pre class="mermaid mermaid-js">flowchart LR
+    C[Client]
+    LB((Load Balancer))
+    
+    subgraph "Server Pool"
+        S1["Server 1
+        Weight: 2"]
+        S2["Server 2
+        Weight: 1"]
+        S3["Server 3
+        Weight: 3"]
+    end
+    
+    C --&gt; LB
+    LB --&gt;|2 of 6 requests| S1
+    LB --&gt;|1 of 6 requests| S2
+    LB --&gt;|3 of 6 requests| S3
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Example (Conceptual Python - simplified):</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>servers <span class="op">=</span> {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"server1"</span>: <span class="dv">2</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"server2"</span>: <span class="dv">1</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"server3"</span>: <span class="dv">3</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> <span class="bu">list</span>(servers.values())</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>total_weight <span class="op">=</span> <span class="bu">sum</span>(weights)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>current_weight <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_next_server():</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> current_weight</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> server, weight <span class="kw">in</span> servers.items():</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        current_weight <span class="op">-=</span> weight</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> current_weight <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            current_weight <span class="op">+=</span> total_weight</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> server</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Example Usage</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(get_next_server()) <span class="co"># Output will vary based on weight distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The weighted round robin diagram illustrates:</p>
+<p>Components:</p>
+<ul>
+<li>Client sending requests</li>
+<li>Load balancer distributing traffic</li>
+<li>Three servers with different weights:
+<ul>
+<li>Server 1: Weight 2 (handles 33% of traffic)</li>
+<li>Server 2: Weight 1 (handles 17% of traffic)</li>
+<li>Server 3: Weight 3 (handles 50% of traffic)</li>
+</ul></li>
+</ul>
+<p>Traffic Distribution:</p>
+<ul>
+<li>Server 3 receives most traffic (3/6)</li>
+<li>Server 1 receives moderate traffic (2/6)</li>
+<li>Server 2 receives least traffic (1/6)</li>
+<li>Weights determine proportion of requests each server handles</li>
+</ul>
 <h3 id="ip-hash" class="anchored">4. IP Hash</h3>
 <p>This algorithm uses the client’s IP address to hash it to a specific server. This ensures that requests from the same client always go to the same server, which can be beneficial for applications requiring session persistence.</p>
-<p><strong>Advantages:</strong> Session persistence, good for applications requiring sticky sessions. <strong>Disadvantages:</strong> Uneven distribution if clients are not evenly distributed. A failing server can bring down a substantial number of client sessions.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -220,19 +234,202 @@ style B fill:#f9f,stroke:#333,stroke-width:2px
 </div>
 <h3 id="source-ip-hash" class="anchored">5. Source IP Hash</h3>
 <p>Similar to IP Hash, but uses a hash function to map client IP addresses to servers. More robust than simple modulo-based hashing.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph "Clients"
+        C1["Client IP: 192.168.1.1
+        Hash: 2"]
+        C2["Client IP: 10.0.0.1
+        Hash: 1"]
+        C3["Client IP: 172.16.0.1
+        Hash: 3"]
+    end
+
+    LB{{"Hash Function
+    server = hash(IP) % n"}}
+
+    subgraph "Server Pool"
+        S1["Server 1"]
+        S2["Server 2"]
+        S3["Server 3"]
+    end
+
+    C1 --&gt; LB
+    C2 --&gt; LB
+    C3 --&gt; LB
+    
+    LB --&gt;|Hash=2| S2
+    LB --&gt;|Hash=1| S1
+    LB --&gt;|Hash=3| S3
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The Source IP Hash diagram shows:</p>
+<p>Components:</p>
+<ul>
+<li>Three clients with different IP addresses</li>
+<li>Hash function in load balancer using formula: server = hash(IP) % n</li>
+<li>Three backend servers</li>
+</ul>
+<p>Traffic Flow:</p>
+<ul>
+<li>Client 192.168.1.1 → Hash 2 → Server 2</li>
+<li>Client 10.0.0.1 → Hash 1 → Server 1</li>
+<li>Client 172.16.0.1 → Hash 3 → Server 3</li>
+</ul>
+<p>Key Benefits:</p>
+<ul>
+<li>Consistent mapping (same client always goes to same server)</li>
+<li>Session persistence</li>
+<li>Distributed load across servers</li>
+</ul>
 <h3 id="consistent-hashing" class="anchored">6. Consistent Hashing</h3>
 <p>A more advanced technique that minimizes the impact of adding or removing servers. It uses a hash function to map both servers and clients to a ring, distributing clients across servers more evenly.</p>
-<p><strong>Advantages:</strong> Better scalability and resilience to server additions/removals. <strong>Disadvantages:</strong> More complex to implement.</p>
-<h2 id="choosing-the-right-algorithm" class="anchored">Choosing the Right Algorithm</h2>
-<p>The choice of load balancing algorithm depends on the specific needs of the application. Factors to consider include:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    subgraph "Hash Ring (0-360°)"
+        Ring((("Hash Ring
+        ↻")))
+    end
+    
+    S1[Server 1]
+    S2[Server 2]
+    S3[Server 3]
+    
+    C1[Client A]
+    C2[Client B]
+    C3[Client C]
+    
+    Ring --&gt;|90°| S1
+    Ring --&gt;|210°| S2
+    Ring --&gt;|330°| S3
+    
+    Ring --&gt;|45°| C1
+    Ring --&gt;|180°| C2
+    Ring --&gt;|300°| C3
+    
+    C1 -.-&gt;|"Clockwise to
+    nearest server"| S1
+    C2 -.-&gt;|"Clockwise to
+    nearest server"| S2
+    C3 -.-&gt;|"Clockwise to
+    nearest server"| S3
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The consistent hashing diagram illustrates:</p>
+<p>Components:</p>
 <ul>
-<li><strong>Session Persistence:</strong> Required for applications that need to maintain client sessions.</li>
-<li><strong>Server Capacity:</strong> For heterogeneous server environments.</li>
-<li><strong>Scalability:</strong> The ease of adding or removing servers without major disruption.</li>
-<li><strong>Complexity:</strong> The trade-off between implementation complexity and performance.</li>
+<li>Hash ring representing 0-360° space</li>
+<li>Servers at 90°, 210°, 330°</li>
+<li>Clients at 45°, 180°, 300°</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post covered various load balancing algorithms, from the simple Round Robin to more sophisticated techniques like Consistent Hashing. Each algorithm presents advantages and disadvantages; the optimal choice depends on the specific demands and characteristics of the application being deployed. Understanding these algorithms is crucial for designing robust and scalable systems capable of handling high traffic loads effectively.</p>
+<p>Request Flow:</p>
+<ul>
+<li>Client A (45°) → Server 1 (90°)</li>
+<li>Client B (180°) → Server 2 (210°)</li>
+<li>Client C (300°) → Server 3 (330°)</li>
+</ul>
+<p>Key Benefit:</p>
+<ul>
+<li>If a server fails, only its immediate clockwise clients redistribute</li>
+<li>Adding/removing servers affects minimal clients</li>
+<li>Natural load balancing through ring distribution</li>
+</ul>
+<h2 id="choosing-the-right-algorithm" class="anchored">Choosing the Right Algorithm</h2>
+<p>The choice of load balancing algorithm depends on the specific needs of the application.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 19%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Algorithm</th>
+<th style="text-align: left;">Distribution</th>
+<th style="text-align: left;">Complexity</th>
+<th style="text-align: left;">Session Persistence</th>
+<th style="text-align: left;">Advantages</th>
+<th style="text-align: left;">Disadvantages</th>
+<th style="text-align: left;">Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Round Robin</td>
+<td style="text-align: left;">Sequential</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Simple, fair distribution</td>
+<td style="text-align: left;">Doesn’t consider server capacity or load</td>
+<td style="text-align: left;">Simple deployments with similar server capacity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Least Connections</td>
+<td style="text-align: left;">Load-based</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Better load distribution, adapts to server load</td>
+<td style="text-align: left;">Requires connection tracking, overhead</td>
+<td style="text-align: left;">Dynamic workloads with varying connection times</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Weighted Round Robin</td>
+<td style="text-align: left;">Weighted sequential</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Considers server capacity, predictable</td>
+<td style="text-align: left;">Manual weight configuration needed</td>
+<td style="text-align: left;">Servers with different capacities</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Source IP Hash</td>
+<td style="text-align: left;">Hash-based</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Session persistence, predictable</td>
+<td style="text-align: left;">Uneven distribution possible</td>
+<td style="text-align: left;">Applications requiring session stickiness</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IP Hash</td>
+<td style="text-align: left;">Simple hash</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Simple session persistence</td>
+<td style="text-align: left;">Poor distribution with limited IPs</td>
+<td style="text-align: left;">Basic session persistence needs</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Consistent Hashing</td>
+<td style="text-align: left;">Ring hash</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Minimal redistribution on server changes</td>
+<td style="text-align: left;">Complex implementation</td>
+<td style="text-align: left;">Large-scale distributed systems</td>
+</tr>
+</tbody>
+</table>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

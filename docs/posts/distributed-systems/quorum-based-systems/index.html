@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quorum-based Systems – System Design Handbook</title>
+<title>Quorum-based Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Quorum-based Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Quorum-based Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="deep-dive-into-quorum-based-systems-achieving-consensus-in-distributed-environments">Deep Dive into Quorum-Based Systems: Achieving Consensus in Distributed Environments</h1>
 <p>Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will explore the intricacies of quorum systems, delving into their mechanisms, various types, applications, and inherent trade-offs.</p>
 <h2 id="understanding-the-core-concept-quorum" class="anchored">Understanding the Core Concept: Quorum</h2>
 <p>At its heart, a quorum system is a collection of subsets (quorums) of a larger set of nodes (e.g., servers, replicas). The defining characteristic is that any two quorums must have at least one node in common. This seemingly simple requirement is crucial because it guarantees that if a decision is reached by one quorum, it automatically involves at least one member of any other quorum, facilitating consistency.</p>
@@ -161,8 +160,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_quorum([<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>])) <span class="co"># False (2 + 1 + 1 = 4 &gt;= 4)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>3. Path Quorum Systems:</strong></p>
 <p>These are particularly useful in distributed systems with a hierarchical or network-like structure. A quorum is defined as a path connecting two specified nodes, ensuring connectivity and resilience.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    subgraph "Successful Path Quorum"
+        A1((Node A)) --- B1((Node B))
+        B1 --- C1((Node C))
+        C1 --- D1((Node D))
+        A1 --- E1((Node E))
+        E1 --- D1
+        style A1 fill:#90EE90
+        style D1 fill:#90EE90
+        style B1 fill:#90EE90
+        style C1 fill:#90EE90
+        style E1 fill:#lightgrey
+    end
+
+    subgraph "Failed Path Quorum"
+        A2((Node A)) --- B2((Node B))
+        B2 -.- C2((Node C))
+        C2 --- D2((Node D))
+        A2 --- E2((Node E))
+        E2 -.- D2
+        style A2 fill:#FFB6C1
+        style D2 fill:#FFB6C1
+        style C2 fill:#lightgrey
+        style B2 fill:#FFB6C1
+        style E2 fill:#FFB6C1
+    end
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>In this visualization:</p>
+<p><strong>Successful Path Quorum:</strong></p>
+<ul>
+<li>Green nodes show active path</li>
+<li>Multiple valid paths exist (A→B→C→D and A→E→D)</li>
+<li>System remains operational with redundant paths</li>
+</ul>
+<p><strong>Failed Path Quorum:</strong></p>
+<ul>
+<li>Red nodes indicate compromised path</li>
+<li>Dotted lines show broken connections</li>
+<li>No complete path exists between A and D</li>
+<li>System cannot establish quorum</li>
+</ul>
+<p>The key aspects:</p>
+<ul>
+<li>Path redundancy ensures fault tolerance</li>
+<li>Multiple valid paths increase reliability</li>
+<li>System continues if at least one path exists</li>
+<li>Hierarchical structure maintains organization</li>
+</ul>
 <p><strong>4. Grid Quorum Systems:</strong></p>
 <p>Suitable for distributed systems arranged in a grid topology, quorums are defined as subsets of nodes that form a connected component in the grid.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    subgraph "Successful Grid Quorum"
+        A1((1)) --- B1((2)) --- C1((3))
+        A1 --- D1((4)) --- E1((5)) --- F1((6))
+        D1 --- G1((7)) --- H1((8)) --- I1((9))
+        
+        style A1 fill:#90EE90
+        style D1 fill:#90EE90
+        style E1 fill:#90EE90
+        style H1 fill:#90EE90
+        style I1 fill:#90EE90
+    end
+
+    subgraph "Failed Grid Quorum"
+        A2((1)) --- B2((2)) --- C2((3))
+        A2 -.- D2((4))
+        D2 --- E2((5)) --- F2((6))
+        D2 --- G2((7)) --- H2((8)) -.- I2((9))
+        
+        style A2 fill:#FFB6C1
+        style D2 fill:#FFB6C1
+        style E2 fill:#FFB6C1
+        style H2 fill:#FFB6C1
+        style I2 fill:#FFB6C1
+        style B2 fill:#lightgrey
+        style C2 fill:#lightgrey
+    end
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Key aspects:</p>
+<p><strong>Successful Quorum:</strong></p>
+<ul>
+<li>Green nodes form connected component</li>
+<li>Multiple paths available</li>
+<li>Maintains grid connectivity</li>
+</ul>
+<p><strong>Failed Quorum:</strong></p>
+<ul>
+<li>Red nodes show disconnected segments</li>
+<li>Broken links (dotted lines)</li>
+<li>No complete path across grid</li>
+</ul>
+<p>This structure ensures:</p>
+<ul>
+<li>Fault tolerance</li>
+<li>Load distribution</li>
+<li>Reliable communication paths</li>
+<li>Systematic node organization</li>
+</ul>
 <h2 id="applications-of-quorum-systems" class="anchored">Applications of Quorum Systems</h2>
 <p>Quorum systems are ubiquitous in various distributed systems:</p>
 <ul>
@@ -178,8 +294,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Performance:</strong> The size of quorums affects the time required to reach a decision. Smaller quorums are generally faster.</li>
 <li><strong>Complexity:</strong> More sophisticated quorum systems (e.g., weighted voting) can add complexity to implementation and management.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Quorum systems are powerful mechanisms for achieving consensus and ensuring data consistency in distributed environments. Different types of quorum systems offer various trade-offs between availability, consistency, and performance. Understanding these trade-offs is essential for selecting the appropriate quorum system for a specific application. This exploration covered the core concepts, various system types, practical applications, and important considerations when designing and deploying quorum-based systems.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

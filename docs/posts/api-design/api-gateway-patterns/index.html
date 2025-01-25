@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>API Gateway Patterns – System Design Handbook</title>
+<title>API Gateway Patterns – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="API Gateway Patterns – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="API Gateway Patterns – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="api-gateway-patterns-architecting-for-scalability-and-resilience">API Gateway Patterns: Architecting for Scalability and Resilience</h1>
 <p>API Gateways have become indispensable components of modern microservices architectures. They act as a central point of entry for all client requests, abstracting the complexities of the backend services and providing crucial functionalities like authentication, authorization, rate limiting, and request transformation. However, the optimal design of an API Gateway isn’t one-size-fits-all. Choosing the right pattern depends on the specific needs of your application and its anticipated scale. This post explores several common API Gateway patterns, illustrating their strengths and weaknesses with diagrams and code snippets.</p>
 <h2 id="the-simple-gateway-pattern" class="anchored">1. The Simple Gateway Pattern</h2>
 <p>This is the most basic pattern. A single gateway handles all requests and routes them to the appropriate backend services. It’s ideal for simpler applications with a small number of microservices.</p>
@@ -196,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Example (Conceptual - Python):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplified example illustrating request routing based on a header</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> route_request(request):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    header_value <span class="op">=</span> request.headers.get(<span class="st">'X-Routing-Header'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> header_value <span class="op">==</span> <span class="st">'ValueA'</span>:</span>
@@ -205,8 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> route_to_service_b(request)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> handle_default_route(request)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ... (functions route_to_service_a, route_to_service_b, handle_default_route)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="the-aggregate-gateway-pattern" class="anchored">4. The Aggregate Gateway Pattern</h2>
 <p>This pattern aggregates data from multiple backend services into a single response. This simplifies the client’s interaction by reducing the number of requests required.</p>
 <p><strong>Advantages:</strong></p>
@@ -273,8 +271,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post outlined several common API Gateway patterns, each with its advantages and disadvantages. The optimal choice depends heavily on factors such as application complexity, scalability requirements, and security needs. Selecting the right pattern is a critical architectural decision that significantly impacts the performance, maintainability, and security of your microservices architecture. Remember to consider your specific needs and future scalability when choosing your gateway pattern.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

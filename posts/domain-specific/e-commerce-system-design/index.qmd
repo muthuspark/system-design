@@ -4,7 +4,7 @@ categories: [ "Domain-Specific" ]
 ---
 
 
-Designing a robust and scalable e-commerce system is a complex undertaking, demanding careful consideration of various architectural components and their interactions. This post delves into the key aspects of designing such a system, exploring the architecture, key components, and technologies involved.
+Designing a robust and scalable e-commerce system is a complex undertaking, demanding careful consideration of various architectural components and their interactions. This post goes into the key aspects of designing such a system, exploring the architecture, key components, and technologies involved.
 
 ## 1. Architectural Overview
 
@@ -122,7 +122,5 @@ Security is paramount. Implement measures like:
 Utilize continuous integration and continuous deployment (CI/CD) pipelines for efficient and reliable deployments.  Implement comprehensive monitoring and logging to track performance and identify issues promptly.
 
 
-## Summary
 
-Designing an e-commerce system requires careful planning and consideration of various aspects, from the UI and API gateway to the backend services, databases, and security measures. This post provides a comprehensive overview of the key elements, technologies, and architectural considerations involved in building a scalable and robust e-commerce platform.  Effective planning for scalability, security and performance is essential for success.
 

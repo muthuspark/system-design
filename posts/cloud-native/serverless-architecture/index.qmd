@@ -69,7 +69,7 @@ This function takes a name from the query parameters and returns a personalized 
 ## Serverless vs. Traditional Architectures
 
 | Feature         | Serverless                               | Traditional                                   |
-|-----------------|-------------------------------------------|-----------------------------------------------|
+|:-----------------|:-------------------------------------------|:-----------------------------------------------|
 | Server Management | No                                        | Yes                                           |
 | Cost            | Pay-per-use                               | Fixed costs, even during low usage            |
 | Scalability     | Automatic, on-demand                       | Manual scaling, potential bottlenecks        |
@@ -100,7 +100,5 @@ Major cloud providers offer serverless platforms:
 
 Effective monitoring and logging are crucial for debugging and performance optimization. Cloud providers offer built-in tools, providing insights into function execution times, errors, and resource consumption.
 
-## Summary
 
-Serverless architecture offers a compelling alternative to traditional server management, providing significant benefits in terms of cost, scalability, and developer productivity.  By understanding its core components and benefits, developers can leverage this paradigm to build efficient, scalable, and cost-effective applications.  Careful consideration of the specific needs of your application and the strengths of different serverless platforms will allow you to effectively utilize this powerful technology.
 

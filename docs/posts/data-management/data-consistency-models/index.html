@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Consistency Models – System Design Handbook</title>
+<title>Data Consistency Models – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Data Consistency Models – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Data Consistency Models – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,7 +54,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="data-consistency-models-ensuring-data-integrity-in-distributed-systems">Data Consistency Models: Ensuring Data Integrity in Distributed Systems</h1>
 <p>Data consistency is a crucial aspect of building reliable and robust distributed systems. It dictates how data is synchronized across multiple nodes or replicas, ensuring that all copies of the data remain consistent and reflect the same state. However, achieving perfect consistency across a distributed environment comes with significant challenges. This post delves deep into various data consistency models, exploring their strengths and weaknesses, and providing illustrative examples.</p>
 <h2 id="the-challenges-of-distributed-data" class="anchored">The Challenges of Distributed Data</h2>
 <p>Before diving into specific models, it’s essential to understand the complexities of maintaining consistency in a distributed setting. These challenges stem from factors like:</p>
@@ -69,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Strict consistency, also known as linearizability, provides the strongest guarantee. It demands that all operations appear to have taken effect instantaneously in a global, sequential order. This means that every read operation returns the result of the most recently completed write operation, regardless of the node where the read or write happened.</p>
 <p><strong>Strengths:</strong> Simplest to understand and reason about. Provides the highest level of consistency.</p>
 <p><strong>Weaknesses:</strong> Very difficult and expensive to achieve in practice, especially in geographically distributed systems. High latency and reduced availability during network partitions.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -98,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Sequential consistency is a weaker form of consistency than strict consistency. It requires that all operations appear to have executed in some sequential order, but this order doesn’t necessarily need to reflect real-time. As long as the overall order is consistent across all nodes, the system is considered sequentially consistent.</p>
 <p><strong>Strengths:</strong> Easier to implement than strict consistency. Offers good consistency guarantees.</p>
 <p><strong>Weaknesses:</strong> Can still be challenging to achieve in high-concurrency environments. Doesn’t guarantee real-time consistency.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -144,8 +143,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Availability requirements:</strong> Systems prioritizing high availability might opt for weaker models like eventual consistency.</li>
 <li><strong>Performance requirements:</strong> Stronger consistency models often come with performance trade-offs.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored various data consistency models, from the strong guarantees of strict consistency to the relaxed approach of eventual consistency. Understanding these models is crucial for building reliable and robust distributed systems. Each model presents a trade-off between consistency guarantees and factors like availability, scalability, and performance. Choosing the appropriate model depends heavily on the application’s specific requirements and priorities.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

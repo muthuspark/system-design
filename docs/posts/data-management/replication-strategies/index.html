@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Replication Strategies – System Design Handbook</title>
+<title>Replication Strategies – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Replication Strategies – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Replication Strategies – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="replication-strategies-ensuring-data-availability-and-durability">Replication Strategies: Ensuring Data Availability and Durability</h1>
 <p>Data replication is a crucial aspect of building robust and reliable systems. It involves creating copies of data and storing them in multiple locations. This strategy offers several advantages, including increased availability, improved performance, and enhanced data protection against failures. However, choosing the right replication strategy is critical, as it directly impacts system performance, complexity, and cost. This post dives deep into various replication strategies, exploring their strengths, weaknesses, and practical applications.</p>
 <h2 id="types-of-replication-strategies" class="anchored">Types of Replication Strategies</h2>
 <p>Several replication strategies exist, each with its own trade-offs. Let’s examine some of the most common ones:</p>
@@ -104,47 +69,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Reduced write performance:</strong> The write operation is only completed after all replicas acknowledge, leading to slower write speeds.</li>
 <li><strong>Single point of failure:</strong> If the primary server fails, writes become impossible until a new primary is elected.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Primary Server] --&gt; B(Secondary Server 1);
-    A --&gt; C(Secondary Server 2);
-    A --&gt; D(Secondary Server 3);
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    subgraph "Write Operation"
-        A --&gt; W[Write Request]
-        W --&gt; B;
-        W --&gt; C;
-        W --&gt; D;
-        B -.-&gt; W;
-        C -.-&gt; W;
-        D -.-&gt; W;
-        W --&gt; S[Write Success];
+<pre class="mermaid mermaid-js">graph TB
+    subgraph Write Flow
+        W((Write Request)) --&gt; P
     end
+
+    subgraph Primary
+        P[Primary Node] --&gt; S1
+        P --&gt; S2
+        P --&gt; S3
+    end
+
+    subgraph Secondaries
+        S1[Secondary 1]
+        S2[Secondary 2]
+        S3[Secondary 3]
+    end
+
+    S1 -.-&gt;|Acknowledge| P
+    S2 -.-&gt;|Acknowledge| P
+    S3 -.-&gt;|Acknowledge| P
+    
+    P -.-&gt;|Success| W
+
+    style P fill:#f96,stroke:#333,stroke-width:2px
+    style S1 fill:#9cf,stroke:#333
+    style S2 fill:#9cf,stroke:#333
+    style S3 fill:#9cf,stroke:#333
+    style W fill:#f9f,stroke:#333
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Code Example (Conceptual):</strong></p>
-<p>While specific code depends heavily on the database system, the core concept remains consistent. Assume a hypothetical function <code>writeToReplicas</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> writeToReplicas(data):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  primary_write_success <span class="op">=</span> write_to_primary(data)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> primary_write_success:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    secondary_successes <span class="op">=</span> [write_to_secondary(data, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_secondaries)]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">all</span>(secondary_successes):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Handle partial write failure (e.g., rollback)</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The diagram illustrates:</p>
+<p><strong>1. Write Request (Pink circle):</strong></p>
+<ul>
+<li>Initial client write request enters the system</li>
+</ul>
+<p><strong>2. Primary Node (Orange):</strong></p>
+<ul>
+<li>Receives write requests</li>
+<li>Coordinates replication to secondaries</li>
+<li>Ensures data consistency</li>
+</ul>
+<p><strong>3. Secondary Nodes (Blue):</strong></p>
+<ul>
+<li>Maintain synchronized copies of data</li>
+<li>Send acknowledgments back to primary</li>
+<li>Provide redundancy and failover capability</li>
+</ul>
+<p><strong>4. Data Flow:</strong></p>
+<ul>
+<li>Solid lines: Write propagation from primary to secondaries</li>
+<li>Dotted lines: Acknowledgment messages back to primary</li>
+<li>Final dotted line: Success confirmation to client</li>
+</ul>
+<p>This architecture ensures data consistency and fault tolerance through synchronized replication.</p>
 <h3 id="asynchronous-replication" class="anchored">2. Asynchronous Replication</h3>
 <p>Asynchronous replication prioritizes write performance over strict consistency. The primary server writes data without waiting for confirmation from secondary servers. Secondary servers update themselves periodically or based on events.</p>
 <p><strong>Advantages:</strong></p>
@@ -157,28 +144,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Data inconsistency:</strong> Data might be inconsistent across replicas for a short period.</li>
 <li><strong>Data loss risk:</strong> If the primary server fails before data is replicated, data loss can occur.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Primary Server] --&gt; B(Secondary Server 1);
-    A --&gt; C(Secondary Server 2);
-    A --&gt; D(Secondary Server 3);
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    A --&gt; W[Write Request];
-    W --&gt; S[Write Success (Immediate)];
-    B -- Periodic Update --&gt; A;
-    C -- Periodic Update --&gt; A;
-    D -- Periodic Update --&gt; A;
+<pre class="mermaid mermaid-js">graph TB
+    subgraph Write Flow
+        W((Write Request)) --&gt; P
+        P -.-&gt;|Immediate Success| W
+    end
+
+    subgraph Primary
+        P[Primary Node]
+    end
+
+    subgraph Async Replication
+        P --&gt; |Async| S1[Secondary 1]
+        P --&gt; |Async| S2[Secondary 2]
+        P --&gt; |Async| S3[Secondary 3]
+    end
+
+    subgraph Status Updates
+        S1 -.-&gt;|Replication Status| P
+        S2 -.-&gt;|Replication Status| P
+        S3 -.-&gt;|Replication Status| P
+    end
+
+    style P fill:#f96,stroke:#333,stroke-width:2px
+    style S1 fill:#9cf,stroke:#333
+    style S2 fill:#9cf,stroke:#333
+    style S3 fill:#9cf,stroke:#333
+    style W fill:#f9f,stroke:#333
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The diagram shows:</p>
+<p><strong>1. Write Flow (Pink):</strong></p>
+<ul>
+<li>Client sends write request to Primary</li>
+<li>Primary confirms immediately, without waiting for secondaries</li>
+</ul>
+<p><strong>2. Primary Node (Orange):</strong></p>
+<ul>
+<li>Handles incoming writes</li>
+<li>Propagates changes asynchronously to secondaries</li>
+</ul>
+<p><strong>3. Secondary Nodes (Blue):</strong></p>
+<ul>
+<li>Receive updates asynchronously</li>
+<li>Send periodic status updates to Primary</li>
+<li>May lag behind Primary</li>
+</ul>
+<p>This design prioritizes write performance over immediate consistency.</p>
 <h3 id="semi-synchronous-replication" class="anchored">3. Semi-Synchronous Replication</h3>
 <p>Semi-synchronous replication offers a compromise between synchronous and asynchronous replication. The primary server waits for confirmation from at least one secondary server before acknowledging the write operation.</p>
 <p><strong>Advantages:</strong></p>
@@ -191,25 +212,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Potential for data inconsistency:</strong> If the only confirmed secondary server fails before replicating to other servers, inconsistency may arise.</li>
 <li><strong>Performance can degrade if confirmed secondary servers are unavailable</strong></li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Primary Server] --&gt; B(Secondary Server 1);
-    A --&gt; C(Secondary Server 2);
-    A --&gt; D(Secondary Server 3);
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    subgraph "Write Operation"
-        A --&gt; W[Write Request]
-        W --&gt; B;
-        W -.-&gt; C;
-        W -.-&gt; D;
-        B -.-&gt; W;
-        W --&gt; S[Write Success (At least one secondary)];
+<pre class="mermaid mermaid-js">graph TB
+    subgraph Write Flow
+        W((Write Request)) --&gt; P
     end
+
+    subgraph Primary
+        P[Primary Node]
+    end
+
+    subgraph Required Sync
+        P --&gt; |Sync| S1[Secondary 1]
+        S1 -.-&gt;|Acknowledge| P
+    end
+
+    subgraph Async Replicas
+        P --&gt; |Async| S2[Secondary 2]
+        P --&gt; |Async| S3[Secondary 3]
+        S2 -.-&gt;|Status Update| P
+        S3 -.-&gt;|Status Update| P
+    end
+
+    P -.-&gt;|Success after S1| W
+
+    style P fill:#f96,stroke:#333,stroke-width:2px
+    style S1 fill:#9cf,stroke:#333
+    style S2 fill:#ddd,stroke:#333
+    style S3 fill:#ddd,stroke:#333
+    style W fill:#f9f,stroke:#333
 
 </pre>
 </div>
@@ -217,6 +253,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>The diagram illustrates:</p>
+<p><strong>1. Write Process:</strong></p>
+<ul>
+<li>Client sends write request to Primary (Orange)</li>
+<li>Primary syncs with Secondary 1 (Blue)</li>
+<li>Secondary 1 must acknowledge before success</li>
+</ul>
+<p><strong>2. Secondary Nodes:</strong></p>
+<ul>
+<li>Secondary 1: Synchronous replication, required for write confirmation</li>
+<li>Secondary 2 &amp; 3 (Gray): Asynchronous updates, not required for confirmation</li>
+</ul>
+<p><strong>3. Success Flow:</strong></p>
+<ul>
+<li>Write confirmed after Primary and Secondary 1 sync</li>
+<li>Provides balance between data safety and performance</li>
+<li>Other secondaries update eventually</li>
+</ul>
+<p>This hybrid approach ensures at least one backup is current while maintaining reasonable write speeds.</p>
 <h3 id="multi-master-replication" class="anchored">4. Multi-Master Replication</h3>
 <p>In multi-master replication, multiple servers can act as primary servers, accepting writes independently. Conflict resolution mechanisms are required to ensure data consistency across all replicas.</p>
 <p><strong>Advantages:</strong></p>
@@ -229,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Complex conflict resolution:</strong> Requires sophisticated mechanisms to handle concurrent writes.</li>
 <li><strong>Increased complexity:</strong> Managing multiple masters increases operational overhead.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -255,16 +310,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<h2 id="choosing-the-right-strategy" class="anchored">Choosing the Right Strategy</h2>
-<p>The optimal replication strategy depends heavily on specific application requirements. Consider the following factors:</p>
+<p>Here’s the information presented in a markdown table format, followed by a more detailed explanation:</p>
+<h2 id="choosing-the-right-replication-strategy" class="anchored">Choosing the Right Replication Strategy</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Factor</th>
+<th style="text-align: left;">Key Considerations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Data consistency</strong></td>
+<td style="text-align: left;">How crucial is it that all replicas reflect the same data at all times (strong vs.&nbsp;eventual consistency)?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Performance needs</strong></td>
+<td style="text-align: left;">How much latency can be tolerated for reads and writes? Is fast read access prioritized over write performance or vice versa?</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Availability requirements</strong></td>
+<td style="text-align: left;">How much downtime can the system afford? Is high availability essential?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Cost considerations</strong></td>
+<td style="text-align: left;">What are the associated infrastructure, resource, and maintenance costs of each replication strategy?</td>
+</tr>
+</tbody>
+</table>
+<h4 id="data-consistency-requirements" class="anchored">1. <strong>Data Consistency Requirements</strong></h4>
+<p>When choosing a replication strategy, one of the most critical considerations is <strong>data consistency</strong>—the guarantee that all replicas reflect the same data. Two main types of consistency are:</p>
 <ul>
-<li><strong>Data consistency requirements:</strong> How crucial is it that all replicas always reflect the same data?</li>
-<li><strong>Performance needs:</strong> What are the acceptable write and read latencies?</li>
-<li><strong>Availability requirements:</strong> How much downtime can be tolerated?</li>
-<li><strong>Cost considerations:</strong> What are the infrastructure and maintenance costs associated with each strategy?</li>
+<li><p><strong>Strong consistency</strong>: Ensures that once data is written to a primary node, all replicas immediately reflect that update. This is ideal for systems that require accurate, up-to-the-second data (e.g., financial transactions), but may come with higher latency as the system waits for all replicas to sync.</p></li>
+<li><p><strong>Eventual consistency</strong>: Guarantees that replicas will eventually sync up, but not immediately. This strategy is more scalable and performs better for applications where real-time consistency is not critical, such as social media or e-commerce product catalogs.</p></li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post detailed several common data replication strategies: synchronous, asynchronous, semi-synchronous, and multi-master replication. Each strategy presents a unique balance between data consistency, performance, and availability. The choice depends critically on the specific requirements of the application and its tolerance for data inconsistency and downtime. Understanding these tradeoffs is crucial for designing a robust and reliable system.</p>
+<p>Choosing between these depends on how crucial it is that replicas remain synchronized at all times. For example, in mission-critical systems (like banking), strong consistency is often required. In contrast, in applications where slight delays in replica synchronization are acceptable (like social media posts), eventual consistency may be more suitable.</p>
+<h4 id="performance-needs" class="anchored">2. <strong>Performance Needs</strong></h4>
+<p>Performance is another key consideration in replication strategies:</p>
+<ul>
+<li><p><strong>Write performance</strong>: Replicating data across multiple nodes can introduce latency in write operations, especially in synchronous replication systems (where updates must be written to all replicas simultaneously). If your application needs to process a high volume of writes with minimal latency (e.g., real-time analytics), then a strategy that reduces replication overhead during writes is important.</p></li>
+<li><p><strong>Read performance</strong>: In read-heavy systems, replication can significantly improve read performance by distributing requests across multiple replicas. For example, applications like content delivery networks (CDNs) can use replication to serve users from the nearest replica, reducing latency.</p></li>
+</ul>
+<p>In general, if the application is <strong>read-heavy</strong> (e.g., news sites or product search), replication strategies that optimize for read scalability (such as eventual consistency) can be beneficial. For <strong>write-heavy</strong> systems, synchronous replication may pose performance challenges and must be carefully considered.</p>
+<h4 id="availability-requirements" class="anchored">3. <strong>Availability Requirements</strong></h4>
+<p>Replication also plays a key role in ensuring <strong>high availability</strong>—the ability to keep the system operational even if individual nodes fail. Different replication strategies provide varying levels of fault tolerance and availability.</p>
+<ul>
+<li><p><strong>Synchronous replication</strong>: Writes are replicated to multiple nodes simultaneously, ensuring that any node failure doesn’t result in data loss. However, synchronous replication can increase latency and impact performance.</p></li>
+<li><p><strong>Asynchronous replication</strong>: Writes are replicated to a primary node first, and then propagated to replicas later. This approach minimizes latency but increases the risk of data loss if the primary node fails before replication is complete.</p></li>
+</ul>
+<p>Systems with strict <strong>availability requirements</strong> (such as those needing 24/7 uptime) should favor strategies with strong fault tolerance. Asynchronous replication may be acceptable in less critical applications or where cost and performance are more important than immediate availability.</p>
+<h4 id="cost-considerations" class="anchored">4. <strong>Cost Considerations</strong></h4>
+<p>Each replication strategy comes with different cost implications:</p>
+<ul>
+<li><p><strong>Infrastructure costs</strong>: Maintaining multiple replicas requires additional hardware or cloud resources. More replicas (especially in a synchronous setup) can increase these costs substantially.</p></li>
+<li><p><strong>Maintenance and complexity</strong>: More complex replication strategies (e.g., multi-region synchronous replication) introduce operational complexity. This can increase the need for skilled personnel, monitoring, and advanced tooling.</p></li>
+</ul>
+<p>When choosing a replication strategy, the trade-offs between cost and performance need to be evaluated. For instance, highly consistent, highly available systems with low latency may require significant investments in infrastructure, while eventual consistency strategies might be more affordable.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

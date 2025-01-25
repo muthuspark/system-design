@@ -3,7 +3,7 @@ title: "Maintainability Best Practices"
 categories: [ "Fundamentals" ]
 ---
 
-Software development is rarely a one-and-done affair. The code you write today will likely need modifications, updates, and bug fixes in the future. This is where maintainability comes into play. Maintainable code is easier to understand, modify, and debug, saving time, money, and frustration down the line. This post delves into several key best practices to help you build software that stands the test of time.
+Software development is rarely a one-and-done affair. The code you write today will likely need modifications, updates, and bug fixes in the future. This is where maintainability comes into play. Maintainable code is easier to understand, modify, and debug, saving time, money, and frustration down the line. This post goes into several key best practices to help you build software that stands the test of time.
 
 ## 1. Write Clean and Readable Code
 
@@ -380,6 +380,5 @@ def get_user_status(user):
 
 ```
 
-## Summary
 
-Building maintainable software requires a multi-faceted approach encompassing clean code, modular design, consistent style, comprehensive documentation, rigorous testing, and a commitment to continuous improvement. By adhering to these best practices, you can significantly reduce the long-term cost and effort associated with software maintenance, fostering a more sustainable and successful software development lifecycle.
+

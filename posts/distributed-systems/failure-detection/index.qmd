@@ -71,21 +71,176 @@ Tools like Prometheus and Grafana are commonly used for this purpose.
 
 Robust exception handling and comprehensive logging within the application itself provide valuable insights into internal failures. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.
 
+```{mermaid}
+sequenceDiagram
+    participant C as Client
+    participant A as Application
+    participant L as Logger
+    participant DB as Database
+    participant M as Monitoring
+
+    rect rgb(240, 255, 240)
+        Note right of C: Successful Flow
+        C->>A: Request
+        A->>DB: Query Data
+        DB-->>A: Data Response
+        A->>L: Log Success
+        A-->>C: Success Response
+        L->>M: Aggregate Logs
+    end
+
+    rect rgb(255, 240, 240)
+        Note right of C: Error Flow
+        C->>A: Request
+        A->>DB: Query Data
+        DB--xA: Connection Error
+        A->>L: Log Error Details
+        Note right of L: Error Level: SEVERE<br/>Stack Trace<br/>Timestamp<br/>Context
+        A-->>C: Error Response
+        L->>M: Alert on Error
+        M->>M: Trigger Alert
+    end
+```
+
+
+The diagram shows:
+
+* Successful Flow (Green):
+    - Normal request processing
+    - Successful database interaction
+    - Success logging
+    - Metrics aggregation
+
+* Error Flow (Red):
+    - Database connection failure
+    - Detailed error logging (severity, stack trace, context)
+    - Client error notification
+    - Alert triggering for monitoring
+
+This helps in:
+- Real-time error detection
+- Root cause analysis
+- Pattern identification
+- Proactive issue resolution
+- System reliability improvement
+
 ### 4. Health Checks
 
 Applications can expose dedicated health check endpoints that return a status indicating their operational state. These checks can be simple (e.g., returning "OK") or more sophisticated, verifying database connectivity, external service availability, or internal component functionality.
+
+```{mermaid}
+
+sequenceDiagram
+    participant M as Monitoring System
+    participant A as Application
+    participant DB as Database
+    participant E as External Service
+
+    rect rgb(240, 255, 240)
+        Note right of M: Healthy System
+        M->>A: GET /health
+        A->>DB: Check Connection
+        DB-->>A: Connected
+        A->>E: Check Availability
+        E-->>A: Available
+        A-->>M: Status: 200 OK
+    end
+
+    rect rgb(255, 240, 240)
+        Note right of M: System with Issues
+        M->>A: GET /health
+        A->>DB: Check Connection
+        DB-->>A: Connected
+        A->>E: Check Availability
+        E--xA: Timeout
+        A-->>M: Status: 503 Service Unavailable
+    end
+
+```
+
+The health check diagram illustrates two key scenarios:
+
+1. Healthy System (Green):
+- Monitoring system pings application's /health endpoint
+- Application verifies database connection
+- Application checks external service availability 
+- All components respond successfully
+- Returns 200 OK status
+
+2. System with Issues (Red):
+- Same health check process initiated
+- Database connection succeeds
+- External service fails to respond
+- Application returns 503 Service Unavailable
+
+This approach enables:
+- Early detection of component failures
+- Automated system monitoring
+- Quick identification of problem areas
+- Proactive maintenance before user impact
+
+The status codes (200/503) help automated systems make decisions about service availability and potential failover actions.
 
 ### 5. Timeouts and Retries
 
 When interacting with external services or components, implementing timeouts and retry mechanisms can prevent applications from hanging indefinitely due to unresponsive dependencies. Timeouts provide a graceful failure mechanism, while retries offer a chance to recover from transient network issues.
 
+For example, when making a request to an external API, a timeout can be set to 5 seconds. If the API doesn't respond within that time, the request is terminated and a retry can be triggered. This approach can be used to handle temporary network issues or high latency.
+
+```{mermaid}
+
+sequenceDiagram
+    participant C as Client
+    participant API as External API
+    
+    rect rgb(240, 240, 240)
+        Note right of C: First Attempt
+        C->>API: Make API Request
+        activate API
+        Note right of C: Timeout (5s)
+        API--xC: No Response
+        deactivate API
+    end
+
+    rect rgb(230, 240, 250)
+        Note right of C: Retry Attempt
+        C->>API: Retry API Request
+        activate API
+        API->>C: Successful Response
+        deactivate API
+    end
+
+```    
+
 ### 6. Checksums and Data Integrity Verification
 
-For data-intensive applications, checksums or other data integrity verification methods can detect corruption or inconsistencies that might indicate failures.
+For data-intensive applications, ensuring data integrity is critical to detect corruption or inconsistencies. Checksums are one of the simplest and most effective methods for achieving this. A checksum is a small-sized datum derived from a block of digital data for the purpose of detecting errors that may have been introduced during its transmission or storage.
 
-## Combining Strategies for Comprehensive Failure Detection
+For example, when a file is transmitted over a network, a checksum can be computed before and after transmission. If the checksums match, the file is likely intact; if not, it indicates corruption.
 
-For optimal reliability, a multi-layered approach combining several of these strategies is often necessary. For example, heartbeat monitoring provides a basic check of liveness, while monitoring key metrics provides a more granular view of system health. Health checks allow for application-specific failure detection, while exception handling and logging offer crucial debugging information.
+**Example (Python with hashlib):**
+
+```python
+import hashlib
+
+def calculate_checksum(data):
+    return hashlib.md5(data).hexdigest()
+
+# Simulating data transmission
+original_data = b'This is some important data.'
+checksum_before = calculate_checksum(original_data)
+
+# Assume data is transmitted and received without errors
+received_data = original_data
+checksum_after = calculate_checksum(received_data)
+
+if checksum_before == checksum_after:
+    print("Data integrity verified. Checksums match.")
+else:
+    print("Data corruption detected. Checksums do not match.")
+```
+
+In this example, the `hashlib.md5()` function is used to calculate the checksum of the data. By comparing the checksums before and after data transmission, we can verify the integrity of the data.
 
 ## Challenges in Failure Detection
 
@@ -96,7 +251,3 @@ Despite the various techniques available, several challenges remain:
 -   **False negatives:** Failures may go undetected due to incomplete monitoring or inadequate alerting configurations.
 
 -   **Complex systems:** In large, distributed systems, identifying the root cause of a failure can be extremely complex, requiring sophisticated tracing and correlation techniques.
-
-## Summary
-
-This post explored various strategies for failure detection, including heartbeat monitoring, metric monitoring, exception handling, health checks, timeouts, and data integrity checks. Each technique offers unique advantages and limitations, making a multi-layered approach often necessary. While effective failure detection is crucial, challenges like false positives and the complexity of modern systems necessitate ongoing refinement and adaptation of monitoring and alerting strategies.

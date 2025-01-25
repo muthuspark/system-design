@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Active-Active Setup – System Design Handbook</title>
+<title>Active-Active Setup – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Active-Active Setup – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Active-Active Setup – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,33 +54,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="active-active-setup-achieving-high-availability-and-scalability">Active-Active Setup: Achieving High Availability and Scalability</h1>
 <p>Active-Active setups represent a powerful approach to system architecture, offering significant advantages in terms of high availability, scalability, and performance. Unlike Active-Passive setups, where one system is active while the other stands by, both systems in an Active-Active configuration are simultaneously handling requests. This design inherently eliminates single points of failure and allows for seamless failover, resulting in increased resilience and improved user experience. This post delves into the intricacies of Active-Active setups, exploring their benefits, challenges, and implementation considerations.</p>
 <h2 id="understanding-the-active-active-architecture" class="anchored">Understanding the Active-Active Architecture</h2>
 <p>The core principle behind an Active-Active setup is redundancy. Both systems are fully operational and actively processing requests. If one system fails, the other seamlessly takes over, minimizing downtime and ensuring continuous service. This contrasts sharply with Active-Passive setups, where a failover process is required, potentially introducing latency and disruption.</p>
-<p>Here’s a simplified representation of an Active-Active architecture using a Mermaid diagram:</p>
+<p>Here’s a simplified representation of an Active-Active architecture using a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Client] --&gt; B(Load Balancer);
-    B --&gt; C[Server 1 (Active)];
-    B --&gt; D[Server 2 (Active)];
-    C --&gt; E[Database];
-    D --&gt; E;
-    subgraph "Failure Scenario"
-        style C fill:#f9f,stroke:#333,stroke-width:2px
-        style D fill:#ccf,stroke:#333,stroke-width:2px
+    Client["Client"] --&gt; LoadBalancer["Load Balancer"]
+    LoadBalancer --&gt; Server1["Server 1 (Active)"]
+    LoadBalancer --&gt; Server2["Server 2 (Active)"]
+    Server1 --&gt; DB["Database"]
+    Server2 --&gt; DB
+    
+    subgraph Failover["Failure Scenario"]
+        Server1
+        Server2
     end
+    
+    classDef failed fill:#f9f,stroke:#333,stroke-width:2px
+    classDef active fill:#ccf,stroke:#333,stroke-width:2px
+    class Server1 failed
+    class Server2 active
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>In this diagram, the load balancer distributes incoming requests across both servers. If Server 1 fails (indicated by the grayed-out box), the load balancer automatically redirects traffic to Server 2, maintaining continuous service.</p>
+<p>The diagram illustrates a high-availability system architecture with load balancing:</p>
+<ol type="1">
+<li>Client requests first hit a Load Balancer</li>
+<li>The Load Balancer distributes traffic between two active servers (Server 1 and Server 2)</li>
+<li>Both servers connect to the same Database for data consistency</li>
+<li>The Failure Scenario (shown in subgraph) indicates:
+<ul>
+<li>Server 1 is in a failed state (pink fill)</li>
+<li>Server 2 remains active (blue fill)</li>
+<li>System continues functioning despite Server 1’s failure</li>
+</ul></li>
+</ol>
+<p>This setup provides redundancy and fault tolerance - if one server fails, the other maintains service availability.</p>
 <h2 id="benefits-of-an-active-active-setup" class="anchored">Benefits of an Active-Active Setup</h2>
 <ul>
 <li><strong>High Availability:</strong> The most significant advantage is the elimination of single points of failure. If one system fails, the other continues to operate, ensuring uninterrupted service.</li>
@@ -138,34 +121,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Session Management Strategies:</strong> Employing techniques like distributed caching or session replication helps avoid sticky sessions and ensures seamless user experience across servers.</li>
 <li><strong>Monitoring and Alerting:</strong> Comprehensive monitoring and alerting systems are essential for detecting and responding to potential issues promptly.</li>
 </ul>
-<h2 id="code-example-conceptual---database-replication" class="anchored">Code Example (Conceptual - Database Replication)</h2>
-<p>This example illustrates a simplified concept of database replication using Python (the actual implementation would be far more complex and depend on the specific database technology).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplified representation - actual implementation is much more complex</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> replicate_data(source_db, target_db):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fetch data from source database</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        new_data <span class="op">=</span> source_db.get_new_data()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Write data to target database</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        target_db.write_data(new_data)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        time.sleep(<span class="dv">1</span>) <span class="co"># Simulate periodic replication</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Placeholder for database interactions</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Database:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_new_data(<span class="va">self</span>):</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Some new data"</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> write_data(<span class="va">self</span>, data):</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Replicated: </span><span class="sc">{</span>data<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Initiate replication</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>source <span class="op">=</span> Database()</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> Database()</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>replicate_data(source, target)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="using-a-message-queue-conceptual" class="anchored">Using a Message Queue (Conceptual)</h2>
 <p>A message queue can act as a central point for distributing requests and ensuring that both servers get a chance to process them.</p>
 <div class="cell" data-layout-align="default">
@@ -174,20 +129,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Client] --&gt; B(Message Queue);
-    B --&gt; C[Server 1 (Active)];
-    B --&gt; D[Server 2 (Active)];
-    C --&gt; E[Database];
-    D --&gt; E;
+    Client["Client"] --&gt; Queue["Message Queue"]
+    Queue --&gt; Server1["Server 1 (Active)"]
+    Queue --&gt; Server2["Server 2 (Active)"]
+    Server1 --&gt; DB["Database"]
+    Server2 --&gt; DB
+    
+    classDef active fill:#ccf,stroke:#333,stroke-width:2px
+    class Server1,Server2 active
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>In this approach, clients send requests to the queue, which in turn distributes them to the active servers.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Active-Active setups offer significant advantages in terms of high availability, scalability, and performance. However, they also introduce challenges related to data synchronization, session management, and increased complexity. Careful planning, appropriate technologies, and robust monitoring are crucial for successful implementation. Choosing the right approach depends heavily on specific application requirements and tolerance for downtime.</p>
+<p>This shows a message queue system where client requests are buffered through a queue before being processed by active servers, both sharing a database. The blue highlighting indicates active servers.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

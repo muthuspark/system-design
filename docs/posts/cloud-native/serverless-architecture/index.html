@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Serverless Architecture – System Design Handbook</title>
+<title>Serverless Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Serverless Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Serverless Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="decoding-serverless-architecture-a-deep-dive">Decoding Serverless Architecture: A Deep Dive</h1>
 <p>Serverless architecture has rapidly emerged as a powerful paradigm shift in application development. Instead of managing servers, developers focus solely on writing and deploying code, leaving the underlying infrastructure management to a cloud provider. This approach offers significant advantages in terms of scalability, cost-efficiency, and developer productivity. Let’s delve into the intricacies of this innovative architecture.</p>
 <h2 id="what-is-serverless-architecture" class="anchored">What is Serverless Architecture?</h2>
 <p>Serverless doesn’t mean the absence of servers; it means <em>you don’t manage them</em>. Cloud providers manage the underlying infrastructure, automatically scaling resources based on demand. You pay only for the compute time your code consumes, eliminating the costs associated with idle servers. The core components are:</p>
@@ -105,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Faster Innovation:</strong> Experiment with new features and iterate rapidly without worrying about infrastructure constraints.</li>
 </ul>
 <h2 id="architectural-components-and-diagram" class="anchored">Architectural Components and Diagram</h2>
-<p>Let’s visualize a simple serverless architecture using a Mermaid diagram:</p>
+<p>Let’s visualize a simple serverless architecture using a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -151,42 +150,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 id="serverless-vs.-traditional-architectures" class="anchored">Serverless vs.&nbsp;Traditional Architectures</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 15%">
+<col style="width: 16%">
 <col style="width: 40%">
 <col style="width: 43%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Feature</th>
-<th>Serverless</th>
-<th>Traditional</th>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Serverless</th>
+<th style="text-align: left;">Traditional</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Server Management</td>
-<td>No</td>
-<td>Yes</td>
+<td style="text-align: left;">Server Management</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 <tr class="even">
-<td>Cost</td>
-<td>Pay-per-use</td>
-<td>Fixed costs, even during low usage</td>
+<td style="text-align: left;">Cost</td>
+<td style="text-align: left;">Pay-per-use</td>
+<td style="text-align: left;">Fixed costs, even during low usage</td>
 </tr>
 <tr class="odd">
-<td>Scalability</td>
-<td>Automatic, on-demand</td>
-<td>Manual scaling, potential bottlenecks</td>
+<td style="text-align: left;">Scalability</td>
+<td style="text-align: left;">Automatic, on-demand</td>
+<td style="text-align: left;">Manual scaling, potential bottlenecks</td>
 </tr>
 <tr class="even">
-<td>Deployment</td>
-<td>Faster, easier</td>
-<td>Slower, more complex</td>
+<td style="text-align: left;">Deployment</td>
+<td style="text-align: left;">Faster, easier</td>
+<td style="text-align: left;">Slower, more complex</td>
 </tr>
 <tr class="odd">
-<td>Maintenance</td>
-<td>Cloud provider handles</td>
-<td>Developer responsibility</td>
+<td style="text-align: left;">Maintenance</td>
+<td style="text-align: left;">Cloud provider handles</td>
+<td style="text-align: left;">Developer responsibility</td>
 </tr>
 </tbody>
 </table>
@@ -207,8 +206,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h2 id="monitoring-and-logging-in-serverless" class="anchored">Monitoring and Logging in Serverless</h2>
 <p>Effective monitoring and logging are crucial for debugging and performance optimization. Cloud providers offer built-in tools, providing insights into function execution times, errors, and resource consumption.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Serverless architecture offers a compelling alternative to traditional server management, providing significant benefits in terms of cost, scalability, and developer productivity. By understanding its core components and benefits, developers can leverage this paradigm to build efficient, scalable, and cost-effective applications. Careful consideration of the specific needs of your application and the strengths of different serverless platforms will allow you to effectively utilize this powerful technology.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

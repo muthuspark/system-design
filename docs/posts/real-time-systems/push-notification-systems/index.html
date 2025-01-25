@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Push Notification Systems – System Design Handbook</title>
+<title>Push Notification Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Push Notification Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Push Notification Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="push-notification-systems-a-deep-dive">Push Notification Systems: A Deep Dive</h1>
 <p>Push notifications have become an indispensable part of the modern mobile application landscape. They allow apps to send timely updates and relevant information directly to users’ devices, even when the app isn’t actively running. This capability significantly enhances user engagement and retention. This post will explore the intricacies of push notification systems, delving into their architecture, different protocols, and implementation considerations.</p>
 <h2 id="understanding-the-architecture" class="anchored">Understanding the Architecture</h2>
 <p>A robust push notification system involves several key components working in concert:</p>
@@ -98,7 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Mobile Device:</strong> This is the end recipient of the notification. The device maintains a persistent connection (or regularly checks for updates) with the notification service.</p></li>
 <li><p><strong>Mobile Application:</strong> This interacts with the app server to request notifications and receives notifications from the notification service. It displays notifications to the user according to the operating system guidelines.</p></li>
 </ul>
-<p>Here’s a visual representation of this architecture using a Mermaid diagram:</p>
+<p>Here’s a visual representation of this architecture using a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -181,8 +180,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Geolocation:</strong> Sending notifications based on the user’s location.</li>
 <li><strong>Personalization:</strong> Tailoring notification content to individual user preferences.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Push notification systems are complex yet vital components of modern mobile applications. Understanding their architecture, the protocols used for different operating systems, and implementation strategies is crucial for developers seeking to leverage this technology for improved user engagement and retention. This post has explored the fundamental aspects of these systems, showcasing a simplified example and highlighting key features for advanced implementations.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

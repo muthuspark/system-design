@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Security in Microservices – System Design Handbook</title>
+<title>Security in Microservices – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Security in Microservices – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Security in Microservices – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,7 +54,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="security-in-microservices-a-deep-dive">Security in Microservices: A Deep Dive</h1>
 <p>Microservices architecture offers numerous benefits, including scalability, flexibility, and independent deployability. However, this distributed nature also introduces significant security challenges. Securing a microservices environment requires a multifaceted approach that goes beyond traditional monolithic application security. This post delves into the key security concerns and best practices for building secure microservices.</p>
 <h2 id="the-unique-security-challenges-of-microservices" class="anchored">The Unique Security Challenges of Microservices</h2>
 <p>Unlike monolithic applications, microservices communicate extensively with each other, creating a larger attack surface. This inter-service communication is a primary vulnerability. Here’s a breakdown of the key challenges:</p>
@@ -128,8 +127,6 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Static and Dynamic Application Security Testing (SAST/DAST):</strong> Integrate SAST and DAST tools into the development pipeline to identify security flaws early in the development process.</p></li>
 <li><p><strong>Dependency Management:</strong> Regularly update dependencies and use vulnerability scanners to identify and address vulnerabilities in third-party libraries.</p></li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Securing a microservices architecture requires a holistic approach that addresses security at all levels – from securing inter-service communication and data to implementing robust infrastructure and monitoring mechanisms. By implementing the strategies outlined above, organizations can significantly reduce their attack surface and build more resilient and secure microservices applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

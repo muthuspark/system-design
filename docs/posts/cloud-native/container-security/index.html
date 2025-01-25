@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Container Security – System Design Handbook</title>
+<title>Container Security – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Container Security – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Container Security – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="container-security-a-deep-dive-into-protecting-your-microservices">Container Security: A Deep Dive into Protecting Your Microservices</h1>
 <p>Containers have revolutionized software development and deployment, offering portability, scalability, and efficiency. However, this agility comes with new security challenges. Securing your containerized applications requires a multi-layered approach, encompassing image security, runtime security, and orchestration security. This post delves into each layer, providing practical advice and illustrating concepts with examples.</p>
 <h2 id="image-security-building-secure-foundations" class="anchored">1. Image Security: Building Secure Foundations</h2>
 <p>The foundation of container security lies in the image itself. A compromised base image can lead to vulnerabilities across all instances deployed from it. Best practices for image security include:</p>
@@ -97,7 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Regularly Updating Images:</strong> Outdated images are rife with known vulnerabilities. Implement automated processes for updating base images and application dependencies. Regularly scanning images for vulnerabilities is crucial. Tools like Clair, Trivy, and Anchore provide vulnerability scanning capabilities.</p></li>
 <li><p><strong>Multi-Stage Builds:</strong> Use multi-stage builds in your Dockerfiles to separate build-time dependencies from runtime dependencies. This significantly reduces the size of the final image and removes sensitive information (like build tools) from the production environment.</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stage 1: Build stage</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> golang:1.20 <span class="kw">AS</span> builder</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
@@ -107,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="va">CGO_ENABLED</span><span class="op">=</span>0 <span class="va">GOOS</span><span class="op">=</span>linux <span class="ex">go</span> build <span class="at">-a</span> <span class="at">-o</span> main .</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Stage 2: Runtime stage</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> alpine:latest</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--from=builder</span> /app/main .</span>
@@ -116,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Image Signing and Verification:</strong> Sign your images to verify their authenticity and integrity. This prevents unauthorized modifications and ensures you’re deploying trusted images. Tools like Notary can help with image signing.</p></li>
 <li><p><strong>Code Scanning:</strong> Implement static and dynamic code analysis to detect vulnerabilities in your application code <em>before</em> building the image. Tools like SonarQube and Snyk can be integrated into your CI/CD pipeline.</p></li>
 </ul>
-<p><strong>Mermaid Diagram: Image Security Workflow</strong></p>
+<p><strong>Diagram: Image Security Workflow</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -149,21 +148,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Runtime Security Scanners:</strong> Tools like Falco can monitor container runtime activity, detecting suspicious behavior and potential intrusions.</p></li>
 <li><p><strong>Secrets Management:</strong> Never hardcode sensitive information (passwords, API keys) directly into your container images. Use dedicated secrets management solutions like HashiCorp Vault or Kubernetes Secrets.</p></li>
 </ul>
-<p><strong>Mermaid Diagram: Runtime Security Measures</strong></p>
+<p><strong>Diagram: Runtime Security Measures</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Container] --&gt; B(Network Policy);
-    A --&gt; C(Resource Limits);
-    A --&gt; D(Security Context);
-    B --&gt; E[Network Namespace];
-    C --&gt; F[Resource Quotas];
-    D --&gt; G[Limited Privileges];
-    A --&gt; H(Runtime Monitoring (Falco));
-    H --&gt; I[Alerting &amp; Response];
+    A[Container] --&gt; B[Network Policy]
+    A --&gt; C[Resource Limits]
+    A --&gt; D[Security Context]
+    B --&gt; E[Network Namespace]
+    C --&gt; F[Resource Quotas]
+    D --&gt; G[Limited Privileges]
+    A --&gt; H[Runtime Monitoring]
+    H --&gt; I[Alerting &amp; Response]
 
 </pre>
 </div>
@@ -180,8 +179,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Admission Controllers:</strong> Use admission controllers to enforce policies and validate requests before they’re applied to the cluster.</p></li>
 <li><p><strong>Regular Security Audits:</strong> Conduct regular security audits of your Kubernetes cluster to identify and address potential vulnerabilities and misconfigurations.</p></li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Container security is a critical aspect of modern software development. It’s a multi-layered approach that starts with secure image building practices, extends to runtime security measures to protect running containers, and culminates in securing the orchestration platform itself. Implementing these measures, using appropriate tooling, and consistently reviewing security practices are crucial for minimizing risks and protecting your containerized applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -25,8 +25,8 @@ Several key concepts underpin reliability engineering:
 
 ```{mermaid}
 graph LR
-    A[Early Failures (Infant Mortality)] --> B(Useful Life (Constant Failure Rate))
-    B --> C[Wear-out Failures]
+   A[Early Failures<br>Infant Mortality] --> B[Useful Life<br>Constant Failure Rate]
+   B --> C[Wear-out<br>Failures]
 ```
 
 The bathtub curve illustrates three phases: early failures (infant mortality), a period of constant failure rate, and wear-out failures. Good design and testing aim to reduce early failures, while preventative maintenance can mitigate wear-out failures.
@@ -103,7 +103,3 @@ Preventive maintenance is scheduled maintenance performed to reduce the likeliho
 ## 8. Reliability Testing
 
 Reliability testing involves subjecting a system to various stress conditions to assess its performance and identify weaknesses. This can include environmental testing, accelerated life testing, and stress testing.
-
-## Summary
-
-This post covered the fundamentals of reliability principles, including key concepts, metrics, failure modes, reliability block diagrams, fault tree analysis, redundancy, fault tolerance, preventive maintenance and reliability testing. Understanding these principles is crucial for designing and building reliable systems that meet the demands of their intended applications.

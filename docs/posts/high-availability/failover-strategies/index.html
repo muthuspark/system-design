@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Failover Strategies – System Design Handbook</title>
+<title>Failover Strategies – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Failover Strategies – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Failover Strategies – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="failover-strategies-ensuring-high-availability-and-business-continuity">Failover Strategies: Ensuring High Availability and Business Continuity</h1>
 <p>In today’s digital world, downtime is simply unacceptable. Businesses rely heavily on their applications and services, and any interruption can lead to significant financial losses and reputational damage. This is where failover strategies come in – crucial mechanisms designed to ensure high availability and business continuity in the event of a failure. This post dives deep into various failover strategies, exploring their strengths, weaknesses, and implementation considerations.</p>
 <h2 id="understanding-failover" class="anchored">Understanding Failover</h2>
 <p>Failover refers to the process of automatically switching over to a backup system or resource when the primary system fails. This ensures that services remain operational, minimizing disruption to users and preventing data loss. Effective failover strategies require careful planning, robust infrastructure, and regular testing.</p>
@@ -106,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Reduced resource utilization, as the secondary system is idle.</li>
 <li>Potential for delay in failover if the secondary system needs to be fully bootstrapped.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -134,7 +99,7 @@ B --&gt;|Takes Over| C{Services Resume}
 <li>Higher infrastructure costs.</li>
 <li>Requires sophisticated load balancing mechanisms.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -151,25 +116,6 @@ B --&gt;|Failure| D
 </div>
 </div>
 </div>
-<p><strong>Code Example (Conceptual using Python):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplified representation – actual implementation depends on the specific technology</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> System:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> handle_request(<span class="va">self</span>, request):</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Process request</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>primary_system <span class="op">=</span> System()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>secondary_system <span class="op">=</span> System()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Load balancer distributes requests</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Failover handling (simplified)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    primary_system.handle_request(request)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Primary system failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    secondary_system.handle_request(request)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 id="geographic-failover" class="anchored">3. Geographic Failover</h3>
 <p>This strategy involves deploying systems in geographically separate locations. If a disaster affects one location, the system in another location takes over. This protects against widespread outages caused by natural disasters or regional failures.</p>
 <p><strong>Advantages:</strong></p>
@@ -182,7 +128,7 @@ B --&gt;|Failure| D
 <li>High infrastructure costs.</li>
 <li>Increased complexity in managing geographically distributed systems.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -221,8 +167,6 @@ A --&gt;|Disaster| D[Failover to B]
 <li><strong>Regular testing:</strong> Simulating failures to ensure the failover process works as expected.</li>
 <li><strong>Monitoring and alerting:</strong> Tools to monitor system health and alert administrators to potential problems.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored various failover strategies, ranging from simple active-passive setups to more sophisticated active-active and geographic solutions. The choice of strategy depends heavily on application requirements, budget constraints, and acceptable downtime. Implementing a robust failover strategy is essential for ensuring business continuity and minimizing the impact of system failures.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

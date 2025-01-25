@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>API Documentation – System Design Handbook</title>
+<title>API Documentation – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="API Documentation – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="API Documentation – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="api-documentation-the-cornerstone-of-seamless-integration">API Documentation: The Cornerstone of Seamless Integration</h1>
 <p>API documentation is often overlooked, yet it’s the bedrock of successful software integration. A well-written API document acts as a bridge between developers and your API, enabling them to understand its capabilities and effectively utilize its functionalities. Poor documentation, conversely, leads to frustration, integration errors, and ultimately, a negative impact on your API’s adoption rate. This comprehensive guide delves into the crucial aspects of crafting effective API documentation, ensuring your API is understood and utilized to its full potential.</p>
 <h2 id="why-is-good-api-documentation-crucial" class="anchored">Why is Good API Documentation Crucial?</h2>
 <p>Imagine trying to assemble furniture without instructions. Frustrating, right? API integration is similar. Without clear, concise documentation, developers struggle to understand how your API works, leading to:</p>
@@ -129,14 +128,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Client] --&gt; B(GET /users/{userId});
-    B --&gt; C[Server];
-    C --&gt; D{Authentication};
-    D -- Success --&gt; E[Retrieve User Data];
-    E --&gt; F[Response (200 OK)];
-    F --&gt; A;
-    D -- Failure --&gt; G[Error Response (401 Unauthorized)];
-    G --&gt; A;
+    A["Client"] --&gt; B["GET /users/{userId}"]
+    B --&gt; C["Server"]
+    C --&gt; D{"Authentication"}
+    D --&gt;|"Success"| E["Retrieve User Data"]
+    E --&gt; F["200 OK + User Data"]
+    F --&gt; A
+    D --&gt;|"Failure"| G["401 Unauthorized"]
+    G --&gt; A
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -169,8 +168,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h2 id="maintaining-your-api-documentation" class="anchored">Maintaining Your API Documentation</h2>
 <p>API documentation is not a one-time task. It’s an ongoing process requiring regular updates to reflect changes and additions to your API. Keep your documentation synchronized with your API’s codebase. Consider using version control for your documentation to track changes and collaborate effectively.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Effective API documentation is paramount for successful API adoption. By incorporating the key elements discussed – a clear introduction, detailed endpoint descriptions, comprehensive code examples, and a robust error-handling strategy – you can significantly enhance the developer experience and ensure seamless integration with your API. Employing suitable documentation tools and maintaining your documentation consistently are crucial steps toward achieving optimal results.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -161,7 +161,5 @@ The key-value pattern is the simplest document store design.  It maps keys to va
 
 
 
-## Summary
 
-This post covered four key document store design patterns: embedded documents, reference documents, polymorphic documents, and key-value documents.  Each pattern has its own strengths and weaknesses, and the optimal choice depends on the specific requirements of your application.  Careful consideration of data relationships, update frequency, query patterns, and scalability needs is crucial for designing an efficient and maintainable document database.
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Database Sharding Strategies – System Design Handbook</title>
+<title>Database Sharding Strategies – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Database Sharding Strategies – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Database Sharding Strategies – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,7 +54,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="database-sharding-strategies-a-deep-dive">Database Sharding Strategies: A Deep Dive</h1>
 <p>Database sharding is a crucial technique for scaling your database horizontally. When a single database server can no longer handle the volume of data or requests, sharding distributes the data across multiple servers, improving performance and availability. However, choosing the right sharding strategy is critical, as a poorly implemented strategy can lead to performance bottlenecks and operational complexities. This post explores various sharding strategies, their advantages, disadvantages, and implementation considerations.</p>
 <h2 id="understanding-the-fundamentals" class="anchored">Understanding the Fundamentals</h2>
 <p>Before diving into specific strategies, let’s clarify some key terms:</p>
@@ -79,17 +78,66 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Application] --&gt; B{Shard Key (user_id)};
-    B -- user_id &lt; 1001 --&gt; C[Shard 1];
-    B -- 1001 &lt;= user_id &lt; 2001 --&gt; D[Shard 2];
-    B -- user_id &gt;= 2001 --&gt; E[Shard 3];
+<pre class="mermaid mermaid-js">graph TD
+    A[Application] --&gt; B[Router]
+    B --&gt; C{Range Check}
+    
+    subgraph "Sharding Rules"
+        C --&gt;|1-1000| D[Shard 1]
+        C --&gt;|1001-2000| E[Shard 2]
+        C --&gt;|2001-3000| F[Shard 3]
+    end
+    
+    subgraph "Shard 1: US Users"
+        D --&gt; D1[user_id: 125&lt;br/&gt;region: US&lt;br/&gt;name: John]
+        D --&gt; D2[user_id: 850&lt;br/&gt;region: US&lt;br/&gt;name: Alice]
+    end
+    
+    subgraph "Shard 2: EU Users"
+        E --&gt; E1[user_id: 1200&lt;br/&gt;region: EU&lt;br/&gt;name: Pierre]
+        E --&gt; E2[user_id: 1750&lt;br/&gt;region: EU&lt;br/&gt;name: Maria]
+    end
+    
+    subgraph "Shard 3: ASIA Users"
+        F --&gt; F1[user_id: 2100&lt;br/&gt;region: ASIA&lt;br/&gt;name: Li]
+        F --&gt; F2[user_id: 2900&lt;br/&gt;region: ASIA&lt;br/&gt;name: Raj]
+    end
+    
+    style D fill:#90EE90
+    style E fill:#87CEEB
+    style F fill:#FFB6C1
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>Key aspects:</p>
+<ol type="1">
+<li>Sharding Logic:</li>
+</ol>
+<ul>
+<li>Shard 1: IDs 1-1000 (US users)</li>
+<li>Shard 2: IDs 1001-2000 (EU users)</li>
+<li>Shard 3: IDs 2001-3000 (ASIA users)</li>
+</ul>
+<ol start="2" type="1">
+<li>Benefits:</li>
+</ol>
+<ul>
+<li>Sequential data access</li>
+<li>Geographic data locality</li>
+<li>Simple range queries</li>
+<li>Easy to add new ranges</li>
+</ul>
+<ol start="3" type="1">
+<li>Considerations:</li>
+</ol>
+<ul>
+<li>Potential for uneven distribution</li>
+<li>Hot spots in sequential inserts</li>
+<li>Range boundaries need careful planning</li>
+</ul>
 <p><strong>Advantages:</strong> Simple to implement and understand.</p>
 <p><strong>Disadvantages:</strong> Can lead to hotspots if data distribution is uneven. Adding or removing shards can be complex and require significant data migration. Range queries across multiple shards can be inefficient.</p>
 <h3 id="hash-based-sharding" class="anchored">2. Hash-Based Sharding</h3>
@@ -99,21 +147,60 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Application] --&gt; B{Shard Key (user_id)};
-    B --&gt; C[Hash Function];
-    C --&gt; D{Shard ID};
-    D -- Shard ID = 1 --&gt; E[Shard 1];
-    D -- Shard ID = 2 --&gt; F[Shard 2];
-    D -- Shard ID = 3 --&gt; G[Shard 3];
+<pre class="mermaid mermaid-js">graph TD
+    A[Application] --&gt; B[Router]
+    B --&gt; C{Hash Function}
+    
+    subgraph "Sharding Logic"
+        C --&gt;|user_id % 3 = 0| D[Shard 1]
+        C --&gt;|user_id % 3 = 1| E[Shard 2]
+        C --&gt;|user_id % 3 = 2| F[Shard 3]
+    end
+    
+    subgraph "Shard 1 Data"
+        D --&gt; D1[user_id: 3]
+        D --&gt; D2[user_id: 6]
+    end
+    
+    subgraph "Shard 2 Data"
+        E --&gt; E1[user_id: 1]
+        E --&gt; E2[user_id: 4]
+    end
+    
+    subgraph "Shard 3 Data"
+        F --&gt; F1[user_id: 2]
+        F --&gt; F2[user_id: 5]
+    end
+    
+    style D fill:#90EE90
+    style E fill:#87CEEB
+    style F fill:#FFB6C1
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Advantages:</strong> Provides a more even data distribution than range-based sharding, reducing hotspots. Adding new shards is easier, involving rehashing and redistribution of data.</p>
-<p><strong>Disadvantages:</strong> Can be more complex to implement. Range queries are not efficient. Dealing with hash collisions requires careful consideration.</p>
+<p>Components:</p>
+<ol type="1">
+<li>Router: Directs requests based on shard key</li>
+<li>Hash Function: Determines shard placement using modulo</li>
+<li>Shards: Distributed data stores</li>
+</ol>
+<p>Flow:</p>
+<ol type="1">
+<li>Application sends request with user_id</li>
+<li>Router applies hash function (user_id % 3)</li>
+<li>Request routed to appropriate shard</li>
+<li>Data stored/retrieved from specific shard</li>
+</ol>
+<p>Benefits:</p>
+<ul>
+<li>Horizontal scalability</li>
+<li>Better performance</li>
+<li>Load distribution</li>
+<li>Data locality</li>
+</ul>
 <h3 id="directory-based-sharding-consistent-hashing" class="anchored">3. Directory-Based Sharding (Consistent Hashing)</h3>
 <p>Directory-based sharding uses a consistent hashing algorithm to map shard keys to shards. This improves scalability and simplifies adding or removing shards without requiring large-scale data migration. A central directory or metadata service keeps track of the mapping between shard keys and shard locations.</p>
 <div class="cell" data-layout-align="default">
@@ -121,20 +208,57 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Application] --&gt; B[Directory Service];
-    B -- lookup(user_id) --&gt; C{Shard Location};
-    C --&gt; D[Shard 1];
-    C --&gt; E[Shard 2];
-    C --&gt; F[Shard 3];
+<pre class="mermaid mermaid-js">graph TD
+    A[Application] --&gt; B[Directory Service]
+    B --&gt; C[Hash Ring]
+    
+    subgraph "Hash Ring Distribution"
+        C --&gt;|0-90°| D[Node 1]
+        C --&gt;|91-180°| E[Node 2]
+        C --&gt;|181-270°| F[Node 3]
+        C --&gt;|271-360°| G[Node 4]
+    end
+    
+    subgraph "Virtual Nodes"
+        D --&gt; D1[VNode 1.1&lt;br/&gt;Range: 0-45°]
+        D --&gt; D2[VNode 1.2&lt;br/&gt;Range: 46-90°]
+        E --&gt; E1[VNode 2.1&lt;br/&gt;Range: 91-135°]
+        E --&gt; E2[VNode 2.2&lt;br/&gt;Range: 136-180°]
+    end
+    
+    subgraph "Data Distribution"
+        D1 --&gt; X1[key1: value1]
+        D2 --&gt; X2[key2: value2]
+        E1 --&gt; X3[key3: value3]
+        E2 --&gt; X4[key4: value4]
+    end
+    
+    style D fill:#90EE90
+    style E fill:#87CEEB
+    style F fill:#FFB6C1
+    style G fill:#DDA0DD
+
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Advantages:</strong> Excellent scalability and resilience to shard addition/removal. Minimizes data migration during scaling.</p>
-<p><strong>Disadvantages:</strong> Requires a central directory service, which introduces a single point of failure (though this can be mitigated with redundancy). More complex to implement than range-based or simple hash-based sharding.</p>
+<p>Key Components:</p>
+<ol type="1">
+<li>Directory Service: Maintains mapping of data locations</li>
+<li>Hash Ring: 360° circle divided among nodes</li>
+<li>Virtual Nodes: Multiple points per physical node for better distribution</li>
+<li>Data Distribution: Keys mapped to nearest node clockwise</li>
+</ol>
+<p>Advantages:</p>
+<ul>
+<li>Minimal data movement when scaling</li>
+<li>Even distribution</li>
+<li>Automatic failover</li>
+<li>Dynamic node addition/removal</li>
+</ul>
+<p>When adding/removing nodes, only neighboring nodes are affected, making scaling operations efficient.</p>
 <h3 id="key-based-sharding" class="anchored">4. Key-Based Sharding</h3>
 <p>This strategy assigns shards based on specific key values or patterns in the shard key. For instance, you might assign all users from a specific region to a single shard.</p>
 <p><strong>Advantages:</strong> Can be efficient for queries related to the key used for sharding.</p>
@@ -147,6 +271,144 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Scalability requirements:</strong> How much do you expect your data to grow?</li>
 <li><strong>Operational complexity:</strong> How much operational overhead are you willing to accept?</li>
 </ul>
+<h3 id="comparison-of-database-sharding-strategies-features-and-trade-offs" class="anchored"><strong>Comparison of Database Sharding Strategies: Features and Trade-offs</strong></h3>
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 22%">
+<col style="width: 26%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Hash-Based</th>
+<th style="text-align: left;">Range-Based</th>
+<th style="text-align: left;">Directory-Based</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Data Distribution</td>
+<td style="text-align: left;">Very even</td>
+<td style="text-align: left;">Can be uneven</td>
+<td style="text-align: left;">Even</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Query Patterns</td>
+<td style="text-align: left;">Point lookups</td>
+<td style="text-align: left;">Range queries</td>
+<td style="text-align: left;">Both point and range</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Scalability</td>
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">Very High</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Operational Complexity</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hot Spots</td>
+<td style="text-align: left;">Rare</td>
+<td style="text-align: left;">Common</td>
+<td style="text-align: left;">Managed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Locality</td>
+<td style="text-align: left;">Random</td>
+<td style="text-align: left;">Good</td>
+<td style="text-align: left;">Configurable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rebalancing</td>
+<td style="text-align: left;">Complex</td>
+<td style="text-align: left;">Simple</td>
+<td style="text-align: left;">Dynamic</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Node Addition</td>
+<td style="text-align: left;">Requires rehashing</td>
+<td style="text-align: left;">Easy</td>
+<td style="text-align: left;">Minimal impact</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Range Queries</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: left;">Good</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Best For</td>
+<td style="text-align: left;">Uniform data access</td>
+<td style="text-align: left;">Sequential data access</td>
+<td style="text-align: left;">Dynamic environments</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Infrastructure Needs</td>
+<td style="text-align: left;">Minimal</td>
+<td style="text-align: left;">Basic</td>
+<td style="text-align: left;">Advanced</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Maintenance</td>
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">High</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Geographic Distribution</td>
+<td style="text-align: left;">Limited</td>
+<td style="text-align: left;">Natural</td>
+<td style="text-align: left;">Flexible</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Load Balancing</td>
+<td style="text-align: left;">Automatic</td>
+<td style="text-align: left;">Manual</td>
+<td style="text-align: left;">Semi-automatic</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Failure Recovery</td>
+<td style="text-align: left;">Complex</td>
+<td style="text-align: left;">Simple</td>
+<td style="text-align: left;">Advanced</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The key differences between sharding strategies:</strong></p>
+<p>Hash-Based Sharding:</p>
+<ul>
+<li>Evenly distributes data using hash functions</li>
+<li>Excellent for uniform data access and point queries</li>
+<li>Limited in range queries and data locality</li>
+<li>Requires complete rehashing when adding nodes</li>
+</ul>
+<p>Range-Based Sharding:</p>
+<ul>
+<li>Organizes data in sequential ranges</li>
+<li>Perfect for range queries and geographic distribution</li>
+<li>Prone to hot spots and uneven distribution</li>
+<li>Simple to maintain and add new nodes</li>
+</ul>
+<p>Directory-Based Sharding:</p>
+<ul>
+<li>Most flexible but complex solution</li>
+<li>Supports both range and point queries effectively</li>
+<li>Excellent scalability with minimal disruption</li>
+<li>Requires additional infrastructure and maintenance</li>
+<li>Best for dynamic environments needing frequent scaling</li>
+</ul>
+<p>Key Trade-offs:</p>
+<ul>
+<li>Complexity vs Flexibility: Hash-Based is simplest, Directory-Based most flexible</li>
+<li>Performance vs Features: Range-Based best for sequential access, Hash-Based for uniform distribution</li>
+<li>Maintenance vs Scalability: Directory-Based offers best scaling but highest maintenance</li>
+</ul>
 <h2 id="implementation-considerations" class="anchored">Implementation Considerations</h2>
 <p>Implementing sharding effectively requires careful planning and execution. Key aspects include:</p>
 <ul>
@@ -156,8 +418,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Transaction management:</strong> Ensure proper transaction management across multiple shards.</li>
 <li><strong>Monitoring and management:</strong> Implement robust monitoring and management tools to track shard health, performance, and data distribution.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored various database sharding strategies, including range-based, hash-based, directory-based, and key-based sharding. Each strategy has its own advantages and disadvantages, and the optimal choice depends on your specific application requirements. Careful consideration of data distribution, query patterns, and scalability needs is crucial for successful sharding implementation. Effective planning and execution, including proper shard key selection, data migration strategies, and robust monitoring, are vital for achieving a scalable and performant database system.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

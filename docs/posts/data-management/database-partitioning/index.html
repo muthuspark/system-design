@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Database Partitioning – System Design Handbook</title>
+<title>Database Partitioning – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Database Partitioning – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Database Partitioning – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="database-partitioning-a-deep-dive-into-scalability-and-performance">Database Partitioning: A Deep Dive into Scalability and Performance</h1>
 <p>Database partitioning is a powerful technique used to improve the performance, scalability, and manageability of large databases. Instead of storing all data in a single, monolithic table, partitioning divides the data into smaller, more manageable pieces called partitions. This approach offers significant advantages, especially when dealing with massive datasets that are challenging to query or manage efficiently. This article explores the intricacies of database partitioning, covering various strategies, their advantages and disadvantages, and practical considerations.</p>
 <h2 id="understanding-the-need-for-partitioning" class="anchored">Understanding the Need for Partitioning</h2>
 <p>As databases grow, several performance bottlenecks can emerge:</p>
@@ -216,8 +215,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Limited Partitioning Key Options:</strong> The choice of partitioning key is critical and can impact query performance.</li>
 <li><strong>Not Always Suitable:</strong> Partitioning may not be necessary or beneficial for all databases.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Database partitioning is a crucial technique for optimizing large databases. By strategically dividing data into smaller, more manageable units, organizations can significantly improve query performance, scalability, and overall database manageability. The choice of partitioning strategy depends on various factors including data characteristics, query patterns, and database system capabilities. Careful planning and consideration are essential for successful implementation.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

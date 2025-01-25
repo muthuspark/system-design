@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Event-Driven Architecture in Distributed Systems – System Design Handbook</title>
+<title>Event-Driven Architecture in Distributed Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Event-Driven Architecture in Distributed Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Event-Driven Architecture in Distributed Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,8 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="event-driven-architecture-in-distributed-systems-a-deep-dive">Event-Driven Architecture in Distributed Systems: A Deep Dive</h1>
-<p>Event-driven architecture (EDA) is a powerful paradigm for building scalable and resilient distributed systems. It shifts the focus from synchronous request-response interactions to asynchronous event processing, allowing for greater flexibility, decoupling, and independent scalability of components. This post will explore the intricacies of EDA in the context of distributed systems, covering its core concepts, benefits, challenges, and practical implementation considerations.</p>
+<p>Event-driven architecture (EDA) is a powerful concept for building scalable and resilient distributed systems. It shifts the focus from synchronous request-response interactions to asynchronous event processing, allowing for greater flexibility, decoupling, and independent scalability of components. This post will explore the intricacies of EDA in the context of distributed systems, covering its core concepts, benefits, challenges, and practical implementation considerations.</p>
 <h2 id="core-concepts" class="anchored">Core Concepts</h2>
 <p>At the heart of EDA lies the concept of <strong>events</strong>. An event is a significant occurrence in the system, such as a new order being placed, a payment being processed, or a user updating their profile. These events are typically asynchronous; they happen independently of any specific request.</p>
 <p>Components in an EDA communicate by producing and consuming events. <strong>Event producers</strong> generate events, while <strong>event consumers</strong> react to these events. The communication is facilitated by an <strong>event bus</strong>, a central messaging system that acts as an intermediary.</p>
@@ -103,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 id="event-bus-implementations" class="anchored">Event Bus Implementations</h2>
 <p>Several technologies can serve as event buses in a distributed system. Popular choices include:</p>
 <ul>
-<li><strong>Message Queues:</strong> Such as RabbitMQ, Kafka, and ActiveMQ. These offer robust message delivery guarantees and often include features like message ordering and persistence.</li>
+<li><strong>Message Queues:</strong> Such as <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://kafka.apache.org/">Kafka</a>, and <a href="https://activemq.apache.org/">ActiveMQ</a>. These offer robust message delivery guarantees and often include features like message ordering and persistence.</li>
 <li><strong>Publish-Subscribe Systems:</strong> These systems allow publishers to send events to topics (channels), and subscribers can register to receive events from specific topics. Examples include Redis Pub/Sub and Kafka.</li>
 <li><strong>Cloud-based Eventing Services:</strong> Cloud providers like AWS (SNS, SQS), Google Cloud (Pub/Sub), and Azure (Event Hub) offer managed eventing services that simplify deployment and management.</li>
 </ul>
@@ -193,8 +192,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Event Ordering and Consistency:</strong> Ensuring events are processed in the correct order and maintaining data consistency can be challenging, especially in distributed environments.</li>
 <li><strong>Debugging and Monitoring:</strong> Debugging and monitoring distributed event-driven systems can be more difficult due to the asynchronous nature of communication.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Event-driven architecture offers a powerful approach to building scalable and resilient distributed systems. By focusing on asynchronous communication and decoupling components, EDA enables independent development, deployment, and scaling. While it introduces complexities, the benefits of increased flexibility, robustness, and scalability often outweigh the challenges. Understanding the core concepts, available technologies, and architectural patterns is crucial for successful implementation.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

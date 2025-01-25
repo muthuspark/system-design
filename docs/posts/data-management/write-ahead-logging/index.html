@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Write-Ahead Logging – System Design Handbook</title>
+<title>Write-Ahead Logging – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Write-Ahead Logging – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Write-Ahead Logging – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="deep-dive-into-write-ahead-logging-wal">Deep Dive into Write-Ahead Logging (WAL)</h1>
 <p>Write-Ahead Logging (WAL) is a crucial technique used in databases and other systems to ensure data durability and consistency, even in the face of crashes or power failures. Instead of directly writing changes to the main data storage, WAL first records these changes in a log file. Only after the log record is safely written is the data itself updated. This guarantees that even if a system fails before completing a write operation, the changes can be recovered from the log upon restart.</p>
 <h2 id="how-write-ahead-logging-works" class="anchored">How Write-Ahead Logging Works</h2>
 <p>The core principle of WAL is simple: <strong>log first, write later</strong>. Let’s break down the process:</p>
@@ -99,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Data Modification:</strong> Only after the log record is successfully written to persistent storage are the changes applied to the main data files.</p></li>
 <li><p><strong>Transaction Commit:</strong> Once the data modifications are complete, the transaction is committed. A commit record is added to the WAL, signifying the successful completion of the transaction.</p></li>
 </ol>
-<p>Here’s a simple Mermaid diagram illustrating the process:</p>
+<p>Here’s a simple Diagram illustrating the process:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -133,14 +132,14 @@ E --&gt; C;
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>id</th>
-<th>name</th>
+<th style="text-align: left;">id</th>
+<th style="text-align: left;">name</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>John Doe</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">John Doe</td>
 </tr>
 </tbody>
 </table>
@@ -173,8 +172,6 @@ E --&gt; C;
 <li><strong>Log Compression:</strong> Compression techniques can reduce the size of the WAL.</li>
 <li><strong>Archiving:</strong> Old log files can be archived to reduce storage consumption.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Write-Ahead Logging is a critical technique for ensuring data durability and consistency in databases and similar systems. By logging changes before applying them to the main data storage, WAL guarantees data integrity even in the face of failures. While it introduces performance overhead, the benefits of data protection and recovery significantly outweigh this cost in many applications. Understanding the different types of WAL implementation and advanced considerations is crucial for building robust and reliable data systems.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

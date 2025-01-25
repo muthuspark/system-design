@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Service Discovery – System Design Handbook</title>
+<title>Service Discovery – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Service Discovery – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Service Discovery – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="service-discovery-the-backbone-of-microservices-architecture">Service Discovery: The Backbone of Microservices Architecture</h1>
 <p>Service discovery is a crucial component of modern microservices architectures. In a microservices environment, numerous independent services communicate with each other to provide a complete application. Knowing the location and availability of these services becomes a complex challenge, and this is where service discovery shines. This post will delve into the intricacies of service discovery, exploring different approaches, implementation strategies, and the benefits it brings to your system’s resilience and scalability.</p>
 <h2 id="what-is-service-discovery" class="anchored">What is Service Discovery?</h2>
 <p>Imagine a large city with numerous businesses (services). Each business needs a way to find its customers (other services) and for customers to find them. Service discovery acts as the city’s directory, providing a centralized mechanism for services to register their location (IP address and port) and for other services to locate them. This dynamic mechanism allows services to be added, removed, and moved without affecting the overall system stability.</p>
@@ -128,8 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>address <span class="op">=</span> get_service_address(<span class="st">"payment-service"</span>)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use address to connect to payment-service</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>address <span class="op">=</span> get_service_address(<span class="st">"payment-service"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>2. Server-side Discovery:</strong></p>
 <p>In server-side discovery, a load balancer or a reverse proxy acts as an intermediary. It queries the service registry and routes client requests to available instances of the service. This simplifies the client implementation but introduces a single point of failure.</p>
 <div class="cell" data-layout-align="default">
@@ -186,8 +184,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Single Point of Failure:</strong> In server-side discovery, the registry itself can become a single point of failure.</li>
 <li><strong>Network Issues:</strong> Network problems can disrupt communication between services and the registry.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Service discovery is fundamental for building robust and scalable microservices architectures. It offers a centralized and dynamic way for services to locate each other, enhancing scalability, resilience, and overall system health. Various tools and approaches exist, each with its own trade-offs. Careful consideration of your application’s specific needs and the challenges involved is crucial for selecting and implementing the most appropriate solution.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

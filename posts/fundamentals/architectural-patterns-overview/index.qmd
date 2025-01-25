@@ -153,6 +153,5 @@ graph LR
     C --> D[Output];
 ```
 
-## Summary
 
-This post provided an overview of five common architectural patterns: Layered, Microservices, Event-Driven, MVC, and Pipe and Filter. Each pattern offers unique advantages and disadvantages, and the choice of pattern depends heavily on the specific requirements and constraints of the project. Understanding these patterns is crucial for designing robust, scalable, and maintainable software systems.
+

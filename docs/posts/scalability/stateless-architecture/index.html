@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Stateless Architecture – System Design Handbook</title>
+<title>Stateless Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Stateless Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Stateless Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="stateless-architecture-building-scalable-and-resilient-systems">Stateless Architecture: Building Scalable and Resilient Systems</h1>
 <p>Stateless architecture is a design pattern where each request to an application contains all the information necessary to process it. The application doesn’t retain any information about previous requests or user interactions between requests. This contrasts with stateful architecture, where the application maintains a persistent memory of past interactions. This seemingly simple difference has profound implications for scalability, resilience, and maintainability.</p>
 <h2 id="the-advantages-of-statelessness" class="anchored">The Advantages of Statelessness</h2>
 <p>The primary benefits of adopting a stateless architecture are significant:</p>
@@ -98,7 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Maintainability:</strong> Stateless systems are often easier to understand, debug, and maintain. The absence of persistent state simplifies the application logic and reduces the complexity of the system as a whole.</p></li>
 <li><p><strong>Simplicity:</strong> The design is conceptually simpler, leading to faster development cycles and easier onboarding for new developers.</p></li>
 </ul>
-<h2 id="how-statelessness-works-a-deep-dive" class="anchored">How Statelessness Works: A Deep Dive</h2>
+<h2 id="how-statelessness-works" class="anchored">How Statelessness Works</h2>
 <p>Statelessness is achieved by externalizing the application’s state. Instead of storing information within the application itself, it’s typically stored in external data stores such as databases, caches (like Redis or Memcached), or message queues. The application interacts with these external stores to retrieve and update data as needed for each request.</p>
 <p>Here’s a visual representation of a stateless architecture:</p>
 <div class="cell" data-layout-align="default">
@@ -182,8 +181,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this diagram, the Authentication Service issues a JWT, which is used by the API to verify user identity.</p>
 <h2 id="when-statelessness-isnt-ideal" class="anchored">When Statelessness Isn’t Ideal</h2>
 <p>While stateless architecture offers many advantages, it’s not always the best solution. Systems requiring extremely low latency or real-time interaction might benefit from some degree of statefulness. The choice depends on the specific requirements and constraints of the application.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Stateless architecture offers significant advantages in scalability, resilience, and maintainability. By externalizing state, applications can easily scale horizontally, handle failures gracefully, and are simpler to manage. While session management requires careful consideration, techniques like token-based authentication and external session stores effectively address this need. Understanding the trade-offs between stateless and stateful architectures is crucial for designing robust and efficient systems.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

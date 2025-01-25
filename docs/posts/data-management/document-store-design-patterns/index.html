@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Document Store Design Patterns – System Design Handbook</title>
+<title>Document Store Design Patterns – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Document Store Design Patterns – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Document Store Design Patterns – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="document-store-design-patterns-optimizing-your-nosql-data-model">Document Store Design Patterns: Optimizing Your NoSQL Data Model</h1>
 <p>Document stores, like MongoDB and Couchbase, offer flexibility and scalability unmatched by relational databases. However, this flexibility comes with the responsibility of carefully designing your data model to avoid performance bottlenecks and maintain data integrity. Choosing the right design pattern is crucial for the success of your application. This post explores several key document store design patterns, illustrating their strengths and weaknesses with examples.</p>
 <h2 id="embedded-documents-nested-data-for-tight-relationships" class="anchored">1. Embedded Documents: Nested Data for Tight Relationships</h2>
 <p>The embedded documents pattern is ideal when you have a one-to-many relationship between documents where the child documents are strongly related to the parent and rarely exist independently. Embedding the child documents within the parent document reduces the number of database queries needed to retrieve related data.</p>
@@ -126,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  ]</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -171,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"orderId"</span><span class="op">:</span> <span class="st">"11111"</span><span class="op">,</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"items"</span><span class="op">:</span> [{<span class="st">"item"</span><span class="op">:</span> <span class="st">"Dress"</span><span class="op">,</span> <span class="st">"quantity"</span><span class="op">:</span> <span class="dv">1</span>}]</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -212,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"name"</span><span class="op">:</span> <span class="st">"Repair"</span><span class="op">,</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"duration"</span><span class="op">:</span> <span class="st">"2 hours"</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -239,8 +238,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Limited Structure:</strong> Not suitable for complex relationships or data modeling.</li>
 <li><strong>Scaling Challenges:</strong> Scaling can be more challenging than other patterns.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post covered four key document store design patterns: embedded documents, reference documents, polymorphic documents, and key-value documents. Each pattern has its own strengths and weaknesses, and the optimal choice depends on the specific requirements of your application. Careful consideration of data relationships, update frequency, query patterns, and scalability needs is crucial for designing an efficient and maintainable document database.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Vector Clocks – System Design Handbook</title>
+<title>Vector Clocks – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Vector Clocks – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Vector Clocks – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-vector-clocks-a-deep-dive-into-concurrent-system-ordering">Understanding Vector Clocks: A Deep Dive into Concurrent System Ordering</h1>
 <p>In the world of distributed systems, ensuring consistency and order amidst concurrent operations is a significant challenge. Traditional timestamps often fall short in these scenarios, leading to potential inconsistencies and data corruption. This is where vector clocks come to the rescue. Vector clocks provide a robust mechanism for tracking the causal order of events in a distributed environment, offering a superior alternative to simple scalar timestamps. This post delves into the intricacies of vector clocks, explaining their functionality, implementation, and advantages.</p>
 <h2 id="what-are-vector-clocks" class="anchored">What are Vector Clocks?</h2>
 <p>Unlike scalar timestamps which assign a single, monotonically increasing value to each event, a vector clock assigns a vector of integers. Each element in this vector represents a process in the distributed system. The value at a specific index reflects the number of events that have occurred in the corresponding process up to a given point.</p>
@@ -175,8 +174,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Concurrency Detection:</strong> Clearly identifies concurrent events, enabling efficient handling of parallel operations.</li>
 <li><strong>Scalability:</strong> While the vector size grows with the number of processes, it remains relatively efficient for moderately sized systems.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Vector clocks offer a powerful solution for managing event ordering and concurrency in distributed systems. Their vector-based approach provides a more nuanced representation of causal relationships compared to scalar timestamps. The implementation is relatively straightforward, leveraging basic vector operations. The ability to definitively determine causality and concurrency makes vector clocks a valuable tool in building robust and consistent distributed applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

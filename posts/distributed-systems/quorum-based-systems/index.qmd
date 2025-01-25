@@ -3,14 +3,13 @@ title: "Quorum-based Systems"
 categories: [ "Distributed Systems" ]
 ---
 
-
-Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable.  This blog post will explore the intricacies of quorum systems, delving into their mechanisms, various types, applications, and inherent trade-offs.
+Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will explore the intricacies of quorum systems, delving into their mechanisms, various types, applications, and inherent trade-offs.
 
 ## Understanding the Core Concept: Quorum
 
 At its heart, a quorum system is a collection of subsets (quorums) of a larger set of nodes (e.g., servers, replicas). The defining characteristic is that any two quorums must have at least one node in common. This seemingly simple requirement is crucial because it guarantees that if a decision is reached by one quorum, it automatically involves at least one member of any other quorum, facilitating consistency.
 
-Imagine a distributed database replicated across five servers (A, B, C, D, E). A simple quorum system might define quorums as any three servers.  If a write operation obtains a quorum of (A, B, C), and a subsequent read operation obtains a quorum of (B, C, D), they share servers B and C, ensuring data consistency.  If a quorum doesn't overlap, it opens the possibility of conflicting data versions.
+Imagine a distributed database replicated across five servers (A, B, C, D, E). A simple quorum system might define quorums as any three servers. If a write operation obtains a quorum of (A, B, C), and a subsequent read operation obtains a quorum of (B, C, D), they share servers B and C, ensuring data consistency. If a quorum doesn't overlap, it opens the possibility of conflicting data versions.
 
 ```{mermaid}
 graph LR
@@ -31,7 +30,7 @@ Several types of quorum systems exist, each with its strengths and weaknesses:
 
 **1. Simple Majority Quorum:**
 
-This is the simplest form, requiring a majority of the nodes to form a quorum. For example, with five nodes, any three or more nodes constitute a quorum.  It's easy to understand and implement but can be vulnerable if a significant number of nodes fail.
+This is the simplest form, requiring a majority of the nodes to form a quorum. For example, with five nodes, any three or more nodes constitute a quorum. It's easy to understand and implement but can be vulnerable if a significant number of nodes fail.
 
 ```{mermaid}
 graph LR
@@ -49,11 +48,11 @@ graph LR
 
 **2. Weighted Voting Quorum:**
 
-This extends the simple majority approach by assigning weights to each node. A quorum is formed when the total weight of participating nodes exceeds a predefined threshold.  This allows for handling situations where nodes have different capabilities or importance.
+This extends the simple majority approach by assigning weights to each node. A quorum is formed when the total weight of participating nodes exceeds a predefined threshold. This allows for handling situations where nodes have different capabilities or importance.
 
 **Example (Python):**
 
-```python
+``` python
 nodes = {
     'A': 2,
     'B': 1,
@@ -74,32 +73,128 @@ print(is_quorum(['A', 'B', 'C'])) # False (2 + 1 + 1 = 4 >= 4)
 
 **3. Path Quorum Systems:**
 
-These are particularly useful in distributed systems with a hierarchical or network-like structure.  A quorum is defined as a path connecting two specified nodes, ensuring connectivity and resilience.
+These are particularly useful in distributed systems with a hierarchical or network-like structure. A quorum is defined as a path connecting two specified nodes, ensuring connectivity and resilience.
+
+```{mermaid}
+graph TD
+    subgraph "Successful Path Quorum"
+        A1((Node A)) --- B1((Node B))
+        B1 --- C1((Node C))
+        C1 --- D1((Node D))
+        A1 --- E1((Node E))
+        E1 --- D1
+        style A1 fill:#90EE90
+        style D1 fill:#90EE90
+        style B1 fill:#90EE90
+        style C1 fill:#90EE90
+        style E1 fill:#lightgrey
+    end
+
+    subgraph "Failed Path Quorum"
+        A2((Node A)) --- B2((Node B))
+        B2 -.- C2((Node C))
+        C2 --- D2((Node D))
+        A2 --- E2((Node E))
+        E2 -.- D2
+        style A2 fill:#FFB6C1
+        style D2 fill:#FFB6C1
+        style C2 fill:#lightgrey
+        style B2 fill:#FFB6C1
+        style E2 fill:#FFB6C1
+    end
+```
+
+In this visualization:
+
+**Successful Path Quorum:**
+
+- Green nodes show active path
+- Multiple valid paths exist (A→B→C→D and A→E→D)
+- System remains operational with redundant paths
+
+**Failed Path Quorum:**
+
+- Red nodes indicate compromised path
+- Dotted lines show broken connections
+- No complete path exists between A and D
+- System cannot establish quorum
+
+The key aspects:
+
+- Path redundancy ensures fault tolerance
+- Multiple valid paths increase reliability
+- System continues if at least one path exists
+- Hierarchical structure maintains organization
 
 **4. Grid Quorum Systems:**
 
 Suitable for distributed systems arranged in a grid topology, quorums are defined as subsets of nodes that form a connected component in the grid.
 
+```{mermaid}
+graph TD
+    subgraph "Successful Grid Quorum"
+        A1((1)) --- B1((2)) --- C1((3))
+        A1 --- D1((4)) --- E1((5)) --- F1((6))
+        D1 --- G1((7)) --- H1((8)) --- I1((9))
+        
+        style A1 fill:#90EE90
+        style D1 fill:#90EE90
+        style E1 fill:#90EE90
+        style H1 fill:#90EE90
+        style I1 fill:#90EE90
+    end
+
+    subgraph "Failed Grid Quorum"
+        A2((1)) --- B2((2)) --- C2((3))
+        A2 -.- D2((4))
+        D2 --- E2((5)) --- F2((6))
+        D2 --- G2((7)) --- H2((8)) -.- I2((9))
+        
+        style A2 fill:#FFB6C1
+        style D2 fill:#FFB6C1
+        style E2 fill:#FFB6C1
+        style H2 fill:#FFB6C1
+        style I2 fill:#FFB6C1
+        style B2 fill:#lightgrey
+        style C2 fill:#lightgrey
+    end
+
+```
+
+Key aspects:
+
+**Successful Quorum:**
+
+- Green nodes form connected component
+- Multiple paths available
+- Maintains grid connectivity
+
+**Failed Quorum:**
+
+- Red nodes show disconnected segments
+- Broken links (dotted lines)
+- No complete path across grid
+
+This structure ensures:
+
+- Fault tolerance
+- Load distribution
+- Reliable communication paths
+- Systematic node organization
+
 ## Applications of Quorum Systems
 
 Quorum systems are ubiquitous in various distributed systems:
 
-* **Distributed Databases:** Ensuring data consistency and availability across multiple replicas.
-* **Distributed File Systems:** Maintaining data integrity and preventing inconsistencies in replicated files.
-* **Consensus Protocols:**  Paxos, Raft, and other consensus algorithms rely on quorum systems for achieving agreement among nodes.
-* **Blockchain Systems:**  Some blockchain implementations use quorum systems to validate transactions and maintain the integrity of the blockchain.
-
+-   **Distributed Databases:** Ensuring data consistency and availability across multiple replicas.
+-   **Distributed File Systems:** Maintaining data integrity and preventing inconsistencies in replicated files.
+-   **Consensus Protocols:** Paxos, Raft, and other consensus algorithms rely on quorum systems for achieving agreement among nodes.
+-   **Blockchain Systems:** Some blockchain implementations use quorum systems to validate transactions and maintain the integrity of the blockchain.
 
 ## Trade-offs and Considerations
 
 The choice of a quorum system involves trade-offs:
 
-* **Availability vs. Consistency:**  Larger quorums increase consistency but reduce availability (more nodes need to be operational).
-* **Performance:** The size of quorums affects the time required to reach a decision. Smaller quorums are generally faster.
-* **Complexity:**  More sophisticated quorum systems (e.g., weighted voting) can add complexity to implementation and management.
-
-
-## Summary
-
-Quorum systems are powerful mechanisms for achieving consensus and ensuring data consistency in distributed environments.  Different types of quorum systems offer various trade-offs between availability, consistency, and performance. Understanding these trade-offs is essential for selecting the appropriate quorum system for a specific application.  This exploration covered the core concepts, various system types, practical applications, and important considerations when designing and deploying quorum-based systems.
-
+-   **Availability vs. Consistency:** Larger quorums increase consistency but reduce availability (more nodes need to be operational).
+-   **Performance:** The size of quorums affects the time required to reach a decision. Smaller quorums are generally faster.
+-   **Complexity:** More sophisticated quorum systems (e.g., weighted voting) can add complexity to implementation and management.

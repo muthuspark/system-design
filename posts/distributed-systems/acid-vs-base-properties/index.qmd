@@ -1,111 +1,215 @@
 ---
-title: "ACID vs BASE Properties"
+title: "ACID vs BASE Database Consistency Models"
 categories: [ "Distributed Systems" ]
 ---
 
+Modern distributed systems face a fundamental choice between strong consistency (ACID) and eventual consistency (BASE). This article explores both models, their tradeoffs, and implementation considerations.
 
-Understanding the properties of acids and bases is fundamental to chemistry.  These properties govern a vast range of chemical reactions and processes, impacting everything from industrial manufacturing to biological systems.  This post delves into the distinctions between acids and bases, exploring their characteristic behaviours and contrasting their key features.
+## ACID Properties
 
-## Defining Acids and Bases: More Than Just Sour and Bitter
-
-While we often associate acids with a sour taste and bases with a bitter taste (**never taste chemicals!**), the definitions are far more nuanced and based on observable chemical behavior.  Several theories help us understand these concepts:
-
-### 1. Arrhenius Theory:  The Classic Definition
-
-The Arrhenius theory, one of the earliest, defines acids as substances that produce hydrogen ions (H⁺) when dissolved in water, and bases as substances that produce hydroxide ions (OH⁻) when dissolved in water.
-
-**Example:**
-
-* **Acid:** Hydrochloric acid (HCl) dissociates in water as follows: HCl → H⁺ + Cl⁻
-* **Base:** Sodium hydroxide (NaOH) dissociates in water as follows: NaOH → Na⁺ + OH⁻
-
-
-This theory, while simple, has limitations. It only applies to aqueous solutions and doesn't encompass all substances exhibiting acidic or basic properties.
-
-### 2. Brønsted-Lowry Theory: A Broader Perspective
-
-The Brønsted-Lowry theory expands on the Arrhenius theory by defining acids as *proton donors* and bases as *proton acceptors*.  A proton, in this context, is a hydrogen ion (H⁺).
-
-**Example:**
-
-Consider the reaction between hydrochloric acid (HCl) and water:
-
-HCl + H₂O ⇌ H₃O⁺ + Cl⁻
-
-Here, HCl acts as a Brønsted-Lowry acid, donating a proton to water (H₂O), which acts as a Brønsted-Lowry base, accepting the proton.  The resulting hydronium ion (H₃O⁺) is the conjugate acid of water, and the chloride ion (Cl⁻) is the conjugate base of HCl.
+ACID (Atomicity, Consistency, Isolation, Durability) prioritizes data consistency and reliability.
 
 ```{mermaid}
 graph LR
-    HCl --> H3O+
-    H2O --> Cl-
-    subgraph "Brønsted-Lowry Acid-Base Reaction"
-        HCl[HCl (Acid)]
-        H2O[H2O (Base)]
-        H3O+[H3O+ (Conjugate Acid)]
-        Cl-[Cl- (Conjugate Base)]
-    end
+    A[Transaction] --> B[Atomicity]
+    A --> C[Consistency]
+    A --> D[Isolation]
+    A --> E[Durability]
+    B --> F[All or Nothing]
+    C --> G[Valid State]
+    D --> H[Concurrent Safety]
+    E --> I[Permanent]
+    style A fill:#f9f,stroke:#333
+    style F fill:#ddf,stroke:#333
+    style G fill:#ddf,stroke:#333
+    style H fill:#ddf,stroke:#333
+    style I fill:#ddf,stroke:#333
 ```
 
-This theory is more comprehensive than the Arrhenius theory as it includes reactions that don't involve hydroxide ions.
+The diagram illustrates the four pillars of ACID transactions:
 
+1. Atomicity ensures operations are "all or nothing"
+2. Consistency maintains valid database states
+3. Isolation provides concurrent transaction safety
+4. Durability guarantees permanent data storage
 
-### 3. Lewis Theory: The Most General Definition
+Each property leads to a specific guarantee, shown by the terminal nodes.
 
-The Lewis theory offers the broadest definition of acids and bases.  It defines a **Lewis acid** as an *electron pair acceptor* and a **Lewis base** as an *electron pair donor*.
+### Implementation Example
 
-**Example:**
+```{mermaid}
+sequenceDiagram
+    participant C as Client
+    participant N1 as Node 1
+    participant N2 as Node 2
+    participant N3 as Node 3
+    
+    C->>N1: Begin Transaction
+    N1->>N2: Lock Data
+    N1->>N3: Lock Data
+    N2-->>N1: Locked
+    N3-->>N1: Locked
+    N1->>N2: Write Data
+    N1->>N3: Write Data
+    N2-->>N1: Success
+    N3-->>N1: Success
+    N1->>N2: Commit
+    N1->>N3: Commit
+    N1->>C: Transaction Complete
+```
 
-The reaction between boron trifluoride (BF₃) and ammonia (NH₃):
+This sequence diagram shows a distributed ACID transaction:
 
-BF₃ + NH₃ → F₃B-NH₃
+1. Client initiates transaction with Node 1
+2. Node 1 acquires locks on Node 2 and 3
+3. After confirmation, data is written to all nodes
+4. Two-phase commit ensures consistency
+5. Client receives completion confirmation only after all nodes commit
 
-Here, BF₃ acts as a Lewis acid because it accepts an electron pair from NH₃, which acts as a Lewis base, donating the electron pair.
+## BASE Properties
+
+BASE (Basically Available, Soft state, Eventually consistent) prioritizes availability and partition tolerance.
 
 ```{mermaid}
 graph LR
-    BF3 --> F3B-NH3
-    NH3 --> F3B-NH3
-    subgraph "Lewis Acid-Base Reaction"
-        BF3[BF3 (Lewis Acid)]
-        NH3[NH3 (Lewis Base)]
-        F3BNH3[F3B-NH3 (Adduct)]
-    end
+    A[BASE Model] --> B[Basic Availability]
+    A --> C[Soft State]
+    A --> D[Eventual Consistency]
+    B --> E[System Remains Available]
+    C --> F[State May Change]
+    D --> G[Consistency Over Time]
+    style A fill:#f9f,stroke:#333
+    style E fill:#ddf,stroke:#333
+    style F fill:#ddf,stroke:#333
+    style G fill:#ddf,stroke:#333
 ```
 
-This theory encompasses reactions that aren't covered by the Brønsted-Lowry theory, making it the most general definition.
+Diagram shows BASE characteristics:
 
+1. Basic Availability ensures system operation
+2. Soft State allows temporary inconsistencies
+3. Eventual Consistency guarantees convergence over time
 
-## Key Properties: A Comparison
+Each property leads to a specific system behavior shown in the terminal nodes.
 
-| Property          | Acid                               | Base                                 |
-|-----------------|------------------------------------|--------------------------------------|
-| **Taste**         | Sour                               | Bitter                                |
-| **pH**            | Less than 7                          | Greater than 7                       |
-| **Reaction with metals** | Reacts with many metals, producing hydrogen gas | Generally does not react with metals |
-| **Reaction with carbonates** | Reacts with carbonates, producing carbon dioxide gas | Generally does not react with carbonates |
-| **Effect on indicators** | Turns blue litmus paper red         | Turns red litmus paper blue          |
-| **Conductivity**  | Conducts electricity in aqueous solution (if strong) | Conducts electricity in aqueous solution (if strong) |
+### Implementation Example
 
+```{mermaid}
+graph LR
+    A[Client] --> B[Node 1]
+    A --> C[Node 2]
+    B --> D[(Datastore Local)]
+    C --> E[(Datastore Local)]
+    D -.-> F[Eventual Consistency]
+    E -.-> F
+    style F fill:#ccf,stroke:#333,stroke-width:2px
+```
 
-##  Examples of Common Acids and Bases
+This diagram illustrates a BASE system:
 
-**Strong Acids:**  Hydrochloric acid (HCl), sulfuric acid (H₂SO₄), nitric acid (HNO₃)
+1. Clients can write to any node
+2. Each node has a local datastore
+3. Dotted lines show eventual consistency mechanism
+4. Data synchronizes across nodes over time
 
-**Weak Acids:** Acetic acid (CH₃COOH), carbonic acid (H₂CO₃)
+## Implementation Patterns
 
-**Strong Bases:** Sodium hydroxide (NaOH), potassium hydroxide (KOH), calcium hydroxide (Ca(OH)₂ )
+### Two-Phase Commit (2PC)
+```{mermaid}
+sequenceDiagram
+    participant C as Coordinator
+    participant P1 as Participant 1
+    participant P2 as Participant 2
+    
+    C->>P1: Prepare
+    C->>P2: Prepare
+    P1-->>C: Ready
+    P2-->>C: Ready
+    C->>P1: Commit
+    C->>P2: Commit
+```
 
-**Weak Bases:** Ammonia (NH₃), sodium carbonate (Na₂CO₃)
+Diagram shows two-phase commit protocol:
 
+1. Prepare phase: Coordinator asks participants to prepare
+2. Commit phase: After all ready, coordinator commits
+3. Ensures atomic transaction across distributed system
 
-##  The Importance of pH
+### Three-Phase Commit (3PC)
+```{mermaid}
+sequenceDiagram
+    participant C as Coordinator
+    participant P1 as Participant 1
+    participant P2 as Participant 2
+    
+    C->>P1: CanCommit?
+    C->>P2: CanCommit?
+    P1-->>C: Yes
+    P2-->>C: Yes
+    C->>P1: PreCommit
+    C->>P2: PreCommit
+    P1-->>C: Ready
+    P2-->>C: Ready
+    C->>P1: DoCommit
+    C->>P2: DoCommit
+```
 
-The pH scale measures the acidity or basicity of a solution.  It ranges from 0 to 14, with 7 being neutral.  Lower pH values indicate stronger acidity, while higher values indicate stronger basicity.  The pH is related to the concentration of hydrogen ions (H⁺) in the solution:
+Diagram shows three-phase commit:
 
-pH = -log₁₀[H⁺]
+1. CanCommit: Initial feasibility check
+2. PreCommit: Preparation phase
+3. DoCommit: Final commit phase
+Adds timeout safety over 2PC
 
+### Event Sourcing Pattern
+```{mermaid}
+graph LR
+    A[Event] --> B[Event Store]
+    B --> C[Projections]
+    C --> D[Query Model]
+    C --> E[Analytics]
+    style B fill:#f9f,stroke:#333
+```
 
-## Summary
+Diagram shows event-based architecture:
 
-This post explored the concepts of acids and bases, comparing and contrasting their properties according to Arrhenius, Brønsted-Lowry, and Lewis theories.  We examined key distinguishing features, including taste, pH, reactions with metals and carbonates, and their effects on indicators.  Examples of common acids and bases were also provided, along with an explanation of the pH scale's significance in determining acidity and basicity.
+1. Events are primary source of truth
+2. Event Store maintains complete history
+3. Projections create different views
+4. Supports both querying and analytics
 
+### CQRS Pattern
+```{mermaid}
+graph LR
+    A[Commands] --> B[Write Model]
+    C[Queries] --> D[Read Model]
+    B --> E[Event Bus]
+    E --> D
+    style E fill:#f9f,stroke:#333
+```
+
+Diagram shows Command Query Responsibility Segregation:
+
+1. Separates write and read models
+2. Commands handle data modifications
+3. Queries access read-optimized views
+4. Event bus synchronizes models
+
+## Hybrid Architecture
+```{mermaid}
+graph TB
+    A[Application] --> B[Critical Operations]
+    A --> C[Non-Critical Operations]
+    B --> D[(ACID Database)]
+    C --> E[(BASE Storage)]
+    D -.-> F[Sync Service]
+    E -.-> F
+    style F fill:#f9f,stroke:#333,stroke-width:2px
+```
+
+Diagram shows practical combination of ACID and BASE:
+
+1. Critical operations use ACID database
+2. Non-critical operations use BASE storage
+3. Sync service maintains consistency
+4. Balances reliability and scalability

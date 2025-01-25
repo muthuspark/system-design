@@ -115,7 +115,5 @@ This creates a table `orders` partitioned by the year of the `order_date`.
 * **Not Always Suitable:** Partitioning may not be necessary or beneficial for all databases.
 
 
-## Summary
 
-Database partitioning is a crucial technique for optimizing large databases. By strategically dividing data into smaller, more manageable units, organizations can significantly improve query performance, scalability, and overall database manageability. The choice of partitioning strategy depends on various factors including data characteristics, query patterns, and database system capabilities.  Careful planning and consideration are essential for successful implementation.
 

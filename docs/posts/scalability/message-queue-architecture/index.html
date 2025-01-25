@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Message Queue Architecture – System Design Handbook</title>
+<title>Message Queue Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Message Queue Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Message Queue Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Message queues are the unsung heroes of modern, scalable applications. They provide a crucial layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this in-depth guide, we’ll explore the intricacies of message queue architecture, covering key components, common use cases, and best practices.</p>
+<p>Message queues rovide a crucial layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this in-depth guide, we’ll explore the intricacies of message queue architecture, covering key components, common use cases, and best practices.</p>
 <h2 id="understanding-the-fundamentals" class="anchored">Understanding the Fundamentals</h2>
 <p>At its core, a message queue is a central repository where messages are stored and retrieved. These messages represent tasks, events, or data that need to be processed by different components of an application. This asynchronous communication pattern differs significantly from synchronous approaches where components interact directly, leading to tight coupling and potential bottlenecks.</p>
 <p>The architecture typically involves:</p>
@@ -116,19 +116,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This diagram shows two producers sending messages to a single queue, which is then consumed by two separate consumers. This highlights the decoupling – producers are unaware of consumers and vice-versa.</p>
-<h2 id="deeper-dive-advanced-concepts" class="anchored">Deeper Dive: Advanced Concepts</h2>
+<h2 id="advanced-concepts" class="anchored">Advanced Concepts</h2>
 <p>Let’s delve into some more sophisticated aspects of message queue architecture:</p>
 <p><strong>1. Message Broker:</strong> This term is often used interchangeably with “message queue,” but it’s more encompassing. A message broker manages multiple queues, exchanges (for routing messages), and provides advanced features like message persistence, security, and monitoring.</p>
 <p><strong>2. Message Routing:</strong> This mechanism determines how messages are delivered to consumers. Different routing strategies exist, including:</p>
-<pre><code>* **Direct Routing:** Messages are sent to a specific queue.
-* **Topic-based Routing (Publish/Subscribe):** Messages are routed to consumers based on topics or categories.
-* **Fanout Routing:** Messages are copied to multiple queues.</code></pre>
+<ul>
+<li><strong>Direct Routing:</strong> Messages are sent to a specific queue.</li>
+<li><strong>Topic-based Routing (Publish/Subscribe):</strong> Messages are routed to consumers based on topics or categories.</li>
+<li><strong>Fanout Routing:</strong> Messages are copied to multiple queues.</li>
+</ul>
 <p><strong>3. Message Persistence:</strong> Ensures that messages are not lost even if the broker goes down. This typically involves writing messages to a durable storage mechanism (e.g., a database).</p>
 <p><strong>4. Message Ordering:</strong> Guarantees that messages are processed in the order they were sent. This is crucial in scenarios where the order matters (e.g., processing financial transactions). However, achieving strict ordering across multiple consumers can be challenging.</p>
 <p><strong>5. Dead-Letter Queues (DLQ):</strong> These are special queues that store messages that could not be processed successfully. They are essential for monitoring and troubleshooting failed message processing.</p>
 <h2 id="illustrative-example-python-with-rabbitmq" class="anchored">Illustrative Example: Python with RabbitMQ</h2>
 <p>This example uses the <code>pika</code> library in Python to interact with RabbitMQ:</p>
 <p><strong>Producer:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pika</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> pika.BlockingConnection(pika.ConnectionParameters(host<span class="op">=</span><span class="st">'localhost'</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>channel <span class="op">=</span> connection.channel()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>channel.queue_declare(queue<span class="op">=</span><span class="st">'hello'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>channel.basic_publish(exchange<span class="op">=</span><span class="st">''</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                      routing_key<span class="op">=</span><span class="st">'hello'</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                      body<span class="op">=</span><span class="st">'Hello World!'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>connection.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Consumer:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pika</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> pika.BlockingConnection(pika.ConnectionParameters(host<span class="op">=</span><span class="st">'localhost'</span>))</span>
@@ -136,28 +151,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>channel.queue_declare(queue<span class="op">=</span><span class="st">'hello'</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>channel.basic_publish(exchange<span class="op">=</span><span class="st">''</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                      routing_key<span class="op">=</span><span class="st">'hello'</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                      body<span class="op">=</span><span class="st">'Hello World!'</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>connection.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Consumer:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pika</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> pika.BlockingConnection(pika.ConnectionParameters(host<span class="op">=</span><span class="st">'localhost'</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>channel <span class="op">=</span> connection.channel()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>channel.queue_declare(queue<span class="op">=</span><span class="st">'hello'</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> callback(ch, method, properties, body):</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">" [x] Received </span><span class="sc">%r</span><span class="st">"</span> <span class="op">%</span> body)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>channel.basic_consume(queue<span class="op">=</span><span class="st">'hello'</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                      auto_ack<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                      on_message_callback<span class="op">=</span>callback)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' [*] Waiting for messages. To exit press CTRL+C'</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>channel.start_consuming()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> callback(ch, method, properties, body):</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">" [x] Received </span><span class="sc">%r</span><span class="st">"</span> <span class="op">%</span> body)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>channel.basic_consume(queue<span class="op">=</span><span class="st">'hello'</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                      auto_ack<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                      on_message_callback<span class="op">=</span>callback)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">' [*] Waiting for messages. To exit press CTRL+C'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>channel.start_consuming()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This code demonstrates a simple producer-consumer scenario using RabbitMQ. The producer sends a message, and the consumer receives and prints it.</p>
 <h2 id="advanced-diagram-publishsubscribe" class="anchored">Advanced Diagram: Publish/Subscribe</h2>
 <p>This diagram illustrates a publish/subscribe model:</p>
@@ -186,8 +188,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Real-time Data Processing:</strong> Stream processing and analytics.</li>
 <li><strong>Background Tasks:</strong> Offloading time-consuming tasks to improve application responsiveness.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This blog post provided a detailed overview of message queue architecture, exploring core concepts, advanced features, and practical examples. We covered the fundamental components of a message queue system, including producers, queues, and consumers, and delved into more advanced topics such as message routing, persistence, ordering, and dead-letter queues. We illustrated these concepts using both Diagrams and code examples using Python and RabbitMQ, showcasing a simple producer-consumer implementation and a publish-subscribe pattern. The diverse use cases highlight the versatility and importance of message queues in modern application design.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

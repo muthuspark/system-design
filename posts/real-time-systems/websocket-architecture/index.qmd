@@ -105,6 +105,5 @@ asyncio.run(main())
 
 For applications with many concurrent WebSocket connections, employing techniques like load balancing and utilizing a message broker becomes crucial for efficient management and preventing server overload. Asynchronous programming patterns are also vital for handling multiple connections concurrently without blocking.
 
-## Summary
 
-This post detailed the architecture of WebSockets, explaining the handshake process, key components, and the role of asynchronous programming in handling concurrent connections. We touched upon the benefits of using a message broker for scalability and explored basic client-side and server-side code examples in JavaScript and Python. Further exploration into specific server-side frameworks and advanced concepts like load balancing would enhance the understanding of building robust real-time applications.
+

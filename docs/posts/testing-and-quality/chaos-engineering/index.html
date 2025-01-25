@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="chaos-engineering-embrace-the-chaos-to-build-resilience">Chaos Engineering: Embrace the Chaos to Build Resilience</h1>
 <p>Chaos engineering is the discipline of experimenting on a system in order to build confidence in its capability to withstand turbulent conditions in production. It’s not about breaking things for the sake of it; it’s about proactively identifying weaknesses and vulnerabilities <em>before</em> they cause widespread outages or service disruptions. This proactive approach allows teams to build more resilient systems that can handle unexpected events gracefully.</p>
 <h2 id="understanding-the-principles-of-chaos-engineering" class="anchored">Understanding the Principles of Chaos Engineering</h2>
 <p>At its core, chaos engineering relies on a set of key principles:</p>
@@ -138,13 +137,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Let’s consider a simple scenario where we want to test the resilience of a web application dependent on a database. We’ll use a hypothetical tool called <code>chaos-injector</code> for this example.</p>
 <p><strong>Hypothesis:</strong> The web application will continue to serve requests with a maximum latency increase of 50ms even if one of the database replicas is unavailable.</p>
 <p><strong>Experiment:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stop one database replica</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">chaos-injector</span> stop-database <span class="at">--replica</span><span class="op">=</span>db-replica-2</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Monitor application performance metrics (latency, error rate, etc.)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ...using monitoring tools like Prometheus and Grafana...</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># After a set time, restart the database replica</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">chaos-injector</span> start-database <span class="at">--replica</span><span class="op">=</span>db-replica-2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Analysis:</strong> Compare the application’s performance metrics during and after the database outage. If the latency increase exceeds 50ms or if error rates spike significantly, the hypothesis is rejected. This indicates a need for improvements in the application’s database handling or its failover mechanism.</p>
 <h2 id="advanced-concepts" class="anchored">Advanced Concepts</h2>

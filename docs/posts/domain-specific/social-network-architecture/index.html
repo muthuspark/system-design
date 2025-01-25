@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Social Network Architecture – System Design Handbook</title>
+<title>Social Network Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Social Network Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Social Network Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,93 +54,915 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="social-network-architecture-a-deep-dive">Social Network Architecture: A Deep Dive</h1>
-<p>Social networks have become ubiquitous in modern life, connecting billions of people worldwide. But behind the seamless user experience lies a complex and sophisticated architecture. This post delves into the key components and design considerations involved in building a scalable and robust social network.</p>
+<p>Social networks have become ubiquitous in modern life, connecting billions of people worldwide. But behind the seamless user experience lies a complex and sophisticated architecture. This post goes into the key components and design considerations involved in building a scalable and robust social network.</p>
 <h2 id="the-core-components" class="anchored">The Core Components</h2>
 <p>A typical social network architecture can be broken down into several key components:</p>
-<p><strong>1. User Interface (UI):</strong> This is the front-end layer that users interact with. It encompasses the website or mobile application, responsible for displaying content, enabling user interaction, and handling user input. Modern social networks often employ a combination of technologies, including JavaScript frameworks (React, Angular, Vue.js), CSS for styling, and HTML for structuring the content.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Example HTML snippet for a user's profile page --&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>John Doe<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"profile_picture.jpg"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Profile Picture"</span><span class="dt">&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>Bio: ...<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>2. Application Server:</strong> This layer acts as the intermediary between the UI and the backend systems. It handles user authentication, session management, request routing, and business logic related to user interactions. Popular choices for application servers include Node.js, Python (with frameworks like Django or Flask), Java (with Spring), or Ruby on Rails.</p>
-<p><strong>3. Data Storage:</strong> This is the heart of the social network, storing all the information about users, their connections, posts, messages, and other data. A robust social network typically uses a combination of databases:</p>
+<h4 id="frontend" class="anchored"><strong>1. Frontend:</strong></h4>
 <ul>
-<li><p><strong>Relational Database (RDBMS):</strong> Like MySQL, PostgreSQL, or Oracle, used for structured data such as user profiles, friendships, and comments. They excel at ACID properties (Atomicity, Consistency, Isolation, Durability), ensuring data integrity.</p></li>
-<li><p><strong>NoSQL Database:</strong> Like MongoDB, Cassandra, or Redis, used for unstructured or semi-structured data such as posts, images, and videos. They offer scalability and flexibility for handling large volumes of data.</p></li>
-<li><p><strong>Cache:</strong> Like Redis or Memcached, used to store frequently accessed data in memory for faster retrieval. This significantly improves performance.</p></li>
-</ul>
-<p><strong>4. API Gateway:</strong> This acts as a single entry point for all client requests, routing them to the appropriate backend services. It provides security, rate limiting, and load balancing capabilities.</p>
-<p><strong>5. Backend Services:</strong> These are specialized services responsible for specific functionalities, such as:</p>
+<li><strong>User Interface (UI):</strong> Web and mobile applications that allow users to interact with the platform.
 <ul>
-<li><strong>User Service:</strong> Manages user accounts, profiles, and authentication.</li>
-<li><strong>Post Service:</strong> Handles creation, retrieval, and updating of posts.</li>
-<li><strong>Notification Service:</strong> Sends notifications to users about new messages, comments, or follows.</li>
-<li><strong>Search Service:</strong> Enables users to search for other users, posts, or content.</li>
-<li><strong>Recommendation Service:</strong> Suggests users or content to follow based on user preferences and network analysis.</li>
+<li><strong>Web App:</strong> Developed using modern web frameworks like React, Angular, or Vue.</li>
+<li><strong>Mobile App:</strong> Native (iOS and Android) or cross-platform (e.g., Flutter, React Native).</li>
+</ul></li>
+<li><strong>API Calls:</strong> Communicate with the backend via RESTful or GraphQL APIs.</li>
 </ul>
-<p><strong>6. Message Queue:</strong> A message queue (e.g., RabbitMQ, Kafka) enables asynchronous communication between services. This is crucial for handling tasks like sending notifications or processing large volumes of data without blocking the main application flow.</p>
+<h4 id="backend" class="anchored"><strong>2. Backend:</strong></h4>
+<ul>
+<li><strong>Web Servers (Application Layer):</strong>
+<ul>
+<li><strong>Microservices Architecture:</strong> Split functionalities into multiple services to allow for scalability and fault tolerance.</li>
+<li><strong>Languages &amp; Frameworks:</strong> Node.js, Java, Python, Ruby on Rails, etc.</li>
+<li><strong>API Gateway:</strong> For routing, load balancing, and API management (e.g., Kong, NGINX, AWS API Gateway).</li>
+</ul></li>
+<li><strong>Core Services:</strong>
+<ul>
+<li><strong>User Service:</strong> Manages user profiles, authentication, and authorization.</li>
+<li><strong>Feed Service:</strong> Generates and serves posts on the user’s feed.</li>
+<li><strong>Friendship Service:</strong> Manages friend requests, relationships, and social graph.</li>
+<li><strong>Post/Content Service:</strong> Manages the creation, editing, deletion, and retrieval of posts.</li>
+<li><strong>Messaging Service:</strong> Handles private messages between users, including real-time communication (using WebSockets, for instance).</li>
+<li><strong>Notification Service:</strong> Sends notifications about new posts, messages, friend requests, etc.</li>
+<li><strong>Search Service:</strong> Provides search capabilities to find users, posts, groups, etc. (Could use Elasticsearch or similar tools).</li>
+<li><strong>Media Service:</strong> Handles media uploads and serves images, videos, etc. (e.g., using a CDN for media delivery).</li>
+</ul></li>
+<li><strong>Database Layer:</strong>
+<ul>
+<li><strong>Relational Databases (SQL):</strong> For user profiles, relationships, posts (e.g., MySQL, PostgreSQL).</li>
+<li><strong>NoSQL Databases:</strong> For feeds and messages, where quick read/write performance is required (e.g., MongoDB, Cassandra).</li>
+<li><strong>Search Database:</strong> For full-text search (e.g., Elasticsearch).</li>
+<li><strong>Cache Layer:</strong> Use Redis or Memcached for caching frequently accessed data (e.g., user feeds, notifications).</li>
+<li><strong>Data Warehouse:</strong> Store logs, analytics data, and large-scale user activity data (e.g., BigQuery, Snowflake).</li>
+</ul></li>
+<li><strong>Message Queues:</strong>
+<ul>
+<li><strong>RabbitMQ, Kafka, or SQS</strong> to manage asynchronous processing (e.g., processing posts, notifications, and messaging queues).</li>
+</ul></li>
+</ul>
+<h4 id="infrastructure" class="anchored"><strong>3. Infrastructure:</strong></h4>
+<ul>
+<li><strong>Load Balancers:</strong> Distribute incoming traffic across multiple servers to balance load (e.g., HAProxy, AWS ELB).</li>
+<li><strong>Kubernetes:</strong> Container orchestration for managing microservices and ensuring scalability and fault tolerance.</li>
+<li><strong>Docker:</strong> Containerization of microservices for easier deployment and scaling.</li>
+</ul>
+<h4 id="third-party-integrations" class="anchored"><strong>4. Third-party Integrations:</strong></h4>
+<ul>
+<li><strong>Authentication Services:</strong> Use OAuth or SSO for third-party logins (Google, Facebook, etc.).</li>
+<li><strong>Payment Gateways:</strong> If there’s a monetization model (e.g., Stripe, PayPal).</li>
+<li><strong>Analytics:</strong> Tools like Google Analytics or custom analytics service to track user behavior and engagement.</li>
+</ul>
+<h4 id="security" class="anchored"><strong>5. Security:</strong></h4>
+<ul>
+<li><strong>Authentication &amp; Authorization:</strong>
+<ul>
+<li>OAuth2 for third-party login (Google, Facebook).</li>
+<li>JWT (JSON Web Tokens) for session management.</li>
+<li>Multi-factor Authentication (MFA) for additional security.</li>
+</ul></li>
+<li><strong>Data Encryption:</strong> Encrypt sensitive data at rest and in transit using TLS/SSL.</li>
+<li><strong>Access Control:</strong> Role-based access control (RBAC) for restricting access to certain features (admin, regular user, etc.).</li>
+</ul>
 <h2 id="architectural-diagram" class="anchored">Architectural Diagram</h2>
-<p>The following Mermaid diagram illustrates the interaction between these components:</p>
+<p>This diagram provides an overview of the major components and their interactions in a social network system architecture.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[UI] --&gt; B(Application Server);
-    B --&gt; C{API Gateway};
-    C --&gt; D[User Service];
-    C --&gt; E[Post Service];
-    C --&gt; F[Notification Service];
-    C --&gt; G[Search Service];
-    C --&gt; H[Recommendation Service];
-    D --&gt; I((RDBMS));
-    E --&gt; J((NoSQL));
-    F --&gt; K[Message Queue];
-    G --&gt; L((Search Index));
-    H --&gt; M((Recommendation Engine));
-    I -.-&gt; B;
-    J -.-&gt; B;
-    K -.-&gt; B;
-    L -.-&gt; B;
-    M -.-&gt; B;
-    B -.-&gt; A;
+    subgraph Frontend
+        A["User Interface (Web &amp; Mobile App)"]
+    end
+
+    subgraph API_Gateway
+        B[API Gateway]
+    end
+
+    subgraph Backend
+        C[User Service]
+        D[Feed Service]
+        E[Post Service]
+        F[Friendship Service]
+        G[Messaging Service]
+        H[Notification Service]
+        I[Search Service]
+        J[Media Service]
+    end
+
+    subgraph Infrastructure
+        Q[Load Balancer]
+        R[Kubernetes]
+        S[Docker]
+    end
+
+    subgraph Databases
+        K["Relational DB (SQL)"]
+        L["NoSQL DB (MongoDB)"]
+        M["Search DB (Elasticsearch)"]
+        N["Cache (Redis)"]
+        O["Data Warehouse (BigQuery)"]
+        P["Media Storage (CDN/S3)"]
+    end
+
+
+    subgraph Third_Party_Integrations
+        T["OAuth (Google/Facebook)"]
+        U["Payment Gateway (Stripe)"]
+        V["Analytics (Google Analytics)"]
+    end
+
+    A --&gt; B
+    B --&gt; C
+    B --&gt; D
+    B --&gt; E
+    B --&gt; F
+    B --&gt; G
+    B --&gt; H
+    B --&gt; I
+    B --&gt; J
+    C --&gt; K
+    D --&gt; L
+    E --&gt; L
+    F --&gt; L
+    G --&gt; L
+    H --&gt; K
+    I --&gt; M
+    J --&gt; P
+    J --&gt; N
+    P --&gt; Q
+    Q --&gt; R
+    R --&gt; S
+    C --&gt; T
+    E --&gt; U
+    H --&gt; V
+    D --&gt; N
+    F --&gt; K
+    G --&gt; O
+    A -.-&gt; Q
+    C -.-&gt; Q
+    D -.-&gt; Q
+    E -.-&gt; Q
+    F -.-&gt; Q
+    G -.-&gt; Q
+    H -.-&gt; Q
+    I -.-&gt; Q
+    J -.-&gt; Q
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<h2 id="scalability-and-performance-considerations" class="anchored">Scalability and Performance Considerations</h2>
-<p>Building a scalable social network requires careful consideration of several factors:</p>
 <ul>
-<li><strong>Load Balancing:</strong> Distribute traffic across multiple application servers to prevent overload.</li>
-<li><strong>Caching:</strong> Store frequently accessed data in memory to reduce database load.</li>
-<li><strong>Database Sharding:</strong> Partition data across multiple database instances to improve read and write performance.</li>
-<li><strong>Asynchronous Processing:</strong> Use message queues to handle time-consuming tasks asynchronously.</li>
-<li><strong>Content Delivery Network (CDN):</strong> Distribute static content (images, videos) geographically to improve delivery speeds.</li>
+<li><strong>Frontend</strong>: The user interacts with the Web &amp; Mobile apps, which communicate through the API Gateway to the backend services.</li>
+<li><strong>Backend</strong>: Core services handle various responsibilities such as user profiles, feeds, posts, messaging, notifications, and search.</li>
+<li><strong>Databases</strong>: Different types of databases store various kinds of data—relational for user info, NoSQL for high performance reads/writes, search for full-text search, and cache for frequently accessed data.</li>
+<li><strong>Infrastructure</strong>: Load balancing, container orchestration (Kubernetes), and Docker are used for scalability, deployment, and fault tolerance.</li>
+<li><strong>Third-party Integrations</strong>: Authentication, payment gateways, and analytics for extending the platform’s functionality.</li>
+<li><strong>Media Upload and Storage:</strong> Media Service is responsible for handling media uploads. Uploaded media (e.g., images, videos) is stored in Media Storage (CDN/S3). Redis (Cache) is used to cache frequently accessed media.</li>
 </ul>
-<h2 id="code-example-python---flask-for-a-simple-post-endpoint" class="anchored">Code Example (Python - Flask for a simple POST endpoint):</h2>
-<p>This example shows a simplified POST endpoint for creating a new post:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, request, jsonify</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># In a real-world scenario, this would interact with a database</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>posts <span class="op">=</span> []</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/posts'</span>, methods<span class="op">=</span>[<span class="st">'POST'</span>])</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_post():</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> request.get_json()</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    post <span class="op">=</span> {<span class="st">'id'</span>: <span class="bu">len</span>(posts) <span class="op">+</span> <span class="dv">1</span>, <span class="st">'user_id'</span>: data[<span class="st">'user_id'</span>], <span class="st">'content'</span>: data[<span class="st">'content'</span>]}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    posts.append(post)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jsonify({<span class="st">'message'</span>: <span class="st">'Post created'</span>, <span class="st">'post'</span>: post}), <span class="dv">201</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This blog post explored the key architectural components of a social network, including the UI, application server, data storage, API gateway, backend services, and message queues. We also discussed crucial considerations for scalability and performance, illustrated with a Mermaid diagram and a simple code example. Understanding these elements is fundamental to building a successful and robust social networking platform.</p>
+<h2 id="data-flow" class="anchored">Data Flow</h2>
+<h3 id="user-signupauthentication" class="anchored">1. User Signup/Authentication</h3>
+<p>The user registers via the frontend (mobile/web), which makes an API call to the user service to store user details. The user’s session is created using JWT.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User as User (Frontend)
+    participant UI as User Interface
+    participant API as API Gateway
+    participant Auth as Authentication Service
+    participant DB as User Database
+
+    User-&gt;&gt;UI: Fills Signup/Login Form
+    UI-&gt;&gt;API: Sends Form Data (Username, Password, etc.)
+    API-&gt;&gt;Auth: Forward Form Data for Authentication
+    Auth-&gt;&gt;DB: Check/Store User Credentials
+    DB--&gt;&gt;Auth: Returns User Exists/Success or Create New User
+    Auth--&gt;&gt;API: Returns Success/Failure with Token (JWT)
+    API--&gt;&gt;UI: Send Authentication Token
+    UI--&gt;&gt;User: Display Success or Error Message
+    User-&gt;&gt;UI: Uses Token for Subsequent Requests
+    UI-&gt;&gt;API: Send Token with API Requests
+    API-&gt;&gt;Auth: Validates Token for Authentication
+    Auth--&gt;&gt;API: Returns Valid/Invalid
+    API--&gt;&gt;UI: Grants Access if Valid
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>User fills the signup or login form</strong> on the frontend (web or mobile app).</li>
+<li><strong>The form data is sent to the API Gateway</strong>, which routes the request to the Authentication Service.</li>
+<li><strong>Authentication Service checks or stores the credentials</strong> in the user database, verifying if the user exists or creating a new one if signing up.</li>
+<li><strong>The Authentication Service responds</strong> with a success or failure message and issues a JWT (JSON Web Token) if successful.</li>
+<li><strong>The token is sent back to the frontend</strong>, and subsequent requests use this token for authorization.</li>
+<li><strong>The token is validated</strong> by the authentication service on every request to verify the user’s identity before granting access to protected resources.</li>
+</ul>
+<h3 id="posting-content" class="anchored">2. Posting Content</h3>
+<p>The user uploads a post with text or media. The frontend sends the request to the post service, which stores the post in the database. The feed service updates the user’s feed and relevant friends’ feeds.</p>
+<p>The below diagram captures the complete flow of data and services involved when a user posts content, including media uploads and feed updates.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User as User (Frontend)
+    participant UI as User Interface
+    participant API as API Gateway
+    participant PostService as Post Service
+    participant MediaService as Media Service
+    participant FeedService as Feed Service
+    participant PostDB as Post Database
+    participant MediaCDN as Media Storage (CDN)
+    participant FeedDB as Feed Database
+
+    User-&gt;&gt;UI: Create Post with Text/Media
+    UI-&gt;&gt;API: Send Post Request (Text/Media)
+    API-&gt;&gt;PostService: Forward Post Data
+    PostService-&gt;&gt;PostDB: Store Post Metadata (Text, Timestamp)
+    PostService-&gt;&gt;MediaService: Send Media Data for Upload
+    MediaService-&gt;&gt;MediaCDN: Upload Media to CDN
+    MediaCDN--&gt;&gt;MediaService: Return Media URL
+    MediaService--&gt;&gt;PostService: Return Media URL
+    PostService--&gt;&gt;API: Post Created (Post ID, Media URL)
+    API--&gt;&gt;UI: Return Success (Post ID, Media URL)
+    PostService-&gt;&gt;FeedService: Notify Feed Service (New Post)
+    FeedService-&gt;&gt;FeedDB: Update User's Feed
+    FeedService-&gt;&gt;FeedDB: Update Friends' Feeds
+    FeedDB--&gt;&gt;FeedService: Feeds Updated
+    FeedService--&gt;&gt;UI: Feed Updated for User and Friends
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>User creates a post</strong> with text and/or media on the frontend (Web/Mobile App).</li>
+<li><strong>The frontend sends the post data</strong> to the API Gateway, which routes it to the Post Service.</li>
+<li><strong>Post Service stores the post metadata</strong> (text, timestamps, and post details) in the Post Database.</li>
+<li><strong>If the post includes media</strong>, the Post Service sends the media to the Media Service, which uploads the media to a CDN (Content Delivery Network) and returns the media URL.</li>
+<li><strong>The Post Service responds back to the frontend</strong> with a success message and the Post ID and Media URL.</li>
+<li><strong>The Post Service notifies the Feed Service</strong> about the new post.</li>
+<li><strong>The Feed Service updates the feeds</strong> of the user and their friends by interacting with the Feed Database.</li>
+<li><strong>The updated feeds are sent back to the user</strong>, showing the post in the feed and ensuring friends’ feeds are updated as well.</li>
+</ul>
+<h3 id="real-time-messaging" class="anchored">3. Real-time Messaging</h3>
+<p>The user sends a message via WebSocket, which the messaging service handles in real time.</p>
+<p>The below sequence demonstrates how real-time messaging works, leveraging WebSocket connections for instant, two-way communication between users. The message queue is optional and can be used to handle high traffic and ensure reliable delivery.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User as User (Frontend)
+    participant WebSocket as WebSocket Connection
+    participant MessagingService as Messaging Service
+    participant MessageQueue as Message Queue (Optional)
+    participant Receiver as Receiver (Frontend)
+    participant DB as Message Database
+
+    User-&gt;&gt;WebSocket: Send Message (Text/Media)
+    WebSocket-&gt;&gt;MessagingService: Forward Message via WebSocket
+    MessagingService-&gt;&gt;DB: Store Message in Database
+    alt With Message Queue
+        MessagingService-&gt;&gt;MessageQueue: Add Message to Queue
+        MessageQueue-&gt;&gt;Receiver: Deliver Message via WebSocket
+    else Without Message Queue
+        MessagingService-&gt;&gt;Receiver: Deliver Message via WebSocket
+    end
+    DB--&gt;&gt;MessagingService: Acknowledge Message Stored
+    MessagingService--&gt;&gt;User: Acknowledge Message Sent
+    Receiver--&gt;&gt;User: Message Delivered Notification
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>User sends a message</strong> (text or media) via the frontend app (Web or Mobile). This communication happens through a WebSocket connection.</li>
+<li><strong>The WebSocket connection forwards the message</strong> to the Messaging Service in real time. WebSockets provide a persistent connection, allowing messages to be sent instantly.</li>
+<li><strong>The Messaging Service stores the message</strong> in the Message Database. This ensures the message is persisted for history or future retrieval.</li>
+<li>Depending on the architecture:
+<ul>
+<li><strong>With Message Queue</strong>: The message is added to a message queue (e.g., RabbitMQ, Kafka) to ensure reliable delivery and asynchronous processing. The message is then delivered to the intended recipient via their WebSocket connection.</li>
+<li><strong>Without Message Queue</strong>: The Messaging Service directly delivers the message to the recipient through their active WebSocket connection.</li>
+</ul></li>
+<li><strong>The Message Database acknowledges</strong> that the message has been successfully stored.</li>
+<li><strong>The Messaging Service sends an acknowledgment</strong> back to the user (sender), indicating the message was successfully sent.</li>
+<li><strong>The recipient receives the message</strong> via their WebSocket connection and gets a notification or the message directly in their chat interface in real time.</li>
+<li><strong>The recipient’s frontend sends a delivery notification</strong> back to the sender, confirming that the message was delivered successfully.</li>
+</ul>
+<h3 id="notification" class="anchored">Notification</h3>
+<p>When a user receives a message or interaction on their post, the notification service pushes a notification to the frontend.</p>
+<p>The below sequence demonstrates how notifications work in real time for interactions on posts or messages. The notification service is responsible for handling all interactions and delivering notifications to users efficiently.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant UserA as User A (Sender)
+    participant UI as User A's Frontend (Web/Mobile)
+    participant PostService as Post/Message Service
+    participant NotificationService as Notification Service
+    participant DB as Notification Database
+    participant UserB as User B (Receiver)
+    participant ReceiverUI as User B's Frontend (Web/Mobile)
+
+    UserA-&gt;&gt;UI: Send Message / Interact with Post
+    UI-&gt;&gt;PostService: Send Interaction (Message/Post Comment/Like)
+    PostService-&gt;&gt;NotificationService: Notify about Interaction
+    NotificationService-&gt;&gt;DB: Store Notification in Notification DB
+    NotificationService--&gt;&gt;PostService: Notification Stored
+    NotificationService-&gt;&gt;ReceiverUI: Push Notification to User B
+    ReceiverUI--&gt;&gt;UserB: Display Notification in Real Time
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>User A initiates an interaction</strong>: User A sends a message, likes a post, or comments on a post through the frontend (Web/Mobile app).</li>
+<li><strong>The frontend sends the interaction data</strong> to the corresponding service (Post Service for post interactions, Message Service for direct messages).</li>
+<li><strong>The Post/Message Service triggers the Notification Service</strong>, informing it about the interaction that occurred (e.g., a comment on a post, a like, or a message sent).</li>
+<li><strong>The Notification Service stores the notification</strong> in the Notification Database for tracking purposes, so the notification can be retrieved or displayed later if necessary.</li>
+<li><strong>The Notification Service confirms the storage</strong> of the notification with the Post/Message Service to complete the interaction flow.</li>
+<li><strong>The Notification Service pushes the notification</strong> to the recipient (User B) through the frontend (WebSocket or Push Notifications).</li>
+<li><strong>User B’s frontend displays the notification</strong> in real time, alerting them about the interaction (message, post like, comment, etc.). l ## More Data Flows</li>
+</ul>
+<p>Here are additional <strong>key data flows</strong> within the system:</p>
+<h3 id="user-profile-management" class="anchored">1. <strong>User Profile Management</strong></h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User as User (Frontend)
+    participant APIGateway as API Gateway
+    participant UserService as User Service
+    participant SQLDB as SQL Database (Profile Info)
+    participant CDN as CDN (Media Storage)
+    participant FeedService as Feed Service
+    participant FriendProfile as Friend's Profile
+
+    User-&gt;&gt;User: Submit Profile Changes (e.g., Name, Picture)
+    User-&gt;&gt;APIGateway: Send Profile Change Request
+    APIGateway-&gt;&gt;UserService: Forward Request to User Service
+    UserService-&gt;&gt;SQLDB: Update Profile Info in SQL DB
+    alt Media Upload (Profile Picture)
+        UserService-&gt;&gt;CDN: Upload New Profile Picture to CDN
+    end
+    SQLDB--&gt;&gt;UserService: Confirm Profile Info Updated
+    UserService--&gt;&gt;APIGateway: Respond with Success
+    APIGateway--&gt;&gt;User: Confirm Profile Update Success
+    par Feed Update
+        UserService-&gt;&gt;FeedService: Notify Feed Service of Profile Update
+    and Friend Profile Update
+        UserService-&gt;&gt;FriendProfile: Notify Friends of Updated Profile Info
+    end
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Flow</strong>: User updates their profile (e.g., username, bio, profile picture).</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User submits profile changes</strong> via frontend.</li>
+<li><strong>Frontend sends data to the API Gateway</strong>.</li>
+<li><strong>API Gateway forwards the data to the User Service</strong>.</li>
+<li><strong>User Service updates the User Database</strong>.</li>
+<li><strong>Updated data is stored</strong> (e.g., profile info in SQL DB, media in CDN).</li>
+<li><strong>User Service responds to the frontend</strong>, confirming the changes.</li>
+<li><strong>Feeds and friend profiles may be updated</strong> to reflect the new info (e.g., updated profile picture).</li>
+</ol></li>
+</ul>
+<h3 id="content-moderation" class="anchored">2. <strong>Content Moderation</strong></h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User as User (Frontend)
+    participant APIGateway as API Gateway
+    participant ModService as Moderation Service
+    participant DB as Moderation Database
+    participant Content as Content Database (Posts/Comments)
+    participant PostUser as Post Owner (User Who Posted Content)
+    participant Reporter as Reporting User (User Who Flagged)
+
+    User-&gt;&gt;User: Flag Post or Comment
+    User-&gt;&gt;APIGateway: Send Flag Request
+    APIGateway-&gt;&gt;ModService: Forward Request to Moderation Service
+    ModService-&gt;&gt;Content: Fetch Flagged Post/Comment for Review
+    ModService-&gt;&gt;ModService: Evaluate Content (AI or Manual Review)
+    alt Content Flagged as Inappropriate
+        ModService-&gt;&gt;DB: Flag Content in Moderation Database
+        ModService-&gt;&gt;Content: Hide or Remove Flagged Content
+        ModService-&gt;&gt;PostUser: Send Notification to Content Owner
+        ModService-&gt;&gt;Reporter: Send Notification to Reporting User
+    else Content is Safe
+        ModService-&gt;&gt;Reporter: Send Notification to Reporting User (No Violation)
+    end
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Flow</strong>: A post or comment is flagged for inappropriate content and reviewed by the moderation service.</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User flags a post</strong> via the frontend.</li>
+<li><strong>Frontend sends a flag request</strong> to the API Gateway.</li>
+<li><strong>API Gateway forwards the request</strong> to the Moderation Service.</li>
+<li><strong>Moderation Service evaluates the content</strong> (can use AI or manual review).</li>
+<li><strong>Moderation Service may flag the content</strong> in the database.</li>
+<li><strong>If flagged, content is hidden</strong> from users or removed.</li>
+<li><strong>Notification sent to the user</strong> who posted the content and the reporting user about the moderation result.</li>
+</ol></li>
+</ul>
+<h3 id="search-and-discovery" class="anchored">3. <strong>Search and Discovery</strong></h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User as User (Frontend)
+    participant APIGateway as API Gateway
+    participant SearchService as Search Service
+    participant SearchDB as Search Database (e.g., Elasticsearch)
+    participant ContentDB as Content Database (Posts/Users/Groups)
+
+    User-&gt;&gt;User: Enter Search Query (Content, Friends, Groups)
+    User-&gt;&gt;APIGateway: Send Search Request
+    APIGateway-&gt;&gt;SearchService: Forward Search Request to Search Service
+    SearchService-&gt;&gt;SearchDB: Query Search Database (Full-Text Search)
+    SearchDB--&gt;&gt;SearchService: Return Search Results (Posts/Users/Groups)
+    SearchService--&gt;&gt;APIGateway: Send Search Results to API Gateway
+    APIGateway--&gt;&gt;User: Return Search Results to Frontend
+    User-&gt;&gt;User: Display Search Results (Content, Friends, Groups)
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Flow</strong>: Users search for content, friends, or groups.</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User enters search query</strong> on the frontend.</li>
+<li><strong>Frontend sends the search request</strong> to the API Gateway.</li>
+<li><strong>API Gateway routes the request</strong> to the Search Service.</li>
+<li><strong>Search Service queries the Search Database</strong> (e.g., Elasticsearch, full-text search).</li>
+<li><strong>Search results are retrieved</strong> (posts, users, groups, etc.) from the database.</li>
+<li><strong>Search results are sent back</strong> to the frontend and displayed to the user.</li>
+</ol></li>
+</ul>
+<h3 id="friendship-management" class="anchored">4. <strong>Friendship Management</strong></h3>
+<ul>
+<li><strong>Flow</strong>: Users send friend requests, accept/decline requests, or unfriend each other.</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User sends a friend request</strong> via the frontend.</li>
+<li><strong>Friendship request data</strong> is sent to the API Gateway.</li>
+<li><strong>API Gateway forwards the request</strong> to the Friendship Service.</li>
+<li><strong>Friendship Service updates the Friendship Database</strong> (pending requests, acceptances, and rejections).</li>
+<li><strong>If accepted, feeds are updated</strong> (new posts from the friend are added to each other’s feed).</li>
+<li><strong>Notifications are pushed</strong> to both users (for request sent and accepted).</li>
+<li><strong>Frontend updates user’s friend list</strong> and displays the friend’s posts in their feed.</li>
+</ol></li>
+</ul>
+<h3 id="likes-comments-and-reactions" class="anchored">5. <strong>Likes, Comments, and Reactions</strong></h3>
+<ul>
+<li><strong>Flow</strong>: Users interact with posts by liking, commenting, or reacting.</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User interacts with a post</strong> (likes, comments, reacts).</li>
+<li><strong>Interaction data is sent</strong> to the API Gateway.</li>
+<li><strong>Post Service receives the interaction</strong>.</li>
+<li><strong>Interaction is stored</strong> in the Post Database (like count, comment text, etc.).</li>
+<li><strong>Post Service updates the Feed Service</strong>, notifying the original poster or friends.</li>
+<li><strong>Notification Service pushes notifications</strong> to the user who posted the content, informing them about the interaction.</li>
+<li><strong>Frontend updates the UI</strong> to reflect the new like, comment, or reaction.</li>
+</ol></li>
+</ul>
+<h3 id="media-upload-and-streaming" class="anchored">6. <strong>Media Upload and Streaming</strong></h3>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant U as User
+    participant F as Frontend
+    participant AG as API Gateway
+    participant MS as Media Service
+    participant CDN
+    participant DB as Post Database
+
+    %% Upload Flow
+    U-&gt;&gt;F: Upload media (photo/video)
+    F-&gt;&gt;AG: Send media data
+    AG-&gt;&gt;MS: Forward media data
+    MS-&gt;&gt;CDN: Upload media
+    CDN--&gt;&gt;MS: Return CDN URL
+    MS-&gt;&gt;DB: Store media metadata
+    DB--&gt;&gt;MS: Confirm storage
+    MS--&gt;&gt;AG: Return success
+    AG--&gt;&gt;F: Return success
+    F--&gt;&gt;U: Show upload confirmation
+
+    %% Playback Flow
+    U-&gt;&gt;F: Request media playback
+    F-&gt;&gt;AG: Get media URL
+    AG-&gt;&gt;MS: Fetch media metadata
+    MS-&gt;&gt;DB: Query media data
+    DB--&gt;&gt;MS: Return metadata
+    MS--&gt;&gt;AG: Return CDN URL
+    AG--&gt;&gt;F: Return media URL
+    F-&gt;&gt;CDN: Stream media
+    CDN--&gt;&gt;U: Direct media stream
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Flow</strong>: Users upload media (photos, videos) or view media (playback).</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User uploads media</strong> (e.g., photo or video).</li>
+<li><strong>Frontend sends media data</strong> to the API Gateway.</li>
+<li><strong>API Gateway forwards the data</strong> to the Media Service.</li>
+<li><strong>Media Service uploads the media</strong> to the CDN (Content Delivery Network) for efficient storage and retrieval.</li>
+<li><strong>Media metadata (e.g., URL, file type, size)</strong> is stored in the Post Database.</li>
+<li><strong>Frontend retrieves the media URL</strong> for display in posts or feeds.</li>
+<li><strong>If media is requested for playback</strong> (e.g., videos), it is streamed directly from the CDN to the user via the frontend.</li>
+</ol></li>
+</ul>
+<h3 id="analytics-and-logging" class="anchored">7. <strong>Analytics and Logging</strong></h3>
+<ul>
+<li><strong>Flow</strong>: System logs user interactions for analytics (e.g., number of views, engagement metrics).</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User interacts with the platform</strong> (views posts, clicks links, etc.).</li>
+<li><strong>Frontend logs interaction events</strong> and sends them to the API Gateway.</li>
+<li><strong>API Gateway forwards the data</strong> to the Analytics Service.</li>
+<li><strong>Analytics Service stores data</strong> in the Analytics Database.</li>
+<li><strong>Administrators or analytics dashboards</strong> retrieve data for reporting and insights.</li>
+</ol></li>
+</ul>
+<h3 id="user-privacy-and-security" class="anchored">8. <strong>User Privacy and Security</strong></h3>
+<ul>
+<li><strong>Flow</strong>: User updates privacy settings (e.g., who can see their posts).</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User updates privacy settings</strong> via the frontend.</li>
+<li><strong>Privacy settings data</strong> is sent to the API Gateway.</li>
+<li><strong>API Gateway forwards the settings</strong> to the User Service.</li>
+<li><strong>User Service updates the User Database</strong> with the new privacy settings.</li>
+<li><strong>Post Service and Feed Service</strong> check these settings before displaying posts or feeds to other users (e.g., restrict posts to friends-only).</li>
+<li><strong>Notification Service ensures notifications</strong> respect privacy settings (e.g., notifications are sent only to allowed users).</li>
+</ol></li>
+</ul>
+<h3 id="group-or-event-management" class="anchored">9. <strong>Group or Event Management</strong></h3>
+<ul>
+<li><strong>Flow</strong>: Users create or manage groups/events (join, invite, leave).</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>User creates or joins a group/event</strong> via the frontend.</li>
+<li><strong>Frontend sends group/event request</strong> to the API Gateway.</li>
+<li><strong>Group/Event Service handles</strong> the request and updates the database.</li>
+<li><strong>Group members or event attendees are notified</strong> through the Notification Service.</li>
+<li><strong>Feed Service updates group/event posts</strong> in the feed for members/attendees.</li>
+<li><strong>Group/Event Service stores data</strong> in the Group/Event Database.</li>
+</ol></li>
+</ul>
+<h3 id="push-notifications" class="anchored">10. <strong>Push Notifications</strong></h3>
+<ul>
+<li><strong>Flow</strong>: Push notifications are sent for real-time updates (likes, comments, messages, friend requests).</li>
+<li><strong>Data Flow</strong>:
+<ol type="1">
+<li><strong>Notification triggered</strong> (e.g., a new like or message).</li>
+<li><strong>Notification Service identifies recipient</strong> of the notification.</li>
+<li><strong>Notification is pushed</strong> to the frontend (mobile/web) using push notification services (e.g., Firebase Cloud Messaging, Apple Push Notification Service).</li>
+<li><strong>Frontend receives the notification</strong> and displays it in real time.</li>
+</ol></li>
+</ul>
+<p>These data flows represent various interactions and processes within a typical social network architecture, where different services collaborate to provide a seamless experience for users.</p>
+<h2 id="high-level-database-entity-diagram" class="anchored">High level Database Entity Diagram</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">erDiagram
+    Users ||--o{ Posts : creates
+    Users ||--o{ Comments : writes
+    Users ||--o{ Likes : gives
+    Users ||--o{ Messages : sends
+    Users ||--o{ Friendships : "participates in"
+    Users ||--o{ Notifications : receives
+    Users ||--o{ Media : uploads
+
+    Users {
+        uuid id PK
+        string email
+        string password_hash
+        string full_name
+        string profile_pic_url
+        datetime created_at
+        boolean is_verified
+        json settings
+        string oauth_provider
+        string oauth_id
+    }
+
+    Posts {
+        uuid id PK
+        uuid user_id FK
+        string content
+        datetime created_at
+        array media_urls
+        json metadata
+        int view_count
+        boolean is_public
+    }
+
+    Comments {
+        uuid id PK
+        uuid post_id FK
+        uuid user_id FK
+        string content
+        datetime created_at
+        uuid parent_id FK
+    }
+
+    Likes {
+        uuid id PK
+        uuid user_id FK
+        uuid post_id FK
+        datetime created_at
+        string reaction_type
+    }
+
+    Messages {
+        uuid id PK
+        uuid sender_id FK
+        uuid receiver_id FK
+        string content
+        datetime sent_at
+        boolean is_read
+        array attachments
+    }
+
+    Friendships {
+        uuid id PK
+        uuid user_id1 FK
+        uuid user_id2 FK
+        string status
+        datetime created_at
+        datetime updated_at
+    }
+
+    Notifications {
+        uuid id PK
+        uuid user_id FK
+        string type
+        json payload
+        datetime created_at
+        boolean is_read
+    }
+
+    Media {
+        uuid id PK
+        uuid user_id FK
+        string url
+        string type
+        int size
+        string status
+        json metadata
+        datetime uploaded_at
+    }
+
+    Posts ||--o{ Comments : has
+    Posts ||--o{ Likes : receives
+    Posts ||--o{ Media : contains
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Key aspects of the ERD:</p>
+<ol type="1">
+<li>Uses UUID for distributed system scalability</li>
+<li>Implements soft deletion and timestamps for data tracking</li>
+<li>Stores JSON metadata for flexibility</li>
+<li>Includes OAuth integration fields</li>
+<li>Uses array types for media and attachments</li>
+<li>Maintains referential integrity with foreign keys</li>
+</ol>
+<h2 id="search-engine-of-social-network" class="anchored">Search Engine of Social Network</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+    subgraph Client Layer
+        A[Web/Mobile Client]
+        B[Search UI Component]
+    end
+
+    subgraph API Layer
+        C[API Gateway]
+        D[Search Service]
+        E[Rate Limiter]
+    end
+
+    subgraph Search Core
+        F[Elasticsearch Cluster]
+        G[Search Query Builder]
+        H[Result Formatter]
+        I[Search Analytics]
+    end
+
+    subgraph Data Layer
+        J[MongoDB - Posts]
+        K[PostgreSQL - Users]
+        L[Redis Cache]
+    end
+
+    subgraph Indexing Pipeline
+        M[Data Change Detector]
+        N[Index Manager]
+        O[Document Processor]
+    end
+
+    A --&gt;|Search Request| B
+    B --&gt;|API Call| C
+    C --&gt;|Forward| D
+    D --&gt;|Rate Check| E
+    E --&gt;|Query| G
+    G --&gt;|Execute| F
+    F --&gt;|Raw Results| H
+    H --&gt;|Format| D
+    D --&gt;|Cache| L
+    
+    J --&gt;|Changes| M
+    K --&gt;|Changes| M
+    M --&gt;|Notify| N
+    N --&gt;|Process| O
+    O --&gt;|Update| F
+    
+    D --&gt;|Log| I
+    I --&gt;|Improve| G
+
+    classDef service fill:#f9f,stroke:#333
+    classDef database fill:#69b,stroke:#333
+    classDef pipeline fill:#ffb,stroke:#333
+    
+    class D,G,H service
+    class F,J,K,L database
+    class M,N,O pipeline
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Lets understand the diagram by breaking it down into its main layers and components:</p>
+<ul>
+<li><p>Client Layer</p>
+<ul>
+<li>Web/Mobile Client: Entry point for user interactions</li>
+<li>Search UI Component: Handles search input, autocomplete, and result display</li>
+<li>This layer manages user interactions and formats search requests before sending them to the API</li>
+</ul></li>
+<li><p>API Layer</p>
+<ul>
+<li>API Gateway: Central entry point for all API requests, handles authentication and routing</li>
+<li>Search Service: Core service that orchestrates the search functionality</li>
+<li>Rate Limiter: Prevents abuse by limiting the number of requests per user/time period</li>
+</ul></li>
+<li><p>Search Core</p>
+<ul>
+<li>Elasticsearch Cluster: Main search engine that indexes and searches data
+<ul>
+<li>Handles distributed search across multiple nodes</li>
+<li>Maintains indices for users, posts, and other content</li>
+<li>Provides full-text search capabilities</li>
+</ul></li>
+<li>Search Query Builder: Constructs optimized search queries
+<ul>
+<li>Translates user queries into Elasticsearch DSL</li>
+<li>Applies relevance scoring and boosting</li>
+<li>Handles complex query scenarios (fuzzy matching, filters)</li>
+</ul></li>
+<li>Result Formatter: Processes and formats search results
+<ul>
+<li>Combines results from different indices</li>
+<li>Adds highlighting and snippets</li>
+<li>Formats response according to API specifications</li>
+</ul></li>
+<li>Search Analytics: Monitors and improves search performance
+<ul>
+<li>Tracks popular searches</li>
+<li>Analyzes query patterns</li>
+<li>Provides insights for optimization</li>
+</ul></li>
+</ul></li>
+<li><p>Data Layer</p>
+<ul>
+<li>MongoDB - Posts: Stores post-related data</li>
+<li>PostgreSQL - Users: Stores user information</li>
+<li>Redis Cache: Caches frequent search results
+<ul>
+<li>Improves response time for common searches</li>
+<li>Reduces load on Elasticsearch</li>
+</ul></li>
+</ul></li>
+<li><p>Indexing Pipeline</p>
+<ul>
+<li>Data Change Detector: Monitors databases for changes
+<ul>
+<li>Detects updates in MongoDB and PostgreSQL</li>
+<li>Triggers reindexing when needed</li>
+</ul></li>
+<li>Index Manager: Manages Elasticsearch indices
+<ul>
+<li>Handles index creation and updates</li>
+<li>Manages mappings and settings</li>
+</ul></li>
+<li>Document Processor: Prepares data for indexing
+<ul>
+<li>Transforms documents to match index structure</li>
+<li>Handles data enrichment</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>The diagram shows the flow of data:</p>
+<ol type="1">
+<li>Search request starts at the Client Layer</li>
+<li>Flows through the API Layer with rate limiting</li>
+<li>Gets processed in the Search Core</li>
+<li>Results are formatted and returned</li>
+<li>Meanwhile, the Indexing Pipeline ensures data stays fresh</li>
+</ol>
+<p>The arrows in the diagram show:</p>
+<ul>
+<li>Solid lines: Direct communication paths</li>
+<li>Data flow from databases to search indices</li>
+<li>Analytics feedback loop for optimization</li>
+<li>Caching mechanisms for performance</li>
+</ul>
+<p>The color coding indicates: - Services (pink fill) - Databases (blue fill) - Pipeline components (yellow fill)</p>
+<p>This architecture provides:</p>
+<ul>
+<li>Scalability through distributed search</li>
+<li>High availability with replicated indices</li>
+<li>Real-time search capabilities</li>
+<li>Performance optimization through caching</li>
+<li>Robust monitoring and analytics</li>
+<li>Data consistency through the indexing pipeline</li>
+</ul>
+<p>The design prioritizes both search relevance and system performance while maintaining data consistency across the platform.</p>
+<h2 id="scalability-performance" class="anchored">Scalability &amp; Performance:</h2>
+<ul>
+<li><strong>Horizontal Scaling:</strong> Add more instances of services as needed.</li>
+<li><strong>Sharding:</strong> Split data across multiple databases or storage units for scalability (e.g., user data sharding, partitioning large datasets).</li>
+<li><strong>CDN (Content Delivery Network):</strong> Use a CDN to cache static resources (e.g., images, videos, stylesheets) and reduce latency (e.g., AWS CloudFront, Cloudflare).</li>
+<li><strong>Caching:</strong> Use caching for high-traffic endpoints to reduce the load on the backend (e.g., user feeds, search results).</li>
+<li><strong>Asynchronous Processing:</strong> Use queues and workers for time-consuming tasks (e.g., processing media uploads, sending emails).</li>
+</ul>
+<h3 id="high-availability-fault-tolerance" class="anchored">4. <strong>High Availability &amp; Fault Tolerance:</strong></h3>
+<ul>
+<li><strong>Replication:</strong> Use database replication to ensure high availability and prevent data loss.</li>
+<li><strong>Backup Systems:</strong> Regular backups of critical data to avoid data loss in case of failures.</li>
+<li><strong>Monitoring &amp; Alerting:</strong> Use tools like Prometheus, Grafana, or New Relic to monitor system health and set up alerts for anomalies.</li>
+<li><strong>Failover Systems:</strong> Use automatic failover and load balancing to ensure services remain available during failures.</li>
+</ul>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

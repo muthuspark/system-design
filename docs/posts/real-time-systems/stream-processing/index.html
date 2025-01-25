@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Stream Processing – System Design Handbook</title>
+<title>Stream Processing – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Stream Processing – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Stream Processing – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="stream-processing-real-time-data-in-action">Stream Processing: Real-time Data in Action</h1>
 <p>Stream processing is a powerful technique for handling continuous, high-volume data streams in real-time. Unlike batch processing, which deals with static datasets, stream processing analyzes data as it arrives, allowing for immediate insights and reactions. This capability is crucial in many modern applications, from fraud detection and anomaly detection to social media analytics and IoT sensor data analysis. This post will delve into the intricacies of stream processing, exploring its key concepts, architectures, and practical applications.</p>
 <h2 id="understanding-the-core-concepts" class="anchored">Understanding the Core Concepts</h2>
 <p>At the heart of stream processing lies the concept of a <strong>data stream</strong>. This is an unbounded sequence of data records arriving continuously. These records can represent anything from sensor readings and website clicks to financial transactions and social media posts. The key characteristic is that the data is not stored permanently but processed on the fly.</p>
@@ -149,34 +114,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Apache Spark Streaming:</strong> A component of the Apache Spark ecosystem that provides a unified platform for both batch and stream processing.</li>
 <li><strong>Amazon Kinesis:</strong> A managed cloud service for real-time data streaming.</li>
 </ul>
-<h2 id="code-example-apache-flink-word-count" class="anchored">Code Example (Apache Flink): Word Count</h2>
-<p>Let’s illustrate stream processing with a simple word count example using Apache Flink:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">apache</span><span class="op">.</span><span class="im">flink</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">java</span><span class="op">.</span><span class="im">tuple</span><span class="op">.</span><span class="im">Tuple2</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">apache</span><span class="op">.</span><span class="im">flink</span><span class="op">.</span><span class="im">streaming</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">datastream</span><span class="op">.</span><span class="im">DataStream</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">apache</span><span class="op">.</span><span class="im">flink</span><span class="op">.</span><span class="im">streaming</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">environment</span><span class="op">.</span><span class="im">StreamExecutionEnvironment</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">apache</span><span class="op">.</span><span class="im">flink</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Collector</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> WordCount <span class="op">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="kw">throws</span> <span class="bu">Exception</span> <span class="op">{</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> StreamExecutionEnvironment env <span class="op">=</span> StreamExecutionEnvironment<span class="op">.</span><span class="fu">getExecutionEnvironment</span><span class="op">();</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        DataStream<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> text <span class="op">=</span> env<span class="op">.</span><span class="fu">socketTextStream</span><span class="op">(</span><span class="st">"localhost"</span><span class="op">,</span> <span class="dv">9999</span><span class="op">);</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        DataStream<span class="op">&lt;</span>Tuple2<span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">Integer</span><span class="op">&gt;&gt;</span> wordCounts <span class="op">=</span> text</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">flatMap</span><span class="op">((</span><span class="bu">String</span> line<span class="op">,</span> Collector<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> out<span class="op">)</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> word <span class="op">:</span> line<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">"</span><span class="sc">\\</span><span class="st">s"</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                        out<span class="op">.</span><span class="fu">collect</span><span class="op">(</span>word<span class="op">);</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    <span class="op">}</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="op">})</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">map</span><span class="op">(</span>word <span class="op">-&gt;</span> Tuple2<span class="op">.</span><span class="fu">of</span><span class="op">(</span>word<span class="op">,</span> <span class="dv">1</span><span class="op">))</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">keyBy</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">sum</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        wordCounts<span class="op">.</span><span class="fu">print</span><span class="op">();</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        env<span class="op">.</span><span class="fu">execute</span><span class="op">(</span><span class="st">"WordCount"</span><span class="op">);</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code reads text from a socket, splits it into words, counts the occurrences of each word, and prints the results.</p>
 <h2 id="real-world-applications" class="anchored">Real-world Applications</h2>
 <p>Stream processing finds application in a wide range of domains:</p>
 <ul>
@@ -185,8 +122,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Real-time Analytics:</strong> Analyzing website traffic, social media trends, or IoT sensor data to provide immediate insights.</li>
 <li><strong>Log Processing:</strong> Analyzing application logs in real-time to identify errors and performance bottlenecks.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Stream processing provides a powerful approach to handling continuous, high-volume data streams in real-time. By understanding the core concepts, architectures, and available tools, developers can build robust and efficient applications that leverage the power of real-time data analysis. Choosing the right architecture and engine depends on the specific requirements of the application, considering factors like scalability, fault tolerance, and complexity.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

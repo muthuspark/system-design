@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Three-Phase Commit Protocol – System Design Handbook</title>
+<title>Three-Phase Commit Protocol – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Three-Phase Commit Protocol – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Three-Phase Commit Protocol – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="deep-dive-into-the-three-phase-commit-protocol">Deep Dive into the Three-Phase Commit Protocol</h1>
 <p>The Three-Phase Commit (3PC) protocol is a distributed consensus algorithm used in distributed systems to ensure atomicity and durability across multiple nodes involved in a transaction. It’s an extension of the Two-Phase Commit (2PC) protocol, aiming to improve its resilience to network partitions. While 2PC can leave a system in a blocking state during a network failure, 3PC attempts to mitigate this by adding a third phase that allows nodes to potentially proceed independently under certain conditions. However, it’s important to understand that 3PC doesn’t eliminate the possibility of blocking entirely, though it significantly reduces the likelihood.</p>
 <h2 id="understanding-the-problem-limitations-of-two-phase-commit" class="anchored">Understanding the Problem: Limitations of Two-Phase Commit</h2>
 <p>Before delving into 3PC, let’s briefly review the shortcomings of 2PC that 3PC attempts to address. In 2PC, a coordinator manages the transaction, coordinating between participants. If the coordinator fails during the commit phase, participants may be left in an indeterminate state, requiring manual intervention. This blocking scenario is a major drawback, especially in critical systems.</p>
@@ -163,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <h2 id="code-example-conceptual" class="anchored">Code Example (Conceptual):</h2>
 <p>This is a simplified conceptual example and does not cover error handling or network communication complexities.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conceptual illustration only.  Not production-ready code.</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Participant:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, <span class="bu">id</span>):</span>
@@ -192,12 +191,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.committed <span class="op">=</span> <span class="va">False</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ... (Coordinator logic using participant objects would go here) ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="limitations-of-three-phase-commit" class="anchored">Limitations of Three-Phase Commit</h2>
 <p>Despite its improvements over 2PC, 3PC is not a silver bullet. It still suffers from performance overhead and the possibility of blocking scenarios (though less likely). Network partitions can still cause problems, particularly during the pre-commit or commit phases, potentially leading to inconsistent states. The added complexity compared to 2PC also adds to the maintenance overhead.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The Three-Phase Commit protocol aims to enhance the reliability of distributed transactions compared to Two-Phase Commit by introducing a pre-commit phase. This allows for potential independent commit decisions by participants in case of coordinator failure, decreasing the likelihood of blocking scenarios. However, it’s crucial to understand that 3PC doesn’t fully eliminate the complexities and potential for failures inherent in distributed systems. It presents a trade-off between increased resilience and added complexity.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

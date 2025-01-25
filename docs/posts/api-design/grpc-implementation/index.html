@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>gRPC Implementation – System Design Handbook</title>
+<title>gRPC Implementation – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="gRPC Implementation – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="gRPC Implementation – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="diving-deep-into-grpc-implementation-a-comprehensive-guide">Diving Deep into gRPC Implementation: A Comprehensive Guide</h1>
 <p>gRPC, a high-performance, open-source universal RPC framework, is rapidly gaining popularity for building efficient and scalable microservices. This blog post will delve into the intricacies of gRPC implementation, covering everything from setting up your environment to handling advanced features. We’ll use clear explanations and practical examples to guide you through the process.</p>
 <h2 id="setting-up-the-development-environment" class="anchored">1. Setting up the Development Environment</h2>
 <p>Before we begin implementing gRPC, we need to ensure our environment is properly configured. This typically involves installing the Protocol Buffer compiler (<code>protoc</code>) and the gRPC libraries for your chosen programming language.</p>
@@ -171,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Difference: </span><span class="sc">{</span>response<span class="sc">.</span>result<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This code creates a client stub and calls the <code>Add</code> and <code>Subtract</code> methods on the server.</p>
 <h2 id="grpc-architecture-diagram" class="anchored">6. gRPC Architecture Diagram</h2>
-<p>The overall architecture can be visualized using a Mermaid diagram:</p>
+<p>The overall architecture can be visualized using a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -237,8 +236,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> is_prime:</span>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">yield</span> calculator_pb2.PrimeResponse(prime<span class="op">=</span>i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This example demonstrates server-streaming where the server yields multiple responses to a single request. Client-side streaming and bidirectional streaming are handled similarly, but involve iterating through request/response streams.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post provided a detailed walkthrough of implementing gRPC, starting from setting up the development environment to implementing a basic service and handling server-side streaming. We covered using Protocol Buffers to define services, generating gRPC code, implementing both client and server components, and visualizing the architecture. Further exploration should include error handling, authentication, and more advanced gRPC features like interceptors and deadlines.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

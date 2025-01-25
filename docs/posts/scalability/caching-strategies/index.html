@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Caching Strategies – System Design Handbook</title>
+<title>Caching Strategies – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Caching Strategies – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Caching Strategies – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="caching-strategies-a-deep-dive-into-optimizing-performance">Caching Strategies: A Deep Dive into Optimizing Performance</h1>
 <p>Caching is a fundamental technique in software engineering used to improve performance and reduce latency by storing frequently accessed data in a readily available location. This blog post explores various caching strategies, their strengths, weaknesses, and practical applications. We’ll delve into the details with examples and diagrams to provide a comprehensive understanding.</p>
 <h2 id="understanding-the-basics" class="anchored">Understanding the Basics</h2>
 <p>Before diving into specific strategies, let’s establish the core concepts:</p>
@@ -242,8 +241,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Least Frequently Used (LFU):</strong> Evicts the least frequently accessed item.</li>
 <li><strong>Random Replacement:</strong> Evicts a random item.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored various caching strategies, including write-through, write-back, write-around, cache-aside, and read-through caching. We examined the trade-offs between performance and data consistency, and discussed cache invalidation and replacement policies. The choice of the most suitable strategy depends on specific application needs and characteristics of the data being cached. Understanding these strategies is crucial for optimizing application performance and scalability.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

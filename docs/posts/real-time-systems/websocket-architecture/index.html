@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>WebSocket Architecture – System Design Handbook</title>
+<title>WebSocket Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="WebSocket Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="WebSocket Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -185,8 +185,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>asyncio.run(main())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="handling-scalability-and-concurrency" class="anchored">Handling Scalability and Concurrency</h2>
 <p>For applications with many concurrent WebSocket connections, employing techniques like load balancing and utilizing a message broker becomes crucial for efficient management and preventing server overload. Asynchronous programming patterns are also vital for handling multiple connections concurrently without blocking.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post detailed the architecture of WebSockets, explaining the handshake process, key components, and the role of asynchronous programming in handling concurrent connections. We touched upon the benefits of using a message broker for scalability and explored basic client-side and server-side code examples in JavaScript and Python. Further exploration into specific server-side frameworks and advanced concepts like load balancing would enhance the understanding of building robust real-time applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

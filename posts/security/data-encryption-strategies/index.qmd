@@ -139,6 +139,5 @@ graph LR
 -   **SHA-3:** A newer algorithm designed to be resistant to attacks against SHA-2.
 -   **MD5:** Older and now considered insecure for most applications.
 
-## Summary
 
-This post explored several data encryption strategies, including symmetric, asymmetric, and hybrid encryption, along with the crucial role of hashing in maintaining data integrity. Each approach offers different advantages and disadvantages, and the choice depends on the specific security requirements and context of the application. Understanding these strategies is essential for developing robust and secure systems.
+

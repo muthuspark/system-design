@@ -99,6 +99,5 @@ Numerous tools and technologies facilitate batch processing, including:
 -   **Apache Kafka:** A distributed streaming platform commonly used for handling real-time data streams but also applicable for building robust batch pipelines.
 -   **Cloud-based services:** AWS Batch, Azure Batch, and Google Cloud Dataproc provide managed batch processing services.
 
-## Summary
 
-Batch processing is a highly efficient method for handling large datasets. It offers advantages in terms of scalability, cost-effectiveness, and error handling. Understanding its core principles and utilizing appropriate tools and technologies is crucial for successful implementation in various data processing applications. Careful consideration of batch size, error handling, and scheduling is crucial for optimal performance and reliability.
+

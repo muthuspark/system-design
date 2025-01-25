@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Byzantine Fault Tolerance – System Design Handbook</title>
+<title>Byzantine Fault Tolerance – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Byzantine Fault Tolerance – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Byzantine Fault Tolerance – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,7 +54,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="byzantine-fault-tolerance-understanding-and-implementing-robust-systems">Byzantine Fault Tolerance: Understanding and Implementing Robust Systems</h1>
 <p>Byzantine Fault Tolerance (BFT) is a crucial concept in distributed systems, addressing the challenge of maintaining system consistency and correctness even when some components behave maliciously or fail unpredictably. Unlike simpler fault tolerance mechanisms that assume failures are benign (e.g., crashes), BFT tackles the more complex scenario where faulty nodes might send conflicting or incorrect information deliberately. This blog post will delve into the intricacies of BFT, exploring its underlying principles, practical applications, and the challenges involved in its implementation.</p>
 <h2 id="understanding-the-byzantine-generals-problem" class="anchored">Understanding the Byzantine Generals Problem</h2>
 <p>The foundation of BFT lies in the “Byzantine Generals Problem,” a classic problem in distributed computing. Imagine a group of generals surrounding a city. They need to agree on a unified plan of attack (either attack or retreat) to succeed. However, some generals might be traitors (faulty nodes) who could send conflicting messages to disrupt the decision-making process. The goal is to design a protocol that guarantees the loyal generals reach consensus even if some generals are traitors.</p>
@@ -121,8 +120,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Aerospace and Defense:</strong> High-reliability systems in aerospace and defense often employ BFT to maintain the safety and operational integrity of critical components.</li>
 <li><strong>Cloud Computing:</strong> BFT enhances the robustness and reliability of cloud infrastructure, mitigating the risk of data loss or service disruptions.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Byzantine Fault Tolerance provides a robust solution for building distributed systems that can withstand even malicious failures. Understanding the Byzantine Generals Problem and the limitations of BFT is critical. While algorithms like PBFT and HotStuff offer practical implementations, the complexity and performance overhead need careful consideration. Despite these challenges, BFT’s ability to guarantee consensus in the face of arbitrary failures makes it essential for many critical applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

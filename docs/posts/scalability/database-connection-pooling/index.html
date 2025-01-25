@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Database Connection Pooling – System Design Handbook</title>
+<title>Database Connection Pooling – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Database Connection Pooling – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Database Connection Pooling – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="database-connection-pooling-optimizing-your-database-interactions">Database Connection Pooling: Optimizing Your Database Interactions</h1>
 <p>Database interactions are fundamental to most applications. However, constantly establishing and tearing down connections for every database operation is inefficient and resource-intensive. This is where database connection pooling comes in, offering a significant performance boost and resource optimization strategy. This blog post will delve into the intricacies of database connection pooling, explaining its benefits, implementation strategies, and potential pitfalls.</p>
 <h2 id="understanding-the-problem-the-cost-of-connection-creation" class="anchored">Understanding the Problem: The Cost of Connection Creation</h2>
 <p>Imagine your application needs to interact with a database hundreds or thousands of times per second. Every time a connection is requested, the application must:</p>
@@ -148,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> psycopg2</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> psycopg2.pool <span class="im">import</span> SimpleConnectionPool</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Database connection parameters</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'database'</span>: <span class="st">'mydb'</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'user'</span>: <span class="st">'user'</span>,</span>
@@ -157,10 +156,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'port'</span>: <span class="st">'5432'</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a connection pool</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>pool <span class="op">=</span> SimpleConnectionPool(<span class="dv">1</span>, <span class="dv">10</span>, <span class="op">**</span>params)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a connection from the pool</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    conn <span class="op">=</span> pool.getconn()</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    cur <span class="op">=</span> conn.cursor()</span>
@@ -173,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> conn <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        pool.putconn(conn)</span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the connection pool</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>pool.closeall()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Important Considerations:</strong></p>
 <ul>
@@ -190,8 +189,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Connection Leaks:</strong> Failing to properly return connections to the pool leads to connection leaks, eventually exhausting the pool’s capacity.</li>
 <li><strong>Deadlocks:</strong> Improperly managing concurrent access to the pool can lead to deadlocks.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Database connection pooling is a powerful technique for optimizing database interactions. By reusing established connections, it significantly reduces the overhead of connection creation and improves application performance and scalability. However, careful consideration of pool configuration, error handling, and potential pitfalls is necessary to fully realize its benefits. Choosing the right connection pooling library for your specific environment and following best practices will ensure efficient and reliable database access.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

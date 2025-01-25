@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Auto-scaling Systems – System Design Handbook</title>
+<title>Auto-scaling Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Auto-scaling Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Auto-scaling Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="auto-scaling-systems-a-deep-dive-into-dynamic-resource-management">Auto-Scaling Systems: A Deep Dive into Dynamic Resource Management</h1>
 <p>Auto-scaling systems are the backbone of modern, resilient applications. They dynamically adjust the resources allocated to an application based on real-time demand, ensuring optimal performance while minimizing costs. This post will explore the intricacies of auto-scaling, covering various architectures, implementation strategies, and the key considerations for designing and deploying a robust auto-scaling solution.</p>
 <h2 id="understanding-the-need-for-auto-scaling" class="anchored">Understanding the Need for Auto-Scaling</h2>
 <p>Traditional approaches to resource allocation involve provisioning a fixed number of servers or virtual machines (VMs) based on predicted peak demand. This approach is inherently inefficient. During periods of low demand, resources are underutilized, leading to wasted costs. Conversely, during peak demand, insufficient resources can result in slowdowns, service disruptions, and a poor user experience.</p>
@@ -105,23 +70,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Several architectural patterns are used for implementing auto-scaling:</p>
 <p><strong>1. Vertical Scaling (Scaling Up):</strong> Increases the resources of an existing instance, such as increasing CPU, memory, or storage. This is simpler to implement but limited by the hardware capabilities of a single instance.</p>
 <p><strong>2. Horizontal Scaling (Scaling Out):</strong> Adds or removes instances to handle the workload. This is the most common approach for auto-scaling and offers better scalability and resilience.</p>
-<p><strong>Mermaid Diagram illustrating Horizontal Scaling:</strong></p>
+<p><strong>Diagram illustrating Scaling:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Load Balancer] --&gt; B(Instance 1);
-    A --&gt; C(Instance 2);
-    A --&gt; D(Instance 3);
-
-    subgraph "Scaling Up"
-        D --&gt; E(New Instance);
-        A --&gt; E;
+<pre class="mermaid mermaid-js">flowchart TD
+    subgraph "Vertical Scaling"
+        A[Small Instance] --&gt; B[Medium Instance]
+        B --&gt; C[Large Instance]
     end
-    subgraph "Scaling Down"
-        C --&gt; F{Removed Instance};
+
+    subgraph "Horizontal Scaling"
+        D[Load Balancer]
+        D --&gt; E[Instance 1]
+        D --&gt; F[Instance 2]
+        D --&gt; G[Instance 3]
     end
 </pre>
 </div>
@@ -129,45 +94,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>3. Hybrid Scaling:</strong> Combines vertical and horizontal scaling to leverage the advantages of both approaches.</p>
-<h2 id="implementing-auto-scaling-a-simple-example-with-python" class="anchored">Implementing Auto-Scaling: A Simple Example with Python</h2>
-<p>This example demonstrates a simplified auto-scaling logic. It uses a hypothetical CPU utilization metric to trigger scaling decisions. In a real-world scenario, this would integrate with a monitoring system and provisioning service.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_cpu_utilization():</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Simulates getting CPU utilization from a monitoring system."""</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.randint(<span class="dv">10</span>, <span class="dv">90</span>)  <span class="co"># Percentage</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scale_up():</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Simulates adding a new instance."""</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Scaling up! Adding a new instance."</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> scale_down():</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Simulates removing an instance."""</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Scaling down! Removing an instance."</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  cpu_utilization <span class="op">=</span> check_cpu_utilization()</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"Current CPU utilization: </span><span class="sc">{</span>cpu_utilization<span class="sc">}</span><span class="ss">%"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> cpu_utilization <span class="op">&gt;</span> <span class="dv">80</span>:</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    scale_up()</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> cpu_utilization <span class="op">&lt;</span> <span class="dv">20</span>:</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    scale_down()</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Simulate time delay</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  time.sleep(<span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Note:</strong> This is a highly simplified example. Real-world implementations require sophisticated logic, error handling, and integration with cloud providers or orchestration tools.</p>
-<h2 id="key-considerations-for-auto-scaling" class="anchored">Key Considerations for Auto-Scaling</h2>
+<p>Let me break down both scaling approaches shown in the diagram:</p>
+<p>Vertical Scaling (Left):</p>
 <ul>
-<li><p><strong>Metrics Selection:</strong> Choose appropriate metrics that accurately reflect the application’s workload and performance.</p></li>
-<li><p><strong>Scaling Policies:</strong> Define clear and effective scaling policies based on thresholds, cooldown periods, and other factors.</p></li>
-<li><p><strong>Resource Limits:</strong> Set appropriate limits on the maximum and minimum number of instances to avoid unnecessary costs and prevent resource exhaustion.</p></li>
-<li><p><strong>Testing and Monitoring:</strong> Thoroughly test the auto-scaling system to ensure its effectiveness and stability. Continuous monitoring is crucial for identifying issues and optimizing performance.</p></li>
-<li><p><strong>Cost Optimization:</strong> Implement strategies to minimize costs, such as leveraging spot instances or adjusting scaling policies based on cost considerations.</p></li>
+<li>Shows a single instance growing in size/capacity</li>
+<li>Three stages represented by differently-sized boxes</li>
+<li>Progression from small (pink) → medium (light blue) → large (dark blue)</li>
+<li>Resources like CPU, RAM, storage increase within the same instance</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Auto-scaling systems are vital for building scalable and cost-efficient applications. They enable dynamic resource management by automatically adjusting resources based on real-time demand. This involves continuous monitoring, sophisticated scaling logic, and seamless integration with provisioning systems. Choosing the right architecture, defining effective policies, and implementing thorough testing are crucial for building a robust and reliable auto-scaling solution. Careful consideration of various factors such as metrics selection, cost optimization and resource limits are essential for successful implementation.</p>
+<p>Horizontal Scaling (Right):</p>
+<ul>
+<li>Features a load balancer (orange) at the top distributing traffic</li>
+<li>Three identical instances (light blue) running in parallel</li>
+<li>All instances have the same capacity/specifications</li>
+<li>Traffic is split across multiple servers rather than upgrading a single server</li>
+</ul>
+<p>Key Differences Illustrated:</p>
+<ul>
+<li>Vertical focuses on growing one instance</li>
+<li>Horizontal distributes load across multiple identical instances</li>
+<li>Horizontal includes a load balancer for traffic distribution</li>
+<li>Color intensity shows resource capacity differences in vertical scaling</li>
+</ul>
+<p><strong>3. Hybrid Scaling:</strong> Combines vertical and horizontal scaling to leverage the advantages of both approaches.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    LB[Load Balancer]
+    
+    subgraph "Cluster 1"
+        LB --&gt; A1[Small Instance]
+        A1 --&gt; B1[Medium Instance]
+        B1 --&gt; C1[Large Instance]
+    end
+    
+    subgraph "Cluster 2"
+        LB --&gt; A2[Small Instance]
+        A2 --&gt; B2[Medium Instance]
+        B2 --&gt; C2[Large Instance]
+    end
+    
+    subgraph "Cluster 3"
+        LB --&gt; A3[Small Instance]
+        A3 --&gt; B3[Medium Instance]
+        B3 --&gt; C3[Large Instance]
+    end
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Let me break down the hybrid scaling diagram:</p>
+<p><strong>Load Balancer (Top):</strong></p>
+<ul>
+<li>Orange box distributing incoming traffic across multiple clusters</li>
+<li>Acts as the entry point for all requests</li>
+</ul>
+<p><strong>Clusters (1, 2, and 3):</strong></p>
+<ul>
+<li>Each cluster shows vertical scaling capability</li>
+<li>Progression: Small (pink) → Medium (light blue) → Large (dark blue)</li>
+<li>All clusters are identical in structure</li>
+<li>Can scale both up (vertically within cluster) and out (adding more clusters)</li>
+</ul>
+<p>Hybrid System can handle increased load by:</p>
+<ol type="1">
+<li>Scaling individual instances up within clusters</li>
+<li>Adding more clusters when needed</li>
+</ol>
+<p>This provides better flexibility and fault tolerance which can optimize resource usage based on demand. This approach combines benefits of both vertical and horizontal scaling, allowing for more sophisticated capacity management.</p>
+<h2 id="key-considerations-for-auto-scaling" class="anchored">Key Considerations for Auto-Scaling</h2>
+<p>Auto-scaling is a critical mechanism for dynamically adjusting the resources available to an application in response to changing workloads. It ensures that applications maintain performance, minimize downtime, and control costs, particularly for cloud-based environments. Here is a more detailed look into the key considerations for effective auto-scaling:</p>
+<h4 id="metrics-selection" class="anchored">1. <strong>Metrics Selection</strong></h4>
+<p>Choosing the right metrics is foundational to implementing an efficient auto-scaling strategy. The metrics you monitor directly determine how and when scaling occurs.</p>
+<ul>
+<li><p><strong>CPU/Memory Utilization</strong>: This is a common metric for deciding when to scale. If CPU or memory usage consistently exceeds a set threshold, more instances are added. Conversely, underutilization might trigger downscaling.</p></li>
+<li><p><strong>Request/Throughput Rate</strong>: For web applications, the number of requests per second (RPS) or network throughput is an important indicator of load. Sudden spikes in incoming traffic might necessitate additional resources to maintain performance.</p></li>
+<li><p><strong>Custom Application Metrics</strong>: Depending on your application, custom metrics such as queue length, latency, or error rates can be more precise indicators. For example, in a messaging system, the length of a message queue might signal the need for additional processing power.</p></li>
+</ul>
+<p>Selecting accurate metrics ensures that the application scales responsively, avoiding over- or under-provisioning.</p>
+<h4 id="scaling-policies" class="anchored">2. <strong>Scaling Policies</strong></h4>
+<p>Scaling policies define the rules for when and how auto-scaling happens. Well-designed policies help ensure that the system remains efficient under varying loads:</p>
+<ul>
+<li><p><strong>Thresholds</strong>: Establish thresholds that dictate when scaling actions are triggered. For example, if CPU utilization exceeds 80% for a sustained period, new instances are spun up. Similarly, when utilization falls below a certain threshold, excess instances can be terminated to reduce costs.</p></li>
+<li><p><strong>Cooldown Periods</strong>: Introduce cooldown periods to avoid over-scaling. After a scaling event, a cooldown period prevents the system from making further adjustments for a specified duration, allowing it to stabilize. Without a proper cooldown, the system may oscillate, frequently adding and removing instances in a way that undermines performance.</p></li>
+<li><p><strong>Horizontal vs.&nbsp;Vertical Scaling</strong>: Horizontal scaling (adding more instances) is most common, but vertical scaling (increasing the size of existing instances) can also be considered for certain workloads. Policies should clearly define whether additional resources are provided by increasing instance count or upgrading instance capacity.</p></li>
+</ul>
+<h4 id="resource-limits" class="anchored">3. <strong>Resource Limits</strong></h4>
+<p>Setting appropriate limits on the number of instances (both minimum and maximum) is essential to strike a balance between performance and cost management.</p>
+<ul>
+<li><p><strong>Minimum Limits</strong>: Setting a minimum number of instances ensures that there’s always a baseline capacity available to handle traffic. This avoids downtime or degraded performance during periods of lower traffic or unpredictable spikes.</p></li>
+<li><p><strong>Maximum Limits</strong>: Implementing a maximum limit prevents the auto-scaling system from spawning too many instances during a traffic surge, which could result in unexpected costs. This is especially important if traffic spikes are brief, as excessive scaling could lead to resource waste.</p></li>
+</ul>
+<p>By controlling the minimum and maximum limits, you prevent runaway scaling that could either exhaust resources or result in exorbitant cloud bills.</p>
+<h4 id="testing-and-monitoring" class="anchored">4. <strong>Testing and Monitoring</strong></h4>
+<p>Auto-scaling is not a “set-it-and-forget-it” system; continuous testing and monitoring are crucial for ensuring it functions effectively:</p>
+<ul>
+<li><p><strong>Load Testing</strong>: Before deploying auto-scaling in production, it’s important to conduct rigorous load tests to simulate real-world traffic spikes and dips. This helps identify the scaling limits and ensure that the application can handle the predicted load with minimal latency and downtime.</p></li>
+<li><p><strong>Monitoring Tools</strong>: Monitoring tools (such as Amazon CloudWatch, Prometheus, or Grafana) are essential to track resource usage and scaling events. By constantly monitoring metrics like instance count, CPU usage, and request rate, you can identify trends, optimize scaling policies, and detect problems early.</p></li>
+<li><p><strong>Alerting</strong>: Set up alerting mechanisms that notify you of unusual scaling behaviors, such as sudden spikes in resource usage, to ensure that issues can be addressed before they affect users.</p></li>
+</ul>
+<h4 id="cost-optimization" class="anchored">5. <strong>Cost Optimization</strong></h4>
+<p>Auto-scaling is designed to optimize performance, but without a well-thought-out strategy, it can quickly lead to higher operational costs. Here are some ways to minimize costs while benefiting from dynamic scaling:</p>
+<ul>
+<li><p><strong>Leverage Spot Instances</strong>: Spot instances, offered by cloud providers like AWS, are significantly cheaper than regular instances. These can be used for workloads that are tolerant to interruptions, helping to reduce costs when scaling out.</p></li>
+<li><p><strong>Adjust Scaling Based on Time or Load Patterns</strong>: If you know when your application experiences peak traffic (e.g., daytime hours) or quiet periods (e.g., overnight), you can pre-adjust scaling policies to have more instances available during peak hours and scale down during off-peak times.</p></li>
+<li><p><strong>Right-Sizing Instances</strong>: Choose the most cost-efficient instance sizes that match your application’s needs. Over-provisioning by using instances with too much CPU or memory can lead to unnecessary costs.</p></li>
+<li><p><strong>Scheduled Scaling</strong>: In addition to auto-scaling, you can use scheduled scaling to preemptively add or remove instances based on predictable demand patterns (e.g., scaling up before a major event or promotion).</p></li>
+</ul>
+<p>By carefully managing these aspects, you can minimize resource usage while maintaining performance.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

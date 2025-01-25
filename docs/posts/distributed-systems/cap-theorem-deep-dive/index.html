@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CAP Theorem Deep Dive – System Design Handbook</title>
+<title>CAP Theorem / Brewer’s theorem – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,20 +75,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="CAP Theorem Deep Dive – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="CAP Theorem / Brewer’s theorem – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
 
 
 <header id="title-block-header">
-<h1 class="title">CAP Theorem Deep Dive</h1>
+<h1 class="title">CAP Theorem / Brewer’s theorem</h1>
 
 </header>
 
 
-<h1 id="cap-theorem-deep-dive-understanding-consistency-availability-and-partition-tolerance">CAP Theorem Deep Dive: Understanding Consistency, Availability, and Partition Tolerance</h1>
 <p>The CAP theorem, also known as Brewer’s theorem, is a fundamental concept in distributed systems. It states that in a distributed data store, it’s impossible to simultaneously provide more than two out of the following three guarantees:</p>
 <ul>
 <li><strong>Consistency (C):</strong> All nodes see the same data at the same time. Every read receives the most recently written data, or an error.</li>
@@ -99,20 +98,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 id="consistency-explained" class="anchored">Consistency Explained</h2>
 <p>Consistency, in the context of the CAP theorem, means data integrity. It ensures that all nodes in the system have a consistent view of the data at any given time. This means if a write operation occurs, all subsequent read operations will return the updated value. There’s no stale data.</p>
 <p>A simple example: Imagine a banking system. Consistency ensures that if you transfer money from one account to another, all nodes in the system reflect the updated balances immediately. Any inconsistency could lead to severe financial problems.</p>
-<p><strong>Illustrative Example (Mermaid Diagram):</strong></p>
+<p><strong>Illustrative Example (Diagram):</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Client] --&gt; B(Write to Node 1);
-    B --&gt; C{Network Partition};
-    C -- Partition Resolved --&gt; D[All Nodes Consistent];
-    C -- Partition Unresolved --&gt; E[Inconsistent Data (Violation of C)];
-    B --&gt; F(Read from Node 2);
-    F -. Stale Data --&gt; G[Inconsistency]
-    style G fill:#f9f,stroke:#333,stroke-width:2px
+   A[Client] --&gt; B[Write to Node 1]
+   B --&gt; C[Network Partition]
+   C --&gt; D[Nodes Consistent]
+   C --&gt; E[Data Inconsistent]
+   B --&gt; F[Read from Node 2]
+   F -.-&gt; G[Inconsistency]
+   style G fill:#f9f,stroke:#333,stroke-width:2px
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -135,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Illustrating practical implementation details in a short blog post is difficult because such systems are inherently complex. However, we can sketch the core concepts:</p>
 <p><strong>CP System (Conceptual):</strong></p>
 <p>Imagine a simple key-value store using a distributed consensus algorithm like Paxos:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conceptual illustration only - Paxos implementation omitted</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DistributedKVStore:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nodes):</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.nodes <span class="op">=</span> nodes  <span class="co"># List of node addresses</span></span>
@@ -152,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This code hints at the use of a distributed consensus algorithm to guarantee consistency even during a partition (at the cost of availability during the partition).</p>
 <p><strong>AP System (Conceptual):</strong></p>
 <p>A simple key-value store with eventual consistency:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conceptual illustration - Conflict resolution mechanism omitted</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EventualKVStore:</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nodes):</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.nodes <span class="op">=</span> nodes <span class="co"># List of node addresses</span></span>
@@ -168,8 +167,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Read from the local node</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.local_store.get(key)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here, data is written locally, and eventually propagated – leading to availability but potential inconsistency until propagation is complete.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The CAP theorem presents a fundamental trade-off in designing distributed systems. Choosing between consistency, availability, and partition tolerance depends heavily on the specific needs of the application. Understanding these trade-offs is critical for building robust and reliable distributed systems. The choice often involves adopting specific algorithms and techniques to manage consistency and availability in the face of inevitable network partitions.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

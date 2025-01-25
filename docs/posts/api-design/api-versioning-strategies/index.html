@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>API Versioning Strategies – System Design Handbook</title>
+<title>API Versioning Strategies – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="API Versioning Strategies – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="API Versioning Strategies – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,7 +54,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="api-versioning-strategies-a-deep-dive">API Versioning Strategies: A Deep Dive</h1>
 <p>API versioning is a crucial aspect of API design and maintenance. As your API evolves and adds new features or makes breaking changes, you need a robust strategy to manage different versions concurrently, ensuring backwards compatibility for existing clients while allowing for progress. Choosing the right strategy depends on factors like your API’s complexity, anticipated growth, and the technical capabilities of your clients. This post explores several common API versioning strategies, their pros and cons, and provides examples.</p>
 <h2 id="uri-versioning" class="anchored">1. URI Versioning</h2>
 <p>This is the most common and arguably simplest approach. You incorporate the API version directly into the URI. This makes it clear which version of the API a client is using.</p>
@@ -63,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
 <li><code>/v1/users</code> (Version 1 of the user endpoint)</li>
 <li><code>/v2/users</code> (Version 2 of the user endpoint)</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -103,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In this method, the API version is specified in an HTTP header, typically <code>Accept</code> or a custom header like <code>API-Version</code>.</p>
 <p><strong>Example (using <code>Accept</code> header):</strong></p>
 <pre class="http"><code>Accept: application/vnd.yourcompany.v1+json</code></pre>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -140,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The API version is passed as a query parameter in the URI.</p>
 <p><strong>Example:</strong></p>
 <p><code>/users?version=2</code></p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -193,8 +192,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Compatibility:</strong> Consider the capabilities of your clients.</li>
 </ul>
 <p>Often, a hybrid approach can be beneficial. For instance, you might use URI versioning for major version changes and header versioning for minor updates within a major version.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored four common API versioning strategies: URI versioning, header versioning, query parameter versioning, and custom header versioning using <code>API-Version</code>. Each strategy has its own advantages and disadvantages, and the best choice depends on factors such as complexity, scalability needs, and client capabilities. Careful consideration of these factors is crucial for building a maintainable and robust API.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

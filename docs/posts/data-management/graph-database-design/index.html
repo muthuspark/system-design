@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Graph Database Design – System Design Handbook</title>
+<title>Graph Database Design – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Graph Database Design – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Graph Database Design – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,7 +54,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="graph-database-design-a-deep-dive">Graph Database Design: A Deep Dive</h1>
 <p>Graph databases are becoming increasingly popular for applications requiring complex relationships between data. Unlike relational databases which rely on tables and joins, graph databases represent data as nodes and edges, making it highly efficient to query and traverse relationships. However, designing an effective graph database schema requires careful consideration of various factors. This post will delve into the key aspects of graph database design, providing practical examples and best practices.</p>
 <h2 id="understanding-the-fundamentals" class="anchored">Understanding the Fundamentals</h2>
 <p>Before diving into design specifics, let’s review the fundamental components of a graph database:</p>
@@ -89,17 +88,31 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[User{name: "Alice", age: 30}] --&gt; B(Post{content: "Hello World!"});
-    A --&gt; C[User{name: "Bob", age: 25}];
-    C --&gt; B;
-    B --&gt; D(Comment{text: "Great post!"});
+<pre class="mermaid mermaid-js">graph TD
+    Alice[("User&lt;br/&gt;name: Alice&lt;br/&gt;age: 30")]
+    Bob[("User&lt;br/&gt;name: Bob&lt;br/&gt;age: 25")]
+    Post[("Post&lt;br/&gt;content: Hello World!")]
+    Comment[("Comment&lt;br/&gt;text: Great post!")]
+    
+    Alice --&gt;|POSTED| Post
+    Alice --&gt;|FOLLOWS| Bob
+    Bob --&gt;|LIKED| Post
+    Bob --&gt;|WROTE| Comment
+    Comment --&gt;|ON| Post
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The graph represents a simple social network database structure with four key nodes:</p>
+<ol type="1">
+<li>Two User nodes (Alice and Bob) with properties for name and age</li>
+<li>A Post node containing content “Hello World!”</li>
+<li>A Comment node with the text “Great post!”</li>
+</ol>
+<p>The relationships between these nodes show: - Alice POSTED the “Hello World!” post - Alice FOLLOWS Bob - Bob LIKED the post - Bob WROTE a comment - The comment is linked to the post via an ON relationship</p>
+<p>The graph uses circles (depicted by double parentheses in Mermaid) to represent nodes, with arrows showing directed relationships between them, similar to how a graph database like Neo4j would store this social network data.</p>
 <p><strong>4. Model Relationships Carefully:</strong></p>
 <p>Consider the directionality of your relationships. Is the relationship unidirectional (e.g., “follows”) or bidirectional (e.g., “friends with”)? This impacts query performance and data consistency. Bidirectional relationships are often represented with two separate edges in a property graph.</p>
 <p><strong>5. Consider Data Partitioning and Indexing:</strong></p>
@@ -111,37 +124,130 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-  A[Movie{title: "The Matrix", year: 1999}] --&gt; B(Actor{name: "Keanu Reeves"});
-  A --&gt; C(Director{name: "Lana Wachowski"});
-  A --&gt; D(Actor{name: "Carrie-Anne Moss"});
-  E[Movie{title: "Speed", year: 1994}] --&gt; B;
-  E --&gt; F(Director{name: "Jan de Bont"});
-  B --ACTED_IN--&gt; A;
-  B --ACTED_IN--&gt; E;
-  C --DIRECTED--&gt; A;
-  F --DIRECTED--&gt; E;
-
+<pre class="mermaid mermaid-js">graph TD
+    Matrix[("Movie&lt;br/&gt;title: The Matrix&lt;br/&gt;year: 1999&lt;br/&gt;genre: Sci-Fi&lt;br/&gt;rating: 8.7")]
+    Speed[("Movie&lt;br/&gt;title: Speed&lt;br/&gt;year: 1994&lt;br/&gt;genre: Action&lt;br/&gt;rating: 7.2")]
+    
+    Keanu[("Actor&lt;br/&gt;name: Keanu Reeves&lt;br/&gt;born: 1964&lt;br/&gt;nationality: Canadian")]
+    Carrie[("Actor&lt;br/&gt;name: Carrie-Anne Moss&lt;br/&gt;born: 1967&lt;br/&gt;nationality: Canadian")]
+    
+    Lana[("Director&lt;br/&gt;name: Lana Wachowski&lt;br/&gt;born: 1965&lt;br/&gt;awards: Academy Award")]
+    Jan[("Director&lt;br/&gt;name: Jan de Bont&lt;br/&gt;born: 1943&lt;br/&gt;nationality: Dutch")]
+    
+    Keanu --&gt;|ACTED_IN| Matrix
+    Keanu --&gt;|ACTED_IN| Speed
+    Carrie --&gt;|ACTED_IN| Matrix
+    
+    Lana --&gt;|DIRECTED| Matrix
+    Jan --&gt;|DIRECTED| Speed
+    
+    Matrix --&gt;|RELEASED| 1999
+    Speed --&gt;|RELEASED| 1994
+    
+    Matrix --&gt;|GENRE| SciFi["Genre: Sci-Fi"]
+    Speed --&gt;|GENRE| Action["Genre: Action"]
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The graph shows:</p>
+<ol type="1">
+<li>Nodes:</li>
+</ol>
+<ul>
+<li>Movies: Added genre and rating properties</li>
+<li>Actors: Added birth year and nationality</li>
+<li>Directors: Added biographical details and awards</li>
+</ul>
+<ol start="2" type="1">
+<li>Relationships:</li>
+</ol>
+<ul>
+<li><code>ACTED_IN</code>: Connects actors to movies</li>
+<li><code>DIRECTED</code>: Links directors to their films</li>
+<li><code>RELEASED</code>: Shows movie release years</li>
+<li><code>GENRE</code>: Categorizes movies</li>
+</ul>
+<ol start="3" type="1">
+<li>Additional features:</li>
+</ol>
+<ul>
+<li>Clear node separation by type (Movies, Actors, Directors)</li>
+<li>Temporal relationships through release years</li>
+<li>Genre classification</li>
+<li>Hierarchical layout for better readability</li>
+</ul>
 <p><strong>6. Iterate and Refine:</strong></p>
 <p>Graph database design is an iterative process. As you develop your application, you might need to adjust your schema to accommodate new requirements or optimize performance.</p>
-<h2 id="code-example-neo4j-cypher" class="anchored">Code Example (Neo4j Cypher):</h2>
-<p>Let’s create some nodes and edges in Neo4j using Cypher:</p>
-<pre class="cypher"><code>// Create a user node
-CREATE (user:User {name: "Alice", age: 30});
-
-// Create a post node
-CREATE (post:Post {content: "Hello World!"});
-
-// Create a relationship between the user and the post
-CREATE (user)-[:CREATED]-&gt;(post);</code></pre>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Effective graph database design requires a careful understanding of your data, its relationships, and the chosen graph model. By following a systematic approach, identifying entities and relationships, selecting appropriate node and edge labels, and considering data partitioning and indexing, you can build a robust and performant graph database that effectively manages complex data interconnections. Remember that iterative refinement is key to a successful graph database schema.</p>
+<h2 id="neo4j-building-your-first-graph-database" class="anchored">Neo4j: Building Your First Graph Database</h2>
+<p>Neo4j, a leading graph database platform, uses Cypher as its query language to create and manipulate graph structures. This guide walks through essential concepts and practical examples.</p>
+<h3 id="core-concepts" class="anchored">Core Concepts</h3>
+<h4 id="nodes-and-properties" class="anchored">Nodes and Properties</h4>
+<p>Nodes represent entities in your graph. In Neo4j, nodes can have labels (types) and properties:</p>
+<pre class="cypher"><code>CREATE (john:Person {name: 'John Doe', age: 30})</code></pre>
+<p>This creates a node labeled ‘Person’ with name and age properties.</p>
+<h4 id="relationships" class="anchored">Relationships</h4>
+<p>Relationships connect nodes and can carry properties. They’re always directed and typed:</p>
+<pre class="cypher"><code>MATCH (john:Person {name: 'John Doe'})
+MATCH (post:Post)
+CREATE (john)-[:POSTED]-&gt;(post)</code></pre>
+<h3 id="building-your-first-social-graph" class="anchored">Building Your First Social Graph</h3>
+<p>Let’s build a simple social network with users, posts, and interactions.</p>
+<h4 id="creating-the-graph-structure" class="anchored">1. Creating the Graph Structure</h4>
+<p>First, create user nodes:</p>
+<pre class="cypher"><code>CREATE (john:Person {name: 'John Doe', age: 30})
+CREATE (jane:Person {name: 'Jane Smith', age: 28})</code></pre>
+<p>Add a post:</p>
+<pre class="cypher"><code>CREATE (post:Post {
+    content: 'Hello Graph World!',
+    timestamp: datetime()
+})</code></pre>
+<h4 id="establishing-relationships" class="anchored">2. Establishing Relationships</h4>
+<p>Connect users and content:</p>
+<pre class="cypher"><code>MATCH (john:Person {name: 'John Doe'})
+MATCH (jane:Person {name: 'Jane Smith'})
+MATCH (post:Post)
+CREATE (john)-[:POSTED]-&gt;(post)
+CREATE (jane)-[:LIKED]-&gt;(post)
+CREATE (john)-[:FOLLOWS]-&gt;(jane)</code></pre>
+<h4 id="querying-the-graph" class="anchored">3. Querying the Graph</h4>
+<p>Find John’s posts:</p>
+<pre class="cypher"><code>MATCH (p:Person {name: 'John Doe'})-[:POSTED]-&gt;(post:Post)
+RETURN p.name as Author, post.content as Content</code></pre>
+<p>Find who liked John’s posts:</p>
+<pre class="cypher"><code>MATCH (liker:Person)-[:LIKED]-&gt;(:Post)&lt;-[:POSTED]-(poster:Person {name: 'John Doe'})
+RETURN liker.name as Liker, poster.name as Poster</code></pre>
+<h3 id="performance-optimization" class="anchored">Performance Optimization</h3>
+<h4 id="indexing" class="anchored">Indexing</h4>
+<p>Create indexes for frequently queried properties:</p>
+<pre class="cypher"><code>CREATE INDEX person_name FOR (p:Person) ON (p.name)</code></pre>
+<h4 id="constraints" class="anchored">Constraints</h4>
+<p>Ensure data integrity with constraints:</p>
+<pre class="cypher"><code>CREATE CONSTRAINT person_name_unique 
+FOR (p:Person) REQUIRE p.name IS UNIQUE</code></pre>
+<h3 id="best-practices" class="anchored">Best Practices</h3>
+<ol type="1">
+<li><strong>Model Around Questions</strong>: Design your graph structure based on the questions you need to answer.</li>
+<li><strong>Use Meaningful Labels</strong>: Choose descriptive names for node labels and relationship types.</li>
+<li><strong>Property Placement</strong>: Store properties on nodes unless they’re specific to relationships.</li>
+<li><strong>Indexing Strategy</strong>: Index properties used in WHERE clauses and relationship lookups.</li>
+</ol>
+<h3 id="common-patterns" class="anchored">Common Patterns</h3>
+<h4 id="friend-of-friend-queries" class="anchored">Friend-of-Friend Queries</h4>
+<p>Find mutual connections:</p>
+<pre class="cypher"><code>MATCH (p1:Person)-[:FOLLOWS]-&gt;(p2:Person)-[:FOLLOWS]-&gt;(p3:Person)
+WHERE p1.name = 'John Doe' AND p1 &lt;&gt; p3
+RETURN DISTINCT p3.name as FriendOfFriend</code></pre>
+<h4 id="aggregation" class="anchored">Aggregation</h4>
+<p>Count interactions per user:</p>
+<pre class="cypher"><code>MATCH (p:Person)-[:POSTED]-&gt;(post:Post)&lt;-[:LIKED]-(liker:Person)
+RETURN p.name as Poster,
+       count(DISTINCT post) as PostCount,
+       collect(DISTINCT liker.name) as Likers
+ORDER BY PostCount DESC</code></pre>
+<p>Neo4j’s graph database provides a powerful way to model and query connected data. The Cypher query language offers an intuitive syntax for graph operations, making it accessible for developers familiar with SQL. As you build more complex applications, explore Neo4j’s rich ecosystem of tools and libraries for visualization, analysis, and integration.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

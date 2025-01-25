@@ -3,8 +3,7 @@ title: "Two-Phase Commit Protocol"
 categories: [ "Distributed Systems" ]
 ---
 
-
-The Two-Phase Commit (2PC) protocol is a critical component in distributed systems, ensuring data consistency across multiple databases or resources when performing transactions that span multiple nodes.  Imagine a scenario where you're transferring money between two bank accounts located on different servers.  You wouldn't want one account debited without the other being credited, leading to data corruption and financial inconsistencies. This is where 2PC comes in to save the day.  It guarantees atomicity – either all participating nodes successfully commit the transaction, or none do.  Let's dive deep into how it works.
+The Two-Phase Commit (2PC) protocol is a critical component in distributed systems, ensuring data consistency across multiple databases or resources when performing transactions that span multiple nodes. Imagine a scenario where you're transferring money between two bank accounts located on different servers. You wouldn't want one account debited without the other being credited, leading to data corruption and financial inconsistencies. This is where 2PC comes in to save the day. It guarantees atomicity – either all participating nodes successfully commit the transaction, or none do. Let's dive deep into how it works.
 
 ## Phases of 2PC
 
@@ -12,56 +11,143 @@ The Two-Phase Commit protocol, as its name suggests, involves two distinct phase
 
 **Phase 1: The Prepare Phase**
 
-1. **Transaction Manager (TM) initiates:** A designated coordinator, often called the Transaction Manager (TM), initiates the transaction.  It sends a "prepare" message to each participating node (also known as Resource Managers or RMs).
+1.  **Transaction Manager (TM) initiates:** A designated coordinator, often called the Transaction Manager (TM), initiates the transaction. It sends a "prepare" message to each participating node (also known as Resource Managers or RMs).
 
-2. **Resource Managers (RMs) prepare:** Each RM receives the "prepare" message. It checks if it can successfully commit the changes locally without encountering any errors (e.g., disk space issues, deadlocks).
+2.  **Resource Managers (RMs) prepare:** Each RM receives the "prepare" message. It checks if it can successfully commit the changes locally without encountering any errors (e.g., disk space issues, deadlocks).
 
-3. **RM Response:**  The RM sends a "vote" back to the TM.  This vote is either:
-    * **Yes (Vote Commit):**  The RM can successfully commit the changes.
-    * **No (Vote Abort):** The RM encountered an issue and cannot commit.
+3.  **RM Response:** The RM sends a "vote" back to the TM. This vote is either:
 
-    ```{mermaid}
-    graph LR
-    A[Transaction Manager (TM)] --> B(Prepare Message);
-    B --> C{Resource Manager 1};
-    B --> D{Resource Manager 2};
-    C --> E[Vote: Yes/No];
-    D --> F[Vote: Yes/No];
-    E --> A;
-    F --> A;
-    ```
+    -   **Yes (Vote Commit):** The RM can successfully commit the changes.
+    -   **No (Vote Abort):** The RM encountered an issue and cannot commit.
 
+```{mermaid}
+sequenceDiagram
+    participant TM as Transaction Manager
+    participant RM1 as Resource Manager 1
+    participant RM2 as Resource Manager 2
+
+    Note over TM,RM2: Phase 1: Prepare
+    TM->>RM1: Prepare
+    TM->>RM2: Prepare
+    RM1-->>TM: Vote Yes
+    RM2-->>TM: Vote Yes
+
+    Note over TM,RM2: Phase 2: Commit
+    TM->>RM1: Commit
+    TM->>RM2: Commit
+    RM1-->>TM: Acknowledgment
+    RM2-->>TM: Acknowledgment
+
+    Note over TM: Transaction Complete
+```
+
+The Two-Phase Commit diagram illustrates the distributed transaction protocol:
+
+Phase 1 (Prepare):
+
+- Transaction Manager (TM) sends prepare message to both Resource Managers (RMs)
+- Each RM verifies if it can commit its part
+- RMs respond with "Vote Yes" if ready to commit
+- If any RM votes "No", TM would initiate rollback
+
+Phase 2 (Commit):
+
+- After receiving all "Yes" votes, TM sends commit messages
+- RMs finalize their transactions
+- RMs send acknowledgments to TM
+- Transaction completes successfully
+
+Key Points:
+
+- Ensures atomic transactions across distributed systems
+- All participants must agree before committing
+- Protocol handles failure scenarios (though not shown in diagram)
+- Provides consistency but can impact performance due to waiting for all responses
 
 **Phase 2: The Commit/Abort Phase**
 
-1. **TM Decision:** The TM collects all the votes from the RMs.  If all votes are "Yes," it proceeds to commit; otherwise, it aborts the transaction.
+1.  **TM Decision:** The TM collects all the votes from the RMs. If all votes are "Yes," it proceeds to commit; otherwise, it aborts the transaction.
 
-2. **Commit/Abort Messages:**  The TM sends a "commit" message to all RMs if all votes were "Yes." If any vote was "No," or if the TM itself fails, it sends an "abort" message.
+2.  **Commit/Abort Messages:** The TM sends a "commit" message to all RMs if all votes were "Yes." If any vote was "No," or if the TM itself fails, it sends an "abort" message.
 
-3. **RM Action:**  RMs execute the corresponding commit or abort operation based on the message received from the TM.
+3.  **RM Action:** RMs execute the corresponding commit or abort operation based on the message received from the TM.
 
+```{mermaid}
+sequenceDiagram
+    participant TM as Transaction Manager
+    participant RM1 as Resource Manager 1
+    participant RM2 as Resource Manager 2
 
-    ```{mermaid}
-    graph LR
-    A[Transaction Manager (TM)] --> B{All Votes Yes?};
-    B -- Yes --> C(Commit Message);
-    B -- No --> D(Abort Message);
-    C --> E{Resource Manager 1};
-    C --> F{Resource Manager 2};
-    D --> G{Resource Manager 1};
-    D --> H{Resource Manager 2};
-    E --> I[Commit];
-    F --> J[Commit];
-    G --> K[Abort];
-    H --> L[Abort];
-    ```
+    rect rgb(240, 255, 240)
+        Note over TM,RM2: Success Scenario
+        TM->>RM1: Prepare
+        TM->>RM2: Prepare
+        RM1-->>TM: Vote Yes
+        RM2-->>TM: Vote Yes
+        Note over TM: Decision: Commit
+        TM->>RM1: Commit
+        TM->>RM2: Commit
+        RM1-->>TM: Ack
+        RM2-->>TM: Ack
+        Note over TM: Transaction Complete
+    end
 
+    rect rgb(255, 240, 240)
+        Note over TM,RM2: Failure Scenario
+        TM->>RM1: Prepare
+        TM->>RM2: Prepare
+        RM1-->>TM: Vote Yes
+        RM2-->>TM: Vote No
+        Note over TM: Decision: Abort
+        TM->>RM1: Abort
+        TM->>RM2: Abort
+        RM1-->>TM: Ack
+        RM2-->>TM: Ack
+        Note over TM: Transaction Aborted
+    end
+```
+
+Success Scenario (Green):
+
+1. Prepare Phase:
+
+   - TM sends prepare messages
+   - Both RMs vote Yes
+   - TM decides to commit
+
+2. Commit Phase:
+
+   - TM sends commit messages
+   - RMs execute changes
+   - RMs acknowledge completion
+
+Failure Scenario (Red):
+
+1. Prepare Phase:
+
+   - TM sends prepare messages
+   - RM1 votes Yes
+   - RM2 votes No
+   - TM decides to abort
+
+2. Abort Phase:
+
+   - TM sends abort messages
+   - RMs rollback changes
+   - RMs acknowledge abort
+
+Key Features:
+
+- Atomic: All operations either complete or none do
+- Consistent: All RMs must agree before committing
+- Isolated: Intermediate states not visible
+- Durable: Changes persist after completion
 
 ## Code Example (Conceptual Python)
 
 This is a simplified illustration, omitting error handling and network communication details for clarity:
 
-```python
+``` python
 class TransactionManager:
     def prepare(self, resource_managers):
         votes = {}
@@ -91,19 +177,12 @@ votes = transaction_manager.prepare(resource_managers)
 transaction_manager.commit_or_abort(votes)
 ```
 
-
 ## Challenges and Limitations of 2PC
 
 While 2PC ensures atomicity, it's not without its drawbacks:
 
-* **Blocking:** RMs are blocked until the TM decides whether to commit or abort. This can lead to performance bottlenecks, especially in large distributed systems.
-* **Single Point of Failure:** The TM is a single point of failure. If the TM crashes during the process, the transaction might remain in an indeterminate state, requiring manual intervention.
-* **Network Partitions:** Network issues can disrupt communication between the TM and RMs, resulting in potential inconsistencies.
+-   **Blocking:** RMs are blocked until the TM decides whether to commit or abort. This can lead to performance bottlenecks, especially in large distributed systems.
+-   **Single Point of Failure:** The TM is a single point of failure. If the TM crashes during the process, the transaction might remain in an indeterminate state, requiring manual intervention.
+-   **Network Partitions:** Network issues can disrupt communication between the TM and RMs, resulting in potential inconsistencies.
 
-These limitations have led to the development of alternative protocols like Three-Phase Commit (3PC) and Paxos, which address some of the challenges of 2PC.  However, 2PC remains a widely used and understood approach for ensuring data consistency in distributed transactions.
-
-
-## Summary
-
-The Two-Phase Commit protocol is a crucial mechanism for maintaining data consistency in distributed transactions. It works by coordinating multiple resource managers through a prepare phase and a commit/abort phase, ensuring atomicity. While effective, 2PC has limitations including blocking, single point of failure vulnerability, and susceptibility to network partitions.  These issues highlight the trade-offs between consistency and performance in distributed systems.
-
+These limitations have led to the development of alternative protocols like Three-Phase Commit (3PC) and Paxos, which address some of the challenges of 2PC. However, 2PC remains a widely used and understood approach for ensuring data consistency in distributed transactions.

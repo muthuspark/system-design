@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CI/CD Pipeline Design – System Design Handbook</title>
+<title>CI/CD Pipeline Design – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="CI/CD Pipeline Design – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="CI/CD Pipeline Design – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="cicd-pipeline-design-a-deep-dive">CI/CD Pipeline Design: A Deep Dive</h1>
 <p>Continuous Integration/Continuous Delivery (CI/CD) pipelines are the backbone of modern software development. They automate the process of building, testing, and deploying software, enabling faster release cycles, improved quality, and increased developer productivity. However, designing an effective CI/CD pipeline requires careful consideration of various factors, from choosing the right tools to optimizing the pipeline’s stages for speed and reliability. This post delves into the key aspects of CI/CD pipeline design, providing practical guidance and illustrative examples.</p>
 <h2 id="understanding-the-core-components" class="anchored">Understanding the Core Components</h2>
 <p>A typical CI/CD pipeline consists of several key stages:</p>
@@ -113,29 +112,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Cloud Platforms:</strong> AWS, Azure, GCP offer various services for CI/CD.</li>
 </ul>
 <h3 id="design-the-pipeline-stages" class="anchored">3. Design the Pipeline Stages</h3>
-<p>Let’s illustrate a sample pipeline with a Mermaid diagram:</p>
+<p>Let’s illustrate a sample pipeline with a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Source Code (Git)] --&gt; B{Build (Maven)};
-    B --&gt; C[Unit Tests (JUnit)];
-    C --&gt; D{Integration Tests};
-    D --&gt; E[Code Analysis (SonarQube)];
-    E --&gt; F{Deploy to Staging};
-    F --&gt; G[Staging Tests];
-    G -- Success --&gt; H[Deploy to Production];
-    G -- Failure --&gt; I[Rollback];
-    H --&gt; J[Monitoring (Prometheus/Grafana)];
+    subgraph Build
+        A[Git] --&gt; B[Build]
+        B --&gt; C[Unit Tests]
+        C --&gt; D[Integration]
+    end
+    
+    subgraph Quality
+        D --&gt; E[SonarQube]
+        E --&gt; F[Staging]
+        F --&gt; G[Tests]
+    end
+    
+    subgraph Production
+        G --&gt;|Pass| H[Prod]
+        G --&gt;|Fail| I[Rollback]
+        H --&gt; J[Monitor]
+    end
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>This diagram showcases a simple pipeline. More complex pipelines might involve additional stages like security scanning, performance testing, and canary deployments.</p>
+<p>This diagram shows a modern CI/CD (Continuous Integration/Continuous Deployment) pipeline broken into three main stages:</p>
+<p><strong>1. Build</strong></p>
+<ul>
+<li>Starts with code from Git</li>
+<li>Compiles the application</li>
+<li>Runs unit and integration tests</li>
+</ul>
+<p><strong>2. Quality</strong></p>
+<ul>
+<li>Analyzes code quality via SonarQube</li>
+<li>Deploys to staging environment</li>
+<li>Runs staging tests</li>
+</ul>
+<p><strong>3. Production</strong></p>
+<ul>
+<li>If tests pass, deploys to production</li>
+<li>If tests fail, triggers rollback</li>
+<li>Monitors production environment</li>
+</ul>
+<p>The flow ensures code quality and stability before reaching production, with automated testing and safety measures at each stage</p>
 <h3 id="implement-your-pipeline" class="anchored">4. Implement Your Pipeline</h3>
 <p>Let’s look at a simple example using GitHub Actions:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> CI/CD Pipeline</span></span>
@@ -176,8 +202,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A crucial aspect of CI/CD is handling failures gracefully. Implement rollback mechanisms to revert to a previous stable version if a deployment fails. Automated alerts should notify the team of failures, allowing for quick intervention.</p>
 <h2 id="optimizing-for-speed-and-efficiency" class="anchored">Optimizing for Speed and Efficiency</h2>
 <p>Optimize your pipeline for speed and efficiency. Parallel processing, caching, and efficient testing strategies can significantly reduce pipeline execution time.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Designing a CI/CD pipeline involves careful planning and selection of appropriate tools. This post outlined the key components of a CI/CD pipeline, provided a step-by-step guide for designing one, and showcased examples using Mermaid diagrams and GitHub Actions. Remember to focus on your goals, choose the right tools, and prioritize automation and monitoring for a successful CI/CD implementation.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

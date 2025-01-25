@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>IoT Architecture – System Design Handbook</title>
+<title>IoT Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="IoT Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="IoT Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="decoding-iot-architecture-a-deep-dive">Decoding IoT Architecture: A Deep Dive</h1>
 <p>The Internet of Things (IoT) has rapidly evolved from a futuristic concept to a ubiquitous reality, transforming how we interact with our environment. Understanding the underlying architecture of an IoT system is crucial for developers, businesses, and anyone seeking to leverage its potential. This post delves deep into the different architectural patterns, components, and considerations involved in building robust and scalable IoT solutions.</p>
 <h2 id="core-components-of-iot-architecture" class="anchored">Core Components of IoT Architecture</h2>
 <p>A typical IoT architecture comprises several key components, each playing a vital role in the overall system functionality. These components interact in a complex yet structured manner to collect, process, and utilize data from connected devices.</p>
@@ -158,22 +157,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> paho.mqtt.client <span class="im">as</span> mqtt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace with your AWS IoT Core credentials</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>aws_host <span class="op">=</span> <span class="st">"your_aws_endpoint"</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>aws_port <span class="op">=</span> <span class="dv">8883</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>aws_ca_path <span class="op">=</span> <span class="st">"path/to/your/root-CA.crt"</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>aws_cert_path <span class="op">=</span> <span class="st">"path/to/your/certificate.pem.crt"</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>aws_key_path <span class="op">=</span> <span class="st">"path/to/your/private.pem.key"</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an MQTT client</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> mqtt.Client()</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>client.tls_set(aws_ca_path, certfile<span class="op">=</span>aws_cert_path, keyfile<span class="op">=</span>aws_key_path)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>client.<span class="ex">connect</span>(aws_host, aws_port, <span class="dv">60</span>)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"temperature"</span>: <span class="dv">25</span>, <span class="st">"humidity"</span>: <span class="dv">60</span>}</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Publish the data to an AWS IoT Core topic</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>client.publish(<span class="st">"my/topic"</span>, json.dumps(data))</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Data published successfully!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -194,8 +193,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Horizontal Scalability:</strong> Design the system to easily scale horizontally by adding more devices, gateways, or servers as needed.</li>
 <li><strong>Standardization:</strong> Use standard protocols and interfaces to improve interoperability and simplify integration with other systems.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This blog post provided a comprehensive overview of IoT architecture, covering its core components, common architectural patterns, a code example demonstrating interaction with a cloud platform, crucial security considerations, and guidelines for achieving scalability and maintainability. Understanding these aspects is essential for designing, developing, and deploying successful IoT solutions.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

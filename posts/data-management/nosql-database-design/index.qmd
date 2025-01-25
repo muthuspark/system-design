@@ -132,7 +132,5 @@ RETURN user, friend
 This query retrieves all friends of a user.
 
 
-## Summary
 
-Effective NoSQL database design requires understanding the strengths and limitations of different database types.  Choosing the right database and carefully structuring your data are key to building scalable and performant applications.  Consider factors like data structure, query patterns, scalability requirements, and schema evolution when designing your NoSQL database.  This post provided examples for key-value stores, document databases, column-family stores and graph databases, illustrating how data modeling techniques can optimize performance and maintain data integrity for various application needs.
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Master-Slave Architecture – System Design Handbook</title>
+<title>Master-Slave Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Master-Slave Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Master-Slave Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,28 +88,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="master-slave-architecture-a-deep-dive">Master-Slave Architecture: A Deep Dive</h1>
 <p>The master-slave architecture, also known as the primary-replica architecture, is a widely used database replication pattern. It involves a primary server (the master) handling all write operations and one or more secondary servers (the slaves) that replicate data from the master. This design offers several benefits, but also comes with its own set of limitations and challenges. This post will delve into the details of this architecture, exploring its advantages, disadvantages, and various implementation aspects.</p>
 <h2 id="how-master-slave-architecture-works" class="anchored">How Master-Slave Architecture Works</h2>
 <p>The core principle is simple: the master server is the single source of truth. All write operations – INSERT, UPDATE, DELETE – are directed exclusively to the master. The master then propagates these changes to the slave servers through a replication process. Slave servers, in turn, primarily handle read operations, thereby offloading the read load from the master. This distribution of workload improves performance and scalability, particularly for applications with a high read-to-write ratio.</p>
-<p>Here’s a visual representation using a Mermaid diagram:</p>
+<p>Here’s a visual representation using a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Master (Primary)] --&gt; B(Slave 1);
-    A --&gt; C(Slave 2);
-    A --&gt; D(Slave 3);
-    subgraph Read Operations
-        B -.-&gt; E[Read Requests];
-        C -.-&gt; E;
-        D -.-&gt; E;
+<pre class="mermaid mermaid-js">graph TD
+    Client[("Client Applications")]
+    LB["Load Balancer"]
+    Master[("Master DB&lt;br/&gt;Primary Node&lt;br/&gt;Handles Writes")]
+    S1[("Slave DB 1&lt;br/&gt;Read Replica")]
+    S2[("Slave DB 2&lt;br/&gt;Read Replica")]
+    S3[("Slave DB 3&lt;br/&gt;Read Replica")]
+    
+    Client --&gt;|Requests| LB
+    LB --&gt;|Write Queries| Master
+    LB --&gt;|Read Queries| S1
+    LB --&gt;|Read Queries| S2
+    LB --&gt;|Read Queries| S3
+    
+    Master --&gt;|Replication| S1
+    Master --&gt;|Replication| S2
+    Master --&gt;|Replication| S3
+    
+    subgraph "Write Operations"
+        Master
     end
-    subgraph Write Operations
-        E --&gt; A;
+    
+    subgraph "Read Operations"
+        S1
+        S2
+        S3
     end
+    
+    class Master master
+    class S1,S2,S3 slave
+    class Client client
+    class LB lb
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -117,13 +136,195 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This diagram shows the master server handling all write operations and distributing the data to multiple slave servers. Read operations are then directed to the slaves.</p>
-<h2 id="replication-methods" class="anchored">Replication Methods</h2>
-<p>Several methods are used to replicate data from the master to the slaves:</p>
+<p>Key components of the master-slave architecture:</p>
+<ol type="1">
+<li><p>Client Applications</p>
 <ul>
-<li><p><strong>Statement-Based Replication:</strong> The master sends the SQL statements executed to the slaves. This method is relatively simple to implement but can lead to inconsistencies if the statements rely on specific data values.</p></li>
-<li><p><strong>Row-Based Replication:</strong> The master sends the actual data changes (rows) to the slaves. This approach generally leads to better data consistency than statement-based replication.</p></li>
-<li><p><strong>Write-Ahead Logging (WAL):</strong> The master replicates the transaction logs (WAL) to the slaves. This ensures high data consistency and is widely used in many database systems.</p></li>
+<li>Entry point for all database requests</li>
+<li>Connect through load balancer</li>
+</ul></li>
+<li><p>Load Balancer</p>
+<ul>
+<li>Directs write operations to master</li>
+<li>Distributes read operations across slaves</li>
+<li>Ensures high availability</li>
+</ul></li>
+<li><p>Master Node</p>
+<ul>
+<li>Handles all write operations</li>
+<li>Maintains data consistency</li>
+<li>Replicates changes to slaves</li>
+</ul></li>
+<li><p>Slave Nodes</p>
+<ul>
+<li>Read-only replicas</li>
+<li>Receive updates from master</li>
+<li>Handle read queries for load distribution</li>
+<li>Provide redundancy and fault tolerance</li>
+</ul></li>
+</ol>
+<p>Benefits:</p>
+<ul>
+<li>Improved read performance through distribution</li>
+<li>High availability</li>
+<li>Data redundancy</li>
+<li>Scalable read operations</li>
 </ul>
+<p>Limitations:</p>
+<ul>
+<li>Write operations limited to master capacity</li>
+<li>Replication lag possible</li>
+<li>Complex failover mechanisms needed</li>
+</ul>
+<h2 id="database-replication-methods" class="anchored">Database Replication Methods</h2>
+<p>Replication ensures data consistency across distributed database systems. Three primary methods exist for replicating data from primary (master) to secondary (slave) nodes:</p>
+<h3 id="statement-based-replication-sbr" class="anchored">1. Statement-Based Replication (SBR)</h3>
+<p>Primary node sends SQL statements to replicas.</p>
+<h4 id="implementation-example" class="anchored">Implementation Example</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- On Primary</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">BEGIN</span> <span class="kw">TRANSACTION</span>;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> users (name, email) <span class="kw">VALUES</span> (<span class="st">'John'</span>, <span class="st">'john@example.com'</span>);</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">UPDATE</span> products <span class="kw">SET</span> stock <span class="op">=</span> stock <span class="op">-</span> <span class="dv">1</span> <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="dv">100</span>;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">COMMIT</span>;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- Replicated to secondaries with transaction boundaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 id="advantages" class="anchored">Advantages</h4>
+<ul>
+<li>Minimal network bandwidth consumption</li>
+<li>Human-readable logs for debugging</li>
+<li>Maintains stored procedures and triggers</li>
+<li>Smaller binary logs</li>
+</ul>
+<h4 id="limitations" class="anchored">Limitations</h4>
+<ul>
+<li>Issues with non-deterministic functions (RAND(), UUID(), NOW())</li>
+<li>Potential inconsistencies with concurrent transactions</li>
+<li>Problems with AUTO_INCREMENT columns</li>
+<li>LIMIT operations may produce varying results</li>
+</ul>
+<h3 id="row-based-replication-rbr" class="anchored">2. Row-Based Replication (RBR)</h3>
+<p>Primary node replicates actual data modifications.</p>
+<h4 id="implementation-example-1" class="anchored">Implementation Example</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Binary log format</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">BEGIN</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">Table</span>: users</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Operation: <span class="kw">INSERT</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">Row</span>: {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">id</span>: <span class="dv">1</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        name: <span class="st">'John'</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        email: <span class="st">'john@example.com'</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        created_at: <span class="st">'2024-01-25 10:15:00'</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">Table</span>: products</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    Operation: <span class="kw">UPDATE</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">Before</span>: {</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">id</span>: <span class="dv">100</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        stock: <span class="dv">10</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        last_updated: <span class="st">'2024-01-25 10:14:59'</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">After</span>: {</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">id</span>: <span class="dv">100</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        stock: <span class="dv">9</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        last_updated: <span class="st">'2024-01-25 10:15:00'</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="kw">COMMIT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 id="advantages-1" class="anchored">Advantages</h4>
+<ul>
+<li>Guaranteed consistency across replicas</li>
+<li>Accurate handling of non-deterministic operations</li>
+<li>Better support for complex queries</li>
+<li>Safe for all SQL operations</li>
+</ul>
+<h4 id="limitations-1" class="anchored">Limitations</h4>
+<ul>
+<li>Increased network bandwidth usage</li>
+<li>Larger binary logs</li>
+<li>Complex debugging due to binary format</li>
+<li>Higher memory usage during large transactions</li>
+</ul>
+<h3 id="write-ahead-logging-wal" class="anchored">3. Write-Ahead Logging (WAL)</h3>
+<p>Records all changes in transaction logs before modifying the database.</p>
+<h4 id="implementation-example-2" class="anchored">Implementation Example</h4>
+<pre class="plaintext"><code># WAL Entry Structure
+LSN: 1234                           # Log Sequence Number
+XID: T123                           # Transaction ID
+Timestamp: 2024-01-25 10:15:00.123  # Microsecond precision
+Operation: INSERT
+Table: users
+Schema: public
+Columns: (id, name, email, created_at)
+Values: (1, 'John', 'john@example.com', '2024-01-25 10:15:00')
+Previous LSN: 1233                  # For rollback operations
+Checksum: 0x1A2B3C4D               # Data integrity verification</code></pre>
+<h4 id="components" class="anchored">Components</h4>
+<ol type="1">
+<li><strong>Log Records</strong>
+<ul>
+<li>Transaction boundaries (BEGIN, COMMIT, ABORT)</li>
+<li>Data modifications (INSERT, UPDATE, DELETE)</li>
+<li>System events (Checkpoint, Configuration changes)</li>
+<li>Metadata (Schema changes, Index operations)</li>
+</ul></li>
+<li><strong>LSN Management</strong>
+<ul>
+<li>Monotonically increasing sequence</li>
+<li>Used for:
+<ul>
+<li>Recovery point identification</li>
+<li>Replication progress tracking</li>
+<li>Consistency verification</li>
+<li>Gap detection</li>
+</ul></li>
+</ul></li>
+<li><strong>Checkpoint Processing</strong>
+<ul>
+<li>Periodic consistency points</li>
+<li>Dirty page flushing</li>
+<li>Transaction state preservation</li>
+<li>Recovery time optimization</li>
+</ul></li>
+</ol>
+<h4 id="advantages-2" class="anchored">Advantages</h4>
+<ul>
+<li>ACID compliance guarantee</li>
+<li>Zero data loss on crashes</li>
+<li>Point-in-time recovery capability</li>
+<li>Efficient crash recovery</li>
+<li>Transaction atomicity</li>
+<li>Minimal performance overhead</li>
+<li>Built-in integrity checking</li>
+</ul>
+<h3 id="best-practices" class="anchored">Best Practices</h3>
+<ol type="1">
+<li><p><strong>Replication Method Selection</strong></p>
+<ul>
+<li>Use RBR for strong consistency requirements</li>
+<li>Consider SBR for minimal bandwidth usage</li>
+<li>Implement WAL for critical data systems</li>
+</ul></li>
+<li><p><strong>Monitoring</strong></p>
+<ul>
+<li>Track replication lag</li>
+<li>Monitor network bandwidth</li>
+<li>Check consistency regularly</li>
+<li>Verify transaction throughput</li>
+</ul></li>
+<li><p><strong>Configuration</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primary node configuration</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">sync_binlog </span><span class="ot">=</span><span class="st"> 1                      # Ensures durability</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">innodb_flush_log_at_trx_commit </span><span class="ot">=</span><span class="st"> 1   # ACID compliance</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">binlog_format </span><span class="ot">=</span><span class="st"> ROW                  # For RBR</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="dt">max_binlog_size </span><span class="ot">=</span><span class="st"> 1G                 # Log file size limit</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dt">binlog_rows_query_log_events </span><span class="ot">=</span><span class="st"> ON    # Enhanced debugging</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Security</strong></p>
+<ul>
+<li>Encrypt replication traffic</li>
+<li>Use SSL/TLS certificates</li>
+<li>Implement access controls</li>
+<li>Regular security audits</li>
+</ul></li>
+</ol>
 <h2 id="advantages-of-master-slave-architecture" class="anchored">Advantages of Master-Slave Architecture</h2>
 <ul>
 <li><p><strong>Improved Read Performance:</strong> By offloading read operations to the slave servers, the master can focus on write operations, leading to significantly improved read performance.</p></li>
@@ -139,29 +340,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Complexity:</strong> Setting up and maintaining a master-slave configuration can be complex, requiring careful planning and monitoring.</p></li>
 <li><p><strong>Write limitations on Slaves:</strong> Slaves, by design, don’t typically accept write operations. This fundamental limitation needs to be accounted for in application design.</p></li>
 </ul>
-<h2 id="code-example-conceptual---database-specifics-vary" class="anchored">Code Example (Conceptual - Database Specifics Vary)</h2>
-<p>The specific code will depend heavily on the database system being used. However, the conceptual approach remains similar. Assume a simple Python script interacting with a hypothetical database.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Master database connection</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>master_conn <span class="op">=</span> connect_to_database(<span class="st">"master_db"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert data into the master</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> master_conn.cursor()</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">"INSERT INTO my_table (col1, col2) VALUES (</span><span class="sc">%s</span><span class="st">, </span><span class="sc">%s</span><span class="st">)"</span>, (<span class="st">"value1"</span>, <span class="st">"value2"</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>master_conn.commit()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (Implicit replication handled by the database system)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Slave database connection</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>slave_conn <span class="op">=</span> connect_to_database(<span class="st">"slave_db"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from the slave</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> slave_conn.cursor()</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">"SELECT * FROM my_table"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This example demonstrates the basic concept: writing to the master and reading from the slave. The actual replication mechanism is handled by the database system itself and not explicitly shown in this code.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The master-slave architecture is a valuable approach for managing database workloads, especially in scenarios dominated by read operations. However, it’s crucial to carefully consider its limitations, including the single point of failure presented by the master server and potential replication lag. The choice of implementing a master-slave architecture should depend on the specific needs and constraints of the application. Proper planning, monitoring, and potentially more advanced architectures (like master-master or multi-master) should be explored to address the inherent weaknesses of this design.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

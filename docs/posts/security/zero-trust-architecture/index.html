@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Zero Trust Architecture – System Design Handbook</title>
+<title>Zero Trust Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Zero Trust Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Zero Trust Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="zero-trust-architecture-a-deep-dive-into-secure-network-design">Zero Trust Architecture: A Deep Dive into Secure Network Design</h1>
 <p>The modern network landscape is constantly evolving, with increasingly sophisticated threats emerging daily. Traditional perimeter-based security models, which rely on a “trust but verify” approach, are proving inadequate in this environment. Enter Zero Trust Architecture (ZTA), a security framework that shifts the paradigm from implicit trust to explicit verification. This post will explore ZTA in detail, examining its core principles, components, benefits, and implementation considerations.</p>
 <h2 id="the-core-principles-of-zero-trust" class="anchored">The Core Principles of Zero Trust</h2>
 <p>Zero Trust operates on the fundamental principle of “never trust, always verify.” This means that no user or device is inherently trusted, regardless of its location—inside or outside the network perimeter. Access to resources is granted based on continuous verification of identity, device posture, and context. This contrasts sharply with traditional network security, which often grants broad access to users once they are within the network’s perimeter.</p>
@@ -110,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Data Loss Prevention (DLP):</strong> DLP tools monitor and prevent sensitive data from leaving the network without authorization.</li>
 <li><strong>Security Information and Event Management (SIEM):</strong> SIEM systems collect and analyze security logs from various sources to detect and respond to threats.</li>
 </ul>
-<h2 id="illustrative-mermaid-diagram-a-simplified-zta-architecture" class="anchored">Illustrative Mermaid Diagram: A Simplified ZTA Architecture</h2>
+<h2 id="illustrative-diagram-a-simplified-zta-architecture" class="anchored">Illustrative Diagram: A Simplified ZTA Architecture</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -136,10 +135,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>This diagram shows a simplified view, highlighting the key steps in verifying access. Real-world implementations are considerably more complex.</p>
+<p>The diagram illustrates Zero Trust Architecture (ZTA) components and flow:</p>
+<p><strong>1. User Side:</strong></p>
+<ul>
+<li>Device initiates connection</li>
+<li>Requires authentication</li>
+<li>Device posture/health verification</li>
+</ul>
+<p><strong>2. Network Processing:</strong></p>
+<ul>
+<li>Policy Enforcement Point (PEP) evaluates requests</li>
+<li>Access decision based on authentication and device status</li>
+<li>Binary outcome: grant or deny access</li>
+</ul>
+<p><strong>3. Post-Access Security:</strong></p>
+<ul>
+<li>Successful access leads to encrypted data handling</li>
+<li>All activities logged to Security Information and Event Management (SIEM)</li>
+</ul>
+<p>Key Principles Shown: - Never trust, always verify - Continuous authentication - Device health monitoring - Encrypted communications - Comprehensive logging</p>
 <h2 id="code-example-simplified-access-control-logic-python" class="anchored">Code Example: Simplified Access Control Logic (Python)</h2>
 <p>This example demonstrates a basic concept of access control based on device posture and user authentication. In a real-world scenario, the complexity would be significantly higher.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplified access control logic</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_device_secure(device_id):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check device posture (replace with actual checks)</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    secure_devices <span class="op">=</span> [<span class="st">"device1"</span>, <span class="st">"device2"</span>]</span>
@@ -157,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Access denied!"</span>)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Example Usage</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>grant_access(<span class="st">"device1"</span>, <span class="st">"user1"</span>, <span class="st">"password1"</span>) <span class="co"># Access Granted</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>grant_access(<span class="st">"device3"</span>, <span class="st">"user1"</span>, <span class="st">"password1"</span>) <span class="co"># Access Denied</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="benefits-of-zero-trust-architecture" class="anchored">Benefits of Zero Trust Architecture</h2>
@@ -169,8 +186,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Simplified Security Management:</strong> Centralized policies and automated enforcement.</li>
 <li><strong>Improved Agility:</strong> Faster response to security threats and easier adaptation to changing environments.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Zero Trust Architecture represents a fundamental shift in how organizations approach network security. By eliminating implicit trust and continuously verifying access, ZTA significantly enhances security posture, reduces the impact of breaches, and improves overall operational efficiency. The implementation of ZTA requires careful planning, integration of various security technologies, and a commitment to continuous monitoring and improvement. However, the long-term benefits in terms of enhanced security and operational efficiency make it a worthwhile investment in today’s ever-evolving threat landscape.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

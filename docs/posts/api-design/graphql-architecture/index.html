@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>GraphQL Architecture – System Design Handbook</title>
+<title>GraphQL Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="GraphQL Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="GraphQL Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="diving-deep-into-graphql-architecture-a-comprehensive-guide">Diving Deep into GraphQL Architecture: A Comprehensive Guide</h1>
 <p>GraphQL has rapidly become a popular alternative to REST for building APIs. Its flexibility and efficiency have won over developers seeking more control and optimization in data fetching. This post delves into the core architecture of GraphQL, exploring its key components and benefits. We’ll examine how it differs from REST and provide practical examples to illustrate its power.</p>
 <h2 id="understanding-the-graphql-core" class="anchored">Understanding the GraphQL Core</h2>
 <p>At its heart, GraphQL is a query language for your API and a runtime for fulfilling those queries with your existing data. Unlike REST, which exposes fixed endpoints returning predefined data structures, GraphQL lets the client specify exactly what data it needs. This “ask for what you need” approach eliminates over-fetching (receiving more data than necessary) and under-fetching (requiring multiple requests to gather complete data).</p>
@@ -175,41 +174,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Feature</th>
-<th>GraphQL</th>
-<th>REST</th>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">GraphQL</th>
+<th style="text-align: left;">REST</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Data Fetching</td>
-<td>Client specifies exact data needed</td>
-<td>Fixed endpoints, predefined data structures</td>
+<td style="text-align: left;">Data Fetching</td>
+<td style="text-align: left;">Client specifies exact data needed</td>
+<td style="text-align: left;">Fixed endpoints, predefined data structures</td>
 </tr>
 <tr class="even">
-<td>Over-fetching</td>
-<td>Eliminated</td>
-<td>Common</td>
+<td style="text-align: left;">Over-fetching</td>
+<td style="text-align: left;">Eliminated</td>
+<td style="text-align: left;">Common</td>
 </tr>
 <tr class="odd">
-<td>Under-fetching</td>
-<td>Reduced or eliminated</td>
-<td>Requires multiple requests</td>
+<td style="text-align: left;">Under-fetching</td>
+<td style="text-align: left;">Reduced or eliminated</td>
+<td style="text-align: left;">Requires multiple requests</td>
 </tr>
 <tr class="even">
-<td>Data Transfer</td>
-<td>Efficient, only requested data is sent</td>
-<td>Often includes unnecessary data</td>
+<td style="text-align: left;">Data Transfer</td>
+<td style="text-align: left;">Efficient, only requested data is sent</td>
+<td style="text-align: left;">Often includes unnecessary data</td>
 </tr>
 <tr class="odd">
-<td>Endpoint Design</td>
-<td>Single endpoint</td>
-<td>Multiple endpoints for different resources</td>
+<td style="text-align: left;">Endpoint Design</td>
+<td style="text-align: left;">Single endpoint</td>
+<td style="text-align: left;">Multiple endpoints for different resources</td>
 </tr>
 <tr class="even">
-<td>Learning Curve</td>
-<td>Steeper initial learning curve</td>
-<td>Generally easier to learn initially</td>
+<td style="text-align: left;">Learning Curve</td>
+<td style="text-align: left;">Steeper initial learning curve</td>
+<td style="text-align: left;">Generally easier to learn initially</td>
 </tr>
 </tbody>
 </table>
@@ -251,8 +250,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="advanced-concepts-subscriptions-and-connections" class="anchored">Advanced Concepts: Subscriptions and Connections</h2>
 <p>GraphQL subscriptions enable real-time updates from the server to the client. This is ideal for applications needing live data feeds, like chat applications or dashboards. Connections provide efficient pagination and data fetching for large datasets. These topics warrant further exploration in separate, dedicated articles.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>GraphQL offers a powerful and flexible alternative to REST for API design. Its core architecture – encompassing the schema, query language, resolvers, and execution engine – enables efficient data fetching by letting clients specify exactly what data they need. This significantly reduces over-fetching and under-fetching, leading to optimized data transfer and improved performance. While initially steeper to learn than REST, GraphQL’s benefits often outweigh the initial investment, particularly for complex applications requiring fine-grained control over data access.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

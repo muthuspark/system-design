@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Distributed Consensus – System Design Handbook</title>
+<title>Distributed Consensus – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Distributed Consensus – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Distributed Consensus – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="distributed-consensus-the-foundation-of-reliable-distributed-systems">Distributed Consensus: The Foundation of Reliable Distributed Systems</h1>
 <p>Distributed systems, where multiple independent computers collaborate to achieve a common goal, are increasingly prevalent in modern technology. From cloud computing platforms to blockchain networks, the success of these systems hinges on a fundamental challenge: achieving <em>distributed consensus</em>. This means agreeing on a single truth among a group of potentially unreliable and geographically dispersed nodes, even in the face of failures, delays, and malicious actors.</p>
 <p>This blog post delves into the intricacies of distributed consensus, exploring its challenges, key algorithms, and real-world applications.</p>
 <h2 id="the-challenges-of-distributed-consensus" class="anchored">The Challenges of Distributed Consensus</h2>
@@ -110,24 +109,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Client] --&gt; B(Proposer);
-    B --&gt; C{Acceptor 1};
-    B --&gt; D{Acceptor 2};
-    B --&gt; E{Acceptor 3};
-    C --&gt; F(Prepare Phase);
-    D --&gt; F;
-    E --&gt; F;
-    F --&gt; G(Promise);
-    G --&gt; B;
-    B --&gt; H(Accept Phase);
-    H --&gt; C;
-    H --&gt; D;
-    H --&gt; E;
-    C --&gt; I(Accepted);
-    D --&gt; I;
-    E --&gt; I;
-    I --&gt; J(Learned);
-    J --&gt; A;
+   A[Client] --&gt; B[Proposer]
+   B --&gt; C[(Acceptor 1)]
+   B --&gt; D[(Acceptor 2)]
+   B --&gt; E[(Acceptor 3)]
+   
+   subgraph "Phase 1: Prepare/Promise"
+       C --&gt; F[Prepare]
+       D --&gt; F
+       E --&gt; F
+       F --&gt; G[Promise]
+       G --&gt; B
+   end
+   
+   subgraph "Phase 2: Accept/Accepted"
+       B --&gt; H[Accept]
+       H --&gt; C
+       H --&gt; D
+       H --&gt; E
+       C --&gt; I[Accepted]
+       D --&gt; I
+       E --&gt; I
+   end
+   
+   I --&gt; J[Learned]
+   J --&gt; A
 
 </pre>
 </div>
@@ -135,7 +141,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>This simplified diagram illustrates a single round of Paxos. The proposer proposes a value, acceptors promise to accept only values from a certain proposal number, and eventually a value is learned by all nodes. The actual implementation involves multiple rounds to handle failures and ensure agreement.</p>
+<p>This diagram shows Paxos consensus protocol with:</p>
+<ul>
+<li>Prepare/Promise phase establishing proposal</li>
+<li>Accept/Accepted phase reaching consensus</li>
+<li>Final learning phase propagating result</li>
+</ul>
+<p>The proposer proposes a value, acceptors promise to accept only values from a certain proposal number, and eventually a value is learned by all nodes. The actual implementation involves multiple rounds to handle failures and ensure agreement.</p>
 <h3 id="raft" class="anchored">2. Raft</h3>
 <p>Raft is a more recent algorithm designed to be easier to understand and implement than Paxos. It simplifies the process by using a leader-follower model.</p>
 <div class="cell" data-layout-align="default">
@@ -143,32 +155,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Client] --&gt; B(Leader);
-    B --&gt; C{Follower 1};
-    B --&gt; D{Follower 2};
-    B --&gt; E{Follower 3};
-    B --&gt; F(Append Entries);
-    C --&gt; F;
-    D --&gt; F;
-    E --&gt; F;
-    F --&gt; G(Commit);
-    G --&gt; B;
-    B --&gt; H(Apply to State Machine);
-    H --&gt; I(Response);
-    I --&gt; A;
+<pre class="mermaid mermaid-js">graph TB
+    A[Client] --&gt; B[Leader]
+    B --&gt; C[(Follower 1)]
+    B --&gt; D[(Follower 2)]
+    B --&gt; E[(Follower 3)]
+    
+    subgraph "Log Replication"
+        B --&gt; F[Append Entries]
+        C --&gt; G[Acknowledge]
+        D --&gt; G
+        E --&gt; G
+        G --&gt; B
+    end
+    
+    subgraph "Commit"
+        B --&gt; H[Apply to State Machine]
+        H --&gt; I[Committed]
+        I --&gt; A
+    end
+
+    style B fill:#f9f,stroke:#333,stroke-width:2px
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>In Raft, a leader is elected, and it’s responsible for replicating log entries to the followers. Once a log entry is committed by a majority of the nodes, it’s applied to the state machine of each node, ensuring consistency.</p>
+<p>This illustrates Raft consensus algorithm’s log replication:</p>
+<ol type="1">
+<li><strong>Leader Election</strong>
+<ul>
+<li>Single leader (highlighted) manages all client requests</li>
+<li>Followers replicate leader’s log</li>
+</ul></li>
+<li><strong>Log Replication</strong>
+<ul>
+<li>Leader receives client request</li>
+<li>Sends AppendEntries to followers</li>
+<li>Waits for majority acknowledgment</li>
+</ul></li>
+<li><strong>Commit Process</strong>
+<ul>
+<li>After majority confirms, leader commits</li>
+<li>Applies to state machine</li>
+<li>Responds to client</li>
+</ul></li>
+</ol>
+<p>Key differences from Paxos:</p>
+<ul>
+<li>Single leader election</li>
+<li>Simpler replication flow</li>
+<li>Strong consistency model</li>
+</ul>
 <h3 id="zab-zookeepers-atomic-broadcast" class="anchored">3. Zab (ZooKeeper’s Atomic Broadcast)</h3>
 <p>ZooKeeper uses Zab, an optimized atomic broadcast algorithm built for high throughput and low latency. It’s a variation of Paxos tailored for the specific needs of a coordination service.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TB
+    A[Client] --&gt; B[Leader]
+    B --&gt; C[(Follower 1)]
+    B --&gt; D[(Follower 2)]
+    B --&gt; E[(Follower 3)]
+    
+    subgraph "Phase 1: Discovery"
+        B --&gt; F[Broadcast NEWLEADER]
+        C --&gt; G[ACK NEWLEADER]
+        D --&gt; G
+        E --&gt; G
+    end
+    
+    subgraph "Phase 2: Synchronization"
+        B --&gt; H[Sync Followers]
+        H --&gt; I[History/Snapshots]
+        I --&gt; C
+        I --&gt; D
+        I --&gt; E
+    end
+    
+    subgraph "Phase 3: Broadcast"
+        B --&gt; J[Propose Transaction]
+        C --&gt; K[ACK]
+        D --&gt; K
+        E --&gt; K
+        K --&gt; L[Commit]
+        L --&gt; A
+    end
+    
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>ZAB Protocol Flow:</p>
+<ol type="1">
+<li><strong>Discovery Phase</strong>
+<ul>
+<li>New leader broadcasts NEWLEADER message</li>
+<li>Followers acknowledge leadership</li>
+</ul></li>
+<li><strong>Synchronization Phase</strong>
+<ul>
+<li>Leader syncs followers with transaction history</li>
+<li>Ensures consistent state across ensemble</li>
+<li>Uses snapshots for efficiency</li>
+</ul></li>
+<li><strong>Broadcast Phase</strong>
+<ul>
+<li>Leader proposes transactions</li>
+<li>Waits for follower acknowledgments</li>
+<li>Commits when majority confirms</li>
+<li>Client receives response</li>
+</ul></li>
+</ol>
+<p>Key Features:</p>
+<ul>
+<li>Primary-backup atomic broadcast</li>
+<li>Total order message delivery</li>
+<li>FIFO client order preservation</li>
+<li>Recovery mechanism for crashes</li>
+</ul>
+<p>This differs from Raft/Paxos through its explicit recovery phase and ZooKeeper-specific optimizations.</p>
 <h2 id="code-example-simplified-raft-inspired-concept" class="anchored">Code Example (Simplified Raft-inspired concept):</h2>
 <p>This is a highly simplified example, illustrating the basic principles of a leader-follower approach. A real-world implementation would be significantly more complex.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplified Leader Election (Conceptual)</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Node:</span>
@@ -194,8 +309,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Distributed Databases:</strong> Maintaining data consistency and enabling fault tolerance in large-scale databases.</li>
 <li><strong>Leader Election:</strong> Choosing a leader in a distributed system, crucial for coordination and task assignment.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Distributed consensus is a challenging but vital problem in distributed systems. Algorithms like Paxos, Raft, and Zab provide solutions to this problem, each with its own tradeoffs. Understanding these algorithms and their applications is critical for building reliable and scalable distributed systems. Further research into Byzantine fault tolerance and optimizing consensus algorithms for specific use cases remains an active area of development.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

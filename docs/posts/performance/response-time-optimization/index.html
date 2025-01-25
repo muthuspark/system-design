@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Response Time Optimization – System Design Handbook</title>
+<title>Response Time Optimization – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Response Time Optimization – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Response Time Optimization – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -184,8 +184,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Response time optimization is a multi-faceted process involving database optimization, server-side code improvements, front-end asset optimization, and strategic caching. By systematically addressing these areas and leveraging available tools, you can significantly improve your website’s performance, leading to a better user experience, higher conversion rates, and improved search engine rankings.</p>
+<p>This diagram shows a web application’s request-response flow with optimization points:</p>
+<p>Main Flow:</p>
+<ol type="1">
+<li>User initiates request</li>
+<li>Request travels through network</li>
+<li>Server receives and processes</li>
+<li>Database interaction occurs</li>
+<li>Server processes data</li>
+<li>Caching layer checks/stores data</li>
+<li>Response is generated</li>
+<li>Content delivery occurs</li>
+<li>User receives response</li>
+</ol>
+<p>Optimization Points (dotted lines):</p>
+<ul>
+<li>Database: Indexing for faster queries</li>
+<li>Server: Code optimization</li>
+<li>Cache: Implementation for faster responses</li>
+<li>Response: Asset optimization</li>
+<li>Delivery: CDN usage for faster content delivery</li>
+</ul>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

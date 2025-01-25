@@ -77,6 +77,5 @@ Choosing the right data storage solution is vital for efficient metrics collecti
 
 -   **Relational databases:** While not as optimized for time-series data as dedicated time-series databases, relational databases can be used for metrics collection, particularly if you need to combine metrics with other types of data.
 
-## Summary
 
-Effective metrics collection requires a well-defined strategy that encompasses defining clear objectives, selecting appropriate KPIs, implementing suitable collection methods, and utilizing effective visualization tools. This process involves careful planning and consideration of your specific needs and technological capabilities. This post provides a foundational understanding of the key aspects involved, allowing you to begin building a robust and data-driven approach to measuring success.
+

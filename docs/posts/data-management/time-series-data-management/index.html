@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Time-Series Data Management – System Design Handbook</title>
+<title>Time-Series Data Management – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Time-Series Data Management – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Time-Series Data Management – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,8 +54,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="time-series-data-management-a-deep-dive">Time-Series Data Management: A Deep Dive</h1>
-<p>Time-series data—data points indexed in time order—is ubiquitous. From sensor readings in IoT devices to financial transactions and website traffic, its applications are vast. Effectively managing this data, however, presents unique challenges that require specialized techniques and technologies. This post delves into the intricacies of time-series data management, exploring its characteristics, challenges, and the solutions available.</p>
+<p>Time-series data, which consists of data points indexed in time order, is a rapidly growing form of data. It is used in a wide range of applications, from sensor readings in IoT devices to financial transactions and website traffic. However, the large volume, velocity, and variety of time-series data creates unique challenges for data management. This post explores the characteristics, challenges, and solutions for managing time-series data.</p>
 <h2 id="understanding-the-uniqueness-of-time-series-data" class="anchored">Understanding the Uniqueness of Time-Series Data</h2>
 <p>Unlike relational data, which focuses on structured relationships between entities, time-series data emphasizes the temporal aspect. Key characteristics include:</p>
 <ul>
@@ -110,44 +75,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 id="database-solutions-for-time-series-data" class="anchored">Database Solutions for Time-Series Data</h2>
 <p>Several database technologies excel at handling time-series data:</p>
 <ul>
-<li><p><strong>InfluxDB:</strong> An open-source time-series database designed for high-volume, high-velocity data. It offers excellent performance for querying and analyzing time-series data.</p></li>
-<li><p><strong>TimescaleDB:</strong> An extension of PostgreSQL, combining the robustness of a relational database with optimized time-series capabilities. This allows for complex queries involving both time-series and relational data.</p></li>
-<li><p><strong>Prometheus:</strong> A popular open-source monitoring and alerting toolkit that includes a time-series database. Often used for monitoring infrastructure and applications.</p></li>
+<li><p><strong><a href="https://www.influxdata.com/">InfluxDB</a>:</strong> An open-source time-series database designed for high-volume, high-velocity data. It offers excellent performance for querying and analyzing time-series data.</p></li>
+<li><p><strong><a href="https://www.timescale.com/">TimescaleDB</a>:</strong> An extension of PostgreSQL, combining the robustness of a relational database with optimized time-series capabilities. This allows for complex queries involving both time-series and relational data.</p></li>
+<li><p><strong><a href="https://prometheus.io/">Prometheus</a>:</strong> A popular open-source monitoring and alerting toolkit that includes a time-series database. Often used for monitoring infrastructure and applications.</p></li>
 </ul>
 <p>Here’s a comparison in a simple table:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Feature</th>
-<th>InfluxDB</th>
-<th>TimescaleDB</th>
-<th>Prometheus</th>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">InfluxDB</th>
+<th style="text-align: left;">TimescaleDB</th>
+<th style="text-align: left;">Prometheus</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Type</td>
-<td>Time-series</td>
-<td>Relational/TS</td>
-<td>Time-series</td>
+<td style="text-align: left;">Type</td>
+<td style="text-align: left;">Time-series</td>
+<td style="text-align: left;">Relational/TS</td>
+<td style="text-align: left;">Time-series</td>
 </tr>
 <tr class="even">
-<td>Scalability</td>
-<td>Excellent</td>
-<td>Excellent</td>
-<td>Excellent</td>
+<td style="text-align: left;">Scalability</td>
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: left;">Excellent</td>
+<td style="text-align: left;">Excellent</td>
 </tr>
 <tr class="odd">
-<td>Query Language</td>
-<td>InfluxQL</td>
-<td>SQL</td>
-<td>PromQL</td>
+<td style="text-align: left;">Query Language</td>
+<td style="text-align: left;">InfluxQL</td>
+<td style="text-align: left;">SQL</td>
+<td style="text-align: left;">PromQL</td>
 </tr>
 <tr class="even">
-<td>Open Source</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
+<td style="text-align: left;">Open Source</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
 </tr>
 </tbody>
 </table>
@@ -164,29 +129,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Sensors/Devices] --&gt; B(Kafka);
-    B --&gt; C{Data Processing (Spark)};
-    C --&gt; D[Time-Series Database (InfluxDB)];
-    D --&gt; E[Visualization/Analytics];
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph Data Sources
+        S1[IoT Sensors] --&gt; K
+        S2[System Metrics] --&gt; K
+        S3[Application Logs] --&gt; K
+    end
+
+    subgraph Message Queue
+        K[Apache Kafka]
+    end
+
+    subgraph Processing Layer
+        K --&gt; P1[Stream Processing]
+        K --&gt; P2[Batch Processing]
+        P1 --&gt; DB
+        P2 --&gt; DB
+    end
+
+    subgraph Storage
+        DB[(Time-Series DB)]
+    end
+
+    subgraph Analytics
+        DB --&gt; V1[Dashboards]
+        DB --&gt; V2[Alerts]
+        DB --&gt; V3[Reports]
+    end
+
+    style S1 fill:#f9f,stroke:#333
+    style S2 fill:#f9f,stroke:#333
+    style S3 fill:#f9f,stroke:#333
+    style K fill:#fcf,stroke:#333
+    style DB fill:#9cf,stroke:#333
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Example (Python with InfluxDB):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> influxdb_client <span class="im">import</span> InfluxDBClient, Point</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> InfluxDBClient(url<span class="op">=</span><span class="st">"http://localhost:8086"</span>, token<span class="op">=</span><span class="st">"YOUR_TOKEN"</span>, org<span class="op">=</span><span class="st">"YOUR_ORG"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>write_api <span class="op">=</span> client.write_api()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> Point(<span class="st">"sensor_data"</span>) <span class="op">\</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    .tag(<span class="st">"location"</span>, <span class="st">"office"</span>) <span class="op">\</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    .field(<span class="st">"temperature"</span>, <span class="fl">25.5</span>) <span class="op">\</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    .time(<span class="dv">1678886400</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>write_api.write(bucket<span class="op">=</span><span class="st">"my_bucket"</span>, record<span class="op">=</span>point)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This diagram represents a data ingestion pipeline, showcasing the flow of data from various sources to storage and eventual analytics. Here’s an explanation of each component in the context of data ingestion:</p>
+<h3 id="data-sources" class="anchored">1. <strong>Data Sources</strong></h3>
+<p>The data sources are the origin points where raw data is generated. In this example, there are three different sources:</p>
+<ul>
+<li><strong>IoT Sensors (S1)</strong>: These devices generate streams of data, such as temperature readings, humidity, or motion detection.</li>
+<li><strong>System Metrics (S2)</strong>: Data related to system performance, such as CPU usage, memory consumption, or network traffic.</li>
+<li><strong>Application Logs (S3)</strong>: Log files generated by applications, which can include information like error logs, user actions, and performance metrics.</li>
+</ul>
+<p>Each of these data sources continuously generates data, which is then sent to a <strong>Message Queue</strong> for processing.</p>
+<h3 id="message-queue-apache-kafka" class="anchored">2. <strong>Message Queue (Apache Kafka)</strong></h3>
+<p>The message queue layer, represented by <a href="https://kafka.apache.org/">Apache Kafka (K)</a>, serves as a highly scalable and fault-tolerant system for collecting and distributing the incoming data. Kafka is responsible for:</p>
+<ul>
+<li><strong>Ingesting data</strong> from multiple sources in real time.</li>
+<li><strong>Decoupling producers (data sources) from consumers (processing systems)</strong>, ensuring a smooth and asynchronous flow of data.</li>
+<li><strong>Persisting data streams</strong> temporarily until the next stage is ready to process them.</li>
+</ul>
+<p>Kafka acts as an intermediary that ensures the data is efficiently routed to the correct processing pipelines.</p>
+<h3 id="processing-layer" class="anchored">3. <strong>Processing Layer</strong></h3>
+<p>Once the data is in Kafka, it can be processed by two distinct processing mechanisms:</p>
+<ul>
+<li><p><strong>Stream Processing (P1)</strong>: This involves real-time processing of the incoming data as soon as it arrives. This is suitable for use cases where immediate action is required (e.g., monitoring IoT sensors for anomalies). The processed data is then sent to the storage system.</p></li>
+<li><p><strong>Batch Processing (P2)</strong>: This involves processing data in batches at scheduled intervals. It’s suitable for aggregating data over a period and processing it in bulk (e.g., generating daily summaries of system metrics). Like stream processing, the output is sent to the storage system.</p></li>
+</ul>
+<p>Both stream and batch processing interact with Kafka to fetch the data and pass the results to the storage layer.</p>
+<h3 id="storage-time-series-database" class="anchored">4. <strong>Storage (Time-Series Database)</strong></h3>
+<p>After the data is processed, it is stored in a <strong>Time-Series Database (DB)</strong>. This type of database is optimized for handling time-stamped data, making it ideal for storing:</p>
+<ul>
+<li>IoT sensor data with timestamps.</li>
+<li>System performance metrics tracked over time.</li>
+<li>Logs with time-specific events.</li>
+</ul>
+<p>A time-series database allows efficient querying and analysis of data based on time ranges, which is crucial for understanding trends and patterns.</p>
+<h3 id="analytics" class="anchored">5. <strong>Analytics</strong></h3>
+<p>Once data is stored, it can be used for various <strong>analytics</strong> purposes:</p>
+<ul>
+<li><strong>Dashboards (V1)</strong>: Visualize real-time data in graphical formats (charts, graphs, etc.) for monitoring system performance or sensor readings. Dashboards provide actionable insights at a glance.</li>
+<li><strong>Alerts (V2)</strong>: Trigger notifications or alerts based on predefined thresholds. For example, if system metrics exceed certain limits, an alert can be sent to administrators.</li>
+<li><strong>Reports (V3)</strong>: Generate detailed reports from historical data, such as weekly or monthly performance summaries.</li>
+</ul>
+<p>These analytics components depend on the data stored in the time-series database, allowing users to make informed decisions based on real-time and historical insights.</p>
 <h2 id="data-querying-and-analysis" class="anchored">Data Querying and Analysis</h2>
 <p>Efficient querying is paramount. Time-series databases offer specialized query languages:</p>
 <ul>
@@ -196,8 +217,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h2 id="visualization-and-exploration" class="anchored">Visualization and Exploration</h2>
 <p>Effective visualization is crucial for understanding trends and patterns. Tools like Grafana are commonly used to visualize time-series data from various sources, including the databases mentioned above.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post provided a comprehensive overview of time-series data management, covering its unique characteristics, associated challenges, popular database solutions, data ingestion and processing techniques, querying methods, and visualization options. Efficient management of time-series data requires a tailored approach, incorporating specialized technologies and techniques to handle the volume, velocity, variety, and variability inherent in this data type.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

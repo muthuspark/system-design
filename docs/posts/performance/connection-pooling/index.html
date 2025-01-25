@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Connection Pooling – System Design Handbook</title>
+<title>Connection Pooling – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Connection Pooling – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Connection Pooling – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="diving-deep-into-connection-pooling-optimizing-database-performance">Diving Deep into Connection Pooling: Optimizing Database Performance</h1>
 <p>Connection pooling is a crucial technique for enhancing the performance and efficiency of database applications. It significantly reduces the overhead associated with repeatedly establishing and closing connections to a database server, leading to faster response times and improved resource utilization. This post delves into the intricacies of connection pooling, explaining its benefits, how it works, and showcasing examples in various programming languages.</p>
 <h2 id="understanding-the-problem-the-cost-of-connection-creation" class="anchored">Understanding the Problem: The Cost of Connection Creation</h2>
 <p>Before we explore the solution, let’s understand the problem. Every time your application needs to interact with a database, it typically establishes a new connection. This process involves several steps:</p>
@@ -107,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Connections:</strong> A set of pre-established connections to the database server. These connections are kept alive and ready to be used.</li>
 <li><strong>Configuration:</strong> Parameters defining the pool’s size (maximum number of connections), connection timeout, and other relevant settings.</li>
 </ol>
-<p>Here’s a Mermaid diagram illustrating the process:</p>
+<p>Here’s a Diagram illustrating the process:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -164,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong><code>psycopg2</code> example (simplified):</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> psycopg2</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Connection parameters (replace with your details)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"host"</span>: <span class="st">"localhost"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"database"</span>: <span class="st">"mydatabase"</span>,</span>
@@ -172,7 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"password"</span>: <span class="st">"mypassword"</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Establish a connection pool (simplified - usually done through a connection pooling library)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>pool <span class="op">=</span> psycopg2.pool.SimpleConnectionPool(<span class="dv">1</span>, <span class="dv">10</span>, <span class="op">**</span>params) <span class="co">#minconn, maxconn</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -229,8 +228,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Scalability:</strong> Better handling of concurrent user requests.</li>
 <li><strong>Simplified Development:</strong> Easier management of database connections.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Connection pooling is a powerful technique for optimizing database interactions. By reusing established connections, it reduces overhead, improves performance, and enhances the scalability of database applications. The examples provided showcase the implementation of connection pooling in various popular programming languages, highlighting the ease of integration and the significant benefits it offers.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

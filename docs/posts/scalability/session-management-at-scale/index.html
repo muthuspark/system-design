@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Session Management at Scale – System Design Handbook</title>
+<title>Session Management at Scale – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Session Management at Scale – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Session Management at Scale – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="session-management-at-scale-strategies-and-challenges">Session Management at Scale: Strategies and Challenges</h1>
 <p>Session management is a critical aspect of any web application, especially those dealing with a large number of concurrent users. Effectively managing user sessions at scale requires careful consideration of several factors, including security, performance, and scalability. This post delves into the complexities of session management at scale, exploring various strategies and the challenges they present.</p>
 <h2 id="understanding-the-challenges" class="anchored">Understanding the Challenges</h2>
 <p>At small scale, simple session management strategies often suffice. A developer might store session data directly in memory on the application server. However, as user traffic grows, this approach quickly becomes unsustainable. Several key challenges emerge:</p>
@@ -108,11 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Client Browser] --&gt; B(Session ID Cookie);
-    B --&gt; C[Web Server];
-    C --&gt; D{Database (Session Data)};
-    D --&gt; C;
-    C --&gt; A;
+    Client["Client Browser"] --&gt; |"Session ID Cookie"| Server["Web Server"]
+    Server --&gt; |"Query Session"| DB["Database (Session Data)"]
+    DB --&gt; |"Return Data"| Server
+    Server --&gt; |"Response"| Client
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -222,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delete_session(session_id):</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    r.delete(session_id)</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>user_data <span class="op">=</span> {<span class="st">'username'</span>: <span class="st">'john_doe'</span>, <span class="st">'email'</span>: <span class="st">'john.doe@example.com'</span>}</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>session_id <span class="op">=</span> create_session(user_data)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Session ID: </span><span class="sc">{</span>session_id<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -237,8 +235,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Security Requirements:</strong> Sensitive data requires robust security measures, potentially involving encryption and secure storage mechanisms.</li>
 <li><strong>Budget:</strong> In-memory data stores and distributed caches can be expensive.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Managing user sessions at scale presents significant challenges related to scalability, performance, security, and state management. Various strategies, including database-backed sessions, in-memory data stores, distributed caching, and session stickiness, offer different trade-offs. Choosing the right approach requires a careful evaluation of the application’s specific needs and constraints. The examples and diagrams provided illustrate the key architectural considerations for building a robust and scalable session management system.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

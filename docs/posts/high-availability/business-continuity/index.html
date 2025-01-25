@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Business Continuity – System Design Handbook</title>
+<title>Business Continuity – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Business Continuity – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Business Continuity – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="business-continuity-ensuring-your-business-survives-the-unexpected">Business Continuity: Ensuring Your Business Survives the Unexpected</h1>
 <p>In today’s volatile business environment, disruptions are inevitable. Natural disasters, cyberattacks, pandemics, economic downturns – these are just a few of the events that can severely impact a company’s operations. Business Continuity (BC) planning is no longer a luxury; it’s a necessity for survival and sustained growth. This comprehensive guide will delve into the intricacies of business continuity, providing practical strategies and insights to help you build a resilient organization.</p>
 <h2 id="understanding-business-continuity" class="anchored">Understanding Business Continuity</h2>
 <p>Business continuity is the process of creating systems of prevention and recovery to deal with potential threats to a company. The goal is to minimize disruption to normal business operations in the event of a disaster or other unforeseen circumstances. It’s not just about recovering from an incident; it’s about proactively mitigating risks and ensuring the continued delivery of critical services and products.</p>
@@ -132,38 +97,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </colgroup>
 <thead>
 <tr class="header">
-<th>Business Function</th>
-<th>Potential Threat</th>
-<th>MTD</th>
-<th>RTO</th>
-<th>RPO</th>
-<th>Impact</th>
+<th style="text-align: left;">Business Function</th>
+<th style="text-align: left;">Potential Threat</th>
+<th style="text-align: left;">MTD</th>
+<th style="text-align: left;">RTO</th>
+<th style="text-align: left;">RPO</th>
+<th style="text-align: left;">Impact</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Sales</td>
-<td>Cyberattack</td>
-<td>24 hours</td>
-<td>4 hours</td>
-<td>1 hour</td>
-<td>Significant loss of revenue</td>
+<td style="text-align: left;">Sales</td>
+<td style="text-align: left;">Cyberattack</td>
+<td style="text-align: left;">24 hours</td>
+<td style="text-align: left;">4 hours</td>
+<td style="text-align: left;">1 hour</td>
+<td style="text-align: left;">Significant loss of revenue</td>
 </tr>
 <tr class="even">
-<td>Production</td>
-<td>Power outage</td>
-<td>48 hours</td>
-<td>8 hours</td>
-<td>2 hours</td>
-<td>Production delays, potential loss of inventory</td>
+<td style="text-align: left;">Production</td>
+<td style="text-align: left;">Power outage</td>
+<td style="text-align: left;">48 hours</td>
+<td style="text-align: left;">8 hours</td>
+<td style="text-align: left;">2 hours</td>
+<td style="text-align: left;">Production delays, potential loss of inventory</td>
 </tr>
 <tr class="odd">
-<td>IT Systems</td>
-<td>Hardware failure</td>
-<td>72 hours</td>
-<td>12 hours</td>
-<td>6 hours</td>
-<td>Significant data loss, operational disruption</td>
+<td style="text-align: left;">IT Systems</td>
+<td style="text-align: left;">Hardware failure</td>
+<td style="text-align: left;">72 hours</td>
+<td style="text-align: left;">12 hours</td>
+<td style="text-align: left;">6 hours</td>
+<td style="text-align: left;">Significant data loss, operational disruption</td>
 </tr>
 </tbody>
 </table>
@@ -175,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Disaster recovery sites:</strong> Having alternate locations to continue operations.</li>
 <li><strong>Third-party service providers:</strong> Utilizing external providers for essential services.</li>
 </ul>
-<p><strong>Example Mermaid Diagram illustrating redundancy:</strong></p>
+<p><strong>Example Diagram illustrating redundancy:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -212,32 +177,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>6. Training and Awareness:</strong></p>
 <p>All employees should receive training on their roles and responsibilities in the BC plan. This should include:</p>
 <ul>
-<li><strong>Awareness of potential threats.</strong></li>
-<li><strong>Understanding of their role in the recovery process.</strong></li>
-<li><strong>Training on emergency procedures.</strong></li>
+<li>Awareness of potential threats.</li>
+<li>Understanding of their role in the recovery process.</li>
+<li>Training on emergency procedures.</li>
 </ul>
-<h2 id="code-example-simple-python-script-for-data-backup" class="anchored">Code Example: Simple Python Script for Data Backup</h2>
-<p>This Python script demonstrates a basic data backup function:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> backup_data(source, destination):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Backs up a directory to a specified destination."""</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        shutil.copytree(source, destination, ignore<span class="op">=</span>shutil.ignore_patterns(<span class="st">'*.tmp'</span>, <span class="st">'Thumbs.db'</span>))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Data backed up successfully at </span><span class="sc">{</span>time<span class="sc">.</span>strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S'</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error backing up data: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>source_dir <span class="op">=</span> <span class="st">"/path/to/source/directory"</span> <span class="co">#Replace with actual source directory</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>destination_dir <span class="op">=</span> <span class="st">"/path/to/backup/directory"</span> <span class="co">#Replace with actual backup directory</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>backup_data(source_dir, destination_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This is a simplified example, and a real-world backup solution would require more robust error handling, scheduling, and potentially cloud storage integration.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Business Continuity planning is a multifaceted process encompassing risk assessment, business impact analysis, recovery strategy development, testing, communication, and employee training. Implementing a robust BC plan is vital for minimizing disruption, ensuring operational resilience, and safeguarding your business’s future. By proactively addressing potential threats and establishing effective recovery mechanisms, organizations can significantly reduce the impact of unforeseen events and maintain continuity of operations.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

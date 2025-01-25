@@ -7,6 +7,8 @@ The Strangler Fig Pattern, inspired by the namesake plant's growth, is a powerfu
 
 ## The Analogy: The Strangler Fig
 
+![](https://upload.wikimedia.org/wikipedia/commons/4/46/Ficus_watkinsiana_on_Syzygium_hemilampra-Iluka.jpg){width=50%}
+
 The Strangler Fig, a parasitic plant, begins its life by germinating in the canopy of a host tree. As it grows, it sends roots down towards the ground, eventually enveloping the host tree. This process is slow and gradual, allowing the fig to mature while the host continues to function. Similarly, the Strangler Fig Pattern in software gradually replaces a legacy system with a new architecture without completely shutting down the existing application.
 
 ## How the Strangler Fig Pattern Works
@@ -71,20 +73,6 @@ graph LR
 
 The monolith is eventually decommissioned after all functionalities have been migrated. Note that this "complete" state is aspirational; parts of the monolith might remain indefinitely depending on the context.
 
-## Code Example (Conceptual): API Gateway Routing
-
-This is a highly simplified conceptual example illustrating routing logic. Real-world implementations would be far more complex, potentially using technologies like Nginx, Kong, or Istio.
-
-``` python
-
-def route_request(request):
-    if request.path == "/newfeature":
-        # Route to Microservice 1
-        return microservice1.handle_request(request)
-    else:
-        # Route to Monolith
-        return monolith.handle_request(request)
-```
 
 ## Advantages of the Strangler Fig Pattern
 
@@ -99,7 +87,3 @@ def route_request(request):
 -   **Increased Complexity:** Managing the API Gateway and multiple services adds complexity.
 -   **Potential for Inconsistency:** Maintaining consistency between the monolith and new microservices requires careful planning.
 -   **Duplication of Effort:** Initially there might be some overlap of functionality between the monolith and new microservices.
-
-## Summary
-
-The Strangler Fig Pattern provides a flexible and risk-averse approach to migrating monolithic applications to a microservice architecture or modernizing legacy systems. By gradually replacing functionality with new, independent services, it minimizes disruption and allows for iterative improvement. However, careful planning and consideration of the increased complexity are crucial for successful implementation.

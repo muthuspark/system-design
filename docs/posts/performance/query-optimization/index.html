@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Query Optimization – System Design Handbook</title>
+<title>Query Optimization – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Query Optimization – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Query Optimization – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="query-optimization-unleashing-the-speed-of-your-database">Query Optimization: Unleashing the Speed of Your Database</h1>
 <p>Database queries are the lifeblood of any application that interacts with persistent data. A slow query can cripple performance, leading to frustrated users and increased infrastructure costs. Query optimization is the art and science of crafting efficient SQL queries that retrieve data quickly and efficiently. This post dives deep into the techniques and strategies used to improve query performance.</p>
 <h2 id="understanding-the-problem-why-optimize" class="anchored">Understanding the Problem: Why Optimize?</h2>
 <p>Before diving into optimization techniques, let’s understand why it’s crucial. Slow queries manifest in various ways:</p>
@@ -113,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Example (MySQL):</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">INDEX</span> idx_name <span class="kw">ON</span> users (name);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This creates a B-tree index on the <code>name</code> column of the <code>users</code> table.</p>
-<p><strong>Mermaid Diagram illustrating Index usage:</strong></p>
+<p><strong>Diagram illustrating Index usage:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -169,8 +168,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h3 id="query-rewriting" class="anchored">7. Query Rewriting</h3>
 <p>Sometimes, a seemingly simple query can be rewritten for better performance. This might involve using different functions or operators, or restructuring the query logic.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Query optimization is a critical aspect of building high-performance database applications. By understanding indexing, join types, data types, and utilizing tools like <code>EXPLAIN PLAN</code>, developers can significantly improve query speed and efficiency. Furthermore, regular review and tuning of the database itself are crucial for maintaining optimal performance as data volumes and application usage grow.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

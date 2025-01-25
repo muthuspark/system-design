@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Multi-Master Architecture – System Design Handbook</title>
+<title>Multi-Master Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Multi-Master Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Multi-Master Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="diving-deep-into-multi-master-architecture-a-comprehensive-guide">Diving Deep into Multi-Master Architecture: A Comprehensive Guide</h1>
 <p>Multi-master architecture, also known as multi-primary or multi-leader architecture, represents a sophisticated approach to database replication and data management. Unlike single-master setups where one server holds the primary responsibility for data writes, a multi-master architecture allows multiple servers to accept write operations simultaneously. This design offers significant advantages in terms of scalability, high availability, and geographic distribution, but also introduces considerable complexity in handling data consistency and conflict resolution. This post delves into the intricacies of multi-master architecture, exploring its benefits, challenges, and various implementation strategies.</p>
 <h2 id="understanding-the-fundamentals" class="anchored">Understanding the Fundamentals</h2>
 <p>In a typical multi-master setup, multiple servers operate independently as masters, each capable of accepting and processing write requests. Changes made on one master are then replicated to the other masters, ensuring data consistency across the system. This replication process is crucial, and the method employed significantly impacts the overall architecture’s performance and consistency guarantees.</p>
@@ -192,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.data.get(key, <span class="va">None</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> MultiMasterDatabase()</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>db.write(<span class="st">'item1'</span>, <span class="dv">10</span>, <span class="dv">1678886400</span>)  <span class="co"># Master 1 writes</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>db.write(<span class="st">'item1'</span>, <span class="dv">20</span>, <span class="dv">1678886460</span>)  <span class="co"># Master 2 writes (later timestamp wins)</span></span>
@@ -206,8 +205,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Network Conditions:</strong> Network reliability affects the feasibility of synchronous replication.</li>
 <li><strong>Development Resources:</strong> Implementing and maintaining a multi-master system requires significant expertise.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Multi-master architecture offers compelling advantages in terms of scalability, high availability, and geographic distribution. However, it presents significant challenges related to data consistency and operational complexity. Selecting the appropriate replication strategy and conflict resolution mechanism is crucial for successfully implementing a multi-master database system. A careful assessment of application requirements, consistency needs, and operational resources is essential before adopting this architecture.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Asynchronous Processing – System Design Handbook</title>
+<title>Asynchronous Processing – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Asynchronous Processing – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Asynchronous Processing – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="asynchronous-processing-unleashing-the-power-of-concurrent-tasks">Asynchronous Processing: Unleashing the Power of Concurrent Tasks</h1>
 <p>Asynchronous processing is a powerful paradigm that allows your applications to handle multiple tasks concurrently without blocking the main thread. This means your application remains responsive even when performing long-running operations, leading to significant performance improvements and a better user experience. In this post, we’ll delve deep into the concept of asynchronous processing, exploring its benefits, drawbacks, and practical implementations across different programming languages.</p>
 <h2 id="understanding-synchronous-vs.-asynchronous-operations" class="anchored">Understanding Synchronous vs.&nbsp;Asynchronous Operations</h2>
 <p>Before diving into the intricacies of asynchronous processing, let’s clarify the difference between synchronous and asynchronous operations.</p>
@@ -149,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>asyncio.run(main())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This Python example uses <code>asyncio.sleep</code> to simulate an asynchronous operation. <code>asyncio.run</code> starts the event loop and executes the <code>main</code> coroutine.</p>
-<h3 id="illustrative-mermaid-diagrams" class="anchored">Illustrative Mermaid Diagrams</h3>
+<h3 id="illustrative-diagrams" class="anchored">Illustrative Diagrams</h3>
 <p><strong>Synchronous Operation:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -188,8 +187,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the asynchronous diagram, Task 1 and other tasks run concurrently. The main thread continues executing without waiting for Task 1 to complete.</p>
 <h2 id="managing-concurrency-and-avoiding-deadlocks" class="anchored">Managing Concurrency and Avoiding Deadlocks</h2>
 <p>Proper concurrency management is vital when working with asynchronous operations. Techniques like using mutexes, semaphores, and monitors help to prevent race conditions and deadlocks. However, these can add complexity, highlighting the importance of careful planning and design when implementing asynchronous systems.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Asynchronous processing provides a powerful mechanism for improving application responsiveness, throughput, and scalability. However, it also introduces complexity, demanding careful consideration of concurrency management and error handling. Choosing the right approach depends heavily on the application’s specific needs and the developer’s familiarity with concurrent programming. The choice between synchronous and asynchronous depends heavily on the specific needs of your application. Understanding the trade-offs between simplicity and performance is key to making the right decision.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

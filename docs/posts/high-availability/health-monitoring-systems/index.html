@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Health Monitoring Systems – System Design Handbook</title>
+<title>Health Monitoring Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Health Monitoring Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Health Monitoring Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="diving-deep-into-health-monitoring-systems-a-comprehensive-overview">Diving Deep into Health Monitoring Systems: A Comprehensive Overview</h1>
 <p>Health monitoring systems are rapidly evolving, transforming how we approach healthcare. These systems play a crucial role in preventative care, early disease detection, and improved patient outcomes. This post delves into the architecture, functionalities, and technologies behind these vital systems.</p>
 <h2 id="what-are-health-monitoring-systems" class="anchored">What are Health Monitoring Systems?</h2>
 <p>Health monitoring systems (HMS) are technological solutions that continuously or intermittently track and analyze various health parameters. This data can range from basic vital signs (heart rate, blood pressure, temperature) to more complex physiological indicators (blood glucose levels, ECG data, sleep patterns). The collected data provides valuable insights into an individual’s health, enabling timely interventions and personalized care. These systems can be deployed in various settings, including hospitals, homes, and even wearable devices.</p>
@@ -107,31 +72,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Patient] --&gt; B(Wearable Sensors/Devices);
-    B --&gt; C{Data Transmission (Cellular, Wi-Fi)};
-    C --&gt; D[Data Aggregation Server];
-    D --&gt; E(Data Processing &amp; Analysis);
-    E --&gt; F[Healthcare Provider Dashboard];
-    F --&gt; G(Alerts &amp; Notifications);
-    G --&gt; A;
-    E --&gt; H(Data Storage &amp; Archiving);
+<pre class="mermaid mermaid-js">graph TB
+    Patient["Patient"] --&gt; Sensors["Wearable Sensors/Devices"]
+    Sensors --&gt; Network["Data Transmission\n(Cellular, Wi-Fi)"]
+    Network --&gt; Server["Data Aggregation Server"]
+    Server --&gt; Processing["Data Processing &amp; Analysis"]
+    Processing --&gt; Dashboard["Healthcare Provider Dashboard"]
+    Dashboard --&gt; Alerts["Alerts &amp; Notifications"]
+    Alerts --&gt; Patient
+    Processing --&gt; Storage["Data Storage &amp; Archiving"]
+    
+    classDef process fill:#f9f,stroke:#333,stroke-width:2px
+    class Processing,Storage process
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Components Explained:</strong></p>
-<ul>
-<li><strong>Wearable Sensors/Devices:</strong> These collect physiological data from the patient.</li>
-<li><strong>Data Transmission:</strong> This component handles the secure transmission of data to the server.</li>
-<li><strong>Data Aggregation Server:</strong> This centralizes data from multiple sources.</li>
-<li><strong>Data Processing &amp; Analysis:</strong> This component cleans, transforms, and analyzes the data, often using machine learning algorithms.</li>
-<li><strong>Healthcare Provider Dashboard:</strong> This provides a user-friendly interface for healthcare providers to review patient data.</li>
-<li><strong>Alerts &amp; Notifications:</strong> The system automatically generates alerts for critical events.</li>
-<li><strong>Data Storage &amp; Archiving:</strong> This ensures data integrity and provides a history for analysis.</li>
-</ul>
+<p>The diagram shows a healthcare monitoring system flow:</p>
+<ol type="1">
+<li>Patient wears sensors/devices</li>
+<li>Devices transmit data via cellular/Wi-Fi</li>
+<li>Server aggregates incoming data</li>
+<li>Processing system analyzes data (highlighted in pink)</li>
+<li>Healthcare providers view results on dashboard</li>
+<li>System sends alerts back to patients</li>
+<li>Data is archived for storage (highlighted in pink)</li>
+</ol>
+<p>This creates a complete loop of patient monitoring, analysis, provider oversight, and patient notification.</p>
 <h2 id="data-processing-and-analysis-techniques" class="anchored">Data Processing and Analysis Techniques</h2>
 <p>The data collected by HMS often requires sophisticated processing and analysis techniques. Common methods include:</p>
 <ul>
@@ -139,22 +108,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Machine Learning:</strong> Algorithms for anomaly detection, predictive modeling, and personalized recommendations.</li>
 <li><strong>Data Visualization:</strong> Creating clear and intuitive representations of complex data for healthcare providers and patients.</li>
 </ul>
-<p><strong>Example (Python with Scikit-learn for anomaly detection):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> IsolationForest</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data (replace with actual sensor data)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="dv">100</span>, <span class="dv">70</span>], [<span class="dv">102</span>, <span class="dv">72</span>], [<span class="dv">105</span>, <span class="dv">75</span>], [<span class="dv">1000</span>, <span class="dv">80</span>], [<span class="dv">101</span>, <span class="dv">71</span>]])  <span class="co"># Outlier introduced</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Train an Isolation Forest model</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> IsolationForest()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>model.fit(data)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict anomalies</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> model.predict(data)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predictions) <span class="co"># -1 indicates anomaly, 1 indicates inlier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="security-and-privacy-considerations" class="anchored">Security and Privacy Considerations</h2>
 <p>Security and privacy are paramount in HMS. Data encryption, secure transmission protocols, and robust access control mechanisms are essential to protect patient information. Compliance with regulations like HIPAA (in the US) and GDPR (in Europe) is mandatory.</p>
 <h2 id="challenges-and-future-directions" class="anchored">Challenges and Future Directions</h2>
@@ -171,8 +124,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Integration with Electronic Health Records (EHRs):</strong> For a holistic view of patient health.</li>
 <li><strong>Greater focus on remote patient monitoring:</strong> To reduce healthcare costs and improve access to care.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Health monitoring systems represent a significant advancement in healthcare. They leverage technology to track vital signs, analyze physiological data, and provide insights for improved patient care. While challenges remain, the continued development and adoption of HMS promise to revolutionize how we approach health and wellness.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

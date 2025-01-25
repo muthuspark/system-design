@@ -119,7 +119,5 @@ except RateLimitException:
 * **Consider different granularity levels:**  Limit requests based on IP address, user ID, API key, or any combination thereof.
 
 
-## Summary
 
-This post provided a comprehensive overview of rate limiting, exploring its importance, various algorithms (Fixed Window, Sliding Window, Leaky Bucket, Token Bucket), implementation strategies (Network, Application, Database layers), and best practices.  Understanding and implementing rate limiting is crucial for building robust and scalable applications.
 

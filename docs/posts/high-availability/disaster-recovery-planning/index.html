@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Disaster Recovery Planning – System Design Handbook</title>
+<title>Disaster Recovery Planning – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -68,15 +34,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-html-5276476b5bdb9cfe1f92c505466e0bf3.min.css" rel="stylesheet" append-hash="true" data-mode="light">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<meta name="mermaid-theme" content="neutral">
-<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Disaster Recovery Planning – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Disaster Recovery Planning – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +50,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="disaster-recovery-planning-a-comprehensive-guide">Disaster Recovery Planning: A Comprehensive Guide</h1>
 <p>Disaster recovery planning (DRP) is crucial for any organization, regardless of size. It’s not a matter of <em>if</em> a disaster will strike, but <em>when</em>. A robust DRP ensures business continuity during and after an unforeseen event, minimizing downtime and data loss. This guide delves into the key aspects of creating and implementing a comprehensive DRP.</p>
 <h2 id="risk-assessment-identifying-potential-threats" class="anchored">1. Risk Assessment: Identifying Potential Threats</h2>
 <p>The foundation of any effective DRP is a thorough risk assessment. This involves identifying potential threats that could disrupt your operations. These threats can be categorized into several groups:</p>
@@ -99,23 +60,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Power Outages:</strong> Extended power disruptions.</li>
 </ul>
 <p>The risk assessment should consider the likelihood and potential impact of each threat. A simple matrix can help visualize this:</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">matrix
-    | Likelihood | Low | Medium | High |
-    | Impact     |       |       |       |
-    | Low        |    1  |    2  |    3  |
-    | Medium     |    2  |    4  |    6  |
-    | High       |    3  |    6  |    9  |
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Likelihood/Impact</th>
+<th style="text-align: left;">Low</th>
+<th style="text-align: left;">Medium</th>
+<th style="text-align: left;">High</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Low</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medium</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">High</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">9</td>
+</tr>
+</tbody>
+</table>
 <p>Each cell represents a risk score. Higher scores indicate threats requiring more attention in your DRP.</p>
 <h2 id="defining-recovery-time-objectives-rto-and-recovery-point-objectives-rpo" class="anchored">2. Defining Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO)</h2>
 <ul>
@@ -141,21 +115,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>System Recovery Procedures:</strong> Steps for restoring hardware and software systems.</li>
 <li><strong>Testing and Maintenance:</strong> A schedule for testing and updating the DRP.</li>
 </ul>
-<p><strong>Example Backup Script (Python - Illustrative):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>source_dir <span class="op">=</span> <span class="st">"/path/to/source/data"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>backup_dir <span class="op">=</span> <span class="st">"/path/to/backup/location"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>backup_timestamp <span class="op">=</span> time.strftime(<span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">_%H%M%S"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>backup_path <span class="op">=</span> os.path.join(backup_dir, backup_timestamp)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    shutil.copytree(source_dir, backup_path)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Backup completed successfully to: </span><span class="sc">{</span>backup_path<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Backup failed: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="testing-and-maintenance" class="anchored">5. Testing and Maintenance</h2>
 <p>Regular testing is vital to ensure the DRP’s effectiveness. Testing should cover various aspects, including:</p>
 <ul>
@@ -175,8 +134,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h2 id="communication-and-coordination" class="anchored">7. Communication and Coordination</h2>
 <p>Effective communication is crucial during a disaster. A clear communication plan should be in place to keep stakeholders informed, coordinate recovery efforts, and maintain morale.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Disaster Recovery Planning is a multifaceted process encompassing risk assessment, defining RTO/RPOs, selecting a recovery strategy, developing a comprehensive DRP document, rigorous testing and maintenance, thorough documentation of the recovery process, and seamless communication and coordination. A well-structured DRP ensures business continuity, minimizing the impact of disasters and enabling swift recovery.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

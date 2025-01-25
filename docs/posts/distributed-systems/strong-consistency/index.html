@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Strong Consistency – System Design Handbook</title>
+<title>Strong Consistency – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Strong Consistency – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Strong Consistency – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-strong-consistency-in-distributed-systems">Understanding Strong Consistency in Distributed Systems</h1>
 <p>Strong consistency, in the context of distributed systems, refers to a guarantee that all clients see the same view of data at all times. This contrasts sharply with weaker consistency models, where temporary inconsistencies might exist due to network latency or the asynchronous nature of distributed operations. While seemingly ideal, achieving strong consistency often comes at the cost of performance and scalability. This post delves deep into the intricacies of strong consistency, exploring its implications, implementation challenges, and various approaches.</p>
 <h2 id="what-is-strong-consistency" class="anchored">What is Strong Consistency?</h2>
 <p>Imagine a shared whiteboard used by multiple people. With strong consistency, any change made by one person is instantly visible to everyone else. There’s no lag, no conflicting updates, and the whiteboard always reflects a single, unified truth. Formally, strong consistency adheres to the principle of <strong>linearizability</strong>.</p>
@@ -147,35 +112,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <h3 id="multi-version-concurrency-control-mvcc" class="anchored">3. Multi-Version Concurrency Control (MVCC)</h3>
 <p>MVCC allows concurrent access to data by maintaining multiple versions of the data. Each transaction operates on a specific version, preventing conflicts. This approach can improve concurrency but adds complexity in managing versions and garbage collection.</p>
-<h2 id="code-example-illustrative---simplified" class="anchored">Code Example (Illustrative - simplified):</h2>
-<p>This simplified Python example illustrates a centralized locking approach using a <code>threading.Lock</code>. <strong>This is not a production-ready solution for a distributed system.</strong> It’s for illustrative purposes to demonstrate the basic concept.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> threading</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {}</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lock <span class="op">=</span> threading.Lock()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_data(key, value):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> lock:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        data[key] <span class="op">=</span> value</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_data(key):</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> lock:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> data.get(key)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>thread1 <span class="op">=</span> threading.Thread(target<span class="op">=</span>write_data, args<span class="op">=</span>(<span class="st">"x"</span>, <span class="dv">10</span>))</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>thread2 <span class="op">=</span> threading.Thread(target<span class="op">=</span>write_data, args<span class="op">=</span>(<span class="st">"y"</span>, <span class="dv">20</span>))</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>thread1.start()</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>thread2.start()</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>thread1.join()</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>thread2.join()</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(read_data(<span class="st">"x"</span>))  <span class="co"># Output: 10</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(read_data(<span class="st">"y"</span>))  <span class="co"># Output: 20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant T1 as Transaction 1
+    participant DB as Database
+    participant T2 as Transaction 2
+    
+    Note over DB: Initial Value: X = 100 (v1)
+    
+    T1-&gt;&gt;DB: Begin Transaction
+    T1-&gt;&gt;DB: Read X (v1: 100)
+    
+    T2-&gt;&gt;DB: Begin Transaction
+    T2-&gt;&gt;DB: Read X (v1: 100)
+    
+    T1-&gt;&gt;DB: Update X = 150
+    Note over DB: Creates X (v2: 150)
+    
+    T2-&gt;&gt;DB: Still sees X (v1: 100)
+    T2-&gt;&gt;DB: Update X = 200
+    Note over DB: Creates X (v3: 200)
+    
+    T1-&gt;&gt;DB: Commit
+    Note over DB: v1 marked for cleanup
+    
+    T2-&gt;&gt;DB: Commit
+    Note over DB: v2 marked for cleanup
+    
+    Note over DB: Final Value: X = 200 (v3)
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The diagram shows:</p>
+<ol type="1">
+<li>Each transaction sees its own version</li>
+<li>Updates create new versions</li>
+<li>Old versions marked for cleanup after commit</li>
+<li>No blocking between concurrent transactions</li>
+<li>Final state reflects last committed change</li>
+</ol>
 <h2 id="trade-offs-of-strong-consistency" class="anchored">Trade-offs of Strong Consistency</h2>
 <p>Strong consistency offers the advantage of simplicity and predictable behavior. However, it comes with substantial performance and scalability challenges. The need for coordination and synchronization can introduce latency and reduce throughput, making it unsuitable for applications requiring high performance or low latency.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Strong consistency guarantees a single, unified view of data across all clients, eliminating inconsistencies and simplifying application logic. Achieving strong consistency necessitates sophisticated techniques like centralized locking, distributed consensus algorithms, or MVCC, each with its own trade-offs between performance and robustness. Understanding these trade-offs is crucial for selecting the appropriate consistency model for a given application.</p>
+<p>For example, in a distributed database, every write operation must be propagated to all replicas before it is considered complete. This can lead to increased latency and lower throughput, as the system must wait for all replicas to confirm the write before returning the result to the client. Additionally, the need for coordination between replicas can lead to increased complexity, as the system must handle edge cases such as network partitions and node failures.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

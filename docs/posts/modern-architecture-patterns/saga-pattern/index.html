@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Saga Pattern – System Design Handbook</title>
+<title>Saga Pattern – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Saga Pattern – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Saga Pattern – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="diving-deep-into-the-saga-pattern-orchestration-and-choreography-for-microservices">Diving Deep into the Saga Pattern: Orchestration and Choreography for Microservices</h1>
 <p>The microservices architecture offers numerous benefits, including scalability, independent deployments, and technology diversity. However, managing transactions spanning multiple services presents a significant challenge. This is where the Saga pattern comes in – a powerful technique for coordinating distributed transactions across microservices without relying on a centralized, two-phase commit (2PC) mechanism. This post will explore the Saga pattern in detail, examining its different approaches and highlighting its strengths and weaknesses.</p>
 <h2 id="understanding-the-problem-distributed-transactions" class="anchored">Understanding the Problem: Distributed Transactions</h2>
 <p>Traditional transactional databases offer ACID properties (Atomicity, Consistency, Isolation, Durability). These properties guarantee that a transaction either completes entirely or not at all. However, in a microservices environment, each service typically has its own database. A single business operation might require updates across multiple databases. Implementing a distributed transaction using 2PC is generally avoided due to its performance overhead and complexity. It also introduces a single point of failure, the transaction coordinator. This is where the Saga pattern offers a compelling alternative.</p>
@@ -101,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">graph TB
     A[Client] --&gt; B(Orchestrator);
     B --&gt; C{Transaction 1};
     C -- Success --&gt; D{Transaction 2};
@@ -117,17 +82,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Code Example (Conceptual Python):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Orchestrator:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> handle_order(<span class="va">self</span>, order):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.service1.create_order(order)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.service2.allocate_inventory(order)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.service3.process_payment(order)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.service3.refund_payment(order)  <span class="co"># Compensating transaction</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.service2.release_inventory(order) <span class="co"># Compensating transaction</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This diagram illustrates a Saga pattern for distributed transactions with compensation:</p>
+<p><strong>Main Flow:</strong></p>
+<ol type="1">
+<li>Client initiates request through Orchestrator</li>
+<li>Orchestrator manages sequence of transactions (1→2→3)</li>
+<li>Success path: All transactions complete successfully</li>
+<li>Failure handling: Failed transaction triggers compensating action</li>
+</ol>
+<p><strong>Compensation Flow:</strong></p>
+<ul>
+<li>Transaction 1 fails: Executes Compensating Transaction 1</li>
+<li>Transaction 2 fails: Executes Compensating Transaction 2</li>
+<li>All compensations lead to Rollback state</li>
+</ul>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Sequential transaction dependencies</li>
+<li>Built-in rollback mechanisms</li>
+<li>Orchestrator coordinates overall flow</li>
+<li>Maintains data consistency across distributed system</li>
+</ul>
 <p><strong>2. Choreography-based Saga:</strong></p>
 <p>In a choreography-based Saga, there’s no central orchestrator. Each service publishes events that trigger subsequent transactions in other services. These services listen for relevant events and perform their respective actions. Compensating transactions are also triggered by events indicating failures.</p>
 <div class="cell" data-layout-align="default">
@@ -135,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">graph TB
     A[Client] --&gt; B(Service 1);
     B --&gt; C[Event 1];
     C --&gt; D(Service 2);
@@ -159,37 +134,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Advantages and Disadvantages:</strong></p>
 <table class="caption-top">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 40%">
-<col style="width: 40%">
+<col style="width: 23%">
+<col style="width: 38%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Feature</th>
-<th>Orchestration</th>
-<th>Choreography</th>
+<th style="text-align: left;">Feature</th>
+<th style="text-align: left;">Orchestration</th>
+<th style="text-align: left;">Choreography</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Complexity</td>
-<td>Higher (centralized point of failure)</td>
-<td>Lower (decentralized)</td>
+<td style="text-align: left;">Complexity</td>
+<td style="text-align: left;">Higher (centralized point of failure)</td>
+<td style="text-align: left;">Lower (decentralized)</td>
 </tr>
 <tr class="even">
-<td>Maintainability</td>
-<td>Lower</td>
-<td>Higher (event-driven complexity)</td>
+<td style="text-align: left;">Maintainability</td>
+<td style="text-align: left;">Lower</td>
+<td style="text-align: left;">Higher (event-driven complexity)</td>
 </tr>
 <tr class="odd">
-<td>Scalability</td>
-<td>Can be a bottleneck</td>
-<td>More scalable</td>
+<td style="text-align: left;">Scalability</td>
+<td style="text-align: left;">Can be a bottleneck</td>
+<td style="text-align: left;">More scalable</td>
 </tr>
 <tr class="even">
-<td>Debugging</td>
-<td>Easier to debug</td>
-<td>More difficult to debug</td>
+<td style="text-align: left;">Debugging</td>
+<td style="text-align: left;">Easier to debug</td>
+<td style="text-align: left;">More difficult to debug</td>
 </tr>
 </tbody>
 </table>
@@ -197,8 +172,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The choice between orchestration and choreography depends on several factors, including the complexity of the business process, the number of services involved, and the team’s familiarity with event-driven architectures. Orchestration is generally simpler to understand and debug for smaller sagas, while choreography becomes more advantageous as the system grows in complexity and scale.</p>
 <h2 id="eventual-consistency-and-error-handling" class="anchored">Eventual Consistency and Error Handling</h2>
 <p>It’s crucial to understand that the Saga pattern uses eventual consistency. This means the system might be temporarily inconsistent while compensating transactions are executed. Robust error handling and retry mechanisms are crucial to ensure the saga completes successfully and to handle potential failures gracefully. Implementing idempotency in the local transactions is essential to prevent unintended side effects from retry attempts.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The Saga pattern is a powerful approach to managing distributed transactions in a microservices architecture. It provides a flexible and scalable alternative to traditional two-phase commit protocols. While both orchestration and choreography approaches offer benefits, the selection depends on the context and trade-offs involved. A solid understanding of eventual consistency and robust error handling strategies are critical for successful Saga implementation.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

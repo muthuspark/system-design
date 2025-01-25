@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bulkhead Pattern – System Design Handbook</title>
+<title>Bulkhead Pattern – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Bulkhead Pattern – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Bulkhead Pattern – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-and-implementing-the-bulkhead-pattern-for-resilience">Understanding and Implementing the Bulkhead Pattern for Resilience</h1>
 <p>The Bulkhead pattern is a crucial architectural design technique used to isolate parts of an application to prevent cascading failures. In essence, it’s like creating firewalls within your system, ensuring that a problem in one area doesn’t bring down the entire ship (your application). This is particularly important in microservices architectures and distributed systems where the failure of a single component can have widespread consequences. This post will delve into the intricacies of the Bulkhead pattern, exploring its benefits, different implementation strategies, and providing practical examples.</p>
 <h2 id="the-problem-cascading-failures" class="anchored">The Problem: Cascading Failures</h2>
 <p>Imagine a system where multiple users are accessing a single database. If that database becomes overloaded or fails, every user attempting to access it is impacted. This is a classic example of a cascading failure – a single point of failure bringing down a significant portion, or even all, of your application. This leads to poor user experience, reduced availability, and potential financial losses.</p>
@@ -185,8 +184,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If the product catalog service becomes slow or unavailable, the other services remain unaffected, ensuring the user can still authenticate and potentially place orders (though product information might be limited).</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The Bulkhead pattern is a vital architectural design choice for building resilient and highly available systems. By isolating resources and limiting their consumption, you can prevent cascading failures and protect your application from widespread outages. Different implementation strategies, including thread pools, connection pools, queueing systems, and process isolation, allow for adapting the bulkhead pattern to diverse architectural needs. Understanding and implementing this pattern is crucial for building robust applications in today’s complex, distributed environments.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

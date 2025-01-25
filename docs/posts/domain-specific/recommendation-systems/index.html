@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Recommendation Systems – System Design Handbook</title>
+<title>Recommendation Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Recommendation Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Recommendation Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="decoding-recommendation-systems-a-deep-dive">Decoding Recommendation Systems: A Deep Dive</h1>
 <p>Recommendation systems have become ubiquitous in our digital lives. From suggesting movies on Netflix to recommending products on Amazon, these systems play a crucial role in shaping our online experiences and driving engagement. But how do these systems actually work? This post will delve into the mechanics of recommendation systems, exploring different approaches and providing a detailed understanding of their inner workings.</p>
 <h2 id="types-of-recommendation-systems" class="anchored">Types of Recommendation Systems</h2>
 <p>Recommendation systems can be broadly classified into two main categories: content-based filtering and collaborative filtering. Let’s examine each:</p>
@@ -103,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p><strong>Example: Movie Recommendation</strong></p>
 <p>Imagine a user who enjoys action movies with strong female leads. The system would identify the features of movies the user has liked (action, female lead) and recommend other movies with similar features.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -126,23 +125,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample movie data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>movies <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'title'</span>: [<span class="st">'Movie A'</span>, <span class="st">'Movie B'</span>, <span class="st">'Movie C'</span>, <span class="st">'Movie D'</span>],</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'description'</span>: [<span class="st">'Action movie with a strong female lead'</span>, <span class="st">'Comedy with a male lead'</span>, <span class="st">'Action movie with a male lead'</span>, <span class="st">'Romantic comedy with a female lead'</span>]</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TF-IDF vectors</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>tfidf <span class="op">=</span> TfidfVectorizer()</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>tfidf_matrix <span class="op">=</span> tfidf.fit_transform(movies[<span class="st">'description'</span>])</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># User profile (assuming the user liked Movie A)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>user_profile <span class="op">=</span> tfidf_matrix[<span class="dv">0</span>]</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cosine similarity</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>similarity_scores <span class="op">=</span> cosine_similarity(user_profile, tfidf_matrix)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommend movies based on similarity scores</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>recommendations <span class="op">=</span> pd.DataFrame({<span class="st">'title'</span>: movies[<span class="st">'title'</span>], <span class="st">'similarity'</span>: similarity_scores[<span class="dv">0</span>]}).sort_values(<span class="st">'similarity'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(recommendations)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 id="collaborative-filtering" class="anchored">2. Collaborative Filtering</h3>
@@ -158,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Prediction:</strong> Predict the target user’s rating for an item based on the ratings of the similar users.</li>
 <li><strong>Recommendation:</strong> Recommend items with the highest predicted ratings.</li>
 </ol>
-<p><strong>Mermaid Diagram (User-Based):</strong></p>
+<p><strong>Diagram (User-Based):</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -192,8 +191,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Deep Learning:</strong> Neural networks are employed to learn complex relationships between users and items, often incorporating contextual information like time and location.</li>
 <li><strong>Reinforcement Learning:</strong> This approach can personalize recommendations by learning optimal strategies for maximizing user engagement.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post provided a comprehensive overview of recommendation systems, covering various types, techniques, and challenges. We explored content-based filtering, collaborative filtering (user-based and item-based), hybrid approaches, and advanced methods. Understanding these different techniques is crucial for building effective and engaging recommendation systems.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

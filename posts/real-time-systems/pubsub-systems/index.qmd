@@ -133,7 +133,5 @@ graph LR
 This diagram shows a scenario where Subscriber 2 fails to process a message, resulting in the message being moved to the Dead-Letter Queue for further processing.
 
 
-## Summary
 
-Pub/Sub systems offer a flexible, scalable, and resilient approach to building distributed applications.  Understanding the core concepts – publishers, subscribers, and topics – is essential for leveraging the benefits of this powerful messaging paradigm. Choosing the right Pub/Sub implementation depends on specific requirements, considering factors like scalability needs, message ordering requirements, and integration with existing infrastructure.  Advanced features like message ordering, durability, and dead-letter queues enhance the robustness and reliability of applications built on Pub/Sub.
 

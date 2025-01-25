@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Performance Testing Methodologies – System Design Handbook</title>
+<title>Performance Testing Methodologies – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Performance Testing Methodologies – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Performance Testing Methodologies – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,7 +54,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="performance-testing-methodologies-a-deep-dive">Performance Testing Methodologies: A Deep Dive</h1>
 <p>Performance testing is crucial for ensuring your software application can handle the expected load and provide a satisfactory user experience. Ignoring performance testing can lead to slow response times, crashes under pressure, and ultimately, loss of users and revenue. This post delves into various performance testing methodologies, explaining their strengths, weaknesses, and when to apply them.</p>
 <h2 id="load-testing" class="anchored">1. Load Testing</h2>
 <p>Load testing simulates the expected user load on your application under normal operating conditions. It aims to determine the system’s behavior under realistic conditions and identify potential bottlenecks before they affect real users.</p>
@@ -73,11 +72,11 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Test Plan] --&gt; B(Thread Group);
-    B --&gt; C{HTTP Request Samplers};
-    C --&gt; D[Listeners (e.g., Graph, Aggregate Report)];
-    D --&gt; E[Results Analysis];
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Test Plan] --&gt; B[Thread Group]
+    B --&gt; C[HTTP Request Samplers]
+    C --&gt; D[Listeners]
+    D --&gt; E[Results Analysis]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -115,17 +114,19 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Test Plan] --&gt; B(Sustained User Load);
-    B --&gt; C[Long Duration (e.g., 24-72 hours)];
-    C --&gt; D[Resource Monitoring (CPU, Memory, Network)];
-    D --&gt; E[Stability &amp; Performance Analysis];
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Test Plan] --&gt; B[Sustained Load]
+    B --&gt; C[Long Duration]
+    C --&gt; D[Resource Monitoring]
+    D --&gt; E[Stability Analysis]
+
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>This diagram shows endurance testing flow: plan creation, sustained load generation, extended duration testing, resource monitoring, and stability assessment.</p>
 <h2 id="spike-testing" class="anchored">4. Spike Testing</h2>
 <p>Spike testing simulates sudden, significant increases in user load. This helps evaluate the system’s ability to handle unexpected bursts of activity, such as a flash sale or viral marketing campaign.</p>
 <p><strong>Goal:</strong> Determine the system’s response to sudden increases in user load.</p>
@@ -156,10 +157,10 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Test Plan] --&gt; B(Large Data Population);
-    B --&gt; C[Database Load Test];
-    C --&gt; D[Performance Analysis (Response time under large data)];
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Test Plan] --&gt; B[Large Data Population]
+    B --&gt; C[Database Load Test]
+    C --&gt; D[Performance Analysis]
 
 </pre>
 </div>
@@ -167,8 +168,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored five key performance testing methodologies: Load, Stress, Endurance, Spike, and Volume testing. Each methodology serves a distinct purpose in evaluating different aspects of an application’s performance under various conditions. Understanding these methodologies and their application is critical for ensuring the robustness and reliability of any software system.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

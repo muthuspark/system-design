@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Service Mesh Architecture – System Design Handbook</title>
+<title>Service Mesh Architecture – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Service Mesh Architecture – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Service Mesh Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-service-mesh-architecture-a-deep-dive">Understanding Service Mesh Architecture: A Deep Dive</h1>
 <p>The modern application landscape is increasingly complex, built from a multitude of microservices communicating with each other. Managing this intricate web of inter-service communication presents significant challenges related to security, observability, and resilience. This is where service mesh architecture comes in, providing a dedicated infrastructure layer to handle these complexities. This post will explore the core concepts of service mesh, its benefits, common components, and popular implementations.</p>
 <h2 id="what-is-a-service-mesh" class="anchored">What is a Service Mesh?</h2>
 <p>A service mesh is a dedicated infrastructure layer built to handle service-to-service communication within a microservices architecture. It acts as a transparent proxy for all inter-service traffic, abstracting away the complexities of network communication and allowing developers to focus on building business logic. Think of it as a dedicated network for your microservices, handling tasks like:</p>
@@ -106,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Data Plane:</strong> This is the layer responsible for handling actual traffic routing. It comprises a set of proxies (often called <em>sidecars</em>) deployed alongside each microservice instance. These sidecars intercept and manage all incoming and outgoing requests.</p></li>
 <li><p><strong>Control Plane:</strong> This is the management and control layer for the data plane. It configures the sidecars, manages service discovery, and collects telemetry data.</p></li>
 </ul>
-<p>Here’s a simplified mermaid diagram illustrating the architecture:</p>
+<p>Here’s a simplified Diagram illustrating the architecture:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -177,8 +176,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">host</span><span class="kw">:</span><span class="at"> my-service-v2.default.svc.cluster.local</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">subset</span><span class="kw">:</span><span class="at"> v2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This configuration directs requests with <code>/v1</code> prefix to the <code>my-service-v1</code> version and <code>/v2</code> to <code>my-service-v2</code>.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Service mesh architecture provides a powerful solution for managing the complexities of microservice communication. By abstracting away the underlying network infrastructure, service meshes enhance security, observability, resilience, and developer productivity. Choosing the right service mesh depends on specific needs and existing infrastructure, with Istio, Linkerd, and Consul Connect being among the most prominent options. Understanding the core concepts of data plane, control plane, and the various capabilities offered is crucial for effective implementation and management of a service mesh within a microservices-based application.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

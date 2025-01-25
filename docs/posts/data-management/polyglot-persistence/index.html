@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Polyglot Persistence – System Design Handbook</title>
+<title>Polyglot Persistence – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Polyglot Persistence – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Polyglot Persistence – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="polyglot-persistence-mastering-data-storage-strategies-in-modern-applications">Polyglot Persistence: Mastering Data Storage Strategies in Modern Applications</h1>
 <p>Modern applications often grapple with diverse data needs. A single database technology rarely fits all requirements. This is where polyglot persistence shines. It’s the strategic use of multiple database technologies within a single application, leveraging the strengths of each to optimize performance, scalability, and cost-effectiveness. This post delves deep into the intricacies of polyglot persistence, exploring its benefits, common scenarios, and challenges.</p>
 <h2 id="why-choose-polyglot-persistence" class="anchored">Why Choose Polyglot Persistence?</h2>
 <p>The core advantage of polyglot persistence lies in specialization. Different databases excel in different areas:</p>
@@ -119,18 +118,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[E-commerce Application] --&gt; B(PostgreSQL);
-    A --&gt; C(MongoDB);
-    A --&gt; D(Redis);
-    B[Relational (Orders, Customers)]
-    C[NoSQL (Reviews, Content)]
-    D[In-Memory (Caching)]
+    A[E-commerce Application] --&gt; B[(PostgreSQL)]
+    A --&gt; C[(MongoDB)]
+    A --&gt; D[(Redis)]
+    
+    subgraph Transactional Data
+        B --&gt; B1[Orders]
+        B --&gt; B2[Customers]
+        B --&gt; B3[Products]
+        B --&gt; B4[Inventory]
+    end
+    
+    subgraph Document Store
+        C --&gt; C1[Product Reviews]
+        C --&gt; C2[Content Pages]
+        C --&gt; C3[User Sessions]
+    end
+    
+    subgraph Cache Layer
+        D --&gt; D1[Session Cache]
+        D --&gt; D2[Product Cache]
+        D --&gt; D3[Cart Data]
+    end
+
+    style A fill:#f9f,stroke:#333
+    style B fill:#9cf,stroke:#333
+    style C fill:#ff9,stroke:#333
+    style D fill:#9f9,stroke:#333
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The diagram illustrates a modern e-commerce system’s database architecture with three main components:</p>
+<p><strong>1. PostgreSQL (Blue):</strong></p>
+<ul>
+<li>Handles core business transactions</li>
+<li>Stores orders, customers, products, and inventory</li>
+<li>Used for data requiring ACID compliance and relational integrity</li>
+</ul>
+<p><strong>2. MongoDB (Yellow):</strong></p>
+<ul>
+<li>Manages unstructured content</li>
+<li>Stores product reviews, content pages, user sessions</li>
+<li>Offers flexibility for document-based data</li>
+</ul>
+<p><strong>3. Redis (Green):</strong></p>
+<ul>
+<li>Provides in-memory caching</li>
+<li>Manages session data, product cache, and shopping carts</li>
+<li>Optimizes performance for frequently accessed data</li>
+</ul>
+<p>The central E-commerce Application (Pink) coordinates between these databases, using each for its strengths: PostgreSQL for transactions, MongoDB for content, and Redis for speed.</p>
 <p><strong>2. Social Media Platform:</strong></p>
 <ul>
 <li><strong>Graph Database (Neo4j):</strong> Models relationships between users, posts, and groups. Facilitates efficient friend recommendations and social graph traversal.</li>
@@ -143,18 +183,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Social Media Platform] --&gt; B(Neo4j);
-    A --&gt; C(Cassandra);
-    A --&gt; D(Redis);
-    B[Graph (Relationships)]
-    C[NoSQL (Posts, Profiles)]
-    D[In-Memory (Feeds, Trends)]
+    A[Social Media Platform] --&gt; B[(Neo4j)]
+    A --&gt; C[(Cassandra)]
+    A --&gt; D[(Redis)]
+    
+    subgraph Graph Database
+        B --&gt; B1[User Connections]
+        B --&gt; B2[Friend Networks]
+        B --&gt; B3[Content Relationships]
+    end
+    
+    subgraph Distributed Storage
+        C --&gt; C1[User Posts]
+        C --&gt; C2[User Profiles]
+        C --&gt; C3[Media Content]
+    end
+    
+    subgraph Cache Layer
+        D --&gt; D1[News Feeds]
+        D --&gt; D2[Trending Topics]
+        D --&gt; D3[Active Sessions]
+    end
+
+    style A fill:#f9f,stroke:#333
+    style B fill:#9cf,stroke:#333
+    style C fill:#ff9,stroke:#333
+    style D fill:#9f9,stroke:#333
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The diagram shows a social media platform’s three-tier database architecture:</p>
+<p><strong>1. Neo4j (Blue):</strong></p>
+<ul>
+<li>Handles social relationships and connections</li>
+<li>Maps user networks and content relationships</li>
+<li>Optimized for graph-based queries</li>
+</ul>
+<p><strong>2. Cassandra (Yellow):</strong></p>
+<ul>
+<li>Stores high-volume distributed data</li>
+<li>Manages user posts, profiles, media</li>
+<li>Scales horizontally for large datasets</li>
+</ul>
+<p><strong>3. Redis (Green):</strong></p>
+<ul>
+<li>Provides real-time caching</li>
+<li>Handles news feeds, trending topics</li>
+<li>Manages active user sessions</li>
+</ul>
+<p>The central platform (Pink) coordinates these databases, using Neo4j for relationships, Cassandra for content, and Redis for fast access to current data.</p>
 <p><strong>3. IoT Data Management:</strong></p>
 <ul>
 <li><strong>Time-series Database (InfluxDB):</strong> Stores sensor data with high ingestion rates and efficient querying capabilities.</li>
@@ -167,18 +247,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[IoT Data Management] --&gt; B(InfluxDB);
-    A --&gt; C(MongoDB);
-    A --&gt; D(PostgreSQL);
-    B[Time-Series (Sensor Data)]
-    C[NoSQL (Device Metadata)]
-    D[Relational (Device Status)]
+    A[IoT Data Platform] --&gt; B[(InfluxDB)]
+    A --&gt; C[(MongoDB)]
+    A --&gt; D[(PostgreSQL)]
+    
+    subgraph Time-Series Data
+        B --&gt; B1[Sensor Readings]
+        B --&gt; B2[Performance Metrics]
+        B --&gt; B3[Event Logs]
+    end
+    
+    subgraph Device Metadata
+        C --&gt; C1[Device Configurations]
+        C --&gt; C2[Firmware Details]
+        C --&gt; C3[Maintenance Records]
+    end
+    
+    subgraph Device Management
+        D --&gt; D1[Device Registry]
+        D --&gt; D2[Access Control]
+        D --&gt; D3[Alert History]
+    end
+
+    style A fill:#f9f,stroke:#333
+    style B fill:#9cf,stroke:#333
+    style C fill:#ff9,stroke:#333
+    style D fill:#9f9,stroke:#333
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>The IoT architecture diagram shows three specialized databases:</p>
+<p><strong>1. InfluxDB (Blue):</strong></p>
+<ul>
+<li>Manages time-series data: sensor readings, metrics, event logs</li>
+<li>Optimized for high-speed time-stamped data ingestion</li>
+</ul>
+<p><strong>2. MongoDB (Yellow):</strong></p>
+<ul>
+<li>Stores device metadata: configurations, firmware, maintenance</li>
+<li>Handles flexible document-based data</li>
+</ul>
+<p><strong>3. PostgreSQL (Green):</strong></p>
+<ul>
+<li>Manages device registry, access control, alerts</li>
+<li>Ensures data consistency for critical device management</li>
+</ul>
+<p>The IoT Data Platform (Pink) coordinates these databases, each serving specific data needs in the IoT ecosystem.</p>
 <h2 id="challenges-of-polyglot-persistence" class="anchored">Challenges of Polyglot Persistence</h2>
 <p>While offering significant advantages, polyglot persistence introduces complexities:</p>
 <ul>
@@ -188,36 +305,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Increased Operational Overhead:</strong> Managing multiple databases demands more sophisticated monitoring and operational expertise.</li>
 <li><strong>Development Complexity:</strong> Developers need to understand and work with multiple database technologies and APIs.</li>
 </ul>
-<h2 id="example-simplified-python-with-sqlalchemy-and-pymongo" class="anchored">Example (Simplified): Python with SQLAlchemy and PyMongo</h2>
-<p>This simplified example demonstrates connecting to both a relational (PostgreSQL via SQLAlchemy) and a NoSQL (MongoDB via PyMongo) database within a Python application. Note: This is a highly simplified illustrative example and omits error handling and many best practices for production code.</p>
+<p>To improve this section of the blog about polyglot persistence, I’ll add more context, explain the purpose of polyglot persistence, and expand the example to include better practices. I’ll also touch on potential use cases and best practices in production environments.</p>
+<h2 id="polyglot-persistence-using-sqlalchemy-and-pymongo-in-python" class="anchored">Polyglot Persistence: Using SQLAlchemy and PyMongo in Python</h2>
+<p>Polyglot persistence refers to leveraging multiple database technologies to handle various types of data in a single application. In modern applications, different types of data often require different types of storage, and no single database can efficiently handle every use case. For example, relational databases (like PostgreSQL) excel at handling structured data with complex relationships, while NoSQL databases (like MongoDB) are great for handling unstructured or semi-structured data at scale.</p>
+<p>In this example, we’ll use <strong>SQLAlchemy</strong> to interact with a relational PostgreSQL database and <strong>PyMongo</strong> to interact with a MongoDB database. This demonstrates how an application can seamlessly combine SQL and NoSQL databases.</p>
+<h3 id="example-using-sqlalchemy-and-pymongo-together-in-python" class="anchored">Example: Using SQLAlchemy and PyMongo Together in Python</h3>
+<p>This simplified example connects a Python application to both a PostgreSQL (relational) and MongoDB (NoSQL) database. While the code omits production-level considerations (e.g., error handling, connection pooling, etc.), it illustrates the basic flow.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlalchemy <span class="im">as</span> sa</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> sessionmaker</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pymongo <span class="im">import</span> MongoClient</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL setup</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> sa.create_engine(<span class="st">'postgresql://user:password@host:port/database'</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Session <span class="op">=</span> sessionmaker(bind<span class="op">=</span>engine)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> Session()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># MongoDB setup</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> MongoClient(<span class="st">'mongodb://host:port/'</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> client[<span class="st">'mydatabase'</span>]</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> db[<span class="st">'mycollection'</span>]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># PostgreSQL</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> User(name<span class="op">=</span><span class="st">"John Doe"</span>) <span class="co"># Assuming a User model defined with SQLAlchemy</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># SQLAlchemy setup (PostgreSQL)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> sa.create_engine(<span class="st">'postgresql://user:password@host:port/database'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Session <span class="op">=</span> sessionmaker(bind<span class="op">=</span>engine)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> Session()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># PyMongo setup (MongoDB)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> MongoClient(<span class="st">'mongodb://host:port/'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> client[<span class="st">'mydatabase'</span>]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> db[<span class="st">'mycollection'</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># SQLAlchemy: Adding a user to PostgreSQL</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> User(name<span class="op">=</span><span class="st">"John Doe"</span>)  <span class="co"># Assuming a SQLAlchemy model `User` is defined</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>session.add(user)</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>session.commit()</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># MongoDB</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># PyMongo: Inserting a document into MongoDB</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>document <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'Jane Doe'</span>, <span class="st">'age'</span>: <span class="dv">30</span>}</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>collection.insert_one(document)</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>session.close()</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>client.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Polyglot persistence allows applications to leverage the best features of different database technologies, leading to improved performance, scalability, and cost-effectiveness. However, it introduces challenges in data consistency, transaction management, and operational complexity, which need careful consideration during design and implementation. A well-planned polyglot persistence strategy is crucial for building robust, scalable, and efficient modern applications.</p>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Closing the connections</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>session.close()</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>client.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="key-concepts-and-considerations" class="anchored">Key Concepts and Considerations</h3>
+<ol type="1">
+<li><p><strong>Why Polyglot Persistence?</strong><br>
+In certain applications, storing different types of data in separate databases can be more efficient. For instance, user profiles and relationships can be stored in a relational database (PostgreSQL), while unstructured or rapidly changing data (like activity logs) might be better suited to a document database (MongoDB).</p></li>
+<li><p><strong>SQLAlchemy (PostgreSQL):</strong><br>
+SQLAlchemy provides an ORM (Object-Relational Mapping) layer, making it easier to interact with relational databases using Python objects. In this example, a <code>User</code> model is used to interact with a <code>users</code> table in the PostgreSQL database.</p></li>
+<li><p><strong>PyMongo (MongoDB):</strong><br>
+PyMongo is a Python library used to interact with MongoDB, a NoSQL document database. Unlike relational databases, MongoDB stores data in flexible, schema-less JSON-like documents. In this example, we inserted a simple document (<code>{'name': 'Jane Doe', 'age': 30}</code>) into a collection in MongoDB.</p></li>
+</ol>
+<h3 id="best-practices-in-production" class="anchored">Best Practices in Production</h3>
+<p>While the code above is a simplified example, the following best practices are critical in production:</p>
+<ol type="1">
+<li><p><strong>Error Handling:</strong><br>
+Always handle database connection errors, transaction failures, and other exceptions. Consider using <code>try</code>/<code>except</code> blocks or context managers for safe connection handling.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    session.add(user)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    session.commit()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    session.rollback()  <span class="co"># Rollback in case of an error</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    session.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Connection Pooling:</strong><br>
+For applications with high traffic, it’s essential to use connection pooling to manage database connections efficiently. Both SQLAlchemy and PyMongo support pooling.</p></li>
+<li><p><strong>Transactions:</strong><br>
+Ensure that relational database operations are atomic by wrapping them in transactions. For MongoDB, you can use multi-document transactions (if your MongoDB version supports them) for consistency.</p></li>
+<li><p><strong>Configuration and Security:</strong><br>
+Never hard-code credentials (like <code>user:password</code>). Use environment variables or configuration management tools to handle sensitive information securely.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>db_url <span class="op">=</span> os.getenv(<span class="st">'DATABASE_URL'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mongo_url <span class="op">=</span> os.getenv(<span class="st">'MONGO_URL'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Schema and Data Modeling:</strong><br>
+Keep in mind that polyglot persistence requires careful schema design and data modeling to avoid issues like data inconsistency. Ensure your models in both databases reflect the intended use cases.</p></li>
+</ol>
+<p>By combining the strengths of different databases, polyglot persistence allows applications to efficiently manage diverse data types, resulting in a more flexible and scalable architecture.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

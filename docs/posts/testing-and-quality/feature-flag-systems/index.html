@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Feature flags are stored in configuration files (e.g., YAML, JSON), which are read by the application at runtime. This is more manageable than hardcoded if-else statements but still lacks centralized management and auditing capabilities.</p>
 <p><strong>3. Feature Flag Management Services:</strong></p>
 <p>These services provide a centralized platform to manage, monitor, and track feature flags. They offer advanced capabilities like rollouts, targeting, and analytics. Examples include LaunchDarkly, Optimizely, and Split.io. This is the most robust and scalable solution for larger projects.</p>
-<h2 id="feature-flag-management-service-architecture" class="anchored">Feature Flag Management Service Architecture:</h2>
+<h2 id="feature-flag-management-service-architecture-example-using-mermaid" class="anchored">Feature Flag Management Service Architecture (Example using Mermaid):</h2>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -140,20 +140,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>This diagram illustrates a feature flag architecture:</p>
-<p>The main components are:</p>
-<ul>
-<li>Application connects to Feature Flag Service and Database</li>
-<li>Feature Flag Service manages 3 key areas:
-<ul>
-<li>Configuration Store: Holds flag states/rules</li>
-<li>Analytics Dashboard: Tracks flag usage metrics</li>
-<li>User Management: Controls access/targeting</li>
-</ul></li>
-<li>Dotted line from Database to Feature Flag Service indicates data exchange for user targeting/segmentation</li>
-</ul>
-<p>The Service is isolated in a subgraph to show its self-contained nature while still interacting with external components.</p>
-<p>This setup enables dynamic feature toggling and A/B testing without code deployments. The centralized service ensures consistent flag states across the application.</p>
 <h2 id="advanced-feature-flag-techniques" class="anchored">Advanced Feature Flag Techniques</h2>
 <ul>
 <li><strong>Percentage Rollouts:</strong> Release a feature to a percentage of users to gradually test its stability and performance.</li>

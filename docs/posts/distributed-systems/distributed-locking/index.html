@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Distributed Locking – System Design Handbook</title>
+<title>Distributed Locking – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Distributed Locking – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Distributed Locking – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="distributed-locking-mastering-concurrent-access-in-distributed-systems">Distributed Locking: Mastering Concurrent Access in Distributed Systems</h1>
 <p>Distributed systems, while offering scalability and resilience, introduce a new set of challenges. One prominent issue is managing concurrent access to shared resources. Imagine multiple services trying to update the same database record simultaneously – chaos ensues! This is where distributed locking comes to the rescue. This post delves deep into the intricacies of distributed locking, exploring various techniques and their trade-offs.</p>
 <h2 id="understanding-the-problem-race-conditions-in-distributed-systems" class="anchored">Understanding the Problem: Race Conditions in Distributed Systems</h2>
 <p>Before we dive into solutions, let’s understand the problem. A race condition occurs when multiple processes or threads access and manipulate shared data concurrently, leading to unpredictable and often incorrect results. In a distributed environment, this is exacerbated by network latency and the lack of a single, shared memory space.</p>
@@ -98,15 +97,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Service A] --&gt; R{Read Counter (5)};
-    B[Service B] --&gt; R;
-    R --&gt; A1{Decrement (4)};
-    R --&gt; B1{Decrement (4)};
-    A1 --&gt; W1{Write Counter (4)};
-    B1 --&gt; W2{Write Counter (4)};
-    W1 --&gt; C[Counter: 4];
-    W2 --&gt; C;
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant A as Service A
+    participant DB as Database
+    participant B as Service B
+
+    Note over DB: Initial Counter = 5
+    A-&gt;&gt;DB: Read Counter
+    B-&gt;&gt;DB: Read Counter
+    Note over A,B: Both services read value 5
+    A-&gt;&gt;A: Decrement (5 -&gt; 4)
+    B-&gt;&gt;B: Decrement (5 -&gt; 4)
+    A-&gt;&gt;DB: Write Counter = 4
+    B-&gt;&gt;DB: Write Counter = 4
+    Note over DB: Final Counter = 4 (Should be 3)
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -142,7 +146,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Advantages:</strong> Simple to implement, relies on well-tested database features. <strong>Disadvantages:</strong> Performance bottleneck if the database becomes a single point of contention; susceptible to deadlocks if not handled carefully.</p>
+<p><strong>Advantages:</strong> Simple to implement, relies on well-tested database features.</p>
+<p><strong>Disadvantages:</strong> Performance bottleneck if the database becomes a single point of contention; susceptible to deadlocks if not handled carefully.</p>
 <h3 id="distributed-locks-with-redis" class="anchored">2. Distributed Locks with Redis</h3>
 <p>Redis, an in-memory data store, offers a powerful <code>SETNX</code> (SET if Not eXists) command, perfectly suited for distributed locking. A process attempts to set a key with a unique value (a lock). If it succeeds, it holds the lock; otherwise, it waits or retries.</p>
 <p><strong>Python Code Example (using <code>redis-py</code>):</strong></p>
@@ -174,13 +179,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Advantages:</strong> Faster than database locks, scalable and flexible. <strong>Disadvantages:</strong> Requires a Redis instance; requires careful handling of lock expiration and failure scenarios (e.g., process crashes while holding the lock).</p>
+<p><strong>Advantages:</strong> Faster than database locks, scalable and flexible.</p>
+<p><strong>Disadvantages:</strong> Requires a Redis instance; requires careful handling of lock expiration and failure scenarios (e.g., process crashes while holding the lock).</p>
 <h3 id="zookeeper" class="anchored">3. ZooKeeper</h3>
-<p>ZooKeeper, a highly reliable distributed coordination service, provides robust distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks. The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock.</p>
-<p><strong>Advantages:</strong> Highly reliable, handles failures gracefully, built-in features for distributed coordination. <strong>Disadvantages:</strong> Adds complexity to the system, requires a ZooKeeper cluster.</p>
+<p>ZooKeeper, a highly reliable distributed coordination service, provides robust distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks. The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock. For more information, see the <a href="https://zookeeper.apache.org/doc/r3.6.1/zookeeperProgrammers.html#sc%20RECIPES">ZooKeeper documentation</a>.</p>
+<p><strong>Advantages:</strong> Highly reliable, handles failures gracefully, built-in features for distributed coordination.</p>
+<p><strong>Disadvantages:</strong> Adds complexity to the system, requires a ZooKeeper cluster.</p>
 <h3 id="etcd" class="anchored">4. Etcd</h3>
-<p>Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for robust lock management.</p>
-<p><strong>Advantages:</strong> High availability, scalability, simple API. <strong>Disadvantages:</strong> Adds complexity to the system, requires an Etcd cluster.</p>
+<p>Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for robust lock management. For more information, see the <a href="https://etcd.io/">Etcd documentation</a>.</p>
+<p><strong>Advantages:</strong> High availability, scalability, simple API.</p>
+<p><strong>Disadvantages:</strong> Adds complexity to the system, requires an Etcd cluster.</p>
 <h2 id="choosing-the-right-approach" class="anchored">Choosing the Right Approach</h2>
 <p>The best approach depends on your specific needs and constraints:</p>
 <ul>
@@ -188,8 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>High-performance, scalable systems:</strong> Redis or Etcd are preferred choices.</li>
 <li><strong>Applications requiring extremely high reliability and fault tolerance:</strong> ZooKeeper is a strong contender.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored the critical problem of race conditions in distributed systems and presented several techniques for implementing distributed locks: database locks, Redis-based locks, and locks using distributed coordination services like ZooKeeper and Etcd. Each approach has its own trade-offs in terms of complexity, performance, and reliability, requiring careful consideration based on the specific application requirements. The choice of the right mechanism is vital for ensuring data consistency and application correctness in a distributed environment.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

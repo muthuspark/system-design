@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Lakes – System Design Handbook</title>
+<title>Data Lakes – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Data Lakes – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Data Lakes – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="diving-deep-into-data-lakes-a-comprehensive-guide">Diving Deep into Data Lakes: A Comprehensive Guide</h1>
 <p>Data has become the lifeblood of modern businesses. The sheer volume, velocity, and variety of data generated daily necessitates innovative approaches to storage and processing. Enter the data lake – a powerful solution that offers a flexible and scalable approach to handling diverse data sets. This post will delve into the intricacies of data lakes, exploring their architecture, benefits, challenges, and best practices.</p>
 <h2 id="what-is-a-data-lake" class="anchored">What is a Data Lake?</h2>
 <p>Unlike traditional data warehouses, which focus on structured data and require rigid schemas, a data lake embraces raw data in its native format. Think of it as a central repository where you can store structured, semi-structured, and unstructured data – everything from CSV files and JSON documents to images, videos, and sensor readings. This flexibility is a key advantage, allowing organizations to explore and analyze data without the constraints of predefined schemas.</p>
@@ -121,30 +120,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>1. Data Sources:</strong> This includes various sources generating data, such as databases, applications, IoT devices, social media, and more.</p>
 <p><strong>2. Ingestion Layer:</strong> This component is responsible for collecting and transferring data from diverse sources into the data lake. It often utilizes tools like Apache Kafka, Flume, or cloud-based services like AWS Kinesis or Azure Event Hubs. This layer handles data transformation and validation to a certain extent, ensuring data quality.</p>
 <p><strong>3. Data Storage:</strong> This is the core of the data lake, storing data in its raw format. Popular storage options include cloud storage services (AWS S3, Azure Blob Storage, Google Cloud Storage), Hadoop Distributed File System (HDFS), or a combination of both. The data is often organized into zones based on processing level:</p>
-<pre><code>* **Raw Data Zone:** Stores data as it is ingested, without any transformation.
-* **Processed Data Zone:** Contains data that has undergone some level of cleaning and transformation.
-* **Curated Data Zone:**  Houses data that has been thoroughly cleaned, transformed, and enriched, ready for analysis.</code></pre>
+<ul>
+<li><strong>Raw Data Zone:</strong> Stores data as it is ingested, without any transformation.</li>
+<li><strong>Processed Data Zone:</strong> Contains data that has undergone some level of cleaning and transformation.</li>
+<li><strong>Curated Data Zone:</strong> Houses data that has been thoroughly cleaned, transformed, and enriched, ready for analysis.</li>
+</ul>
 <p><strong>4. Processing Layer:</strong> This layer handles data processing and transformation tasks. Tools like Apache Spark, Hive, Presto, and cloud-based services like AWS Glue or Azure Databricks are commonly used for processing large volumes of data within the data lake.</p>
 <p><strong>5. Data Discovery &amp; Access Layer:</strong> This layer provides tools and services for discovering, searching, and accessing data within the data lake. Metadata management is crucial here, enabling users to understand the data’s structure, schema, and origin. Technologies like Apache Hive Metastore or cloud-based metadata catalogs are commonly employed.</p>
 <p><strong>6. Data Visualization &amp; Analytics:</strong> This layer provides tools for analyzing and visualizing the processed data. Business intelligence (BI) tools, data visualization platforms, and machine learning algorithms are used to extract insights and support decision-making.</p>
 <h2 id="code-example-python-with-pyspark" class="anchored">Code Example (Python with PySpark):</h2>
 <p>This example demonstrates a simple data transformation using PySpark on a CSV file within a data lake. Assume the data is stored in an AWS S3 bucket.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Spark session</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>spark <span class="op">=</span> SparkSession.builder.appName(<span class="st">"DataLakeProcessing"</span>).getOrCreate()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from S3 (replace with your bucket and file path)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> spark.read.csv(<span class="st">"s3a://your-s3-bucket/your-data.csv"</span>, header<span class="op">=</span><span class="va">True</span>, inferSchema<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform data transformation (e.g., renaming a column)</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>transformed_data <span class="op">=</span> data.withColumnRenamed(<span class="st">"old_column_name"</span>, <span class="st">"new_column_name"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Write transformed data back to S3</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>transformed_data.write.mode(<span class="st">"overwrite"</span>).parquet(<span class="st">"s3a://your-s3-bucket/transformed_data"</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>spark.stop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>spark <span class="op">=</span> SparkSession.builder.appName(<span class="st">"DataLakeProcessing"</span>).getOrCreate()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> spark.read.csv(<span class="st">"s3a://your-s3-bucket/your-data.csv"</span>, header<span class="op">=</span><span class="va">True</span>, inferSchema<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>transformed_data <span class="op">=</span> data.withColumnRenamed(<span class="st">"old_column_name"</span>, <span class="st">"new_column_name"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>transformed_data.write.mode(<span class="st">"overwrite"</span>).parquet(<span class="st">"s3a://your-s3-bucket/transformed_data"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>spark.stop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="benefits-of-using-a-data-lake" class="anchored">Benefits of Using a Data Lake</h2>
 <ul>
 <li><strong>Scalability and Flexibility:</strong> Handles massive volumes of diverse data types.</li>
@@ -169,8 +170,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Employ Automation:</strong> Automate data ingestion, processing, and monitoring tasks.</li>
 <li><strong>Monitor and Optimize Costs:</strong> Track storage and processing costs and optimize resource utilization.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Data lakes provide a powerful and flexible solution for managing diverse data at scale. Their architecture, encompassing ingestion, storage, processing, discovery, and analytics, allows organizations to unlock the value of their data. While challenges exist, careful planning, robust governance, and best practices can help organizations successfully leverage the benefits of data lakes for improved decision-making and business outcomes.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

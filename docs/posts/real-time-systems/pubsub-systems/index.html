@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pub/Sub Systems – System Design Handbook</title>
+<title>Pub/Sub Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Pub/Sub Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Pub/Sub Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="understanding-pubsub-systems-a-deep-dive">Understanding Pub/Sub Systems: A Deep Dive</h1>
 <p>Publish/Subscribe (Pub/Sub) systems are a powerful messaging paradigm that decouples the components of an application, enabling scalable and resilient architectures. Unlike traditional request-response models, Pub/Sub allows for one-to-many communication, where a single message published by a “publisher” can be delivered to multiple “subscribers” interested in that specific message type. This architecture is crucial for building event-driven systems and real-time applications.</p>
 <h2 id="core-concepts-publishers-subscribers-and-topics" class="anchored">Core Concepts: Publishers, Subscribers, and Topics</h2>
 <p>At the heart of any Pub/Sub system lie three key components:</p>
@@ -195,8 +194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This diagram shows a scenario where Subscriber 2 fails to process a message, resulting in the message being moved to the Dead-Letter Queue for further processing.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Pub/Sub systems offer a flexible, scalable, and resilient approach to building distributed applications. Understanding the core concepts – publishers, subscribers, and topics – is essential for leveraging the benefits of this powerful messaging paradigm. Choosing the right Pub/Sub implementation depends on specific requirements, considering factors like scalability needs, message ordering requirements, and integration with existing infrastructure. Advanced features like message ordering, durability, and dead-letter queues enhance the robustness and reliability of applications built on Pub/Sub.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

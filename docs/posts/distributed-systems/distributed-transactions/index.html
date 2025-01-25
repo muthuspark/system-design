@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Distributed Transactions – System Design Handbook</title>
+<title>Distributed Transactions – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Distributed Transactions – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Distributed Transactions – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="distributed-transactions-mastering-data-consistency-across-multiple-systems">Distributed Transactions: Mastering Data Consistency Across Multiple Systems</h1>
 <p>Distributed systems are the backbone of modern applications, allowing for scalability, fault tolerance, and flexibility. However, managing data consistency across multiple systems presents significant challenges, particularly when it comes to transactions. Unlike local transactions, where all operations occur within a single database, distributed transactions span multiple databases, services, or resources. Ensuring atomicity, consistency, isolation, and durability (ACID properties) in this context is complex and requires careful consideration. This post delves into the intricacies of distributed transactions, exploring various approaches and their trade-offs.</p>
 <h2 id="understanding-the-challenges" class="anchored">Understanding the Challenges</h2>
 <p>The core problem with distributed transactions lies in coordinating operations across independent systems. A failure in any single component can jeopardize the entire transaction, leaving the distributed databases in an inconsistent state. This inconsistency can manifest in various ways:</p>
@@ -141,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">graph TB
     A[Service 1] --&gt; B(Transaction 1);
     B --&gt; C[Service 2];
     C --&gt; D(Transaction 2);
@@ -160,9 +159,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Advantages:</strong> Improved scalability and fault tolerance.</p>
 <p><strong>Disadvantages:</strong> Potentially weaker consistency guarantees (depending on compensation strategy). Requires careful design of compensating transactions.</p>
 <h3 id="message-queues-and-eventual-consistency" class="anchored">4. Message Queues and Eventual Consistency</h3>
-<p>Message queues can be used to decouple services and handle transactions asynchronously. This approach prioritizes availability and scalability, accepting eventual consistency instead of immediate consistency. Data consistency is achieved over time as messages are processed.</p>
+<p>Message queues, such as <a href="https://kafka.apache.org/">Apache Kafka</a> and <a href="https://www.rabbitmq.com/">RabbitMQ</a>, can be used to decouple services and handle transactions asynchronously. This approach prioritizes availability and scalability, accepting eventual consistency instead of immediate consistency. Data consistency is achieved over time as messages are processed.</p>
 <h3 id="using-distributed-databases" class="anchored">5. Using Distributed Databases</h3>
-<p>Some distributed databases, like CockroachDB and Spanner, provide built-in support for distributed transactions. They handle the complexities of coordinating transactions across multiple nodes, offering strong consistency guarantees with improved scalability.</p>
+<p>Some distributed databases, like <a href="https://www.cockroachlabs.com/">CockroachDB</a> and <a href="https://cloud.google.com/spanner/">Spanner</a>, provide built-in support for distributed transactions. They handle the complexities of coordinating transactions across multiple nodes, offering strong consistency guarantees with improved scalability.</p>
 <h2 id="code-example-simplified-saga-pattern---python" class="anchored">Code Example (Simplified Saga Pattern - Python):</h2>
 <p>This example illustrates a simplified saga pattern using Python and hypothetical database interactions. Error handling and more robust compensation logic would be needed in a production environment.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
@@ -187,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">: Compensation successful!"</span>)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">"success"</span>: <span class="va">True</span>}</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>service1 <span class="op">=</span> Service(<span class="st">"Service1"</span>)</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>service2 <span class="op">=</span> Service(<span class="st">"Service2"</span>)</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>service3 <span class="op">=</span> Service(<span class="st">"Service3"</span>)</span>
@@ -207,8 +206,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  service2.compensate_transaction(data)</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  data <span class="op">=</span> {<span class="st">"value"</span>: <span class="dv">10</span>}</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  service1.compensate_transaction(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Distributed transactions are crucial for maintaining data consistency in distributed systems. Various approaches exist, each offering a trade-off between consistency, performance, and scalability. Choosing the right approach depends on the specific application requirements and the acceptable level of consistency. 2PC offers strong consistency but can be slow and prone to single points of failure. Saga patterns and message queues provide better scalability but might sacrifice some consistency. Distributed databases offer a middle ground, providing built-in support for distributed transactions with improved scalability and strong consistency guarantees.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

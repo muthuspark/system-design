@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SSL/TLS Implementation – System Design Handbook</title>
+<title>SSL/TLS Implementation – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="SSL/TLS Implementation – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="SSL/TLS Implementation – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,16 +54,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="ssltls-implementation-a-deep-dive">SSL/TLS Implementation: A Deep Dive</h1>
 <p>Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), are cryptographic protocols that provide secure communication over a network. They are fundamental to securing online interactions, ensuring the confidentiality, integrity, and authenticity of data transmitted between a client (like a web browser) and a server (like a web server). This post will delve into the intricacies of SSL/TLS implementation, exploring the handshake process, certificate management, and common configurations.</p>
 <h2 id="the-ssltls-handshake-a-step-by-step-guide" class="anchored">The SSL/TLS Handshake: A Step-by-Step Guide</h2>
-<p>The heart of SSL/TLS is the handshake, a crucial negotiation process establishing a secure connection. Let’s visualize it with a Mermaid diagram:</p>
+<p>The heart of SSL/TLS is the handshake, a crucial negotiation process establishing a secure connection. Let’s visualize it with a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
+<pre class="mermaid mermaid-js">graph TB
 A[Client] --&gt; B(Client Hello);
 B --&gt; C{Server Hello};
 C --&gt; D[Certificate];
@@ -136,8 +135,6 @@ J --&gt; K[Close];
     }
 }</code></pre>
 <p>Remember to replace <code>/path/to/certificate.crt</code> and <code>/path/to/private.key</code> with the actual paths to your certificate and private key files. The inclusion of <code>ssl_protocols</code> and <code>ssl_ciphers</code> allows for better control over the security parameters. Always stay up-to-date with the latest security recommendations.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post provided a detailed overview of SSL/TLS implementation, including the handshake process, certificate management, and a code example showcasing Nginx configuration. Understanding these aspects is crucial for securing web applications and ensuring the confidentiality and integrity of online data. Careful selection of cipher suites and regular certificate renewal are vital for maintaining a robust and secure system.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

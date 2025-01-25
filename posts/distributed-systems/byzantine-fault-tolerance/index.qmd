@@ -74,7 +74,5 @@ BFT finds applications in several critical systems demanding high reliability an
 * **Cloud Computing:**  BFT enhances the robustness and reliability of cloud infrastructure, mitigating the risk of data loss or service disruptions.
 
 
-## Summary
 
-Byzantine Fault Tolerance provides a robust solution for building distributed systems that can withstand even malicious failures.  Understanding the Byzantine Generals Problem and the limitations of BFT is critical.  While algorithms like PBFT and HotStuff offer practical implementations, the complexity and performance overhead need careful consideration.  Despite these challenges, BFT's ability to guarantee consensus in the face of arbitrary failures makes it essential for many critical applications.
 

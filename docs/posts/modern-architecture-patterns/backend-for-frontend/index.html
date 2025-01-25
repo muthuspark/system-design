@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Backend for Frontend – System Design Handbook</title>
+<title>Backend for Frontend – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Backend for Frontend – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Backend for Frontend – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="backend-for-frontend-bff-a-deep-dive-into-microservices-architecture">Backend for Frontend (BFF): A Deep Dive into Microservices Architecture</h1>
 <p>The modern web application landscape is increasingly complex. We’re moving away from monolithic architectures towards microservices, leading to a proliferation of backend services. This presents a challenge: how do we efficiently expose this granular backend to our various frontend applications (web, mobile, IoT, etc.) without overwhelming them with unnecessary data or complexity? The answer, often, is a <strong>Backend for Frontend (BFF)</strong>.</p>
 <h2 id="what-is-a-backend-for-frontend-bff" class="anchored">What is a Backend for Frontend (BFF)?</h2>
 <p>A BFF is a server-side application specifically designed to cater to the needs of a particular frontend client. Instead of having one monolithic backend exposing all its data and functionality to every client, a BFF acts as an intermediary, aggregating and transforming data from multiple backend microservices into a format optimized for the consuming frontend.</p>
@@ -101,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Improved Security:</strong> BFFs can implement specific security measures tailored to the needs of each frontend, reducing the attack surface.</li>
 </ul>
 <h2 id="architectural-diagram" class="anchored">Architectural Diagram</h2>
-<p>Here’s a simple illustration using a Mermaid diagram showing a BFF in action:</p>
+<p>Here’s a simple illustration using a Diagram showing a BFF in action:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -181,8 +180,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>You need to improve frontend performance and simplify development.</li>
 <li>You require customized security measures for different clients.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Backend for Frontend (BFF) is a powerful architectural pattern that improves the efficiency and maintainability of modern web applications. By acting as an intermediary between the frontend and the backend microservices, BFFs optimize data transfer, simplify frontend development, and enhance security and scalability. They are particularly valuable in complex microservices environments where different clients have varying data requirements. This approach enables faster loading times, more manageable frontends, and a smoother user experience.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Horizontal vs Vertical Scaling – System Design Handbook</title>
+<title>Horizontal vs Vertical Scaling – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Horizontal vs Vertical Scaling – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Horizontal vs Vertical Scaling – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="horizontal-vs.-vertical-scaling-choosing-the-right-strategy-for-your-application">Horizontal vs.&nbsp;Vertical Scaling: Choosing the Right Strategy for Your Application</h1>
 <p>Scaling your application is crucial for handling increasing traffic and data loads. But there are two primary approaches: horizontal and vertical scaling. Understanding the differences between these methods is vital for choosing the best strategy to ensure your application remains performant and reliable. This post dives deep into each, comparing their strengths, weaknesses, and ideal use cases.</p>
 <h2 id="vertical-scaling-scaling-up" class="anchored">Vertical Scaling (Scaling Up)</h2>
 <p>Vertical scaling, also known as scaling up, involves increasing the resources of your existing servers. This might mean upgrading to a server with a more powerful processor, more RAM, or a faster network connection. Think of it like upgrading your car to a model with a bigger engine – you’re improving the capabilities of the existing machine.</p>
@@ -177,29 +142,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Complexity:</strong> Vertical scaling is simpler to manage, while horizontal scaling requires more sophisticated tools and expertise.</li>
 <li><strong>Expected growth:</strong> For rapid and unpredictable growth, horizontal scaling is almost always preferable.</li>
 </ul>
-<h2 id="code-example-illustrative---load-balancing-with-a-simple-python-server" class="anchored">Code Example (Illustrative - Load Balancing with a simple Python Server):</h2>
-<p>This example demonstrates a very simplified concept. Real-world load balancing is much more complex and usually involves dedicated load balancing services.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a simplified illustration and does not represent a production-ready load balancer.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> handle_request(client_socket):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    request <span class="op">=</span> client_socket.recv(<span class="dv">1024</span>).decode()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> <span class="st">"Hello, World!</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    client_socket.send(response.encode())</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    client_socket.close()</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    server_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    server_socket.bind((<span class="st">'0.0.0.0'</span>, <span class="dv">8000</span>)) <span class="co"># Listen on all interfaces, port 8000</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    server_socket.listen(<span class="dv">5</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        client_socket, addr <span class="op">=</span> server_socket.accept()</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        handle_request(client_socket) <span class="co"># Handle each request in a separate thread (in a real system)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code shows a single server. For horizontal scaling, you’d run multiple instances of this code on different servers and use a load balancer (like Nginx or HAProxy) to distribute requests across them.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Vertical scaling involves upgrading existing servers, offering simplicity but limited scalability. Horizontal scaling adds more servers, providing high scalability and fault tolerance but increasing complexity. The optimal choice depends on your application’s architecture, budget, and expected growth trajectory. Careful consideration of these factors is essential for building a robust and scalable application.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

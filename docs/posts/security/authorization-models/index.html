@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Authorization Models – System Design Handbook</title>
+<title>Authorization Models – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Authorization Models – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Authorization Models – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,10 +54,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="authorization-models-a-deep-dive-into-access-control">Authorization Models: A Deep Dive into Access Control</h1>
 <p>Authorization is a critical aspect of security, defining <em>what</em> a user or system is allowed to do after successful authentication (verifying their identity). It’s the gatekeeper that ensures only authorized entities can access specific resources and perform certain actions. This post explores various authorization models, their strengths and weaknesses, and how they are implemented.</p>
 <h2 id="role-based-access-control-rbac" class="anchored">1. Role-Based Access Control (RBAC)</h2>
 <p>RBAC is the most widely adopted model. It assigns permissions to roles, and users are assigned to those roles. This simplifies management, as permissions are managed at the role level, rather than individually for each user.</p>
+<p><strong>Diagram:</strong></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    subgraph Users[Users]
+        U1[User 1]
+        U2[User 2]
+        U3[User 3]
+    end
+
+    subgraph Roles[Roles]
+        Admin[Administrator]
+        Manager[Manager]
+        Staff[Staff]
+    end
+
+    subgraph Permissions[Permissions]
+        P1[Create]
+        P2[Read]
+        P3[Update]
+        P4[Delete]
+    end
+
+    subgraph Resources[Resources]
+        R1[Files]
+        R2[Applications]
+        R3[Databases]
+    end
+
+    U1 --&gt;|Assigned to| Admin
+    U2 --&gt;|Assigned to| Manager
+    U3 --&gt;|Assigned to| Staff
+
+    Admin --&gt;|Has| P1
+    Admin --&gt;|Has| P2
+    Admin --&gt;|Has| P3
+    Admin --&gt;|Has| P4
+
+    Manager --&gt;|Has| P1
+    Manager --&gt;|Has| P2
+    Manager --&gt;|Has| P3
+
+    Staff --&gt;|Has| P2
+
+    P1 --&gt;|Applies to| R1
+    P1 --&gt;|Applies to| R2
+    P1 --&gt;|Applies to| R3
+    P2 --&gt;|Applies to| R1
+    P2 --&gt;|Applies to| R2
+    P2 --&gt;|Applies to| R3
+    P3 --&gt;|Applies to| R1
+    P3 --&gt;|Applies to| R2
+    P3 --&gt;|Applies to| R3
+    P4 --&gt;|Applies to| R1
+    P4 --&gt;|Applies to| R2
+    P4 --&gt;|Applies to| R3
+
+    style Admin fill:#ff9999
+    style Manager fill:#99ff99
+    style Staff fill:#9999ff
+    style U1 fill:#f9f9f9
+    style U2 fill:#f9f9f9
+    style U3 fill:#f9f9f9
+    style P1 fill:#ffe6cc
+    style P2 fill:#ffe6cc
+    style P3 fill:#ffe6cc
+    style P4 fill:#ffe6cc
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The diagram shows RBAC’s hierarchical structure:</p>
+<ol type="1">
+<li>Users are assigned to specific roles (Admin, Manager, Staff)</li>
+<li>Roles have predefined permissions (Create, Read, Update, Delete)</li>
+<li>Permissions apply to resources (Files, Applications, Databases)</li>
+<li>Administrators have full CRUD access</li>
+<li>Managers can create, read, and update</li>
+<li>Staff members have read-only access</li>
+</ol>
 <p><strong>Strengths:</strong></p>
 <ul>
 <li><strong>Simplified management:</strong> Easier to manage permissions for large numbers of users.</li>
@@ -104,50 +154,98 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Inflexible:</strong> Difficult to handle exceptional cases that don’t fit neatly into roles.</li>
 <li><strong>Static:</strong> Changes to roles often require system-wide updates.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<h2 id="attribute-based-access-control-abac" class="anchored">2. Attribute-Based Access Control (ABAC)</h2>
+<p>ABAC is a more fine-grained model that uses attributes of the user, the resource, and the environment to determine access. This allows for highly dynamic and context-aware authorization decisions.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Users] --&gt; B(Role1);
-    A --&gt; C(Role2);
-    B --&gt; D{Permission1};
-    B --&gt; E{Permission2};
-    C --&gt; D;
-    C --&gt; F{Permission3};
-    D --&gt; G[Resource1];
-    E --&gt; G;
-    F --&gt; H[Resource2];
+<pre class="mermaid mermaid-js">flowchart TD
+    subgraph Inputs
+        U[User Context]
+        E[Environment Context]
+        R[Resource Context]
+        A[Action Type]
+    end
+
+    subgraph Attributes
+        SA[Subject Attributes]
+        EA[Environment Attributes]
+        RA[Resource Attributes]
+    end
+
+    subgraph PolicyEngine
+        P[Policy Rules]
+        AE[Authorization Engine]
+    end
+
+    subgraph Decision
+        D{Evaluation}
+        P1[Permit]
+        D1[Deny]
+    end
+
+    U --&gt; SA
+    E --&gt; EA
+    R --&gt; RA
+    
+    SA --&gt; AE
+    EA --&gt; AE
+    RA --&gt; AE
+    A --&gt; AE
+    P --&gt; AE
+    
+    AE --&gt; D
+    D --&gt;|Allow| P1
+    D --&gt;|Reject| D1
+
+    style U fill:#e6e6ff,stroke:#333
+    style E fill:#e6e6ff,stroke:#333
+    style R fill:#e6e6ff,stroke:#333
+    style A fill:#e6e6ff,stroke:#333
+    style AE fill:#d9d9ff,stroke:#333
+    style P fill:#cce6ff,stroke:#333
+    style P1 fill:#90EE90,stroke:#333
+    style D1 fill:#FFB6C1,stroke:#333
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>Code Example (Conceptual):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conceptual Python code -  implementation varies widely depending on framework</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>roles <span class="op">=</span> {</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"admin"</span>: [<span class="st">"read"</span>, <span class="st">"write"</span>, <span class="st">"delete"</span>],</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"user"</span>: [<span class="st">"read"</span>]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"john"</span>: [<span class="st">"admin"</span>],</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"jane"</span>: [<span class="st">"user"</span>]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_authorized(user, action, resource):</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> role <span class="kw">in</span> users[user]:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> action <span class="kw">in</span> roles[role]:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_authorized(<span class="st">"john"</span>, <span class="st">"write"</span>, <span class="st">"document"</span>)) <span class="co"># True</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(is_authorized(<span class="st">"jane"</span>, <span class="st">"write"</span>, <span class="st">"document"</span>)) <span class="co"># False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h2 id="attribute-based-access-control-abac" class="anchored">2. Attribute-Based Access Control (ABAC)</h2>
-<p>ABAC is a more fine-grained model that uses attributes of the user, the resource, and the environment to determine access. This allows for highly dynamic and context-aware authorization decisions.</p>
+<p>The diagram shows:</p>
+<ol type="1">
+<li>Input Sources:
+<ul>
+<li>User Context (including attributes like age, name, role)</li>
+<li>Environment Context (time, status, location)</li>
+<li>Resource Context (classification, size, amount)</li>
+<li>Action Type (read, delete, edit)</li>
+</ul></li>
+<li>Attribute Processing:
+<ul>
+<li>Subject Attributes derived from User Context</li>
+<li>Environment Attributes from Environment Context</li>
+<li>Resource Attributes from Resource Context</li>
+</ul></li>
+<li>Policy Engine:
+<ul>
+<li>Policy Rules defining access conditions</li>
+<li>Authorization Engine that evaluates all inputs against policies</li>
+</ul></li>
+<li>Decision Flow:
+<ul>
+<li>Evaluation node that determines the final outcome</li>
+<li>Permit (green) and Deny (red) outcomes</li>
+</ul></li>
+</ol>
+<p>The diagram follows the principle of eliminating redundancy by:</p>
+<ul>
+<li>Centralizing the authorization logic in a single engine</li>
+<li>Using attribute-based access control to avoid duplicating rules</li>
+<li>Standardizing the decision flow process</li>
+</ul>
 <p><strong>Strengths:</strong></p>
 <ul>
 <li><strong>Fine-grained control:</strong> Highly flexible and adaptable to changing requirements.</li>
@@ -160,25 +258,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Performance:</strong> Policy evaluation can be computationally expensive.</li>
 <li><strong>Policy management:</strong> Requires sophisticated policy management tools.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<h2 id="access-control-lists-acls" class="anchored">3. Access Control Lists (ACLs)</h2>
+<p>ACLs are a simple model where each resource has a list of users or groups and the permissions they have for that resource.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[User: {department:"Sales", level:"Manager"}] --&gt; B(Policy Engine);
-    C[Resource: {type:"Report", sensitivity:"High"}] --&gt; B;
-    D[Environment: {time:"weekday", location:"office"}] --&gt; B;
-    B --&gt; E{Access Granted};
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph Users
+        U1[User 1]
+        U2[User 2]
+        U3[User 3]
+    end
+
+    subgraph ACL["ACL Rules"]
+        R1["Permit IP/Port"]
+        R2["Deny IP/Port"]
+    end
+
+    subgraph Services
+        S1[Email Port 443]
+        S2[Gmail]
+        S3[Other Services]
+    end
+
+    U1 --&gt; R1
+    U2 --&gt; R1
+    U3 --&gt; R2
+    
+    R1 --&gt;|Allow| S1
+    R1 --&gt;|Allow| S2
+    R2 --&gt;|Block| S3
+
+    style U1 fill:#99ccff
+    style U2 fill:#99ccff
+    style U3 fill:#99ccff
+    style R1 fill:#90EE90
+    style R2 fill:#FFB6C1
+    style S1 fill:#e6e6ff
+    style S2 fill:#e6e6ff
+    style S3 fill:#e6e6ff
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<h2 id="access-control-lists-acls" class="anchored">3. Access Control Lists (ACLs)</h2>
-<p>ACLs are a simple model where each resource has a list of users or groups and the permissions they have for that resource.</p>
+<p>The diagram shows ACL configuration with permit/deny rules controlling user access to network services. Green represents permitted access, red shows denied access, and blue indicates users and services.</p>
 <p><strong>Strengths:</strong></p>
 <ul>
 <li><strong>Simplicity:</strong> Easy to understand and implement.</li>
@@ -190,26 +317,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Maintenance:</strong> Requires significant effort to manage changes in permissions.</li>
 <li><strong>Lack of granularity:</strong> Limited ability to handle complex access scenarios.</li>
 </ul>
-<p><strong>Mermaid Diagram:</strong></p>
+<h2 id="ownership-based-access-control-obac" class="anchored">4. Ownership-Based Access Control (OBAC)</h2>
+<p>OBAC is centered around the concept of ownership. The owner of a resource has full control over it, and can grant permissions to others. This is often combined with other models to provide a more robust system.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[Resource1] --&gt; B{ACL};
-    B --&gt; C[User1: Read];
-    B --&gt; D[User2: Read, Write];
-    B --&gt; E[Group1: Read];
+<pre class="mermaid mermaid-js">flowchart TD
+    subgraph Users
+        O[Owner]
+        D[Delegated Users]
+        R[Regular Users]
+    end
 
+    subgraph Resources
+        Doc[Documents]
+        Proj[Projects]
+        Data[Data Sets]
+    end
+
+    subgraph Permissions
+        Full[Full Control]
+        Edit[Edit Rights]
+        View[View Only]
+    end
+
+    O --&gt;|Has| Full
+    D --&gt;|Granted| Edit
+    R --&gt;|Given| View
+
+    Full --&gt;|Complete Access| Doc
+    Full --&gt;|Complete Access| Proj
+    Full --&gt;|Complete Access| Data
+
+    Edit --&gt;|Modify| Doc
+    Edit --&gt;|Modify| Proj
+    Edit --&gt;|Modify| Data
+
+    View --&gt;|Read| Doc
+    View --&gt;|Read| Proj
+    View --&gt;|Read| Data
+
+    O --&gt;|Can Delegate| D
+
+    style O fill:#ff9999
+    style D fill:#99ff99
+    style R fill:#9999ff
+    style Full fill:#ff9999
+    style Edit fill:#99ff99
+    style View fill:#9999ff
+    style Doc fill:#f9f9f9
+    style Proj fill:#f9f9f9
+    style Data fill:#f9f9f9
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<h2 id="ownership-based-access-control-obac" class="anchored">4. Ownership-Based Access Control (OBAC)</h2>
-<p>OBAC is centered around the concept of ownership. The owner of a resource has full control over it, and can grant permissions to others. This is often combined with other models to provide a more robust system.</p>
+<p>The diagram illustrates how Ownership-Based Access Control (OBAC) works:</p>
+<ol type="1">
+<li>User Hierarchy:</li>
+</ol>
+<ul>
+<li>Owners (red) have highest level access and can delegate rights</li>
+<li>Delegated users (green) receive edit permissions from owners</li>
+<li>Regular users (blue) have basic view access</li>
+</ul>
+<ol start="2" type="1">
+<li>Permission Levels:</li>
+</ol>
+<ul>
+<li>Full Control: Complete access to all resources</li>
+<li>Edit Rights: Ability to modify resources</li>
+<li>View Only: Read-only access</li>
+</ul>
+<ol start="3" type="1">
+<li>Resources Protected:</li>
+</ol>
+<ul>
+<li>Documents</li>
+<li>Projects</li>
+<li>Data Sets</li>
+</ul>
+<ol start="4" type="1">
+<li>Key Relationships:</li>
+</ol>
+<ul>
+<li>Owners can delegate permissions to other users</li>
+<li>Each permission level cascades to all resource types</li>
+<li>Users can only perform actions within their assigned permission level</li>
+</ul>
+<p>This model emphasizes resource ownership as the basis for access control decisions, with clear hierarchical permissions structure.</p>
 <p><strong>Strengths:</strong></p>
 <ul>
 <li><strong>Intuitive:</strong> Simple to grasp and often aligns with users’ expectations.</li>
@@ -220,8 +420,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Potential for conflicts:</strong> Can lead to conflicts if ownership is not clearly defined.</li>
 <li><strong>Limited granularity:</strong> May not provide the fine-grained control needed in complex systems.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post has explored four common authorization models: RBAC, ABAC, ACLs, and OBAC. Each has its own strengths and weaknesses, and the best choice depends on the specific requirements of the application. RBAC is widely used for its simplicity and scalability, while ABAC provides more fine-grained control for complex scenarios. ACLs offer a simple approach for smaller systems, and OBAC provides an intuitive model based on ownership. Understanding these models is crucial for building secure and well-managed systems.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

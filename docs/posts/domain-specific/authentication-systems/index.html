@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Authentication Systems – System Design Handbook</title>
+<title>Authentication Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Authentication Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Authentication Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,8 +54,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="authentication-systems-a-deep-dive">Authentication Systems: A Deep Dive</h1>
-<p>Authentication is the bedrock of any secure system. It’s the process of verifying the identity of a user, device, or other entity trying to access a resource. Without robust authentication, your data and services are vulnerable to unauthorized access, leading to potentially devastating consequences. This post will explore various authentication systems, their strengths and weaknesses, and how they work under the hood.</p>
+<p>Authentication is a part of every secure system build by engineers. It’s the process of verifying the identity of a user, device, or other entity trying to access a resource. Without robust authentication, your data and services are vulnerable to unauthorized access, leading to potentially devastating consequences. This post will explore various authentication systems, their strengths and weaknesses, and how they work under the hood.</p>
 <h2 id="types-of-authentication-systems" class="anchored">Types of Authentication Systems</h2>
 <p>Authentication systems can be broadly categorized into several types, each with its own mechanisms and security considerations.</p>
 <h3 id="something-you-know-password-based-authentication" class="anchored">1. Something You Know: Password-Based Authentication</h3>
@@ -113,14 +78,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Example (Conceptual Python):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> authenticate(username, password):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In a real system, this would fetch password from a secure database</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  stored_password <span class="op">=</span> get_password_from_database(username) </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> stored_password <span class="kw">and</span> check_password_hash(password, stored_password): <span class="co">#Using password hashing is crucial</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h3 id="something-you-have-token-based-authentication" class="anchored">2. Something You Have: Token-Based Authentication</h3>
 <p>This method uses a physical or virtual token to verify identity. Examples include smart cards, security tokens, and mobile devices.</p>
 <p><strong>Strengths:</strong> More secure than password-based authentication, as tokens are difficult to replicate.</p>
@@ -192,9 +149,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 id="authentication-protocols" class="anchored">Authentication Protocols</h2>
 <p>Various protocols handle the actual communication and verification process during authentication. Some notable ones include:</p>
 <ul>
-<li><strong>OAuth 2.0:</strong> An authorization framework, not strictly an authentication protocol, but crucial for securing access to resources on behalf of a user.</li>
-<li><strong>OpenID Connect (OIDC):</strong> Built on top of OAuth 2.0, providing a standardized way to authenticate users and obtain user information.</li>
-<li><strong>SAML (Security Assertion Markup Language):</strong> Used primarily in enterprise environments for single sign-on (SSO) across multiple applications.</li>
+<li><strong><a href="https://oauth.net/2/">OAuth 2.0</a>:</strong> An authorization framework, not strictly an authentication protocol, but crucial for securing access to resources on behalf of a user.</li>
+<li><strong><a href="https://openid.net/connect/">OpenID Connect (OIDC)</a>:</strong> Built on top of OAuth 2.0, providing a standardized way to authenticate users and obtain user information.</li>
+<li><strong><a href="https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language">SAML (Security Assertion Markup Language)</a>:</strong> Used primarily in enterprise environments for single sign-on (SSO) across multiple applications.</li>
 </ul>
 <h2 id="security-considerations" class="anchored">Security Considerations</h2>
 <p>Regardless of the chosen authentication system, several security best practices must be followed:</p>
@@ -205,8 +162,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Input validation:</strong> Prevent injection attacks by carefully validating user inputs.</li>
 <li><strong>Rate limiting:</strong> Mitigate brute-force attacks by limiting the number of login attempts.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored various authentication systems, including password-based, token-based, biometric, and behavioral biometrics. We also looked at multi-factor authentication and several important authentication protocols. The choice of authentication system depends heavily on the specific security requirements and the resources available. A robust and secure authentication system is critical for protecting sensitive data and maintaining the integrity of any system.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Leader Election – System Design Handbook</title>
+<title>Leader Election – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Leader Election – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Leader Election – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="leader-election-algorithms-and-implementations-for-distributed-systems">Leader Election: Algorithms and Implementations for Distributed Systems</h1>
 <p>Leader election is a fundamental problem in distributed systems. It’s the process of selecting a single node from a group of nodes to act as the leader, responsible for coordinating tasks, making decisions, and managing resources. This leader acts as a single point of control, simplifying the system’s overall architecture and facilitating efficient operation. However, the selection process must be robust and fault-tolerant, handling node failures and network partitions gracefully. This post explores various leader election algorithms and provides code examples to illustrate their implementation.</p>
 <h2 id="why-leader-election-is-crucial" class="anchored">Why Leader Election is Crucial</h2>
 <p>In distributed systems, where multiple nodes operate independently but need to coordinate, a leader is often necessary for several reasons:</p>
@@ -108,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Response from Higher-ID Nodes:</strong> If a higher-ID node responds, the initiating node stops its election process and recognizes the higher-ID node as the leader.</li>
 <li><strong>No Response from Higher-ID Nodes:</strong> If the initiating node receives no response from higher-ID nodes, it declares itself the leader and broadcasts a “leader” message to all other nodes.</li>
 </ol>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -130,13 +95,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Code Example (Conceptual Python):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bully_algorithm(node_id, nodes):</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ... (Implementation details: network communication, timeout handling, etc.) ...</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">pass</span> <span class="co">#Implementation omitted for brevity</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This diagram illustrates a Leader Election algorithm in a distributed system:</p>
+<p><strong>1. Starting Point:</strong></p>
+<ul>
+<li>Node A monitors current leader’s status</li>
+<li>Decision point checks for leader failure</li>
+</ul>
+<p><strong>2. Election Process:</strong></p>
+<ul>
+<li>If leader fails: Initiates election process</li>
+<li>If leader alive: Continues normal operation</li>
+<li>Election broadcast sent to all nodes</li>
+</ul>
+<p><strong>3. Decision Logic:</strong></p>
+<ul>
+<li>Nodes respond based on ID priority</li>
+<li>If higher ID node responds: Current node stops election</li>
+<li>If no higher ID responds: Node declares itself leader</li>
+<li>New leader broadcasts status to all nodes</li>
+</ul>
+<p><strong>4. Resolution:</strong></p>
+<ul>
+<li>Failed election nodes return to normal operation</li>
+<li>Successful election establishes new leader</li>
+<li>System resumes normal operation under new leader</li>
+</ul>
+<p>The flow ensures reliable leader selection while preventing election conflicts through ID-based priority.</p>
 <h3 id="ring-based-algorithm" class="anchored">2. Ring-based Algorithm</h3>
 <p>The Ring-based algorithm utilizes a logical ring structure where each node communicates only with its immediate neighbors. The algorithm proceeds as follows:</p>
 <ol type="1">
@@ -144,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Message Passing:</strong> The message passes around the ring until it reaches a node that has a higher ID than all the nodes it has encountered.</li>
 <li><strong>Leader Election:</strong> The node with the highest ID becomes the leader and broadcasts its leadership to the ring.</li>
 </ol>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -167,14 +151,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Code Example (Conceptual Python):</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ... (Implementation details including ring structure and neighbor communication, omitted for brevity) ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This diagram shows a ring-based leader election algorithm:</p>
+<p><strong>1. Network Structure:</strong></p>
+<ul>
+<li>Nodes arranged in a ring (1→2→3→4→1)</li>
+<li>Messages flow clockwise through ring</li>
+</ul>
+<p><strong>2. Election Process:</strong></p>
+<ul>
+<li>Node 1 initiates election message</li>
+<li>Each node compares its ID with message</li>
+<li>Higher ID nodes can claim leadership</li>
+<li>Lower ID nodes pass message along</li>
+</ul>
+<p><strong>3. Leadership Resolution:</strong></p>
+<ul>
+<li>Winner broadcasts leadership status</li>
+<li>Message circulates until consensus</li>
+<li>System stabilizes under new leader</li>
+</ul>
+<p>This forms a Chang-Roberts ring algorithm implementation, ensuring single leader selection through ordered ID comparison.</p>
 <h3 id="paxos-algorithm" class="anchored">3. Paxos Algorithm</h3>
-<p>Paxos is a more complex and robust algorithm, designed for highly fault-tolerant environments. It uses multiple rounds of message passing to ensure consensus on the leader selection. While the details of Paxos are quite intricate, its core principle involves proposing candidates and reaching agreement among a quorum of nodes. It handles network partitions and node failures more gracefully than the simpler algorithms.</p>
+<p>Paxos is a more complex and robust algorithm, designed for highly fault-tolerant environments. It uses multiple rounds of message passing to ensure consensus on the leader selection. While the details of Paxos are quite intricate, its core principle involves proposing candidates and reaching agreement among a quorum of nodes. It handles network partitions and node failures more gracefully than the simpler algorithms. For more information, please refer to the <a href="../../../posts/distributed-systems/distributed-consensus/index.html">Distributed Consensus</a> page.</p>
 <h2 id="choosing-the-right-algorithm" class="anchored">Choosing the Right Algorithm</h2>
 <p>The choice of leader election algorithm depends on the specific requirements of the distributed system. The Bully Algorithm is simple to implement but may not be suitable for large-scale systems. Ring-based algorithms are efficient for smaller systems with a known topology. Paxos is preferred for highly reliable and fault-tolerant systems, but its implementation is more complex.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post explored leader election, a critical component in distributed systems. We examined three prominent algorithms—Bully, Ring-based, and Paxos—each with varying complexities and fault-tolerance characteristics. The choice of algorithm depends heavily on system-specific needs, balancing simplicity with robustness and scalability requirements. The provided diagrams and code snippets (although simplified for brevity) offer a starting point for understanding these algorithms’ core mechanisms.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

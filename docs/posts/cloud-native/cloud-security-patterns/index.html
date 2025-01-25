@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cloud Security Patterns – System Design Handbook</title>
+<title>Cloud Security Patterns – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Cloud Security Patterns – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Cloud Security Patterns – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="cloud-security-patterns-architecting-for-resilience-and-defense">Cloud Security Patterns: Architecting for Resilience and Defense</h1>
 <p>The cloud offers unparalleled scalability and flexibility, but it also introduces a new set of security challenges. Traditional security perimeters blur, and responsibility for security is shared between the cloud provider and the organization. Navigating this landscape requires a robust understanding of cloud security patterns – proven architectural approaches that mitigate risks and bolster security posture. This post delves into several key patterns, exploring their implementation and benefits.</p>
 <h2 id="shared-responsibility-model" class="anchored">1. Shared Responsibility Model</h2>
 <p>Before diving into specific patterns, understanding the shared responsibility model is crucial. This model dictates how security responsibilities are divided between the cloud provider (e.g., AWS, Azure, GCP) and the customer. The provider is responsible for the security <em>of</em> the cloud (infrastructure, physical security, etc.), while the customer is responsible for security <em>in</em> the cloud (data, applications, configurations, etc.).</p>
@@ -197,8 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Comprehensive logging and monitoring are critical for detecting and responding to security incidents. Centralized logging platforms and security information and event management (SIEM) systems provide valuable insights into system activity.</p>
 <h2 id="secrets-management" class="anchored">10. Secrets Management</h2>
 <p>Securely storing and managing sensitive information like API keys, passwords, and certificates is paramount. Dedicated secrets management services offer features like encryption, access control, and auditing.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post detailed several key cloud security patterns, emphasizing their importance in building secure and resilient cloud architectures. Implementing these patterns involves a combination of configuration, technology choices, and operational procedures. Each pattern contributes to a layered security approach, mitigating risk and protecting sensitive data.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

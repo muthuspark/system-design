@@ -97,6 +97,5 @@ graph LR
 
 This diagram shows how IaC can manage separate environments, yet still share common services. Changes made to the shared services can be applied consistently across all environments through IaC.
 
-## Summary
 
-Infrastructure as Code is a powerful approach to managing IT infrastructure. It offers significant advantages in efficiency, consistency, repeatability, and error reduction. By leveraging tools like Terraform, Ansible, and CloudFormation, and visualizing infrastructure with tools like Mermaid, organizations can effectively manage even the most complex IT environments. The examples provided highlight the practical applications of IaC and demonstrate its potential to transform IT operations.
+

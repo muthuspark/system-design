@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NoSQL Database Design – System Design Handbook</title>
+<title>NoSQL Database Design – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="NoSQL Database Design – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="NoSQL Database Design – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="nosql-database-design-a-deep-dive">NoSQL Database Design: A Deep Dive</h1>
 <p>NoSQL databases have revolutionized data management, offering flexibility and scalability unmatched by traditional relational databases. However, this flexibility comes with the responsibility of careful design. Unlike relational databases with their rigid schema, NoSQL databases require a thoughtful approach to structure your data to optimize performance and maintain data integrity. This post explores various NoSQL database design strategies, focusing on key considerations and best practices.</p>
 <h2 id="choosing-the-right-nosql-database" class="anchored">Choosing the Right NoSQL Database</h2>
 <p>Before diving into design specifics, it’s crucial to select the appropriate NoSQL database type for your application’s needs. The most common types include:</p>
@@ -123,7 +122,7 @@ GET user:123 </code></pre>
 <li><p><strong>Schema Design:</strong> While schemas are flexible, establishing a consistent structure within your documents improves query performance and data integrity.</p></li>
 <li><p><strong>Data Normalization:</strong> While not as strict as in relational databases, consider normalizing data to avoid redundancy and improve data consistency.</p></li>
 </ul>
-<p><strong>Mermaid Diagram (Embedding Comments):</strong></p>
+<p><strong>Diagram (Embedding Comments):</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -148,7 +147,7 @@ GET user:123 </code></pre>
 </div>
 </div>
 </div>
-<p><strong>Mermaid Diagram (Referencing Comments):</strong></p>
+<p><strong>Diagram (Referencing Comments):</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -187,8 +186,6 @@ GET user:123 </code></pre>
 <pre class="cypher"><code>MATCH (user:User)-[:FRIENDS_WITH]-&gt;(friend:User)
 RETURN user, friend</code></pre>
 <p>This query retrieves all friends of a user.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Effective NoSQL database design requires understanding the strengths and limitations of different database types. Choosing the right database and carefully structuring your data are key to building scalable and performant applications. Consider factors like data structure, query patterns, scalability requirements, and schema evolution when designing your NoSQL database. This post provided examples for key-value stores, document databases, column-family stores and graph databases, illustrating how data modeling techniques can optimize performance and maintain data integrity for various application needs.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

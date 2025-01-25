@@ -44,7 +44,7 @@ A well-structured SLA typically includes the following essential components:
 The relationships between these components can be effectively visualized using a Diagram:
 
 ```{mermaid}
-graph LR
+graph TB
     A[Service Definition] --> B(SLOs);
     B --> C{SLIs};
     C --> D[Measurement Methodology];
@@ -55,33 +55,18 @@ graph LR
     A --> H;
 ```
 
-## Example SLA in Code (Simplified)
+This diagram shows a Service Level Agreement (SLA) framework flow:
 
-While a full SLA is a legal document best handled by legal professionals, we can represent a simplified version using a structured data format like JSON:
+1. Service Definition establishes the core service
+2. SLOs (Service Level Objectives) define performance targets
+3. SLIs (Service Level Indicators) provide specific metrics
+4. Measurement Methodology details how metrics are collected
+5. Reporting tracks performance against objectives
+6. Penalties define consequences for missing targets
+7. Escalation Procedures handle issues
+8. Term & Termination connects back to Service Definition
 
-``` json
-{
-  "serviceName": "Website Hosting",
-  "serviceProvider": "Acme Hosting",
-  "customer": "Example Corp",
-  "slo": {
-    "uptime": {
-      "target": "99.9%",
-      "measurement": "Average uptime per month",
-      "penalty": "10% credit for each percentage point below 99.9%"
-    },
-    "responseTime": {
-      "target": "200ms",
-      "measurement": "Average response time as measured by Pingdom",
-      "penalty": "5% credit for each 100ms above 200ms"
-    }
-  },
-  "reportingFrequency": "Monthly",
-  "escalationProcedure": "Contact support@acmehosting.com",
-  "term": "1 year",
-  "renewal": "Automatic unless cancelled 30 days prior"
-}
-```
+The flow demonstrates how service quality is defined, measured, monitored, and enforced in a structured way.
 
 ## Benefits of Implementing SLAs
 
@@ -93,7 +78,3 @@ Implementing well-defined SLAs offers numerous benefits:
 -   **Reduced Disputes:** Well-defined SLAs minimize misunderstandings and disputes regarding service performance.
 -   **Better Resource Allocation:** SLAs can help optimize resource allocation and improve operational efficiency.
 -   **Stronger Business Relationships:** SLAs foster trust and transparency between service providers and customers.
-
-## Summary
-
-Service Level Agreements are vital contracts that define expectations for service delivery. They outline specific service objectives, measurement methods, and consequences for underperformance. A well-defined SLA includes clear service definitions, measurable SLOs and SLIs, reporting mechanisms, penalty clauses, and escalation procedures. Implementing SLAs leads to improved service quality, increased accountability, and stronger business relationships.

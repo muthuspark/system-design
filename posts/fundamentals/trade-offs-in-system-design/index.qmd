@@ -79,6 +79,5 @@ Highly flexible systems, designed to adapt to changing requirements, can become 
 
 A highly configurable software application with a vast array of options might be attractive to different users, but managing the increasing complexity of its codebase, handling various configurations, and ensuring compatibility across different setups poses challenges in long-term maintenance.
 
-## Summary
 
-System design inherently involves navigating intricate trade-offs. Understanding the fundamental principles like CAP theorem and the inherent conflicts between scalability, performance, security, flexibility and maintainability is crucial for making informed decisions. Each choice involves balancing competing priorities to create a system that effectively meets its objectives within its operational constraints.
+

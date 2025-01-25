@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resource Utilization – System Design Handbook</title>
+<title>Resource Utilization – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Resource Utilization – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Resource Utilization – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="mastering-resource-utilization-a-deep-dive-into-efficiency-and-optimization">Mastering Resource Utilization: A Deep Dive into Efficiency and Optimization</h1>
 <p>Resource utilization is a critical aspect of any system, whether it’s a computer system, a manufacturing plant, or even a project team. It refers to the degree to which a resource is being used effectively and efficiently. High resource utilization implies optimal performance and cost savings, while low utilization indicates waste and potential bottlenecks. This comprehensive guide will explore resource utilization in detail, covering various aspects, including measurement, optimization techniques, and the impact on overall system performance.</p>
 <h2 id="understanding-the-concept-of-resource-utilization" class="anchored">Understanding the Concept of Resource Utilization</h2>
 <p>Resource utilization, at its core, is about maximizing the value derived from available resources. These resources can be anything from:</p>
@@ -103,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Accurate measurement is the first step towards optimizing resource utilization. The methods for measurement vary depending on the type of resource:</p>
 <p><strong>1. Computational Resources:</strong></p>
 <p>Operating systems and monitoring tools provide detailed metrics for CPU, memory, and disk I/O utilization. Tools like <code>top</code> (Linux/macOS), <code>Task Manager</code> (Windows), and dedicated monitoring platforms (e.g., Prometheus, Grafana) offer real-time insights.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example using top on Linux/macOS</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This command displays real-time information about running processes, including CPU and memory utilization.</p>
 <p><strong>2. Human Resources:</strong></p>
@@ -112,8 +111,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Financial resource utilization is typically measured through key performance indicators (KPIs) such as return on investment (ROI), cost per unit, and profit margins. Financial reporting software and accounting tools are essential for this.</p>
 <p><strong>4. Raw Materials:</strong></p>
 <p>In manufacturing, utilization is often measured as the ratio of materials used in production to the total materials consumed. This includes accounting for waste and spoilage.</p>
-<h2 id="visualizing-resource-utilization-with-mermaid-diagrams" class="anchored">Visualizing Resource Utilization with Mermaid Diagrams</h2>
-<p>Mermaid diagrams can effectively visualize resource utilization patterns. Let’s consider a simplified example of CPU and memory utilization in a server:</p>
+<h2 id="visualizing-resource-utilization-with-diagrams" class="anchored">Visualizing Resource Utilization with Diagrams</h2>
+<p>Diagrams can effectively visualize resource utilization patterns. Let’s consider a simplified example of CPU and memory utilization in a server:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -162,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <h2 id="examples-of-code-optimization" class="anchored">Examples of Code Optimization</h2>
 <p>Consider a Python script that processes a large dataset:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inefficient code</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1000000</span>))</span>
@@ -173,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> time.time()</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing time: </span><span class="sc">{</span>end_time <span class="op">-</span> start_time<span class="sc">}</span><span class="ss"> seconds"</span>)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Efficient code using list comprehension</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1000000</span>))</span>
@@ -182,8 +181,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> time.time()</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Processing time: </span><span class="sc">{</span>end_time <span class="op">-</span> start_time<span class="sc">}</span><span class="ss"> seconds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The second example demonstrates significantly improved efficiency through the use of list comprehension.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post provided a detailed overview of resource utilization, encompassing its definition, measurement techniques, visualization using Mermaid diagrams, and optimization strategies across various resource types. The discussion highlighted the importance of efficient resource utilization for optimal system performance, cost reduction, and improved overall productivity. Understanding and implementing these strategies are crucial for maximizing the value derived from available resources in any system or project.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

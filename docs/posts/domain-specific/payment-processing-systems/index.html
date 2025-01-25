@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Payment Processing Systems – System Design Handbook</title>
+<title>Payment Processing Systems – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Payment Processing Systems – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Payment Processing Systems – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,8 +54,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="decoding-payment-processing-systems-a-deep-dive">Decoding Payment Processing Systems: A Deep Dive</h1>
-<p>Payment processing systems are the unsung heroes of modern commerce, silently facilitating the billions of transactions that occur daily. From swiping a card at a grocery store to clicking “Buy Now” on an e-commerce site, these systems are the backbone of our digital and physical economies. This post will explore the intricacies of payment processing systems, breaking down their components, functionality, and the technologies that power them.</p>
+<p>Payment processing systems help in silently facilitating the billions of transactions that occur daily. From swiping a card at a grocery store to clicking “Buy Now” on an e-commerce site, these systems are the backbone of our digital and physical economies. This post will explore the intricacies of payment processing systems, breaking down their components, functionality, and the technologies that power them.</p>
 <h2 id="understanding-the-core-components" class="anchored">Understanding the Core Components</h2>
 <p>A typical payment processing system involves several key players and stages:</p>
 <p><strong>1. Merchant:</strong> The business selling goods or services.</p>
@@ -100,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>6. Issuing Bank:</strong> The customer’s bank, which verifies the customer’s ability to make the payment.</p>
 <p><strong>7. Card Networks:</strong> Organizations like Visa, Mastercard, American Express, and Discover that set standards for payment processing and facilitate communication between banks.</p>
 <h2 id="the-payment-processing-flow-a-visual-representation" class="anchored">The Payment Processing Flow: A Visual Representation</h2>
-<p>The following Mermaid diagram illustrates the typical flow of a credit card transaction:</p>
+<p>The following Diagram illustrates the typical flow of a credit card transaction:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -155,31 +120,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Tokenization:</strong> Sensitive data is replaced with non-sensitive tokens.</li>
 <li><strong>PCI DSS Compliance:</strong> Merchants must adhere to Payment Card Industry Data Security Standard to protect cardholder data.</li>
 </ul>
-<h2 id="code-example-illustrative-python" class="anchored">Code Example (Illustrative – Python):</h2>
-<p>While a full implementation is beyond the scope of this post, a simplified example using a hypothetical payment gateway API demonstrates the basic interaction:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Hypothetical API Key and Endpoint</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>endpoint <span class="op">=</span> <span class="st">"https://api.example.com/process_payment"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"amount"</span>: <span class="fl">100.00</span>,</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"card_number"</span>: <span class="st">"XXXX-XXXX-XXXX-XXXX"</span>, <span class="co"># In reality, use tokens!</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"expiry_date"</span>: <span class="st">"MM/YY"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cvv"</span>: <span class="st">"XXX"</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"api_key"</span>: api_key</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(endpoint, json<span class="op">=</span>data)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Payment successful!"</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(response.json()) <span class="co"># Process response</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Payment failed: </span><span class="sc">{</span>response<span class="sc">.</span>status_code<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(response.json()) <span class="co"># Handle error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Note:</strong> This is a highly simplified example and should not be used for production systems. Real-world implementations require robust error handling, security measures, and integration with specific payment gateway APIs.</p>
 <h2 id="choosing-the-right-payment-processor" class="anchored">Choosing the Right Payment Processor</h2>
 <p>Selecting a payment processor depends on several factors:</p>
 <ul>
@@ -188,8 +128,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Integration Capabilities:</strong> Ease of integration with existing systems (e.g., POS, e-commerce platform).</li>
 <li><strong>Fees and Pricing:</strong> Different processors have varying fee structures (transaction fees, monthly fees, etc.).</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Payment processing systems are complex but crucial components of modern commerce. Understanding their various components, the flow of transactions, and security considerations is essential for businesses of all sizes. Choosing the right payment processor involves careful consideration of various factors to ensure smooth and secure transactions.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

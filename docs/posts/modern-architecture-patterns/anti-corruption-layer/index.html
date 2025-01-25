@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Anti-Corruption Layer – System Design Handbook</title>
+<title>Anti-Corruption Layer – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Anti-Corruption Layer – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Anti-Corruption Layer – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,8 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="delving-deep-into-the-anti-corruption-layer-fortifying-your-system-against-malicious-actors">Delving Deep into the Anti-Corruption Layer: Fortifying Your System Against Malicious Actors</h1>
-<p>The integrity of your software is paramount. A single vulnerability can unravel months, even years, of development effort and open your system to catastrophic consequences. While robust security measures are crucial at all layers, the concept of an “Anti-Corruption Layer” (ACL) deserves special attention. It acts as a crucial buffer, protecting your core application logic from the unpredictable and often malicious world outside. This post will explore the intricacies of the ACL, providing a deep dive into its purpose, design, and implementation.</p>
+<p>The integrity of your software is paramount. A single vulnerability can unravel months, even years, of development effort and open your system to catastrophic consequences. While robust security measures are crucial at all layers, the concept of an “Anti-Corruption Layer” (ACL) deserves special attention. It acts as a crucial buffer, protecting your core application logic from the unpredictable and often malicious world outside. This post will explore the intricacies of the ACL, providing a perspective into its purpose, design, and implementation.</p>
 <h2 id="what-is-an-anti-corruption-layer" class="anchored">What is an Anti-Corruption Layer?</h2>
 <p>An Anti-Corruption Layer isn’t about fighting corruption in a societal sense; instead, it’s a design pattern that shields your clean, well-structured internal domain model from the messy, often incompatible external systems it must interact with. These external systems might be:</p>
 <ul>
@@ -121,17 +120,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>3. Keep it Simple:</strong> Avoid over-engineering the ACL. It should be straightforward and easy to maintain.</p>
 <h2 id="example-adapting-a-legacy-database" class="anchored">Example: Adapting a Legacy Database</h2>
 <p>Let’s say we’re integrating with a legacy database that stores customer information in a poorly structured table. Our core application uses a well-defined <code>Customer</code> object.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Legacy Database (CustomerTable)] --&gt; B(ACL);
-    B --&gt; C[Core Application (Customer Object)];
+    A["Legacy Database (CustomerTable)"] --&gt; B["ACL"]
+    B --&gt; C["Core Application (Customer Object)"]
     subgraph "Data Transformation"
-        B -.-&gt; D{Data Mapping/Validation};
+        B -.- D["Data Mapping/Validation"]
     end
 </pre>
 </div>
@@ -139,8 +138,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>In Domain-Driven Design, this diagram shows an Anti-Corruption Layer (ACL) pattern protecting a modernized Core Application from a Legacy Database:</p>
+<ol type="1">
+<li>The ACL serves as a translation layer, isolating the core domain from legacy data structures</li>
+<li>The Data Transformation subgraph shows how the ACL maps and validates data between old and new models</li>
+<li>This prevents legacy concepts from “corrupting” the new domain model while allowing gradual modernization</li>
+</ol>
+<p>The specific transformation shown is Customer data, where legacy table structures are converted into a clean domain object, maintaining system boundaries and allowing independent evolution of the core application.</p>
 <p><strong>Python Code Example (Illustrative):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Legacy Database Data (example)</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>legacy_customer_data <span class="op">=</span> {</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"id"</span>: <span class="dv">1</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cust_name"</span>: <span class="st">"John Doe"</span>,</span>
@@ -148,14 +154,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"some_legacy_field"</span>: <span class="st">"irrelevant data"</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Core Application Customer Object</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, address):</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> customer_id</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.address <span class="op">=</span> address</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Anti-Corruption Layer</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transform_legacy_customer(legacy_data):</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        customer_id <span class="op">=</span> <span class="bu">int</span>(legacy_data[<span class="st">"id"</span>])</span>
@@ -166,13 +172,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Handle missing or invalid data</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>customer <span class="op">=</span> transform_legacy_customer(legacy_customer_data)</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> customer:</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Customer Name: </span><span class="sc">{</span>customer<span class="sc">.</span>name<span class="sc">}</span><span class="ss">, Address: </span><span class="sc">{</span>customer<span class="sc">.</span>address<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h2 id="example-handling-an-external-api" class="anchored">Example: Handling an External API</h2>
 <p>Consider integrating with a third-party API that returns data in JSON format, but your application expects specific data fields.</p>
-<p><strong>Mermaid Diagram:</strong></p>
+<p><strong>Diagram:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -190,8 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <h2 id="implementing-the-acl" class="anchored">Implementing the ACL</h2>
 <p>The implementation will vary greatly depending on your technology stack. However, the core principles remain consistent: data transformation, validation, and error handling. Consider using dedicated libraries or frameworks for data mapping and validation to simplify the process.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>The Anti-Corruption Layer is a crucial architectural pattern for protecting your core application logic from the unpredictable nature of external systems. By carefully designing and implementing an ACL, you can significantly enhance the maintainability, security, and flexibility of your software. It acts as a critical safeguard, translating data, validating inputs, and ultimately ensuring the robustness and reliability of your application.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

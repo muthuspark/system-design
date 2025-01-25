@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>API Caching – System Design Handbook</title>
+<title>API Caching – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="API Caching – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="API Caching – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="api-caching-a-comprehensive-guide-to-boosting-performance-and-reducing-costs">API Caching: A Comprehensive Guide to Boosting Performance and Reducing Costs</h1>
 <p>API caching is a crucial technique for optimizing the performance and scalability of applications that rely heavily on external APIs. By storing responses from API calls, you can significantly reduce latency, lower the load on your servers, and minimize costs associated with API requests. This post will delve into the intricacies of API caching, exploring different strategies, implementation techniques, and best practices.</p>
 <h2 id="understanding-the-need-for-api-caching" class="anchored">Understanding the Need for API Caching</h2>
 <p>Imagine your application fetches data frequently from a slow or expensive third-party API. Every time a user requests this data, your application makes a fresh API call, leading to several problems:</p>
@@ -170,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        r.<span class="bu">set</span>(cache_key, data)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> data</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://example.com/api/data"</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>cache_key <span class="op">=</span> <span class="st">"example_api_data"</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> cached_api_call(url, cache_key)</span>
@@ -192,8 +191,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Monitor Cache Performance:</strong> Track cache hits, misses, and eviction rates to optimize performance.</li>
 <li><strong>Handle Errors Gracefully:</strong> Implement error handling for cache failures and API errors.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>API caching is a powerful technique to improve application performance, reduce server load, and minimize API costs. Understanding different caching types, implementation strategies, and invalidation techniques is critical for effective utilization. By carefully selecting the right strategy, implementing best practices, and continuously monitoring performance, you can significantly enhance the efficiency and scalability of your applications.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

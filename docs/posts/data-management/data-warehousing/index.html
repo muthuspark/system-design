@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Warehousing – System Design Handbook</title>
+<title>Data Warehousing – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Data Warehousing – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Data Warehousing – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="data-warehousing-your-guide-to-building-a-powerful-business-intelligence-system">Data Warehousing: Your Guide to Building a Powerful Business Intelligence System</h1>
 <p>Data is the lifeblood of modern businesses. But raw data, scattered across various sources and formats, is useless without proper organization and analysis. This is where data warehousing comes in. A data warehouse is a central repository of integrated data from multiple sources, designed to support business intelligence (BI) activities, analytics, and decision-making. This comprehensive guide will delve into the intricacies of data warehousing, exploring its architecture, benefits, and implementation.</p>
 <h2 id="understanding-the-core-concepts" class="anchored">Understanding the Core Concepts</h2>
 <p>Before diving into the specifics, let’s clarify some key terms:</p>
@@ -135,19 +134,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Example (Python with Pandas):</strong> A simplified example of data transformation using Python’s Pandas library:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'Name'</span>: [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>, <span class="st">'Charlie'</span>, <span class="st">'David'</span>],</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Age'</span>: [<span class="dv">25</span>, <span class="dv">30</span>, <span class="va">None</span>, <span class="dv">28</span>],</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'City'</span>: [<span class="st">'New York'</span>, <span class="st">'London'</span>, <span class="st">'Paris'</span>, <span class="st">'Tokyo'</span>]}</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Data cleaning: Fill missing age with the mean</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Age'</span>] <span class="op">=</span> df[<span class="st">'Age'</span>].fillna(df[<span class="st">'Age'</span>].mean())</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Data transformation: Convert age to string</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Age'</span>] <span class="op">=</span> df[<span class="st">'Age'</span>].astype(<span class="bu">str</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the transformed DataFrame</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This illustrates a simple transformation. Real-world ETL processes are far more complex, often involving custom scripts and dedicated ETL tools.</p>
 <h2 id="choosing-the-right-data-warehouse-technology" class="anchored">Choosing the Right Data Warehouse Technology</h2>
@@ -167,8 +166,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Better Customer Understanding:</strong> Enables a deeper understanding of customer behavior and preferences.</li>
 <li><strong>Competitive Advantage:</strong> Provides a strategic edge through data-driven insights.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>This post provided a comprehensive overview of data warehousing, covering key concepts, architecture, the ETL process, technology choices, and the significant advantages of implementing a robust data warehouse solution. It highlighted the importance of well-structured data for effective business intelligence and decision-making.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

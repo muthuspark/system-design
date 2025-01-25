@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Content Delivery Networks – System Design Handbook</title>
+<title>Content Delivery Networks – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,8 +41,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Content Delivery Networks – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Content Delivery Networks – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -54,29 +54,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<h1 id="content-delivery-networks-cdns-supercharging-your-websites-performance">Content Delivery Networks (CDNs): Supercharging Your Website’s Performance</h1>
 <p>In today’s digital world, speed is king. A slow-loading website can lead to frustrated users, lost conversions, and a damaged reputation. This is where Content Delivery Networks (CDNs) step in, offering a powerful solution to improve website performance and user experience globally. This comprehensive guide will delve into the intricacies of CDNs, explaining their functionality, benefits, and how they can revolutionize your online presence.</p>
 <h2 id="what-is-a-content-delivery-network-cdn" class="anchored">What is a Content Delivery Network (CDN)?</h2>
 <p>A CDN is a geographically distributed network of servers that work together to deliver content to users based on their location. Instead of serving all website traffic from a single server, a CDN replicates your website’s static content – images, CSS files, JavaScript files, videos, etc. – across multiple servers located in data centers around the world. When a user requests your website, the CDN directs them to the server geographically closest to them, significantly reducing latency and improving loading times.</p>
 <p>Imagine a global web of interconnected servers, each holding a copy of your website’s static assets. When a user in London accesses your site, they are served content from a London-based server, while a user in Tokyo receives content from a Tokyo-based server. This proximity dramatically cuts down on the distance data has to travel, leading to faster loading speeds and a smoother user experience.</p>
 <h2 id="how-a-cdn-works-a-visual-explanation" class="anchored">How a CDN Works: A Visual Explanation</h2>
-<p>Let’s illustrate the process with a Mermaid diagram:</p>
+<p>Let’s illustrate the process with a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<pre class="mermaid mermaid-js">graph LR
-    A[User (London)] --&gt; B(CDN Edge Server - London);
-    B --&gt; C(Origin Server);
-    B --&gt; D[CDN Edge Server - Tokyo];
-    E[User (Tokyo)] --&gt; D;
-    D --&gt; C;
-    C[Your Web Server (Origin)]
-    subgraph "CDN Network"
-        B;
-        D;
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph Users
+        U1[User - London]
+        U2[User - Tokyo]
     end
+
+    subgraph "CDN Network"
+        E1[Edge Server - London]
+        E2[Edge Server - Tokyo]
+    end
+
+    subgraph Origin
+        O[Origin Server]
+    end
+
+    %% Request flows
+    U1 --&gt; E1
+    U2 --&gt; E2
+    E1 &lt;--&gt; O
+    E2 &lt;--&gt; O
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -85,6 +93,78 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>This diagram shows a user in London and a user in Tokyo accessing the same website. The CDN directs each user to the nearest edge server, minimizing the distance data needs to travel. The origin server remains the central source of truth, but the CDN handles the majority of the content delivery.</p>
 <h2 id="key-components-of-a-cdn" class="anchored">Key Components of a CDN</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+    subgraph "Content Delivery Control Plane"
+        CP[Control Plane]
+        LB[Load Balancer]
+        DNS[DNS Service]
+    end
+
+    subgraph "Origin Infrastructure"
+        OS[Origin Server]
+        DB[(Content Database)]
+        OS --- DB
+    end
+
+    subgraph "Global CDN Network"
+        subgraph "North America POP"
+            NA1[Edge Server 1]
+            NA2[Edge Server 2]
+            NAC[(Cache)]
+        end
+        
+        subgraph "Europe POP"
+            EU1[Edge Server 1]
+            EU2[Edge Server 2]
+            EUC[(Cache)]
+        end
+        
+        subgraph "Asia POP"
+            AS1[Edge Server 1]
+            AS2[Edge Server 2]
+            ASC[(Cache)]
+        end
+    end
+
+    %% Connections
+    CP --&gt; LB
+    CP --&gt; DNS
+    LB --&gt; NA1 &amp; NA2 &amp; EU1 &amp; EU2 &amp; AS1 &amp; AS2
+    NA1 &amp; NA2 --- NAC
+    EU1 &amp; EU2 --- EUC
+    AS1 &amp; AS2 --- ASC
+    
+    OS --&gt; NA1 &amp; NA2 &amp; EU1 &amp; EU2 &amp; AS1 &amp; AS2
+
+    %% Styling
+    style CP fill:#f96,stroke:#333
+    style LB fill:#f96,stroke:#333
+    style DNS fill:#f96,stroke:#333
+    style OS fill:#90EE90,stroke:#333
+    style DB fill:#90EE90,stroke:#333
+    
+    style NA1 fill:#bbf,stroke:#333
+    style NA2 fill:#bbf,stroke:#333
+    style EU1 fill:#bbf,stroke:#333
+    style EU2 fill:#bbf,stroke:#333
+    style AS1 fill:#bbf,stroke:#333
+    style AS2 fill:#bbf,stroke:#333
+    
+    style NAC fill:#f9f,stroke:#333
+    style EUC fill:#f9f,stroke:#333
+    style ASC fill:#f9f,stroke:#333
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <ul>
 <li><strong>Origin Server:</strong> This is your primary web server where the original content resides.</li>
 <li><strong>CDN Edge Servers (POPs - Points of Presence):</strong> These are geographically distributed servers that store cached copies of your content.</li>
@@ -117,9 +197,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Your budget and technical expertise.</strong></li>
 <li><strong>The CDN’s features and security offerings.</strong></li>
 </ul>
-<h2 id="example-using-a-cdn-with-nginx-simplified" class="anchored">Example: Using a CDN with Nginx (Simplified)</h2>
-<p>While the actual integration with a CDN involves complex configurations, the basic concept is illustrated below:</p>
-<p>Imagine you’re using Nginx as your web server. Instead of directly serving your static assets, you would configure Nginx to forward requests for those assets to your CDN provider’s servers. The CDN would then serve the cached content to the users.</p>
 <h2 id="monitoring-and-optimization" class="anchored">Monitoring and Optimization</h2>
 <p>Regularly monitoring your CDN’s performance is crucial to ensure optimal website speed and functionality. Key metrics to track include:</p>
 <ul>
@@ -127,8 +204,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Latency:</strong> The time it takes to deliver content.</li>
 <li><strong>Bandwidth usage:</strong> The amount of data transferred.</li>
 </ul>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Content Delivery Networks are essential for businesses aiming to deliver a fast, reliable, and scalable online experience. By geographically distributing content and caching static assets, CDNs significantly reduce latency, improve website performance, and enhance user satisfaction. Choosing the right CDN and effectively monitoring its performance are key to maximizing its benefits.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

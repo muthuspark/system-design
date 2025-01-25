@@ -4,7 +4,7 @@ categories: [ "Cloud Native" ]
 ---
 
 
-Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions.  However, designing a robust and efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors. This post delves into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.
+Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions.  However, designing a robust and efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors. This post goes into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.
 
 ## Architectural Layers
 
@@ -91,7 +91,5 @@ Scalability and performance are paramount considerations.  Horizontal scaling (a
 Security is a vital aspect of cloud storage design.  Data encryption (both in transit and at rest) is essential.  Access control mechanisms, including role-based access control (RBAC) and granular permission settings, are required to prevent unauthorized access. Regular security audits and vulnerability assessments are also necessary.
 
 
-## Summary
 
-Designing a cloud storage system involves careful consideration of various architectural layers, data management strategies, scalability, performance, and security.  The choice of technologies and algorithms depends on specific requirements and constraints, demanding a deep understanding of trade-offs and best practices. This post provided an overview of the fundamental aspects of cloud storage design, offering insights into the complexity and importance of this critical infrastructure component.
 

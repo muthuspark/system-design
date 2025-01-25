@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cloud Storage Design – System Design Handbook</title>
+<title>Cloud Storage Design – System Design Notes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Cloud Storage Design – System Design Handbook">
-<meta property="og:site_name" content="System Design Handbook">
+<meta property="og:title" content="Cloud Storage Design – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
 </head>
 
 <body>
@@ -88,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<h1 id="cloud-storage-design-a-deep-dive">Cloud Storage Design: A Deep Dive</h1>
 <p>Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions. However, designing a robust and efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors. This post delves into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.</p>
 <h2 id="architectural-layers" class="anchored">Architectural Layers</h2>
 <p>A typical cloud storage system comprises several interconnected layers:</p>
@@ -118,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Data Partitioning:</strong> Large datasets are divided into smaller, manageable chunks. This improves scalability and performance, allowing for parallel processing and handling of large requests.</p></li>
 <li><p><strong>Data Consistency:</strong> Guaranteeing data consistency across multiple replicas or fragments is a significant challenge. Different consistency models exist (strong, eventual, etc.), each with its own trade-offs.</p></li>
 </ul>
-<h2 id="mermaid-diagrams" class="anchored">Mermaid Diagrams</h2>
+<h2 id="diagrams" class="anchored">Diagrams</h2>
 <h3 id="system-architecture" class="anchored">System Architecture</h3>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -165,8 +164,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Scalability and performance are paramount considerations. Horizontal scaling (adding more servers) is crucial for handling increasing data volumes and user traffic. Efficient data access mechanisms, such as content delivery networks (CDNs), caching, and optimized data retrieval algorithms, contribute significantly to performance.</p>
 <h2 id="security" class="anchored">Security</h2>
 <p>Security is a vital aspect of cloud storage design. Data encryption (both in transit and at rest) is essential. Access control mechanisms, including role-based access control (RBAC) and granular permission settings, are required to prevent unauthorized access. Regular security audits and vulnerability assessments are also necessary.</p>
-<h2 id="summary" class="anchored">Summary</h2>
-<p>Designing a cloud storage system involves careful consideration of various architectural layers, data management strategies, scalability, performance, and security. The choice of technologies and algorithms depends on specific requirements and constraints, demanding a deep understanding of trade-offs and best practices. This post provided an overview of the fundamental aspects of cloud storage design, offering insights into the complexity and importance of this critical infrastructure component.</p>
 
 
 <script id="quarto-html-after-body" type="application/javascript">

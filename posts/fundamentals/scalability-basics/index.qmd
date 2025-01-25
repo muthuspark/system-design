@@ -86,10 +86,17 @@ graph LR
 
 This is a highly simplified example. Real-world load balancing requires much more sophisticated techniques.
 
-\`\`\`python servers = \["server1", "server2", "server3"\] server_index = 0
+```python 
 
-def get_server(): global server_index server = servers\[server_index\] server_index = (server_index + 1) % len(servers) return server
+servers = ["server1", "server2", "server3"] 
 
+server_index = 0
+def get_server(): 
+    global server_index server = servers[server_index] 
+    server_index = (server_index + 1) % len(servers) 
+    return server
+    
+```
 ## Considerations
 
 Choosing the right scaling strategy depends on factors such as:
@@ -98,7 +105,3 @@ Choosing the right scaling strategy depends on factors such as:
 -   **Budget:** Vertical scaling can be initially cheaper but less scalable in the long run.
 -   **Traffic patterns:** Understanding peak usage times is essential for effective resource allocation.
 -   **Data storage needs:** Scaling databases can be a major bottleneck.
-
-## Summary
-
-This post covered fundamental concepts of scalability, differentiating between vertical and horizontal scaling. We explored key strategies like load balancing, caching, database sharding, and microservices architectures, along with illustrative code examples and diagrams to enhance understanding. Successfully scaling an application requires a careful consideration of these factors and choosing the right approach based on specific needs and constraints.
