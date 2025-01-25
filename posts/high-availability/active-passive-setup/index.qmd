@@ -1,0 +1,135 @@
+---
+title: "Active-Passive Setup"
+categories: [ "High Availability" ]
+---
+
+
+High availability (HA) is paramount in many applications, ensuring minimal downtime and continuous operation. One common approach to achieving HA is the active-passive setup, also known as a failover system. This configuration involves one active node handling all incoming requests and one or more passive nodes standing by, ready to take over if the active node fails. This post will explore the intricacies of active-passive setups, providing a comprehensive understanding of their architecture, implementation, and considerations.
+
+
+## Understanding the Active-Passive Architecture
+
+In an active-passive setup, only one node is active at any given time. This active node processes all user requests and manages the application's functionality.  The passive node(s) remain idle, mirroring the active node's state (database replication, configuration synchronization, etc.) but not processing any requests directly.  If the active node experiences a failure (hardware failure, software crash, network outage), a failover mechanism activates the passive node, seamlessly transferring operations and minimizing downtime.
+
+Here's a simplified Diagram illustrating the basic architecture:
+
+
+```{mermaid}
+graph LR
+    A[Active Node] --> B(User Requests);
+    A --> C[Shared Storage/Database];
+    P[Passive Node] --> C;
+    subgraph "Failover"
+        P -.-> A;
+        style P fill:#f9f,stroke:#333,stroke-width:2px
+    end
+    style A fill:#ccf,stroke:#333,stroke-width:2px
+```
+
+This diagram shows the active node (A) handling user requests and accessing a shared storage or database (C). The passive node (P) also connects to the shared storage, keeping its data synchronized.  The dashed arrow indicates the failover process.
+
+## Implementing Active-Passive: Key Components
+
+A successful active-passive setup relies on several crucial components:
+
+* **Shared Storage:** Both the active and passive nodes must access a shared storage system (e.g., SAN, NAS, cloud storage) for data persistence. This ensures data consistency between nodes during a failover.  Changes made by the active node are replicated to the passive node in real-time or near real-time.
+
+* **Heartbeat Monitoring:**  A heartbeat mechanism constantly monitors the active node's status. This can involve simple network pings or more sophisticated health checks. If the heartbeat fails, it triggers the failover process.
+
+* **Failover Mechanism:** This is the core of the active-passive system.  It's responsible for detecting the failure of the active node and automatically promoting the passive node to the active role.  This can involve scripting, specialized HA software, or cloud-based solutions.
+
+* **Synchronization:**  Crucial for data consistency.  This mechanism keeps the passive node synchronized with the active node's data.  Techniques include database replication (e.g., MySQL replication, PostgreSQL streaming replication), file synchronization tools (e.g., rsync), or distributed file systems.
+
+* **IP Address Management:** Static IP addresses are commonly used.  During failover, the IP address is typically switched from the failed active node to the newly active node, ensuring continued accessibility.  This might involve using a virtual IP address (VIP) managed by a load balancer or failover system.
+
+
+## Code Example (Illustrative Python Scripting):
+
+This example simplifies the heartbeat and failover aspects.  Real-world implementations are significantly more complex and usually involve dedicated HA software.
+
+
+```python
+import time
+import subprocess
+
+
+def active_node():
+    while True:
+        # Simulate processing requests
+        print("Active node processing requests...")
+        time.sleep(1)
+        # Simulate heartbeat (e.g., sending a ping)
+        try:
+            subprocess.run(["ping", "-c 1", "passive_node_ip"], check=True, timeout=5)
+        except subprocess.CalledProcessError:
+            print("Heartbeat failed. Passive node taking over...")
+            break
+        except subprocess.TimeoutExpired:
+            print("Heartbeat timeout. Passive node taking over...")
+            break
+
+
+def passive_node():
+  while True:
+    # Wait for failover
+    print("Passive node waiting...")
+    time.sleep(1)
+    #Check if active node is running (simplified example, should use a more robust method)
+    try:
+      subprocess.run(["ping", "-c 1", "active_node_ip"], check=True, timeout=1)
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+      print("Active node failed! Taking over...")
+      # Simulate taking over (in reality, more complex logic would be required)
+      break
+
+
+if __name__ == "__main__":
+    #Choose whether to run active or passive node (in real scenario this would be automatically determined)
+    active_node()
+    #passive_node()
+
+```
+
+This simplified code demonstrates the basic concept.  A real-world implementation would use robust health checks, more sophisticated failover mechanisms, and probably a dedicated failover system/software.
+
+
+## Advanced Considerations
+
+* **Data Consistency:** Maintaining data consistency between the active and passive nodes is critical.  The choice of synchronization method impacts performance and complexity.
+
+* **Network Configuration:**  Network redundancy and proper routing are essential to avoid disruptions during failover.
+
+* **Application Design:** The application itself should be designed with HA in mind, being able to handle the seamless transfer of operations during failover.
+
+* **Testing:**  Thorough testing is vital to ensure reliable failover and minimize downtime in production environments.
+
+
+##  More Complex Active-Passive Setup
+
+Let's illustrate a more complex setup incorporating a load balancer:
+
+
+```{mermaid}
+graph LR
+    subgraph "Load Balancer"
+        LB[Load Balancer]
+    end
+    LB --> A[Active Node];
+    LB --> P[Passive Node];
+    A --> C[Shared Storage/Database];
+    P --> C;
+    subgraph "Failover"
+        LB -.-> P;
+    end
+    style A fill:#ccf,stroke:#333,stroke-width:2px
+    style P fill:#f9f,stroke:#333,stroke-width:2px
+```
+
+Here, a load balancer distributes traffic to the active node.  In case of failure, the load balancer detects the issue and redirects traffic to the passive node.
+
+
+
+## Summary
+
+This post provided a deep dive into active-passive setups for high availability. We explored the architecture, key components like shared storage, heartbeat monitoring, and failover mechanisms.  We examined code examples (although simplified) and discussed more complex setups involving load balancers.  Advanced considerations such as data consistency and network configuration were also highlighted.  This comprehensive overview helps in understanding and implementing robust HA solutions using active-passive architectures.
+

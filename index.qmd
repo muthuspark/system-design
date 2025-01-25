@@ -1,0 +1,13 @@
+---
+title: ""
+listing:
+  contents: posts
+  sort: "title"
+  sort-ui: false
+  type: custom
+  template: custom.ejs
+  page-size: 200
+  filter-ui: false
+page-layout: full
+title-block-banner: false
+---

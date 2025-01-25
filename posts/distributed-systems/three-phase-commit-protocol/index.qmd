@@ -1,0 +1,126 @@
+---
+title: "Three-Phase Commit Protocol"
+categories: [ "Distributed Systems" ]
+---
+
+
+The Three-Phase Commit (3PC) protocol is a distributed consensus algorithm used in distributed systems to ensure atomicity and durability across multiple nodes involved in a transaction.  It's an extension of the Two-Phase Commit (2PC) protocol, aiming to improve its resilience to network partitions. While 2PC can leave a system in a blocking state during a network failure, 3PC attempts to mitigate this by adding a third phase that allows nodes to potentially proceed independently under certain conditions. However, it's important to understand that 3PC doesn't eliminate the possibility of blocking entirely, though it significantly reduces the likelihood.
+
+## Understanding the Problem: Limitations of Two-Phase Commit
+
+Before delving into 3PC, let's briefly review the shortcomings of 2PC that 3PC attempts to address.  In 2PC, a coordinator manages the transaction, coordinating between participants.  If the coordinator fails during the commit phase, participants may be left in an indeterminate state, requiring manual intervention.  This blocking scenario is a major drawback, especially in critical systems.
+
+
+```{mermaid}
+graph LR
+    A[Coordinator] --> B(Participant 1);
+    A --> C(Participant 2);
+    A --> D(Participant 3);
+    subgraph Phase 1: Prepare
+        B --> A;
+        C --> A;
+        D --> A;
+    end
+    subgraph Phase 2: Commit/Abort
+        A --> B;
+        A --> C;
+        A --> D;
+    end
+```
+
+This diagram shows a simple 2PC scenario.  Note that all participants rely on the coordinator for the final decision.
+
+
+## The Three-Phase Commit Protocol: A Detailed Explanation
+
+3PC adds a pre-commit phase before the commit phase, providing an extra layer of fault tolerance. Let's break down the three phases:
+
+**Phase 1: Prepare:**  The coordinator sends a "prepare" message to all participants.  Each participant performs a pre-write operation (preparing for a commit, but not committing yet) and sends an acknowledgement ("yes" or "no") to the coordinator.  A "no" vote indicates that the participant cannot commit (e.g., due to resource constraints).
+
+**Phase 2: Pre-commit:** If the coordinator receives "yes" votes from all participants, it sends a "pre-commit" message.  Participants who received a "pre-commit" perform the actual write operation and send an acknowledgement to the coordinator.  If the coordinator receives any "no" votes or experiences a network partition, it initiates an abort.
+
+**Phase 3: Commit/Abort:** This is where 3PC differs significantly from 2PC.
+* **Scenario 1 (Coordinator receives all "yes" votes in phase 2):** The coordinator sends a "commit" message to all participants. The transaction is committed.
+* **Scenario 2 (Coordinator fails after phase 2 and receives all "yes" votes):** This is a key difference from 2PC. Participants proceed to commit the transaction after a predefined timeout.  This mitigates the risk of a single point of failure.
+* **Scenario 3 (Coordinator fails or receives a "no" vote before or during phase 2):** The coordinator (or a participant if a timeout is reached) will send an "abort" message and the transaction is aborted.
+
+
+```{mermaid}
+graph LR
+    A[Coordinator] --> B(Participant 1);
+    A --> C(Participant 2);
+    A --> D(Participant 3);
+    subgraph Phase 1: Prepare
+        B --> A;
+        C --> A;
+        D --> A;
+    end
+    subgraph Phase 2: Pre-commit
+        A --> B;
+        A --> C;
+        A --> D;
+        B --> A;
+        C --> A;
+        D --> A;
+    end
+    subgraph Phase 3: Commit/Abort
+        A --> B;
+        A --> C;
+        A --> D;
+    end
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#ccf,stroke:#333,stroke-width:2px
+    style C fill:#ccf,stroke:#333,stroke-width:2px
+    style D fill:#ccf,stroke:#333,stroke-width:2px
+
+```
+
+
+## Code Example (Conceptual):
+
+This is a simplified conceptual example and does not cover error handling or network communication complexities.
+
+
+```python
+
+
+class Participant:
+    def __init__(self, id):
+        self.id = id
+        self.prepared = False
+        self.precommitted = False
+        self.committed = False
+
+    def prepare(self):
+        self.prepared = True
+        return "yes"  # or "no"
+
+    def precommit(self):
+        if self.prepared:
+            self.precommitted = True
+            return "yes"
+        return "no"
+
+    def commit(self):
+        if self.precommitted:
+            self.committed = True
+
+    def abort(self):
+        self.prepared = False
+        self.precommitted = False
+        self.committed = False
+
+
+
+
+```
+
+
+##  Limitations of Three-Phase Commit
+
+Despite its improvements over 2PC, 3PC is not a silver bullet. It still suffers from performance overhead and the possibility of blocking scenarios (though less likely).  Network partitions can still cause problems, particularly during the pre-commit or commit phases, potentially leading to inconsistent states.  The added complexity compared to 2PC also adds to the maintenance overhead.
+
+## Summary
+
+The Three-Phase Commit protocol aims to enhance the reliability of distributed transactions compared to Two-Phase Commit by introducing a pre-commit phase. This allows for potential independent commit decisions by participants in case of coordinator failure, decreasing the likelihood of blocking scenarios. However, it’s crucial to understand that 3PC doesn't fully eliminate the complexities and potential for failures inherent in distributed systems.  It presents a trade-off between increased resilience and added complexity.
+

@@ -1,0 +1,128 @@
+---
+title: "Circuit Breaker Pattern"
+categories: [ "Modern Architecture Patterns" ]
+---
+
+
+The Circuit Breaker pattern is a powerful tool in distributed systems for handling failures gracefully and preventing cascading failures.  It's especially valuable when dealing with external services or APIs that might be unreliable or temporarily unavailable.  Instead of repeatedly trying to access a failing service and potentially overwhelming your system, the circuit breaker monitors the service's health and intervenes to protect your application.
+
+## How the Circuit Breaker Works
+
+The core idea behind the circuit breaker is simple: it acts like an electrical circuit breaker.  When a fault is detected, the circuit "trips," preventing further attempts to access the failing service. After a period of time, the circuit breaker attempts to "reconnect" to the service. If the service is operational, the circuit closes, allowing requests through.  If it continues to fail, the circuit breaker remains open.
+
+Let's visualize this with a Diagram:
+
+```{mermaid}
+stateDiagram-v2
+    [*] --> Closed
+    Closed --> Open : Failure Threshold Reached
+    Open --> Half-Open : Timeout Period Elapsed
+    Half-Open --> Closed : Success
+    Half-Open --> Open : Failure
+    Open --> [*] : Circuit Breaker Disabled (Manual Reset)
+    Closed --> [*] : Circuit Breaker Disabled (Manual Reset)
+    
+    state Closed {
+      : Normal Operation;
+      Request --> Success : Service Available
+      Request --> Failure : Service Unavailable
+    }
+
+    state Open {
+        : Service Unavailable (Circuit Open);
+        Request --> Error : Service Unavailable
+    }
+
+    state Half-Open {
+        : Testing Service Availability;
+        Request --> Success : Service Available
+        Request --> Failure : Service Unavailable
+    }
+```
+
+This diagram showcases the three main states of a circuit breaker:
+
+* **Closed:** The circuit breaker is in its normal operating state, allowing requests to pass through to the external service.
+* **Open:**  The circuit breaker has detected too many failures and has "tripped."  Requests are immediately rejected (usually with a fallback mechanism), preventing further cascading failures.
+* **Half-Open:** After a timeout period, the circuit breaker transitions to the half-open state. It allows a limited number of requests through to test the service's availability.  If these requests succeed, the circuit closes; otherwise, it remains open.
+
+
+## Implementing the Circuit Breaker
+
+The implementation can vary depending on the programming language and framework.  Many libraries and frameworks offer ready-made implementations, but understanding the core logic is crucial. Let's explore a simplified example in Python:
+
+```python
+import time
+
+class CircuitBreaker:
+    def __init__(self, failure_threshold=3, recovery_timeout=10):
+        self.failure_threshold = failure_threshold
+        self.recovery_timeout = recovery_timeout
+        self.failure_count = 0
+        self.last_failure_time = 0
+        self.state = "CLOSED"
+
+    def call(self, func, *args, **kwargs):
+        if self.state == "OPEN":
+            if time.time() - self.last_failure_time > self.recovery_timeout:
+                self.state = "HALF-OPEN"
+                self.failure_count = 0
+
+            if self.state == "HALF-OPEN":
+                try:
+                    result = func(*args, **kwargs)
+                    self.state = "CLOSED"
+                    self.failure_count = 0
+                    return result
+                except Exception as e:
+                    self.state = "OPEN"
+                    self.failure_count = self.failure_threshold + 1 #Force open
+                    self.last_failure_time = time.time()
+                    raise
+            else:
+                raise Exception("Service Unavailable")
+        else:
+            try:
+                result = func(*args, **kwargs)
+                self.failure_count = 0
+                return result
+            except Exception as e:
+                self.failure_count += 1
+                self.last_failure_time = time.time()
+                if self.failure_count >= self.failure_threshold:
+                    self.state = "OPEN"
+                    raise
+                else:
+                    raise
+
+
+def external_service():
+    # Simulate a flaky service
+    if time.time() % 2 < 1:
+        raise Exception("Service Unavailable")
+    return "Success"
+
+breaker = CircuitBreaker()
+
+try:
+    result = breaker.call(external_service)
+    print(f"Result: {result}")
+except Exception as e:
+    print(f"Error: {e}")
+
+```
+
+This example showcases a basic implementation with a `CLOSED`, `OPEN`, and `HALF-OPEN` state.  More robust implementations would typically include metrics tracking, configurable parameters, and more sophisticated failure handling.
+
+## Advanced Considerations
+
+* **Fallback Mechanisms:**  When the circuit breaker is open, a fallback mechanism should be in place to provide a graceful degradation of service or return default values.
+* **Metrics and Monitoring:**  Monitoring the circuit breaker's state and the number of failures is essential for identifying and resolving issues.
+* **Concurrency:**  Implementations should handle concurrent requests appropriately to avoid race conditions.
+* **Integration with Libraries:** Many libraries provide more comprehensive and refined implementations.
+
+
+## Summary
+
+The Circuit Breaker pattern is a crucial component of robust and resilient distributed systems. By monitoring the health of external services and preventing cascading failures, it enhances the overall stability and reliability of applications.  Understanding its operation and implementing it correctly are vital steps in building fault-tolerant applications.
+

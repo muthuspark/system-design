@@ -1,0 +1,150 @@
+---
+title: "Distributed Transactions"
+categories: [ "Distributed Systems" ]
+---
+
+
+Distributed systems are the backbone of modern applications, allowing for scalability, fault tolerance, and flexibility.  However, managing data consistency across multiple systems presents significant challenges, particularly when it comes to transactions.  Unlike local transactions, where all operations occur within a single database, distributed transactions span multiple databases, services, or resources.  Ensuring atomicity, consistency, isolation, and durability (ACID properties) in this context is complex and requires careful consideration.  This post delves into the intricacies of distributed transactions, exploring various approaches and their trade-offs.
+
+
+## Understanding the Challenges
+
+The core problem with distributed transactions lies in coordinating operations across independent systems.  A failure in any single component can jeopardize the entire transaction, leaving the distributed databases in an inconsistent state. This inconsistency can manifest in various ways:
+
+* **Partial Updates:** Some components might successfully update their data, while others fail, leaving the system in a corrupted state.
+* **Data Inconsistency:**  Different parts of the system might hold conflicting data, leading to inaccurate results and operational problems.
+* **Deadlocks:** Multiple transactions might block each other, causing a standstill and requiring manual intervention.
+
+
+## Common Approaches to Distributed Transactions
+
+Several approaches exist to manage distributed transactions, each with its own strengths and weaknesses:
+
+### 1. Two-Phase Commit (2PC)
+
+Two-Phase Commit is a classic algorithm for coordinating distributed transactions.  It involves a coordinator and multiple participants.
+
+**Phases:**
+
+1. **Prepare Phase:** The coordinator sends a "prepare" message to all participants. Each participant checks if it can commit its part of the transaction and writes its changes to a durable log. If successful, it sends a "vote" message to the coordinator.  If any participant fails, it sends a "no-vote".
+
+2. **Commit/Rollback Phase:** If the coordinator receives a "vote" from all participants, it sends a "commit" message. Otherwise, it sends a "rollback" message. Participants then either commit or rollback their changes based on the coordinator's instruction.
+
+```{mermaid}
+graph LR
+    A[Coordinator] --> B(Prepare);
+    B --> C{Participant 1};
+    B --> D{Participant 2};
+    C --> E[Vote Yes/No];
+    D --> F[Vote Yes/No];
+    E --> A;
+    F --> A;
+    A --> G{Commit/Rollback};
+    G --> C;
+    G --> D;
+```
+
+**Advantages:**  Provides strong consistency guarantees.
+
+**Disadvantages:**  Performance bottleneck due to synchronous communication and blocking nature; single point of failure (coordinator); blocking and increased latency.
+
+
+
+### 2. Three-Phase Commit (3PC)
+
+3PC aims to improve upon 2PC by reducing the blocking time. It adds an intermediate phase to allow participants to prepare asynchronously, thereby lessening the impact of coordinator failures. However, it doesn't entirely eliminate the possibility of blocking in certain failure scenarios.
+
+
+### 3. Saga Pattern (Orchestration and Choreography)
+
+The Saga pattern uses a sequence of local transactions, each updating a single database. If any transaction fails, compensating transactions are executed to undo the changes made by previous successful transactions. This approach offers improved scalability and fault tolerance compared to 2PC.
+
+**Orchestration:** A central orchestrator manages the sequence of local transactions and compensating transactions.
+
+**Choreography:**  Each service independently listens for events and executes the corresponding local transaction.
+
+```{mermaid}
+graph LR
+    A[Service 1] --> B(Transaction 1);
+    B --> C[Service 2];
+    C --> D(Transaction 2);
+    D --> E[Service 3];
+    E --> F(Transaction 3);
+    F -- Failure --> G(Compensation Transaction 3);
+    G --> H(Compensation Transaction 2);
+    H --> I(Compensation Transaction 1);
+
+```
+
+
+**Advantages:**  Improved scalability and fault tolerance.
+
+**Disadvantages:**  Potentially weaker consistency guarantees (depending on compensation strategy).  Requires careful design of compensating transactions.
+
+
+### 4. Message Queues and Eventual Consistency
+
+Message queues can be used to decouple services and handle transactions asynchronously.  This approach prioritizes availability and scalability, accepting eventual consistency instead of immediate consistency.  Data consistency is achieved over time as messages are processed.
+
+
+### 5. Using Distributed Databases
+
+Some distributed databases, like CockroachDB and Spanner, provide built-in support for distributed transactions.  They handle the complexities of coordinating transactions across multiple nodes, offering strong consistency guarantees with improved scalability.
+
+
+
+## Code Example (Simplified Saga Pattern - Python):
+
+This example illustrates a simplified saga pattern using Python and hypothetical database interactions.  Error handling and more robust compensation logic would be needed in a production environment.
+
+```python
+import time
+
+class Service:
+    def __init__(self, name):
+        self.name = name
+
+    def execute_transaction(self, data):
+        print(f"{self.name}: Executing transaction with data: {data}")
+        # Simulate database interaction and potential failure
+        time.sleep(1) #Simulate work
+        if data["fail"]:
+            raise Exception(f"{self.name}: Transaction failed!")
+        print(f"{self.name}: Transaction successful!")
+        return {"success": True}
+
+    def compensate_transaction(self, data):
+        print(f"{self.name}: Compensating transaction with data: {data}")
+        #Simulate rollback
+        time.sleep(1)
+        print(f"{self.name}: Compensation successful!")
+        return {"success": True}
+
+
+service1 = Service("Service1")
+service2 = Service("Service2")
+service3 = Service("Service3")
+
+try:
+  data = {"value": 10, "fail": False}
+  service1.execute_transaction(data)
+  data = {"value": 20, "fail": False}
+  service2.execute_transaction(data)
+  data = {"value": 30, "fail": True}
+  service3.execute_transaction(data)
+except Exception as e:
+  print(f"Transaction failed: {e}")
+  data = {"value": 30}
+  service3.compensate_transaction(data)
+  data = {"value": 20}
+  service2.compensate_transaction(data)
+  data = {"value": 10}
+  service1.compensate_transaction(data)
+
+```
+
+
+## Summary
+
+Distributed transactions are crucial for maintaining data consistency in distributed systems.  Various approaches exist, each offering a trade-off between consistency, performance, and scalability.  Choosing the right approach depends on the specific application requirements and the acceptable level of consistency.  2PC offers strong consistency but can be slow and prone to single points of failure.  Saga patterns and message queues provide better scalability but might sacrifice some consistency.  Distributed databases offer a middle ground, providing built-in support for distributed transactions with improved scalability and strong consistency guarantees.
+

@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Muthukrishnan">
+
+<title>About – System Design Handbook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./posts/api-design/api-documentation/index.html" rel="next">
+<link href="./favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-50c1ec84a8061b6985326c66a03aad41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="About – System Design Handbook">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://system-design.muthu.co/profile.jpg">
+<meta property="og:site_name" content="System Design Handbook">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">System Design Handbook</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./about.html" aria-current="page"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./about.html">About</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./about.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Api Design</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/api-documentation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/rate-limiting/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Rate Limiting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/restful-api-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RESTful API Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/graphql-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GraphQL Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/api-versioning-strategies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Versioning Strategies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/grpc-implementation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">gRPC Implementation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/api-security/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Security</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/webhook-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Webhook Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/api-gateway-patterns/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Gateway Patterns</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/api-design/api-caching/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Caching</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cloud Native</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/container-security/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Container Security</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/kubernetes-design-patterns/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kubernetes Design Patterns</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/cloud-security-patterns/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Security Patterns</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/cloud-cost-optimization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Cost Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/service-mesh-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Service Mesh Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/multi-cloud-strategy/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-Cloud Strategy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/serverless-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Serverless Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/cloud-storage-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud Storage Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/function-as-a-service/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Function as a Service</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/cloud-native/edge-computing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Edge Computing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Data Management</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/master-slave-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Master-Slave Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/data-warehousing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Warehousing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/multi-master-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-Master Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/data-lakes/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Lakes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/replication-strategies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Replication Strategies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/database-partitioning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Database Partitioning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/write-ahead-logging/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Write-Ahead Logging</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/time-series-data-management/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time-Series Data Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/oltp-vs-olap-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OLTP vs OLAP Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/nosql-database-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NoSQL Database Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/graph-database-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graph Database Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/database-sharding-strategies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Database Sharding Strategies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/document-store-design-patterns/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Document Store Design Patterns</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/polyglot-persistence/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Polyglot Persistence</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/data-management/data-consistency-models/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Consistency Models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Distributed Systems</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/vector-clocks/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Clocks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/event-driven-architecture-in-distributed-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Event-Driven Architecture in Distributed Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/byzantine-fault-tolerance/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Byzantine Fault Tolerance</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/leader-election/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Leader Election</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/three-phase-commit-protocol/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Three-Phase Commit Protocol</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/eventual-consistency/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Eventual Consistency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/two-phase-commit-protocol/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Two-Phase Commit Protocol</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/distributed-transactions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Distributed Transactions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/strong-consistency/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strong Consistency</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/failure-detection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Failure Detection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/acid-vs-base-properties/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ACID vs BASE Properties</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/cap-theorem-deep-dive/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CAP Theorem Deep Dive</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/distributed-locking/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Distributed Locking</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/quorum-based-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quorum-based Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/distributed-systems/distributed-consensus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Distributed Consensus</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Domain Specific</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/search-engine-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Search Engine Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/recommendation-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recommendation Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/authentication-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Authentication Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/content-management-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Content Management Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/payment-processing-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Payment Processing Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/e-commerce-system-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">E-commerce System Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/booking-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Booking Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/social-network-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Social Network Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/video-streaming-platforms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Video Streaming Platforms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/domain-specific/mobile-backend-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mobile Backend Architecture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Fundamentals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/cost-benefit-analysis-in-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cost-Benefit Analysis in Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/system-requirements-analysis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">System Requirements Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/scalability-basics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalability Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/architectural-patterns-overview/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Architectural Patterns Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/performance-metrics-and-measurement/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Performance Metrics and Measurement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/maintainability-best-practices/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maintainability Best Practices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/quality-attributes-in-software-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality Attributes in Software Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/trade-offs-in-system-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Trade-offs in System Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/fundamentals/reliability-principles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliability Principles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">High Availability</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/failover-strategies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Failover Strategies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/redundancy-patterns/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Redundancy Patterns</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/business-continuity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Business Continuity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/disaster-recovery-planning/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Disaster Recovery Planning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/active-active-setup/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Active-Active Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/geographic-distribution/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geographic Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/multi-region-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-Region Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/service-level-agreements/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Service Level Agreements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/health-monitoring-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Health Monitoring Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/high-availability/active-passive-setup/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Active-Passive Setup</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Infrastructure</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/cicd-pipeline-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CI/CD Pipeline Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/container-orchestration/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Container Orchestration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/logging-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logging Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/resource-management/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resource Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/configuration-management/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Configuration Management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/service-discovery/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Service Discovery</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/infrastructure-as-code/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Infrastructure as Code</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/metrics-collection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Metrics Collection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/monitoring-system-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monitoring System Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/infrastructure/alert-system-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Alert System Design</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Modern Architecture Patterns</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/strangler-fig-pattern/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Strangler Fig Pattern</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/circuit-breaker-pattern/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Circuit Breaker Pattern</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/bulkhead-pattern/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bulkhead Pattern</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/cqrs-pattern/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CQRS Pattern</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/sidecar-pattern/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sidecar Pattern</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/saga-pattern/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Saga Pattern</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/backend-for-frontend/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backend for Frontend</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/anti-corruption-layer/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Anti-Corruption Layer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/modern-architecture-patterns/ambassador-pattern/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ambassador Pattern</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Performance</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/performance-testing-methodologies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Performance Testing Methodologies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/resource-utilization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resource Utilization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/bottleneck-analysis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bottleneck Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/latency-reduction/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Latency Reduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/batch-processing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Batch Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/asynchronous-processing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Asynchronous Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/query-optimization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Query Optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/connection-pooling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Connection Pooling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/throughput-improvement/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Throughput Improvement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/performance/response-time-optimization/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Response Time Optimization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">Real Time Systems</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/real-time-data-processing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real-Time Data Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/push-notification-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Push Notification Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/event-processing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Event Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/pubsub-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pub/Sub Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/gaming-server-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gaming Server Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/iot-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IoT Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/stream-processing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stream Processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/real-time-analytics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Real-Time Analytics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/live-streaming-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Live Streaming Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/real-time-systems/websocket-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WebSocket Architecture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">Scalability</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/microservices-scaling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Microservices Scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/database-connection-pooling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Database Connection Pooling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/load-balancing-algorithms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Load Balancing Algorithms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/session-management-at-scale/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Session Management at Scale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/horizontal-vs-vertical-scaling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Horizontal vs Vertical Scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/content-delivery-networks/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Content Delivery Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/stateless-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stateless Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/caching-strategies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Caching Strategies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/auto-scaling-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Auto-scaling Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/scalability/message-queue-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Message Queue Architecture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">Security</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/security-in-microservices/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Security in Microservices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/zero-trust-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Zero Trust Architecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/ssltls-implementation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSL/TLS Implementation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/security-in-distributed-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Security in Distributed Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/authentication-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Authentication Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/authorization-models/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Authorization Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/jwt-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JWT Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/data-encryption-strategies/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Encryption Strategies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/api-security/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Security</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/security/oauth-implementation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">OAuth Implementation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">Testing and Quality</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/automated-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Automated Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/feature-flag-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feature Flag Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/ab-testing-systems/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A/B Testing Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/quality-monitoring/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quality Monitoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/performance-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Performance Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/security-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Security Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/load-testing-design/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Load Testing Design</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/chaos-engineering/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chaos Engineering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/integration-testing/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integration Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./posts/testing-and-quality/test-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test Architecture</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="about.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></div>
+<!-- main -->
+<div class="quarto-about-jolla">
+  <img src="profile.jpg" class="about-image
+  round " style="height: 15em; width: 15em;">
+ <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">About</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header><main class="content" id="quarto-document-content">
+<p>About this blog</p>
+
+
+</main> 
+  <hr class="about-sep">
+   <div class="about-links">
+  <a href="https://twitter.com" class="about-link" rel="" target="">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">Twitter</span>
+  </a>
+  <a href="https://linkedin.com" class="about-link" rel="" target="">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://github.com" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
+</div>
+</div>
+ <!-- /main -->
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./posts/api-design/api-documentation/index.html" class="pagination-link" aria-label="API Documentation">
+        <span class="nav-page-text">API Documentation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>System Design Handbook written by Muthukrishnan</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

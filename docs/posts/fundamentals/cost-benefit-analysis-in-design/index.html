@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cost-Benefit Analysis in Design – System Design Handbook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+
+
+<link href="../../../favicon.ico" rel="icon">
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-html-5276476b5bdb9cfe1f92c505466e0bf3.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<meta name="mermaid-theme" content="neutral">
+<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Cost-Benefit Analysis in Design – System Design Handbook">
+<meta property="og:site_name" content="System Design Handbook">
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Cost-Benefit Analysis in Design</h1>
+
+</header>
+
+
+<p>Design isn’t just about aesthetics; it’s about solving problems effectively and efficiently. A crucial element often overlooked in the design process is the cost-benefit analysis (CBA). This systematic approach helps designers make informed decisions by weighing the costs against the benefits of different design choices. This post explores how to integrate CBA into your design workflow, demonstrating its value across various design disciplines.</p>
+<h2 id="what-is-cost-benefit-analysis-in-design" class="anchored">What is Cost-Benefit Analysis in Design?</h2>
+<p>Cost-benefit analysis in design is the process of evaluating the financial and non-financial costs and benefits associated with different design options. It’s about making data-driven decisions, moving beyond gut feelings to create designs that deliver the most value. This involves identifying all relevant costs – including time, resources, and potential risks – and comparing them against the expected benefits – such as increased user engagement, improved efficiency, and enhanced brand reputation.</p>
+<p><strong>Key Elements of a Design CBA:</strong></p>
+<ul>
+<li><p><strong>Identifying Costs:</strong> This encompasses all resources expended, including:</p>
+<ul>
+<li><strong>Development Costs:</strong> Time spent on design, prototyping, testing, and implementation.</li>
+<li><strong>Material Costs:</strong> Raw materials, manufacturing, and shipping.</li>
+<li><strong>Maintenance Costs:</strong> Ongoing upkeep, updates, and repairs.</li>
+<li><strong>Opportunity Costs:</strong> The potential benefits forgone by choosing one design over another.</li>
+</ul></li>
+<li><p><strong>Identifying Benefits:</strong> This includes quantifiable and qualitative aspects:</p>
+<ul>
+<li><strong>Increased Sales/Revenue:</strong> A design that boosts conversions directly impacts the bottom line.</li>
+<li><strong>Improved User Experience:</strong> A positive user experience can lead to increased loyalty and word-of-mouth marketing.</li>
+<li><strong>Enhanced Brand Image:</strong> A well-designed product or interface can improve brand perception.</li>
+<li><strong>Reduced Support Costs:</strong> Intuitive designs can minimize user errors and support tickets.</li>
+</ul></li>
+<li><p><strong>Quantifying Costs and Benefits:</strong> Whenever possible, assign numerical values to costs and benefits. This allows for a more objective comparison. Sometimes this requires estimating based on market research or expert opinion.</p></li>
+<li><p><strong>Comparing Costs and Benefits:</strong> The final step is to compare the total costs to the total benefits. This can be done using various metrics, such as Net Present Value (NPV) or Return on Investment (ROI).</p></li>
+</ul>
+<h2 id="applying-cba-to-different-design-disciplines" class="anchored">Applying CBA to Different Design Disciplines</h2>
+<p>CBA principles are applicable across various design fields:</p>
+<p><strong>1. Web Design:</strong></p>
+<p>Consider a redesign of a company’s e-commerce website.</p>
+<p><strong>Costs:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Design and development</td>
+<td style="text-align: left;">$10,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Testing and QA</td>
+<td style="text-align: left;">$2,000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Marketing and launch</td>
+<td style="text-align: left;">$3,000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Benefits:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Benefit</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Increased conversion rate (estimated at 2%)</td>
+<td style="text-align: left;">Let’s assume an average order value of $100 and 10,000 monthly visitors. A 2% increase means 200 more orders, generating an extra $20,000 monthly revenue.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reduced bounce rate (estimated at 5%)</td>
+<td style="text-align: left;">This leads to more users engaging with the website and potentially making purchases. Quantifying this benefit requires a deeper dive into website analytics.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. UX/UI Design:</strong></p>
+<p>Designing a new mobile app:</p>
+<p><strong>Costs:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Designer salaries</td>
+<td style="text-align: left;">$5,000 per month for 3 months</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Developer salaries</td>
+<td style="text-align: left;">$10,000 per month for 3 months</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Testing and iteration</td>
+<td style="text-align: left;">$2,000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Benefits:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Benefit</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Improved user engagement</td>
+<td style="text-align: left;">Measured by daily/monthly active users.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Increased app store ratings</td>
+<td style="text-align: left;">Positive reviews improve visibility and downloads.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Reduced customer support costs</td>
+<td style="text-align: left;">Easier to use app means fewer questions and issues.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. Product Design:</strong></p>
+<p>Developing a new type of kitchen appliance:</p>
+<p><strong>Costs:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Material sourcing and manufacturing</td>
+<td style="text-align: left;">$50,000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Marketing and distribution</td>
+<td style="text-align: left;">$20,000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Research and development</td>
+<td style="text-align: left;">$30,000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Benefits:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Benefit</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Increased market share</td>
+<td style="text-align: left;">Estimated based on market analysis.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Premium pricing due to innovative features</td>
+<td style="text-align: left;">Positive brand recognition.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="visualizing-cba-with-diagrams" class="anchored">Visualizing CBA with Diagrams</h2>
+<p>Diagrams can help visualize the cost-benefit analysis. Here’s an example for a web design project:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    A[Costs] --&gt; B(Design &amp; Dev: $10,000);
+    A --&gt; C(Testing &amp; QA: $2,000);
+    A --&gt; D(Marketing: $3,000);
+    E[Benefits] --&gt; F(Increased Revenue: $20,000/month);
+    E --&gt; G(Reduced Bounce Rate: 5%);
+    H[Net Benefit] --&gt; I(Positive: $15,000/month);
+    F --&gt; I;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>This diagram clearly shows the individual cost and benefit components and their relationship to the overall net benefit. More complex scenarios can be modeled with more detailed diagrams.</p>
+<h2 id="prioritizing-design-decisions" class="anchored">Prioritizing Design Decisions</h2>
+<p>Once you have a CBA for multiple design options, you can use it to prioritize decisions. You might create a simple table:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Design Option</th>
+<th>Total Costs</th>
+<th>Total Benefits</th>
+<th>Net Benefit</th>
+<th>ROI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Option A</td>
+<td>$15,000</td>
+<td>$25,000</td>
+<td>$10,000</td>
+<td>67%</td>
+</tr>
+<tr class="even">
+<td>Option B</td>
+<td>$10,000</td>
+<td>$18,000</td>
+<td>$8,000</td>
+<td>80%</td>
+</tr>
+<tr class="odd">
+<td>Option C</td>
+<td>$5,000</td>
+<td>$12,000</td>
+<td>$7,000</td>
+<td>140%</td>
+</tr>
+</tbody>
+</table>
+<p>Option C, despite having the lowest total costs, shows the highest ROI and should be prioritized, assuming all benefits are equally valued.</p>
+<h2 id="summary" class="anchored">Summary</h2>
+<p>Cost-benefit analysis offers a structured approach to design decisions, enabling designers to justify choices based on data rather than intuition. By systematically identifying and quantifying costs and benefits, designers can improve the efficiency and effectiveness of their work, ultimately delivering greater value to clients and stakeholders. The application of CBA spans various design fields, from web design to product design, enabling informed decision-making and maximizing return on investment.</p>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/system-design\.muthu\.co\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+
+</body></html>

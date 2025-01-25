@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+  preview:
+    port: 4200
+
+website:
+  title: "System Design Handbook"
+  reader-mode: true
+  page-navigation: true
+  open-graph: true
+  page-footer:
+    left: |
+      System Design Handbook written by Muthukrishnan
+  favicon: favicon.ico
+  site-url: https://system-design.muthu.co/
+  site-path: '/'
+  # navbar:
+  #   background: primary
+  #   search: true
+  #   right:
+  #     - about.qmd
+  #     - icon: github
+  #       href: https://github.com/muthuspark
+  #     - icon: twitter
+  #       href: https://twitter.com/krimuthu
+  navbar:
+    search: true
+
+format:
+  html:
+    theme: none
+    css: styles.css
+    mermaid:
+      theme: neutral
+
+editor: visual

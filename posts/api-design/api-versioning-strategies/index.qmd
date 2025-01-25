@@ -1,0 +1,156 @@
+---
+title: "API Versioning Strategies"
+categories: [ "API Design" ]
+---
+
+
+API versioning is a crucial aspect of API design and maintenance.  As your API evolves and adds new features or makes breaking changes, you need a robust strategy to manage different versions concurrently, ensuring backwards compatibility for existing clients while allowing for progress.  Choosing the right strategy depends on factors like your API's complexity, anticipated growth, and the technical capabilities of your clients.  This post explores several common API versioning strategies, their pros and cons, and provides examples.
+
+
+## 1. URI Versioning
+
+This is the most common and arguably simplest approach.  You incorporate the API version directly into the URI.  This makes it clear which version of the API a client is using.
+
+**Example:**
+
+* `/v1/users` (Version 1 of the user endpoint)
+* `/v2/users` (Version 2 of the user endpoint)
+
+**Diagram:**
+
+```{mermaid}
+graph LR
+    A[Client] --> B(Request: /v1/users);
+    B --> C[API Gateway/Controller];
+    C --> D{Version 1 Logic};
+    D --> E[Response];
+    E --> A;
+    
+    F[Client] --> G(Request: /v2/users);
+    G --> C;
+    C --> H{Version 2 Logic};
+    H --> I[Response];
+    I --> F;
+```
+
+**Pros:**
+
+* Simple to implement and understand.
+* Easy for clients to select the desired version.
+* Well-supported by most HTTP clients and servers.
+
+**Cons:**
+
+* Can lead to a large number of URIs if you have many versions.
+* Doesn't scale well for numerous versions.  Managing many versions can become cumbersome.
+*  Can impact SEO if not handled carefully (though this is less of a concern for most APIs).
+
+
+## 2. Header Versioning
+
+In this method, the API version is specified in an HTTP header, typically `Accept` or a custom header like `API-Version`.
+
+**Example (using `Accept` header):**
+
+```http
+Accept: application/vnd.yourcompany.v1+json
+```
+
+**Diagram:**
+
+```{mermaid}
+graph LR
+    A[Client] --> B(Request: Header: Accept: application/vnd.yourcompany.v1+json);
+    B --> C[API Gateway/Controller];
+    C --> D{Version Negotiation};
+    D -- Version 1 --> E{Version 1 Logic};
+    D -- Version 2 --> F{Version 2 Logic};
+    E --> G[Response];
+    F --> G;
+    G --> A;
+```
+
+**Pros:**
+
+* Keeps the URI clean and concise.
+* Can be used with content negotiation to handle different media types.
+* More scalable than URI versioning, allowing for more version management.
+
+**Cons:**
+
+* Requires careful handling of the header by both the client and the server.
+* Clients must correctly set the header for the desired version.
+*  Might not be as immediately apparent as URI versioning.
+
+
+
+## 3. Query Parameter Versioning
+
+The API version is passed as a query parameter in the URI.
+
+**Example:**
+
+`/users?version=2`
+
+**Diagram:**
+
+```{mermaid}
+graph LR
+    A[Client] --> B(Request: /users?version=2);
+    B --> C[API Gateway/Controller];
+    C --> D{Version Negotiation based on Query Parameter};
+    D --> E{Version 2 Logic};
+    E --> F[Response];
+    F --> A;
+
+```
+
+**Pros:**
+
+* Simple to implement.
+* Relatively easy for clients to understand.
+
+**Cons:**
+
+* Less clean than header versioning.
+* Query parameters are often used for other purposes, potentially leading to confusion.
+* Not ideal for caching, since different versions might share the same URI base.
+
+
+## 4. Custom Header Versioning (API-Version)
+
+This is a variation of header versioning, using a dedicated header, often `API-Version`.
+
+**Example:**
+
+```http
+API-Version: 2.0
+```
+
+**Pros:**
+
+* Cleaner than using the `Accept` header.  It specifically indicates the version.
+* Easier for developers to understand.
+
+**Cons:**
+
+* Requires client and server support for the custom header.
+
+
+## Choosing the Right Strategy
+
+The best strategy depends on your specific needs:
+
+* **Simplicity:**  URI versioning is the easiest to understand and implement.
+* **Scalability:** Header versioning (with `Accept` or a custom header) is better for managing multiple versions.
+* **Cleanliness:** Header versioning keeps the URIs cleaner.
+* **Compatibility:** Consider the capabilities of your clients.
+
+Often, a hybrid approach can be beneficial. For instance, you might use URI versioning for major version changes and header versioning for minor updates within a major version.
+
+
+
+## Summary
+
+This post explored four common API versioning strategies: URI versioning, header versioning, query parameter versioning, and custom header versioning using `API-Version`. Each strategy has its own advantages and disadvantages, and the best choice depends on factors such as complexity, scalability needs, and client capabilities.  Careful consideration of these factors is crucial for building a maintainable and robust API.
+

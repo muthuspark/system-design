@@ -1,0 +1,138 @@
+---
+title: "Authorization Models"
+categories: [ "Security" ]
+---
+
+
+Authorization is a critical aspect of security, defining *what* a user or system is allowed to do after successful authentication (verifying their identity).  It's the gatekeeper that ensures only authorized entities can access specific resources and perform certain actions.  This post explores various authorization models, their strengths and weaknesses, and how they are implemented.
+
+## 1. Role-Based Access Control (RBAC)
+
+RBAC is the most widely adopted model. It assigns permissions to roles, and users are assigned to those roles.  This simplifies management, as permissions are managed at the role level, rather than individually for each user.
+
+**Strengths:**
+
+* **Simplified management:**  Easier to manage permissions for large numbers of users.
+* **Granular control:** Roles can be customized to precisely define permissions.
+* **Scalability:** Well-suited for large organizations and complex systems.
+
+**Weaknesses:**
+
+* **Role explosion:**  Too many roles can become difficult to manage.
+* **Inflexible:**  Difficult to handle exceptional cases that don't fit neatly into roles.
+* **Static:**  Changes to roles often require system-wide updates.
+
+**Diagram:**
+
+```{mermaid}
+graph LR
+    A[Users] --> B(Role1);
+    A --> C(Role2);
+    B --> D{Permission1};
+    B --> E{Permission2};
+    C --> D;
+    C --> F{Permission3};
+    D --> G[Resource1];
+    E --> G;
+    F --> H[Resource2];
+```
+
+**Code Example (Conceptual):**
+
+```python
+
+roles = {
+    "admin": ["read", "write", "delete"],
+    "user": ["read"]
+}
+
+users = {
+    "john": ["admin"],
+    "jane": ["user"]
+}
+
+def is_authorized(user, action, resource):
+    for role in users[user]:
+        if action in roles[role]:
+            return True
+    return False
+
+print(is_authorized("john", "write", "document")) # True
+print(is_authorized("jane", "write", "document")) # False
+```
+
+
+## 2. Attribute-Based Access Control (ABAC)
+
+ABAC is a more fine-grained model that uses attributes of the user, the resource, and the environment to determine access. This allows for highly dynamic and context-aware authorization decisions.
+
+**Strengths:**
+
+* **Fine-grained control:**  Highly flexible and adaptable to changing requirements.
+* **Context-aware:**  Decisions based on user attributes, resource attributes, and environment conditions.
+* **Scalability:** Can handle complex scenarios and large numbers of users and resources.
+
+**Weaknesses:**
+
+* **Complexity:**  More complex to implement and manage than RBAC.
+* **Performance:**  Policy evaluation can be computationally expensive.
+* **Policy management:**  Requires sophisticated policy management tools.
+
+
+**Diagram:**
+
+```{mermaid}
+graph LR
+    A[User: {department:"Sales", level:"Manager"}] --> B(Policy Engine);
+    C[Resource: {type:"Report", sensitivity:"High"}] --> B;
+    D[Environment: {time:"weekday", location:"office"}] --> B;
+    B --> E{Access Granted};
+```
+
+
+## 3. Access Control Lists (ACLs)
+
+ACLs are a simple model where each resource has a list of users or groups and the permissions they have for that resource.
+
+**Strengths:**
+
+* **Simplicity:**  Easy to understand and implement.
+* **Direct access control:**  Explicitly defines permissions for each resource.
+
+**Weaknesses:**
+
+* **Scalability:**  Difficult to manage for a large number of users and resources.
+* **Maintenance:**  Requires significant effort to manage changes in permissions.
+* **Lack of granularity:**  Limited ability to handle complex access scenarios.
+
+**Diagram:**
+
+```{mermaid}
+graph LR
+    A[Resource1] --> B{ACL};
+    B --> C[User1: Read];
+    B --> D[User2: Read, Write];
+    B --> E[Group1: Read];
+
+```
+
+
+## 4. Ownership-Based Access Control (OBAC)
+
+OBAC is centered around the concept of ownership. The owner of a resource has full control over it, and can grant permissions to others.  This is often combined with other models to provide a more robust system.
+
+**Strengths:**
+
+* **Intuitive:** Simple to grasp and often aligns with users' expectations.
+* **Simple implementation:** Relatively straightforward to implement.
+
+**Weaknesses:**
+
+* **Potential for conflicts:**  Can lead to conflicts if ownership is not clearly defined.
+* **Limited granularity:** May not provide the fine-grained control needed in complex systems.
+
+
+## Summary
+
+This post has explored four common authorization models: RBAC, ABAC, ACLs, and OBAC. Each has its own strengths and weaknesses, and the best choice depends on the specific requirements of the application.  RBAC is widely used for its simplicity and scalability, while ABAC provides more fine-grained control for complex scenarios. ACLs offer a simple approach for smaller systems, and OBAC provides an intuitive model based on ownership. Understanding these models is crucial for building secure and well-managed systems.
+

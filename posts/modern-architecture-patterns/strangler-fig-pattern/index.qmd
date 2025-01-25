@@ -1,0 +1,105 @@
+---
+title: "Strangler Fig Pattern"
+categories: [ "Modern Architecture Patterns" ]
+---
+
+The Strangler Fig Pattern, inspired by the namesake plant's growth, is a powerful strategy in software architecture for migrating monolithic applications to microservices or modernizing legacy systems without significant downtime or disruption. It allows for gradual, iterative refactoring, reducing risk and enabling continuous delivery. This post will delve deep into the pattern, exploring its benefits, drawbacks, and practical implementation.
+
+## The Analogy: The Strangler Fig
+
+The Strangler Fig, a parasitic plant, begins its life by germinating in the canopy of a host tree. As it grows, it sends roots down towards the ground, eventually enveloping the host tree. This process is slow and gradual, allowing the fig to mature while the host continues to function. Similarly, the Strangler Fig Pattern in software gradually replaces a legacy system with a new architecture without completely shutting down the existing application.
+
+## How the Strangler Fig Pattern Works
+
+The core idea is to create new microservices that gradually replace functionality from the monolith. Instead of a "big bang" migration, new features are implemented as independent microservices, and requests are incrementally routed to these new services. The existing monolith remains operational, acting as a fallback or handling functionality not yet migrated.
+
+The key components are:
+
+-   **Monolith (Host):** The existing legacy application.
+-   **API Gateway:** A central point of entry for all requests, routing traffic to either the monolith or the new microservices.
+-   **Microservices (Stranglers):** Newly developed services that encapsulate specific functionalities from the monolith.
+-   **Routing Logic:** The mechanism within the API Gateway that determines where to route a given request.
+
+## Visual Representation
+
+Let's visualize this using Diagrams.
+
+**Phase 1: Initial State**
+
+```{mermaid}
+graph LR
+    A[Client] --> B(API Gateway);
+    B --> C((Monolith));
+```
+
+Here, all requests go directly to the monolith.
+
+**Phase 2: Introducing a Microservice**
+
+```{mermaid}
+graph LR
+    A[Client] --> B(API Gateway);
+    B --> C((Monolith));
+    B -- New Feature --> D(Microservice 1);
+```
+
+A new microservice handles a specific feature. The API Gateway routes requests for this feature to the new microservice.
+
+**Phase 3: Gradual Migration**
+
+```{mermaid}
+graph LR
+    A[Client] --> B(API Gateway);
+    B -- Existing Feature --> C((Monolith));
+    B -- New Feature --> D(Microservice 1);
+    B -- Another Feature --> E(Microservice 2);
+```
+
+More microservices are added, gradually taking over more functionality.
+
+**Phase 4: Complete Migration (Ideally)**
+
+```{mermaid}
+graph LR
+    A[Client] --> B(API Gateway);
+    B --> D(Microservice 1);
+    B --> E(Microservice 2);
+    B --> F(Microservice 3);
+    C((Monolith)) --> G[Deprecated/Removed];
+
+```
+
+The monolith is eventually decommissioned after all functionalities have been migrated. Note that this "complete" state is aspirational; parts of the monolith might remain indefinitely depending on the context.
+
+## Code Example (Conceptual): API Gateway Routing
+
+This is a highly simplified conceptual example illustrating routing logic. Real-world implementations would be far more complex, potentially using technologies like Nginx, Kong, or Istio.
+
+``` python
+
+def route_request(request):
+    if request.path == "/newfeature":
+        # Route to Microservice 1
+        return microservice1.handle_request(request)
+    else:
+        # Route to Monolith
+        return monolith.handle_request(request)
+```
+
+## Advantages of the Strangler Fig Pattern
+
+-   **Reduced Risk:** Migrations happen incrementally, limiting the impact of errors.
+-   **Minimal Downtime:** The existing system remains operational throughout the process.
+-   **Faster Time to Market:** New features can be delivered quickly as microservices.
+-   **Improved Agility:** The system becomes more adaptable to changing requirements.
+-   **Technology Diversification:** You can adopt new technologies gradually without rewriting the entire application.
+
+## Disadvantages of the Strangler Fig Pattern
+
+-   **Increased Complexity:** Managing the API Gateway and multiple services adds complexity.
+-   **Potential for Inconsistency:** Maintaining consistency between the monolith and new microservices requires careful planning.
+-   **Duplication of Effort:** Initially there might be some overlap of functionality between the monolith and new microservices.
+
+## Summary
+
+The Strangler Fig Pattern provides a flexible and risk-averse approach to migrating monolithic applications to a microservice architecture or modernizing legacy systems. By gradually replacing functionality with new, independent services, it minimizes disruption and allows for iterative improvement. However, careful planning and consideration of the increased complexity are crucial for successful implementation.
