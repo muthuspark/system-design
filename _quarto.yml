@@ -11,7 +11,7 @@ website:
   open-graph: true
   page-footer:
     left: |
-      "Copyright 2025, Muthukrishnan" 
+      Copyright 2025, Muthukrishnan
   favicon: favicon.ico
   site-url: https://system-design.muthu.co/
   site-path: '/'
