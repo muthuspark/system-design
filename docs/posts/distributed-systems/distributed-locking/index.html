@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Distributed systems, while offering scalability and resilience, introduce a new set of challenges. One prominent issue is managing concurrent access to shared resources. Imagine multiple services trying to update the same database record simultaneously – chaos ensues! This is where distributed locking comes to the rescue. This post provides an analysis of distributed locking, exploring various techniques and their trade-offs.</p>
 <section id="understanding-the-problem-race-conditions-in-distributed-systems" class="level2">
 <h2 data-anchor-id="understanding-the-problem-race-conditions-in-distributed-systems">Understanding the Problem: Race Conditions in Distributed Systems</h2>
-<p>Before we dive into solutions, let’s understand the problem. A race condition occurs when multiple processes or threads access and manipulate shared data concurrently, leading to unpredictable and often incorrect results. In a distributed environment, this is exacerbated by network latency and the lack of a single, shared memory space.</p>
+<p>Before we understand the problem, let’s consider the following: A race condition occurs when multiple processes or threads access and manipulate shared data concurrently, leading to unpredictable and often incorrect results. In a distributed environment, this is exacerbated by network latency and the lack of a single, shared memory space.</p>
 <p>Consider a simple scenario: two services, Service A and Service B, both need to decrement a counter stored in a database. If they both read the counter (say, 5), then decrement it independently and write it back, the final value might be 4 instead of 3, losing a decrement operation. This is a classic race condition.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -286,13 +286,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="zookeeper" class="level3">
 <h3 data-anchor-id="zookeeper">3. ZooKeeper</h3>
-<p>ZooKeeper, a highly reliable distributed coordination service, provides robust distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks. The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock. For more information, see the <a href="https://zookeeper.apache.org/doc/r3.6.1/zookeeperProgrammers.html#sc%20RECIPES">ZooKeeper documentation</a>.</p>
+<p>ZooKeeper, a highly reliable distributed coordination service, provides distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks. The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock. For more information, see the <a href="https://zookeeper.apache.org/doc/r3.6.1/zookeeperProgrammers.html#sc%20RECIPES">ZooKeeper documentation</a>.</p>
 <p><strong>Advantages:</strong> Highly reliable, handles failures gracefully, built-in features for distributed coordination.</p>
 <p><strong>Disadvantages:</strong> Adds complexity to the system, requires a ZooKeeper cluster.</p>
 </section>
 <section id="etcd" class="level3">
 <h3 data-anchor-id="etcd">4. Etcd</h3>
-<p>Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for robust lock management. For more information, see the <a href="https://etcd.io/">Etcd documentation</a>.</p>
+<p>Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for lock management. For more information, see the <a href="https://etcd.io/">Etcd documentation</a>.</p>
 <p><strong>Advantages:</strong> High availability, scalability, simple API.</p>
 <p><strong>Disadvantages:</strong> Adds complexity to the system, requires an Etcd cluster.</p>
 </section>

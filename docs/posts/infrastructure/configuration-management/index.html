@@ -253,8 +253,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>This diagram illustrates a basic CI/CD pipeline integrated with CM. The developer’s changes are committed, triggering automated tests. Upon successful tests, the configuration is deployed, followed by monitoring and validation. Failure at any stage leads to notifications and potential rollback.</p>
 </section>
-<section id="a-deeper-dive-into-iac-with-terraform" class="level2">
-<h2 data-anchor-id="a-deeper-dive-into-iac-with-terraform">A Deeper Dive into IaC with Terraform</h2>
+<section id="iac-with-terraform" class="level2">
+<h2 data-anchor-id="iac-with-terraform">IaC with Terraform</h2>
 <p>Terraform, a popular IaC tool, allows you to define and manage infrastructure in a declarative manner. Consider provisioning a simple virtual machine:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode terraform"><code class="sourceCode terraform"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">resource</span> <span class="st">"aws_instance"</span> <span class="st">"example"</span> {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  ami           <span class="op">=</span> <span class="st">"ami-0c55b31ad2299a701"</span> <span class="co"># Replace with appropriate AMI ID</span></span>

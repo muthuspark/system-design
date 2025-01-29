@@ -184,12 +184,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Failure detection is important in building robust and reliable systems. Whether you’re managing a complex microservice architecture or a single server application, the ability to quickly and accurately identify failures is paramount. This post will look at the various strategies and techniques used for failure detection, examining their strengths and weaknesses, and providing practical examples to illustrate their application.</p>
+<p>Failure detection is important in building reliable systems. Whether you’re managing a complex microservice architecture or a single server application, the ability to quickly and accurately identify failures is paramount. This post will look at the various strategies and techniques used for failure detection, examining their strengths and weaknesses, and providing practical examples to illustrate their application.</p>
 <section id="types-of-failures" class="level2">
 <h2 data-anchor-id="types-of-failures">Types of Failures</h2>
 <p>Before exploring detection methods, it’s important to understand the different types of failures we aim to detect:</p>
 <ul>
-<li><p><strong>Hardware Failures:</strong> These encompass issues like disk drive crashes, CPU malfunctions, or power outages. These are often abrupt and catastrophic.</p></li>
+<li><p><strong>Hardware Failures:</strong> These are issues like disk drive crashes, CPU malfunctions, or power outages. These are often abrupt and catastrophic.</p></li>
 <li><p><strong>Software Failures:</strong> These range from simple bugs and exceptions to more complex issues like deadlocks or memory leaks. They can be intermittent or persistent.</p></li>
 <li><p><strong>Network Failures:</strong> Network connectivity problems, packet loss, and high latency all contribute to application failures. These are often difficult to pinpoint as the source may not be immediately obvious.</p></li>
 <li><p><strong>Application Failures:</strong> These are failures within the application itself, stemming from bugs, resource exhaustion, or unexpected inputs. They often manifest as errors, crashes, or degraded performance.</p></li>
@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exception-handling-and-logging" class="level3">
 <h3 data-anchor-id="exception-handling-and-logging">3. Exception Handling and Logging</h3>
-<p>Robust exception handling and detailed logging within the application itself provide valuable insights into internal failures. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.</p>
+<p>Robust exception handling and detailed logging within the application provide insights into internal failures. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>

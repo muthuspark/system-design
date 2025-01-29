@@ -163,8 +163,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Complexity:</strong> The sheer number of services and their interdependencies make security management more complex than in monolithic architectures.</p></li>
 </ul>
 </section>
-<section id="implementing-robust-security-measures" class="level2">
-<h2 data-anchor-id="implementing-robust-security-measures">Implementing Robust Security Measures</h2>
+<section id="implementing-security-measures" class="level2">
+<h2 data-anchor-id="implementing-security-measures">Implementing Security Measures</h2>
 <p>Addressing these challenges requires a detailed security strategy. Let’s look at key implementation aspects:</p>
 <section id="secure-inter-service-communication" class="level3">
 <h3 data-anchor-id="secure-inter-service-communication">1. Secure Inter-Service Communication</h3>
@@ -194,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <ul>
-<li><p><strong>Authentication and Authorization:</strong> Implement robust authentication mechanisms (e.g., OAuth 2.0, JWT) to verify the identity of clients and services. Authorization controls access to specific resources based on user roles and permissions.</p></li>
+<li><p><strong>Authentication and Authorization:</strong> Implement authentication mechanisms (e.g., OAuth 2.0, JWT) to verify the identity of clients and services. Authorization controls access to specific resources based on user roles and permissions.</p></li>
 <li><p><strong>Secure Protocols:</strong> Use HTTPS for all inter-service communication to encrypt data in transit.</p></li>
 <li><p><strong>Mutual TLS (mTLS):</strong> For communication between services, mTLS provides strong authentication and encryption. Each service presents a certificate to verify its identity.</p></li>
 </ul>
@@ -231,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-anchor-id="development-practices">5. Development Practices</h3>
 <p>Secure coding practices are vital:</p>
 <ul>
-<li><p><strong>Secure Coding Standards:</strong> Adhere to secure coding standards and best practices to minimize vulnerabilities in the code.</p></li>
+<li><p><strong>Secure Coding Standards:</strong> Follow secure coding standards and best practices to minimize vulnerabilities in the code.</p></li>
 <li><p><strong>Static and Dynamic Application Security Testing (SAST/DAST):</strong> Integrate SAST and DAST tools into the development pipeline to identify security flaws early in the development process.</p></li>
 <li><p><strong>Dependency Management:</strong> Regularly update dependencies and use vulnerability scanners to identify and address vulnerabilities in third-party libraries.</p></li>
 </ul>
