@@ -15,14 +15,16 @@ The key characteristics of EDA include:
 
 -   **Asynchronous Communication:** Components don't directly interact; they communicate via events on the event bus.
 -   **Decoupling:** Producers and consumers are independent and unaware of each other's existence. This allows for independent development, deployment, and scaling.
--   **Loose Coupling:** Changes in one part of the system are less likely to affect other parts, making the system more robust and maintainable.
+-   **Loose Coupling:** Changes in one part of the system are less likely to affect other parts, making the system more maintainable.
+
 -   **Scalability:** The event bus can handle a high volume of events, allowing the system to scale horizontally.
 
 ## Event Bus Implementations
 
 Several technologies can serve as event buses in a distributed system. Popular choices include:
 
--   **Message Queues:** Such as [RabbitMQ](https://www.rabbitmq.com/), [Kafka](https://kafka.apache.org/), and [ActiveMQ](https://activemq.apache.org/). These offer robust message delivery guarantees and often include features like message ordering and persistence.
+-   **Message Queues:** Such as [RabbitMQ](https://www.rabbitmq.com/), [Kafka](https://kafka.apache.org/), and [ActiveMQ](https://activemq.apache.org/). These offer message delivery guarantees and often include features like message ordering and persistence.
+
 -   **Publish-Subscribe Systems:** These systems allow publishers to send events to topics (channels), and subscribers can register to receive events from specific topics. Examples include Redis Pub/Sub and Kafka.
 -   **Cloud-based Eventing Services:** Cloud providers like AWS (SNS, SQS), Google Cloud (Pub/Sub), and Azure (Event Hub) offer managed eventing services that simplify deployment and management.
 

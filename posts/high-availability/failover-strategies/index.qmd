@@ -7,7 +7,8 @@ In today's digital world, downtime is simply unacceptable. Businesses rely heavi
 
 ## Understanding Failover
 
-Failover refers to the process of automatically switching over to a backup system or resource when the primary system fails. This ensures that services remain operational, minimizing disruption to users and preventing data loss. Effective failover strategies require careful planning, robust infrastructure, and regular testing.
+Failover refers to the process of automatically switching over to a backup system or resource when the primary system fails. This ensures that services remain operational, minimizing disruption to users and preventing data loss. Effective failover strategies require careful planning, infrastructure, and regular testing.
+
 
 ## Types of Failover Strategies
 

@@ -51,7 +51,8 @@ Several popular technologies implement the Pub/Sub paradigm:
 
 * **Kafka:** A high-throughput, distributed streaming platform commonly used for building real-time data pipelines and event streaming applications.
 
-* **RabbitMQ:** A robust message broker that supports various messaging patterns, including Pub/Sub.
+* **RabbitMQ:** A message broker that supports various messaging patterns, including Pub/Sub.
+
 
 * **Google Cloud Pub/Sub:** A fully managed, scalable Pub/Sub service offered by Google Cloud Platform.
 

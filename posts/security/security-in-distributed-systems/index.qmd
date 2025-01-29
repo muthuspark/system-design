@@ -17,7 +17,8 @@ The distributed nature of these systems significantly expands the attack surface
 
 -   **Inter-service Communication:** Security measures need to be implemented to secure communication between different services within the distributed system.
 
--   **Data Consistency and Integrity:** Maintaining data consistency and integrity across multiple nodes is challenging and requires robust mechanisms to prevent data corruption or manipulation.
+-   **Data Consistency and Integrity:** Maintaining data consistency and integrity across multiple nodes is challenging and requires mechanisms to prevent data corruption or manipulation.
+
 
 ## Key Security Considerations
 

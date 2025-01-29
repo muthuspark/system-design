@@ -25,7 +25,8 @@ Several tools facilitate IaC, each with its strengths and weaknesses. Some of th
 -   **Ansible:** A powerful automation engine that uses a simple YAML-based language for configuration management and application deployment. While not purely IaC, it significantly contributes to infrastructure automation.
 -   **CloudFormation (AWS):** AWS's native IaC service, designed specifically for managing AWS resources. It uses JSON or YAML templates to define infrastructure.
 -   **Azure Resource Manager (ARM) Templates (Azure):** Similar to CloudFormation, ARM templates are used for defining and managing Azure resources.
--   **Puppet:** A robust configuration management tool that uses a domain-specific language (DSL) for defining infrastructure configurations.
+-   **Puppet:** A configuration management tool that uses a domain-specific language (DSL) for defining infrastructure configurations.
+
 
 ## IaC in Action: A Terraform Example
 

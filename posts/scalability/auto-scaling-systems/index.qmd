@@ -3,7 +3,8 @@ title: "Auto-scaling Systems"
 categories: [ "Scalability" ]
 ---
 
-Auto-scaling systems are the backbone of modern, resilient applications. They dynamically adjust the resources allocated to an application based on real-time demand, ensuring optimal performance while minimizing costs. This post will look at the complexities of auto-scaling, covering various architectures, implementation strategies, and the key considerations for designing and deploying a robust auto-scaling solution.
+Auto-scaling systems are the backbone of modern, resilient applications. They dynamically adjust the resources allocated to an application based on real-time demand, ensuring optimal performance while minimizing costs. This post will look at the complexities of auto-scaling, covering various architectures, implementation strategies, and key considerations for designing and deploying an auto-scaling solution.
+
 
 ## Understanding the Need for Auto-Scaling
 

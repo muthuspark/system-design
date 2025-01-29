@@ -268,4 +268,4 @@ Implementing sharding effectively requires careful planning and execution. Key a
 -   **Data migration:** Plan for efficient data migration during initial sharding and when adding or removing shards.
 -   **Global indexes:** Consider whether global indexes are needed for your query patterns.
 -   **Transaction management:** Ensure proper transaction management across multiple shards.
--   **Monitoring and management:** Implement robust monitoring and management tools to track shard health, performance, and data distribution.
+-   **Monitoring and management:** Implement monitoring and management tools to track shard health, performance, and data distribution.

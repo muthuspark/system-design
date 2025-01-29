@@ -106,7 +106,8 @@ pool.closeall()
 
 * **Pool Size:** Choosing the right pool size is important.  Too small, and you'll face contention.  Too large, and you'll waste resources.  Monitor your application's load to determine the optimal size.
 * **Connection Timeout:** Setting appropriate timeouts prevents connections from remaining idle indefinitely.
-* **Error Handling:** Implement robust error handling to manage connection failures and gracefully handle exceptions.
+* **Error Handling:** Implement error handling to manage connection failures and gracefully handle exceptions.
+
 * **Connection Validation:** Regularly validate connections to ensure they are still active and functioning.
 * **Resource Limits:** Be mindful of database server resource limitations (max connections, etc.).
 

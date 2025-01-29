@@ -3,7 +3,8 @@ title: "Leader Election"
 categories: [ "Distributed Systems" ]
 ---
 
-Leader election is a fundamental problem in distributed systems. It's the process of selecting a single node from a group of nodes to act as the leader, responsible for coordinating tasks, making decisions, and managing resources. This leader acts as a single point of control, simplifying the system's overall architecture and facilitating efficient operation. However, the selection process must be robust and fault-tolerant, handling node failures and network partitions gracefully. This post explores various leader election algorithms and provides code examples to illustrate their implementation.
+Leader election is a fundamental problem in distributed systems. It's the process of selecting a single node from a group of nodes to act as the leader, responsible for coordinating tasks, making decisions, and managing resources. This leader acts as a single point of control, simplifying the system's overall architecture and facilitating efficient operation. However, the selection process must be fault-tolerant, handling node failures and network partitions gracefully.
+ This post explores various leader election algorithms and provides code examples to illustrate their implementation.
 
 ## Why Leader Election is important
 

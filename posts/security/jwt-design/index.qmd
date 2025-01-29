@@ -85,7 +85,8 @@ The signature is created by signing a concatenated string of the base64url encod
 
 **Example using HS256 (symmetric):**
 
-This example is conceptual and omits detailed cryptographic implementation. Real-world implementation requires a robust cryptographic library.
+This example is conceptual and omits detailed cryptographic implementation. Real-world implementation requires a cryptographic library.
+
 
 ``` python
 import jwt
@@ -110,7 +111,8 @@ This Python code snippet demonstrates JWT creation and verification using the `P
 ## Security Considerations
 
 -   **Secret Key Management:** Securely store and manage your secret keys. Avoid hardcoding them directly in your application.
--   **Algorithm Selection:** Choose a robust and well-vetted signing algorithm. HS256 is suitable for many applications, while RS256 offers stronger security for scenarios where key distribution is a concern.
+-   **Algorithm Selection:** Choose a well-vetted signing algorithm.
+ HS256 is suitable for many applications, while RS256 offers stronger security for scenarios where key distribution is a concern.
 -   **Token Expiration:** Set appropriate expiration times to limit the validity of tokens.
 -   **HTTPS:** Always transmit JWTs over HTTPS to prevent interception.
 -   **Input Validation:** Validate all claims in the payload to prevent injection attacks.

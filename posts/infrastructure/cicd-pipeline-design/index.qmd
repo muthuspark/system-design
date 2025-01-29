@@ -126,7 +126,8 @@ This is a simplified example; a real-world pipeline would be more comprehensive.
 
 ### 5. Automate and Monitor
 
-Automate as much as possible. The pipeline should be triggered automatically upon code changes. Implement robust monitoring to track the pipeline's health and identify bottlenecks.
+Automate as much as possible. The pipeline should be triggered automatically upon code changes. Implement monitoring to track the pipeline's health and identify bottlenecks.
+
 
 ## Handling Failures and Rollbacks
 

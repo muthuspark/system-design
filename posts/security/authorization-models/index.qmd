@@ -248,7 +248,8 @@ The diagram shows ACL configuration with permit/deny rules controlling user acce
 
 ## 4. Ownership-Based Access Control (OBAC)
 
-OBAC is centered around the concept of ownership. The owner of a resource has full control over it, and can grant permissions to others. This is often combined with other models to provide a more robust system.
+OBAC is centered around the concept of ownership. The owner of a resource has full control over it, and can grant permissions to others. This is often combined with other models to provide a more effective system.
+
 
 
 ```{mermaid}

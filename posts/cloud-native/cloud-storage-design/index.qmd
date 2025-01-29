@@ -4,7 +4,8 @@ categories: [ "Cloud Native" ]
 ---
 
 
-Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions.  However, designing a robust and efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors. This post goes into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.
+Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions.  However, designing an efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors.
+ This post goes into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.
 
 ## Architectural Layers
 

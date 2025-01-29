@@ -3,7 +3,8 @@ title: "Alert System Design"
 categories: [ "Infrastructure" ]
 ---
 
-Alert systems are a must needed part of all reliable applications. They're the vigilant guardians that notify us of critical events, enabling timely intervention and preventing potential disasters. A well-designed alert system is important for maintaining application health, ensuring business continuity, and improving overall user experience. This post goes into the key components and considerations for building robust and effective alert systems.
+Alert systems are a must needed part of all reliable applications. They're the vigilant guardians that notify us of critical events, enabling timely intervention and preventing potential disasters. A well-designed alert system is important for maintaining application health, ensuring business continuity, and improving overall user experience. This post goes into the key components and considerations for building effective alert systems.
+
 
 ## Understanding the Core Components
 

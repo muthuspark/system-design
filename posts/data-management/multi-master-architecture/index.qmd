@@ -23,7 +23,8 @@ In a typical multi-master setup, multiple servers operate independently as maste
 ### Challenges of Multi-Master Architecture
 
 * **Data Consistency:** Maintaining data consistency across multiple masters is the most significant challenge.  Conflicts can arise when different masters receive conflicting write operations on the same data. Sophisticated conflict resolution strategies are essential.
-* **Complexity:**  Implementing and managing a multi-master architecture is considerably more complex than a single-master setup.  It requires careful planning, robust replication mechanisms, and efficient conflict resolution algorithms.
+* **Complexity:**  Implementing and managing a multi-master architecture is considerably more complex than a single-master setup.  It requires careful planning, replication mechanisms, and efficient conflict resolution algorithms.
+
 * **Increased Operational Overhead:**  Monitoring and managing multiple masters introduce higher operational overhead compared to single-master architectures.
 
 
@@ -87,7 +88,8 @@ graph LR
 
 ## Code Example (Conceptual Python):
 
-This example illustrates a simplified scenario where last-write-wins conflict resolution is implemented.  In reality, conflict resolution requires significantly more robust mechanisms.
+This example illustrates a simplified scenario where last-write-wins conflict resolution is implemented.  In reality, conflict resolution requires significantly more mechanisms.
+
 
 ```python
 class MultiMasterDatabase:

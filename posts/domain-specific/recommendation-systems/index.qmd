@@ -112,7 +112,8 @@ Both content-based and collaborative filtering approaches have limitations. Cont
 
 ## Hybrid Approaches
 
-To overcome the limitations of individual approaches, hybrid recommendation systems combine content-based and collaborative filtering techniques. This often leads to more robust and accurate recommendations.  Examples include:
+To overcome the limitations of individual approaches, hybrid recommendation systems combine content-based and collaborative filtering techniques. This often leads to more accurate recommendations.
+  Examples include:
 
 * **Weighted Averaging:** Combining the scores from content-based and collaborative filtering systems.
 * **Feature Combination:** Using features from both approaches as input for a machine learning model.

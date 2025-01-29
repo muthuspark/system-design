@@ -114,7 +114,8 @@ except RateLimitException:
 
 * **Configure appropriate limits:**  Set limits that balance the needs of your application with the expected traffic volume.
 
-* **Implement robust error handling:**  Provide informative error messages to clients when rate limits are exceeded.
+* **Implement error handling:** Provide informative error messages to clients when rate limits are exceeded.
+
 
 * **Consider different granularity levels:**  Limit requests based on IP address, user ID, API key, or any combination thereof.
 

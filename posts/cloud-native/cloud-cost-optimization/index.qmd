@@ -13,7 +13,8 @@ Before you can optimize, you need to understand where your money is going. Most 
 
 -   **Analyze Resource Utilization:** Are you paying for resources that are underutilized or idle? This is a common source of wasted spending. Tools like AWS Cost Explorer or Azure Cost Management can help visualize resource utilization over time.
 
--   **Tagging and Grouping:** Implement a robust tagging strategy to categorize your resources. This allows for granular cost allocation and easier identification of cost drivers. For instance, tag resources by department, project, or environment.
+-   **Tagging and Grouping:** Implement a tagging strategy to categorize your resources.
+ This allows for granular cost allocation and easier identification of cost drivers. For instance, tag resources by department, project, or environment.
 
 ```{mermaid}
 graph LR

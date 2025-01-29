@@ -35,7 +35,8 @@ Several powerful tools are available for container orchestration, each with its 
 
 ### Kubernetes: The Industry Standard
 
-Kubernetes (often shortened to k8s) is the most popular and widely adopted container orchestration platform. It's a highly scalable and robust system that manages containerized applications across a cluster of machines.
+Kubernetes (often shortened to k8s) is the most popular and widely adopted container orchestration platform. It's a highly scalable system that manages containerized applications across a cluster of machines.
+
 
 ```{mermaid}
 graph LR

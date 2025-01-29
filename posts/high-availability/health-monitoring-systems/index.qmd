@@ -62,7 +62,8 @@ The data collected by HMS often requires complex processing and analysis techniq
 
 ## Security and Privacy Considerations
 
-Security and privacy are critical in HMS. Data encryption, secure transmission protocols, and robust access control mechanisms are essential to protect patient information. Compliance with regulations like HIPAA (in the US) and GDPR (in Europe) is mandatory.
+Security and privacy are critical in HMS. Data encryption, secure transmission protocols, and access control mechanisms are essential to protect patient information.
+ Compliance with regulations like HIPAA (in the US) and GDPR (in Europe) is mandatory.
 
 ## Challenges and Future Directions
 

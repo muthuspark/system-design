@@ -17,7 +17,8 @@ Unlike monolithic applications, microservices communicate extensively with each 
 
 * **API Security:**  Microservices rely heavily on APIs for communication.  Securing these APIs from unauthorized access and malicious attacks is paramount.
 
-* **Identity and Access Management (IAM):**  Managing identities and access permissions across multiple services is complex and requires a robust IAM solution.
+* **Identity and Access Management (IAM):** Managing identities and access permissions across multiple services is complex and requires an IAM solution.
+
 
 * **Monitoring and Logging:**  Identifying and responding to security breaches in a distributed system requires complex monitoring and logging capabilities.
 

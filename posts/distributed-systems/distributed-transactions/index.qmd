@@ -84,7 +84,8 @@ Some distributed databases, like [CockroachDB](https://www.cockroachlabs.com/) a
 
 ## Code Example (Simplified Saga Pattern - Python):
 
-This example illustrates a simplified saga pattern using Python and hypothetical database interactions. Error handling and more robust compensation logic would be needed in a production environment.
+This example illustrates a simplified saga pattern using Python and hypothetical database interactions. Error handling and improved compensation logic would be needed in a production environment.
+
 
 ``` python
 import time

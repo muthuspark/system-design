@@ -57,7 +57,8 @@ A simple web application using a single database server might be easy to develop
 
 ## 3. Performance vs. Cost
 
-High-performance systems often come with a high price tag. Faster processors, more memory, and robust network infrastructure all contribute to increased operational costs. Decisions about infrastructure choices – cloud vs. on-premise, specific cloud providers, instance sizes – directly impact the balance between performance and cost.
+High-performance systems often come with a high price tag. Faster processors, more memory, and network infrastructure all contribute to increased operational costs.
+ Decisions about infrastructure choices – cloud vs. on-premise, specific cloud providers, instance sizes – directly impact the balance between performance and cost.
 
 **Example:**
 

@@ -3,7 +3,8 @@ title: "Logging Architecture"
 categories: [ "Infrastructure" ]
 ---
 
-Logging is a critical aspect of software development, important for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application's logs are effectively collected, processed, and analyzed, providing valuable insights into its behavior and performance. This post explores various aspects of building a robust logging architecture.
+Logging is a critical aspect of software development, important for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application's logs are effectively collected, processed, and analyzed, providing valuable insights into its behavior and performance. This post explores various aspects of building a logging architecture.
+
 
 ## 1. Log Levels: The Foundation of Structured Logging
 

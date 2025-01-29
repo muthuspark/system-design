@@ -13,7 +13,8 @@ At small scale, simple session management strategies often suffice. A developer 
 
 -   **Performance:** Retrieving and storing session data must be fast to avoid impacting application responsiveness. Slow session management can lead to noticeable delays for users.
 
--   **Security:** Session data often contains sensitive information, requiring robust security measures to prevent unauthorized access and manipulation. Vulnerabilities in session management can lead to severe security breaches.
+-   **Security:** Session data often contains sensitive information, requiring security measures to prevent unauthorized access and manipulation.
+ Vulnerabilities in session management can lead to severe security breaches.
 
 -   **State Management:** Maintaining consistent state across multiple servers and handling session expiration and invalidation are important aspects of efficient session management.
 
@@ -145,5 +146,6 @@ This is a simplified example; a production-ready system would require more robus
 The optimal session management strategy depends on various factors, including the application's scale, performance requirements, budget, and security considerations. Factors to consider include:
 
 -   **Expected Traffic:** For small-scale applications, a database-backed approach might be sufficient. For high-traffic applications, a distributed cache is typically necessary.
--   **Security Requirements:** Sensitive data requires robust security measures, potentially involving encryption and secure storage mechanisms.
+-   **Security Requirements:** Sensitive data requires security measures, potentially involving encryption and secure storage mechanisms.
+
 -   **Budget:** In-memory data stores and distributed caches can be expensive.

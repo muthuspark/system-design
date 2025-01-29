@@ -161,7 +161,8 @@ style B fill:#f9f,stroke:#333,stroke-width:2px
 
 ### 5. Source IP Hash
 
-Similar to IP Hash, but uses a hash function to map client IP addresses to servers. More robust than simple modulo-based hashing.
+Similar to IP Hash, but uses a hash function to map client IP addresses to servers. More than simple modulo-based hashing.
+
 
 ```{mermaid}
 flowchart LR

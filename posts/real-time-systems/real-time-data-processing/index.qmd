@@ -44,7 +44,8 @@ graph LR
     B --> C{Serving Layer};
 ```
 
-The Kappa Architecture improves on the Lambda Architecture by eliminating the need for separate batch processing, simplifying operations and maintenance. However, it requires more robust and scalable stream processing capabilities.
+The Kappa Architecture improves on the Lambda Architecture by eliminating the need for separate batch processing, simplifying operations and maintenance. However, it requires more scalable stream processing capabilities.
+
 
 ## Key Technologies
 

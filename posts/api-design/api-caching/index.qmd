@@ -100,6 +100,7 @@ Data changes over time. Strategies for removing stale data from the cache are im
 
 -   **Choose the Right Caching Strategy:** Consider the characteristics of your API and application requirements.
 -   **Effective Cache Keys:** Design clear and unambiguous cache keys to avoid collisions.
--   **Cache Invalidation Strategy:** Implement a robust invalidation strategy to prevent stale data.
+- **Cache Invalidation Strategy:** Implement an invalidation strategy to prevent stale data.
+
 -   **Monitor Cache Performance:** Track cache hits, misses, and eviction rates to optimize performance.
 -   **Handle Errors Gracefully:** Implement error handling for cache failures and API errors.

@@ -3,7 +3,8 @@ title: "Authentication Systems"
 categories: [ "Domain-Specific" ]
 ---
 
-Authentication is a part of every secure system build by engineers. It's the process of verifying the identity of a user, device, or other entity trying to access a resource. Without robust authentication, your data and services are vulnerable to unauthorized access, leading to potentially devastating consequences. This post will look at various authentication systems, their strengths and weaknesses, and how they work under the hood.
+Authentication is a part of every secure system build by engineers. It's the process of verifying the identity of a user, device, or other entity trying to access a resource. Without authentication, your data and services are vulnerable to unauthorized access, leading to potentially devastating consequences.
+ This post will look at various authentication systems, their strengths and weaknesses, and how they work under the hood.
 
 ## Types of Authentication Systems
 

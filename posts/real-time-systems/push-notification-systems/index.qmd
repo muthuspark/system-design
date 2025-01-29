@@ -43,7 +43,8 @@ Different operating systems utilize different protocols for push notifications:
 
 ## Implementing Push Notifications: A Simplified Example (FCM)
 
-This example demonstrates a basic implementation using Firebase Cloud Messaging (FCM) for Android. Note that this is a simplified illustration; a production-ready system would require more robust error handling and security measures.
+This example demonstrates a basic implementation using Firebase Cloud Messaging (FCM) for Android. Note that this is a simplified illustration; a production-ready system would require more error handling and security measures.
+
 
 **Server-Side (Node.js with Admin SDK):**
 

@@ -86,7 +86,8 @@ This pattern focuses on complex routing logic.  The API Gateway can dynamically 
 **Disadvantages:**
 
 * Can become complex to manage if routing rules become intricate.
-* Requires a robust routing engine within the API Gateway.
+* Requires a routing engine within the API Gateway.
+
 
 
 ```{mermaid}
@@ -163,7 +164,8 @@ Security is paramount.  This pattern focuses on centralizing authentication and 
 **Disadvantages:**
 
 * The API Gateway becomes a potential single point of failure for security.
-* Requires robust security mechanisms within the gateway.
+* Requires security mechanisms within the gateway.
+
 
 
 ```{mermaid}

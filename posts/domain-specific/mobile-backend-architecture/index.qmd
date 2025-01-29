@@ -4,7 +4,8 @@ categories: [ "Domain-Specific" ]
 ---
 
 
-Building a successful mobile application requires more than just a slick user interface.  A robust and scalable backend architecture is important for handling data storage, user authentication, push notifications, and much more. This post will look at the key components and architectural patterns commonly used for mobile backend development.
+Building a successful mobile application requires more than just a slick user interface.  A scalable backend architecture is important for handling data storage, user authentication, push notifications, and much more.
+ This post will look at the key components and architectural patterns commonly used for mobile backend development.
 
 ## Understanding the Landscape
 
@@ -49,7 +50,8 @@ graph LR
 **Disadvantages:**
 
 * **Complexity:**  Managing numerous services can be challenging.
-* **Inter-service Communication:**  Requires robust communication mechanisms between services.
+* **Inter-service Communication:** Requires communication mechanisms between services.
+
 
 
 ### 2. Monolithic Architecture
@@ -124,7 +126,8 @@ app.listen(port, () => console.log(`Server listening on port ${port}`));
 Security is paramount.  Consider these practices:
 
 * **Input Validation:**  Sanitize all user inputs to prevent injection attacks (SQL injection, XSS).
-* **Authentication and Authorization:**  Implement robust authentication mechanisms and fine-grained access control.
+* **Authentication and Authorization:** Implement authentication mechanisms and fine-grained access control.
+
 * **HTTPS:**  Use HTTPS to encrypt communication between the mobile app and the backend.
 * **Regular Security Audits:** Conduct regular security assessments to identify and address vulnerabilities.
 

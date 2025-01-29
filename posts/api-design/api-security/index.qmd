@@ -87,7 +87,8 @@ graph LR
 ## Best Practices for Secure API Development
 
 -   **Use HTTPS:** Always use HTTPS to encrypt communication between clients and the API.
--   **Implement robust logging and monitoring:** Track API activity to detect anomalies and security breaches.
+-   **Implement logging and monitoring:** Track API activity to detect anomalies and security breaches.
+
 -   **Regular security audits and penetration testing:** Identify vulnerabilities and address them proactively.
 -   **Secure coding practices:** Follow secure coding guidelines to minimize vulnerabilities.
 -   **Keep your API documentation up to date:** Ensure that your documentation includes details on how to securely use the API.

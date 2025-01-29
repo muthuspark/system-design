@@ -96,5 +96,6 @@ Numerous tools and technologies facilitate batch processing, including:
 
 - **Apache Hadoop: ** Distributed framework for storage and processing of large data sets.
 - **Apache Spark: ** Fast, general-purpose cluster computing system for large-scale data processing.
-- **Apache Kafka: ** Distributed streaming platform used widely for real-time data streams but also suitable for building robust batch pipelines.
+**Apache Kafka:** Distributed streaming platform used widely for real-time data streams but also suitable for building batch pipelines.
+
 - **Cloud-based services: ** AWS Batch, Azure Batch and Google Cloud Dataproc are managed batch processing services.
