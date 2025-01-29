@@ -9,7 +9,7 @@ Monitoring systems are the lifeblood of any robust application. They provide imp
 
 Before diving into the technical details, it's important to clearly define the goals of your monitoring system. What specific aspects of your application do you need to monitor? What metrics are most important? Are you primarily focused on performance, security, or availability? The answers to these questions will significantly influence the design and implementation of your system.
 
-For example, a simple web application might only need to monitor CPU usage, memory consumption, and response times. A complex microservices architecture, on the other hand, will require a much more sophisticated system capable of tracking inter-service communication, latency, and error rates across multiple components.
+For example, a simple web application might only need to monitor CPU usage, memory consumption, and response times. A complex microservices architecture, on the other hand, will require a much more complex system capable of tracking inter-service communication, latency, and error rates across multiple components.
 
 ## 2. Data Sources and Collection
 

@@ -21,7 +21,7 @@ Effectively managing time-series data demands addressing several challenges:
 -   **Data Storage:** Traditional relational databases struggle with the volume and velocity of time-series data. Specialized databases are often needed.
 -   **Data Ingestion:** Real-time ingestion and efficient handling of high-velocity data streams are important.
 -   **Data Querying:** Efficient querying of large datasets with time-based filters and aggregations is vital for analysis.
--   **Data Processing:** Handling missing data, outliers, and noisy signals requires sophisticated preprocessing and cleaning techniques.
+-   **Data Processing:** Handling missing data, outliers, and noisy signals requires complex preprocessing and cleaning techniques.
 -   **Data Visualization:** Effective visualization of time-series data is essential for understanding trends and patterns.
 
 ## Database Solutions for Time-Series Data

@@ -3,7 +3,7 @@ title: "Auto-scaling Systems"
 categories: [ "Scalability" ]
 ---
 
-Auto-scaling systems are the backbone of modern, resilient applications. They dynamically adjust the resources allocated to an application based on real-time demand, ensuring optimal performance while minimizing costs. This post will look at the intricacies of auto-scaling, covering various architectures, implementation strategies, and the key considerations for designing and deploying a robust auto-scaling solution.
+Auto-scaling systems are the backbone of modern, resilient applications. They dynamically adjust the resources allocated to an application based on real-time demand, ensuring optimal performance while minimizing costs. This post will look at the complexities of auto-scaling, covering various architectures, implementation strategies, and the key considerations for designing and deploying a robust auto-scaling solution.
 
 ## Understanding the Need for Auto-Scaling
 
@@ -17,7 +17,7 @@ A typical auto-scaling system consists of several key components:
 
 -   **Monitoring System:** Continuously monitors various metrics, such as CPU utilization, memory usage, network traffic, request latency, and error rates. These metrics provide insights into the current system load and performance. Examples include Prometheus, Datadog, and CloudWatch.
 
--   **Scaling Logic:** This component analyzes the metrics collected by the monitoring system and determines whether scaling up or down is necessary. It employs algorithms and rules to make scaling decisions based on predefined thresholds or sophisticated machine learning models.
+-   **Scaling Logic:** This component analyzes the metrics collected by the monitoring system and determines whether scaling up or down is necessary. It employs algorithms and rules to make scaling decisions based on predefined thresholds or complex machine learning models.
 
 -   **Provisioning System:** This is responsible for adding or removing resources based on the scaling logic's decisions. This can involve launching new VMs, containers, or serverless functions in the cloud or on-premise. Cloud providers offer managed auto-scaling services that handle this aspect, while on-premise systems often rely on orchestration tools like Kubernetes.
 
@@ -71,7 +71,7 @@ Key Differences Illustrated:
 - Horizontal includes a load balancer for traffic distribution
 - Color intensity shows resource capacity differences in vertical scaling
 
-**3. Hybrid Scaling:** Combines vertical and horizontal scaling to leverage the advantages of both approaches.
+**3. Hybrid Scaling:** Combines vertical and horizontal scaling to use the advantages of both approaches.
 
 ```{mermaid}
 flowchart TD
@@ -116,7 +116,7 @@ Hybrid System can handle increased load by:
   1. Scaling individual instances up within clusters
   2. Adding more clusters when needed
 
-This provides better flexibility and fault tolerance which can optimize resource usage based on demand. This approach combines benefits of both vertical and horizontal scaling, allowing for more sophisticated capacity management.
+This provides better flexibility and fault tolerance which can optimize resource usage based on demand. This approach combines benefits of both vertical and horizontal scaling, allowing for more complex capacity management.
 
 ## Key Considerations for Auto-Scaling
 

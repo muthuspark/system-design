@@ -4,7 +4,7 @@ categories: [ "Scalability" ]
 ---
 
 
-Caching is a fundamental technique in software engineering used to improve performance and reduce latency by storing frequently accessed data in a readily available location.  This blog post explores various caching strategies, their strengths, weaknesses, and practical applications. We'll delve into the details with examples and diagrams to provide a comprehensive understanding.
+Caching is a fundamental technique in software engineering used to improve performance and reduce latency by storing frequently accessed data in a readily available location.  This blog post explores various caching strategies, their strengths, weaknesses, and practical applications. We'll look at the details with examples and diagrams to provide a comprehensive understanding.
 
 ## Understanding the Basics
 
@@ -67,7 +67,7 @@ graph LR
 
 ### 3. Write-Around Caching
 
-With write-around caching, writes bypass the cache entirely and go directly to the primary storage. Reads still check the cache first. This strategy is useful when write consistency is paramount and write performance to the cache is a bottleneck.
+With write-around caching, writes bypass the cache entirely and go directly to the primary storage. Reads still check the cache first. This strategy is useful when write consistency is critical and write performance to the cache is a bottleneck.
 
 
 ```{mermaid}

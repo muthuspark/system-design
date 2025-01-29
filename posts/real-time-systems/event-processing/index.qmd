@@ -4,7 +4,7 @@ categories: [ "Real-Time Systems" ]
 ---
 
 
-Event processing is a powerful paradigm for handling high-volume, real-time data streams.  Unlike traditional batch processing, which operates on historical data, event processing focuses on immediate action based on incoming events. This makes it ideal for applications requiring immediate responses, such as fraud detection, real-time analytics, and online gaming. This post will delve into the core concepts of event processing, exploring its architecture, common patterns, and practical applications.
+Event processing is a powerful paradigm for handling high-volume, real-time data streams.  Unlike traditional batch processing, which operates on historical data, event processing focuses on immediate action based on incoming events. This makes it ideal for applications requiring immediate responses, such as fraud detection, real-time analytics, and online gaming. This post will look at the core concepts of event processing, exploring its architecture, common patterns, and practical applications.
 
 ## What is an Event?
 
@@ -48,7 +48,7 @@ Several patterns are commonly used in event processing:
 
 * **CQRS (Command Query Responsibility Segregation):** This pattern separates the commands that modify data from the queries that read data. This improves scalability and performance, particularly in high-volume systems.
 
-* **Complex Event Processing (CEP):** CEP involves detecting patterns and relationships between events over time, allowing for more sophisticated analysis and reaction.  For instance, identifying a fraud attempt by detecting a sequence of suspicious events.
+* **Complex Event Processing (CEP):** CEP involves detecting patterns and relationships between events over time, allowing for more complex analysis and reaction.  For instance, identifying a fraud attempt by detecting a sequence of suspicious events.
 
 ## Example: Fraud Detection with Apache Flink
 

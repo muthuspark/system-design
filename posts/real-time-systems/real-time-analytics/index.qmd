@@ -67,7 +67,7 @@ for message in consumer:
     print(f"Average: {average}")
 ```
 
-This is a basic illustration. Real-world applications require more robust error handling, data validation, and potentially more sophisticated analytics.
+This is a basic illustration. Real-world applications require more robust error handling, data validation, and potentially more complex analytics.
 
 ## Applications of Real-Time Analytics
 

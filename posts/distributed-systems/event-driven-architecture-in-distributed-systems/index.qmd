@@ -3,7 +3,7 @@ title: "Event-Driven Architecture in Distributed Systems"
 categories: [ "Distributed Systems" ]
 ---
 
-Event-driven architecture (EDA) is a powerful concept for building scalable and resilient distributed systems. It shifts the focus from synchronous request-response interactions to asynchronous event processing, allowing for greater flexibility, decoupling, and independent scalability of components. This post will look at the intricacies of EDA in the context of distributed systems, covering its core concepts, benefits, challenges, and practical implementation considerations.
+Event-driven architecture (EDA) is a powerful concept for building scalable and resilient distributed systems. It shifts the focus from synchronous request-response interactions to asynchronous event processing, allowing for greater flexibility, decoupling, and independent scalability of components. This post will look at the complexities of EDA in the context of distributed systems, covering its core concepts, benefits, challenges, and practical implementation considerations.
 
 ## Core Concepts
 
@@ -28,7 +28,7 @@ Several technologies can serve as event buses in a distributed system. Popular c
 
 ## Architectural Patterns
 
-Several architectural patterns leverage EDA:
+Several architectural patterns use EDA:
 
 **1. Microservices Architecture:** EDA is a natural fit for microservices. Each microservice can produce and consume events related to its specific domain, enabling loose coupling and independent scaling.
 

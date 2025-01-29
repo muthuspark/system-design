@@ -9,7 +9,7 @@ The CAP theorem, also known as Brewer's theorem, is a fundamental concept in dis
 -   **Availability (A):** Every request receives a response, without guarantee that it contains the most recent write.
 -   **Partition Tolerance (P):** The system continues to operate despite arbitrary message loss or network failures between nodes.
 
-This theorem is important for architects designing distributed systems because it forces a conscious trade-off between these critical properties. Let's delve deeper into each aspect:
+This theorem is important for architects designing distributed systems because it forces a conscious trade-off between these critical properties. Let's  examine each aspect:
 
 ## Consistency Explained
 

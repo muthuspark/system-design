@@ -16,7 +16,7 @@ The foundation of real-time data processing lies in its ability to handle high-v
 
 ## Architectures for Real-Time Processing
 
-Several architectural patterns facilitate real-time data processing. Let's delve into two prominent ones:
+Several architectural patterns facilitate real-time data processing. Let's look at two prominent ones:
 
 ### 1. Lambda Architecture
 
@@ -36,7 +36,7 @@ graph LR
 
 ### 2. Kappa Architecture
 
-The Kappa Architecture simplifies the Lambda Architecture by exclusively relying on stream processing. It leverages fault-tolerant stream processing frameworks to handle both real-time and historical data.
+The Kappa Architecture simplifies the Lambda Architecture by exclusively relying on stream processing. It uses fault-tolerant stream processing frameworks to handle both real-time and historical data.
 
 ```{mermaid}
 graph LR

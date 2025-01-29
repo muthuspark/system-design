@@ -4,7 +4,7 @@ categories: [ "Distributed Systems" ]
 ---
 
 
-In the world of distributed systems, ensuring consistency and order amidst concurrent operations is a significant challenge.  Traditional timestamps often fall short in these scenarios, leading to potential inconsistencies and data corruption.  This is where vector clocks come to the rescue.  Vector clocks provide a robust mechanism for tracking the causal order of events in a distributed environment, offering a superior alternative to simple scalar timestamps.  This post goes into the intricacies of vector clocks, explaining their functionality, implementation, and advantages.
+In the world of distributed systems, ensuring consistency and order amidst concurrent operations is a significant challenge.  Traditional timestamps often fall short in these scenarios, leading to potential inconsistencies and data corruption.  This is where vector clocks come to the rescue.  Vector clocks provide a robust mechanism for tracking the causal order of events in a distributed environment, offering a superior alternative to simple scalar timestamps.  This post goes into the complexities of vector clocks, explaining their functionality, implementation, and advantages.
 
 ## What are Vector Clocks?
 
@@ -82,7 +82,7 @@ vc.update(vc2.clock)
 print(f"Clock after update: {vc}") # Output: [1 1 0]
 ```
 
-This example demonstrates the core functions: incrementing the local clock and updating with a clock from another process using element-wise maximum.  The `process_id` attribute simulates the unique ID of each process.  A real-world implementation would need more sophisticated process ID handling.
+This example demonstrates the core functions: incrementing the local clock and updating with a clock from another process using element-wise maximum.  The `process_id` attribute simulates the unique ID of each process.  A real-world implementation would need more complex process ID handling.
 
 
 ## Comparing Vector Clocks: Causality and Concurrency

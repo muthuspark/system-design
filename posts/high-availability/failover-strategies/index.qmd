@@ -48,7 +48,7 @@ In this approach, both primary and secondary systems are active and handle reque
 
 -   More complex to implement and manage.
 -   Higher infrastructure costs.
--   Requires sophisticated load balancing mechanisms.
+-   Requires complex load balancing mechanisms.
 
 **Diagram:**
 

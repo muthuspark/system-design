@@ -4,7 +4,7 @@ categories: [ "Scalability" ]
 ---
 
 
-Database interactions are fundamental to most applications.  However, constantly establishing and tearing down connections for every database operation is inefficient and resource-intensive. This is where database connection pooling comes in, offering a significant performance boost and resource optimization strategy. This blog post will delve into the intricacies of database connection pooling, explaining its benefits, implementation strategies, and potential pitfalls.
+Database interactions are fundamental to most applications.  However, constantly establishing and tearing down connections for every database operation is inefficient and resource-intensive. This is where database connection pooling comes in, offering a significant performance boost and resource optimization strategy. This blog post will look at the complexities of database connection pooling, explaining its benefits, implementation strategies, and potential pitfalls.
 
 ## Understanding the Problem: The Cost of Connection Creation
 

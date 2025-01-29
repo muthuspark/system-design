@@ -74,7 +74,7 @@ graph LR
 
 ## 3. The Request Routing Gateway Pattern
 
-This pattern focuses on sophisticated routing logic.  The API Gateway can dynamically route requests based on various factors, such as headers, query parameters, or even the content of the request body.  This allows for flexible and context-aware routing.
+This pattern focuses on complex routing logic.  The API Gateway can dynamically route requests based on various factors, such as headers, query parameters, or even the content of the request body.  This allows for flexible and context-aware routing.
 
 **Advantages:**
 

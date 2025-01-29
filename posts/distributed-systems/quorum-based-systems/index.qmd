@@ -3,7 +3,7 @@ title: "Quorum-based Systems"
 categories: [ "Distributed Systems" ]
 ---
 
-Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will look at the intricacies of quorum systems, delving into their mechanisms, various types, applications, and inherent trade-offs.
+Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will look at the complexities of quorum systems, delving into their mechanisms, various types, applications, and inherent trade-offs.
 
 ## Understanding the Core Concept: Quorum
 
@@ -197,4 +197,4 @@ The choice of a quorum system involves trade-offs:
 
 -   **Availability vs. Consistency:** Larger quorums increase consistency but reduce availability (more nodes need to be operational).
 -   **Performance:** The size of quorums affects the time required to reach a decision. Smaller quorums are generally faster.
--   **Complexity:** More sophisticated quorum systems (e.g., weighted voting) can add complexity to implementation and management.
+-   **Complexity:** More complex quorum systems (e.g., weighted voting) can add complexity to implementation and management.

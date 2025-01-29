@@ -3,7 +3,7 @@ title: "Strangler Fig Pattern"
 categories: [ "Modern Architecture Patterns" ]
 ---
 
-The Strangler Fig Pattern, inspired by the namesake plant's growth, is a powerful strategy in software architecture for migrating monolithic applications to microservices or modernizing legacy systems without significant downtime or disruption. It allows for gradual, iterative refactoring, reducing risk and enabling continuous delivery. This post will delve deep into the pattern, exploring its benefits, drawbacks, and practical implementation.
+The Strangler Fig Pattern, inspired by the namesake plant's growth, is a powerful strategy in software architecture for migrating monolithic applications to microservices or modernizing legacy systems without significant downtime or disruption. It allows for gradual, iterative refactoring, reducing risk and enabling continuous delivery. This post will look at the pattern, exploring its benefits, drawbacks, and practical implementation.
 
 ## The Analogy: The Strangler Fig
 

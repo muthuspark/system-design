@@ -3,7 +3,7 @@ title: "SSL/TLS Implementation"
 categories: [ "Security" ]
 ---
 
-Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), are cryptographic protocols that provide secure communication over a network. They are fundamental to securing online interactions, ensuring the confidentiality, integrity, and authenticity of data transmitted between a client (like a web browser) and a server (like a web server). This post will delve into the intricacies of SSL/TLS implementation, exploring the handshake process, certificate management, and common configurations.
+Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), are cryptographic protocols that provide secure communication over a network. They are fundamental to securing online interactions, ensuring the confidentiality, integrity, and authenticity of data transmitted between a client (like a web browser) and a server (like a web server). This post will look at the complexities of SSL/TLS implementation, exploring the handshake process, certificate management, and common configurations.
 
 ## The SSL/TLS Handshake: A Step-by-Step Guide
 

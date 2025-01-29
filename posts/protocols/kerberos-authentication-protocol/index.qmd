@@ -3,7 +3,7 @@ title: "Kerberos authentication protocol"
 categories: [ "Protocols" ]
 ---
 
-Kerberos is a network authentication protocol that allows nodes to prove their identities to one another over a non-secure network. It's a powerful tool important for securing many modern systems, offering strong authentication and authorization capabilities. This post will delve into the intricacies of Kerberos, exploring its architecture, mechanisms, and the reasons behind its widespread adoption.
+Kerberos is a network authentication protocol that allows nodes to prove their identities to one another over a non-secure network. It's a powerful tool important for securing many modern systems, offering strong authentication and authorization capabilities. This post will look at the complexities of Kerberos, exploring its architecture, mechanisms, and the reasons behind its widespread adoption.
 
 ## The Challenge: Secure Communication in an Insecure World
 

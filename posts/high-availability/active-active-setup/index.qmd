@@ -3,7 +3,7 @@ title: "Active-Active Setup"
 categories: [ "High Availability" ]
 ---
 
-Active-Active setups represent a powerful approach to system architecture, offering significant advantages in terms of high availability, scalability, and performance. Unlike Active-Passive setups, where one system is active while the other stands by, both systems in an Active-Active configuration are simultaneously handling requests. This design inherently eliminates single points of failure and allows for seamless failover, resulting in increased resilience and improved user experience. This post goes into the intricacies of Active-Active setups, exploring their benefits, challenges, and implementation considerations.
+Active-Active setups represent a powerful approach to system architecture, offering significant advantages in terms of high availability, scalability, and performance. Unlike Active-Passive setups, where one system is active while the other stands by, both systems in an Active-Active configuration are simultaneously handling requests. This design inherently eliminates single points of failure and allows for seamless failover, resulting in increased resilience and improved user experience. This post goes into the complexities of Active-Active setups, exploring their benefits, challenges, and implementation considerations.
 
 ## Understanding the Active-Active Architecture
 
@@ -54,7 +54,7 @@ This setup provides redundancy and fault tolerance - if one server fails, the ot
 While Active-Active offers substantial benefits, implementing it effectively presents several challenges:
 
 -   **Data Synchronization:** Maintaining data consistency across both active systems is important. Techniques like database replication and message queues are vital for ensuring data integrity.
--   **Session Management:** Properly managing user sessions across both servers is essential to prevent user data loss or inconsistencies. Sticky sessions (where a user is always directed to the same server) can be problematic in Active-Active environments, requiring sophisticated session management strategies.
+-   **Session Management:** Properly managing user sessions across both servers is essential to prevent user data loss or inconsistencies. Sticky sessions (where a user is always directed to the same server) can be problematic in Active-Active environments, requiring complex session management strategies.
 -   **Increased Complexity:** Managing an Active-Active setup is inherently more complex than an Active-Passive setup, requiring advanced configuration and monitoring.
 -   **Cost:** The increased hardware and software requirements can lead to higher initial investment costs.
 

@@ -225,7 +225,7 @@ In multi-master replication, multiple servers can act as primary servers, accept
 
 **Disadvantages:**
 
--   **Complex conflict resolution:** Requires sophisticated mechanisms to handle concurrent writes.
+-   **Complex conflict resolution:** Requires complex mechanisms to handle concurrent writes.
 -   **Increased complexity:** Managing multiple masters increases operational overhead.
 
 **Diagram:**

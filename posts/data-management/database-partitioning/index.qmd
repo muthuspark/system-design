@@ -4,7 +4,7 @@ categories: [ "Data Management" ]
 ---
 
 
-Database partitioning is a powerful technique used to improve the performance, scalability, and manageability of large databases.  Instead of storing all data in a single, monolithic table, partitioning divides the data into smaller, more manageable pieces called partitions.  This approach offers significant advantages, especially when dealing with massive datasets that are challenging to query or manage efficiently.  This article explores the intricacies of database partitioning, covering various strategies, their advantages and disadvantages, and practical considerations.
+Database partitioning is a powerful technique used to improve the performance, scalability, and manageability of large databases.  Instead of storing all data in a single, monolithic table, partitioning divides the data into smaller, more manageable pieces called partitions.  This approach offers significant advantages, especially when dealing with massive datasets that are challenging to query or manage efficiently.  This article explores the complexities of database partitioning, covering various strategies, their advantages and disadvantages, and practical considerations.
 
 ## Understanding the Need for Partitioning
 

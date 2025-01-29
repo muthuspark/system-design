@@ -13,7 +13,7 @@ A robust alert system typically comprises several core components working in con
 
 2.  **Monitoring System:** This system continuously observes the event sources, collecting data and looking for conditions that trigger alerts. This might involve using dedicated monitoring tools (e.g., Prometheus, Nagios), custom scripts, or application-level monitoring.
 
-3.  **Alerting Engine:** The heart of the system, this component analyzes the data from the monitoring system, determines if thresholds have been breached, and decides whether to generate an alert. It may employ sophisticated logic, including deduplication, aggregation, and correlation of events.
+3.  **Alerting Engine:** The heart of the system, this component analyzes the data from the monitoring system, determines if thresholds have been breached, and decides whether to generate an alert. It may employ complex logic, including deduplication, aggregation, and correlation of events.
 
 4.  **Notification System:** This component delivers the alerts to the appropriate recipients. Methods include email, SMS, push notifications, PagerDuty integration, Slack integrations, or even physical alerts (lights, sirens – for critical situations).
 

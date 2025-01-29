@@ -4,7 +4,7 @@ categories: [ "Performance" ]
 ---
 
 
-Connection pooling is a important technique for enhancing the performance and efficiency of database applications.  It significantly reduces the overhead associated with repeatedly establishing and closing connections to a database server, leading to faster response times and improved resource utilization.  This post goes into the intricacies of connection pooling, explaining its benefits, how it works, and showcasing examples in various programming languages.
+Connection pooling is a important technique for enhancing the performance and efficiency of database applications.  It significantly reduces the overhead associated with repeatedly establishing and closing connections to a database server, leading to faster response times and improved resource utilization.  This post goes into the complexities of connection pooling, explaining its benefits, how it works, and showcasing examples in various programming languages.
 
 
 ## Understanding the Problem: The Cost of Connection Creation

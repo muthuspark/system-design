@@ -4,7 +4,7 @@ categories: [ "Real-Time Systems" ]
 ---
 
 
-Building a successful online game requires more than just compelling gameplay; it demands a robust and scalable server architecture capable of handling thousands, even millions, of concurrent players. This post goes into the intricacies of gaming server architectures, exploring different approaches and their respective strengths and weaknesses.
+Building a successful online game requires more than just compelling gameplay; it demands a robust and scalable server architecture capable of handling thousands, even millions, of concurrent players. This post goes into the complexities of gaming server architectures, exploring different approaches and their respective strengths and weaknesses.
 
 ## The Challenges of Gaming Server Architecture
 

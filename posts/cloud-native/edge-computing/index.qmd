@@ -3,7 +3,7 @@ title: "Edge Computing"
 categories: [ "Cloud Native" ]
 ---
 
-Edge computing is rapidly transforming how we process and analyze data. Instead of relying solely on centralized cloud servers, edge computing pushes processing and data storage closer to the source of the data – the "edge" of the network. This proximity offers significant advantages in terms of speed, latency, bandwidth efficiency, and security. This post goes into the intricacies of edge computing, exploring its architecture, benefits, use cases, and challenges.
+Edge computing is rapidly transforming how we process and analyze data. Instead of relying solely on centralized cloud servers, edge computing pushes processing and data storage closer to the source of the data – the "edge" of the network. This proximity offers significant advantages in terms of speed, latency, bandwidth efficiency, and security. This post goes into the complexities of edge computing, exploring its architecture, benefits, use cases, and challenges.
 
 ## Understanding the Fundamentals
 

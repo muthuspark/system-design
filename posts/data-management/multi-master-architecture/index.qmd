@@ -4,7 +4,7 @@ categories: [ "Data Management" ]
 ---
 
 
-Multi-master architecture, also known as multi-primary or multi-leader architecture, represents a sophisticated approach to database replication and data management.  Unlike single-master setups where one server holds the primary responsibility for data writes, a multi-master architecture allows multiple servers to accept write operations simultaneously. This design offers significant advantages in terms of scalability, high availability, and geographic distribution, but also introduces considerable complexity in handling data consistency and conflict resolution.  This post goes into the intricacies of multi-master architecture, exploring its benefits, challenges, and various implementation strategies.
+Multi-master architecture, also known as multi-primary or multi-leader architecture, represents a complex approach to database replication and data management.  Unlike single-master setups where one server holds the primary responsibility for data writes, a multi-master architecture allows multiple servers to accept write operations simultaneously. This design offers significant advantages in terms of scalability, high availability, and geographic distribution, but also introduces considerable complexity in handling data consistency and conflict resolution.  This post goes into the complexities of multi-master architecture, exploring its benefits, challenges, and various implementation strategies.
 
 
 ## Understanding the Fundamentals
@@ -69,7 +69,7 @@ This approach employs a conflict resolution mechanism to handle inconsistent wri
 * **First-Write-Wins:** The first write operation is chosen.
 * **Custom Conflict Resolution Logic:** A custom algorithm is implemented to determine the correct outcome based on application-specific rules.
 
-This requires sophisticated conflict detection and resolution mechanisms that may involve timestamping, versioning, or custom reconciliation logic.
+This requires complex conflict detection and resolution mechanisms that may involve timestamping, versioning, or custom reconciliation logic.
 
 
 ```{mermaid}
@@ -120,7 +120,7 @@ The choice of a multi-master architecture and its specific components should car
 
 * **Consistency Requirements:** How critical is strong consistency?  Asynchronous replication might be acceptable for some applications, while others require synchronous replication.
 * **Write Load:**  High write loads often benefit from asynchronous replication to improve performance.
-* **Data Volume:**  Large datasets may require more sophisticated replication and conflict resolution mechanisms.
+* **Data Volume:**  Large datasets may require more complex replication and conflict resolution mechanisms.
 * **Network Conditions:**  Network reliability affects the feasibility of synchronous replication.
 * **Development Resources:**  Implementing and maintaining a multi-master system requires significant expertise.
 

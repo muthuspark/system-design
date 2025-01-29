@@ -64,7 +64,7 @@ Example Payload:
 
 ## Creating and Verifying JWTs
 
-The process of creating and verifying JWTs involves encoding and decoding the header and payload using Base64URL encoding, then signing and verifying the signature using the chosen algorithm. This process often leverages libraries to simplify the tasks.
+The process of creating and verifying JWTs involves encoding and decoding the header and payload using Base64URL encoding, then signing and verifying the signature using the chosen algorithm. This process often uses libraries to simplify the tasks.
 
 Let's illustrate with a Python example using the `PyJWT` library:
 

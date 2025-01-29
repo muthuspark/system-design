@@ -49,7 +49,7 @@ graph LR
 
 ### 2. Distributed Consensus Algorithms (e.g., Paxos, Raft)
 
-These sophisticated algorithms provide a mechanism for achieving agreement among multiple replicas of the data. They ensure that all replicas contain the same data, even in the presence of failures. While robust, these algorithms are complex and can introduce latency.
+These complex algorithms provide a mechanism for achieving agreement among multiple replicas of the data. They ensure that all replicas contain the same data, even in the presence of failures. While robust, these algorithms are complex and can introduce latency.
 
 ```{mermaid}
 graph LR

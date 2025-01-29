@@ -7,7 +7,7 @@ Designing a robust and scalable RESTful API is important for modern application 
 
 ## Understanding RESTful Principles
 
-Representational State Transfer (REST) is an architectural style for building web services. It leverages standard HTTP methods and a resource-based approach to offer a simple yet powerful way to interact with data. Key principles include:
+Representational State Transfer (REST) is an architectural style for building web services. It uses standard HTTP methods and a resource-based approach to offer a simple yet powerful way to interact with data. Key principles include:
 
 -   **Client-Server:** The client and server are independent. The client doesn't need to know the server's internal workings.
 

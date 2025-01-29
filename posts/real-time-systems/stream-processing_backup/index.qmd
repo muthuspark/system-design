@@ -3,7 +3,7 @@ title: "Stream Processing"
 categories: [ "Real-Time Systems" ]
 ---
 
-Stream processing is a powerful technique for handling continuous, high-volume data streams in real-time. Unlike batch processing, which deals with static datasets, stream processing analyzes data as it arrives, allowing for immediate insights and reactions. This capability is important in many modern applications, from fraud detection and anomaly detection to social media analytics and IoT sensor data analysis. This post will delve into the intricacies of stream processing, exploring its key concepts, architectures, and practical applications.
+Stream processing is a powerful technique for handling continuous, high-volume data streams in real-time. Unlike batch processing, which deals with static datasets, stream processing analyzes data as it arrives, allowing for immediate insights and reactions. This capability is important in many modern applications, from fraud detection and anomaly detection to social media analytics and IoT sensor data analysis. This post will explore the intricacies of stream processing, exploring its key concepts, architectures, and practical applications.
 
 ## Understanding the Core Concepts
 

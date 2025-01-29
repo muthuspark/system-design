@@ -3,7 +3,7 @@ title: "Distributed Transactions"
 categories: [ "Distributed Systems" ]
 ---
 
-Distributed systems are the backbone of modern applications, allowing for scalability, fault tolerance, and flexibility. However, managing data consistency across multiple systems presents significant challenges, particularly when it comes to transactions. Unlike local transactions, where all operations occur within a single database, distributed transactions span multiple databases, services, or resources. Ensuring atomicity, consistency, isolation, and durability (ACID properties) in this context is complex and requires careful consideration. This post goes into the intricacies of distributed transactions, exploring various approaches and their trade-offs.
+Distributed systems are the backbone of modern applications, allowing for scalability, fault tolerance, and flexibility. However, managing data consistency across multiple systems presents significant challenges, particularly when it comes to transactions. Unlike local transactions, where all operations occur within a single database, distributed transactions span multiple databases, services, or resources. Ensuring atomicity, consistency, isolation, and durability (ACID properties) in this context is complex and requires careful consideration. This post goes into the complexities of distributed transactions, exploring various approaches and their trade-offs.
 
 ## Understanding the Challenges
 

@@ -64,7 +64,7 @@ end_time = time.time()
 print(f"Optimized time: {end_time - start_time:.4f} seconds")
 ```
 
-The optimized version leverages list comprehension for significantly faster execution.
+The optimized version uses list comprehension for significantly faster execution.
 
 
 ### 4. Usability

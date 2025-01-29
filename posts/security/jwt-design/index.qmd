@@ -3,7 +3,7 @@ title: "JWT Design"
 categories: [ "Security" ]
 ---
 
-JSON Web Tokens (JWTs) have become the de facto standard for securely transmitting information between parties as a compact, URL-safe method. This post will delve into the intricate design of JWTs, exploring their structure, components, and security considerations.
+JSON Web Tokens (JWTs) have become the de facto standard for securely transmitting information between parties as a compact, URL-safe method. This post will look at the intricate design of JWTs, exploring their structure, components, and security considerations.
 
 ## The Three-Part Structure: Header, Payload, and Signature
 

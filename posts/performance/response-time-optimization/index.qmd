@@ -39,7 +39,7 @@ These tools usually pinpoint issues like:
 
 ## Optimization Techniques: A Practical Guide
 
-Now let's delve into practical strategies for optimizing response time:
+Now let's look at practical strategies for optimizing response time:
 
 ### 1. Optimize Database Queries
 

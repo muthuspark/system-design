@@ -3,7 +3,7 @@ title: "Active-Passive Setup"
 categories: [ "High Availability" ]
 ---
 
-High availability (HA) is paramount in many applications, ensuring minimal downtime and continuous operation. One common approach to achieving HA is the active-passive setup, also known as a failover system. This configuration involves one active node handling all incoming requests and one or more passive nodes standing by, ready to take over if the active node fails. This post will look at the intricacies of active-passive setups, providing a comprehensive understanding of their architecture, implementation, and considerations.
+High availability (HA) is critical in many applications, ensuring minimal downtime and continuous operation. One common approach to achieving HA is the active-passive setup, also known as a failover system. This configuration involves one active node handling all incoming requests and one or more passive nodes standing by, ready to take over if the active node fails. This post will look at the complexities of active-passive setups, providing a comprehensive understanding of their architecture, implementation, and considerations.
 
 ## Understanding the Active-Passive Architecture
 
@@ -31,7 +31,7 @@ A successful active-passive setup relies on several important components:
 
 -   **Shared Storage:** Both the active and passive nodes must access a shared storage system (e.g., SAN, NAS, cloud storage) for data persistence. This ensures data consistency between nodes during a failover. Changes made by the active node are replicated to the passive node in real-time or near real-time.
 
--   **Heartbeat Monitoring:** A heartbeat mechanism constantly monitors the active node's status. This can involve simple network pings or more sophisticated health checks. If the heartbeat fails, it triggers the failover process.
+-   **Heartbeat Monitoring:** A heartbeat mechanism constantly monitors the active node's status. This can involve simple network pings or more complex health checks. If the heartbeat fails, it triggers the failover process.
 
 -   **Failover Mechanism:** This is the core of the active-passive system. It's responsible for detecting the failure of the active node and automatically promoting the passive node to the active role. This can involve scripting, specialized HA software, or cloud-based solutions.
 

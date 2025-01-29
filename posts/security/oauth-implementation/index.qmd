@@ -4,7 +4,7 @@ categories: [ "Security" ]
 ---
 
 
-OAuth (Open Authorization) is a widely used authorization framework that allows third-party applications to access user data hosted by a service provider without requiring the user to share their credentials.  This blog post will look at the intricacies of OAuth implementation, focusing on the different grant types and providing practical examples.
+OAuth (Open Authorization) is a widely used authorization framework that allows third-party applications to access user data hosted by a service provider without requiring the user to share their credentials.  This blog post will look at the complexities of OAuth implementation, focusing on the different grant types and providing practical examples.
 
 ## Understanding the Core Components
 

@@ -3,7 +3,7 @@ title: "Sidecar Pattern"
 categories: [ "Modern Architecture Patterns" ]
 ---
 
-The Sidecar pattern, a powerful architectural style, offers a compelling solution for enhancing the functionality and maintainability of applications, particularly in the microservices landscape. It provides a way to add cross-cutting concerns to services without modifying their core code. This blog post will delve into the intricacies of the Sidecar pattern, exploring its benefits, use cases, and implementation details.
+The Sidecar pattern, a powerful architectural style, offers a compelling solution for enhancing the functionality and maintainability of applications, particularly in the microservices landscape. It provides a way to add cross-cutting concerns to services without modifying their core code. This blog post will look at the complexities of the Sidecar pattern, exploring its benefits, use cases, and implementation details.
 
 ## Understanding the Sidecar Pattern
 
@@ -19,7 +19,7 @@ This separation offers several advantages, including improved modularity, mainta
 
 -   **Improved Scalability:** Sidecars can be independently scaled to meet the demands of specific functionalities. For instance, if the logging requirements increase, you can scale only the logging sidecar without affecting the application itself.
 
--   **Technology Diversity:** The sidecar can leverage different technologies than the main application. This flexibility is particularly useful when integrating with legacy systems or employing specialized libraries.
+-   **Technology Diversity:** The sidecar can use different technologies than the main application. This flexibility is particularly useful when integrating with legacy systems or employing specialized libraries.
 
 -   **Simplified Upgrades:** Updating the sidecar's functionality is independent of the application's upgrades, allowing for continuous improvement without downtime for the core application.
 

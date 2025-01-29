@@ -3,7 +3,7 @@ title: "Service Discovery"
 categories: [ "Infrastructure" ]
 ---
 
-Service discovery is a important component of modern microservices architectures. In a microservices environment, numerous independent services communicate with each other to provide a complete application. Knowing the location and availability of these services becomes a complex challenge, and this is where service discovery shines. This post will delve into the intricacies of service discovery, exploring different approaches, implementation strategies, and the benefits it brings to your system's resilience and scalability.
+Service discovery is a important component of modern microservices architectures. In a microservices environment, numerous independent services communicate with each other to provide a complete application. Knowing the location and availability of these services becomes a complex challenge, and this is where service discovery shines. This post will look at the complexities of service discovery, exploring different approaches, implementation strategies, and the benefits it brings to your system's resilience and scalability.
 
 ## What is Service Discovery?
 

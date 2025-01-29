@@ -84,7 +84,7 @@ graph LR
 
 ## Code Example (Illustrative - Python with Load Balancing using a simple round-robin):
 
-This is a highly simplified example. Real-world load balancing requires much more sophisticated techniques.
+This is a highly simplified example. Real-world load balancing requires much more complex techniques.
 
 ```python 
 

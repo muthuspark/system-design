@@ -3,7 +3,7 @@ title: "Push Notification Systems"
 categories: [ "Real-Time Systems" ]
 ---
 
-Push notifications have become an indispensable part of the modern mobile application landscape. They allow apps to send timely updates and relevant information directly to users' devices, even when the app isn't actively running. This capability significantly enhances user engagement and retention. This post will look at the intricacies of push notification systems, delving into their architecture, different protocols, and implementation considerations.
+Push notifications have become an indispensable part of the modern mobile application landscape. They allow apps to send timely updates and relevant information directly to users' devices, even when the app isn't actively running. This capability significantly enhances user engagement and retention. This post will look at the complexities of push notification systems, delving into their architecture, different protocols, and implementation considerations.
 
 ## Understanding the Architecture
 
@@ -99,7 +99,7 @@ FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener(OnCompleteList
 
 ## Advanced Features and Considerations
 
-Beyond basic notification delivery, push notification systems can incorporate sophisticated features:
+Beyond basic notification delivery, push notification systems can incorporate complex features:
 
 -   **Segmentation:** Targeting specific user groups based on demographics, behavior, or other attributes.
 -   **Scheduling:** Sending notifications at predetermined times or intervals.

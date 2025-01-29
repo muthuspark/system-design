@@ -3,7 +3,7 @@ title: "Failure Detection"
 categories: [ "Distributed Systems" ]
 ---
 
-Failure detection is important in building robust and reliable systems. Whether you're managing a complex microservice architecture or a single server application, the ability to quickly and accurately identify failures is paramount. This post will delve into the various strategies and techniques used for failure detection, examining their strengths and weaknesses, and providing practical examples to illustrate their application.
+Failure detection is important in building robust and reliable systems. Whether you're managing a complex microservice architecture or a single server application, the ability to quickly and accurately identify failures is paramount. This post will look at the various strategies and techniques used for failure detection, examining their strengths and weaknesses, and providing practical examples to illustrate their application.
 
 ## Types of Failures
 
@@ -250,4 +250,4 @@ Despite the various techniques available, several challenges remain:
 
 -   **False negatives:** Failures may go undetected due to incomplete monitoring or inadequate alerting configurations.
 
--   **Complex systems:** In large, distributed systems, identifying the root cause of a failure can be extremely complex, requiring sophisticated tracing and correlation techniques.
+-   **Complex systems:** In large, distributed systems, identifying the root cause of a failure can be extremely complex, requiring complex tracing and correlation techniques.

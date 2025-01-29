@@ -110,7 +110,7 @@ To scale this horizontally, you would deploy multiple instances of this applicat
 
 ## Challenges in Microservices Scaling
 
-* **Increased Complexity:** Managing a large number of microservices requires sophisticated tooling and expertise.
+* **Increased Complexity:** Managing a large number of microservices requires complex tooling and expertise.
 * **Distributed Tracing and Monitoring:** Tracking requests across multiple services becomes challenging.
 * **Data Consistency:** Maintaining data consistency across distributed services requires careful planning and implementation.
 

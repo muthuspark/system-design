@@ -3,7 +3,7 @@ title: "Message Queue Architecture"
 categories: [ "Scalability" ]
 ---
 
-Message queues rovide a important layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this guide, we'll look at the intricacies of message queue architecture, covering key components, common use cases, and best practices.
+Message queues rovide a important layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this guide, we'll look at the complexities of message queue architecture, covering key components, common use cases, and best practices.
 
 ## Understanding the Fundamentals
 
@@ -33,7 +33,7 @@ This diagram shows two producers sending messages to a single queue, which is th
 
 ## Advanced Concepts
 
-Let's delve into some more sophisticated aspects of message queue architecture:
+Let's delve into some more complex aspects of message queue architecture:
 
 **1. Message Broker:** This term is often used interchangeably with "message queue," but it's more encompassing. A message broker manages multiple queues, exchanges (for routing messages), and provides advanced features like message persistence, security, and monitoring.
 

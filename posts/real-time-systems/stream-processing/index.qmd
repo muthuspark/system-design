@@ -33,7 +33,7 @@ Several frameworks facilitate the development of stream processing applications.
 
 -   **Apache Flink:** A highly scalable and fault-tolerant stream processing framework capable of handling both batch and streaming data. It offers a rich set of APIs (Java, Scala, Python) and supports various processing modes.
 
--   **Apache Spark Streaming:** An extension to Apache Spark, this framework provides a unified platform for both batch and stream processing. It leverages Spark's distributed computing capabilities for high performance.
+-   **Apache Spark Streaming:** An extension to Apache Spark, this framework provides a unified platform for both batch and stream processing. It uses Spark's distributed computing capabilities for high performance.
 
 ## Example: Counting Word Occurrences
 
@@ -102,4 +102,4 @@ Selecting the appropriate stream processing framework depends on various factors
 -   **Fault Tolerance:** How important is it that the system continues processing data even if nodes fail?
 -   **Integration with Existing Systems:** Does the framework integrate easily with your existing infrastructure?
 
-Stream processing is a valuable technique for many applications requiring real-time insights. By understanding the core concepts and selecting the right framework, you can leverage the power of stream processing to build sophisticated applications that react to data as it arrives.
+Stream processing is a valuable technique for many applications requiring real-time insights. By understanding the core concepts and selecting the right framework, you can use the power of stream processing to build complex applications that react to data as it arrives.

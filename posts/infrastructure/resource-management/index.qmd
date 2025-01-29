@@ -98,7 +98,7 @@ print(f"Remaining resources: {resources}")
 
 ## Improving Resource Management
 
-Continuous improvement is key. Regularly review and refine your resource management processes. Analyze past projects, identify bottlenecks, and implement corrective actions. Consider training your team on resource management best practices and leverage technology to streamline processes. Embrace agile methodologies for greater flexibility and adaptability.
+Continuous improvement is key. Regularly review and refine your resource management processes. Analyze past projects, identify bottlenecks, and implement corrective actions. Consider training your team on resource management best practices and use technology to streamline processes. Embrace agile methodologies for greater flexibility and adaptability.
 
 
 

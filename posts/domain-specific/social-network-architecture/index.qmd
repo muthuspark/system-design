@@ -5,7 +5,7 @@ categories: [ "Domain-Specific" ]
 
 Social networks have fundamentally changed how billions of people connect, share, and interact online. Building a scalable social platform requires careful consideration of complex technical challenges like handling massive user data, enabling real-time interactions, managing content delivery, and ensuring high availability across global regions.
 
-This article will explore the key architectural components and design decisions needed to build a social network that can support millions of users. We'll examine core features like news feeds, friend relationships, content storage, and notification systems, along with scalability, performance, and reliability considerations that shape modern social platforms.
+This article will look at the key architectural components and design decisions needed to build a social network that can support millions of users. We'll examine core features like news feeds, friend relationships, content storage, and notification systems, along with scalability, performance, and reliability considerations that shape modern social platforms.
 
 ## The Core Components
 

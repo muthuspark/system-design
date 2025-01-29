@@ -9,7 +9,7 @@ Configuration management (CM) is the practice of establishing and maintaining co
 
 At its heart, configuration management focuses on three key principles:
 
-1.  **Automation:** Manual configuration is prone to errors and inconsistencies. CM leverages automation to manage configurations consistently and efficiently. This includes automating tasks like software deployments, infrastructure provisioning, and security updates.
+1.  **Automation:** Manual configuration is prone to errors and inconsistencies. CM uses automation to manage configurations consistently and efficiently. This includes automating tasks like software deployments, infrastructure provisioning, and security updates.
 
 2.  **Version Control:** Tracking changes to configurations is important for auditing, rollback, and understanding the system's evolution. Version control systems like Git are essential components of a robust CM strategy. This allows for easy comparison of different configuration states, identification of problematic changes, and streamlined rollbacks.
 

@@ -4,7 +4,7 @@ categories: [ "Domain-Specific" ]
 ---
 
 
-Recommendation systems have become ubiquitous in our digital lives.  From suggesting movies on Netflix to recommending products on Amazon, these systems play a important role in shaping our online experiences and driving engagement. But how do these systems actually work? This post will delve into the mechanics of recommendation systems, exploring different approaches and providing a detailed understanding of their inner workings.
+Recommendation systems have become ubiquitous in our digital lives.  From suggesting movies on Netflix to recommending products on Amazon, these systems play a important role in shaping our online experiences and driving engagement. But how do these systems actually work? This post will look at the mechanics of recommendation systems, exploring different approaches and providing a detailed understanding of their inner workings.
 
 
 ## Types of Recommendation Systems
@@ -42,7 +42,7 @@ graph LR
 
 **Code Example (Python with cosine similarity):**
 
-This example uses simplified data for illustrative purposes.  A real-world application would require more sophisticated techniques for feature extraction and similarity calculation.
+This example uses simplified data for illustrative purposes.  A real-world application would require more complex techniques for feature extraction and similarity calculation.
 
 ```python
 import pandas as pd
@@ -73,7 +73,7 @@ print(recommendations)
 
 ### 2. Collaborative Filtering
 
-Collaborative filtering leverages the preferences of other users to recommend items to a target user.  It doesn't rely on the content of the items themselves.  There are two main types:
+Collaborative filtering uses the preferences of other users to recommend items to a target user.  It doesn't rely on the content of the items themselves.  There are two main types:
 
 
 **a) User-Based Collaborative Filtering:**

@@ -204,7 +204,7 @@ While offering significant advantages, polyglot persistence introduces complexit
 -   **Data Consistency and Synchronization:** Maintaining consistency across multiple databases requires careful design and potentially complex synchronization mechanisms.
 -   **Transaction Management:** Transactions spanning multiple databases require distributed transaction management, increasing complexity.
 -   **Data Modeling and Schema Design:** Different databases have different data modeling paradigms, requiring a thoughtful approach to data representation.
--   **Increased Operational Overhead:** Managing multiple databases demands more sophisticated monitoring and operational expertise.
+-   **Increased Operational Overhead:** Managing multiple databases demands more complex monitoring and operational expertise.
 -   **Development Complexity:** Developers need to understand and work with multiple database technologies and APIs.
 
 To improve this section of the blog about polyglot persistence, I'll add more context, explain the purpose of polyglot persistence, and expand the example to include better practices. I'll also touch on potential use cases and best practices in production environments.

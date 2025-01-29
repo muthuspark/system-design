@@ -124,7 +124,7 @@ except Exception as e:
     print(f"Error: {e}")
 ```
 
-This example showcases a basic implementation with a `CLOSED`, `OPEN`, and `HALF-OPEN` state. More robust implementations would typically include metrics tracking, configurable parameters, and more sophisticated failure handling.
+This example showcases a basic implementation with a `CLOSED`, `OPEN`, and `HALF-OPEN` state. More robust implementations would typically include metrics tracking, configurable parameters, and more complex failure handling.
 
 ## Advanced Considerations
 

@@ -19,7 +19,7 @@ Unlike monolithic applications, microservices communicate extensively with each 
 
 * **Identity and Access Management (IAM):**  Managing identities and access permissions across multiple services is complex and requires a robust IAM solution.
 
-* **Monitoring and Logging:**  Identifying and responding to security breaches in a distributed system requires sophisticated monitoring and logging capabilities.
+* **Monitoring and Logging:**  Identifying and responding to security breaches in a distributed system requires complex monitoring and logging capabilities.
 
 * **Complexity:** The sheer number of services and their interdependencies make security management more complex than in monolithic architectures.
 

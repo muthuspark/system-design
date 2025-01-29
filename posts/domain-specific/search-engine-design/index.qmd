@@ -25,7 +25,7 @@ This diagram illustrates the basic crawler workflow. Seed URLs (starting points 
 
 ## 2. Indexing: Organizing the Web's Data
 
-The indexed data isn't just a random collection of pages. Search engines employ sophisticated indexing techniques to organize and structure the information efficiently for fast retrieval. This typically involves:
+The indexed data isn't just a random collection of pages. Search engines employ complex indexing techniques to organize and structure the information efficiently for fast retrieval. This typically involves:
 
 -   **Inverted Index:** A data structure mapping keywords to the documents containing them. This allows for quick retrieval of documents relevant to a search query. A simplified example:
 

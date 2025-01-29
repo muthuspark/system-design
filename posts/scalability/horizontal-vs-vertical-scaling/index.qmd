@@ -52,7 +52,7 @@ Horizontal scaling, also known as scaling out, involves adding more servers to y
 
 -   **Increased Complexity:** Managing a cluster of servers is more complex than managing a single server. You'll need to manage load balancing, failover mechanisms, and potentially a distributed database.
 -   **Higher Initial Cost:** Setting up multiple servers and associated infrastructure is more expensive upfront.
--   **Software Complexity:** Requires more sophisticated software for managing the cluster and distributing the load.
+-   **Software Complexity:** Requires more complex software for managing the cluster and distributing the load.
 
 **Illustrative Diagram:**
 
@@ -80,5 +80,5 @@ The best approach depends on your specific needs and circumstances. Consider the
 
 -   **Application Architecture:** Applications designed for horizontal scaling (microservices) are inherently more scalable.
 -   **Budget:** Vertical scaling is cheaper initially, while horizontal scaling is more cost-effective in the long run for substantial growth.
--   **Complexity:** Vertical scaling is simpler to manage, while horizontal scaling requires more sophisticated tools and expertise.
+-   **Complexity:** Vertical scaling is simpler to manage, while horizontal scaling requires more complex tools and expertise.
 -   **Expected growth:** For rapid and unpredictable growth, horizontal scaling is almost always preferable.

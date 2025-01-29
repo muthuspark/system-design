@@ -5,7 +5,7 @@ categories: [ "Distributed Systems" ]
 
 Distributed systems, where multiple independent computers collaborate to achieve a common goal, are increasingly prevalent in modern technology. From cloud computing platforms to blockchain networks, the success of these systems hinges on a fundamental challenge: achieving *distributed consensus*. This means agreeing on a single truth among a group of potentially unreliable and geographically dispersed nodes, even in the face of failures, delays, and malicious actors.
 
-This blog post goes into the intricacies of distributed consensus, exploring its challenges, key algorithms, and real-world applications.
+This blog post goes into the complexities of distributed consensus, exploring its challenges, key algorithms, and real-world applications.
 
 ## The Challenges of Distributed Consensus
 
@@ -16,7 +16,7 @@ Reaching consensus in a distributed environment is surprisingly difficult. Sever
 -   **Message Delays & Loss:** Network latency and message loss introduce unpredictable delays and uncertainties.
 -   **Byzantine Failures:** Nodes might behave maliciously, sending conflicting or incorrect information to manipulate the consensus process. This is the most challenging scenario to handle.
 
-These challenges necessitate sophisticated algorithms that can tolerate failures, ensure fairness, and ultimately achieve a consistent state across the distributed system.
+These challenges necessitate complex algorithms that can tolerate failures, ensure fairness, and ultimately achieve a consistent state across the distributed system.
 
 ## Key Algorithms for Achieving Distributed Consensus
 

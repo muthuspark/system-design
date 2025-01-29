@@ -3,7 +3,7 @@ title: "Graph Database Design"
 categories: [ "Data Management" ]
 ---
 
-Graph databases are becoming increasingly popular for applications requiring complex relationships between data. Unlike relational databases which rely on tables and joins, graph databases represent data as nodes and edges, making it highly efficient to query and traverse relationships. However, designing an effective graph database schema requires careful consideration of various factors. This post will delve into the key aspects of graph database design, providing practical examples and best practices.
+Graph databases are becoming increasingly popular for applications requiring complex relationships between data. Unlike relational databases which rely on tables and joins, graph databases represent data as nodes and edges, making it highly efficient to query and traverse relationships. However, designing an effective graph database schema requires careful consideration of various factors. This post will look at the key aspects of graph database design, providing practical examples and best practices.
 
 ## Understanding the Fundamentals
 

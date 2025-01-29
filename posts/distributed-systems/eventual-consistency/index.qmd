@@ -95,7 +95,7 @@ processing_thread.start()
 
 ```
 
-In this simplified example, multiple threads simulate client requests to increment the counter.  Updates are added to a message queue, and a separate thread processes these updates, eventually leading to a consistent counter value.  This is an extremely basic example; a real-world distributed counter would need far more sophisticated mechanisms for handling concurrency and ensuring data integrity across multiple nodes and persistent storage.
+In this simplified example, multiple threads simulate client requests to increment the counter.  Updates are added to a message queue, and a separate thread processes these updates, eventually leading to a consistent counter value.  This is an extremely basic example; a real-world distributed counter would need far more complex mechanisms for handling concurrency and ensuring data integrity across multiple nodes and persistent storage.
 
 ## Handling Conflicts in Eventual Consistency
 

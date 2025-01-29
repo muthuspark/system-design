@@ -190,7 +190,7 @@ The diagram follows the principle of eliminating redundancy by:
 
 -   **Complexity:** More complex to implement and manage than RBAC.
 -   **Performance:** Policy evaluation can be computationally expensive.
--   **Policy management:** Requires sophisticated policy management tools.
+-   **Policy management:** Requires complex policy management tools.
 
 ## 3. Access Control Lists (ACLs)
 

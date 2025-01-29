@@ -4,7 +4,7 @@ categories: [ "Distributed Systems" ]
 ---
 
 
-Byzantine Fault Tolerance (BFT) is a important concept in distributed systems, addressing the challenge of maintaining system consistency and correctness even when some components behave maliciously or fail unpredictably.  Unlike simpler fault tolerance mechanisms that assume failures are benign (e.g., crashes), BFT tackles the more complex scenario where faulty nodes might send conflicting or incorrect information deliberately.  This blog post will delve into the intricacies of BFT, exploring its underlying principles, practical applications, and the challenges involved in its implementation.
+Byzantine Fault Tolerance (BFT) is a important concept in distributed systems, addressing the challenge of maintaining system consistency and correctness even when some components behave maliciously or fail unpredictably.  Unlike simpler fault tolerance mechanisms that assume failures are benign (e.g., crashes), BFT tackles the more complex scenario where faulty nodes might send conflicting or incorrect information deliberately.  This blog post will look at the complexities of BFT, exploring its underlying principles, practical applications, and the challenges involved in its implementation.
 
 
 ## Understanding the Byzantine Generals Problem
@@ -24,7 +24,7 @@ This problem highlights the core challenges of BFT:
 
 Several algorithms have been developed to achieve BFT.  Two prominent examples are:
 
-* **Practical Byzantine Fault Tolerance (PBFT):**  PBFT is a widely used algorithm that provides BFT for state-machine replication. It leverages a primary node to coordinate consensus and employs a multi-step process involving requests, pre-prepare, prepare, and commit phases to ensure agreement.
+* **Practical Byzantine Fault Tolerance (PBFT):**  PBFT is a widely used algorithm that provides BFT for state-machine replication. It uses a primary node to coordinate consensus and employs a multi-step process involving requests, pre-prepare, prepare, and commit phases to ensure agreement.
 
 ```{mermaid}
 graph LR
