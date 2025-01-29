@@ -123,7 +123,7 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, User>
 
 * **Maintainability:**  Decoupling concerns leads to cleaner, more manageable code. Changes to the write side have minimal impact on the read side.
 
-* **Flexibility:**  Allows for diverse data storage strategies for read and write operations, enabling the use of specialized databases or technologies suited for each task.
+* **Flexibility:**  Allows for various data storage strategies for read and write operations, enabling the use of specialized databases or technologies suited for each task.
 
 
 ## When to Use CQRS

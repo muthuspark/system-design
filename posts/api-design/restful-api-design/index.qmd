@@ -256,7 +256,7 @@ Include informative error messages in the response body.
 
 ## API Documentation
 
-Clear and comprehensive API documentation is essential for developers using your API. Tools like Swagger/OpenAPI can help you generate interactive documentation from your API specifications.
+Clear and detailed API documentation is essential for developers using your API. Tools like Swagger/OpenAPI can help you generate interactive documentation from your API specifications.
 
 ## Diagram: User API Interactions
 

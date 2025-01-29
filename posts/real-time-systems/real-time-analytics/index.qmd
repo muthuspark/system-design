@@ -85,7 +85,7 @@ Real-time analytics finds applications in numerous domains:
 Implementing real-time analytics comes with its own set of challenges:
 
 -   **Data Volume and Velocity:** Handling high volumes of data with low latency requires robust infrastructure.
--   **Data Variety:** Integrating data from diverse sources can be complex.
+-   **Data Variety:** Integrating data from various sources can be complex.
 -   **Data Quality:** Ensuring data accuracy and consistency is important.
 -   **Latency:** Minimizing delays in processing and analysis is critical for real-time insights.
 -   **Scalability:** The system must be able to scale to handle increasing data volumes.

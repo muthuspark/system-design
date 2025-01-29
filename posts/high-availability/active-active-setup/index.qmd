@@ -65,7 +65,7 @@ Several key factors influence the implementation of an Active-Active setup:
 -   **Load Balancing:** A robust load balancer is important for distributing traffic efficiently and ensuring failover. Features like health checks and weighted routing are essential.
 -   **Database Replication:** Consistent data replication between the databases of both systems is critical for maintaining data integrity. Techniques like synchronous and asynchronous replication offer different trade-offs between consistency and performance.
 -   **Session Management Strategies:** Employing techniques like distributed caching or session replication helps avoid sticky sessions and ensures seamless user experience across servers.
--   **Monitoring and Alerting:** Comprehensive monitoring and alerting systems are essential for detecting and responding to potential issues promptly.
+-   **Monitoring and Alerting:** Detailed monitoring and alerting systems are essential for detecting and responding to potential issues promptly.
 
 ## Using a Message Queue (Conceptual)
 

@@ -71,7 +71,7 @@ Key Principles Shown:
 - Continuous authentication
 - Device health monitoring
 - Encrypted communications
-- Comprehensive logging
+- Detailed logging
 
 ## Code Example: Simplified Access Control Logic (Python)
 

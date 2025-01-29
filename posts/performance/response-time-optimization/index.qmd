@@ -24,7 +24,7 @@ A slow response time negatively impacts several key aspects of your website:
 
 Before optimizing, you need to identify the specific bottlenecks slowing down your website. Several tools can help:
 
--   **Google PageSpeed Insights:** Provides a comprehensive analysis of your website's performance, highlighting areas for improvement.
+-   **Google PageSpeed Insights:** Provides a detailed analysis of your website's performance, highlighting areas for improvement.
 -   **GTmetrix:** Offers detailed performance reports, including waterfall charts that visualize the loading process.
 -   **WebPageTest:** Allows you to test your website from various locations, providing insights into geographic performance variations.
 -   **Browser Developer Tools:** Built-in tools in Chrome, Firefox, and other browsers offer network analysis and performance profiling capabilities.

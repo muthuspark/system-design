@@ -54,7 +54,7 @@ graph LR
 Implementing a service mesh offers numerous advantages:
 
 * **Improved Security:** Centralized security policies simplify the management of encryption, authentication, and authorization.
-* **Enhanced Observability:** Comprehensive monitoring and tracing provide detailed insights into service performance and behavior.
+* **Enhanced Observability:** Detailed monitoring and tracing provide detailed insights into service performance and behavior.
 * **Increased Resilience:**  Built-in resilience patterns such as retries and circuit breakers enhance the fault tolerance of the application.
 * **Simplified Development:** Developers can focus on business logic, delegating network management to the service mesh.
 * **Better scalability and manageability:** Easier to manage and scale microservices as the complexity is abstracted away.

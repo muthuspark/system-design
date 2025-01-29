@@ -3,7 +3,7 @@ title: "WebSocket Architecture"
 categories: [ "Real-Time Systems" ]
 ---
 
-WebSockets have revolutionized real-time communication on the web, enabling applications to push data to clients without the need for constant polling. This blog post will look at the architecture of WebSockets, providing a comprehensive understanding of how they function and the components involved.
+WebSockets have revolutionized real-time communication on the web, enabling applications to push data to clients without the need for constant polling. This blog post will look at the architecture of WebSockets, providing a detailed understanding of how they function and the components involved.
 
 ## Understanding the Fundamentals
 

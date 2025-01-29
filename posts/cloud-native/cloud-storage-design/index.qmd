@@ -12,7 +12,7 @@ A typical cloud storage system comprises several interconnected layers:
 
 **1. User Interface (UI) Layer:** This is the layer users interact with.  It can range from simple command-line interfaces (CLIs) to complex web-based portals.  The UI handles user authentication, authorization, data upload/download requests, and metadata management.
 
-**2. API Layer:**  This layer provides a programmatic interface for interacting with the storage system. It translates user requests into internal operations and returns results back to the user.  RESTful APIs are commonly used, allowing for integration with diverse applications and platforms.
+**2. API Layer:**  This layer provides a programmatic interface for interacting with the storage system. It translates user requests into internal operations and returns results back to the user.  RESTful APIs are commonly used, allowing for integration with various applications and platforms.
 
 ```javascript
 // Example API request (using JavaScript fetch)

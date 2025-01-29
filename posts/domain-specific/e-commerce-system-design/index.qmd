@@ -119,7 +119,7 @@ Security is paramount. Implement measures like:
 
 ## 5. Deployment and Monitoring
 
-Utilize continuous integration and continuous deployment (CI/CD) pipelines for efficient and reliable deployments.  Implement comprehensive monitoring and logging to track performance and identify issues promptly.
+Utilize continuous integration and continuous deployment (CI/CD) pipelines for efficient and reliable deployments.  Implement detailed monitoring and logging to track performance and identify issues promptly.
 
 
 

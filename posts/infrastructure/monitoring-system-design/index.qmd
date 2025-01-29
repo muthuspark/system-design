@@ -3,7 +3,7 @@ title: "Monitoring System Design"
 categories: [ "Infrastructure" ]
 ---
 
-Monitoring systems are the lifeblood of any robust application. They provide important insights into the health, performance, and behavior of your software, allowing you to proactively identify and resolve issues before they impact users. Designing an effective monitoring system, however, is a complex undertaking requiring careful consideration of several key aspects. This post goes into the important components and considerations for building a comprehensive monitoring solution.
+Monitoring systems are the lifeblood of any robust application. They provide important insights into the health, performance, and behavior of your software, allowing you to proactively identify and resolve issues before they impact users. Designing an effective monitoring system, however, is a complex undertaking requiring careful consideration of several key aspects. This post goes into the important components and considerations for building a detailed monitoring solution.
 
 ## 1. Defining Objectives and Scope
 
@@ -69,7 +69,7 @@ The final step involves visualizing the collected data and setting up alerts to 
 
 -   **[Grafana](https://grafana.com/):** A powerful open-source dashboarding and visualization tool.
 -   **[Kibana](https://www.elastic.co/products/kibana):** Part of the Elastic Stack, used for visualizing logs and metrics.
--   **[Datadog](https://www.datadoghq.com/):** A commercial monitoring platform with comprehensive features.
+-   **[Datadog](https://www.datadoghq.com/):** A commercial monitoring platform with detailed features.
 
 **Alerting** can be implemented through email, SMS, PagerDuty, or other notification systems. It's important to define clear alert thresholds and avoid alert fatigue.
 

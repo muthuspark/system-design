@@ -88,7 +88,7 @@ Designing efficient and well-documented APIs is critical.  Here are some key asp
 * **RESTful Principles:** Follow RESTful design guidelines for creating consistent and predictable APIs.
 * **Versioning:**  Implement API versioning to manage changes and maintain backward compatibility.
 * **Error Handling:**  Provide clear and informative error messages to aid debugging.
-* **Documentation:**  Use tools like Swagger or OpenAPI to generate comprehensive API documentation.
+* **Documentation:**  Use tools like Swagger or OpenAPI to generate detailed API documentation.
 
 
 ## Code Example (Node.js with Express.js and a simple REST endpoint)

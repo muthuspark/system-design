@@ -4,7 +4,7 @@ categories: [ "Scalability" ]
 ---
 
 
-Caching is a fundamental technique in software engineering used to improve performance and reduce latency by storing frequently accessed data in a readily available location.  This blog post explores various caching strategies, their strengths, weaknesses, and practical applications. We'll look at the details with examples and diagrams to provide a comprehensive understanding.
+Caching is a fundamental technique in software engineering used to improve performance and reduce latency by storing frequently accessed data in a readily available location.  This blog post explores various caching strategies, their strengths, weaknesses, and practical applications. We'll look at the details with examples and diagrams to provide a detailed understanding.
 
 ## Understanding the Basics
 

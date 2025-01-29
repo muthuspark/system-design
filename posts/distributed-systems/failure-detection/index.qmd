@@ -69,7 +69,7 @@ Tools like Prometheus and Grafana are commonly used for this purpose.
 
 ### 3. Exception Handling and Logging
 
-Robust exception handling and comprehensive logging within the application itself provide valuable insights into internal failures. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.
+Robust exception handling and detailed logging within the application itself provide valuable insights into internal failures. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.
 
 ```{mermaid}
 sequenceDiagram

@@ -3,7 +3,7 @@ title: "Active-Passive Setup"
 categories: [ "High Availability" ]
 ---
 
-High availability (HA) is critical in many applications, ensuring minimal downtime and continuous operation. One common approach to achieving HA is the active-passive setup, also known as a failover system. This configuration involves one active node handling all incoming requests and one or more passive nodes standing by, ready to take over if the active node fails. This post will look at the complexities of active-passive setups, providing a comprehensive understanding of their architecture, implementation, and considerations.
+High availability (HA) is critical in many applications, ensuring minimal downtime and continuous operation. One common approach to achieving HA is the active-passive setup, also known as a failover system. This configuration involves one active node handling all incoming requests and one or more passive nodes standing by, ready to take over if the active node fails. This post will look at the complexities of active-passive setups, providing a detailed understanding of their architecture, implementation, and considerations.
 
 ## Understanding the Active-Passive Architecture
 

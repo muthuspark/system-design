@@ -3,7 +3,7 @@ title: "Disaster Recovery Planning"
 categories: [ "High Availability" ]
 ---
 
-Disaster recovery planning (DRP) is important for any organization, regardless of size. It's not a matter of *if* a disaster will strike, but *when*. A robust DRP ensures business continuity during and after an unforeseen event, minimizing downtime and data loss. This guide goes into the key aspects of creating and implementing a comprehensive DRP.
+Disaster recovery planning (DRP) is important for any organization, regardless of size. It's not a matter of *if* a disaster will strike, but *when*. A robust DRP ensures business continuity during and after an unforeseen event, minimizing downtime and data loss. This guide goes into the key aspects of creating and implementing a detailed DRP.
 
 ## 1. Risk Assessment: Identifying Potential Threats
 
@@ -48,7 +48,7 @@ The choice of strategy depends on the organization's budget, RTO/RPO requirement
 
 ## 4. Developing a Disaster Recovery Plan Document
 
-The DRP document should be a comprehensive guide outlining procedures for handling various disaster scenarios. It should include:
+The DRP document should be a detailed guide outlining procedures for handling various disaster scenarios. It should include:
 
 -   **Contact Information:** Emergency contact details for key personnel.
 -   **Communication Plan:** Procedures for communicating during a disaster.

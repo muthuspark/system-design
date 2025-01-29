@@ -11,7 +11,7 @@ Unlike relational data, which focuses on structured relationships between entiti
 
 -   **High Volume:** Time-series applications often generate massive datasets, often with continuous data streams.
 -   **High Velocity:** Data ingestion rates can be extremely high, requiring real-time or near real-time processing capabilities.
--   **High Variety:** Data can come from diverse sources and have different formats (e.g., sensor readings, financial tickers).
+-   **High Variety:** Data can come from various sources and have different formats (e.g., sensor readings, financial tickers).
 -   **High Variability:** Data patterns can be irregular, making analysis and prediction more complex.
 
 ## Challenges in Managing Time-Series Data

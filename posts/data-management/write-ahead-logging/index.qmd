@@ -40,7 +40,7 @@ Several variations exist in how WAL is implemented:
 
 -   **Redo Logging:** Only operations that modify data are logged. This reduces log size compared to full logging.
 
--   **Undo Logging:** Logs information needed to undo transactions if they fail. This is often combined with redo logging for comprehensive recovery.
+-   **Undo Logging:** Logs information needed to undo transactions if they fail. This is often combined with redo logging for detailed recovery.
 
 -   **Write-Ahead Logging with Checkpointing:** Checkpointing creates a consistent snapshot of the database state at intervals. This reduces the amount of log processing needed during recovery, as only the log entries since the last checkpoint need to be processed.
 

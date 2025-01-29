@@ -147,7 +147,7 @@ if elapsed_time > SECONDS_PER_DAY:
 
 ```
 
-## 5. Comprehensive Documentation
+## 5. Detailed Documentation
 
 Thorough documentation is essential. It should explain the purpose, functionality, and usage of different parts of the code. Use docstrings within your code and create external documentation as needed.
 
@@ -214,7 +214,7 @@ hotfix/security-patch-cve-2023
 
 ## 7. Testing (Unit, Integration, etc.)
 
-Writing comprehensive tests is vital for maintainability. Tests help ensure that changes don't introduce new bugs and provide a safety net for refactoring. Different levels of testing (unit, integration, system) cover various aspects of your application.
+Writing detailed tests is vital for maintainability. Tests help ensure that changes don't introduce new bugs and provide a safety net for refactoring. Different levels of testing (unit, integration, system) cover various aspects of your application.
 
 **Example**
 
@@ -327,7 +327,7 @@ Employing appropriate design patterns can improve code structure, make it more r
 
 ## 11. Error Handling and Logging
 
-Robust error handling and comprehensive logging are important. They help to identify and debug problems quickly and efficiently. Use informative error messages and log important events to facilitate troubleshooting.
+Robust error handling and detailed logging are important. They help to identify and debug problems quickly and efficiently. Use informative error messages and log important events to facilitate troubleshooting.
 
 ## 12. Keep it Simple (KISS Principle)
 

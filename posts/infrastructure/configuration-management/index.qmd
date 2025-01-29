@@ -17,7 +17,7 @@ At its heart, configuration management focuses on three key principles:
 
 ## Key Components of a Configuration Management System
 
-A comprehensive CM system typically includes these elements:
+A detailed CM system typically includes these elements:
 
 -   **Infrastructure as Code (IaC):** IaC treats infrastructure as software, managing it through code. Tools like Terraform and Ansible allow you to define and provision infrastructure in a repeatable and version-controlled manner.
 

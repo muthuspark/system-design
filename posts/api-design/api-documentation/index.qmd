@@ -16,7 +16,7 @@ Imagine trying to assemble furniture without instructions. Frustrating, right? A
 
 ## Key Elements of Effective API Documentation
 
-Effective API documentation goes beyond a simple list of endpoints. It needs to be comprehensive, easy to navigate, and user-friendly. Here's a breakdown of essential elements:
+Effective API documentation goes beyond a simple list of endpoints. It needs to be detailed, easy to navigate, and user-friendly. Here's a breakdown of essential elements:
 
 -   **Introduction and Overview:** Start with a clear introduction explaining the API's purpose, target audience, and key features. This sets the stage for the rest of the documentation.
 

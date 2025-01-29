@@ -131,4 +131,4 @@ This example showcases a basic implementation with a `CLOSED`, `OPEN`, and `HALF
 -   **Fallback Mechanisms:** When the circuit breaker is open, a fallback mechanism should be in place to provide a graceful degradation of service or return default values.
 -   **Metrics and Monitoring:** Monitoring the circuit breaker's state and the number of failures is essential for identifying and resolving issues.
 -   **Concurrency:** Implementations should handle concurrent requests appropriately to avoid race conditions.
--   **Integration with Libraries:** Many libraries provide more comprehensive and refined implementations.
+-   **Integration with Libraries:** Many libraries provide more detailed and refined implementations.
