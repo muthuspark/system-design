@@ -82,7 +82,7 @@ This code snippet demonstrates a rudimentary webhook server. `/webhook` handles 
 
 ## Handling Failures and Retries
 
-Reliable webhook delivery is crucial. Strategies to handle failures include:
+Reliable webhook delivery is important. Strategies to handle failures include:
 
 -   **Exponential Backoff:** Retry failed deliveries with increasing delays.
 -   **Dead-Letter Queues:** Store failed deliveries for later investigation and potential manual intervention.

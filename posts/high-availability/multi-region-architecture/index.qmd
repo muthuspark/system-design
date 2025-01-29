@@ -9,7 +9,7 @@ The internet is a global network, and your applications should be too. A single-
 
 Moving beyond a single region provides a wealth of advantages:
 
--   **High Availability:** If one region experiences an outage, your application continues to operate from other regions. This ensures continuous service and minimizes downtime, a crucial factor for business continuity.
+-   **High Availability:** If one region experiences an outage, your application continues to operate from other regions. This ensures continuous service and minimizes downtime, a important factor for business continuity.
 
 -   **Disaster Recovery:** Natural disasters, power outages, or even large-scale internet disruptions are mitigated. Data replication and geographically dispersed infrastructure ensure business continuity even in catastrophic events.
 
@@ -67,7 +67,7 @@ This diagram illustrates how a global load balancer distributes traffic to regio
 
 ### 4. Service Discovery:
 
-A service discovery mechanism allows application components to dynamically locate and communicate with each other across regions. This is crucial for maintaining a consistent and resilient application. Tools like Consul, etcd, or Kubernetes Service Mesh can be used for this purpose.
+A service discovery mechanism allows application components to dynamically locate and communicate with each other across regions. This is important for maintaining a consistent and resilient application. Tools like Consul, etcd, or Kubernetes Service Mesh can be used for this purpose.
 
 ### 5. Monitoring and Logging:
 

@@ -21,7 +21,7 @@ Key principles of Zero Trust include:
 
 Implementing ZTA involves several key components working in concert:
 
--   **Identity and Access Management (IAM):** A robust IAM system is crucial for verifying user identities and managing access rights. This often involves directory services like Active Directory or cloud-based identity providers like Azure Active Directory or Okta.
+-   **Identity and Access Management (IAM):** A robust IAM system is important for verifying user identities and managing access rights. This often involves directory services like Active Directory or cloud-based identity providers like Azure Active Directory or Okta.
 -   **Device Posture Assessment:** This involves evaluating the security status of devices before granting access. This might include checking for antivirus software, operating system patches, and firewall configurations.
 -   **Network Segmentation:** Dividing the network into smaller, isolated segments limits the impact of breaches. This can be accomplished using virtual LANs (VLANs) or software-defined networking (SDN) technologies.
 -   **Micro-Perimeter Security:** This involves securing individual applications and services, regardless of their location. This might involve using containers, serverless functions, or other technologies to isolate applications.

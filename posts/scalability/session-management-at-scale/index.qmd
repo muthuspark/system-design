@@ -15,7 +15,7 @@ At small scale, simple session management strategies often suffice. A developer 
 
 -   **Security:** Session data often contains sensitive information, requiring robust security measures to prevent unauthorized access and manipulation. Vulnerabilities in session management can lead to severe security breaches.
 
--   **State Management:** Maintaining consistent state across multiple servers and handling session expiration and invalidation are crucial aspects of efficient session management.
+-   **State Management:** Maintaining consistent state across multiple servers and handling session expiration and invalidation are important aspects of efficient session management.
 
 ## Session Management Strategies
 

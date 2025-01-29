@@ -4,7 +4,7 @@ categories: [ "API Design" ]
 ---
 
 
-Rate limiting is a crucial technique for protecting your APIs and servers from overload.  It's the practice of controlling the rate at which a client can access a resource.  Without it, a malicious actor or even a simple surge in legitimate traffic can bring your system to its knees. This post will delve deep into rate limiting, exploring its different approaches, implementation strategies, and best practices.
+Rate limiting is a important technique for protecting your APIs and servers from overload.  It's the practice of controlling the rate at which a client can access a resource.  Without it, a malicious actor or even a simple surge in legitimate traffic can bring your system to its knees. This post will delve deep into rate limiting, exploring its different approaches, implementation strategies, and best practices.
 
 ## Why is Rate Limiting Important?
 

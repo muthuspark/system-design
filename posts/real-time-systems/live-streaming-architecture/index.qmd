@@ -11,7 +11,7 @@ Before diving into the specifics, let's establish a foundational understanding o
 
 1.  **Source:** This is the origin point of the stream – a camera, screen capture software, or even a pre-recorded video being played back live.
 
-2.  **Encoder:** This crucial component takes the raw video and audio from the source and converts it into a compressed digital format suitable for streaming. It manages bitrate, resolution, and other parameters to optimize for different network conditions and viewer devices.
+2.  **Encoder:** This important component takes the raw video and audio from the source and converts it into a compressed digital format suitable for streaming. It manages bitrate, resolution, and other parameters to optimize for different network conditions and viewer devices.
 
 3.  **Ingestion Server:** The encoder sends the encoded stream to an ingestion server. This server receives and processes the stream, often performing tasks like transcoding (creating multiple quality levels) and metadata management.
 

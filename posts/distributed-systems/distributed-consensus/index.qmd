@@ -206,9 +206,9 @@ if random.random() < 0.5:
 
 ## Real-world Applications of Distributed Consensus
 
-Distributed consensus is crucial for various applications:
+Distributed consensus is important for various applications:
 
 -   **Blockchain Technology:** Cryptocurrencies like Bitcoin and Ethereum rely on distributed consensus (e.g., Proof-of-Work or Proof-of-Stake) to validate transactions and maintain the integrity of the blockchain.
 -   **Cloud Storage:** Ensuring data consistency and availability across multiple data centers.
 -   **Distributed Databases:** Maintaining data consistency and enabling fault tolerance in large-scale databases.
--   **Leader Election:** Choosing a leader in a distributed system, crucial for coordination and task assignment.
+-   **Leader Election:** Choosing a leader in a distributed system, important for coordination and task assignment.

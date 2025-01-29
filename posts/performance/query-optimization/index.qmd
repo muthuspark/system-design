@@ -8,7 +8,7 @@ Database queries are the lifeblood of any application that interacts with persis
 
 ## Understanding the Problem: Why Optimize?
 
-Before diving into optimization techniques, let's understand why it's crucial.  Slow queries manifest in various ways:
+Before diving into optimization techniques, let's understand why it's important.  Slow queries manifest in various ways:
 
 * **Increased Latency:** Users experience noticeable delays when interacting with the application.
 * **High Server Load:** The database server struggles to keep up with requests, impacting overall system stability.
@@ -114,7 +114,7 @@ Choosing appropriate data types for your columns impacts storage space and query
 
 ### 6. Database Tuning
 
-Optimizing the database itself is crucial.  This includes:
+Optimizing the database itself is important.  This includes:
 
 * **Proper Indexing Strategies:** Regularly review and adjust indexes based on query patterns.
 * **Caching:** Utilize database caching mechanisms to store frequently accessed data in memory.

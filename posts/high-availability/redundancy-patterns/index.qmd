@@ -3,7 +3,7 @@ title: "Redundancy Patterns"
 categories: [ "High Availability", "Software Architecture", "Best Practices" ]
 ---
 
-Redundancy, while sometimes beneficial in hardware systems for fault tolerance, is often a significant source of problems in software. It leads to increased complexity, making code harder to understand, maintain, and debug. It also increases the risk of inconsistencies and errors when updates are made. Understanding common redundancy patterns is crucial for writing clean, efficient, and robust code. This post explores several recurring patterns of redundancy and suggests strategies for avoiding them.
+Redundancy, while sometimes beneficial in hardware systems for fault tolerance, is often a significant source of problems in software. It leads to increased complexity, making code harder to understand, maintain, and debug. It also increases the risk of inconsistencies and errors when updates are made. Understanding common redundancy patterns is important for writing clean, efficient, and robust code. This post explores several recurring patterns of redundancy and suggests strategies for avoiding them.
 
 ## 1. Data Redundancy
 

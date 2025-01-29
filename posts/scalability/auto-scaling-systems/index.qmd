@@ -152,7 +152,7 @@ Setting appropriate limits on the number of instances (both minimum and maximum)
 By controlling the minimum and maximum limits, you prevent runaway scaling that could either exhaust resources or result in exorbitant cloud bills.
 
 #### 4. **Testing and Monitoring**
-Auto-scaling is not a "set-it-and-forget-it" system; continuous testing and monitoring are crucial for ensuring it functions effectively:
+Auto-scaling is not a "set-it-and-forget-it" system; continuous testing and monitoring are important for ensuring it functions effectively:
 
 - **Load Testing**: Before deploying auto-scaling in production, it's important to conduct rigorous load tests to simulate real-world traffic spikes and dips. This helps identify the scaling limits and ensure that the application can handle the predicted load with minimal latency and downtime.
   

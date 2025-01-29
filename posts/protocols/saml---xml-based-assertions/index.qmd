@@ -1,0 +1,129 @@
+---
+title: "SAML - XML-based assertions"
+categories: [ "Protocols" ]
+---
+
+Security Assertion Markup Language (SAML) is an XML-based open standard for exchanging authentication and authorization data between parties, particularly between an Identity Provider (IdP) and a Service Provider (SP). SAML is widely used for Single Sign-On (SSO) in enterprise environments, enabling users to log in once and access multiple applications without re-authenticating.
+
+## What is SAML?
+
+SAML is an XML-based standard that allows secure communication of authentication and authorization data between an Identity Provider (IdP) and a Service Provider (SP). It is primarily used for **Single Sign-On (SSO)**, enabling users to authenticate once and access multiple services without needing to log in again.
+
+SAML is widely adopted in enterprise environments, particularly for integrating with cloud applications, federated identity management, and cross-domain authentication.
+
+## Key Components of SAML
+
+SAML consists of several key components: 1. **Assertions**: XML-based statements that convey authentication, attribute, and authorization information. 2. **Protocols**: Define how SAML requests and responses are exchanged. 3. **Bindings**: Specify how SAML messages are transported (e.g., HTTP POST, Redirect). 4. **Profiles**: Define how SAML is used in specific scenarios (e.g., Web Browser SSO).
+
+```{mermaid}
+graph TD
+    A[SAML] --> B[Assertions]
+    A --> C[Protocols]
+    A --> D[Bindings]
+    A --> E[Profiles]
+```
+
+## SAML Assertions
+
+SAML assertions are XML-based statements that convey information about a user. There are three types of assertions:
+
+### a. Authentication Assertions
+
+These assertions confirm that a user has been authenticated by the Identity Provider (IdP). They include: - **Subject**: Identifies the user. - **Authentication Method**: Specifies how the user was authenticated (e.g., password, multi-factor authentication). - **Authentication Time**: Indicates when the authentication occurred.
+
+``` xml
+<saml:Assertion>
+  <saml:Subject>
+    <saml:NameID>user@example.com</saml:NameID>
+  </saml:Subject>
+  <saml:AuthnStatement>
+    <saml:AuthnContext>
+      <saml:AuthnMethod>urn:oasis:names:tc:SAML:2.0:ac:classes:Password</saml:AuthnMethod>
+    </saml:AuthnContext>
+    <saml:AuthnInstant>2023-10-01T12:00:00Z</saml:AuthnInstant>
+  </saml:AuthnStatement>
+</saml:Assertion>
+```
+
+### b. Attribute Assertions
+
+These assertions provide additional information about the user, such as roles, email, or department.
+
+``` xml
+<saml:Assertion>
+  <saml:AttributeStatement>
+    <saml:Attribute Name="Email">
+      <saml:AttributeValue>user@example.com</saml:AttributeValue>
+    </saml:Attribute>
+    <saml:Attribute Name="Role">
+      <saml:AttributeValue>Admin</saml:AttributeValue>
+    </saml:Attribute>
+  </saml:AttributeStatement>
+</saml:Assertion>
+```
+
+### c. Authorization Decision Assertions
+
+These assertions specify whether a user is authorized to access a specific resource.
+
+``` xml
+<saml:Assertion>
+  <saml:AuthorizationDecisionStatement Decision="Permit" Resource="https://example.com/resource">
+    <saml:Subject>
+      <saml:NameID>user@example.com</saml:NameID>
+    </saml:Subject>
+  </saml:AuthorizationDecisionStatement>
+</saml:Assertion>
+```
+
+## SAML Workflow
+
+The SAML workflow involves the following steps: 1. The user attempts to access a resource at the **Service Provider (SP)**. 2. The SP generates a **SAML Authentication Request** and redirects the user to the **Identity Provider (IdP)**. 3. The user authenticates with the IdP. 4. The IdP generates a **SAML Response** containing the assertion and sends it back to the SP. 5. The SP validates the assertion and grants access to the user.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant ServiceProvider
+    participant IdentityProvider
+
+    User->>ServiceProvider: Requests Access
+    ServiceProvider->>IdentityProvider: Redirects with SAML AuthnRequest
+    IdentityProvider->>User: Prompts for Login
+    User->>IdentityProvider: Authenticates
+    IdentityProvider->>ServiceProvider: Sends SAML Response with Assertion
+    ServiceProvider->>User: Grants Access
+```
+
+## SAML Bindings and Profiles
+
+### SAML Bindings
+
+Bindings define how SAML messages are transported. Common bindings include: - **HTTP POST**: SAML messages are sent as form data in an HTTP POST request. - **HTTP Redirect**: SAML messages are encoded in the URL and sent via an HTTP redirect.
+
+```{mermaid}
+graph TD
+    A[SAML Bindings] --> B[HTTP POST]
+    A --> C[HTTP Redirect]
+    A --> D[SOAP]
+```
+
+### SAML Profiles
+
+Profiles define how SAML is used in specific scenarios. The most common profile is the **Web Browser SSO Profile**, which enables SSO for web applications.
+
+```{mermaid}
+graph TD
+    A[SAML Profiles] --> B[Web Browser SSO]
+    A --> C[Single Logout]
+    A --> D[Attribute Query]
+```
+
+## SAML Security Best Practices
+
+To ensure the security of SAML implementations:
+
+-   Use **XML Signature** to sign SAML assertions and messages.
+-   Use **XML Encryption** to encrypt sensitive data.
+-   Validate the **Issuer** and **Audience** in SAML assertions.
+-   Enforce strong authentication methods at the IdP.
+-   Regularly rotate certificates used for signing and encryption.

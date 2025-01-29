@@ -8,7 +8,7 @@ Eventual consistency is a consistency model used in distributed systems where da
 
 ## What is Eventual Consistency?
 
-In essence, eventual consistency guarantees that if no new updates are made to the data, eventually all nodes will reflect the same state.  The "eventually" part is crucial – there's no defined timeframe for when this consistency will be achieved. The time it takes can vary significantly depending on network latency, system load, and the specific implementation.
+In essence, eventual consistency guarantees that if no new updates are made to the data, eventually all nodes will reflect the same state.  The "eventually" part is important – there's no defined timeframe for when this consistency will be achieved. The time it takes can vary significantly depending on network latency, system load, and the specific implementation.
 
 Think of it like a group of friends updating a shared Google Doc.  One friend makes a change, but it doesn't immediately appear for the others.  There might be a slight delay before the changes replicate across all their devices.  However, given enough time, everyone will see the same version of the document – this is eventual consistency in action.
 
@@ -99,7 +99,7 @@ In this simplified example, multiple threads simulate client requests to increme
 
 ## Handling Conflicts in Eventual Consistency
 
-Conflict resolution is crucial for eventual consistency.  Common strategies include:
+Conflict resolution is important for eventual consistency.  Common strategies include:
 
 * **Last-Write-Wins (LWW):**  The most recent update wins.
 * **Versioning:**  Each update includes a version number, and the system selects the update with the highest version number.

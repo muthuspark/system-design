@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>OAuth - Open Authorization – System Design Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../favicon.ico" rel="icon">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-ee5e052b81fc94e1f9bb89611f476562.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="mermaid-theme" content="neutral">
+<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="OAuth - Open Authorization – System Design Notes">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="System Design Notes">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">System Design Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">OAuth - Open Authorization</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Protocols</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>OAuth (Open Authorization) is an open-standard authorization protocol that allows third-party applications to access user data without exposing their credentials. It is widely used in modern web applications to enable secure and seamless integration between services. In this blog post, we will dive deep into the OAuth protocol, its components, and workflows, and use diagrams to visualize the different aspects of OAuth.</p>
+<section id="what-is-oauth" class="level2">
+<h2 data-anchor-id="what-is-oauth">1. What is OAuth?</h2>
+<p>OAuth is an authorization framework that enables applications to obtain limited access to user accounts on an HTTP service, such as Facebook, GitHub, or Google. It works by delegating user authentication to the service that hosts the user account and authorizing third-party applications to access the user account.</p>
+<p>OAuth is not an authentication protocol (that’s OpenID Connect), but rather a way to grant access to resources without sharing passwords.</p>
+</section>
+<section id="why-oauth" class="level2">
+<h2 data-anchor-id="why-oauth">2. Why OAuth?</h2>
+<p>Before OAuth, applications often required users to share their credentials (username and password) to access their data. This approach had several drawbacks: - <strong>Security Risks</strong>: Sharing passwords with third-party apps is risky. - <strong>Limited Control</strong>: Users couldn’t control what data the app could access. - <strong>Revocation Challenges</strong>: Users couldn’t easily revoke access without changing their password.</p>
+<p>OAuth solves these problems by providing a secure and standardized way to grant access to resources.</p>
+</section>
+<section id="oauth-roles" class="level2">
+<h2 data-anchor-id="oauth-roles">3. OAuth Roles</h2>
+<p>OAuth defines four primary roles:</p>
+<ol type="1">
+<li><strong>Resource Owner</strong>: The user who owns the data and can grant access to it.</li>
+<li><strong>Client</strong>: The application requesting access to the user’s data.</li>
+<li><strong>Resource Server</strong>: The server hosting the protected resources (e.g., Google Drive, GitHub).</li>
+<li><strong>Authorization Server</strong>: The server that authenticates the user and issues access tokens.</li>
+</ol>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    A[Resource Owner] --&gt;|Grants Access| B[Client]
+    B --&gt;|Requests Token| C[Authorization Server]
+    C --&gt;|Issues Token| B
+    B --&gt;|Access Resource| D[Resource Server]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="oauth-workflow" class="level2">
+<h2 data-anchor-id="oauth-workflow">4. OAuth Workflow</h2>
+<p>The OAuth workflow involves the following steps:</p>
+<ol type="1">
+<li>The <strong>Client</strong> requests authorization from the <strong>Resource Owner</strong>.</li>
+<li>The <strong>Resource Owner</strong> grants authorization.</li>
+<li>The <strong>Client</strong> receives an <strong>Authorization Grant</strong>.</li>
+<li>The <strong>Client</strong> requests an <strong>Access Token</strong> from the <strong>Authorization Server</strong>.</li>
+<li>The <strong>Authorization Server</strong> issues an <strong>Access Token</strong>.</li>
+<li>The <strong>Client</strong> uses the <strong>Access Token</strong> to access the <strong>Resource Server</strong>.</li>
+</ol>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant ResourceOwner
+    participant Client
+    participant AuthorizationServer
+    participant ResourceServer
+
+    ResourceOwner-&gt;&gt;Client: Grants Authorization
+    Client-&gt;&gt;AuthorizationServer: Requests Access Token
+    AuthorizationServer-&gt;&gt;Client: Issues Access Token
+    Client-&gt;&gt;ResourceServer: Accesses Resource with Token
+    ResourceServer-&gt;&gt;Client: Returns Resource
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="oauth-grant-types" class="level2">
+<h2 data-anchor-id="oauth-grant-types">5. OAuth Grant Types</h2>
+<p>OAuth supports multiple grant types to accommodate different use cases. Let’s explore the most common ones.</p>
+<section id="a.-authorization-code-grant" class="level3">
+<h3 data-anchor-id="a.-authorization-code-grant">a. Authorization Code Grant</h3>
+<p>This is the most secure and widely used grant type. It involves a two-step process: 1. The client redirects the user to the authorization server to obtain an authorization code. 2. The client exchanges the authorization code for an access token.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User-&gt;&gt;Client: Requests Access
+    Client-&gt;&gt;AuthorizationServer: Redirects User for Authorization
+    AuthorizationServer-&gt;&gt;User: Prompts for Consent
+    User-&gt;&gt;AuthorizationServer: Grants Consent
+    AuthorizationServer-&gt;&gt;Client: Redirects with Authorization Code
+    Client-&gt;&gt;AuthorizationServer: Exchanges Code for Access Token
+    AuthorizationServer-&gt;&gt;Client: Issues Access Token
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="b.-implicit-grant" class="level3">
+<h3 data-anchor-id="b.-implicit-grant">b. Implicit Grant</h3>
+<p>This grant type is designed for browser-based or mobile apps. It directly returns an access token without the intermediate authorization code step.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User-&gt;&gt;Client: Requests Access
+    Client-&gt;&gt;AuthorizationServer: Redirects User for Authorization
+    AuthorizationServer-&gt;&gt;User: Prompts for Consent
+    User-&gt;&gt;AuthorizationServer: Grants Consent
+    AuthorizationServer-&gt;&gt;Client: Redirects with Access Token
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="c.-resource-owner-password-credentials-grant" class="level3">
+<h3 data-anchor-id="c.-resource-owner-password-credentials-grant">c.&nbsp;Resource Owner Password Credentials Grant</h3>
+<p>This grant type is used when the user trusts the client with their credentials. The client sends the username and password directly to the authorization server to obtain an access token.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User-&gt;&gt;Client: Provides Credentials
+    Client-&gt;&gt;AuthorizationServer: Sends Credentials for Token
+    AuthorizationServer-&gt;&gt;Client: Issues Access Token
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="d.-client-credentials-grant" class="level3">
+<h3 data-anchor-id="d.-client-credentials-grant">d.&nbsp;Client Credentials Grant</h3>
+<p>This grant type is used for machine-to-machine (M2M) communication. The client authenticates itself and requests an access token without user involvement.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">sequenceDiagram
+    participant Client
+    participant AuthorizationServer
+
+    Client-&gt;&gt;AuthorizationServer: Authenticates and Requests Token
+    AuthorizationServer-&gt;&gt;Client: Issues Access Token
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="oauth-tokens" class="level2">
+<h2 data-anchor-id="oauth-tokens">6. OAuth Tokens</h2>
+<p>OAuth uses two types of tokens: - <strong>Access Token</strong>: A short-lived token used to access resources. - <strong>Refresh Token</strong>: A long-lived token used to obtain a new access token when the current one expires.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    A[Access Token] --&gt;|Expires| B[Refresh Token]
+    B --&gt;|Requests New Token| C[Authorization Server]
+    C --&gt;|Issues New Token| A
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="oauth-security-best-practices" class="level2">
+<h2 data-anchor-id="oauth-security-best-practices">7. OAuth Security Best Practices</h2>
+<p>To ensure the security of OAuth implementations:</p>
+<ul>
+<li>Use HTTPS for all communication.</li>
+<li>Use short-lived access tokens and long-lived refresh tokens.</li>
+<li>Validate redirect URIs to prevent open redirect attacks.</li>
+<li>Use PKCE (Proof Key for Code Exchange) for public clients.</li>
+<li>Regularly rotate client secrets.</li>
+</ul>
+</section>
+<section id="summary" class="level2">
+<h2 data-anchor-id="summary">8. Summary</h2>
+<p>OAuth is a powerful and flexible protocol that enables secure authorization in modern applications. By understanding its components, workflows, and grant types, developers can implement OAuth effectively and securely. The Mermaid diagrams provided in this post should help visualize the concepts and make them easier to grasp.</p>
+<p>Whether you’re building a new application or integrating with third-party services, OAuth is an essential tool in your security toolkit.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/system-design\.muthu\.co\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2025, Muthukrishnan</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

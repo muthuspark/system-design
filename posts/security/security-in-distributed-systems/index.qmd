@@ -21,7 +21,7 @@ The distributed nature of these systems significantly expands the attack surface
 
 ## Key Security Considerations
 
-Addressing the challenges outlined above requires a holistic approach encompassing several crucial aspects:
+Addressing the challenges outlined above requires a holistic approach encompassing several important aspects:
 
 ### 1. Authentication and Authorization
 
@@ -41,7 +41,7 @@ graph LR
 
 ### 2. Data Encryption
 
-Protecting data in transit and at rest is crucial. Encryption techniques safeguard data from unauthorized access.
+Protecting data in transit and at rest is important. Encryption techniques safeguard data from unauthorized access.
 
 -   **Data in Transit:** TLS/SSL is essential for securing communication channels.
 
@@ -99,7 +99,7 @@ Implementing intrusion detection and prevention systems (IDS/IPS) is vital for m
 
 ### 5. Auditing and Logging
 
-Comprehensive auditing and logging mechanisms are crucial for tracking system activities, identifying security breaches, and conducting post-incident analysis. Logs should be securely stored and protected from unauthorized access.
+Comprehensive auditing and logging mechanisms are important for tracking system activities, identifying security breaches, and conducting post-incident analysis. Logs should be securely stored and protected from unauthorized access.
 
 ### 6. Regular Security Assessments
 

@@ -90,7 +90,7 @@ Each microservice should be designed independently, using technologies like Node
 
 ### 2.4. Databases
 
-Choosing the right database is crucial.  Consider:
+Choosing the right database is important.  Consider:
 
 * **Relational Databases (e.g., PostgreSQL, MySQL):**  Suitable for structured data like user information and order details.
 * **NoSQL Databases (e.g., MongoDB, Cassandra):** Ideal for handling large volumes of unstructured or semi-structured data, like product catalogs or user preferences.

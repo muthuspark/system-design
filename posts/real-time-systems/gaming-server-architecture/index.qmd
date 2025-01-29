@@ -13,7 +13,7 @@ Unlike typical web applications, online games present unique challenges:
 * **Low Latency:**  Players expect immediate responses.  High latency leads to frustrating gameplay and can break the immersion.  This necessitates optimized network communication and server-side processing.
 * **High Scalability:**  Successful games need to handle a massive influx of players, often unpredictably. The architecture must be easily scalable to accommodate growth without significant performance degradation.
 * **Real-time Updates:**  Games require real-time updates to maintain synchronization between players and the game world.  This demands efficient mechanisms for data distribution and consistency.
-* **Cheating Prevention:**  Protecting the integrity of the game is crucial.  Robust anti-cheat mechanisms are necessary to maintain fair play.
+* **Cheating Prevention:**  Protecting the integrity of the game is important.  Robust anti-cheat mechanisms are necessary to maintain fair play.
 * **Data Persistence:**  Storing player data, game state, and other persistent information requires a reliable and efficient database solution.
 
 ## Architectural Patterns

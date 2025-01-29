@@ -3,7 +3,7 @@ title: "API Security"
 categories: [ "API Design" ]
 ---
 
-APIs (Application Programming Interfaces) are the backbone of modern software, enabling seamless communication between different applications and services. However, their widespread use also presents significant security risks. This post goes into the crucial aspects of API security, exploring common vulnerabilities and best practices for building and protecting your APIs.
+APIs (Application Programming Interfaces) are the backbone of modern software, enabling seamless communication between different applications and services. However, their widespread use also presents significant security risks. This post goes into the important aspects of API security, exploring common vulnerabilities and best practices for building and protecting your APIs.
 
 ## Understanding API Security Threats
 

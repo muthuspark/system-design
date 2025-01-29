@@ -89,4 +89,4 @@ The choice between orchestration and choreography depends on several factors, in
 
 ## Eventual Consistency and Error Handling
 
-It's crucial to understand that the Saga pattern uses eventual consistency. This means the system might be temporarily inconsistent while compensating transactions are executed. Robust error handling and retry mechanisms are crucial to ensure the saga completes successfully and to handle potential failures gracefully. Implementing idempotency in the local transactions is essential to prevent unintended side effects from retry attempts.
+It's important to understand that the Saga pattern uses eventual consistency. This means the system might be temporarily inconsistent while compensating transactions are executed. Robust error handling and retry mechanisms are important to ensure the saga completes successfully and to handle potential failures gracefully. Implementing idempotency in the local transactions is essential to prevent unintended side effects from retry attempts.

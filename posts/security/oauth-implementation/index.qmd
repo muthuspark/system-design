@@ -113,7 +113,7 @@ graph LR
 
 ## Code Example (Conceptual Python)
 
-This is a simplified example showcasing the authorization code grant flow.  It omits crucial details like error handling and security best practices, focusing solely on the core logic.  **Never use this code in production without extensive security enhancements.**
+This is a simplified example showcasing the authorization code grant flow.  It omits important details like error handling and security best practices, focusing solely on the core logic.  **Never use this code in production without extensive security enhancements.**
 
 ```python
 
@@ -151,7 +151,7 @@ print(response.json())
 
 ## Choosing the Right Grant Type
 
-Selecting the appropriate grant type is crucial for security and functionality.  Consider the following:
+Selecting the appropriate grant type is important for security and functionality.  Consider the following:
 
 * **Security:** Authorization code grant is generally the most secure.
 * **Client Type:** Implicit grant is suitable for browser-based clients, while client credentials are for server-to-server interactions.

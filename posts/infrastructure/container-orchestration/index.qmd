@@ -20,7 +20,7 @@ Imagine trying to manage a symphony orchestra without a conductor. Chaos would e
 
 ## Key Concepts in Container Orchestration
 
-Understanding several key concepts is crucial for effective container orchestration:
+Understanding several key concepts is important for effective container orchestration:
 
 -   **Clusters:** A group of machines (nodes) working together to run containerized applications.
 -   **Nodes:** Individual machines within a cluster.

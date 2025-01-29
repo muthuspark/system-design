@@ -57,7 +57,7 @@ SELECT * FROM users WHERE name = 'John Doe';
 
 ### 2. Optimize Server-Side Code
 
-Efficient server-side code is crucial. Consider:
+Efficient server-side code is important. Consider:
 
 -   **Code profiling:** Use profiling tools to identify performance bottlenecks in your code.
 -   **Caching:** Implement caching mechanisms to store frequently accessed data in memory. Tools like Redis or Memcached can significantly improve response times.

@@ -69,7 +69,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-ee5e052b81fc94e1f9bb89611f476562.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -143,6 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -182,10 +184,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Batch processing is a crucial concept in data processing and management. It involves accumulating data into batches and then processing these batches as a single unit, rather than processing individual records one at a time. This approach offers significant advantages in terms of efficiency, scalability, and resource utilization, making it a key requirement of many large-scale data operations. This post will explore batch processing in detail, covering its core principles, benefits, common use cases, and some practical considerations.</p>
+<p>Batch processing is one of the fundamental principles of data processing and management. In batch processing, data is collected in batches and processed all at once rather than treating individual records individually. This provides significant benefits in efficiency, scalability, and resource utilization and is a must for many large-scale data operations. In this post, we’ll cover batch processing in detail, including its key principles, benefits, common use cases, and practical considerations.</p>
 <section id="understanding-the-core-principles" class="level2">
 <h2 data-anchor-id="understanding-the-core-principles">Understanding the Core Principles</h2>
-<p>At its heart, batch processing relies on the principle of deferred processing. Instead of immediate, real-time processing, data is collected over a period, forming a “batch.” Once the batch reaches a predefined size or a specific time interval has elapsed, the entire batch is processed as a single unit. This contrasts with online transaction processing (OLTP), where each transaction is processed immediately.</p>
+<p>At its core, batch processing is all about deferred processing. Rather than processing data in real time, it is collected over time in a ‘batch.’ Once the batch reaches a certain size or a certain time interval has elapsed, the entire batch is processed as a unit. Compared to online transaction processing (OLTP), each transaction is processed immediately.</p>
 <p>Here’s a simplified illustration using a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -193,51 +195,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[Data Source] --&gt; B{Data Accumulation};
-    B --&gt; C[Batch Formation];
-    C --&gt; D[Batch Processing];
-    D --&gt; E[Results];
+A[Data Source] --&gt; B{Data Accumulation};
+B --&gt; C[Batch Formation];
+C --&gt; D[Batch Processing];
+D --&gt; E[Results];
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>This diagram shows the core workflow: data originates from a source, accumulates, forms a batch, undergoes processing, and finally produces results. The “Data Accumulation” phase can involve various mechanisms like queuing systems or temporary storage.</p>
+<p>This is the basic workflow: data comes in from a source, accumulates, forms a batch, gets processed and produces results. The “Data Accumulation” phase could involve something like queuing systems or temporary storage.</p>
 </section>
 <section id="advantages-of-batch-processing" class="level2">
 <h2 data-anchor-id="advantages-of-batch-processing">Advantages of Batch Processing</h2>
 <p>Batch processing offers several key benefits:</p>
 <ul>
-<li><p><strong>Efficiency:</strong> Processing large datasets in batches significantly reduces overhead compared to processing individual records. Database interactions, network calls, and other resource-intensive operations are minimized.</p></li>
-<li><p><strong>Scalability:</strong> Batch processing is inherently scalable. By processing in batches, you can handle massive datasets that would be impractical to process in real-time. You can easily distribute the processing across multiple machines for parallel processing.</p></li>
-<li><p><strong>Cost-effectiveness:</strong> Reduced resource consumption translates directly to lower operational costs. This is especially important for large-scale data processing tasks.</p></li>
-<li><p><strong>Simplified Error Handling:</strong> Batch processing allows for robust error handling mechanisms. Errors within a batch can be managed collectively, often leading to more efficient recovery procedures.</p></li>
+<li><p><strong>Efficiency: </strong> Because you’re working with batches of data, there’s much less overhead than if you were working with records individually. You’re minimizing database interactions, network calls, and other resource-intensive operations.</p></li>
+<li><p><strong>Scalability: </strong> Batch processing is inherently scalable. By processing in batches you can handle huge datasets that would be impossible to process in real time. Easily partition processing across multiple machines for parallel processing.</p></li>
+<li><p><strong>Cost-effectiveness: </strong> Lower resource consumption translates directly to lower operating costs, especially important for large-scale data processing tasks.</p></li>
+<li><p><strong>Easier Error Handling: </strong> Batch processing allows for enhanced error handling. Because errors in a batch are handled collectively, it is often possible to recover more easily from batch errors.</p></li>
 </ul>
 </section>
 <section id="common-use-cases" class="level2">
 <h2 data-anchor-id="common-use-cases">Common Use Cases</h2>
 <p>Batch processing finds applications across numerous domains:</p>
 <ul>
-<li><p><strong>Data Warehousing:</strong> ETL (Extract, Transform, Load) processes are prime examples of batch processing. Data is extracted from various sources, transformed according to business rules, and loaded into a data warehouse in batches.</p></li>
-<li><p><strong>Financial Reporting:</strong> Generating daily, weekly, or monthly financial reports often utilizes batch processing to aggregate transaction data and calculate financial metrics.</p></li>
-<li><p><strong>Payroll Processing:</strong> Calculating employee salaries and generating paychecks typically involves batch processing of employee data and time records.</p></li>
-<li><p><strong>Log File Analysis:</strong> Analyzing large log files for security incidents or performance issues frequently employs batch processing techniques.</p></li>
+<li><p><strong>Data Warehousing: </strong> ETL (Extract, Transform, Load) processes are the prime example of batch processing. Data is extracted from multiple sources, transformed by business rules and loaded into a data warehouse in batches.</p></li>
+<li><p><strong>Financial reporting: </strong> Daily, weekly, or monthly financial reporting often uses batch processing to aggregate transaction data and calculate financial metrics.</p></li>
+<li><p><strong>Payroll Processing: </strong> Computes employee salaries and generates paychecks, often via batch processing of employee data and time records.</p></li>
+<li><p><strong>Log File Analysis: </strong> For large log files to be analyzed for security incidents or performance problems batch processing is commonly used.</p></li>
 </ul>
 </section>
 <section id="implementation-considerations" class="level2">
 <h2 data-anchor-id="implementation-considerations">Implementation Considerations</h2>
-<p>Implementing batch processing requires careful planning and selection of appropriate tools and technologies. Key considerations include:</p>
+<p>To batch process, you need to plan ahead and choose the right tools and technologies. Some of the key considerations include:</p>
 <ul>
-<li><p><strong>Batch Size:</strong> Determining the optimal batch size is crucial. Too small, and you lose efficiency; too large, and you risk memory issues or excessively long processing times.</p></li>
-<li><p><strong>Error Handling:</strong> A robust error handling strategy is vital. Mechanisms for detecting, logging, and recovering from errors within batches are essential.</p></li>
-<li><p><strong>Scheduling:</strong> Scheduling tools are used to automate batch processing jobs at predefined intervals. These tools can monitor job progress and trigger alerts if necessary.</p></li>
-<li><p><strong>Data Integrity:</strong> Maintaining data integrity throughout the batch processing pipeline is paramount. Techniques like checksums and data validation checks are essential.</p></li>
+<li><p><strong>Batch Size: </strong> Make sure you have the batch size right. If it’s too small, you won’t be efficient, if it’s too big you could run into memory issues or processing times take forever.</p></li>
+<li><p><strong>Error Handling: </strong> It is very important to have a good error handling mechanism in place. You need to detect, log and recover from errors within batches.</p></li>
+<li><p><strong>Scheduling: </strong> Schedulers automate batch processing jobs at predefined intervals. They track job progress and send alerts as needed.</p></li>
+<li><p><strong>Data Integrity: </strong> Ensuring data integrity throughout the batch processing pipeline using checksums and data validation checks.</p></li>
 </ul>
 </section>
 <section id="example-python-with-csv-module" class="level2">
 <h2 data-anchor-id="example-python-with-csv-module">Example: Python with <code>csv</code> module</h2>
-<p>Let’s illustrate a simple batch processing example in Python, processing a CSV file in batches:</p>
+<p>Here is a simple batch processing example in Python, where we’ll process a CSV file in batches.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_batch(batch):</span>
@@ -261,28 +263,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> batch:  <span class="co"># Process the remaining data if any</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>          process_batch(batch)</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>process_csv_in_batches(<span class="st">"data.csv"</span>, batch_size<span class="op">=</span><span class="dv">5</span>)</span></code></pre></div>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>process_csv_in_batches(<span class="st">"data.csv"</span>, batch_size<span class="op">=</span><span class="dv">5</span>)<span class="im">import</span> csv</span></code></pre></div>
 <p>This Python code reads a CSV file, processes it in batches of a specified size, and performs a simple calculation for each batch. Remember to replace <code>"data.csv"</code> with your file path.</p>
 </section>
 <section id="tools-and-technologies" class="level2">
 <h2 data-anchor-id="tools-and-technologies">Tools and Technologies</h2>
 <p>Numerous tools and technologies facilitate batch processing, including:</p>
 <ul>
-<li><strong>Apache Hadoop:</strong> A powerful framework for distributed storage and processing of large datasets.</li>
-<li><strong>Apache Spark:</strong> A fast and general-purpose cluster computing system for large-scale data processing.</li>
-<li><strong>Apache Kafka:</strong> A distributed streaming platform commonly used for handling real-time data streams but also applicable for building robust batch pipelines.</li>
-<li><strong>Cloud-based services:</strong> AWS Batch, Azure Batch, and Google Cloud Dataproc provide managed batch processing services.</li>
+<li><strong>Apache Hadoop: </strong> Distributed framework for storage and processing of large data sets.</li>
+<li><strong>Apache Spark: </strong> Fast, general-purpose cluster computing system for large-scale data processing.</li>
+<li><strong>Apache Kafka: </strong> Distributed streaming platform used widely for real-time data streams but also suitable for building robust batch pipelines.</li>
+<li><strong>Cloud-based services: </strong> AWS Batch, Azure Batch and Google Cloud Dataproc are managed batch processing services.</li>
 </ul>
 
 
 </section>
 
 </main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/system-design\.muthu\.co\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+});
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>“Copyright 2025, Muthukrishnan”</p>
+<p>Copyright 2025, Muthukrishnan</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

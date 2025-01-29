@@ -11,7 +11,7 @@ Unlike traditional HTTP, which relies on a request-response cycle, WebSockets es
 
 ## The WebSocket Handshake
 
-The handshake is crucial, initiating the transition from HTTP to the WebSocket protocol. It involves a series of HTTP requests and responses.
+The handshake is important, initiating the transition from HTTP to the WebSocket protocol. It involves a series of HTTP requests and responses.
 
 **Simplified Handshake Process:**
 
@@ -103,7 +103,7 @@ asyncio.run(main())
 
 ## Handling Scalability and Concurrency
 
-For applications with many concurrent WebSocket connections, employing techniques like load balancing and utilizing a message broker becomes crucial for efficient management and preventing server overload. Asynchronous programming patterns are also vital for handling multiple connections concurrently without blocking.
+For applications with many concurrent WebSocket connections, employing techniques like load balancing and utilizing a message broker becomes important for efficient management and preventing server overload. Asynchronous programming patterns are also vital for handling multiple connections concurrently without blocking.
 
 
 

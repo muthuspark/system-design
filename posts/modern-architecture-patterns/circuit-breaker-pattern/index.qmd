@@ -62,7 +62,7 @@ Each state contains internal logic for request handling and specific failure/suc
 
 ## Implementing the Circuit Breaker
 
-The implementation can vary depending on the programming language and framework. Many libraries and frameworks offer ready-made implementations, but understanding the core logic is crucial. Let's explore a simplified example in Python:
+The implementation can vary depending on the programming language and framework. Many libraries and frameworks offer ready-made implementations, but understanding the core logic is important. Let's explore a simplified example in Python:
 
 ``` python
 import time

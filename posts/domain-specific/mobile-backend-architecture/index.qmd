@@ -4,7 +4,7 @@ categories: [ "Domain-Specific" ]
 ---
 
 
-Building a successful mobile application requires more than just a slick user interface.  A robust and scalable backend architecture is crucial for handling data storage, user authentication, push notifications, and much more. This post will delve into the key components and architectural patterns commonly used for mobile backend development.
+Building a successful mobile application requires more than just a slick user interface.  A robust and scalable backend architecture is important for handling data storage, user authentication, push notifications, and much more. This post will delve into the key components and architectural patterns commonly used for mobile backend development.
 
 ## Understanding the Landscape
 

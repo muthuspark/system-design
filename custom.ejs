@@ -1,23 +1,70 @@
 ```{=html}
-<% const categories = ['Fundamentals', 'Distributed Systems', 'Data Management', 'Scalability', 'High Availability', 'Security', 'Performance', 'Infrastructure', 'Modern Architecture Patterns', 'API Design', 'Cloud Native', 'Real-Time Systems', 'Domain-Specific']; %>
-<div>
-  <div class="category-list">
-    <% categories.forEach(category => { %>
-      <section class="category-section">
-        <h3><%= category %></h3>
-        <ul>
-          <% items.filter(item => item.categories[0] === category)
-                .forEach(item => { %>
-            <li><a href="<%- item.path %>"><%= item.title %></a></li>
-          <% }); %>
-        </ul>
-      </section>
-    <% }); %>
-  </div>
+<% const categories = ['Fundamentals', 'Distributed Systems', 'Data Management', 'Scalability', 'High Availability', 'Security', 'Performance', 'Infrastructure', 'Modern Architecture Patterns', 'API Design', 'Cloud Native', 'Real-Time Systems', 'Domain-Specific', 'Protocols']; %>
+
+<div class="categories-container">
+  <% if (typeof items === 'undefined' || !Array.isArray(items)) { %>
+    <p class="error-message">No items available</p>
+  <% } else { %>
+    <div class="category-list">
+      <% categories.forEach(category => { %>
+        <% const categoryItems = items.filter(item => 
+          item.categories && Array.isArray(item.categories) && 
+          item.categories.includes(category)
+        ); %>
+        
+        <section class="category-section" aria-labelledby="category-<%= category.toLowerCase() %>">
+          <h3 id="category-<%= category.toLowerCase() %>"><%= category %></h3>
+          <% if (categoryItems.length > 0) { %>
+            <ul>
+              <% categoryItems.forEach(item => { %>
+                <li>
+                  <a href="<%- item.path %>" title="<%= item.title %>">
+                    <%= item.title %>
+                  </a>
+                </li>
+              <% }); %>
+            </ul>
+          <% } else { %>
+            <p class="no-items">No items in this category</p>
+          <% } %>
+        </section>
+      <% }); %>
+    </div>
+  <% } %>
 </div>
+
 <style>
-  .listing-no-matching {
-    display: none;
+  .categories-container {
+    margin: 2rem 0;
+  }
+  
+  .category-section {
+    margin-bottom: 2rem;
+  }
+  
+  .category-section h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .category-section ul {
+    list-style-type: none;
+    padding-left: 1rem;
+  }
+  
+  .category-section li {
+    margin: 0.5rem 0;
+  }
+  
+  .no-items {
+    color: #666;
+    font-style: italic;
+  }
+  
+  .error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 1rem;
+    border-radius: 4px;
   }
 </style>
 ```

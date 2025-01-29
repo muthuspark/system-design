@@ -143,7 +143,7 @@ Selecting a suitable CDN requires careful consideration of several factors, incl
 
 ## Monitoring and Optimization
 
-Regularly monitoring your CDN's performance is crucial to ensure optimal website speed and functionality. Key metrics to track include:
+Regularly monitoring your CDN's performance is important to ensure optimal website speed and functionality. Key metrics to track include:
 
 -   **Cache hit rate:** The percentage of requests served from the cache.
 -   **Latency:** The time it takes to deliver content.

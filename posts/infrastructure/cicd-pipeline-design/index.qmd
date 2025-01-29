@@ -13,7 +13,7 @@ A typical CI/CD pipeline consists of several key stages:
 
 2.  **Build:** This stage compiles the source code into executable artifacts (e.g., JAR files, Docker images). This often involves dependency management, compilation, and packaging.
 
-3.  **Test:** Thorough testing is crucial. This stage typically includes unit tests, integration tests, and potentially end-to-end tests. Automated tests are essential for efficient CI/CD.
+3.  **Test:** Thorough testing is important. This stage typically includes unit tests, integration tests, and potentially end-to-end tests. Automated tests are essential for efficient CI/CD.
 
 4.  **Deployment:** This stage deploys the built and tested artifacts to various environments (development, staging, production). This could involve deploying to servers, cloud platforms (AWS, Azure, GCP), or container orchestration systems (Kubernetes).
 
@@ -130,7 +130,7 @@ Automate as much as possible. The pipeline should be triggered automatically upo
 
 ## Handling Failures and Rollbacks
 
-A crucial aspect of CI/CD is handling failures gracefully. Implement rollback mechanisms to revert to a previous stable version if a deployment fails. Automated alerts should notify the team of failures, allowing for quick intervention.
+A important aspect of CI/CD is handling failures gracefully. Implement rollback mechanisms to revert to a previous stable version if a deployment fails. Automated alerts should notify the team of failures, allowing for quick intervention.
 
 ## Optimizing for Speed and Efficiency
 

@@ -11,7 +11,7 @@ At its heart, configuration management focuses on three key principles:
 
 1.  **Automation:** Manual configuration is prone to errors and inconsistencies. CM leverages automation to manage configurations consistently and efficiently. This includes automating tasks like software deployments, infrastructure provisioning, and security updates.
 
-2.  **Version Control:** Tracking changes to configurations is crucial for auditing, rollback, and understanding the system's evolution. Version control systems like Git are essential components of a robust CM strategy. This allows for easy comparison of different configuration states, identification of problematic changes, and streamlined rollbacks.
+2.  **Version Control:** Tracking changes to configurations is important for auditing, rollback, and understanding the system's evolution. Version control systems like Git are essential components of a robust CM strategy. This allows for easy comparison of different configuration states, identification of problematic changes, and streamlined rollbacks.
 
 3.  **Idempotency:** A key characteristic of good CM practices is idempotency. This means that applying a configuration multiple times should produce the same result, regardless of the system's current state. This eliminates the risk of unintended consequences from repeated configuration applications.
 

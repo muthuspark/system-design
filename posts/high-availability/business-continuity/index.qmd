@@ -74,7 +74,7 @@ graph LR
 
 **4. Testing and Exercises:**
 
-Regularly testing the BC plan is crucial to identify weaknesses and ensure its effectiveness. This can include:
+Regularly testing the BC plan is important to identify weaknesses and ensure its effectiveness. This can include:
 
 -   **Desktop exercises:** Tabletop simulations of various scenarios.
 -   **Full-scale drills:** Real-world simulations involving multiple teams and stakeholders.

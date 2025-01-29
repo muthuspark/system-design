@@ -124,7 +124,7 @@ graph LR
 
 ## Cache Invalidation Strategies
 
-Maintaining data consistency is crucial.  Several strategies exist for invalidating cached data:
+Maintaining data consistency is important.  Several strategies exist for invalidating cached data:
 
 * **Time-Based Expiration:**  Data expires after a set time.
 * **Event-Based Invalidation:**  Data is invalidated when a specific event occurs (e.g., a database update).

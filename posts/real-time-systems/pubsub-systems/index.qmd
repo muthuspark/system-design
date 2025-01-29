@@ -4,7 +4,7 @@ categories: [ "Real-Time Systems" ]
 ---
 
 
-Publish/Subscribe (Pub/Sub) systems are a powerful messaging paradigm that decouples the components of an application, enabling scalable and resilient architectures.  Unlike traditional request-response models, Pub/Sub allows for one-to-many communication, where a single message published by a "publisher" can be delivered to multiple "subscribers" interested in that specific message type. This architecture is crucial for building event-driven systems and real-time applications.
+Publish/Subscribe (Pub/Sub) systems are a powerful messaging paradigm that decouples the components of an application, enabling scalable and resilient architectures.  Unlike traditional request-response models, Pub/Sub allows for one-to-many communication, where a single message published by a "publisher" can be delivered to multiple "subscribers" interested in that specific message type. This architecture is important for building event-driven systems and real-time applications.
 
 ## Core Concepts: Publishers, Subscribers, and Topics
 
@@ -113,7 +113,7 @@ Remember to replace `"your-project-id"`, `"your-topic-id"`, and `"your-subscript
 
 Pub/Sub systems often offer advanced features to handle complex scenarios:
 
-* **Message Ordering:** Guaranteeing message delivery order can be crucial for some applications.  Many systems provide mechanisms to achieve this, but it often comes at the cost of throughput.
+* **Message Ordering:** Guaranteeing message delivery order can be important for some applications.  Many systems provide mechanisms to achieve this, but it often comes at the cost of throughput.
 
 * **Message Durability:**  Ensuring messages are not lost even in case of system failures requires persistent storage and acknowledgement mechanisms.
 

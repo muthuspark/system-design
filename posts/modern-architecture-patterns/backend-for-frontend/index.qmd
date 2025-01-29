@@ -89,7 +89,7 @@ app.listen(port, () => {
 });
 ```
 
-This BFF fetches user data and product data from separate services and combines them into a single response suitable for the frontend.  Error handling is crucial in a BFF to ensure resilience.
+This BFF fetches user data and product data from separate services and combines them into a single response suitable for the frontend.  Error handling is important in a BFF to ensure resilience.
 
 
 ## BFF vs. API Gateway

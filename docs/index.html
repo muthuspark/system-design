@@ -37,7 +37,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ee5e052b81fc94e1f9bb89611f476562.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,9 +76,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-editor','listing-language','listing-title','listing-categories','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-editor','listing-language','listing-title','listing-categories','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-Title','listing-Categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-language","listing-title","listing-categories","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-language","listing-title","listing-categories","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-Title","listing-Categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -164,6 +165,7 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -190,392 +192,1259 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
 
-<div>
-  <div class="category-list">
-    
-      <section class="category-section">
-        <h3>Fundamentals</h3>
-        <ul>
-          
-            <li><a href="./posts/fundamentals/architectural-patterns-overview/index.html">Architectural Patterns Overview</a></li>
-          
-            <li><a href="./posts/fundamentals/cost-benefit-analysis-in-design/index.html">Cost-Benefit Analysis in Design</a></li>
-          
-            <li><a href="./posts/fundamentals/maintainability-best-practices/index.html">Maintainability Best Practices</a></li>
-          
-            <li><a href="./posts/fundamentals/performance-metrics-and-measurement/index.html">Performance Metrics and Measurement</a></li>
-          
-            <li><a href="./posts/fundamentals/quality-attributes-in-software-systems/index.html">Quality Attributes in Software Systems</a></li>
-          
-            <li><a href="./posts/fundamentals/reliability-principles/index.html">Reliability Principles</a></li>
-          
-            <li><a href="./posts/fundamentals/scalability-basics/index.html">Scalability Basics</a></li>
-          
-            <li><a href="./posts/fundamentals/system-requirements-analysis/index.html">System Requirements Analysis</a></li>
-          
-            <li><a href="./posts/fundamentals/trade-offs-in-system-design/index.html">Trade-offs in System Design</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Distributed Systems</h3>
-        <ul>
-          
-            <li><a href="./posts/distributed-systems/acid-vs-base-properties/index.html">ACID vs BASE Database Consistency Models</a></li>
-          
-            <li><a href="./posts/distributed-systems/byzantine-fault-tolerance/index.html">Byzantine Fault Tolerance</a></li>
-          
-            <li><a href="./posts/distributed-systems/cap-theorem-deep-dive/index.html">CAP Theorem / Brewer's theorem</a></li>
-          
-            <li><a href="./posts/distributed-systems/distributed-consensus/index.html">Distributed Consensus</a></li>
-          
-            <li><a href="./posts/distributed-systems/distributed-locking/index.html">Distributed Locking</a></li>
-          
-            <li><a href="./posts/distributed-systems/distributed-transactions/index.html">Distributed Transactions</a></li>
-          
-            <li><a href="./posts/distributed-systems/event-driven-architecture-in-distributed-systems/index.html">Event-Driven Architecture in Distributed Systems</a></li>
-          
-            <li><a href="./posts/distributed-systems/eventual-consistency/index.html">Eventual Consistency</a></li>
-          
-            <li><a href="./posts/distributed-systems/failure-detection/index.html">Failure Detection</a></li>
-          
-            <li><a href="./posts/distributed-systems/leader-election/index.html">Leader Election</a></li>
-          
-            <li><a href="./posts/distributed-systems/quorum-based-systems/index.html">Quorum-based Systems</a></li>
-          
-            <li><a href="./posts/distributed-systems/strong-consistency/index.html">Strong Consistency</a></li>
-          
-            <li><a href="./posts/distributed-systems/three-phase-commit-protocol/index.html">Three-Phase Commit Protocol</a></li>
-          
-            <li><a href="./posts/distributed-systems/two-phase-commit-protocol/index.html">Two-Phase Commit Protocol</a></li>
-          
-            <li><a href="./posts/distributed-systems/vector-clocks/index.html">Vector Clocks</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Data Management</h3>
-        <ul>
-          
-            <li><a href="./posts/data-management/data-consistency-models/index.html">Data Consistency Models</a></li>
-          
-            <li><a href="./posts/data-management/data-lakes/index.html">Data Lakes</a></li>
-          
-            <li><a href="./posts/data-management/data-warehousing/index.html">Data Warehousing</a></li>
-          
-            <li><a href="./posts/data-management/database-partitioning/index.html">Database Partitioning</a></li>
-          
-            <li><a href="./posts/data-management/database-sharding-strategies/index.html">Database Sharding Strategies</a></li>
-          
-            <li><a href="./posts/data-management/document-store-design-patterns/index.html">Document Store Design Patterns</a></li>
-          
-            <li><a href="./posts/data-management/graph-database-design/index.html">Graph Database Design</a></li>
-          
-            <li><a href="./posts/data-management/master-slave-architecture/index.html">Master-Slave Architecture</a></li>
-          
-            <li><a href="./posts/data-management/multi-master-architecture/index.html">Multi-Master Architecture</a></li>
-          
-            <li><a href="./posts/data-management/nosql-database-design/index.html">NoSQL Database Design</a></li>
-          
-            <li><a href="./posts/data-management/oltp-vs-olap-systems/index.html">OLTP vs OLAP Systems</a></li>
-          
-            <li><a href="./posts/data-management/polyglot-persistence/index.html">Polyglot Persistence</a></li>
-          
-            <li><a href="./posts/data-management/replication-strategies/index.html">Replication Strategies</a></li>
-          
-            <li><a href="./posts/data-management/time-series-data-management/index.html">Time-Series Data Management</a></li>
-          
-            <li><a href="./posts/data-management/write-ahead-logging/index.html">Write-Ahead Logging</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Scalability</h3>
-        <ul>
-          
-            <li><a href="./posts/scalability/auto-scaling-systems/index.html">Auto-scaling Systems</a></li>
-          
-            <li><a href="./posts/scalability/caching-strategies/index.html">Caching Strategies</a></li>
-          
-            <li><a href="./posts/scalability/content-delivery-networks/index.html">Content Delivery Networks</a></li>
-          
-            <li><a href="./posts/scalability/database-connection-pooling/index.html">Database Connection Pooling</a></li>
-          
-            <li><a href="./posts/scalability/horizontal-vs-vertical-scaling/index.html">Horizontal vs Vertical Scaling</a></li>
-          
-            <li><a href="./posts/scalability/load-balancing-algorithms/index.html">Load Balancing Algorithms</a></li>
-          
-            <li><a href="./posts/scalability/message-queue-architecture/index.html">Message Queue Architecture</a></li>
-          
-            <li><a href="./posts/scalability/microservices-scaling/index.html">Microservices Scaling</a></li>
-          
-            <li><a href="./posts/scalability/session-management-at-scale/index.html">Session Management at Scale</a></li>
-          
-            <li><a href="./posts/scalability/stateless-architecture/index.html">Stateless Architecture</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>High Availability</h3>
-        <ul>
-          
-            <li><a href="./posts/high-availability/active-active-setup/index.html">Active-Active Setup</a></li>
-          
-            <li><a href="./posts/high-availability/active-passive-setup/index.html">Active-Passive Setup</a></li>
-          
-            <li><a href="./posts/high-availability/business-continuity/index.html">Business Continuity</a></li>
-          
-            <li><a href="./posts/high-availability/disaster-recovery-planning/index.html">Disaster Recovery Planning</a></li>
-          
-            <li><a href="./posts/high-availability/failover-strategies/index.html">Failover Strategies</a></li>
-          
-            <li><a href="./posts/high-availability/geographic-distribution/index.html">Geographic Distribution</a></li>
-          
-            <li><a href="./posts/high-availability/health-monitoring-systems/index.html">Health Monitoring Systems</a></li>
-          
-            <li><a href="./posts/high-availability/multi-region-architecture/index.html">Multi-Region Architecture</a></li>
-          
-            <li><a href="./posts/high-availability/redundancy-patterns/index.html">Redundancy Patterns</a></li>
-          
-            <li><a href="./posts/high-availability/service-level-agreements/index.html">Service Level Agreements</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Security</h3>
-        <ul>
-          
-            <li><a href="./posts/security/api-security/index.html">API Security</a></li>
-          
-            <li><a href="./posts/security/authentication-systems/index.html">Authentication Systems</a></li>
-          
-            <li><a href="./posts/security/authorization-models/index.html">Authorization Models</a></li>
-          
-            <li><a href="./posts/security/data-encryption-strategies/index.html">Data Encryption Strategies</a></li>
-          
-            <li><a href="./posts/security/jwt-design/index.html">JWT Design</a></li>
-          
-            <li><a href="./posts/security/oauth-implementation/index.html">OAuth Implementation</a></li>
-          
-            <li><a href="./posts/security/ssltls-implementation/index.html">SSL/TLS Implementation</a></li>
-          
-            <li><a href="./posts/security/security-in-distributed-systems/index.html">Security in Distributed Systems</a></li>
-          
-            <li><a href="./posts/security/security-in-microservices/index.html">Security in Microservices</a></li>
-          
-            <li><a href="./posts/security/zero-trust-architecture/index.html">Zero Trust Architecture</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Performance</h3>
-        <ul>
-          
-            <li><a href="./posts/performance/asynchronous-processing/index.html">Asynchronous Processing</a></li>
-          
-            <li><a href="./posts/performance/batch-processing/index.html">Batch Processing</a></li>
-          
-            <li><a href="./posts/performance/bottleneck-analysis/index.html">Bottleneck Analysis</a></li>
-          
-            <li><a href="./posts/performance/connection-pooling/index.html">Connection Pooling</a></li>
-          
-            <li><a href="./posts/performance/latency-reduction/index.html">Latency Reduction</a></li>
-          
-            <li><a href="./posts/performance/performance-testing-methodologies/index.html">Performance Testing Methodologies</a></li>
-          
-            <li><a href="./posts/performance/query-optimization/index.html">Query Optimization</a></li>
-          
-            <li><a href="./posts/performance/resource-utilization/index.html">Resource Utilization</a></li>
-          
-            <li><a href="./posts/performance/response-time-optimization/index.html">Response Time Optimization</a></li>
-          
-            <li><a href="./posts/performance/throughput-improvement/index.html">Throughput Improvement</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Infrastructure</h3>
-        <ul>
-          
-            <li><a href="./posts/infrastructure/alert-system-design/index.html">Alert System Design</a></li>
-          
-            <li><a href="./posts/infrastructure/cicd-pipeline-design/index.html">CI/CD Pipeline Design</a></li>
-          
-            <li><a href="./posts/infrastructure/configuration-management/index.html">Configuration Management</a></li>
-          
-            <li><a href="./posts/infrastructure/container-orchestration/index.html">Container Orchestration</a></li>
-          
-            <li><a href="./posts/infrastructure/infrastructure-as-code/index.html">Infrastructure as Code</a></li>
-          
-            <li><a href="./posts/infrastructure/logging-architecture/index.html">Logging Architecture</a></li>
-          
-            <li><a href="./posts/infrastructure/metrics-collection/index.html">Metrics Collection</a></li>
-          
-            <li><a href="./posts/infrastructure/monitoring-system-design/index.html">Monitoring System Design</a></li>
-          
-            <li><a href="./posts/infrastructure/resource-management/index.html">Resource Management</a></li>
-          
-            <li><a href="./posts/infrastructure/service-discovery/index.html">Service Discovery</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Modern Architecture Patterns</h3>
-        <ul>
-          
-            <li><a href="./posts/modern-architecture-patterns/ambassador-pattern/index.html">Ambassador Pattern</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/anti-corruption-layer/index.html">Anti-Corruption Layer</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/backend-for-frontend/index.html">Backend for Frontend</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/bulkhead-pattern/index.html">Bulkhead Pattern</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/cqrs-pattern/index.html">CQRS Pattern</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/circuit-breaker-pattern/index.html">Circuit Breaker Pattern</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/saga-pattern/index.html">Saga Pattern</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/sidecar-pattern/index.html">Sidecar Pattern</a></li>
-          
-            <li><a href="./posts/modern-architecture-patterns/strangler-fig-pattern/index.html">Strangler Fig Pattern</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>API Design</h3>
-        <ul>
-          
-            <li><a href="./posts/api-design/api-caching/index.html">API Caching</a></li>
-          
-            <li><a href="./posts/api-design/api-documentation/index.html">API Documentation</a></li>
-          
-            <li><a href="./posts/api-design/api-gateway-patterns/index.html">API Gateway Patterns</a></li>
-          
-            <li><a href="./posts/api-design/api-security/index.html">API Security</a></li>
-          
-            <li><a href="./posts/api-design/api-versioning-strategies/index.html">API Versioning Strategies</a></li>
-          
-            <li><a href="./posts/api-design/graphql-architecture/index.html">GraphQL Architecture</a></li>
-          
-            <li><a href="./posts/api-design/restful-api-design/index.html">RESTful API Design</a></li>
-          
-            <li><a href="./posts/api-design/rate-limiting/index.html">Rate Limiting</a></li>
-          
-            <li><a href="./posts/api-design/webhook-architecture/index.html">Webhook Architecture</a></li>
-          
-            <li><a href="./posts/api-design/grpc-implementation/index.html">gRPC Implementation</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Cloud Native</h3>
-        <ul>
-          
-            <li><a href="./posts/cloud-native/cloud-cost-optimization/index.html">Cloud Cost Optimization</a></li>
-          
-            <li><a href="./posts/cloud-native/cloud-security-patterns/index.html">Cloud Security Patterns</a></li>
-          
-            <li><a href="./posts/cloud-native/cloud-storage-design/index.html">Cloud Storage Design</a></li>
-          
-            <li><a href="./posts/cloud-native/container-security/index.html">Container Security</a></li>
-          
-            <li><a href="./posts/cloud-native/edge-computing/index.html">Edge Computing</a></li>
-          
-            <li><a href="./posts/cloud-native/function-as-a-service/index.html">Function as a Service</a></li>
-          
-            <li><a href="./posts/cloud-native/kubernetes-design-patterns/index.html">Kubernetes Design Patterns</a></li>
-          
-            <li><a href="./posts/cloud-native/multi-cloud-strategy/index.html">Multi-Cloud Strategy</a></li>
-          
-            <li><a href="./posts/cloud-native/serverless-architecture/index.html">Serverless Architecture</a></li>
-          
-            <li><a href="./posts/cloud-native/service-mesh-architecture/index.html">Service Mesh Architecture</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Real-Time Systems</h3>
-        <ul>
-          
-            <li><a href="./posts/real-time-systems/event-processing/index.html">Event Processing</a></li>
-          
-            <li><a href="./posts/real-time-systems/gaming-server-architecture/index.html">Gaming Server Architecture</a></li>
-          
-            <li><a href="./posts/real-time-systems/iot-architecture/index.html">IoT Architecture</a></li>
-          
-            <li><a href="./posts/real-time-systems/live-streaming-architecture/index.html">Live Streaming Architecture</a></li>
-          
-            <li><a href="./posts/real-time-systems/pubsub-systems/index.html">Pub/Sub Systems</a></li>
-          
-            <li><a href="./posts/real-time-systems/push-notification-systems/index.html">Push Notification Systems</a></li>
-          
-            <li><a href="./posts/real-time-systems/real-time-analytics/index.html">Real-Time Analytics</a></li>
-          
-            <li><a href="./posts/real-time-systems/real-time-data-processing/index.html">Real-Time Data Processing</a></li>
-          
-            <li><a href="./posts/real-time-systems/stream-processing/index.html">Stream Processing</a></li>
-          
-            <li><a href="./posts/real-time-systems/websocket-architecture/index.html">WebSocket Architecture</a></li>
-          
-        </ul>
-      </section>
-    
-      <section class="category-section">
-        <h3>Domain-Specific</h3>
-        <ul>
-          
-            <li><a href="./posts/domain-specific/authentication-systems/index.html">Authentication Systems</a></li>
-          
-            <li><a href="./posts/domain-specific/booking-systems/index.html">Booking Systems</a></li>
-          
-            <li><a href="./posts/domain-specific/content-management-systems/index.html">Content Management Systems</a></li>
-          
-            <li><a href="./posts/domain-specific/e-commerce-system-design/index.html">E-commerce System Design</a></li>
-          
-            <li><a href="./posts/domain-specific/mobile-backend-architecture/index.html">Mobile Backend Architecture</a></li>
-          
-            <li><a href="./posts/domain-specific/payment-processing-systems/index.html">Payment Processing Systems</a></li>
-          
-            <li><a href="./posts/domain-specific/recommendation-systems/index.html">Recommendation Systems</a></li>
-          
-            <li><a href="./posts/domain-specific/search-engine-design/index.html">Search Engine Design</a></li>
-          
-            <li><a href="./posts/domain-specific/social-network-architecture/index.html">Social Network Architecture</a></li>
-          
-            <li><a href="./posts/domain-specific/video-streaming-platforms/index.html">Video Streaming Platforms</a></li>
-          
-        </ul>
-      </section>
-    
-  </div>
+<div class="categories-container">
+  
+    <div class="category-list">
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-fundamentals">
+          <h3 id="category-fundamentals">Fundamentals</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/fundamentals/architectural-patterns-overview/index.html" title="Architectural Patterns Overview">
+                    Architectural Patterns Overview
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/cost-benefit-analysis-in-design/index.html" title="Cost-Benefit Analysis in Design">
+                    Cost-Benefit Analysis in Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/maintainability-best-practices/index.html" title="Maintainability Best Practices">
+                    Maintainability Best Practices
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/performance-metrics-and-measurement/index.html" title="Performance Metrics and Measurement">
+                    Performance Metrics and Measurement
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/quality-attributes-in-software-systems/index.html" title="Quality Attributes in Software Systems">
+                    Quality Attributes in Software Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/reliability-principles/index.html" title="Reliability Principles">
+                    Reliability Principles
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/scalability-basics/index.html" title="Scalability Basics">
+                    Scalability Basics
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/system-requirements-analysis/index.html" title="System Requirements Analysis">
+                    System Requirements Analysis
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/fundamentals/trade-offs-in-system-design/index.html" title="Trade-offs in System Design">
+                    Trade-offs in System Design
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-distributed systems">
+          <h3 id="category-distributed systems">Distributed Systems</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/distributed-systems/acid-vs-base-properties/index.html" title="ACID vs BASE Database Consistency Models">
+                    ACID vs BASE Database Consistency Models
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/byzantine-fault-tolerance/index.html" title="Byzantine Fault Tolerance">
+                    Byzantine Fault Tolerance
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/cap-theorem-deep-dive/index.html" title="CAP Theorem / Brewer's theorem">
+                    CAP Theorem / Brewer's theorem
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/distributed-consensus/index.html" title="Distributed Consensus">
+                    Distributed Consensus
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/distributed-locking/index.html" title="Distributed Locking">
+                    Distributed Locking
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/distributed-transactions/index.html" title="Distributed Transactions">
+                    Distributed Transactions
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/event-driven-architecture-in-distributed-systems/index.html" title="Event-Driven Architecture in Distributed Systems">
+                    Event-Driven Architecture in Distributed Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/eventual-consistency/index.html" title="Eventual Consistency">
+                    Eventual Consistency
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/failure-detection/index.html" title="Failure Detection">
+                    Failure Detection
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/leader-election/index.html" title="Leader Election">
+                    Leader Election
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/quorum-based-systems/index.html" title="Quorum-based Systems">
+                    Quorum-based Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/strong-consistency/index.html" title="Strong Consistency">
+                    Strong Consistency
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/three-phase-commit-protocol/index.html" title="Three-Phase Commit Protocol">
+                    Three-Phase Commit Protocol
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/two-phase-commit-protocol/index.html" title="Two-Phase Commit Protocol">
+                    Two-Phase Commit Protocol
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/distributed-systems/vector-clocks/index.html" title="Vector Clocks">
+                    Vector Clocks
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-data management">
+          <h3 id="category-data management">Data Management</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/data-management/data-consistency-models/index.html" title="Data Consistency Models">
+                    Data Consistency Models
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/data-lakes/index.html" title="Data Lakes">
+                    Data Lakes
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/data-warehousing/index.html" title="Data Warehousing">
+                    Data Warehousing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/database-partitioning/index.html" title="Database Partitioning">
+                    Database Partitioning
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/database-sharding-strategies/index.html" title="Database Sharding Strategies">
+                    Database Sharding Strategies
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/document-store-design-patterns/index.html" title="Document Store Design Patterns">
+                    Document Store Design Patterns
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/graph-database-design/index.html" title="Graph Database Design">
+                    Graph Database Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/master-slave-architecture/index.html" title="Master-Slave Architecture">
+                    Master-Slave Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/multi-master-architecture/index.html" title="Multi-Master Architecture">
+                    Multi-Master Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/nosql-database-design/index.html" title="NoSQL Database Design">
+                    NoSQL Database Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/oltp-vs-olap-systems/index.html" title="OLTP vs OLAP Systems">
+                    OLTP vs OLAP Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/polyglot-persistence/index.html" title="Polyglot Persistence">
+                    Polyglot Persistence
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/replication-strategies/index.html" title="Replication Strategies">
+                    Replication Strategies
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/time-series-data-management/index.html" title="Time-Series Data Management">
+                    Time-Series Data Management
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/data-management/write-ahead-logging/index.html" title="Write-Ahead Logging">
+                    Write-Ahead Logging
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-scalability">
+          <h3 id="category-scalability">Scalability</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/scalability/auto-scaling-systems/index.html" title="Auto-scaling Systems">
+                    Auto-scaling Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/caching-strategies/index.html" title="Caching Strategies">
+                    Caching Strategies
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/content-delivery-networks/index.html" title="Content Delivery Networks">
+                    Content Delivery Networks
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/database-connection-pooling/index.html" title="Database Connection Pooling">
+                    Database Connection Pooling
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/horizontal-vs-vertical-scaling/index.html" title="Horizontal vs Vertical Scaling">
+                    Horizontal vs Vertical Scaling
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/load-balancing-algorithms/index.html" title="Load Balancing Algorithms">
+                    Load Balancing Algorithms
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/message-queue-architecture/index.html" title="Message Queue Architecture">
+                    Message Queue Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/microservices-scaling/index.html" title="Microservices Scaling">
+                    Microservices Scaling
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/session-management-at-scale/index.html" title="Session Management at Scale">
+                    Session Management at Scale
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/scalability/stateless-architecture/index.html" title="Stateless Architecture">
+                    Stateless Architecture
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-high availability">
+          <h3 id="category-high availability">High Availability</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/high-availability/active-active-setup/index.html" title="Active-Active Setup">
+                    Active-Active Setup
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/active-passive-setup/index.html" title="Active-Passive Setup">
+                    Active-Passive Setup
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/business-continuity/index.html" title="Business Continuity">
+                    Business Continuity
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/disaster-recovery-planning/index.html" title="Disaster Recovery Planning">
+                    Disaster Recovery Planning
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/failover-strategies/index.html" title="Failover Strategies">
+                    Failover Strategies
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/geographic-distribution/index.html" title="Geographic Distribution">
+                    Geographic Distribution
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/health-monitoring-systems/index.html" title="Health Monitoring Systems">
+                    Health Monitoring Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/multi-region-architecture/index.html" title="Multi-Region Architecture">
+                    Multi-Region Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/redundancy-patterns/index.html" title="Redundancy Patterns">
+                    Redundancy Patterns
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/high-availability/service-level-agreements/index.html" title="Service Level Agreements">
+                    Service Level Agreements
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-security">
+          <h3 id="category-security">Security</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/security/api-security/index.html" title="API Security">
+                    API Security
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/authentication-systems/index.html" title="Authentication Systems">
+                    Authentication Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/authorization-models/index.html" title="Authorization Models">
+                    Authorization Models
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/data-encryption-strategies/index.html" title="Data Encryption Strategies">
+                    Data Encryption Strategies
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/jwt-design/index.html" title="JWT Design">
+                    JWT Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/oauth-implementation/index.html" title="OAuth Implementation">
+                    OAuth Implementation
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/ssltls-implementation/index.html" title="SSL/TLS Implementation">
+                    SSL/TLS Implementation
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/security-in-distributed-systems/index.html" title="Security in Distributed Systems">
+                    Security in Distributed Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/security-in-microservices/index.html" title="Security in Microservices">
+                    Security in Microservices
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/security/zero-trust-architecture/index.html" title="Zero Trust Architecture">
+                    Zero Trust Architecture
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-performance">
+          <h3 id="category-performance">Performance</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/performance/asynchronous-processing/index.html" title="Asynchronous Processing">
+                    Asynchronous Processing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/batch-processing/index.html" title="Batch Processing">
+                    Batch Processing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/bottleneck-analysis/index.html" title="Bottleneck Analysis">
+                    Bottleneck Analysis
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/connection-pooling/index.html" title="Connection Pooling">
+                    Connection Pooling
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/latency-reduction/index.html" title="Latency Reduction">
+                    Latency Reduction
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/performance-testing-methodologies/index.html" title="Performance Testing Methodologies">
+                    Performance Testing Methodologies
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/query-optimization/index.html" title="Query Optimization">
+                    Query Optimization
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/resource-utilization/index.html" title="Resource Utilization">
+                    Resource Utilization
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/response-time-optimization/index.html" title="Response Time Optimization">
+                    Response Time Optimization
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/performance/throughput-improvement/index.html" title="Throughput Improvement">
+                    Throughput Improvement
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-infrastructure">
+          <h3 id="category-infrastructure">Infrastructure</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/infrastructure/alert-system-design/index.html" title="Alert System Design">
+                    Alert System Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/cicd-pipeline-design/index.html" title="CI/CD Pipeline Design">
+                    CI/CD Pipeline Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/configuration-management/index.html" title="Configuration Management">
+                    Configuration Management
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/container-orchestration/index.html" title="Container Orchestration">
+                    Container Orchestration
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/infrastructure-as-code/index.html" title="Infrastructure as Code">
+                    Infrastructure as Code
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/logging-architecture/index.html" title="Logging Architecture">
+                    Logging Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/metrics-collection/index.html" title="Metrics Collection">
+                    Metrics Collection
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/monitoring-system-design/index.html" title="Monitoring System Design">
+                    Monitoring System Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/resource-management/index.html" title="Resource Management">
+                    Resource Management
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/infrastructure/service-discovery/index.html" title="Service Discovery">
+                    Service Discovery
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-modern architecture patterns">
+          <h3 id="category-modern architecture patterns">Modern Architecture Patterns</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/ambassador-pattern/index.html" title="Ambassador Pattern">
+                    Ambassador Pattern
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/anti-corruption-layer/index.html" title="Anti-Corruption Layer">
+                    Anti-Corruption Layer
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/backend-for-frontend/index.html" title="Backend for Frontend">
+                    Backend for Frontend
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/bulkhead-pattern/index.html" title="Bulkhead Pattern">
+                    Bulkhead Pattern
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/cqrs-pattern/index.html" title="CQRS Pattern">
+                    CQRS Pattern
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/circuit-breaker-pattern/index.html" title="Circuit Breaker Pattern">
+                    Circuit Breaker Pattern
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/saga-pattern/index.html" title="Saga Pattern">
+                    Saga Pattern
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/sidecar-pattern/index.html" title="Sidecar Pattern">
+                    Sidecar Pattern
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/modern-architecture-patterns/strangler-fig-pattern/index.html" title="Strangler Fig Pattern">
+                    Strangler Fig Pattern
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-api design">
+          <h3 id="category-api design">API Design</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/api-design/api-documentation/index.html" title="API Documentation">
+                    API Documentation
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/api-gateway-patterns/index.html" title="API Gateway Patterns">
+                    API Gateway Patterns
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/api-security/index.html" title="API Security">
+                    API Security
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/api-versioning-strategies/index.html" title="API Versioning Strategies">
+                    API Versioning Strategies
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/graphql-architecture/index.html" title="GraphQL Architecture">
+                    GraphQL Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/restful-api-design/index.html" title="RESTful API Design">
+                    RESTful API Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/rate-limiting/index.html" title="Rate Limiting">
+                    Rate Limiting
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/webhook-architecture/index.html" title="Webhook Architecture">
+                    Webhook Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/api-design/grpc-implementation/index.html" title="gRPC Implementation">
+                    gRPC Implementation
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-cloud native">
+          <h3 id="category-cloud native">Cloud Native</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/cloud-native/cloud-cost-optimization/index.html" title="Cloud Cost Optimization">
+                    Cloud Cost Optimization
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/cloud-security-patterns/index.html" title="Cloud Security Patterns">
+                    Cloud Security Patterns
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/cloud-storage-design/index.html" title="Cloud Storage Design">
+                    Cloud Storage Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/container-security/index.html" title="Container Security">
+                    Container Security
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/edge-computing/index.html" title="Edge Computing">
+                    Edge Computing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/function-as-a-service/index.html" title="Function as a Service">
+                    Function as a Service
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/kubernetes-design-patterns/index.html" title="Kubernetes Design Patterns">
+                    Kubernetes Design Patterns
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/multi-cloud-strategy/index.html" title="Multi-Cloud Strategy">
+                    Multi-Cloud Strategy
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/serverless-architecture/index.html" title="Serverless Architecture">
+                    Serverless Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/cloud-native/service-mesh-architecture/index.html" title="Service Mesh Architecture">
+                    Service Mesh Architecture
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-real-time systems">
+          <h3 id="category-real-time systems">Real-Time Systems</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/real-time-systems/event-processing/index.html" title="Event Processing">
+                    Event Processing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/gaming-server-architecture/index.html" title="Gaming Server Architecture">
+                    Gaming Server Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/iot-architecture/index.html" title="IoT Architecture">
+                    IoT Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/live-streaming-architecture/index.html" title="Live Streaming Architecture">
+                    Live Streaming Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/pubsub-systems/index.html" title="Pub/Sub Systems">
+                    Pub/Sub Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/push-notification-systems/index.html" title="Push Notification Systems">
+                    Push Notification Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/real-time-analytics/index.html" title="Real-Time Analytics">
+                    Real-Time Analytics
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/real-time-data-processing/index.html" title="Real-Time Data Processing">
+                    Real-Time Data Processing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/stream-processing/index.html" title="Stream Processing">
+                    Stream Processing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/stream-processing_backup/index.html" title="Stream Processing">
+                    Stream Processing
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/real-time-systems/websocket-architecture/index.html" title="WebSocket Architecture">
+                    WebSocket Architecture
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-domain-specific">
+          <h3 id="category-domain-specific">Domain-Specific</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/domain-specific/authentication-systems/index.html" title="Authentication Systems">
+                    Authentication Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/booking-systems/index.html" title="Booking Systems">
+                    Booking Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/content-management-systems/index.html" title="Content Management Systems">
+                    Content Management Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/e-commerce-system-design/index.html" title="E-commerce System Design">
+                    E-commerce System Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/mobile-backend-architecture/index.html" title="Mobile Backend Architecture">
+                    Mobile Backend Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/payment-processing-systems/index.html" title="Payment Processing Systems">
+                    Payment Processing Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/recommendation-systems/index.html" title="Recommendation Systems">
+                    Recommendation Systems
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/search-engine-design/index.html" title="Search Engine Design">
+                    Search Engine Design
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/social-network-architecture/index.html" title="Social Network Architecture">
+                    Social Network Architecture
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/domain-specific/video-streaming-platforms/index.html" title="Video Streaming Platforms">
+                    Video Streaming Platforms
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+        
+        
+        <section class="category-section" aria-labelledby="category-protocols">
+          <h3 id="category-protocols">Protocols</h3>
+          
+            <ul>
+              
+                <li>
+                  <a href="./posts/protocols/json-web-tokens-jwt/index.html" title="JSON Web Tokens (JWT)">
+                    JSON Web Tokens (JWT)
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/protocols/kerberos-authentication-protocol/index.html" title="Kerberos authentication protocol">
+                    Kerberos authentication protocol
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/protocols/oauth/index.html" title="OAuth - Open Authorization">
+                    OAuth - Open Authorization
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/protocols/openid-connect-oidc/index.html" title="OpenID Connect (OIDC)">
+                    OpenID Connect (OIDC)
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/protocols/saml---xml-based-assertions/index.html" title="SAML - XML-based assertions">
+                    SAML - XML-based assertions
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="./posts/protocols/scim---restful-api-for-identity-management/index.html" title="SCIM - RESTful API for identity management">
+                    SCIM - RESTful API for identity management
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </section>
+      
+    </div>
+  
 </div>
+
 <style>
-  .listing-no-matching {
-    display: none;
+  .categories-container {
+    margin: 2rem 0;
+  }
+  
+  .category-section {
+    margin-bottom: 2rem;
+  }
+  
+  .category-section h3 {
+    margin-bottom: 1rem;
+  }
+  
+  .category-section ul {
+    list-style-type: none;
+    padding-left: 1rem;
+  }
+  
+  .category-section li {
+    margin: 0.5rem 0;
+  }
+  
+  .no-items {
+    color: #666;
+    font-style: italic;
+  }
+  
+  .error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 1rem;
+    border-radius: 4px;
   }
 </style>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
 </div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/system-design\.muthu\.co\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+});
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>“Copyright 2025, Muthukrishnan”</p>
+<p>Copyright 2025, Muthukrishnan</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

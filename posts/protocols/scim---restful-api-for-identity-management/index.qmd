@@ -1,0 +1,161 @@
+---
+title: "SCIM - RESTful API for identity management"
+categories: [ "Protocols" ]
+---
+
+System for Cross-domain Identity Management (SCIM) is a standardized protocol designed to simplify identity management in cloud-based applications and services. SCIM provides a RESTful API for automating the exchange of user identity information between identity domains, such as between an enterprise directory and a cloud application. This makes it easier to manage user provisioning, updates, and de-provisioning across multiple systems.
+
+
+## What is SCIM?
+
+SCIM is an open standard protocol for automating the management of user identities across different systems. It provides a common schema and RESTful API for creating, reading, updating, and deleting (CRUD) user identities and groups. SCIM is widely used in cloud environments to synchronize user data between identity providers (e.g., Active Directory) and service providers (e.g., SaaS applications).
+
+---
+
+## Why Use SCIM?
+
+Before SCIM, organizations had to rely on custom scripts or proprietary APIs to manage user identities across systems. This approach was error-prone, time-consuming, and difficult to maintain. SCIM solves these problems by providing:
+
+- **Standardization**: A common schema and API for identity management.
+- **Automation**: Reduces manual effort in provisioning and de-provisioning users.
+- **Interoperability**: Works across different identity providers and service providers.
+
+---
+
+## Core Components of SCIM
+
+SCIM consists of the following core components:
+
+1. **Schema**: Defines the structure of user and group resources.
+2. **RESTful API**: Provides endpoints for CRUD operations.
+3. **Protocol**: Specifies how identity data is exchanged.
+
+```{mermaid}
+graph TD
+    A[SCIM] --> B[Schema]
+    A --> C[RESTful API]
+    A --> D[Protocol]
+```
+
+---
+
+## SCIM RESTful API
+
+SCIM provides a RESTful API for managing user and group resources. Let’s explore its key aspects.
+
+### a. Resources
+SCIM defines two primary resources:
+
+- **User**: Represents an individual user.
+- **Group**: Represents a collection of users.
+
+Example of a SCIM User resource:
+```json
+{
+  "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
+  "id": "12345",
+  "userName": "john.doe@example.com",
+  "name": {
+    "givenName": "John",
+    "familyName": "Doe"
+  },
+  "emails": [
+    {
+      "value": "john.doe@example.com",
+      "type": "work"
+    }
+  ],
+  "active": true
+}
+```
+
+### b. Endpoints
+SCIM defines standard endpoints for managing resources:
+
+- `/Users`: For managing user resources.
+- `/Groups`: For managing group resources.
+
+Example endpoints:
+
+- `GET /Users`: Retrieve a list of users.
+- `POST /Users`: Create a new user.
+- `GET /Users/{id}`: Retrieve a specific user.
+- `PUT /Users/{id}`: Update a specific user.
+- `DELETE /Users/{id}`: Delete a specific user.
+
+### c. Operations
+SCIM supports the following CRUD operations:
+
+- **Create**: Add a new user or group.
+- **Read**: Retrieve user or group details.
+- **Update**: Modify user or group attributes.
+- **Delete**: Remove a user or group.
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant SCIMServer
+
+    Client->>SCIMServer: POST /Users (Create User)
+    SCIMServer->>Client: 201 Created
+    Client->>SCIMServer: GET /Users/{id} (Read User)
+    SCIMServer->>Client: 200 OK
+    Client->>SCIMServer: PUT /Users/{id} (Update User)
+    SCIMServer->>Client: 200 OK
+    Client->>SCIMServer: DELETE /Users/{id} (Delete User)
+    SCIMServer->>Client: 204 No Content
+```
+
+
+## SCIM Workflow
+
+The SCIM workflow typically involves the following steps:
+
+1. The **Identity Provider (IdP)** detects a change in user data (e.g., new user, updated attributes).
+2. The IdP sends a SCIM request to the **Service Provider (SP)** to synchronize the changes.
+3. The SP processes the request and updates its user directory.
+4. The SP sends a response back to the IdP to confirm the changes.
+
+```{mermaid}
+sequenceDiagram
+    participant IdentityProvider
+    participant ServiceProvider
+
+    IdentityProvider->>ServiceProvider: POST /Users (Create User)
+    ServiceProvider->>IdentityProvider: 201 Created
+    IdentityProvider->>ServiceProvider: PUT /Users/{id} (Update User)
+    ServiceProvider->>IdentityProvider: 200 OK
+    IdentityProvider->>ServiceProvider: DELETE /Users/{id} (Delete User)
+    ServiceProvider->>IdentityProvider: 204 No Content
+```
+
+
+## SCIM Use Cases
+
+SCIM is widely used in the following scenarios:
+
+- **User Provisioning**: Automatically create users in cloud applications when they are added to an enterprise directory.
+- **User Updates**: Synchronize changes to user attributes (e.g., name, email) across systems.
+- **User De-provisioning**: Automatically disable or delete users in cloud applications when they leave the organization.
+- **Group Management**: Synchronize group memberships across systems.
+
+```{mermaid}
+graph TD
+    A[SCIM Use Cases] --> B[User Provisioning]
+    A --> C[User Updates]
+    A --> D[User De-provisioning]
+    A --> E[Group Management]
+```
+
+---
+
+## SCIM Security Best Practices
+
+To ensure the security of SCIM implementations:
+
+- Use **HTTPS** to encrypt data in transit.
+- Authenticate SCIM requests using **OAuth 2.0** or **API tokens**.
+- Validate input data to prevent injection attacks.
+- Implement rate limiting to prevent abuse.
+- Regularly audit SCIM logs for suspicious activity.
+

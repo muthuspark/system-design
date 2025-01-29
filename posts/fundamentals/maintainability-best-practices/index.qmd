@@ -92,7 +92,7 @@ This diagram shows how modules A, B, and C interact, with Module D being a share
 
 ## 3. Consistent Coding Style
 
-Following a consistent coding style across your project is crucial. This improves readability and reduces cognitive load for developers working on the codebase. Utilize linters and formatters (like `black` for Python, `prettier` for JavaScript) to enforce consistency automatically.
+Following a consistent coding style across your project is important. This improves readability and reduces cognitive load for developers working on the codebase. Utilize linters and formatters (like `black` for Python, `prettier` for JavaScript) to enforce consistency automatically.
 
 **Python Style Guide Example**
 
@@ -282,7 +282,7 @@ Having other developers review your code before merging it into the main branch 
 
 ## 9. Refactoring
 
-Regularly refactoring your code—improving its structure and design without changing its functionality—is a crucial part of long-term maintainability. This helps to prevent technical debt from accumulating.
+Regularly refactoring your code—improving its structure and design without changing its functionality—is a important part of long-term maintainability. This helps to prevent technical debt from accumulating.
 
 **Example**
 
@@ -327,7 +327,7 @@ Employing appropriate design patterns can improve code structure, make it more r
 
 ## 11. Error Handling and Logging
 
-Robust error handling and comprehensive logging are crucial. They help to identify and debug problems quickly and efficiently. Use informative error messages and log important events to facilitate troubleshooting.
+Robust error handling and comprehensive logging are important. They help to identify and debug problems quickly and efficiently. Use informative error messages and log important events to facilitate troubleshooting.
 
 ## 12. Keep it Simple (KISS Principle)
 

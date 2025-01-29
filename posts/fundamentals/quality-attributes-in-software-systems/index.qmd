@@ -4,7 +4,7 @@ categories: [ "Fundamentals" ]
 ---
 
 
-Software development is more than just writing code that works; it's about building systems that meet specific quality attributes.  These attributes define the overall goodness of the software, impacting its usability, maintainability, and overall success. Understanding and prioritizing these attributes is crucial for delivering high-quality software that meets user needs and business objectives.  This post goes into the key quality attributes, their importance, and how to consider them throughout the software development lifecycle.
+Software development is more than just writing code that works; it's about building systems that meet specific quality attributes.  These attributes define the overall goodness of the software, impacting its usability, maintainability, and overall success. Understanding and prioritizing these attributes is important for delivering high-quality software that meets user needs and business objectives.  This post goes into the key quality attributes, their importance, and how to consider them throughout the software development lifecycle.
 
 ## Key Quality Attributes
 
@@ -14,7 +14,7 @@ We can categorize quality attributes into several key areas.  Let's explore some
 
 This refers to the software's ability to perform its intended functions correctly and efficiently.  Functionality is often described using use cases and requirements.  A functional requirement might be "The system shall allow users to create and manage their profiles."
 
-**Measuring Functionality:**  Testing, code reviews, and user acceptance testing (UAT) are crucial for assessing functionality.
+**Measuring Functionality:**  Testing, code reviews, and user acceptance testing (UAT) are important for assessing functionality.
 
 
 ### 2. Reliability
@@ -78,7 +78,7 @@ Usability focuses on how easy and intuitive the software is to use.  A usable sy
 
 Security refers to the ability of the software to protect itself and its data from unauthorized access, use, disclosure, disruption, modification, or destruction.
 
-**Measuring Security:** Penetration testing, security audits, and vulnerability assessments are crucial for evaluating security.
+**Measuring Security:** Penetration testing, security audits, and vulnerability assessments are important for evaluating security.
 
 
 ### 6. Maintainability

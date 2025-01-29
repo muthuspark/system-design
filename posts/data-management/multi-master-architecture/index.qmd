@@ -9,7 +9,7 @@ Multi-master architecture, also known as multi-primary or multi-leader architect
 
 ## Understanding the Fundamentals
 
-In a typical multi-master setup, multiple servers operate independently as masters, each capable of accepting and processing write requests.  Changes made on one master are then replicated to the other masters, ensuring data consistency across the system. This replication process is crucial, and the method employed significantly impacts the overall architecture's performance and consistency guarantees.
+In a typical multi-master setup, multiple servers operate independently as masters, each capable of accepting and processing write requests.  Changes made on one master are then replicated to the other masters, ensuring data consistency across the system. This replication process is important, and the method employed significantly impacts the overall architecture's performance and consistency guarantees.
 
 
 ### Advantages of Multi-Master Architecture

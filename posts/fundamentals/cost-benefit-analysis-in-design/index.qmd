@@ -3,7 +3,7 @@ title: "Cost-Benefit Analysis in Design"
 categories: [ "Fundamentals" ]
 ---
 
-Design isn't just about aesthetics; it's about solving problems effectively and efficiently. A crucial element often overlooked in the design process is the cost-benefit analysis (CBA). This systematic approach helps designers make informed decisions by weighing the costs against the benefits of different design choices. This post explores how to integrate CBA into your design workflow, demonstrating its value across various design disciplines.
+Design isn't just about aesthetics; it's about solving problems effectively and efficiently. A important element often overlooked in the design process is the cost-benefit analysis (CBA). This systematic approach helps designers make informed decisions by weighing the costs against the benefits of different design choices. This post explores how to integrate CBA into your design workflow, demonstrating its value across various design disciplines.
 
 ## What is Cost-Benefit Analysis in Design?
 

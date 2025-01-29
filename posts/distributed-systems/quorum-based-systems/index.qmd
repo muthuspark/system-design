@@ -7,7 +7,7 @@ Quorum systems are fundamental to the functioning of many distributed applicatio
 
 ## Understanding the Core Concept: Quorum
 
-At its heart, a quorum system is a collection of subsets (quorums) of a larger set of nodes (e.g., servers, replicas). The defining characteristic is that any two quorums must have at least one node in common. This seemingly simple requirement is crucial because it guarantees that if a decision is reached by one quorum, it automatically involves at least one member of any other quorum, facilitating consistency.
+At its heart, a quorum system is a collection of subsets (quorums) of a larger set of nodes (e.g., servers, replicas). The defining characteristic is that any two quorums must have at least one node in common. This seemingly simple requirement is important because it guarantees that if a decision is reached by one quorum, it automatically involves at least one member of any other quorum, facilitating consistency.
 
 Imagine a distributed database replicated across five servers (A, B, C, D, E). A simple quorum system might define quorums as any three servers. If a write operation obtains a quorum of (A, B, C), and a subsequent read operation obtains a quorum of (B, C, D), they share servers B and C, ensuring data consistency. If a quorum doesn't overlap, it opens the possibility of conflicting data versions.
 

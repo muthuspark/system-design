@@ -3,7 +3,7 @@ title: "Message Queue Architecture"
 categories: [ "Scalability" ]
 ---
 
-Message queues rovide a crucial layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this in-depth guide, we'll explore the intricacies of message queue architecture, covering key components, common use cases, and best practices.
+Message queues rovide a important layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this in-depth guide, we'll explore the intricacies of message queue architecture, covering key components, common use cases, and best practices.
 
 ## Understanding the Fundamentals
 
@@ -45,7 +45,7 @@ Let's delve into some more sophisticated aspects of message queue architecture:
 
 **3. Message Persistence:** Ensures that messages are not lost even if the broker goes down. This typically involves writing messages to a durable storage mechanism (e.g., a database).
 
-**4. Message Ordering:** Guarantees that messages are processed in the order they were sent. This is crucial in scenarios where the order matters (e.g., processing financial transactions). However, achieving strict ordering across multiple consumers can be challenging.
+**4. Message Ordering:** Guarantees that messages are processed in the order they were sent. This is important in scenarios where the order matters (e.g., processing financial transactions). However, achieving strict ordering across multiple consumers can be challenging.
 
 **5. Dead-Letter Queues (DLQ):** These are special queues that store messages that could not be processed successfully. They are essential for monitoring and troubleshooting failed message processing.
 

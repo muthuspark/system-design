@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -35,7 +69,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-ee5e052b81fc94e1f9bb89611f476562.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,6 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -148,635 +184,275 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Booking systems help in seamlessly managing appointments, reservations, and schedules. From simple appointment scheduling for a salon to complex airline reservation systems, these systems are vital for efficient operations and customer satisfaction. This post goes into the architecture, functionality, and key considerations of building and implementing robust booking systems.</p>
-<section id="understanding-the-core-components" class="level2">
-<h2 data-anchor-id="understanding-the-core-components">Understanding the Core Components</h2>
-<p>A typical booking system comprises several interconnected components:</p>
-<p><strong>1. User Interface (UI):</strong> This is the front-end that interacts directly with customers. It allows users to browse availability, select services or products, enter personal information, and make payments. The UI should be intuitive, user-friendly, and responsive across various devices.</p>
-<p><strong>2. Business Logic Layer:</strong> This layer handles the core booking logic, including validating user inputs, checking availability, managing reservations, and interacting with the data storage layer.</p>
-<p><strong>3. Data Storage Layer:</strong> This layer manages the persistence of data, including customer information, service offerings, pricing, and booking schedules. Common choices include relational databases (MySQL, PostgreSQL), NoSQL databases (MongoDB), or cloud-based solutions (AWS DynamoDB, Google Cloud Firestore).</p>
-<p><strong>4. Payment Gateway Integration:</strong> This component facilitates secure online payments. Integration with popular payment gateways like Stripe, PayPal, or Square is crucial for seamless transactions.</p>
-<p><strong>5. Calendar &amp; Scheduling Engine:</strong> The heart of the system, this component manages the availability of resources (appointments, rooms, vehicles, etc.) and ensures that no double-bookings occur. This often involves complex algorithms for handling overlapping bookings and different resource types.</p>
-<p><strong>6. Notifications &amp; Reminders:</strong> This component handles automated notifications and reminders to both customers and staff. Email, SMS, and push notifications are commonly used.</p>
-</section>
-<section id="architectural-diagrams" class="level2">
-<h2 data-anchor-id="architectural-diagrams">Architectural Diagrams</h2>
-<p>Let’s visualize the interactions between these components using Diagrams.</p>
-<p><strong>Simplified Architecture:</strong></p>
+<section id="decoding-the-complexity-of-booking-systems" class="level1">
+<h1>Decoding the Complexity of Booking Systems</h1>
+<p>Booking systems are the unsung heroes of modern commerce, silently orchestrating the scheduling of appointments, reservations, and bookings across diverse industries. From restaurants and salons to airlines and hotels, these systems manage crucial aspects of business operations. This post delves into the intricacies of booking systems, exploring their architecture, functionalities, and the technologies that power them.</p>
+<section id="architectural-overview" class="level2">
+<h2 data-anchor-id="architectural-overview">Architectural Overview</h2>
+<p>A typical booking system comprises several interconnected components working in harmony. The following mermaid diagram illustrates a simplified architecture:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
-    A[User Interface] --&gt; B(Business Logic Layer);
-    B --&gt; C{Data Storage Layer};
+    A[User Interface] --&gt; B(Booking Engine);
+    B --&gt; C{Database};
     B --&gt; D[Payment Gateway];
-    B --&gt; E(Calendar &amp; Scheduling Engine);
-    B --&gt; F[Notifications &amp; Reminders];
+    B --&gt; E[Calendar/Scheduler];
+    C --&gt; F[Reporting &amp; Analytics];
+    E --&gt; G[Notification System];
+    G --&gt; A;
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p><strong>More Detailed Architecture (with potential microservices):</strong></p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">graph LR
-    subgraph UI Layer
-        A[User Interface]
-    end
-    subgraph Business Logic Layer
-        B[Booking Service]
-        C[Payment Service]
-        D[Notification Service]
-    end
-    subgraph Data Layer
-        E[Customer Database]
-        F[Resource Database]
-        G[Booking Database]
-    end
-    A --&gt; B;
-    B --&gt; C;
-    B --&gt; D;
-    B --&gt; E;
-    B --&gt; F;
-    B --&gt; G;
-    C --&gt; H[Payment Gateway];
-    D --&gt; I[Notification Provider];
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<section id="database-schema" class="level3">
-<h3 data-anchor-id="database-schema">Database Schema</h3>
-<section id="overall-entity-relationship-overview" class="level4">
-<h4 data-anchor-id="overall-entity-relationship-overview">Overall Entity Relationship Overview:</h4>
-<p>The diagram below demonstrates how different entities in the booking system are interconnected, showing the flow of information and relationships between customers, resources, bookings, payments, and reviews.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">erDiagram
-    CUSTOMERS ||--o{ BOOKINGS : "makes"
-    CUSTOMERS ||--|| CUSTOMERPREFERENCES : "has"
-    CUSTOMERS ||--o{ PAYMENTS : "processes"
-    CUSTOMERS ||--o{ REVIEWS : "writes"
-    
-    RESOURCES ||--o{ BOOKINGS : "booked"
-    RESOURCES ||--o{ RESOURCEAVAILABILITY : "has"
-    
-    BOOKINGS ||--|| PAYMENTS : "associated with"
-    BOOKINGS ||--o{ REVIEWS : "generates"
-
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Let’s analyze each relationship in depth:</p>
-<ol type="1">
-<li>CUSTOMERS and BOOKINGS (||–o{)
+<p><strong>User Interface (UI):</strong> This is the front-end, interacting directly with the user. It allows users to browse availability, select their preferred options, and complete the booking process. Different interfaces might be needed for web, mobile, and even kiosk access.</p>
+<p><strong>Booking Engine:</strong> The core logic resides here. It handles requests from the UI, checks availability, processes payments, updates the calendar, and manages the overall booking workflow.</p>
+<p><strong>Database:</strong> This stores all pertinent data, including customer information, booking details, pricing, and resource availability. Database choices vary widely, from relational databases like MySQL or PostgreSQL to NoSQL solutions like MongoDB.</p>
+<p><strong>Payment Gateway:</strong> Integrates with payment processors (e.g., Stripe, PayPal) to securely handle transactions. Security is paramount, requiring compliance with industry standards (PCI DSS).</p>
+<p><strong>Calendar/Scheduler:</strong> Manages resource scheduling, ensuring no double-booking occurs. This component is especially crucial for managing time-sensitive resources.</p>
+<p><strong>Reporting &amp; Analytics:</strong> Provides insights into booking patterns, revenue generation, and other key metrics. This data is vital for business decision-making.</p>
+<p><strong>Notification System:</strong> Sends confirmations, reminders, and updates to both users and administrators. Methods include email, SMS, and in-app notifications.</p>
+</section>
+<section id="key-functionalities" class="level2">
+<h2 data-anchor-id="key-functionalities">Key Functionalities</h2>
+<p>Effective booking systems offer a range of crucial functionalities:</p>
 <ul>
-<li>Notation: <code>||--o{</code> means One-to-Many (Optional)</li>
-<li>Interpretation: One customer can make multiple bookings</li>
-<li>Example: A single customer might book a conference room, a car, and a hotel room</li>
-<li>The “makes” label emphasizes the customer’s role in creating bookings</li>
-</ul></li>
-<li>CUSTOMERS and CUSTOMERPREFERENCES (||–||)
-<ul>
-<li>Notation: <code>||--||</code> means One-to-One</li>
-<li>Interpretation: Each customer has exactly one preferences profile</li>
-<li>This allows storing additional, optional customer-specific information</li>
-<li>Example: Communication preferences, accessibility needs, language preferences</li>
-</ul></li>
-<li>CUSTOMERS and PAYMENTS (||–o{)
-<ul>
-<li>Notation: <code>||--o{</code> means One-to-Many (Optional)</li>
-<li>Interpretation: A customer can have multiple payment records</li>
-<li>Supports multiple transactions, refunds, or payment methods</li>
-<li>Example: A customer might have payments for different bookings over time</li>
-</ul></li>
-<li>CUSTOMERS and REVIEWS (||–o{)
-<ul>
-<li>Notation: <code>||--o{</code> means One-to-Many (Optional)</li>
-<li>Interpretation: A customer can write multiple reviews</li>
-<li>Allows customers to provide feedback on different bookings</li>
-<li>Example: Reviewing a hotel room, a car rental, and a conference facility</li>
-</ul></li>
-<li>RESOURCES and BOOKINGS (||–o{)
-<ul>
-<li>Notation: <code>||--o{</code> means One-to-Many (Optional)</li>
-<li>Interpretation: A single resource can be booked multiple times</li>
-<li>Supports multiple bookings for the same resource at different times</li>
-<li>Example: A conference room booked by different customers on different dates</li>
-</ul></li>
-<li>RESOURCES and RESOURCEAVAILABILITY (||–o{)
-<ul>
-<li>Notation: <code>||--o{</code> means One-to-Many (Optional)</li>
-<li>Interpretation: A resource can have multiple availability slots</li>
-<li>Allows granular tracking of resource availability</li>
-<li>Example: A car might have different available time slots across various dates</li>
-</ul></li>
-<li>BOOKINGS and PAYMENTS (||–||)
-<ul>
-<li>Notation: <code>||--||</code> means One-to-One</li>
-<li>Interpretation: Each booking has exactly one payment record</li>
-<li>Ensures financial tracking for each booking</li>
-<li>Example: A single payment corresponding to a specific booking</li>
-</ul></li>
-<li>BOOKINGS and REVIEWS (||–o{)
-<ul>
-<li>Notation: <code>||--o{</code> means One-to-Many (Optional)</li>
-<li>Interpretation: A single booking can generate multiple reviews</li>
-<li>Allows for detailed feedback mechanisms</li>
-<li>Example: Multiple team members reviewing a conference room booking</li>
-</ul></li>
-</ol>
-<p><strong>Key Design Principles:</strong></p>
-<ul>
-<li>Flexibility: Optional relationships allow for varied use cases</li>
-<li>Comprehensive Tracking: Connects customer actions across different system components</li>
-<li>Granular Detail: Enables tracking of preferences, payments, and reviews</li>
+<li><strong>Availability Checking:</strong> Real-time availability checks are essential to prevent overbooking.</li>
+<li><strong>Booking Management:</strong> Allows users and administrators to manage bookings efficiently, including modification and cancellation.</li>
+<li><strong>Payment Processing:</strong> Secure and reliable payment processing is critical for revenue generation.</li>
+<li><strong>Calendar Synchronization:</strong> Integration with existing calendars facilitates scheduling.</li>
+<li><strong>Customer Management:</strong> Manages customer profiles and history for personalized experiences.</li>
+<li><strong>Reporting &amp; Analytics:</strong> Comprehensive reporting helps monitor performance and identify areas for improvement.</li>
+<li><strong>Integration:</strong> Seamless integration with other business systems (e.g., CRM, POS) is often desired.</li>
 </ul>
 </section>
-<section id="detailed-customer-related-entities" class="level4">
-<h4 data-anchor-id="detailed-customer-related-entities">Detailed Customer-Related Entities:</h4>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">erDiagram
-    CUSTOMERS {
-        int customer_id PK
-        string first_name
-        string last_name
-        string email
-        string phone_number
-        string address
-        date date_of_birth
-        timestamp registration_date
-        string account_status
-    }
-
-    CUSTOMERPREFERENCES {
-        int preference_id PK
-        int customer_id FK
-        string communication_preference
-        string accessibility_needs
-        string language_preference
-        boolean marketing_opt_in
-    }
-
-    REVIEWS {
-        int review_id PK
-        int booking_id FK
-        int customer_id FK
-        int rating
-        string review_text
-        timestamp review_date
-    }
-
-    CUSTOMERS ||--|| CUSTOMERPREFERENCES : "has"
-    CUSTOMERS ||--o{ REVIEWS : "writes"
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Let’s break down each entity in detail:</p>
-<ol type="1">
-<li><p>CUSTOMERS Entity</p>
+<section id="code-example-python---availability-check" class="level2">
+<h2 data-anchor-id="code-example-python---availability-check">Code Example (Python - Availability Check)</h2>
+<p>A simplified Python function demonstrating availability checking:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_available(resource, date, time):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Checks resource availability."""</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Placeholder for database interaction - replace with actual database query</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  bookings <span class="op">=</span> get_bookings(resource, date)  </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> booking <span class="kw">in</span> bookings:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> booking[<span class="st">'start_time'</span>] <span class="op">&lt;=</span> time <span class="op">&lt;</span> booking[<span class="st">'end_time'</span>]:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="va">False</span>  <span class="co"># Not available</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="va">True</span>  <span class="co"># Available</span></span></code></pre></div>
+</section>
+<section id="technologies-used" class="level2">
+<h2 data-anchor-id="technologies-used">Technologies Used</h2>
+<p>The technologies employed in booking systems vary depending on the scale and complexity. Common choices include:</p>
 <ul>
-<li>Primary Key: <code>customer_id</code></li>
-<li>Attributes:
-<ul>
-<li><code>first_name</code> &amp; <code>last_name</code>: Basic identification</li>
-<li><code>email</code>: Unique contact method (likely used for login/communication)</li>
-<li><code>phone_number</code>: Alternative contact method</li>
-<li><code>address</code>: Customer’s physical address</li>
-<li><code>date_of_birth</code>: Optional demographic information</li>
-<li><code>registration_date</code>: Tracks when the customer joined the system</li>
-<li><code>account_status</code>: Manages account state (e.g., ACTIVE, SUSPENDED, INACTIVE)</li>
-</ul></li>
-</ul>
-<p>Purpose: Stores core customer information, serving as the primary identifier for all customer-related activities.</p></li>
-<li><p>CUSTOMERPREFERENCES Entity</p>
-<ul>
-<li>Primary Key: <code>preference_id</code></li>
-<li>Foreign Key: <code>customer_id</code> (links to CUSTOMERS table)</li>
-<li>Attributes:
-<ul>
-<li><code>communication_preference</code>: How the customer prefers to be contacted</li>
-<li><code>accessibility_needs</code>: Special requirements or accommodations</li>
-<li><code>language_preference</code>: Preferred language for communication</li>
-<li><code>marketing_opt_in</code>: Consent for marketing communications</li>
-</ul></li>
-</ul>
-<p>Purpose: Provides a flexible, extensible way to store additional customer-specific information without cluttering the main CUSTOMERS table.</p></li>
-<li><p>REVIEWS Entity</p>
-<ul>
-<li>Primary Key: <code>review_id</code></li>
-<li>Foreign Keys:
-<ul>
-<li><code>booking_id</code>: Links to the specific booking being reviewed</li>
-<li><code>customer_id</code>: Identifies the customer who wrote the review</li>
-</ul></li>
-<li>Attributes:
-<ul>
-<li><code>rating</code>: Numerical rating (typically 1-5)</li>
-<li><code>review_text</code>: Detailed feedback</li>
-<li><code>review_date</code>: Timestamp of the review</li>
-</ul></li>
-</ul>
-<p>Purpose: Captures customer feedback for specific bookings, supporting quality improvement and user guidance.</p></li>
-</ol>
-<p><strong>Relationships:</strong></p>
-<ol type="1">
-<li>CUSTOMERS ||–|| CUSTOMERPREFERENCES : “has”
-<ul>
-<li>One-to-One relationship</li>
-<li>Each customer has exactly one preferences profile</li>
-<li>Allows for detailed, optional customer-specific customization</li>
-</ul></li>
-<li>CUSTOMERS ||–o{ REVIEWS : “writes”
-<ul>
-<li>One-to-Many relationship</li>
-<li>A single customer can write multiple reviews</li>
-<li>Reviews are optional (o{)</li>
-</ul></li>
-</ol>
-<p><strong>Key Design Considerations:</strong></p>
-<ul>
-<li>Flexibility: Separate preferences table allows easy addition of new preference types</li>
-<li>Privacy: Sensitive information can be managed separately</li>
-<li>Performance: Indexed foreign keys support quick lookups</li>
-<li>Extensibility: Easy to add new attributes without schema modifications</li>
+<li><strong>Programming Languages:</strong> Python, Java, PHP, Node.js</li>
+<li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB, SQL Server</li>
+<li><strong>Frameworks:</strong> React, Angular, Vue.js (front-end), Spring, Django, Laravel (back-end)</li>
+<li><strong>Payment Gateways:</strong> Stripe, PayPal, Square</li>
+<li><strong>Cloud Platforms:</strong> AWS, Google Cloud, Azure</li>
 </ul>
 </section>
-<section id="booking-and-resource-entities" class="level4">
-<h4 data-anchor-id="booking-and-resource-entities">Booking and Resource Entities:</h4>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">erDiagram
-    RESOURCES {
-        int resource_id PK
-        string resource_type
-        string name
-        string description
-        int capacity
-        string location
-        string status
-        decimal rate_per_unit
-        string category
-    }
+<section id="summary" class="level2">
+<h2 data-anchor-id="summary">Summary</h2>
+<p>Booking systems are complex software solutions requiring careful planning and execution. Understanding their architecture, key functionalities, and the technologies involved is vital for successful implementation. This post provided a high-level overview, covering architectural components, key features, a code example, and relevant technologies. Further exploration into specific components and technologies is recommended for a deeper understanding.</p>
 
-    RESOURCEAVAILABILITY {
-        int availability_id PK
-        int resource_id FK
-        date date_of_availability
-        time start_time
-        time end_time
-        boolean is_available
-    }
 
-    BOOKINGS {
-        int booking_id PK
-        int customer_id FK
-        int resource_id FK
-        timestamp start_datetime
-        timestamp end_datetime
-        decimal total_cost
-        string booking_status
-        timestamp booking_date
-        string special_requests
-    }
-
-    RESOURCES ||--o{ RESOURCEAVAILABILITY : "has"
-    RESOURCES ||--o{ BOOKINGS : "booked"
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Let’s break down each entity in detail:</p>
-<ol type="1">
-<li><p>RESOURCES Entity</p>
-<ul>
-<li>Primary Key: <code>resource_id</code></li>
-<li>Comprehensive attributes for flexible resource management:
-<ul>
-<li><code>resource_type</code>: Categorizes the type of resource (e.g., ‘Room’, ‘Equipment’, ‘Vehicle’)</li>
-<li><code>name</code>: Specific identifier for the resource</li>
-<li><code>description</code>: Detailed information about the resource</li>
-<li><code>capacity</code>: Maximum number of users/items</li>
-<li><code>location</code>: Physical or virtual location</li>
-<li><code>status</code>: Current state of the resource (e.g., ‘AVAILABLE’, ‘MAINTENANCE’, ‘BOOKED’)</li>
-<li><code>rate_per_unit</code>: Pricing information</li>
-<li><code>category</code>: Further classification (e.g., ‘Conference Room’, ‘Small Meeting Room’)</li>
-</ul></li>
-</ul>
-<p>Purpose: Provides a flexible, generic system for managing different types of bookable resources.</p></li>
-<li><p>RESOURCEAVAILABILITY Entity</p>
-<ul>
-<li>Primary Key: <code>availability_id</code></li>
-<li>Foreign Key: <code>resource_id</code> (links to RESOURCES table)</li>
-<li>Attributes:
-<ul>
-<li><code>date_of_availability</code>: Specific date for availability</li>
-<li><code>start_time</code>: Beginning of available time slot</li>
-<li><code>end_time</code>: End of available time slot</li>
-<li><code>is_available</code>: Boolean flag for current availability status</li>
-</ul></li>
-</ul>
-<p>Purpose: Tracks granular availability of resources, allowing for precise scheduling and time-based booking management.</p></li>
-<li><p>BOOKINGS Entity</p>
-<ul>
-<li>Primary Key: <code>booking_id</code></li>
-<li>Foreign Keys:
-<ul>
-<li><code>customer_id</code>: Links to the customer making the booking</li>
-<li><code>resource_id</code>: Identifies the booked resource</li>
-</ul></li>
-<li>Attributes:
-<ul>
-<li><code>start_datetime</code>: Beginning of the booking</li>
-<li><code>end_datetime</code>: End of the booking</li>
-<li><code>total_cost</code>: Total price for the booking</li>
-<li><code>booking_status</code>: Current state of the booking (e.g., ‘PENDING’, ‘CONFIRMED’, ‘COMPLETED’, ‘CANCELLED’)</li>
-<li><code>booking_date</code>: When the booking was created</li>
-<li><code>special_requests</code>: Additional requirements or notes</li>
-</ul></li>
-</ul>
-<p>Purpose: Captures the core details of a specific booking, linking customers to resources.</p></li>
-</ol>
-<p><strong>Relationships:</strong></p>
-<ol type="1">
-<li>RESOURCES ||–o{ RESOURCEAVAILABILITY : “has”
-<ul>
-<li>One-to-Many relationship</li>
-<li>A single resource can have multiple availability slots</li>
-<li>Allows for complex scheduling scenarios</li>
-</ul></li>
-<li>RESOURCES ||–o{ BOOKINGS : “booked”
-<ul>
-<li>One-to-Many relationship</li>
-<li>A single resource can be booked multiple times</li>
-<li>Supports multiple bookings across different time slots</li>
-</ul></li>
-</ol>
-<p><strong>Design Flexibility and Use Cases:</strong></p>
-<ul>
-<li><p>Diverse Resource Management</p>
-<ul>
-<li>Conference Room (capacity: 20, location: Building A)</li>
-<li>Projector Equipment (capacity: 1, status: AVAILABLE)</li>
-<li>Company Vehicle (capacity: 5, category: Shuttle)</li>
-</ul></li>
-<li><p>Granular Availability Tracking</p>
-<ul>
-<li>Conference Room can be available:
-<ul>
-<li>Monday 9 AM - 11 AM</li>
-<li>Monday 2 PM - 5 PM</li>
-<li>Tuesday 10 AM - 3 PM</li>
-</ul></li>
-<li>Each time slot can be independently managed</li>
-</ul></li>
-<li><p>Booking Complexity</p>
-<ul>
-<li>Customer books Conference Room</li>
-<li>Specific start and end times</li>
-<li>Includes special requests</li>
-<li>Tracked with unique booking status</li>
-</ul></li>
-</ul>
-<p><strong>Key Design Considerations:</strong></p>
-<ul>
-<li>Flexibility: Support for various resource types</li>
-<li>Granularity: Detailed availability and booking tracking</li>
-<li>Performance: Indexed foreign keys for quick lookups</li>
-<li>Extensibility: Easy to add new resource types or attributes</li>
-</ul>
-<p><strong>Advanced Scenarios:</strong></p>
-<ul>
-<li>Dynamic Pricing: <code>rate_per_unit</code> allows for different pricing strategies</li>
-<li>Complex Scheduling: Granular availability tracking</li>
-<li>Resource Utilization Analysis: Track bookings across different resource types</li>
-</ul>
-<p><strong>Potential Queries and Use Cases:</strong></p>
-<ul>
-<li>Find available resources for a specific time slot</li>
-<li>Calculate resource utilization rates</li>
-<li>Generate booking reports</li>
-<li>Implement dynamic availability management</li>
-</ul>
 </section>
-<section id="payments-and-audit-log" class="level4">
-<h4 data-anchor-id="payments-and-audit-log">Payments and Audit Log:</h4>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">erDiagram
-    PAYMENTS {
-        int payment_id PK
-        int booking_id FK
-        int customer_id FK
-        decimal payment_amount
-        string payment_method
-        string payment_status
-        timestamp transaction_date
-    }
-
-    AUDITLOG {
-        int log_id PK
-        string table_name
-        int record_id
-        string action
-        timestamp action_timestamp
-        int user_id
-        json old_data
-        json new_data
-    }
-
-    BOOKINGS ||--|| PAYMENTS : "has"
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-<p>Let’s break down each entity in detail:</p>
-<ol type="1">
-<li>PAYMENTS Entity
-<ul>
-<li>Primary Key: <code>payment_id</code></li>
-<li>Foreign Keys:
-<ul>
-<li><code>booking_id</code>: Links to the specific booking associated with the payment</li>
-<li><code>customer_id</code>: Identifies the customer making the payment</li>
-</ul></li>
-<li>Attributes:
-<ul>
-<li><code>payment_amount</code>: Total amount paid</li>
-<li><code>payment_method</code>: How the payment was made (e.g., credit card, bank transfer, cash)</li>
-<li><code>payment_status</code>: Current state of the payment</li>
-<li><code>transaction_date</code>: Timestamp of the payment</li>
-</ul></li>
-</ul></li>
-</ol>
-<p><strong>Key Characteristics of Payments:</strong></p>
-<ul>
-<li>Detailed Financial Tracking</li>
-<li>Multiple Payment Status Options:
-<ul>
-<li>PENDING: Payment initiated but not completed</li>
-<li>COMPLETED: Successful payment</li>
-<li>FAILED: Payment unsuccessful</li>
-<li>REFUNDED: Payment reversed</li>
-</ul></li>
-</ul>
-<p><strong>Example Payment Scenarios:</strong></p>
-<ul>
-<li><p>Successful Booking Payment:</p>
-<ul>
-<li>Booking ID: 1234</li>
-<li>Customer ID: 5678</li>
-<li>Amount: $250.00</li>
-<li>Method: Credit Card</li>
-<li>Status: COMPLETED</li>
-<li>Date: 2024-01-25 14:30:45</li>
-</ul></li>
-<li><p>Partial Refund:</p>
-<ul>
-<li>Booking ID: 1235</li>
-<li>Customer ID: 5679</li>
-<li>Amount: $100.00 (partial refund)</li>
-<li>Method: Original Credit Card</li>
-<li>Status: REFUNDED</li>
-<li>Date: 2024-01-26 10:15:22</li>
-</ul></li>
-<li><p>AUDITLOG Entity</p>
-<ul>
-<li>Primary Key: <code>log_id</code></li>
-<li>Attributes:
-<ul>
-<li><code>table_name</code>: Which database table was modified</li>
-<li><code>record_id</code>: Specific record that was changed</li>
-<li><code>action</code>: Type of database operation (INSERT, UPDATE, DELETE)</li>
-<li><code>action_timestamp</code>: Exact time of the change</li>
-<li><code>user_id</code>: Who made the change</li>
-<li><code>old_data</code>: Previous state of the record (JSON)</li>
-<li><code>new_data</code>: New state of the record (JSON)</li>
-</ul></li>
-</ul></li>
-</ul>
-<p><strong>Audit Log Use Cases:</strong></p>
-<ul>
-<li><p>Security Monitoring</p>
-<ul>
-<li>Table: CUSTOMERS</li>
-<li>Record ID: 5678</li>
-<li>Action: UPDATE</li>
-<li>Timestamp: 2024-01-25 15:22:11</li>
-<li>User ID: 42 (Admin)</li>
-<li>Old Data: { email: “old@example.com” }</li>
-<li>New Data: { email: “new@example.com” } ```</li>
-</ul></li>
-<li><p>Compliance and Tracking</p>
-<ul>
-<li>Track all changes to critical system data</li>
-<li>Provide a complete history of system modifications</li>
-<li>Support forensic analysis if needed</li>
-</ul></li>
-</ul>
-<p><strong>Relationship:</strong></p>
-<ul>
-<li>BOOKINGS ||–|| PAYMENTS : “has”
-<ul>
-<li>One-to-One relationship</li>
-<li>Each booking has exactly one payment record</li>
-<li>Ensures financial traceability</li>
-</ul></li>
-</ul>
-<p><strong>Design Considerations:</strong></p>
-<ul>
-<li>Flexibility: JSON storage allows for capturing complex data changes</li>
-<li>Performance: Indexed foreign keys for quick lookups</li>
-<li>Comprehensive Tracking: Captures who, what, when, and how of system changes</li>
-</ul>
-<p><strong>Advanced Use Cases:</strong></p>
-<ol type="1">
-<li>Compliance Reporting
-<ul>
-<li>Track all customer data modifications</li>
-<li>Maintain a complete system change history</li>
-<li>Support regulatory requirements</li>
-</ul></li>
-<li>Debugging and Troubleshooting
-<ul>
-<li>Reconstruct system state at any point</li>
-<li>Understand sequence of changes</li>
-<li>Identify potential system issues</li>
-</ul></li>
-</ol>
-<p><strong>Potential Queries:</strong></p>
-<ul>
-<li>Retrieve all changes made to a specific record</li>
-<li>Find all actions by a particular user</li>
-<li>Analyze system modifications over time</li>
-</ul>
-<p><strong>Technological Benefits:</strong></p>
-<ul>
-<li>Non-repudiation: Prove who made what changes</li>
-<li>Data Integrity: Complete change tracking</li>
-<li>Forensic Capabilities: Detailed system modification history</li>
-</ul>
-<p><strong>Limitations and Considerations:</strong></p>
-<ul>
-<li>Performance Impact: Logging every change can be resource-intensive</li>
-<li>Storage Requirements: Audit logs can grow quickly</li>
-<li>Privacy Concerns: Sensitive data tracking</li>
-</ul>
-</section>
-</section>
-</section>
-<section id="key-considerations-for-building-booking-systems" class="level2">
-<h2 data-anchor-id="key-considerations-for-building-booking-systems">Key Considerations for Building Booking Systems</h2>
-<ul>
-<li><strong>Scalability:</strong> The system should be able to handle a growing number of bookings and users without performance degradation.</li>
-<li><strong>Security:</strong> Protecting user data and ensuring secure payment processing are paramount.</li>
-<li><strong>Reliability:</strong> The system should be highly available and fault-tolerant.</li>
-<li><strong>Maintainability:</strong> The codebase should be well-structured and easy to maintain and update.</li>
-<li><strong>Integration:</strong> Seamless integration with other systems (CRM, accounting software) is often required.</li>
-<li><strong>User Experience:</strong> A user-friendly interface is critical for customer satisfaction.</li>
-</ul>
-
-
 </section>
 
 </main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/system-design\.muthu\.co\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+});
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>“Copyright 2025, Muthukrishnan”</p>
+<p>Copyright 2025, Muthukrishnan</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

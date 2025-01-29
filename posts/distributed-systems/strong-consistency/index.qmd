@@ -21,7 +21,7 @@ Another important aspect is **monotonic reads**. If a client reads a value `x`, 
 
 ### The Monotonic Writes Guarantee
 
-The **monotonic writes** guarantee ensures that write operations from a client are observed in the order they were issued. This is crucial for maintaining data integrity and preventing unexpected behavior.
+The **monotonic writes** guarantee ensures that write operations from a client are observed in the order they were issued. This is important for maintaining data integrity and preventing unexpected behavior.
 
 ### The Consistent Reads Guarantee
 

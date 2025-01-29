@@ -30,7 +30,7 @@ fetch('/api/v1/files/upload', {
 .catch(error => console.error('Error uploading file:', error));
 ```
 
-**3. Metadata Layer:** This layer stores crucial information about the data, such as file names, sizes, timestamps, ownership, and access permissions.  It's crucial for efficient data retrieval and management.  NoSQL databases like Cassandra or MongoDB are often used for their scalability and flexibility.
+**3. Metadata Layer:** This layer stores important information about the data, such as file names, sizes, timestamps, ownership, and access permissions.  It's important for efficient data retrieval and management.  NoSQL databases like Cassandra or MongoDB are often used for their scalability and flexibility.
 
 **4. Data Layer:** This is the core of the system, responsible for storing the actual data.  It leverages various techniques for data redundancy, availability, and durability, including replication and erasure coding.  Consideration must be given to storage mediums (HDDs, SSDs), data partitioning, and efficient data access strategies.
 
@@ -83,7 +83,7 @@ graph LR
 
 ## Scalability and Performance
 
-Scalability and performance are paramount considerations.  Horizontal scaling (adding more servers) is crucial for handling increasing data volumes and user traffic.  Efficient data access mechanisms, such as content delivery networks (CDNs), caching, and optimized data retrieval algorithms, contribute significantly to performance.
+Scalability and performance are paramount considerations.  Horizontal scaling (adding more servers) is important for handling increasing data volumes and user traffic.  Efficient data access mechanisms, such as content delivery networks (CDNs), caching, and optimized data retrieval algorithms, contribute significantly to performance.
 
 
 ## Security

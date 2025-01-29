@@ -27,7 +27,7 @@ This diagram shows the active node (A) handling user requests and accessing a sh
 
 ## Implementing Active-Passive: Key Components
 
-A successful active-passive setup relies on several crucial components:
+A successful active-passive setup relies on several important components:
 
 -   **Shared Storage:** Both the active and passive nodes must access a shared storage system (e.g., SAN, NAS, cloud storage) for data persistence. This ensures data consistency between nodes during a failover. Changes made by the active node are replicated to the passive node in real-time or near real-time.
 
@@ -35,7 +35,7 @@ A successful active-passive setup relies on several crucial components:
 
 -   **Failover Mechanism:** This is the core of the active-passive system. It's responsible for detecting the failure of the active node and automatically promoting the passive node to the active role. This can involve scripting, specialized HA software, or cloud-based solutions.
 
--   **Synchronization:** Crucial for data consistency. This mechanism keeps the passive node synchronized with the active node's data. Techniques include database replication (e.g., MySQL replication, PostgreSQL streaming replication), file synchronization tools (e.g., rsync), or distributed file systems.
+-   **Synchronization:** important for data consistency. This mechanism keeps the passive node synchronized with the active node's data. Techniques include database replication (e.g., MySQL replication, PostgreSQL streaming replication), file synchronization tools (e.g., rsync), or distributed file systems.
 
 -   **IP Address Management:** Static IP addresses are commonly used. During failover, the IP address is typically switched from the failed active node to the newly active node, ensuring continued accessibility. This might involve using a virtual IP address (VIP) managed by a load balancer or failover system.
 

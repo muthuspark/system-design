@@ -12,7 +12,7 @@ Before diving into the specifics, let's clarify some key terms:
 
 * **Data Mart:** A smaller, focused subset of a data warehouse, designed to cater to the specific needs of a single department or business unit.  Think of it as a specialized slice of the larger data warehouse.
 
-* **ETL (Extract, Transform, Load):**  The crucial process of acquiring data from various sources (Extract), cleaning, transforming, and converting it into a consistent format (Transform), and finally loading it into the data warehouse (Load).
+* **ETL (Extract, Transform, Load):**  The important process of acquiring data from various sources (Extract), cleaning, transforming, and converting it into a consistent format (Transform), and finally loading it into the data warehouse (Load).
 
 * **OLTP (Online Transaction Processing):** Systems that handle real-time transactions, such as online orders or banking transactions.  These are typically not optimized for complex analytical queries.
 
@@ -45,7 +45,7 @@ The ETL process is the heart of any data warehouse.  It's a complex, multi-step 
 
 **1. Extract:**  This stage involves retrieving data from various sources, including databases, flat files, cloud storage, and APIs.  This often requires specialized connectors and tools.
 
-**2. Transform:** This is arguably the most crucial stage.  Data transformation involves:
+**2. Transform:** This is arguably the most important stage.  Data transformation involves:
 
 * **Data Cleaning:** Handling missing values, inconsistencies, and errors.
 * **Data Conversion:**  Transforming data types and formats to ensure consistency.

@@ -3,7 +3,7 @@ title: "RESTful API Design"
 categories: [ "API Design" ]
 ---
 
-Designing a robust and scalable RESTful API is crucial for modern application development. This comprehensive guide explores the core principles of RESTful API design, providing practical examples and best practices to help you build efficient and maintainable APIs.
+Designing a robust and scalable RESTful API is important for modern application development. This comprehensive guide explores the core principles of RESTful API design, providing practical examples and best practices to help you build efficient and maintainable APIs.
 
 ## Understanding RESTful Principles
 
@@ -15,7 +15,7 @@ Representational State Transfer (REST) is an architectural style for building we
 
 -   **Cacheable:** Responses can be cached to improve performance.
 
--   **Uniform Interface:** This is arguably the most crucial principle. It emphasizes a consistent way to interact with resources using standard HTTP methods.
+-   **Uniform Interface:** This is arguably the most important principle. It emphasizes a consistent way to interact with resources using standard HTTP methods.
 
 -   **Layered System:** The client doesn't need to know whether it's interacting directly with the server or an intermediary.
 
@@ -35,10 +35,10 @@ RESTful APIs heavily rely on standard HTTP methods to define the actions perform
 
 Resources are the core of a RESTful API. They represent the data your API manages (e.g., users, products, orders). URLs should clearly identify these resources using nouns, typically pluralized:
 
-- `/users` (Represents a collection of users)
-- `/users/123` (Represents a specific user with ID 123)
-- `/products` (Represents a collection of products)
-- `/products/456/reviews` (Reviews for a specific product)
+-   `/users` (Represents a collection of users)
+-   `/users/123` (Represents a specific user with ID 123)
+-   `/products` (Represents a collection of products)
+-   `/products/456/reviews` (Reviews for a specific product)
 
 Avoid verbs in your URLs. The HTTP method indicates the action.
 
@@ -47,25 +47,30 @@ Avoid verbs in your URLs. The HTTP method indicates the action.
 Let's consider a simple API for managing users. The API supports basic CRUD (Create, Read, Update, Delete) operations for managing user data.
 
 ### Base URL
-```
+
+```         
 https://api.example.com/v1
 ```
 
 ### Authentication
+
 All requests require a Bearer token in the Authorization header:
-```bash
+
+``` bash
 -H "Authorization: Bearer your_api_token_here"
 ```
 
 ### API Endpoints
 
 #### 1. Create User
+
 Creates a new user in the system.
 
 **Endpoint:** `POST /users`
 
 **Request:**
-```bash
+
+``` bash
 curl -X POST https://api.example.com/v1/users \
   -H "Authorization: Bearer your_api_token_here" \
   -H "Content-Type: application/json" \
@@ -78,7 +83,8 @@ curl -X POST https://api.example.com/v1/users \
 ```
 
 **Response:** (201 Created)
-```json
+
+``` json
 {
   "id": "usr_123456789",
   "name": "John Doe",
@@ -90,18 +96,21 @@ curl -X POST https://api.example.com/v1/users \
 ```
 
 #### 2. Get User
+
 Retrieves user information by ID.
 
 **Endpoint:** `GET /users/{user_id}`
 
 **Request:**
-```bash
+
+``` bash
 curl -X GET https://api.example.com/v1/users/usr_123456789 \
   -H "Authorization: Bearer your_api_token_here"
 ```
 
 **Response:** (200 OK)
-```json
+
+``` json
 {
   "id": "usr_123456789",
   "name": "John Doe",
@@ -114,18 +123,21 @@ curl -X GET https://api.example.com/v1/users/usr_123456789 \
 ```
 
 #### 3. List Users
+
 Retrieves a paginated list of users.
 
 **Endpoint:** `GET /users`
 
 **Request:**
-```bash
+
+``` bash
 curl -X GET "https://api.example.com/v1/users?page=1&limit=10" \
   -H "Authorization: Bearer your_api_token_here"
 ```
 
 **Response:** (200 OK)
-```json
+
+``` json
 {
   "users": [
     {
@@ -151,12 +163,14 @@ curl -X GET "https://api.example.com/v1/users?page=1&limit=10" \
 ```
 
 #### 4. Update User
+
 Updates existing user information.
 
 **Endpoint:** `PUT /users/{user_id}`
 
 **Request:**
-```bash
+
+``` bash
 curl -X PUT https://api.example.com/v1/users/usr_123456789 \
   -H "Authorization: Bearer your_api_token_here" \
   -H "Content-Type: application/json" \
@@ -167,7 +181,8 @@ curl -X PUT https://api.example.com/v1/users/usr_123456789 \
 ```
 
 **Response:** (200 OK)
-```json
+
+``` json
 {
   "id": "usr_123456789",
   "name": "John Smith",
@@ -179,12 +194,14 @@ curl -X PUT https://api.example.com/v1/users/usr_123456789 \
 ```
 
 #### 5. Delete User
+
 Removes a user from the system.
 
 **Endpoint:** `DELETE /users/{user_id}`
 
 **Request:**
-```bash
+
+``` bash
 curl -X DELETE https://api.example.com/v1/users/usr_123456789 \
   -H "Authorization: Bearer your_api_token_here"
 ```
@@ -196,7 +213,8 @@ curl -X DELETE https://api.example.com/v1/users/usr_123456789 \
 The API returns appropriate HTTP status codes and error messages:
 
 #### Example Error Response (400 Bad Request)
-```json
+
+``` json
 {
   "error": {
     "code": "invalid_request",
@@ -209,39 +227,19 @@ The API returns appropriate HTTP status codes and error messages:
 }
 ```
 
-Common Status Codes:
-- 200: Success
-- 201: Created
-- 204: No Content
-- 400: Bad Request
-- 401: Unauthorized
-- 403: Forbidden
-- 404: Not Found
-- 429: Too Many Requests
-- 500: Internal Server Error
+Common Status Codes: - 200: Success - 201: Created - 204: No Content - 400: Bad Request - 401: Unauthorized - 403: Forbidden - 404: Not Found - 429: Too Many Requests - 500: Internal Server Error
 
 ### Rate Limiting
 
-The API implements rate limiting per API token:
-- 1000 requests per hour
-- Rate limit information is included in response headers:
-  ```
-  X-RateLimit-Limit: 1000
-  X-RateLimit-Remaining: 999
-  X-RateLimit-Reset: 1706198400
-  ```
+The API implements rate limiting per API token: - 1000 requests per hour - Rate limit information is included in response headers: `X-RateLimit-Limit: 1000   X-RateLimit-Remaining: 999   X-RateLimit-Reset: 1706198400`
 
 ### Query Parameters
 
-Common query parameters for list endpoints:
-- `page`: Page number (default: 1)
-- `limit`: Items per page (default: 10, max: 100)
-- `sort`: Sort field (e.g., "created_at")
-- `order`: Sort order ("asc" or "desc")
-- `search`: Search term for filtering results
+Common query parameters for list endpoints: - `page`: Page number (default: 1) - `limit`: Items per page (default: 10, max: 100) - `sort`: Sort field (e.g., "created_at") - `order`: Sort order ("asc" or "desc") - `search`: Search term for filtering results
 
 Example:
-```bash
+
+``` bash
 curl -X GET "https://api.example.com/v1/users?page=2&limit=20&sort=created_at&order=desc&search=john" \
   -H "Authorization: Bearer your_api_token_here"
 ```
@@ -314,7 +312,7 @@ digraph G {
 
 ## Versioning Your API
 
-As your API evolves, versioning is crucial to avoid breaking changes for existing clients. Common strategies include:
+As your API evolves, versioning is important to avoid breaking changes for existing clients. Common strategies include:
 
 -   **URL Versioning:** `/v1/users`, `/v2/users`
 -   **Header Versioning:** `X-API-Version: 1`

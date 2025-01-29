@@ -7,7 +7,7 @@ Failure detection is important in building robust and reliable systems. Whether 
 
 ## Types of Failures
 
-Before exploring detection methods, it's crucial to understand the different types of failures we aim to detect:
+Before exploring detection methods, it's important to understand the different types of failures we aim to detect:
 
 -   **Hardware Failures:** These encompass issues like disk drive crashes, CPU malfunctions, or power outages. These are often abrupt and catastrophic.
 

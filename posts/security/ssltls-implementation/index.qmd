@@ -7,7 +7,7 @@ Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), ar
 
 ## The SSL/TLS Handshake: A Step-by-Step Guide
 
-The heart of SSL/TLS is the handshake, a crucial negotiation process establishing a secure connection. Let's visualize it with a Diagram:
+The heart of SSL/TLS is the handshake, a important negotiation process establishing a secure connection. Let's visualize it with a Diagram:
 
 ```{mermaid}
 graph TB
@@ -36,7 +36,7 @@ J --> K[Close];
 -   **Server's random number:** Another random value used for key generation.
 -   **Server's certificate:** A digital certificate containing the server's public key and other identifying information.
 
-**3. Certificate:** The server sends its digital certificate, which is crucial for authentication. This certificate, issued by a Certificate Authority (CA), verifies the server's identity.
+**3. Certificate:** The server sends its digital certificate, which is important for authentication. This certificate, issued by a Certificate Authority (CA), verifies the server's identity.
 
 **4. Key Exchange:** This step involves the exchange of information needed to generate a shared secret key. The exact mechanism depends on the chosen cipher suite. Common key exchange algorithms include:
 

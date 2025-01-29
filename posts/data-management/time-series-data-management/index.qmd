@@ -19,7 +19,7 @@ Unlike relational data, which focuses on structured relationships between entiti
 Effectively managing time-series data demands addressing several challenges:
 
 -   **Data Storage:** Traditional relational databases struggle with the volume and velocity of time-series data. Specialized databases are often needed.
--   **Data Ingestion:** Real-time ingestion and efficient handling of high-velocity data streams are crucial.
+-   **Data Ingestion:** Real-time ingestion and efficient handling of high-velocity data streams are important.
 -   **Data Querying:** Efficient querying of large datasets with time-based filters and aggregations is vital for analysis.
 -   **Data Processing:** Handling missing data, outliers, and noisy signals requires sophisticated preprocessing and cleaning techniques.
 -   **Data Visualization:** Effective visualization of time-series data is essential for understanding trends and patterns.
@@ -127,7 +127,7 @@ After the data is processed, it is stored in a **Time-Series Database (DB)**. Th
 - System performance metrics tracked over time.
 - Logs with time-specific events.
 
-A time-series database allows efficient querying and analysis of data based on time ranges, which is crucial for understanding trends and patterns.
+A time-series database allows efficient querying and analysis of data based on time ranges, which is important for understanding trends and patterns.
 
 ### 5. **Analytics**
 Once data is stored, it can be used for various **analytics** purposes:
@@ -151,4 +151,4 @@ Efficient querying is paramount. Time-series databases offer specialized query l
 
 ## Visualization and Exploration
 
-Effective visualization is crucial for understanding trends and patterns. Tools like Grafana are commonly used to visualize time-series data from various sources, including the databases mentioned above.
+Effective visualization is important for understanding trends and patterns. Tools like Grafana are commonly used to visualize time-series data from various sources, including the databases mentioned above.

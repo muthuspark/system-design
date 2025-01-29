@@ -9,7 +9,7 @@ The cloud offers unparalleled scalability and flexibility, but it also introduce
 
 ## 1. Shared Responsibility Model
 
-Before diving into specific patterns, understanding the shared responsibility model is crucial. This model dictates how security responsibilities are divided between the cloud provider (e.g., AWS, Azure, GCP) and the customer.  The provider is responsible for the security *of* the cloud (infrastructure, physical security, etc.), while the customer is responsible for security *in* the cloud (data, applications, configurations, etc.).
+Before diving into specific patterns, understanding the shared responsibility model is important. This model dictates how security responsibilities are divided between the cloud provider (e.g., AWS, Azure, GCP) and the customer.  The provider is responsible for the security *of* the cloud (infrastructure, physical security, etc.), while the customer is responsible for security *in* the cloud (data, applications, configurations, etc.).
 
 ```{mermaid}
 graph LR
@@ -108,7 +108,7 @@ DLP mechanisms protect sensitive data from unauthorized access or exfiltration. 
 
 ## 6. Key Management Service (KMS)
 
-KMS provides centralized management of encryption keys, improving security and simplifying key lifecycle management. This pattern is crucial for protecting data both at rest and in transit.
+KMS provides centralized management of encryption keys, improving security and simplifying key lifecycle management. This pattern is important for protecting data both at rest and in transit.
 
 
 ## 7. Intrusion Detection and Prevention Systems (IDPS)

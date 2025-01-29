@@ -53,7 +53,7 @@ This setup provides redundancy and fault tolerance - if one server fails, the ot
 
 While Active-Active offers substantial benefits, implementing it effectively presents several challenges:
 
--   **Data Synchronization:** Maintaining data consistency across both active systems is crucial. Techniques like database replication and message queues are vital for ensuring data integrity.
+-   **Data Synchronization:** Maintaining data consistency across both active systems is important. Techniques like database replication and message queues are vital for ensuring data integrity.
 -   **Session Management:** Properly managing user sessions across both servers is essential to prevent user data loss or inconsistencies. Sticky sessions (where a user is always directed to the same server) can be problematic in Active-Active environments, requiring sophisticated session management strategies.
 -   **Increased Complexity:** Managing an Active-Active setup is inherently more complex than an Active-Passive setup, requiring advanced configuration and monitoring.
 -   **Cost:** The increased hardware and software requirements can lead to higher initial investment costs.
@@ -62,7 +62,7 @@ While Active-Active offers substantial benefits, implementing it effectively pre
 
 Several key factors influence the implementation of an Active-Active setup:
 
--   **Load Balancing:** A robust load balancer is crucial for distributing traffic efficiently and ensuring failover. Features like health checks and weighted routing are essential.
+-   **Load Balancing:** A robust load balancer is important for distributing traffic efficiently and ensuring failover. Features like health checks and weighted routing are essential.
 -   **Database Replication:** Consistent data replication between the databases of both systems is critical for maintaining data integrity. Techniques like synchronous and asynchronous replication offer different trade-offs between consistency and performance.
 -   **Session Management Strategies:** Employing techniques like distributed caching or session replication helps avoid sticky sessions and ensures seamless user experience across servers.
 -   **Monitoring and Alerting:** Comprehensive monitoring and alerting systems are essential for detecting and responding to potential issues promptly.

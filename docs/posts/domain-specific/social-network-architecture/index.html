@@ -148,7 +148,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Social networks have become ubiquitous in modern life, connecting billions of people worldwide. But behind the seamless user experience lies a complex and sophisticated architecture. This post goes into the key components and design considerations involved in building a scalable and robust social network.</p>
+<p>Social networks have fundamentally changed how billions of people connect, share, and interact online. Building a scalable social platform requires careful consideration of complex technical challenges like handling massive user data, enabling real-time interactions, managing content delivery, and ensuring high availability across global regions.</p>
+<p>This article will explore the key architectural components and design decisions needed to build a social network that can support millions of users. We’ll examine core features like news feeds, friend relationships, content storage, and notification systems, along with scalability, performance, and reliability considerations that shape modern social platforms.</p>
 <section id="the-core-components" class="level2">
 <h2 data-anchor-id="the-core-components">The Core Components</h2>
 <p>A typical social network architecture can be broken down into several key components:</p>
@@ -330,6 +331,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data-flow" class="level2">
 <h2 data-anchor-id="data-flow">Data Flow</h2>
+<p>The data flow architectures shows information moves between different system components. This section examines the critical paths data takes from user interactions to storage, processing, and delivery - including post creation, content distribution, and real-time updates. Understanding these flows is essential for building a responsive and reliable social platform that can handle millions of concurrent users while maintaining data consistency and low latency.</p>
 <section id="user-signupauthentication" class="level3">
 <h3 data-anchor-id="user-signupauthentication">1. User Signup/Authentication</h3>
 <p>The user registers via the frontend (mobile/web), which makes an API call to the user service to store user details. The user’s session is created using JWT.</p>
@@ -1116,7 +1118,7 @@ ul.task-list li input[type="checkbox"] {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>“Copyright 2025, Muthukrishnan”</p>
+<p>Copyright 2025, Muthukrishnan</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

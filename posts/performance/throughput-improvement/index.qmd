@@ -7,7 +7,7 @@ Throughput, the rate at which a system processes data or completes tasks, is a c
 
 ## Identifying Bottlenecks: The Foundation of Improvement
 
-Before implementing any optimization, identifying the bottlenecks in your system is crucial. A bottleneck is any part of the system that significantly restricts the overall throughput. These could be anything from database queries to network latency to inefficient algorithms.
+Before implementing any optimization, identifying the bottlenecks in your system is important. A bottleneck is any part of the system that significantly restricts the overall throughput. These could be anything from database queries to network latency to inefficient algorithms.
 
 **Common Bottleneck Areas:**
 
@@ -88,7 +88,7 @@ asyncio.run(main())
 -   **Increased CPU Power:** More processing power allows for faster execution of tasks.
 -   **More RAM:** Sufficient RAM prevents swapping to disk, which drastically slows down performance.
 -   **Faster Storage:** Solid-state drives (SSDs) offer significantly faster read/write speeds compared to traditional hard disk drives (HDDs).
--   **Network Upgrades:** Improved network bandwidth and reduced latency are crucial for systems that heavily rely on network communication.
+-   **Network Upgrades:** Improved network bandwidth and reduced latency are important for systems that heavily rely on network communication.
 
 ### 4. Network Optimization
 

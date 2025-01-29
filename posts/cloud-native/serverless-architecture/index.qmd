@@ -98,7 +98,7 @@ Major cloud providers offer serverless platforms:
 
 ## Monitoring and Logging in Serverless
 
-Effective monitoring and logging are crucial for debugging and performance optimization. Cloud providers offer built-in tools, providing insights into function execution times, errors, and resource consumption.
+Effective monitoring and logging are important for debugging and performance optimization. Cloud providers offer built-in tools, providing insights into function execution times, errors, and resource consumption.
 
 
 

@@ -1,0 +1,97 @@
+---
+title: "Kerberos authentication protocol"
+categories: [ "Protocols" ]
+---
+
+Kerberos is a network authentication protocol that allows nodes to prove their identities to one another over a non-secure network. It's a powerful tool important for securing many modern systems, offering strong authentication and authorization capabilities. This post will delve into the intricacies of Kerberos, exploring its architecture, mechanisms, and the reasons behind its widespread adoption.
+
+## The Challenge: Secure Communication in an Insecure World
+
+Before understanding Kerberos, let's consider the problem it solves. In a networked environment, how do two systems securely authenticate each other without sending passwords across the wire in plain text? This is precisely the challenge Kerberos addresses. Sending passwords unencrypted opens the door to eavesdropping and man-in-the-middle attacks.
+
+## System Overview: Key Distribution Center (KDC) at the Heart
+
+Kerberos employs a trusted third party, known as the Key Distribution Center (KDC), to manage and distribute encryption keys. The KDC consists of two main components:
+
+-   **Authentication Server (AS):** Issues initial tickets granting access to the Ticket Granting Service (TGS).
+-   **Ticket Granting Service (TGS):** Issues tickets granting access to specific services.
+
+The basic architecture is illustrated below:
+
+```{mermaid}
+graph LR
+    Client[Client] --> AS[Authentication Server];
+    AS --> Client;
+    Client --> TGS[Ticket Granting Service];
+    TGS --> Client;
+    Client --> Service[Service];
+    Service --> Client;
+    subgraph KDC
+        AS
+        TGS
+    end
+```
+
+## Detailed Design: The Kerberos Ticket-Granting Process
+
+The Kerberos authentication process is a multi-step exchange involving the client, the KDC, and the service. Let's break down the key steps:
+
+**Step 1: Client Requests a Ticket-Granting Ticket (TGT)**
+
+The client initiates the authentication process by sending a request to the AS. This request includes the client's identity and a timestamp.
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant AS
+    Client->>AS: Authentication Request (ID, Timestamp)
+    activate AS
+    AS->>Client: TGT (Encrypted with Client's Long-Term Key)
+    deactivate AS
+```
+
+**Step 2: Client Obtains a Service Ticket**
+
+The client, possessing the TGT, now requests a service ticket from the TGS for the desired service. This request includes the TGT, the service's name, and a timestamp.
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant TGS
+    Client->>TGS: Service Ticket Request (TGT, Service Name, Timestamp)
+    activate TGS
+    TGS->>Client: Service Ticket (Encrypted with Service's Key)
+    deactivate TGS
+```
+
+**Step 3: Client Authenticates to the Service**
+
+The client presents the service ticket to the desired service. The service decrypts the ticket using its key, verifying the client's identity and granting access.
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant Service
+    Client->>Service: Service Ticket, Authenticator (Encrypted with Service's Key)
+    activate Service
+    Service->>Client: Success/Failure
+    deactivate Service
+```
+
+## Implementation Insights: Underlying Cryptography
+
+Kerberos relies heavily on symmetric-key cryptography. Each principal (client, service, and KDC) possesses a secret key. The KDC uses these keys to encrypt and decrypt tickets, ensuring confidentiality and integrity. Commonly used algorithms include AES and DES.
+
+## Evaluation and Trade-offs: Strengths and Limitations
+
+**Strengths:**
+
+-   **Strong Authentication:** Provides mutual authentication, protecting both the client and the service.
+-   **Ticket-Based System:** Avoids sending passwords over the network in clear text.
+-   **Scalability:** Well-suited for large networks with many clients and services.
+
+**Limitations:**
+
+-   **KDC Single Point of Failure:** The KDC's availability is critical for the entire system. Careful redundancy and failover mechanisms are essential.
+-   **Complexity:** The protocol's complexity can make it challenging to implement and manage.
+-   **Clock Synchronization:** Requires reasonably accurate clock synchronization between clients and the KDC.

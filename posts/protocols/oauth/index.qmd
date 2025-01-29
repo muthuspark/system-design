@@ -1,0 +1,155 @@
+---
+title: "OAuth - Open Authorization"
+categories: [ "Protocols" ]
+---
+
+OAuth (Open Authorization) is an open-standard authorization protocol that allows third-party applications to access user data without exposing their credentials. It is widely used in modern web applications to enable secure and seamless integration between services. In this blog post, we will dive deep into the OAuth protocol, its components, and workflows, and use diagrams to visualize the different aspects of OAuth.
+
+## 1. What is OAuth?
+
+OAuth is an authorization framework that enables applications to obtain limited access to user accounts on an HTTP service, such as Facebook, GitHub, or Google. It works by delegating user authentication to the service that hosts the user account and authorizing third-party applications to access the user account.
+
+OAuth is not an authentication protocol (that's OpenID Connect), but rather a way to grant access to resources without sharing passwords.
+
+## 2. Why OAuth?
+
+Before OAuth, applications often required users to share their credentials (username and password) to access their data. This approach had several drawbacks: - **Security Risks**: Sharing passwords with third-party apps is risky. - **Limited Control**: Users couldn’t control what data the app could access. - **Revocation Challenges**: Users couldn’t easily revoke access without changing their password.
+
+OAuth solves these problems by providing a secure and standardized way to grant access to resources.
+
+## 3. OAuth Roles
+
+OAuth defines four primary roles:
+
+1.  **Resource Owner**: The user who owns the data and can grant access to it.
+2.  **Client**: The application requesting access to the user’s data.
+3.  **Resource Server**: The server hosting the protected resources (e.g., Google Drive, GitHub).
+4.  **Authorization Server**: The server that authenticates the user and issues access tokens.
+
+```{mermaid}
+graph TD
+    A[Resource Owner] -->|Grants Access| B[Client]
+    B -->|Requests Token| C[Authorization Server]
+    C -->|Issues Token| B
+    B -->|Access Resource| D[Resource Server]
+```
+
+## 4. OAuth Workflow
+
+The OAuth workflow involves the following steps:
+
+1.  The **Client** requests authorization from the **Resource Owner**.
+2.  The **Resource Owner** grants authorization.
+3.  The **Client** receives an **Authorization Grant**.
+4.  The **Client** requests an **Access Token** from the **Authorization Server**.
+5.  The **Authorization Server** issues an **Access Token**.
+6.  The **Client** uses the **Access Token** to access the **Resource Server**.
+
+```{mermaid}
+sequenceDiagram
+    participant ResourceOwner
+    participant Client
+    participant AuthorizationServer
+    participant ResourceServer
+
+    ResourceOwner->>Client: Grants Authorization
+    Client->>AuthorizationServer: Requests Access Token
+    AuthorizationServer->>Client: Issues Access Token
+    Client->>ResourceServer: Accesses Resource with Token
+    ResourceServer->>Client: Returns Resource
+```
+
+## 5. OAuth Grant Types
+
+OAuth supports multiple grant types to accommodate different use cases. Let’s explore the most common ones.
+
+### a. Authorization Code Grant
+
+This is the most secure and widely used grant type. It involves a two-step process: 1. The client redirects the user to the authorization server to obtain an authorization code. 2. The client exchanges the authorization code for an access token.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User->>Client: Requests Access
+    Client->>AuthorizationServer: Redirects User for Authorization
+    AuthorizationServer->>User: Prompts for Consent
+    User->>AuthorizationServer: Grants Consent
+    AuthorizationServer->>Client: Redirects with Authorization Code
+    Client->>AuthorizationServer: Exchanges Code for Access Token
+    AuthorizationServer->>Client: Issues Access Token
+```
+
+### b. Implicit Grant
+
+This grant type is designed for browser-based or mobile apps. It directly returns an access token without the intermediate authorization code step.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User->>Client: Requests Access
+    Client->>AuthorizationServer: Redirects User for Authorization
+    AuthorizationServer->>User: Prompts for Consent
+    User->>AuthorizationServer: Grants Consent
+    AuthorizationServer->>Client: Redirects with Access Token
+```
+
+### c. Resource Owner Password Credentials Grant
+
+This grant type is used when the user trusts the client with their credentials. The client sends the username and password directly to the authorization server to obtain an access token.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User->>Client: Provides Credentials
+    Client->>AuthorizationServer: Sends Credentials for Token
+    AuthorizationServer->>Client: Issues Access Token
+```
+
+### d. Client Credentials Grant
+
+This grant type is used for machine-to-machine (M2M) communication. The client authenticates itself and requests an access token without user involvement.
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant AuthorizationServer
+
+    Client->>AuthorizationServer: Authenticates and Requests Token
+    AuthorizationServer->>Client: Issues Access Token
+```
+
+## 6. OAuth Tokens
+
+OAuth uses two types of tokens: - **Access Token**: A short-lived token used to access resources. - **Refresh Token**: A long-lived token used to obtain a new access token when the current one expires.
+
+```{mermaid}
+graph TD
+    A[Access Token] -->|Expires| B[Refresh Token]
+    B -->|Requests New Token| C[Authorization Server]
+    C -->|Issues New Token| A
+```
+
+## 7. OAuth Security Best Practices
+
+To ensure the security of OAuth implementations:
+
+-   Use HTTPS for all communication.
+-   Use short-lived access tokens and long-lived refresh tokens.
+-   Validate redirect URIs to prevent open redirect attacks.
+-   Use PKCE (Proof Key for Code Exchange) for public clients.
+-   Regularly rotate client secrets.
+
+## 8. Summary
+
+OAuth is a powerful and flexible protocol that enables secure authorization in modern applications. By understanding its components, workflows, and grant types, developers can implement OAuth effectively and securely. The Mermaid diagrams provided in this post should help visualize the concepts and make them easier to grasp.
+
+Whether you're building a new application or integrating with third-party services, OAuth is an essential tool in your security toolkit.

@@ -1,0 +1,147 @@
+---
+title: "OpenID Connect (OIDC)"
+categories: [ "Protocols" ]
+---
+
+OpenID Connect (OIDC) is an identity layer built on top of the OAuth 2.0 protocol. It enables clients to verify the identity of users based on the authentication performed by an authorization server and to obtain basic profile information about the user in an interoperable and REST-like manner. OIDC is widely used for Single Sign-On (SSO) and user authentication in modern web and mobile applications.
+
+In this blog post, we will explore the OpenID Connect protocol in detail, including its components, workflows, and key concepts.
+
+## What is OpenID Connect?
+
+OpenID Connect (OIDC) is an authentication protocol that allows applications to verify the identity of users based on the authentication performed by an authorization server. It extends OAuth 2.0 by introducing an **ID Token**, which is a JSON Web Token (JWT) that contains information about the authenticated user.
+
+OIDC is widely used for: - **Single Sign-On (SSO)**: Users can log in once and access multiple applications. - **User Authentication**: Applications can verify the identity of users. - **Profile Information**: Applications can retrieve basic user profile information.
+
+## How OIDC Extends OAuth 2.0
+
+OAuth 2.0 is primarily an **authorization** protocol, while OIDC adds an **authentication** layer on top of it. Here’s how OIDC extends OAuth 2.0: - Introduces the **ID Token** for user authentication. - Adds the **UserInfo endpoint** to retrieve user profile information. - Standardizes the authentication process.
+
+```{mermaid}
+graph TD
+    A[OAuth 2.0] -->|Authorization| B[Access Tokens]
+    A -->|Extended by| C[OpenID Connect]
+    C -->|Authentication| D[ID Tokens]
+    C -->|User Profile| E[UserInfo Endpoint]
+```
+
+## Key Components of OIDC
+
+OIDC introduces several key components: 1. **ID Token**: A JWT that contains information about the authenticated user. 2. **UserInfo Endpoint**: A RESTful endpoint that returns claims about the user. 3. **Discovery Endpoint**: Provides metadata about the OIDC provider. 4. **Dynamic Client Registration**: Allows clients to register with the OIDC provider dynamically.
+
+```{mermaid}
+graph TD
+    A[OpenID Connect] --> B[ID Token]
+    A --> C[UserInfo Endpoint]
+    A --> D[Discovery Endpoint]
+    A --> E[Dynamic Client Registration]
+```
+
+## OIDC Workflow
+
+The OIDC workflow involves the following steps: 1. The **Client** redirects the user to the **Authorization Server** for authentication. 2. The user authenticates and grants consent. 3. The **Authorization Server** issues an **ID Token** and optionally an **Access Token**. 4. The **Client** can use the **Access Token** to call the **UserInfo Endpoint** for additional user information.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User->>Client: Requests Access
+    Client->>AuthorizationServer: Redirects User for Authentication
+    AuthorizationServer->>User: Prompts for Login
+    User->>AuthorizationServer: Authenticates and Grants Consent
+    AuthorizationServer->>Client: Redirects with ID Token (and Access Token)
+    Client->>AuthorizationServer: Requests UserInfo (optional)
+    AuthorizationServer->>Client: Returns UserInfo
+```
+
+## ID Tokens and UserInfo Endpoint
+
+### ID Token
+
+The ID Token is a JWT that contains claims about the authenticated user. Example claims include: - `sub` (subject): A unique identifier for the user. - `iss` (issuer): The URL of the authorization server. - `aud` (audience): The client ID of the application. - `exp` (expiration): The expiration time of the token.
+
+```{mermaid}
+graph TD
+    A[ID Token] --> B[Header]
+    A --> C[Payload]
+    A --> D[Signature]
+    C --> E[Claims: sub, iss, aud, exp, etc.]
+```
+
+### UserInfo Endpoint
+
+The UserInfo endpoint is a RESTful API that returns additional claims about the user. The client accesses it using the **Access Token**.
+
+```{mermaid}
+sequenceDiagram
+    participant Client
+    participant AuthorizationServer
+
+    Client->>AuthorizationServer: Requests UserInfo with Access Token
+    AuthorizationServer->>Client: Returns UserInfo (e.g., name, email, profile)
+```
+
+## OIDC Flows
+
+OIDC supports multiple flows to accommodate different types of clients and use cases.
+
+### a. Authorization Code Flow
+
+This is the most secure and widely used flow. It involves two steps: 1. The client obtains an **Authorization Code**. 2. The client exchanges the code for an **ID Token** and **Access Token**.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User->>Client: Requests Access
+    Client->>AuthorizationServer: Redirects User for Authentication
+    AuthorizationServer->>User: Prompts for Login
+    User->>AuthorizationServer: Authenticates and Grants Consent
+    AuthorizationServer->>Client: Redirects with Authorization Code
+    Client->>AuthorizationServer: Exchanges Code for ID Token and Access Token
+    AuthorizationServer->>Client: Issues ID Token and Access Token
+```
+
+### b. Implicit Flow
+
+This flow is designed for browser-based applications. It directly returns the **ID Token** and optionally the **Access Token** without the intermediate authorization code step.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User->>Client: Requests Access
+    Client->>AuthorizationServer: Redirects User for Authentication
+    AuthorizationServer->>User: Prompts for Login
+    User->>AuthorizationServer: Authenticates and Grants Consent
+    AuthorizationServer->>Client: Redirects with ID Token (and Access Token)
+```
+
+### c. Hybrid Flow
+
+This flow combines elements of the Authorization Code and Implicit flows. It returns an **ID Token** and an **Authorization Code** in the initial response.
+
+```{mermaid}
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthorizationServer
+
+    User->>Client: Requests Access
+    Client->>AuthorizationServer: Redirects User for Authentication
+    AuthorizationServer->>User: Prompts for Login
+    User->>AuthorizationServer: Authenticates and Grants Consent
+    AuthorizationServer->>Client: Redirects with ID Token and Authorization Code
+    Client->>AuthorizationServer: Exchanges Code for Access Token
+    AuthorizationServer->>Client: Issues Access Token
+```
+
+## OIDC Security Best Practices
+
+To ensure the security of OIDC implementations: - Use HTTPS for all communication. - Validate the `iss` and `aud` claims in the ID Token. - Use short-lived ID Tokens and refresh tokens. - Implement PKCE (Proof Key for Code Exchange) for public clients. - Regularly rotate client secrets.

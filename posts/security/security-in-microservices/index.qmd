@@ -13,7 +13,7 @@ Unlike monolithic applications, microservices communicate extensively with each 
 
 * **Increased Attack Surface:**  Each microservice represents a potential entry point for attackers. A vulnerability in a single service can compromise the entire system.
 
-* **Data Exposure:**  Microservices often handle sensitive data.  Ensuring data is protected throughout its lifecycle, across various services, is crucial.
+* **Data Exposure:**  Microservices often handle sensitive data.  Ensuring data is protected throughout its lifecycle, across various services, is important.
 
 * **API Security:**  Microservices rely heavily on APIs for communication.  Securing these APIs from unauthorized access and malicious attacks is paramount.
 
@@ -66,7 +66,7 @@ Protecting data at rest and in transit is essential:
 
 ### 3. Infrastructure Security
 
-Securing the underlying infrastructure is crucial:
+Securing the underlying infrastructure is important:
 
 * **Container Security:**  Use secure container images and implement runtime security measures (e.g., SELinux, AppArmor).
 
@@ -77,7 +77,7 @@ Securing the underlying infrastructure is crucial:
 
 ### 4. Security Monitoring and Logging
 
-Effective monitoring and logging are crucial for detecting and responding to security incidents:
+Effective monitoring and logging are important for detecting and responding to security incidents:
 
 * **Centralized Logging:**  Aggregate logs from all microservices into a centralized logging system for easier analysis.
 

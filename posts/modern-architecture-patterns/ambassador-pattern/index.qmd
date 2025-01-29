@@ -83,7 +83,7 @@ This simplified example shows how the Ambassador intercepts requests, performs a
 
 ## Drawbacks of the Ambassador Pattern
 
-* **Single Point of Failure:** A failure in the Ambassador can render all backend services inaccessible.  Proper monitoring, load balancing, and failover mechanisms are crucial.
+* **Single Point of Failure:** A failure in the Ambassador can render all backend services inaccessible.  Proper monitoring, load balancing, and failover mechanisms are important.
 
 * **Increased Complexity:** Introducing an additional layer of abstraction increases the overall system complexity.  Careful design and management are essential to prevent issues.
 

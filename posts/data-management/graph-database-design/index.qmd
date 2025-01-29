@@ -17,7 +17,7 @@ Before diving into design specifics, let's review the fundamental components of 
 
 ## Designing Your Graph Schema: A Step-by-Step Guide
 
-Designing a robust graph schema is crucial for performance and maintainability. Here's a structured approach:
+Designing a robust graph schema is important for performance and maintainability. Here's a structured approach:
 
 **1. Identify Entities and Relationships:**
 
@@ -80,7 +80,7 @@ Consider the directionality of your relationships. Is the relationship unidirect
 
 **5. Consider Data Partitioning and Indexing:**
 
-For large graphs, partitioning your data across multiple servers is essential for scalability. Appropriate indexing strategies are also crucial for efficient query performance. This often involves creating indexes on frequently queried properties.
+For large graphs, partitioning your data across multiple servers is essential for scalability. Appropriate indexing strategies are also important for efficient query performance. This often involves creating indexes on frequently queried properties.
 
 **Example: Modeling a Knowledge Graph**
 

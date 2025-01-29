@@ -21,7 +21,7 @@ graph LR
     G --> H[Index Database];
 ```
 
-This diagram illustrates the basic crawler workflow. Seed URLs (starting points like popular websites) are fed into the crawler. The crawler fetches pages, parses them (extracts text and metadata), extracts links for further crawling, and finally, indexes the content for future retrieval. Error handling is crucial to manage issues like broken links and server errors.
+This diagram illustrates the basic crawler workflow. Seed URLs (starting points like popular websites) are fed into the crawler. The crawler fetches pages, parses them (extracts text and metadata), extracts links for further crawling, and finally, indexes the content for future retrieval. Error handling is important to manage issues like broken links and server errors.
 
 ## 2. Indexing: Organizing the Web's Data
 
@@ -41,7 +41,7 @@ results = set(inverted_index["python"]) & set(inverted_index["programming"])
 print(results) # Output: {'document1.html'}
 ```
 
--   **Document Storage:** Storing the actual content of the pages (or at least crucial parts) to display search results.
+-   **Document Storage:** Storing the actual content of the pages (or at least important parts) to display search results.
 -   **Metadata Storage:** Storing additional information about each page, such as title, author, date, etc., improving search result relevance and presentation.
 
 ## 3. Query Processing and Ranking: Delivering Relevant Results

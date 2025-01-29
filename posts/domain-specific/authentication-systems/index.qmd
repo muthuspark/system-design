@@ -94,7 +94,7 @@ graph LR
 
 Various protocols handle the actual communication and verification process during authentication. Some notable ones include:
 
--   **[OAuth 2.0](https://oauth.net/2/):** An authorization framework, not strictly an authentication protocol, but crucial for securing access to resources on behalf of a user.
+-   **[OAuth 2.0](https://oauth.net/2/):** An authorization framework, not strictly an authentication protocol, but important for securing access to resources on behalf of a user.
 -   **[OpenID Connect (OIDC)](https://openid.net/connect/):** Built on top of OAuth 2.0, providing a standardized way to authenticate users and obtain user information.
 -   **[SAML (Security Assertion Markup Language)](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language):** Used primarily in enterprise environments for single sign-on (SSO) across multiple applications.
 

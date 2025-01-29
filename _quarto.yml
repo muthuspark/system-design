@@ -25,7 +25,9 @@ website:
 
 format:
   html:
-    theme: litera
+    theme: 
+      light: litera
+      dark: solar
     css: styles.css
     mermaid:
       theme: neutral
