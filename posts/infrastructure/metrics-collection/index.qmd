@@ -28,7 +28,8 @@ Let's consider a software application. Possible KPIs could be:
 -   **Error Rate:** The number of errors encountered per unit of time or per request.
 -   **User Engagement:** The number of active users, average session duration, and frequency of usage.
 
-Selecting the right KPIs requires careful consideration of your specific needs and priorities. Avoid collecting too many metrics, as this can lead to analysis paralysis. Focus on the metrics that provide the most valuable insights.
+Selecting the right KPIs requires careful consideration of your specific needs and priorities. Avoid collecting too many metrics, as this can lead to analysis paralysis. Focus on the metrics that provide the most insights.
+
 
 ## Methods for Metrics Collection: A Variety of Approaches
 
@@ -36,7 +37,8 @@ There are several methods for collecting metrics, each with its strengths and we
 
 -   **Application Performance Monitoring (APM) Tools:** These tools provide real-time insights into the performance of your applications, allowing you to identify and address bottlenecks. Examples include Datadog, New Relic, and Dynatrace. These typically collect metrics through agents embedded in your application.
 
--   **Log Analysis:** Examining application logs can provide valuable insights into errors, performance issues, and user behavior. Tools like ELK stack (Elasticsearch, Logstash, Kibana) are commonly used for log aggregation and analysis.
+-   **Log Analysis:** Examining application logs can provide insights into errors, performance issues, and user behavior.
+ Tools like ELK stack (Elasticsearch, Logstash, Kibana) are commonly used for log aggregation and analysis.
 
 -   **Database Monitoring:** Monitoring your database performance is important for ensuring the availability and responsiveness of your application. Tools like Prometheus and Grafana can be used to monitor database metrics such as query execution time, connection pool usage, and storage space utilization.
 

@@ -113,7 +113,8 @@ Once bottlenecks have been identified, several strategies can be employed to res
 
 * **Hardware Upgrades:**  Increasing CPU, memory, or disk I/O capacity can alleviate resource bottlenecks.
 
-* **Software Optimization:** Improving algorithms, reducing database query times, and optimizing code can enhance performance.
+* **Software Optimization:** Improving algorithms, reducing database query times, and optimizing code can improve performance.
+
 
 * **Process Improvements:** Streamlining workflows, automating tasks, and improving communication can reduce process bottlenecks.
 

@@ -71,7 +71,8 @@ The optimized version uses list comprehension for significantly faster execution
 
 Usability focuses on how easy and intuitive the software is to use.  A usable system is easy to learn, efficient to use, and pleasant to interact with.
 
-**Measuring Usability:**  Usability testing with real users, heuristic evaluation, and user surveys provide valuable insights.
+**Measuring Usability:** Usability testing with real users, heuristic evaluation, and user surveys provide insights.
+
 
 
 ### 5. Security

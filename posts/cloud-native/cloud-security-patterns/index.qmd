@@ -124,7 +124,8 @@ A WAF protects web applications from common attacks such as SQL injection, cross
 
 ## 9. Logging and Monitoring
 
-Comprehensive logging and monitoring are critical for detecting and responding to security incidents.  Centralized logging platforms and security information and event management (SIEM) systems provide valuable insights into system activity.
+Comprehensive logging and monitoring are critical for detecting and responding to security incidents.  Centralized logging platforms and security information and event management (SIEM) systems provide insights into system activity.
+
 
 
 ## 10. Secrets Management

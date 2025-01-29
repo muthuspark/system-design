@@ -15,7 +15,8 @@ Think of it as a translator.  The frontend speaks a specific language (e.g., req
 This approach offers several significant advantages:
 
 * **Improved Frontend Performance:** BFFs reduce the amount of data transferred between the backend and the frontend by only sending the necessary information.  This leads to faster load times and a better user experience.
-* **Simplified Frontend Development:**  Frontends deal with a simpler, more cohesive API, abstracting away the complexity of multiple backend services. This allows developers to focus on the frontend logic rather than backend intricacies.
+* **Simplified Frontend Development:** Frontends deal with a simpler API, abstracting away the complexity of multiple backend services.
+ This allows developers to focus on the frontend logic rather than backend intricacies.
 * **Enhanced Frontend Autonomy:**  Each frontend can have its own dedicated BFF, allowing for independent evolution and scaling without affecting other clients.
 * **Improved Security:**  BFFs can implement specific security measures tailored to the needs of each frontend, reducing the attack surface.
 

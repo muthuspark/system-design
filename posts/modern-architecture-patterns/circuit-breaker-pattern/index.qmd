@@ -3,7 +3,8 @@ title: "Circuit Breaker Pattern"
 categories: [ "Modern Architecture Patterns" ]
 ---
 
-The Circuit Breaker pattern is a powerful tool in distributed systems for handling failures gracefully and preventing cascading failures. It's especially valuable when dealing with external services or APIs that might be unreliable or temporarily unavailable. Instead of repeatedly trying to access a failing service and potentially overwhelming your system, the circuit breaker monitors the service's health and intervenes to protect your application.
+The Circuit Breaker pattern is a powerful tool in distributed systems for handling failures gracefully and preventing cascading failures. It's especially important when dealing with external services or APIs that might be unreliable or temporarily unavailable.
+ Instead of repeatedly trying to access a failing service and potentially overwhelming your system, the circuit breaker monitors the service's health and intervenes to protect your application.
 
 ## How the Circuit Breaker Works
 

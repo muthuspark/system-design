@@ -3,7 +3,8 @@ title: "Zero Trust Architecture"
 categories: [ "Security" ]
 ---
 
-The modern network landscape is constantly evolving, with increasingly complex threats emerging daily. Traditional perimeter-based security models, which rely on a "trust but verify" approach, are proving inadequate in this environment. Enter Zero Trust Architecture (ZTA), a security framework that shifts the paradigm from implicit trust to explicit verification. This post will look at ZTA in detail, examining its core principles, components, benefits, and implementation considerations.
+The modern network landscape is constantly evolving, with increasingly complex threats emerging daily. Traditional perimeter-based security models, which rely on a "trust but verify" approach, are proving inadequate in this environment. Enter Zero Trust Architecture (ZTA), a security framework that shifts from implicit trust to explicit verification.
+ This post will look at ZTA in detail, examining its core principles, components, benefits, and implementation considerations.
 
 ## The Core Principles of Zero Trust
 

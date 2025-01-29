@@ -3,7 +3,8 @@ title: "Search Engine Design"
 categories: [ "Domain-Specific" ]
 ---
 
-Search engines help in silently connecting billions of users to the information they need. But what exactly goes on behind the scenes of these powerful tools? This post goes into the intricate architecture and processes that make search engines tick, exploring the key components and challenges involved in their design.
+Search engines help in silently connecting billions of users to the information they need. But what exactly goes on behind the scenes of these powerful tools? This post goes into the architecture and processes that make search engines tick, exploring the key components and challenges involved in their design.
+
 
 ## 1. Crawling and Indexing: The Foundation of Search
 

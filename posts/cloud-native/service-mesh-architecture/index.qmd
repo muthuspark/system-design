@@ -4,7 +4,8 @@ categories: [ "Cloud Native" ]
 ---
 
 
-The modern application landscape is increasingly complex, built from a multitude of microservices communicating with each other.  Managing this intricate web of inter-service communication presents significant challenges related to security, observability, and resilience. This is where service mesh architecture comes in, providing a dedicated infrastructure layer to handle these complexities.  This post will look at the core concepts of service mesh, its benefits, common components, and popular implementations.
+The modern application landscape is increasingly complex, built from a multitude of microservices communicating with each other.  Managing this web of inter-service communication presents significant challenges related to security, observability, and resilience.
+ This is where service mesh architecture comes in, providing a dedicated infrastructure layer to handle these complexities.  This post will look at the core concepts of service mesh, its benefits, common components, and popular implementations.
 
 ## What is a Service Mesh?
 
@@ -55,7 +56,8 @@ Implementing a service mesh offers numerous advantages:
 
 * **Improved Security:** Centralized security policies simplify the management of encryption, authentication, and authorization.
 * **Enhanced Observability:** Detailed monitoring and tracing provide detailed insights into service performance and behavior.
-* **Increased Resilience:**  Built-in resilience patterns such as retries and circuit breakers enhance the fault tolerance of the application.
+* **Increased Resilience:** Built-in resilience patterns such as retries and circuit breakers improve the fault tolerance of the application.
+
 * **Simplified Development:** Developers can focus on business logic, delegating network management to the service mesh.
 * **Better scalability and manageability:** Easier to manage and scale microservices as the complexity is abstracted away.
 

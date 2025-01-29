@@ -39,7 +39,8 @@ graph LR
 ## Benefits of Edge Computing
 
 -   **Reduced Latency:** Processing data closer to the source dramatically reduces latency, important for real-time applications.
--   **Increased Bandwidth Efficiency:** Less data needs to be transmitted to the cloud, freeing up valuable bandwidth.
+-   **Increased Bandwidth Efficiency:** Less data needs to be transmitted to the cloud, freeing up bandwidth.
+
 -   **Improved Security:** Sensitive data can be processed and stored locally, minimizing exposure to potential security breaches.
 -   **Enhanced Reliability:** Edge computing offers greater resilience to network outages as processing can continue even if the connection to the cloud is lost.
 -   **Offline Capabilities:** Some processing can be done even without a network connection, enabling functionality in remote or disconnected environments.

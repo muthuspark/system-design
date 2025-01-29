@@ -102,4 +102,5 @@ Selecting the appropriate stream processing framework depends on various factors
 -   **Fault Tolerance:** How important is it that the system continues processing data even if nodes fail?
 -   **Integration with Existing Systems:** Does the framework integrate easily with your existing infrastructure?
 
-Stream processing is a valuable technique for many applications requiring real-time insights. By understanding the core concepts and selecting the right framework, you can use the power of stream processing to build complex applications that react to data as it arrives.
+Stream processing is a technique for many applications requiring real-time insights.
+ By understanding the core concepts and selecting the right framework, you can use the power of stream processing to build complex applications that react to data as it arrives.

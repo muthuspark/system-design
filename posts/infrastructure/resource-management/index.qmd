@@ -17,7 +17,8 @@ Before diving into strategies, it's important to understand the breadth of resou
 -   **Financial Resources:** This encompasses budgeting, forecasting, and controlling the financial aspects of a project or organization. Proper financial resource management ensures sufficient funding and prevents overspending.
 -   **Material Resources:** This refers to physical assets like equipment, raw materials, supplies, and infrastructure. Efficient management involves inventory control, maintenance scheduling, and procurement strategies.
 -   **Technological Resources:** Software, hardware, networks, and other technological assets are important for many organizations. Effective management includes license management, maintenance, and upgrades.
--   **Information Resources:** Data, knowledge bases, and intellectual property are increasingly valuable resources. Management here involves data security, access control, and knowledge sharing.
+- **Information Resources:** Data, knowledge bases, and intellectual property are increasingly important resources.
+ Management here involves data security, access control, and knowledge sharing.
 
 ## Key Principles of Effective Resource Management
 

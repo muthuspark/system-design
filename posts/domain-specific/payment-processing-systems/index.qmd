@@ -21,7 +21,8 @@ A typical payment processing system involves several key players and stages:
 
 **6. Issuing Bank:** The customer's bank, which verifies the customer's ability to make the payment.
 
-**7. Card Networks:** Organizations like Visa, Mastercard, American Express, and Discover that set standards for payment processing and facilitate communication between banks.
+**7. Card Networks:** Organizations like Visa, Mastercard, American Express, and Discover that set standards for payment processing and communicate between banks.
+
 
 ## The Payment Processing Flow: A Visual Representation
 

@@ -249,7 +249,8 @@ Checksum: 0x1A2B3C4D               # Data integrity verification
 
 -   **High Availability (with limitations):** In some configurations, if the master fails, one of the slaves can be promoted to become the new master (though this requires careful planning and implementation).
 
--   **Data Backup and Recovery:** Slaves can serve as backups of the master database, facilitating data recovery in case of master failure.
+-   **Data Backup and Recovery:** Slaves can serve as backups of the master database, enabling data recovery in case of master failure.
+
 
 ## Disadvantages of Master-Slave Architecture
 

@@ -7,7 +7,8 @@ Infrastructure as Code (IaC) is transforming how organizations manage and deploy
 
 ## Understanding the Core Principles of IaC
 
-At its heart, IaC treats infrastructure as software. This means that infrastructure components are defined, versioned, and managed using the same principles and tools used for software development. This paradigm shift allows for automation, collaboration, and a more agile approach to infrastructure management.
+At its heart, IaC treats infrastructure as software. This means that infrastructure components are defined, versioned, and managed using the same principles and tools used for software development. This shift allows for automation, collaboration, and a more agile approach to infrastructure management.
+
 
 Key principles of IaC include:
 

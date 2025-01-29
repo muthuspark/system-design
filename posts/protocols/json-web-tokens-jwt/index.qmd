@@ -3,7 +3,8 @@ title: "JSON Web Tokens (JWT)"
 categories: [ "Protocols" ]
 ---
 
-JSON Web Tokens (JWTs) have become a ubiquitous standard for securely transmitting information between parties as a JSON object. They're used extensively in modern web applications for authentication and authorization, offering a streamlined and efficient approach compared to traditional session management. But what exactly *are* JWTs, and how do they work their magic? Let's unravel the mystery.
+JSON Web Tokens (JWTs) have become a ubiquitous standard for securely transmitting information between parties as a JSON object. They're used extensively in modern web applications for authentication and authorization, offering a streamlined and efficient approach compared to traditional session management. But what exactly *are* JWTs, and how do they work their magic? Let's solve the mystery.
+
 
 ## Understanding the Structure of a JWT
 

@@ -50,7 +50,8 @@ CMSs can be broadly categorized into two types:
 Several popular CMS platforms cater to various needs and technical skills:
 
 -   **[WordPress](https://wordpress.org/):** The most widely used CMS, known for its ease of use, extensive plugin ecosystem, and vast community support. Ideal for blogs, websites, and e-commerce stores.
--   **[Drupal](https://www.drupal.org/):** A powerful and highly customizable CMS suitable for complex websites and applications. It requires more technical expertise than WordPress.
+-   **[Drupal](https://www.drupal.org/):** A powerful and highly customizable CMS suitable for complex websites and applications. It requires more technical skill than WordPress.
+
 -   **[Joomla](https://www.joomla.org/):** A versatile CMS offering a good balance between ease of use and extensibility. It's a good choice for various website types.
 -   **[Squarespace](https://www.squarespace.com/):** A user-friendly, hosted CMS platform ideal for users who prioritize simplicity and design. It offers limited customization compared to open-source options.
 -   **[Webflow](https://webflow.com/):** A visual CMS that allows users to build websites without writing code, using a drag-and-drop interface. Good for designers and those seeking a streamlined experience.

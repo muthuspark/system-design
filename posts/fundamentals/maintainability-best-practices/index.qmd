@@ -323,11 +323,13 @@ class Order:
 
 ## 10. Use of Design Patterns
 
-Employing appropriate design patterns can improve code structure, make it more reusable, and simplify maintenance. Understanding common patterns like MVC, Singleton, Factory, etc. can significantly enhance the maintainability of your projects.
+Employing appropriate design patterns can improve code structure, make it more reusable, and simplify maintenance. Understanding common patterns like MVC, Singleton, Factory, etc. can significantly improve the maintainability of your projects.
+
 
 ## 11. Error Handling and Logging
 
-Robust error handling and detailed logging are important. They help to identify and debug problems quickly and efficiently. Use informative error messages and log important events to facilitate troubleshooting.
+Robust error handling and detailed logging are important. They help to identify and debug problems quickly and efficiently. Use informative error messages and log important events for troubleshooting.
+
 
 ## 12. Keep it Simple (KISS Principle)
 

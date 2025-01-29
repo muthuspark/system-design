@@ -28,7 +28,8 @@ graph LR
 
 -   **DES (Data Encryption Standard):** While historically significant, DES is now considered insecure due to its relatively small key size (56 bits). It should not be used for new applications.
 
--   **3DES (Triple DES):** Applies the DES algorithm three times to enhance security. While stronger than DES, it's slower than AES and is also being phased out.
+-   **3DES (Triple DES):** Applies the DES algorithm three times for security.
+ While stronger than DES, it's slower than AES and is also being phased out.
 
 **Code Example (Python with AES):**
 

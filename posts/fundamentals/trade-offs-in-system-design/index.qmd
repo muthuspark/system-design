@@ -49,7 +49,8 @@ graph LR
 
 ## 2. Scalability vs. Simplicity
 
-Scalability, the ability of a system to handle growing amounts of data and traffic, often comes at the cost of increased complexity. A simple, monolithic application might be easy to understand and maintain, but it can become a bottleneck as demands increase. Scaling requires introducing distributed architectures, potentially involving multiple servers, databases, and intricate communication protocols.
+Scalability, the ability of a system to handle growing amounts of data and traffic, often comes at the cost of increased complexity. A simple, monolithic application might be easy to understand and maintain, but it can become a bottleneck as demands increase. Scaling requires introducing distributed architectures, potentially involving multiple servers, databases, and communication protocols.
+
 
 **Example:**
 

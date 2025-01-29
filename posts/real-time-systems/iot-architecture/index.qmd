@@ -11,7 +11,8 @@ The Internet of Things (IoT) has rapidly evolved from a futuristic concept to a 
 
 A typical IoT architecture comprises several key components, each playing a vital role in the overall system functionality.  These components interact in a complex yet structured manner to collect, process, and utilize data from connected devices.
 
-* **Things (Devices):** These are the physical objects embedded with sensors, actuators, and communication capabilities.  Examples include smart thermostats, wearable fitness trackers, industrial sensors, and smart home appliances.  They are the data sources at the heart of any IoT system.
+* **Things (Devices):** These are the physical objects embedded with sensors, actuators, and communication capabilities.  Examples include smart thermostats, wearable fitness trackers, industrial sensors, and smart home appliances.  They are the data sources of any IoT system.
+
 
 * **Connectivity:** This layer is responsible for enabling communication between the things and the rest of the architecture.  Various technologies are employed, including Wi-Fi, Bluetooth, Zigbee, LoRaWAN, cellular networks (3G/4G/5G), and satellite communication.  The choice of technology depends on factors like range, bandwidth, power consumption, and cost.
 
