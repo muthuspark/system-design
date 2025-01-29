@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Data replication is a crucial aspect of building robust and reliable systems. It involves creating copies of data and storing them in multiple locations. This strategy offers several advantages, including increased availability, improved performance, and enhanced data protection against failures. However, choosing the right replication strategy is critical, as it directly impacts system performance, complexity, and cost. This post dives deep into various replication strategies, exploring their strengths, weaknesses, and practical applications.</p>
+<p>Data replication is a important aspect of building robust and reliable systems. It involves creating copies of data and storing them in multiple locations. This strategy offers several advantages, including increased availability, improved performance, and enhanced data protection against failures. However, choosing the right replication strategy is critical, as it directly impacts system performance, complexity, and cost. This post explores various replication strategies, exploring their strengths, weaknesses, and practical applications.</p>
 <section id="types-of-replication-strategies" class="level2">
 <h2 data-anchor-id="types-of-replication-strategies">Types of Replication Strategies</h2>
 <p>Several replication strategies exist, each with its own trade-offs. Let’s examine some of the most common ones:</p>
@@ -385,7 +385,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>Disadvantages:</strong></p>
 <ul>
-<li><strong>Complex conflict resolution:</strong> Requires sophisticated mechanisms to handle concurrent writes.</li>
+<li><strong>Complex conflict resolution:</strong> Requires complex mechanisms to handle concurrent writes.</li>
 <li><strong>Increased complexity:</strong> Managing multiple masters increases operational overhead.</li>
 </ul>
 <p><strong>Diagram:</strong></p>
@@ -433,7 +433,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><strong>Data consistency</strong></td>
-<td style="text-align: left;">How crucial is it that all replicas reflect the same data at all times (strong vs.&nbsp;eventual consistency)?</td>
+<td style="text-align: left;">How important is it that all replicas reflect the same data at all times (strong vs.&nbsp;eventual consistency)?</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>Performance needs</strong></td>
@@ -456,7 +456,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Strong consistency</strong>: Ensures that once data is written to a primary node, all replicas immediately reflect that update. This is ideal for systems that require accurate, up-to-the-second data (e.g., financial transactions), but may come with higher latency as the system waits for all replicas to sync.</p></li>
 <li><p><strong>Eventual consistency</strong>: Guarantees that replicas will eventually sync up, but not immediately. This strategy is more scalable and performs better for applications where real-time consistency is not critical, such as social media or e-commerce product catalogs.</p></li>
 </ul>
-<p>Choosing between these depends on how crucial it is that replicas remain synchronized at all times. For example, in mission-critical systems (like banking), strong consistency is often required. In contrast, in applications where slight delays in replica synchronization are acceptable (like social media posts), eventual consistency may be more suitable.</p>
+<p>Choosing between these depends on how important it is that replicas remain synchronized at all times. For example, in mission-critical systems (like banking), strong consistency is often required. In contrast, in applications where slight delays in replica synchronization are acceptable (like social media posts), eventual consistency may be more suitable.</p>
 </section>
 <section id="performance-needs" class="level4">
 <h4 data-anchor-id="performance-needs">2. <strong>Performance Needs</strong></h4>

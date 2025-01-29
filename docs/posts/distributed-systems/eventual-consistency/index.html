@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Eventual consistency is a consistency model used in distributed systems where data consistency is eventually reached, but not immediately after an update. Unlike strong consistency, where all nodes see the same data at all times, eventual consistency allows for temporary discrepancies. This trade-off between immediate consistency and availability often leads to significant performance improvements, making it a popular choice for many large-scale applications.</p>
 <section id="what-is-eventual-consistency" class="level2">
 <h2 data-anchor-id="what-is-eventual-consistency">What is Eventual Consistency?</h2>
-<p>In essence, eventual consistency guarantees that if no new updates are made to the data, eventually all nodes will reflect the same state. The “eventually” part is crucial – there’s no defined timeframe for when this consistency will be achieved. The time it takes can vary significantly depending on network latency, system load, and the specific implementation.</p>
+<p>In essence, eventual consistency guarantees that if no new updates are made to the data, eventually all nodes will reflect the same state. The “eventually” part is important – there’s no defined timeframe for when this consistency will be achieved. The time it takes can vary significantly depending on network latency, system load, and the specific implementation.</p>
 <p>Think of it like a group of friends updating a shared Google Doc. One friend makes a change, but it doesn’t immediately appear for the others. There might be a slight delay before the changes replicate across all their devices. However, given enough time, everyone will see the same version of the document – this is eventual consistency in action.</p>
 </section>
 <section id="how-eventual-consistency-works" class="level2">
@@ -275,11 +275,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>increment_thread.start()</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>processing_thread.start()</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
-<p>In this simplified example, multiple threads simulate client requests to increment the counter. Updates are added to a message queue, and a separate thread processes these updates, eventually leading to a consistent counter value. This is an extremely basic example; a real-world distributed counter would need far more sophisticated mechanisms for handling concurrency and ensuring data integrity across multiple nodes and persistent storage.</p>
+<p>In this simplified example, multiple threads simulate client requests to increment the counter. Updates are added to a message queue, and a separate thread processes these updates, eventually leading to a consistent counter value. This is an extremely basic example; a real-world distributed counter would need far more complex mechanisms for handling concurrency and ensuring data integrity across multiple nodes and persistent storage.</p>
 </section>
 <section id="handling-conflicts-in-eventual-consistency" class="level2">
 <h2 data-anchor-id="handling-conflicts-in-eventual-consistency">Handling Conflicts in Eventual Consistency</h2>
-<p>Conflict resolution is crucial for eventual consistency. Common strategies include:</p>
+<p>Conflict resolution is important for eventual consistency. Common strategies include:</p>
 <ul>
 <li><strong>Last-Write-Wins (LWW):</strong> The most recent update wins.</li>
 <li><strong>Versioning:</strong> Each update includes a version number, and the system selects the update with the highest version number.</li>

@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Strong consistency, in the context of distributed systems, refers to a guarantee that all clients see the same view of data at all times. This contrasts sharply with weaker consistency models, where temporary inconsistencies might exist due to network latency or the asynchronous nature of distributed operations. While seemingly ideal, achieving strong consistency often comes at the cost of performance and scalability. This post goes deep into the intricacies of strong consistency, exploring its implications, implementation challenges, and various approaches.</p>
+<p>Strong consistency, in the context of distributed systems, refers to a guarantee that all clients see the same view of data at all times. This contrasts sharply with weaker consistency models, where temporary inconsistencies might exist due to network latency or the asynchronous nature of distributed operations. While seemingly ideal, achieving strong consistency often comes at the cost of performance and scalability. This post provides an analysis of strong consistency, exploring its implications, implementation challenges, and various approaches.</p>
 <section id="what-is-strong-consistency" class="level2">
 <h2 data-anchor-id="what-is-strong-consistency">What is Strong Consistency?</h2>
 <p>Imagine a shared whiteboard used by multiple people. With strong consistency, any change made by one person is instantly visible to everyone else. There’s no lag, no conflicting updates, and the whiteboard always reflects a single, unified truth. Formally, strong consistency adheres to the principle of <strong>linearizability</strong>.</p>
@@ -165,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="the-monotonic-writes-guarantee" class="level3">
 <h3 data-anchor-id="the-monotonic-writes-guarantee">The Monotonic Writes Guarantee</h3>
-<p>The <strong>monotonic writes</strong> guarantee ensures that write operations from a client are observed in the order they were issued. This is crucial for maintaining data integrity and preventing unexpected behavior.</p>
+<p>The <strong>monotonic writes</strong> guarantee ensures that write operations from a client are observed in the order they were issued. This is important for maintaining data integrity and preventing unexpected behavior.</p>
 </section>
 <section id="the-consistent-reads-guarantee" class="level3">
 <h3 data-anchor-id="the-consistent-reads-guarantee">The Consistent Reads Guarantee</h3>
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="distributed-consensus-algorithms-e.g.-paxos-raft" class="level3">
 <h3 data-anchor-id="distributed-consensus-algorithms-e.g.-paxos-raft">2. Distributed Consensus Algorithms (e.g., Paxos, Raft)</h3>
-<p>These sophisticated algorithms provide a mechanism for achieving agreement among multiple replicas of the data. They ensure that all replicas contain the same data, even in the presence of failures. While robust, these algorithms are complex and can introduce latency.</p>
+<p>These complex algorithms provide a mechanism for achieving agreement among multiple replicas of the data. They ensure that all replicas contain the same data, even in the presence of failures. While robust, these algorithms are complex and can introduce latency.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>

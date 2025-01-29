@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>OAuth (Open Authorization) is a widely used authorization framework that allows third-party applications to access user data hosted by a service provider without requiring the user to share their credentials. This blog post will explore the intricacies of OAuth implementation, focusing on the different grant types and providing practical examples.</p>
+<p>OAuth (Open Authorization) is a widely used authorization framework that allows third-party applications to access user data hosted by a service provider without requiring the user to share their credentials. This blog post will look at the complexities of OAuth implementation, focusing on the different grant types and providing practical examples.</p>
 <section id="understanding-the-core-components" class="level2">
 <h2 data-anchor-id="understanding-the-core-components">Understanding the Core Components</h2>
 <p>Before delving into implementation details, let’s define the key players in the OAuth ecosystem:</p>
@@ -327,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="code-example-conceptual-python" class="level2">
 <h2 data-anchor-id="code-example-conceptual-python">Code Example (Conceptual Python)</h2>
-<p>This is a simplified example showcasing the authorization code grant flow. It omits crucial details like error handling and security best practices, focusing solely on the core logic. <strong>Never use this code in production without extensive security enhancements.</strong></p>
+<p>This is a simplified example showcasing the authorization code grant flow. It omits important details like error handling and security best practices, focusing solely on the core logic. <strong>Never use this code in production without extensive security enhancements.</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -361,11 +361,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="choosing-the-right-grant-type" class="level2">
 <h2 data-anchor-id="choosing-the-right-grant-type">Choosing the Right Grant Type</h2>
-<p>Selecting the appropriate grant type is crucial for security and functionality. Consider the following:</p>
+<p>Selecting the appropriate grant type is important for security and functionality. Consider the following:</p>
 <ul>
 <li><strong>Security:</strong> Authorization code grant is generally the most secure.</li>
 <li><strong>Client Type:</strong> Implicit grant is suitable for browser-based clients, while client credentials are for server-to-server interactions.</li>
-<li><strong>User Involvement:</strong> Resource Owner Password Credentials should be avoided unless absolutely necessary due to inherent security risks.</li>
+<li><strong>User Involvement:</strong> Resource Owner Password Credentials should be avoided unless absolutely necessary due to security risks.</li>
 </ul>
 
 

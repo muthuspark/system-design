@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Search engines help in silently connecting billions of users to the information they need. But what exactly goes on behind the scenes of these powerful tools? This post goes into the intricate architecture and processes that make search engines tick, exploring the key components and challenges involved in their design.</p>
+<p>Search engines help in silently connecting billions of users to the information they need. But what exactly goes on behind the scenes of these powerful tools? This post goes into the architecture and processes that make search engines tick, exploring the key components and challenges involved in their design.</p>
 <section id="crawling-and-indexing-the-foundation-of-search" class="level2">
 <h2 data-anchor-id="crawling-and-indexing-the-foundation-of-search">1. Crawling and Indexing: The Foundation of Search</h2>
 <p>Before a search engine can return relevant results, it needs to know what exists on the web. This is the job of the <strong>crawler</strong>, also known as a <strong>spider</strong> or <strong>bot</strong>. The crawler systematically navigates the web, following links from one page to another, discovering new pages and updating information on existing ones.</p>
@@ -208,11 +208,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>This diagram illustrates the basic crawler workflow. Seed URLs (starting points like popular websites) are fed into the crawler. The crawler fetches pages, parses them (extracts text and metadata), extracts links for further crawling, and finally, indexes the content for future retrieval. Error handling is crucial to manage issues like broken links and server errors.</p>
+<p>This diagram illustrates the basic crawler workflow. Seed URLs (starting points like popular websites) are fed into the crawler. The crawler fetches pages, parses them (extracts text and metadata), extracts links for further crawling, and finally, indexes the content for future retrieval. Error handling is important to manage issues like broken links and server errors.</p>
 </section>
 <section id="indexing-organizing-the-webs-data" class="level2">
 <h2 data-anchor-id="indexing-organizing-the-webs-data">2. Indexing: Organizing the Web’s Data</h2>
-<p>The indexed data isn’t just a random collection of pages. Search engines employ sophisticated indexing techniques to organize and structure the information efficiently for fast retrieval. This typically involves:</p>
+<p>The indexed data isn’t just a random collection of pages. Search engines employ complex indexing techniques to organize and structure the information efficiently for fast retrieval. This typically involves:</p>
 <ul>
 <li><strong>Inverted Index:</strong> A data structure mapping keywords to the documents containing them. This allows for quick retrieval of documents relevant to a search query. A simplified example:</li>
 </ul>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> <span class="bu">set</span>(inverted_index[<span class="st">"python"</span>]) <span class="op">&amp;</span> <span class="bu">set</span>(inverted_index[<span class="st">"programming"</span>])</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results) <span class="co"># Output: {'document1.html'}</span></span></code></pre></div>
 <ul>
-<li><strong>Document Storage:</strong> Storing the actual content of the pages (or at least crucial parts) to display search results.</li>
+<li><strong>Document Storage:</strong> Storing the actual content of the pages (or at least important parts) to display search results.</li>
 <li><strong>Metadata Storage:</strong> Storing additional information about each page, such as title, author, date, etc., improving search result relevance and presentation.</li>
 </ul>
 </section>

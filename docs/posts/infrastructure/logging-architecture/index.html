@@ -184,7 +184,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Logging is a critical aspect of software development, crucial for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application’s logs are effectively collected, processed, and analyzed, providing valuable insights into its behavior and performance. This post explores various aspects of building a robust logging architecture.</p>
+<p>Logging is a critical aspect of software development, important for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application’s logs are effectively collected, processed, and analyzed, providing information about its behavior and performance.</p>
+<p>This post explores various aspects of building a logging architecture.</p>
 <section id="log-levels-the-foundation-of-structured-logging" class="level2">
 <h2 data-anchor-id="log-levels-the-foundation-of-structured-logging">1. Log Levels: The Foundation of Structured Logging</h2>
 <p>Before delving into architecture, we need to understand log levels. These categorize log messages by severity, allowing you to filter and prioritize information. Common levels include:</p>
@@ -410,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>HTTP Status Codes</strong>: Track 4xx and 5xx HTTP error codes to detect client errors and server issues.</li>
 <li><strong>Database Errors</strong>: Track database connection failures, query timeouts, and other issues related to the database.</li>
 </ul></li>
-<li><p><strong>Latency and Response Times</strong>: Measuring the time it takes for your system to respond to requests is crucial for ensuring a good user experience. High latency can indicate issues like resource contention, database slowdowns, or insufficient compute power.</p></li>
+<li><p><strong>Latency and Response Times</strong>: Measuring the time it takes for your system to respond to requests is important for ensuring a good user experience. High latency can indicate issues like resource contention, database slowdowns, or insufficient compute power.</p></li>
 <li><p><strong>Infrastructure Metrics</strong>: These include CPU usage, memory consumption, disk I/O, and network throughput. Monitoring these ensures that your system has enough resources to handle current workloads and alerts you when capacity is being exceeded or resources are over-utilized.</p></li>
 <li><p><strong>Application-Specific Metrics</strong>: Depending on the nature of your application, you might also want to track custom metrics such as queue lengths, number of active users, or the rate of specific transactions (e.g., API calls, database queries).</p></li>
 </ul>
@@ -450,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>There are several tools available that offer monitoring and alerting capabilities for both infrastructure and applications:</p>
 <ul>
 <li><p><strong>Infrastructure Monitoring Tools</strong>: Tools like <strong>Prometheus</strong>, <strong>Nagios</strong>, <strong>Datadog</strong>, and <strong>Amazon CloudWatch</strong> are designed to monitor system-level metrics such as CPU usage, memory consumption, network traffic, and disk I/O. These tools often come with built-in alerting and anomaly detection capabilities.</p></li>
-<li><p><strong>Application Performance Monitoring (APM)</strong>: Tools like <strong>New Relic</strong>, <strong>AppDynamics</strong>, or <strong>Elastic APM</strong> provide deeper insights into your application’s performance. They can trace individual requests, measure response times, and monitor errors at the application level.</p></li>
+<li><p><strong>Application Performance Monitoring (APM)</strong>: Tools like <strong>New Relic</strong>, <strong>AppDynamics</strong>, or <strong>Elastic APM</strong> provide deeper understanding of your application’s performance. They can trace individual requests, measure response times, and monitor errors at the application level.</p></li>
 <li><p><strong>Log Aggregation and Monitoring</strong>: Tools like <strong>ELK Stack (Elasticsearch, Logstash, Kibana)</strong>, <strong>Splunk</strong>, and <strong>Graylog</strong> allow you to collect, index, and visualize logs from various parts of your system. This enables faster troubleshooting and pattern detection when issues arise.</p></li>
 </ul>
 </section>

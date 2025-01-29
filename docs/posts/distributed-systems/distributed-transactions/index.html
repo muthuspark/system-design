@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Distributed systems are the backbone of modern applications, allowing for scalability, fault tolerance, and flexibility. However, managing data consistency across multiple systems presents significant challenges, particularly when it comes to transactions. Unlike local transactions, where all operations occur within a single database, distributed transactions span multiple databases, services, or resources. Ensuring atomicity, consistency, isolation, and durability (ACID properties) in this context is complex and requires careful consideration. This post goes into the intricacies of distributed transactions, exploring various approaches and their trade-offs.</p>
+<p>Distributed systems are the backbone of modern applications, allowing for scalability, fault tolerance, and flexibility. However, managing data consistency across multiple systems presents significant challenges, particularly when it comes to transactions. Unlike local transactions, where all operations occur within a single database, distributed transactions span multiple databases, services, or resources. Ensuring atomicity, consistency, isolation, and durability (ACID properties) in this context is complex and requires careful consideration. This post goes into the complexities of distributed transactions, exploring various approaches and their trade-offs.</p>
 <section id="understanding-the-challenges" class="level2">
 <h2 data-anchor-id="understanding-the-challenges">Understanding the Challenges</h2>
 <p>The core problem with distributed transactions lies in coordinating operations across independent systems. A failure in any single component can jeopardize the entire transaction, leaving the distributed databases in an inconsistent state. This inconsistency can manifest in various ways:</p>
@@ -274,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="code-example-simplified-saga-pattern---python" class="level2">
 <h2 data-anchor-id="code-example-simplified-saga-pattern---python">Code Example (Simplified Saga Pattern - Python):</h2>
-<p>This example illustrates a simplified saga pattern using Python and hypothetical database interactions. Error handling and more robust compensation logic would be needed in a production environment.</p>
+<p>This example illustrates a simplified saga pattern using Python and hypothetical database interactions. Error handling and improved compensation logic would be needed in a production environment.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Service:</span>

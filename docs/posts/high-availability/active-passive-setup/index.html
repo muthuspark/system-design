@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>High availability (HA) is paramount in many applications, ensuring minimal downtime and continuous operation. One common approach to achieving HA is the active-passive setup, also known as a failover system. This configuration involves one active node handling all incoming requests and one or more passive nodes standing by, ready to take over if the active node fails. This post will explore the intricacies of active-passive setups, providing a comprehensive understanding of their architecture, implementation, and considerations.</p>
+<p>High availability (HA) is critical in many applications, ensuring minimal downtime and continuous operation. One common approach to achieving HA is the active-passive setup, also known as a failover system. This configuration involves one active node handling all incoming requests and one or more passive nodes standing by, ready to take over if the active node fails. This post will look at the complexities of active-passive setups, providing a detailed understanding of their architecture, implementation, and considerations.</p>
 <section id="understanding-the-active-passive-architecture" class="level2">
 <h2 data-anchor-id="understanding-the-active-passive-architecture">Understanding the Active-Passive Architecture</h2>
 <p>In an active-passive setup, only one node is active at any given time. This active node processes all user requests and manages the application’s functionality. The passive node(s) remain idle, mirroring the active node’s state (database replication, configuration synchronization, etc.) but not processing any requests directly. If the active node experiences a failure (hardware failure, software crash, network outage), a failover mechanism activates the passive node, seamlessly transferring operations and minimizing downtime.</p>
@@ -179,12 +179,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="implementing-active-passive-key-components" class="level2">
 <h2 data-anchor-id="implementing-active-passive-key-components">Implementing Active-Passive: Key Components</h2>
-<p>A successful active-passive setup relies on several crucial components:</p>
+<p>A successful active-passive setup relies on several important components:</p>
 <ul>
 <li><p><strong>Shared Storage:</strong> Both the active and passive nodes must access a shared storage system (e.g., SAN, NAS, cloud storage) for data persistence. This ensures data consistency between nodes during a failover. Changes made by the active node are replicated to the passive node in real-time or near real-time.</p></li>
-<li><p><strong>Heartbeat Monitoring:</strong> A heartbeat mechanism constantly monitors the active node’s status. This can involve simple network pings or more sophisticated health checks. If the heartbeat fails, it triggers the failover process.</p></li>
+<li><p><strong>Heartbeat Monitoring:</strong> A heartbeat mechanism constantly monitors the active node’s status. This can involve simple network pings or more complex health checks. If the heartbeat fails, it triggers the failover process.</p></li>
 <li><p><strong>Failover Mechanism:</strong> This is the core of the active-passive system. It’s responsible for detecting the failure of the active node and automatically promoting the passive node to the active role. This can involve scripting, specialized HA software, or cloud-based solutions.</p></li>
-<li><p><strong>Synchronization:</strong> Crucial for data consistency. This mechanism keeps the passive node synchronized with the active node’s data. Techniques include database replication (e.g., MySQL replication, PostgreSQL streaming replication), file synchronization tools (e.g., rsync), or distributed file systems.</p></li>
+<li><p><strong>Synchronization:</strong> important for data consistency. This mechanism keeps the passive node synchronized with the active node’s data. Techniques include database replication (e.g., MySQL replication, PostgreSQL streaming replication), file synchronization tools (e.g., rsync), or distributed file systems.</p></li>
 <li><p><strong>IP Address Management:</strong> Static IP addresses are commonly used. During failover, the IP address is typically switched from the failed active node to the newly active node, ensuring continued accessibility. This might involve using a virtual IP address (VIP) managed by a load balancer or failover system.</p></li>
 </ul>
 </section>

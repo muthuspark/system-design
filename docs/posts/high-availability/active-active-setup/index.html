@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Active-Active setups represent a powerful approach to system architecture, offering significant advantages in terms of high availability, scalability, and performance. Unlike Active-Passive setups, where one system is active while the other stands by, both systems in an Active-Active configuration are simultaneously handling requests. This design inherently eliminates single points of failure and allows for seamless failover, resulting in increased resilience and improved user experience. This post goes into the intricacies of Active-Active setups, exploring their benefits, challenges, and implementation considerations.</p>
+<p>Active-Active setups represent a powerful approach to system architecture, offering significant advantages in terms of high availability, scalability, and performance. Unlike Active-Passive setups, where one system is active while the other stands by, both systems in an Active-Active configuration are simultaneously handling requests. This design inherently eliminates single points of failure and allows for seamless failover, resulting in increased resilience and improved user experience. This post goes into the complexities of Active-Active setups, exploring their benefits, challenges, and implementation considerations.</p>
 <section id="understanding-the-active-active-architecture" class="level2">
 <h2 data-anchor-id="understanding-the-active-active-architecture">Understanding the Active-Active Architecture</h2>
 <p>The core principle behind an Active-Active setup is redundancy. Both systems are fully operational and actively processing requests. If one system fails, the other seamlessly takes over, minimizing downtime and ensuring continuous service. This contrasts sharply with Active-Passive setups, where a failover process is required, potentially introducing latency and disruption.</p>
@@ -199,18 +199,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="benefits-of-an-active-active-setup" class="level2">
 <h2 data-anchor-id="benefits-of-an-active-active-setup">Benefits of an Active-Active Setup</h2>
 <ul>
-<li><strong>High Availability:</strong> The most significant advantage is the elimination of single points of failure. If one system fails, the other continues to operate, ensuring uninterrupted service.</li>
-<li><strong>Increased Scalability:</strong> Both systems handle traffic concurrently, significantly boosting the overall capacity and ability to handle increased demand.</li>
-<li><strong>Improved Performance:</strong> By distributing the workload, Active-Active setups can reduce response times and improve overall application performance. Geographic distribution can further enhance performance by reducing latency for users in different locations.</li>
-<li><strong>Enhanced Resilience:</strong> The system is more resistant to various failures, including hardware malfunctions, software bugs, and network issues.</li>
+<li><p><strong>High Availability:</strong> The most significant advantage is the elimination of single points of failure. If one system fails, the other continues to operate, ensuring uninterrupted service.</p></li>
+<li><p><strong>Increased Scalability:</strong> Both systems handle traffic concurrently, significantly boosting the overall capacity and ability to handle increased demand.</p></li>
+<li><p><strong>Improved Performance:</strong> By distributing the workload, Active-Active setups can reduce response times and improve overall application performance. Geographic distribution can further improve performance by reducing latency for users in different locations.</p></li>
+<li><p><strong>Enhanced Resilience:</strong> The system is more resistant to various failures, including hardware malfunctions, software bugs, and network issues.</p></li>
 </ul>
 </section>
 <section id="challenges-of-implementing-an-active-active-setup" class="level2">
 <h2 data-anchor-id="challenges-of-implementing-an-active-active-setup">Challenges of Implementing an Active-Active Setup</h2>
 <p>While Active-Active offers substantial benefits, implementing it effectively presents several challenges:</p>
 <ul>
-<li><strong>Data Synchronization:</strong> Maintaining data consistency across both active systems is crucial. Techniques like database replication and message queues are vital for ensuring data integrity.</li>
-<li><strong>Session Management:</strong> Properly managing user sessions across both servers is essential to prevent user data loss or inconsistencies. Sticky sessions (where a user is always directed to the same server) can be problematic in Active-Active environments, requiring sophisticated session management strategies.</li>
+<li><strong>Data Synchronization:</strong> Maintaining data consistency across both active systems is important. Techniques like database replication and message queues are vital for ensuring data integrity.</li>
+<li><strong>Session Management:</strong> Properly managing user sessions across both servers is essential to prevent user data loss or inconsistencies. Sticky sessions (where a user is always directed to the same server) can be problematic in Active-Active environments, requiring complex session management strategies.</li>
 <li><strong>Increased Complexity:</strong> Managing an Active-Active setup is inherently more complex than an Active-Passive setup, requiring advanced configuration and monitoring.</li>
 <li><strong>Cost:</strong> The increased hardware and software requirements can lead to higher initial investment costs.</li>
 </ul>
@@ -219,10 +219,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-anchor-id="implementation-considerations">Implementation Considerations</h2>
 <p>Several key factors influence the implementation of an Active-Active setup:</p>
 <ul>
-<li><strong>Load Balancing:</strong> A robust load balancer is crucial for distributing traffic efficiently and ensuring failover. Features like health checks and weighted routing are essential.</li>
+<li><strong>Load Balancing:</strong> A robust load balancer is important for distributing traffic efficiently and ensuring failover. Features like health checks and weighted routing are essential.</li>
 <li><strong>Database Replication:</strong> Consistent data replication between the databases of both systems is critical for maintaining data integrity. Techniques like synchronous and asynchronous replication offer different trade-offs between consistency and performance.</li>
 <li><strong>Session Management Strategies:</strong> Employing techniques like distributed caching or session replication helps avoid sticky sessions and ensures seamless user experience across servers.</li>
-<li><strong>Monitoring and Alerting:</strong> Comprehensive monitoring and alerting systems are essential for detecting and responding to potential issues promptly.</li>
+<li><strong>Monitoring and Alerting:</strong> Detailed monitoring and alerting systems are essential for detecting and responding to potential issues promptly.</li>
 </ul>
 </section>
 <section id="using-a-message-queue-conceptual" class="level2">

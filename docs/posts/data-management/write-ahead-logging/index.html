@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Write-Ahead Logging (WAL) is a crucial technique used in databases and other systems to ensure data durability and consistency, even in the face of crashes or power failures. Instead of directly writing changes to the main data storage, WAL first records these changes in a log file. Only after the log record is safely written is the data itself updated. This guarantees that even if a system fails before completing a write operation, the changes can be recovered from the log upon restart.</p>
+<p>Write-Ahead Logging (WAL) is a important technique used in databases and other systems to ensure data durability and consistency, even in the face of crashes or power failures. Instead of directly writing changes to the main data storage, WAL first records these changes in a log file. Only after the log record is safely written is the data itself updated. This guarantees that even if a system fails before completing a write operation, the changes can be recovered from the log upon restart.</p>
 <section id="how-write-ahead-logging-works" class="level2">
 <h2 data-anchor-id="how-write-ahead-logging-works">How Write-Ahead Logging Works</h2>
 <p>The core principle of WAL is simple: <strong>log first, write later</strong>. Let’s break down the process:</p>
@@ -222,7 +222,7 @@ E --&gt; C;
 <ul>
 <li><p><strong>Full Logging:</strong> Every single database operation is logged. This provides maximum durability but increases overhead.</p></li>
 <li><p><strong>Redo Logging:</strong> Only operations that modify data are logged. This reduces log size compared to full logging.</p></li>
-<li><p><strong>Undo Logging:</strong> Logs information needed to undo transactions if they fail. This is often combined with redo logging for comprehensive recovery.</p></li>
+<li><p><strong>Undo Logging:</strong> Logs information needed to undo transactions if they fail. This is often combined with redo logging for detailed recovery.</p></li>
 <li><p><strong>Write-Ahead Logging with Checkpointing:</strong> Checkpointing creates a consistent snapshot of the database state at intervals. This reduces the amount of log processing needed during recovery, as only the log entries since the last checkpoint need to be processed.</p></li>
 </ul>
 </section>

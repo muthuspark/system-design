@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Data security is paramount in today’s digital landscape. Protecting sensitive information from unauthorized access is crucial, and encryption is important to build any robust security strategy. This comprehensive guide explores various data encryption strategies, explaining their strengths, weaknesses, and appropriate use cases. We will delve into both symmetric and asymmetric encryption, highlighting key algorithms and practical implementation considerations.</p>
+<p>Data security is critical in today’s digital landscape. Protecting sensitive information from unauthorized access is important, and encryption is important to build any security strategy. This guide explores various data encryption strategies, explaining their strengths, weaknesses, and appropriate use cases. We will discuss both symmetric and asymmetric encryption, highlighting key algorithms and practical implementation considerations.</p>
 <section id="symmetric-encryption-the-shared-secret" class="level2">
 <h2 data-anchor-id="symmetric-encryption-the-shared-secret">1. Symmetric Encryption: The Shared Secret</h2>
 <p>Symmetric encryption uses a single, secret key to both encrypt and decrypt data. This makes it faster and more efficient than asymmetric encryption, but the key exchange poses a significant security challenge. If the key is intercepted, the entire system is compromised.</p>
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p><strong>AES (Advanced Encryption Standard):</strong> Widely considered the gold standard, AES is a strong, versatile algorithm available in 128-bit, 192-bit, and 256-bit key sizes. The larger the key size, the stronger the encryption.</p></li>
 <li><p><strong>DES (Data Encryption Standard):</strong> While historically significant, DES is now considered insecure due to its relatively small key size (56 bits). It should not be used for new applications.</p></li>
-<li><p><strong>3DES (Triple DES):</strong> Applies the DES algorithm three times to enhance security. While stronger than DES, it’s slower than AES and is also being phased out.</p></li>
+<li><p><strong>3DES (Triple DES):</strong> Applies the DES algorithm three times for security. While stronger than DES, it’s slower than AES and is also being phased out.</p></li>
 </ul>
 <p><strong>Code Example (Python with AES):</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Crypto.Cipher <span class="im">import</span> AES</span>
@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p><strong>Weaknesses:</strong></p>
 <ul>
-<li>Secure key exchange is crucial and challenging.</li>
+<li>Secure key exchange is important and challenging.</li>
 <li>Key management can be complex, especially in distributed environments.</li>
 </ul>
 </section>
@@ -311,11 +311,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>This approach leverages the efficiency of symmetric encryption for large data sets while ensuring secure key exchange using asymmetric encryption. This is commonly used in secure communication protocols like TLS/SSL.</p>
+<p>This approach uses the efficiency of symmetric encryption for large data sets while ensuring secure key exchange using asymmetric encryption. This is commonly used in secure communication protocols like TLS/SSL.</p>
 </section>
 <section id="hashing-ensuring-data-integrity" class="level2">
 <h2 data-anchor-id="hashing-ensuring-data-integrity">4. Hashing: Ensuring Data Integrity</h2>
-<p>While not strictly encryption, hashing is a crucial part of data security. A hash function takes an input (data) and produces a fixed-size string of characters (hash). Even a small change in the input results in a drastically different hash. This is used to verify data integrity – ensuring that the data hasn’t been tampered with.</p>
+<p>While not strictly encryption, hashing is a important part of data security. A hash function takes an input (data) and produces a fixed-size string of characters (hash). Even a small change in the input results in a drastically different hash. This is used to verify data integrity – ensuring that the data hasn’t been tampered with.</p>
 <p><strong>How it Works:</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">

@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Recommendation systems have become ubiquitous in our digital lives. From suggesting movies on Netflix to recommending products on Amazon, these systems play a crucial role in shaping our online experiences and driving engagement. But how do these systems actually work? This post will delve into the mechanics of recommendation systems, exploring different approaches and providing a detailed understanding of their inner workings.</p>
+<p>Recommendation systems have become ubiquitous in our digital lives. From suggesting movies on Netflix to recommending products on Amazon, these systems play a important role in shaping our online experiences and driving engagement. But how do these systems actually work? This post will look at the mechanics of recommendation systems, exploring different approaches and providing a detailed understanding of their inner workings.</p>
 <section id="types-of-recommendation-systems" class="level2">
 <h2 data-anchor-id="types-of-recommendation-systems">Types of Recommendation Systems</h2>
 <p>Recommendation systems can be broadly classified into two main categories: content-based filtering and collaborative filtering. Let’s examine each:</p>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Code Example (Python with cosine similarity):</strong></p>
-<p>This example uses simplified data for illustrative purposes. A real-world application would require more sophisticated techniques for feature extraction and similarity calculation.</p>
+<p>This example uses simplified data for illustrative purposes. A real-world application would require more complex techniques for feature extraction and similarity calculation.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
@@ -245,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="collaborative-filtering" class="level3">
 <h3 data-anchor-id="collaborative-filtering">2. Collaborative Filtering</h3>
-<p>Collaborative filtering leverages the preferences of other users to recommend items to a target user. It doesn’t rely on the content of the items themselves. There are two main types:</p>
+<p>Collaborative filtering uses the preferences of other users to recommend items to a target user. It doesn’t rely on the content of the items themselves. There are two main types:</p>
 <p><strong>a) User-Based Collaborative Filtering:</strong></p>
 <p>This approach identifies users with similar tastes and recommends items that those similar users have liked.</p>
 <p><strong>b) Item-Based Collaborative Filtering:</strong></p>
@@ -282,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="hybrid-approaches" class="level2">
 <h2 data-anchor-id="hybrid-approaches">Hybrid Approaches</h2>
-<p>To overcome the limitations of individual approaches, hybrid recommendation systems combine content-based and collaborative filtering techniques. This often leads to more robust and accurate recommendations. Examples include:</p>
+<p>To overcome the limitations of individual approaches, hybrid recommendation systems combine content-based and collaborative filtering techniques. This often leads to more accurate recommendations. Examples include:</p>
 <ul>
 <li><strong>Weighted Averaging:</strong> Combining the scores from content-based and collaborative filtering systems.</li>
 <li><strong>Feature Combination:</strong> Using features from both approaches as input for a machine learning model.</li>

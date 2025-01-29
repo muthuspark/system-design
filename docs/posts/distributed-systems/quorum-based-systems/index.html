@@ -184,10 +184,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will explore the intricacies of quorum systems, delving into their mechanisms, various types, applications, and inherent trade-offs.</p>
+<p>Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will look at the complexities of quorum systems, exploring their mechanisms, various types, and applications.</p>
 <section id="understanding-the-core-concept-quorum" class="level2">
 <h2 data-anchor-id="understanding-the-core-concept-quorum">Understanding the Core Concept: Quorum</h2>
-<p>At its heart, a quorum system is a collection of subsets (quorums) of a larger set of nodes (e.g., servers, replicas). The defining characteristic is that any two quorums must have at least one node in common. This seemingly simple requirement is crucial because it guarantees that if a decision is reached by one quorum, it automatically involves at least one member of any other quorum, facilitating consistency.</p>
+<p>At its heart, a quorum system is a collection of subsets (quorums) of a larger set of nodes (e.g., servers, replicas). The defining characteristic is that any two quorums must have at least one node in common. This seemingly simple requirement is important because it guarantees that if a decision is reached by one quorum, it automatically involves at least one member of any other quorum, ensuring consistency.</p>
 <p>Imagine a distributed database replicated across five servers (A, B, C, D, E). A simple quorum system might define quorums as any three servers. If a write operation obtains a quorum of (A, B, C), and a subsequent read operation obtains a quorum of (B, C, D), they share servers B and C, ensuring data consistency. If a quorum doesn’t overlap, it opens the possibility of conflicting data versions.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -395,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Availability vs.&nbsp;Consistency:</strong> Larger quorums increase consistency but reduce availability (more nodes need to be operational).</li>
 <li><strong>Performance:</strong> The size of quorums affects the time required to reach a decision. Smaller quorums are generally faster.</li>
-<li><strong>Complexity:</strong> More sophisticated quorum systems (e.g., weighted voting) can add complexity to implementation and management.</li>
+<li><strong>Complexity:</strong> More complex quorum systems (e.g., weighted voting) can add complexity to implementation and management.</li>
 </ul>
 
 

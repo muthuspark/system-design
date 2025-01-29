@@ -184,14 +184,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>WebSockets have revolutionized real-time communication on the web, enabling applications to push data to clients without the need for constant polling. This blog post will explore the architecture of WebSockets, providing a comprehensive understanding of how they function and the components involved.</p>
+<p>WebSockets have revolutionized real-time communication on the web, enabling applications to push data to clients without the need for constant polling. This blog post will look at the architecture of WebSockets, providing a detailed understanding of how they function and the components involved.</p>
 <section id="understanding-the-fundamentals" class="level2">
 <h2 data-anchor-id="understanding-the-fundamentals">Understanding the Fundamentals</h2>
 <p>Unlike traditional HTTP, which relies on a request-response cycle, WebSockets establish a persistent, bidirectional connection between a client and a server. This persistent connection allows for efficient and instantaneous data exchange. The initial connection is established using an HTTP handshake, upgrading the connection to a WebSocket. Once established, data flows seamlessly in both directions.</p>
 </section>
 <section id="the-websocket-handshake" class="level2">
 <h2 data-anchor-id="the-websocket-handshake">The WebSocket Handshake</h2>
-<p>The handshake is crucial, initiating the transition from HTTP to the WebSocket protocol. It involves a series of HTTP requests and responses.</p>
+<p>The handshake is important, initiating the transition from HTTP to the WebSocket protocol. It involves a series of HTTP requests and responses.</p>
 <p><strong>Simplified Handshake Process:</strong></p>
 <ol type="1">
 <li><p><strong>Client Request:</strong> The client initiates the process by sending an HTTP request to the server, specifying the <code>Upgrade</code> header to <code>websocket</code>. This header also includes information like the selected subprotocol, if any.</p></li>
@@ -291,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="handling-scalability-and-concurrency" class="level2">
 <h2 data-anchor-id="handling-scalability-and-concurrency">Handling Scalability and Concurrency</h2>
-<p>For applications with many concurrent WebSocket connections, employing techniques like load balancing and utilizing a message broker becomes crucial for efficient management and preventing server overload. Asynchronous programming patterns are also vital for handling multiple connections concurrently without blocking.</p>
+<p>For applications with many concurrent WebSocket connections, employing techniques like load balancing and utilizing a message broker becomes important for efficient management and preventing server overload. Asynchronous programming patterns are also vital for handling multiple connections concurrently without blocking.</p>
 
 
 </section>

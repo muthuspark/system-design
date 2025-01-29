@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Distributed systems, where multiple independent computers collaborate to achieve a common goal, are increasingly prevalent in modern technology. From cloud computing platforms to blockchain networks, the success of these systems hinges on a fundamental challenge: achieving <em>distributed consensus</em>. This means agreeing on a single truth among a group of potentially unreliable and geographically dispersed nodes, even in the face of failures, delays, and malicious actors.</p>
-<p>This blog post goes into the intricacies of distributed consensus, exploring its challenges, key algorithms, and real-world applications.</p>
+<p>This blog post goes into the complexities of distributed consensus, exploring its challenges, key algorithms, and real-world applications.</p>
 <section id="the-challenges-of-distributed-consensus" class="level2">
 <h2 data-anchor-id="the-challenges-of-distributed-consensus">The Challenges of Distributed Consensus</h2>
 <p>Reaching consensus in a distributed environment is surprisingly difficult. Several factors contribute to this complexity:</p>
@@ -195,11 +195,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Message Delays &amp; Loss:</strong> Network latency and message loss introduce unpredictable delays and uncertainties.</li>
 <li><strong>Byzantine Failures:</strong> Nodes might behave maliciously, sending conflicting or incorrect information to manipulate the consensus process. This is the most challenging scenario to handle.</li>
 </ul>
-<p>These challenges necessitate sophisticated algorithms that can tolerate failures, ensure fairness, and ultimately achieve a consistent state across the distributed system.</p>
+<p>These challenges necessitate complex algorithms that can tolerate failures, ensure fairness, and ultimately achieve a consistent state across the distributed system.</p>
 </section>
 <section id="key-algorithms-for-achieving-distributed-consensus" class="level2">
 <h2 data-anchor-id="key-algorithms-for-achieving-distributed-consensus">Key Algorithms for Achieving Distributed Consensus</h2>
-<p>Several algorithms have been developed to solve the distributed consensus problem, each with its strengths and weaknesses. We’ll explore some of the most prominent ones:</p>
+<p>Several algorithms have been developed to solve the distributed consensus problem, each with its strengths and weaknesses. We’ll look at some of the most prominent ones:</p>
 <section id="paxos" class="level3">
 <h3 data-anchor-id="paxos">1. Paxos</h3>
 <p>Paxos is a family of consensus algorithms known for its theoretical elegance and ability to tolerate node failures. It’s a complex algorithm often represented through multiple phases and roles (proposer, acceptor, learner).</p>
@@ -411,12 +411,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="real-world-applications-of-distributed-consensus" class="level2">
 <h2 data-anchor-id="real-world-applications-of-distributed-consensus">Real-world Applications of Distributed Consensus</h2>
-<p>Distributed consensus is crucial for various applications:</p>
+<p>Distributed consensus is important for various applications:</p>
 <ul>
 <li><strong>Blockchain Technology:</strong> Cryptocurrencies like Bitcoin and Ethereum rely on distributed consensus (e.g., Proof-of-Work or Proof-of-Stake) to validate transactions and maintain the integrity of the blockchain.</li>
 <li><strong>Cloud Storage:</strong> Ensuring data consistency and availability across multiple data centers.</li>
 <li><strong>Distributed Databases:</strong> Maintaining data consistency and enabling fault tolerance in large-scale databases.</li>
-<li><strong>Leader Election:</strong> Choosing a leader in a distributed system, crucial for coordination and task assignment.</li>
+<li><strong>Leader Election:</strong> Choosing a leader in a distributed system, important for coordination and task assignment.</li>
 </ul>
 
 

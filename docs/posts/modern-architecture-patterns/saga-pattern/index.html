@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The microservices architecture offers numerous benefits, including scalability, independent deployments, and technology diversity. However, managing transactions spanning multiple services presents a significant challenge. This is where the Saga pattern comes in – a powerful technique for coordinating distributed transactions across microservices without relying on a centralized, two-phase commit (2PC) mechanism. This post will explore the Saga pattern in detail, examining its different approaches and highlighting its strengths and weaknesses.</p>
+<p>The microservices architecture offers numerous benefits, including scalability, independent deployments, and technology diversity. However, managing transactions spanning multiple services presents a significant challenge. This is where the Saga pattern comes in – a powerful technique for coordinating distributed transactions across microservices without relying on a centralized, two-phase commit (2PC) mechanism. This post will look at the Saga pattern in detail, examining its different approaches and highlighting its strengths and weaknesses.</p>
 <section id="understanding-the-problem-distributed-transactions" class="level2">
 <h2 data-anchor-id="understanding-the-problem-distributed-transactions">Understanding the Problem: Distributed Transactions</h2>
 <p>Traditional transactional databases offer ACID properties (Atomicity, Consistency, Isolation, Durability). These properties guarantee that a transaction either completes entirely or not at all. However, in a microservices environment, each service typically has its own database. A single business operation might require updates across multiple databases. Implementing a distributed transaction using 2PC is generally avoided due to its performance overhead and complexity. It also introduces a single point of failure, the transaction coordinator. This is where the Saga pattern offers a compelling alternative.</p>
@@ -274,7 +274,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="eventual-consistency-and-error-handling" class="level2">
 <h2 data-anchor-id="eventual-consistency-and-error-handling">Eventual Consistency and Error Handling</h2>
-<p>It’s crucial to understand that the Saga pattern uses eventual consistency. This means the system might be temporarily inconsistent while compensating transactions are executed. Robust error handling and retry mechanisms are crucial to ensure the saga completes successfully and to handle potential failures gracefully. Implementing idempotency in the local transactions is essential to prevent unintended side effects from retry attempts.</p>
+<p>It’s important to understand that the Saga pattern uses eventual consistency. This means the system might be temporarily inconsistent while compensating transactions are executed. Robust error handling and retry mechanisms are important to ensure the saga completes successfully and to handle potential failures gracefully. Implementing idempotency in the local transactions is essential to prevent unintended side effects from retry attempts.</p>
 
 
 </section>

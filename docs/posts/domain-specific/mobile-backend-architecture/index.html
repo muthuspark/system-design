@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Building a successful mobile application requires more than just a slick user interface. A robust and scalable backend architecture is crucial for handling data storage, user authentication, push notifications, and much more. This post will delve into the key components and architectural patterns commonly used for mobile backend development.</p>
+<p>Building a successful mobile application requires more than just a slick user interface. A scalable backend architecture is important for handling data storage, user authentication, push notifications, and much more. This post will look at the key components and architectural patterns commonly used for mobile backend development.</p>
 <section id="understanding-the-landscape" class="level2">
 <h2 data-anchor-id="understanding-the-landscape">Understanding the Landscape</h2>
 <p>Before diving into specifics, let’s clarify what we mean by “mobile backend architecture.” It encompasses all the server-side components and infrastructure that support your mobile app’s functionality. This includes:</p>
@@ -234,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Disadvantages:</strong></p>
 <ul>
 <li><strong>Complexity:</strong> Managing numerous services can be challenging.</li>
-<li><strong>Inter-service Communication:</strong> Requires robust communication mechanisms between services.</li>
+<li><strong>Inter-service Communication:</strong> Requires communication mechanisms between services.</li>
 </ul>
 </section>
 <section id="monolithic-architecture" class="level3">
@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>RESTful Principles:</strong> Follow RESTful design guidelines for creating consistent and predictable APIs.</li>
 <li><strong>Versioning:</strong> Implement API versioning to manage changes and maintain backward compatibility.</li>
 <li><strong>Error Handling:</strong> Provide clear and informative error messages to aid debugging.</li>
-<li><strong>Documentation:</strong> Use tools like Swagger or OpenAPI to generate comprehensive API documentation.</li>
+<li><strong>Documentation:</strong> Use tools like Swagger or OpenAPI to generate detailed API documentation.</li>
 </ul>
 </section>
 <section id="code-example-node.js-with-express.js-and-a-simple-rest-endpoint" class="level2">
@@ -311,10 +311,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-anchor-id="security-best-practices">Security Best Practices</h2>
 <p>Security is paramount. Consider these practices:</p>
 <ul>
-<li><strong>Input Validation:</strong> Sanitize all user inputs to prevent injection attacks (SQL injection, XSS).</li>
-<li><strong>Authentication and Authorization:</strong> Implement robust authentication mechanisms and fine-grained access control.</li>
-<li><strong>HTTPS:</strong> Use HTTPS to encrypt communication between the mobile app and the backend.</li>
-<li><strong>Regular Security Audits:</strong> Conduct regular security assessments to identify and address vulnerabilities.</li>
+<li><p><strong>Input Validation:</strong> Sanitize all user inputs to prevent injection attacks (SQL injection, XSS).</p></li>
+<li><p><strong>Authentication and Authorization:</strong> Implement authentication mechanisms and fine-grained access control.</p></li>
+<li><p><strong>HTTPS:</strong> Use HTTPS to encrypt communication between the mobile app and the backend.</p></li>
+<li><p><strong>Regular Security Audits:</strong> Conduct regular security assessments to identify and address vulnerabilities.</p></li>
 </ul>
 
 

@@ -184,17 +184,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The modern application landscape is increasingly complex, built from a multitude of microservices communicating with each other. Managing this intricate web of inter-service communication presents significant challenges related to security, observability, and resilience. This is where service mesh architecture comes in, providing a dedicated infrastructure layer to handle these complexities. This post will explore the core concepts of service mesh, its benefits, common components, and popular implementations.</p>
+<p>The modern application landscape is increasingly complex, built from a multitude of microservices communicating with each other. Managing this web of inter-service communication presents significant challenges related to security, observability, and resilience. This is where service mesh architecture comes in, providing a dedicated infrastructure layer to handle these complexities. This post will look at the core concepts of service mesh, its benefits, common components, and popular implementations.</p>
 <section id="what-is-a-service-mesh" class="level2">
 <h2 data-anchor-id="what-is-a-service-mesh">What is a Service Mesh?</h2>
 <p>A service mesh is a dedicated infrastructure layer built to handle service-to-service communication within a microservices architecture. It acts as a transparent proxy for all inter-service traffic, abstracting away the complexities of network communication and allowing developers to focus on building business logic. Think of it as a dedicated network for your microservices, handling tasks like:</p>
 <ul>
-<li><strong>Service Discovery:</strong> Finding and connecting to other services dynamically.</li>
-<li><strong>Load Balancing:</strong> Distributing traffic across multiple instances of a service to ensure high availability and performance.</li>
-<li><strong>Traffic Management:</strong> Routing traffic based on various criteria, such as version, location, or weight.</li>
-<li><strong>Security:</strong> Encrypting traffic, authenticating services, and authorizing access.</li>
-<li><strong>Observability:</strong> Monitoring and tracing requests, providing insights into performance and debugging.</li>
-<li><strong>Resilience:</strong> Handling failures gracefully through techniques like retries, circuit breakers, and timeouts.</li>
+<li><p><strong>Service Discovery:</strong> Finding and connecting to other services dynamically.</p></li>
+<li><p><strong>Load Balancing:</strong> Distributing traffic across multiple instances of a service to ensure high availability and performance.</p></li>
+<li><p><strong>Traffic Management:</strong> Routing traffic based on various criteria, such as version, location, or weight.</p></li>
+<li><p><strong>Security:</strong> Encrypting traffic, authenticating services, and authorizing access.</p></li>
+<li><p><strong>Observability:</strong> Monitoring and tracing requests, providing performance and debugging information.</p></li>
+<li><p><strong>Resilience:</strong> Handling failures gracefully through techniques like retries, circuit breakers, and timeouts.</p></li>
 </ul>
 </section>
 <section id="architectural-components-of-a-service-mesh" class="level2">
@@ -239,11 +239,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-anchor-id="benefits-of-using-a-service-mesh">Benefits of Using a Service Mesh</h2>
 <p>Implementing a service mesh offers numerous advantages:</p>
 <ul>
-<li><strong>Improved Security:</strong> Centralized security policies simplify the management of encryption, authentication, and authorization.</li>
-<li><strong>Enhanced Observability:</strong> Comprehensive monitoring and tracing provide detailed insights into service performance and behavior.</li>
-<li><strong>Increased Resilience:</strong> Built-in resilience patterns such as retries and circuit breakers enhance the fault tolerance of the application.</li>
-<li><strong>Simplified Development:</strong> Developers can focus on business logic, delegating network management to the service mesh.</li>
-<li><strong>Better scalability and manageability:</strong> Easier to manage and scale microservices as the complexity is abstracted away.</li>
+<li><p><strong>Improved Security:</strong> Centralized security policies simplify the management of encryption, authentication, and authorization.</p></li>
+<li><p><strong>Enhanced Observability:</strong> Detailed monitoring and tracing provide detailed information on service performance and behavior.</p></li>
+<li><p><strong>Increased Resilience:</strong> Built-in resilience patterns such as retries and circuit breakers improve the fault tolerance of the application.</p></li>
+<li><p><strong>Simplified Development:</strong> Developers can focus on business logic, delegating network management to the service mesh.</p></li>
+<li><p><strong>Better scalability and manageability:</strong> Easier to manage and scale microservices as the complexity is abstracted away.</p></li>
 </ul>
 </section>
 <section id="popular-service-mesh-implementations" class="level2">

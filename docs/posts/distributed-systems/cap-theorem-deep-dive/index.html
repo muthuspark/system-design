@@ -190,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Availability (A):</strong> Every request receives a response, without guarantee that it contains the most recent write.</li>
 <li><strong>Partition Tolerance (P):</strong> The system continues to operate despite arbitrary message loss or network failures between nodes.</li>
 </ul>
-<p>This theorem is crucial for architects designing distributed systems because it forces a conscious trade-off between these critical properties. Let’s delve deeper into each aspect:</p>
+<p>This theorem is important for architects designing distributed systems because it forces a conscious trade-off between these critical properties. Let’s examine each aspect:</p>
 <section id="consistency-explained" class="level2">
 <h2 data-anchor-id="consistency-explained">Consistency Explained</h2>
 <p>Consistency, in the context of the CAP theorem, means data integrity. It ensures that all nodes in the system have a consistent view of the data at any given time. This means if a write operation occurs, all subsequent read operations will return the updated value. There’s no stale data.</p>

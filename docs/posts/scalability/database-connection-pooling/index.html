@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Database interactions are fundamental to most applications. However, constantly establishing and tearing down connections for every database operation is inefficient and resource-intensive. This is where database connection pooling comes in, offering a significant performance boost and resource optimization strategy. This blog post will delve into the intricacies of database connection pooling, explaining its benefits, implementation strategies, and potential pitfalls.</p>
+<p>Database interactions are fundamental to most applications. However, constantly establishing and tearing down connections for every database operation is inefficient and resource-intensive. This is where database connection pooling comes in, offering a significant performance boost and resource optimization strategy. This blog post will look at the complexities of database connection pooling, explaining its benefits, implementation strategies, and potential pitfalls.</p>
 <section id="understanding-the-problem-the-cost-of-connection-creation" class="level2">
 <h2 data-anchor-id="understanding-the-problem-the-cost-of-connection-creation">Understanding the Problem: The Cost of Connection Creation</h2>
 <p>Imagine your application needs to interact with a database hundreds or thousands of times per second. Every time a connection is requested, the application must:</p>
@@ -279,11 +279,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>pool.closeall()</span></code></pre></div>
 <p><strong>Important Considerations:</strong></p>
 <ul>
-<li><strong>Pool Size:</strong> Choosing the right pool size is crucial. Too small, and you’ll face contention. Too large, and you’ll waste resources. Monitor your application’s load to determine the optimal size.</li>
-<li><strong>Connection Timeout:</strong> Setting appropriate timeouts prevents connections from remaining idle indefinitely.</li>
-<li><strong>Error Handling:</strong> Implement robust error handling to manage connection failures and gracefully handle exceptions.</li>
-<li><strong>Connection Validation:</strong> Regularly validate connections to ensure they are still active and functioning.</li>
-<li><strong>Resource Limits:</strong> Be mindful of database server resource limitations (max connections, etc.).</li>
+<li><p><strong>Pool Size:</strong> Choosing the right pool size is important. Too small, and you’ll face contention. Too large, and you’ll waste resources. Monitor your application’s load to determine the optimal size.</p></li>
+<li><p><strong>Connection Timeout:</strong> Setting appropriate timeouts prevents connections from remaining idle indefinitely.</p></li>
+<li><p><strong>Error Handling:</strong> Implement error handling to manage connection failures and gracefully handle exceptions.</p></li>
+<li><p><strong>Connection Validation:</strong> Regularly validate connections to ensure they are still active and functioning.</p></li>
+<li><p><strong>Resource Limits:</strong> Be mindful of database server resource limitations (max connections, etc.).</p></li>
 </ul>
 </section>
 <section id="potential-pitfalls" class="level2">

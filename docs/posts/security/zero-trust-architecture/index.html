@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The modern network landscape is constantly evolving, with increasingly sophisticated threats emerging daily. Traditional perimeter-based security models, which rely on a “trust but verify” approach, are proving inadequate in this environment. Enter Zero Trust Architecture (ZTA), a security framework that shifts the paradigm from implicit trust to explicit verification. This post will explore ZTA in detail, examining its core principles, components, benefits, and implementation considerations.</p>
+<p>The modern network landscape is constantly evolving, with increasingly complex threats emerging daily. Traditional perimeter-based security models, which rely on a “trust but verify” approach, are proving inadequate in this environment. Enter Zero Trust Architecture (ZTA), a security framework that shifts from implicit trust to explicit verification. This post will look at ZTA in detail, examining its core principles, components, benefits, and implementation considerations.</p>
 <section id="the-core-principles-of-zero-trust" class="level2">
 <h2 data-anchor-id="the-core-principles-of-zero-trust">The Core Principles of Zero Trust</h2>
 <p>Zero Trust operates on the fundamental principle of “never trust, always verify.” This means that no user or device is inherently trusted, regardless of its location—inside or outside the network perimeter. Access to resources is granted based on continuous verification of identity, device posture, and context. This contrasts sharply with traditional network security, which often grants broad access to users once they are within the network’s perimeter.</p>
@@ -201,7 +201,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-anchor-id="components-of-a-zero-trust-architecture">Components of a Zero Trust Architecture</h2>
 <p>Implementing ZTA involves several key components working in concert:</p>
 <ul>
-<li><strong>Identity and Access Management (IAM):</strong> A robust IAM system is crucial for verifying user identities and managing access rights. This often involves directory services like Active Directory or cloud-based identity providers like Azure Active Directory or Okta.</li>
+<li><strong>Identity and Access Management (IAM):</strong> A robust IAM system is important for verifying user identities and managing access rights. This often involves directory services like Active Directory or cloud-based identity providers like Azure Active Directory or Okta.</li>
 <li><strong>Device Posture Assessment:</strong> This involves evaluating the security status of devices before granting access. This might include checking for antivirus software, operating system patches, and firewall configurations.</li>
 <li><strong>Network Segmentation:</strong> Dividing the network into smaller, isolated segments limits the impact of breaches. This can be accomplished using virtual LANs (VLANs) or software-defined networking (SDN) technologies.</li>
 <li><strong>Micro-Perimeter Security:</strong> This involves securing individual applications and services, regardless of their location. This might involve using containers, serverless functions, or other technologies to isolate applications.</li>
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Successful access leads to encrypted data handling</li>
 <li>All activities logged to Security Information and Event Management (SIEM)</li>
 </ul>
-<p>Key Principles Shown: - Never trust, always verify - Continuous authentication - Device health monitoring - Encrypted communications - Comprehensive logging</p>
+<p>Key Principles Shown: - Never trust, always verify - Continuous authentication - Device health monitoring - Encrypted communications - Detailed logging</p>
 </section>
 <section id="code-example-simplified-access-control-logic-python" class="level2">
 <h2 data-anchor-id="code-example-simplified-access-control-logic-python">Code Example: Simplified Access Control Logic (Python)</h2>

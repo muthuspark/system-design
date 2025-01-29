@@ -150,10 +150,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), are cryptographic protocols that provide secure communication over a network. They are fundamental to securing online interactions, ensuring the confidentiality, integrity, and authenticity of data transmitted between a client (like a web browser) and a server (like a web server). This post will delve into the intricacies of SSL/TLS implementation, exploring the handshake process, certificate management, and common configurations.</p>
+<p>Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), are cryptographic protocols that provide secure communication over a network. They are fundamental to securing online interactions, ensuring the confidentiality, integrity, and authenticity of data transmitted between a client (like a web browser) and a server (like a web server). This post will look at the complexities of SSL/TLS implementation, exploring the handshake process, certificate management, and common configurations.</p>
 <section id="the-ssltls-handshake-a-step-by-step-guide" class="level2">
 <h2 data-anchor-id="the-ssltls-handshake-a-step-by-step-guide">The SSL/TLS Handshake: A Step-by-Step Guide</h2>
-<p>The heart of SSL/TLS is the handshake, a crucial negotiation process establishing a secure connection. Let’s visualize it with a Diagram:</p>
+<p>The heart of SSL/TLS is the handshake, a important negotiation process establishing a secure connection. Let’s visualize it with a Diagram:</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -189,7 +189,7 @@ J --&gt; K[Close];
 <li><strong>Server’s random number:</strong> Another random value used for key generation.</li>
 <li><strong>Server’s certificate:</strong> A digital certificate containing the server’s public key and other identifying information.</li>
 </ul>
-<p><strong>3. Certificate:</strong> The server sends its digital certificate, which is crucial for authentication. This certificate, issued by a Certificate Authority (CA), verifies the server’s identity.</p>
+<p><strong>3. Certificate:</strong> The server sends its digital certificate, which is important for authentication. This certificate, issued by a Certificate Authority (CA), verifies the server’s identity.</p>
 <p><strong>4. Key Exchange:</strong> This step involves the exchange of information needed to generate a shared secret key. The exact mechanism depends on the chosen cipher suite. Common key exchange algorithms include:</p>
 <ul>
 <li><strong>RSA:</strong> Uses the server’s public key to encrypt a pre-master secret.</li>

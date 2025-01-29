@@ -184,12 +184,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions. However, designing a robust and efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors. This post goes into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.</p>
+<p>Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions. However, designing an efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors. This post goes into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.</p>
 <section id="architectural-layers" class="level2">
 <h2 data-anchor-id="architectural-layers">Architectural Layers</h2>
 <p>A typical cloud storage system comprises several interconnected layers:</p>
-<p><strong>1. User Interface (UI) Layer:</strong> This is the layer users interact with. It can range from simple command-line interfaces (CLIs) to sophisticated web-based portals. The UI handles user authentication, authorization, data upload/download requests, and metadata management.</p>
-<p><strong>2. API Layer:</strong> This layer provides a programmatic interface for interacting with the storage system. It translates user requests into internal operations and returns results back to the user. RESTful APIs are commonly used, allowing for integration with diverse applications and platforms.</p>
+<p><strong>1. User Interface (UI) Layer:</strong> This is the layer users interact with. It can range from simple command-line interfaces (CLIs) to complex web-based portals. The UI handles user authentication, authorization, data upload/download requests, and metadata management.</p>
+<p><strong>2. API Layer:</strong> This layer provides a programmatic interface for interacting with the storage system. It translates user requests into internal operations and returns results back to the user. RESTful APIs are commonly used, allowing for integration with various applications and platforms.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Example API request (using JavaScript fetch)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(<span class="st">'/api/v1/files/upload'</span><span class="op">,</span> {</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">method</span><span class="op">:</span> <span class="st">'POST'</span><span class="op">,</span></span>
@@ -203,8 +203,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">'File uploaded successfully:'</span><span class="op">,</span> data)<span class="op">;</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Error uploading file:'</span><span class="op">,</span> error))<span class="op">;</span></span></code></pre></div>
-<p><strong>3. Metadata Layer:</strong> This layer stores crucial information about the data, such as file names, sizes, timestamps, ownership, and access permissions. It’s crucial for efficient data retrieval and management. NoSQL databases like Cassandra or MongoDB are often used for their scalability and flexibility.</p>
-<p><strong>4. Data Layer:</strong> This is the core of the system, responsible for storing the actual data. It leverages various techniques for data redundancy, availability, and durability, including replication and erasure coding. Consideration must be given to storage mediums (HDDs, SSDs), data partitioning, and efficient data access strategies.</p>
+<p><strong>3. Metadata Layer:</strong> This layer stores important information about the data, such as file names, sizes, timestamps, ownership, and access permissions. It’s important for efficient data retrieval and management. NoSQL databases like Cassandra or MongoDB are often used for their scalability and flexibility.</p>
+<p><strong>4. Data Layer:</strong> This is the core of the system, responsible for storing the actual data. It uses various techniques for data redundancy, availability, and durability, including replication and erasure coding. Consideration must be given to storage mediums (HDDs, SSDs), data partitioning, and efficient data access strategies.</p>
 <p><strong>5. Storage Layer:</strong> This layer handles physical storage management, including allocation of storage resources, managing storage capacity, and handling failures. This layer may involve dealing directly with hardware or virtualized storage resources.</p>
 </section>
 <section id="data-management-strategies" class="level2">
@@ -268,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="scalability-and-performance" class="level2">
 <h2 data-anchor-id="scalability-and-performance">Scalability and Performance</h2>
-<p>Scalability and performance are paramount considerations. Horizontal scaling (adding more servers) is crucial for handling increasing data volumes and user traffic. Efficient data access mechanisms, such as content delivery networks (CDNs), caching, and optimized data retrieval algorithms, contribute significantly to performance.</p>
+<p>Scalability and performance are critical considerations. Horizontal scaling (adding more servers) is important for handling increasing data volumes and user traffic. Efficient data access mechanisms, such as content delivery networks (CDNs), caching, and optimized data retrieval algorithms, contribute significantly to performance.</p>
 </section>
 <section id="security" class="level2">
 <h2 data-anchor-id="security">Security</h2>

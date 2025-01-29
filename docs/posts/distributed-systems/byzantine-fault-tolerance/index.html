@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Byzantine Fault Tolerance (BFT) is a crucial concept in distributed systems, addressing the challenge of maintaining system consistency and correctness even when some components behave maliciously or fail unpredictably. Unlike simpler fault tolerance mechanisms that assume failures are benign (e.g., crashes), BFT tackles the more complex scenario where faulty nodes might send conflicting or incorrect information deliberately. This blog post will delve into the intricacies of BFT, exploring its underlying principles, practical applications, and the challenges involved in its implementation.</p>
+<p>Byzantine Fault Tolerance (BFT) is a important concept in distributed systems, addressing the challenge of maintaining system consistency and correctness even when some components behave maliciously or fail unpredictably. Unlike simpler fault tolerance mechanisms that assume failures are benign (e.g., crashes), BFT tackles the more complex scenario where faulty nodes might send conflicting or incorrect information deliberately. This blog post will look at the complexities of BFT, exploring its underlying principles, practical applications, and the challenges involved in its implementation.</p>
 <section id="understanding-the-byzantine-generals-problem" class="level2">
 <h2 data-anchor-id="understanding-the-byzantine-generals-problem">Understanding the Byzantine Generals Problem</h2>
 <p>The foundation of BFT lies in the “Byzantine Generals Problem,” a classic problem in distributed computing. Imagine a group of generals surrounding a city. They need to agree on a unified plan of attack (either attack or retreat) to succeed. However, some generals might be traitors (faulty nodes) who could send conflicting messages to disrupt the decision-making process. The goal is to design a protocol that guarantees the loyal generals reach consensus even if some generals are traitors.</p>
@@ -160,13 +160,13 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Consensus:</strong> Loyal generals must reach a unanimous decision.</li>
 <li><strong>Resilience:</strong> The system must tolerate a certain number of faulty nodes while maintaining correctness.</li>
 </ul>
-<p><strong>The Impossibility Result:</strong> It’s crucial to understand that a solution to the Byzantine Generals Problem is only possible if the number of faulty nodes is less than one-third of the total number of generals (nodes). If the number of faulty nodes exceeds this threshold, reaching consensus reliably becomes impossible.</p>
+<p><strong>The Impossibility Result:</strong> It’s important to understand that a solution to the Byzantine Generals Problem is only possible if the number of faulty nodes is less than one-third of the total number of generals (nodes). If the number of faulty nodes exceeds this threshold, reaching consensus reliably becomes impossible.</p>
 </section>
 <section id="practical-algorithms-for-bft" class="level2">
 <h2 data-anchor-id="practical-algorithms-for-bft">Practical Algorithms for BFT</h2>
 <p>Several algorithms have been developed to achieve BFT. Two prominent examples are:</p>
 <ul>
-<li><strong>Practical Byzantine Fault Tolerance (PBFT):</strong> PBFT is a widely used algorithm that provides BFT for state-machine replication. It leverages a primary node to coordinate consensus and employs a multi-step process involving requests, pre-prepare, prepare, and commit phases to ensure agreement.</li>
+<li><strong>Practical Byzantine Fault Tolerance (PBFT):</strong> PBFT is a widely used algorithm that provides BFT for state-machine replication. It uses a primary node to coordinate consensus and employs a multi-step process involving requests, pre-prepare, prepare, and commit phases to ensure agreement.</li>
 </ul>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">

@@ -150,22 +150,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Microservices architecture offers numerous benefits, including scalability, flexibility, and independent deployability. However, this distributed nature also introduces significant security challenges. Securing a microservices environment requires a multifaceted approach that goes beyond traditional monolithic application security. This post goes into the key security concerns and best practices for building secure microservices.</p>
+<p>Microservices architecture offers numerous benefits, including scalability, flexibility, and independent deployability. However, this distributed nature also introduces significant security challenges. Securing a microservices environment requires an approach that goes beyond traditional monolithic application security. This post goes into the key security concerns and best practices for building secure microservices.</p>
 <section id="the-unique-security-challenges-of-microservices" class="level2">
 <h2 data-anchor-id="the-unique-security-challenges-of-microservices">The Unique Security Challenges of Microservices</h2>
 <p>Unlike monolithic applications, microservices communicate extensively with each other, creating a larger attack surface. This inter-service communication is a primary vulnerability. Here’s a breakdown of the key challenges:</p>
 <ul>
 <li><p><strong>Increased Attack Surface:</strong> Each microservice represents a potential entry point for attackers. A vulnerability in a single service can compromise the entire system.</p></li>
-<li><p><strong>Data Exposure:</strong> Microservices often handle sensitive data. Ensuring data is protected throughout its lifecycle, across various services, is crucial.</p></li>
+<li><p><strong>Data Exposure:</strong> Microservices often handle sensitive data. Ensuring data is protected throughout its lifecycle, across various services, is important.</p></li>
 <li><p><strong>API Security:</strong> Microservices rely heavily on APIs for communication. Securing these APIs from unauthorized access and malicious attacks is paramount.</p></li>
-<li><p><strong>Identity and Access Management (IAM):</strong> Managing identities and access permissions across multiple services is complex and requires a robust IAM solution.</p></li>
-<li><p><strong>Monitoring and Logging:</strong> Identifying and responding to security breaches in a distributed system requires sophisticated monitoring and logging capabilities.</p></li>
+<li><p><strong>Identity and Access Management (IAM):</strong> Managing identities and access permissions across multiple services is complex and requires an IAM solution.</p></li>
+<li><p><strong>Monitoring and Logging:</strong> Identifying and responding to security breaches in a distributed system requires complex monitoring and logging capabilities.</p></li>
 <li><p><strong>Complexity:</strong> The sheer number of services and their interdependencies make security management more complex than in monolithic architectures.</p></li>
 </ul>
 </section>
 <section id="implementing-robust-security-measures" class="level2">
 <h2 data-anchor-id="implementing-robust-security-measures">Implementing Robust Security Measures</h2>
-<p>Addressing these challenges requires a comprehensive security strategy. Let’s explore key implementation aspects:</p>
+<p>Addressing these challenges requires a detailed security strategy. Let’s look at key implementation aspects:</p>
 <section id="secure-inter-service-communication" class="level3">
 <h3 data-anchor-id="secure-inter-service-communication">1. Secure Inter-Service Communication</h3>
 <p>Microservices communicate primarily through APIs. Securing these APIs is critical. Key strategies include:</p>
@@ -210,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="infrastructure-security" class="level3">
 <h3 data-anchor-id="infrastructure-security">3. Infrastructure Security</h3>
-<p>Securing the underlying infrastructure is crucial:</p>
+<p>Securing the underlying infrastructure is important:</p>
 <ul>
 <li><p><strong>Container Security:</strong> Use secure container images and implement runtime security measures (e.g., SELinux, AppArmor).</p></li>
 <li><p><strong>Infrastructure as Code (IaC):</strong> Manage infrastructure using IaC to ensure consistency and repeatability in security configurations.</p></li>
@@ -219,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="security-monitoring-and-logging" class="level3">
 <h3 data-anchor-id="security-monitoring-and-logging">4. Security Monitoring and Logging</h3>
-<p>Effective monitoring and logging are crucial for detecting and responding to security incidents:</p>
+<p>Effective monitoring and logging are important for detecting and responding to security incidents:</p>
 <ul>
 <li><p><strong>Centralized Logging:</strong> Aggregate logs from all microservices into a centralized logging system for easier analysis.</p></li>
 <li><p><strong>Security Information and Event Management (SIEM):</strong> Use a SIEM system to correlate security events and identify potential threats.</p></li>

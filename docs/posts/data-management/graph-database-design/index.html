@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Graph databases are becoming increasingly popular for applications requiring complex relationships between data. Unlike relational databases which rely on tables and joins, graph databases represent data as nodes and edges, making it highly efficient to query and traverse relationships. However, designing an effective graph database schema requires careful consideration of various factors. This post will delve into the key aspects of graph database design, providing practical examples and best practices.</p>
+<p>Graph databases are becoming increasingly popular for applications requiring complex relationships between data. Unlike relational databases which rely on tables and joins, graph databases represent data as nodes and edges, making it highly efficient to query and traverse relationships. However, designing an effective graph database schema requires careful consideration of various factors. This post will look at the key aspects of graph database design, providing practical examples and best practices.</p>
 <section id="understanding-the-fundamentals" class="level2">
 <h2 data-anchor-id="understanding-the-fundamentals">Understanding the Fundamentals</h2>
 <p>Before diving into design specifics, let’s review the fundamental components of a graph database:</p>
@@ -162,7 +162,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="designing-your-graph-schema-a-step-by-step-guide" class="level2">
 <h2 data-anchor-id="designing-your-graph-schema-a-step-by-step-guide">Designing Your Graph Schema: A Step-by-Step Guide</h2>
-<p>Designing a robust graph schema is crucial for performance and maintainability. Here’s a structured approach:</p>
+<p>Designing a robust graph schema is important for performance and maintainability. Here’s a structured approach:</p>
 <p><strong>1. Identify Entities and Relationships:</strong></p>
 <p>Start by identifying the key entities in your domain. What are the core objects or concepts you need to represent? Then, determine the relationships between these entities. Are they one-to-one, one-to-many, or many-to-many?</p>
 <p><strong>Example: Social Network</strong></p>
@@ -215,7 +215,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>4. Model Relationships Carefully:</strong></p>
 <p>Consider the directionality of your relationships. Is the relationship unidirectional (e.g., “follows”) or bidirectional (e.g., “friends with”)? This impacts query performance and data consistency. Bidirectional relationships are often represented with two separate edges in a property graph.</p>
 <p><strong>5. Consider Data Partitioning and Indexing:</strong></p>
-<p>For large graphs, partitioning your data across multiple servers is essential for scalability. Appropriate indexing strategies are also crucial for efficient query performance. This often involves creating indexes on frequently queried properties.</p>
+<p>For large graphs, partitioning your data across multiple servers is essential for scalability. Appropriate indexing strategies are also important for efficient query performance. This often involves creating indexes on frequently queried properties.</p>
 <p><strong>Example: Modeling a Knowledge Graph</strong></p>
 <p>Let’s design a knowledge graph for a movie database. Entities include <code>Movies</code>, <code>Actors</code>, and <code>Directors</code>.</p>
 <div class="cell" data-layout-align="default">
@@ -374,7 +374,7 @@ RETURN p.name as Poster,
        count(DISTINCT post) as PostCount,
        collect(DISTINCT liker.name) as Likers
 ORDER BY PostCount DESC</code></pre>
-<p>Neo4j’s graph database provides a powerful way to model and query connected data. The Cypher query language offers an intuitive syntax for graph operations, making it accessible for developers familiar with SQL. As you build more complex applications, explore Neo4j’s rich ecosystem of tools and libraries for visualization, analysis, and integration.</p>
+<p>Neo4j’s graph database provides a powerful way to model and query connected data. The Cypher query language offers an intuitive syntax for graph operations, making it accessible for developers familiar with SQL. As you build more complex applications, look at Neo4j’s rich ecosystem of tools and libraries for visualization, analysis, and integration.</p>
 
 
 </section>

@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The Circuit Breaker pattern is a powerful tool in distributed systems for handling failures gracefully and preventing cascading failures. It’s especially valuable when dealing with external services or APIs that might be unreliable or temporarily unavailable. Instead of repeatedly trying to access a failing service and potentially overwhelming your system, the circuit breaker monitors the service’s health and intervenes to protect your application.</p>
+<p>The Circuit Breaker pattern is a powerful tool in distributed systems for handling failures gracefully and preventing cascading failures. It’s especially important when dealing with external services or APIs that might be unreliable or temporarily unavailable. Instead of repeatedly trying to access a failing service and potentially overwhelming your system, the circuit breaker monitors the service’s health and intervenes to protect your application.</p>
 <section id="how-the-circuit-breaker-works" class="level2">
 <h2 data-anchor-id="how-the-circuit-breaker-works">How the Circuit Breaker Works</h2>
 <p>The core idea behind the circuit breaker is simple: it acts like an electrical circuit breaker. When a fault is detected, the circuit “trips,” preventing further attempts to access the failing service. After a period of time, the circuit breaker attempts to “reconnect” to the service. If the service is operational, the circuit closes, allowing requests through. If it continues to fail, the circuit breaker remains open.</p>
@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="implementing-the-circuit-breaker" class="level2">
 <h2 data-anchor-id="implementing-the-circuit-breaker">Implementing the Circuit Breaker</h2>
-<p>The implementation can vary depending on the programming language and framework. Many libraries and frameworks offer ready-made implementations, but understanding the core logic is crucial. Let’s explore a simplified example in Python:</p>
+<p>The implementation can vary depending on the programming language and framework. Many libraries and frameworks offer ready-made implementations, but understanding the core logic is important. Let’s look at a simplified example in Python:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CircuitBreaker:</span>
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Result: </span><span class="sc">{</span>result<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div>
-<p>This example showcases a basic implementation with a <code>CLOSED</code>, <code>OPEN</code>, and <code>HALF-OPEN</code> state. More robust implementations would typically include metrics tracking, configurable parameters, and more sophisticated failure handling.</p>
+<p>This example showcases a basic implementation with a <code>CLOSED</code>, <code>OPEN</code>, and <code>HALF-OPEN</code> state. Implementations would typically include metrics tracking, configurable parameters, and more complex failure handling.</p>
 </section>
 <section id="advanced-considerations" class="level2">
 <h2 data-anchor-id="advanced-considerations">Advanced Considerations</h2>
@@ -313,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Fallback Mechanisms:</strong> When the circuit breaker is open, a fallback mechanism should be in place to provide a graceful degradation of service or return default values.</li>
 <li><strong>Metrics and Monitoring:</strong> Monitoring the circuit breaker’s state and the number of failures is essential for identifying and resolving issues.</li>
 <li><strong>Concurrency:</strong> Implementations should handle concurrent requests appropriately to avoid race conditions.</li>
-<li><strong>Integration with Libraries:</strong> Many libraries provide more comprehensive and refined implementations.</li>
+<li><strong>Integration with Libraries:</strong> Many libraries provide more detailed and refined implementations.</li>
 </ul>
 
 

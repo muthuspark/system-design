@@ -184,10 +184,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Multi-master architecture, also known as multi-primary or multi-leader architecture, represents a sophisticated approach to database replication and data management. Unlike single-master setups where one server holds the primary responsibility for data writes, a multi-master architecture allows multiple servers to accept write operations simultaneously. This design offers significant advantages in terms of scalability, high availability, and geographic distribution, but also introduces considerable complexity in handling data consistency and conflict resolution. This post goes into the intricacies of multi-master architecture, exploring its benefits, challenges, and various implementation strategies.</p>
+<p>Multi-master architecture, also known as multi-primary or multi-leader architecture, represents a complex approach to database replication and data management. Unlike single-master setups where one server holds the primary responsibility for data writes, a multi-master architecture allows multiple servers to accept write operations simultaneously. This design offers significant advantages in terms of scalability, high availability, and geographic distribution, but also introduces considerable complexity in handling data consistency and conflict resolution. This post goes into the complexities of multi-master architecture, exploring its benefits, challenges, and various implementation strategies.</p>
 <section id="understanding-the-fundamentals" class="level2">
 <h2 data-anchor-id="understanding-the-fundamentals">Understanding the Fundamentals</h2>
-<p>In a typical multi-master setup, multiple servers operate independently as masters, each capable of accepting and processing write requests. Changes made on one master are then replicated to the other masters, ensuring data consistency across the system. This replication process is crucial, and the method employed significantly impacts the overall architecture’s performance and consistency guarantees.</p>
+<p>In a typical multi-master setup, multiple servers operate independently as masters, each capable of accepting and processing write requests. Changes made on one master are then replicated to the other masters, ensuring data consistency across the system. This replication process is important, and the method employed significantly impacts the overall architecture’s performance and consistency guarantees.</p>
 <section id="advantages-of-multi-master-architecture" class="level3">
 <h3 data-anchor-id="advantages-of-multi-master-architecture">Advantages of Multi-Master Architecture</h3>
 <ul>
@@ -200,9 +200,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="challenges-of-multi-master-architecture" class="level3">
 <h3 data-anchor-id="challenges-of-multi-master-architecture">Challenges of Multi-Master Architecture</h3>
 <ul>
-<li><strong>Data Consistency:</strong> Maintaining data consistency across multiple masters is the most significant challenge. Conflicts can arise when different masters receive conflicting write operations on the same data. Sophisticated conflict resolution strategies are essential.</li>
-<li><strong>Complexity:</strong> Implementing and managing a multi-master architecture is considerably more complex than a single-master setup. It requires careful planning, robust replication mechanisms, and efficient conflict resolution algorithms.</li>
-<li><strong>Increased Operational Overhead:</strong> Monitoring and managing multiple masters introduce higher operational overhead compared to single-master architectures.</li>
+<li><p><strong>Data Consistency:</strong> Maintaining data consistency across multiple masters is the most significant challenge. Conflicts can arise when different masters receive conflicting write operations on the same data. Sophisticated conflict resolution strategies are essential.</p></li>
+<li><p><strong>Complexity:</strong> Implementing and managing a multi-master architecture is considerably more complex than a single-master setup. It requires careful planning, replication mechanisms, and efficient conflict resolution algorithms.</p></li>
+<li><p><strong>Increased Operational Overhead:</strong> Monitoring and managing multiple masters introduce higher operational overhead compared to single-master architectures.</p></li>
 </ul>
 </section>
 </section>
@@ -261,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>First-Write-Wins:</strong> The first write operation is chosen.</li>
 <li><strong>Custom Conflict Resolution Logic:</strong> A custom algorithm is implemented to determine the correct outcome based on application-specific rules.</li>
 </ul>
-<p>This requires sophisticated conflict detection and resolution mechanisms that may involve timestamping, versioning, or custom reconciliation logic.</p>
+<p>This requires complex conflict detection and resolution mechanisms that may involve timestamping, versioning, or custom reconciliation logic.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="code-example-conceptual-python" class="level2">
 <h2 data-anchor-id="code-example-conceptual-python">Code Example (Conceptual Python):</h2>
-<p>This example illustrates a simplified scenario where last-write-wins conflict resolution is implemented. In reality, conflict resolution requires significantly more robust mechanisms.</p>
+<p>This example illustrates a simplified scenario where last-write-wins conflict resolution is implemented. In reality, conflict resolution requires significantly more mechanisms.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiMasterDatabase:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data <span class="op">=</span> {}  <span class="co"># In-memory data store (simplified)</span></span>
@@ -314,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Consistency Requirements:</strong> How critical is strong consistency? Asynchronous replication might be acceptable for some applications, while others require synchronous replication.</li>
 <li><strong>Write Load:</strong> High write loads often benefit from asynchronous replication to improve performance.</li>
-<li><strong>Data Volume:</strong> Large datasets may require more sophisticated replication and conflict resolution mechanisms.</li>
+<li><strong>Data Volume:</strong> Large datasets may require more complex replication and conflict resolution mechanisms.</li>
 <li><strong>Network Conditions:</strong> Network reliability affects the feasibility of synchronous replication.</li>
 <li><strong>Development Resources:</strong> Implementing and maintaining a multi-master system requires significant expertise.</li>
 </ul>

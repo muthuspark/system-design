@@ -184,15 +184,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The integrity of your software is paramount. A single vulnerability can unravel months, even years, of development effort and open your system to catastrophic consequences. While robust security measures are crucial at all layers, the concept of an “Anti-Corruption Layer” (ACL) deserves special attention. It acts as a crucial buffer, protecting your core application logic from the unpredictable and often malicious world outside. This post will explore the intricacies of the ACL, providing a perspective into its purpose, design, and implementation.</p>
+<p>The integrity of your software is paramount. A single vulnerability can cause months, even years, of development effort to be lost and open your system to catastrophic consequences. While security measures are important at all layers, the concept of an “Anti-Corruption Layer” (ACL) deserves special attention. It acts as a important buffer, protecting your core application logic from the unpredictable and often malicious world outside. This post will look at the complexities of the ACL, providing a perspective into its purpose, design, and implementation.</p>
 <section id="what-is-an-anti-corruption-layer" class="level2">
 <h2 data-anchor-id="what-is-an-anti-corruption-layer">What is an Anti-Corruption Layer?</h2>
 <p>An Anti-Corruption Layer isn’t about fighting corruption in a societal sense; instead, it’s a design pattern that shields your clean, well-structured internal domain model from the messy, often incompatible external systems it must interact with. These external systems might be:</p>
 <ul>
-<li><strong>Legacy systems:</strong> Outdated, poorly documented systems with inconsistent data formats and APIs.</li>
-<li><strong>Third-party APIs:</strong> External services with unpredictable behavior, changing specifications, or potential security flaws.</li>
-<li><strong>Databases with inconsistent schema:</strong> Data sources that don’t adhere to your internal data model.</li>
-<li><strong>User interfaces with varied input formats:</strong> Handling inconsistent input from different sources (web forms, mobile apps, etc.).</li>
+<li><p><strong>Legacy systems:</strong> Outdated, poorly documented systems with inconsistent data formats and APIs.</p></li>
+<li><p><strong>Third-party APIs:</strong> External services with unpredictable behavior, changing specifications, or potential security flaws.</p></li>
+<li><p><strong>Databases with inconsistent schema:</strong> Data sources that don’t match your internal data model.</p></li>
+<li><p><strong>User interfaces with varied input formats:</strong> Handling inconsistent input from different sources (web forms, mobile apps, etc.).</p></li>
 </ul>
 <p>The ACL acts as a translator and validator, transforming data between the incompatible formats and ensuring that only clean, consistent data reaches your core application logic.</p>
 </section>

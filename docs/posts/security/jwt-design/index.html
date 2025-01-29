@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>JSON Web Tokens (JWTs) have become the de facto standard for securely transmitting information between parties as a compact, URL-safe method. This post will delve into the intricate design of JWTs, exploring their structure, components, and security considerations.</p>
+<p>JSON Web Tokens (JWTs) have become the de facto standard for securely transmitting information between parties as a compact, URL-safe method. This post will look at the design of JWTs, exploring their structure, components, and security considerations.</p>
 <section id="the-three-part-structure-header-payload-and-signature" class="level2">
 <h2 data-anchor-id="the-three-part-structure-header-payload-and-signature">The Three-Part Structure: Header, Payload, and Signature</h2>
 <p>A JWT is essentially a digitally signed JSON object composed of three parts separated by periods (<code>.</code>):</p>
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-anchor-id="signature-generation">Signature Generation</h2>
 <p>The signature is created by signing a concatenated string of the base64url encoded header and payload using the specified signing algorithm and a secret key (for symmetric algorithms like HS256) or a private key (for asymmetric algorithms like RS256).</p>
 <p><strong>Example using HS256 (symmetric):</strong></p>
-<p>This example is conceptual and omits detailed cryptographic implementation. Real-world implementation requires a robust cryptographic library.</p>
+<p>This example is conceptual and omits detailed cryptographic implementation. Real-world implementation requires a cryptographic library.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jwt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> base64</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -283,7 +283,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-anchor-id="security-considerations">Security Considerations</h2>
 <ul>
 <li><strong>Secret Key Management:</strong> Securely store and manage your secret keys. Avoid hardcoding them directly in your application.</li>
-<li><strong>Algorithm Selection:</strong> Choose a robust and well-vetted signing algorithm. HS256 is suitable for many applications, while RS256 offers stronger security for scenarios where key distribution is a concern.</li>
+<li><strong>Algorithm Selection:</strong> Choose a well-vetted signing algorithm. HS256 is suitable for many applications, while RS256 offers stronger security for scenarios where key distribution is a concern.</li>
 <li><strong>Token Expiration:</strong> Set appropriate expiration times to limit the validity of tokens.</li>
 <li><strong>HTTPS:</strong> Always transmit JWTs over HTTPS to prevent interception.</li>
 <li><strong>Input Validation:</strong> Validate all claims in the payload to prevent injection attacks.</li>

@@ -184,14 +184,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Alert systems are a must needed part of all reliable applications. They’re the vigilant guardians that notify us of critical events, enabling timely intervention and preventing potential disasters. A well-designed alert system is crucial for maintaining application health, ensuring business continuity, and improving overall user experience. This post goes into the key components and considerations for building robust and effective alert systems.</p>
+<p>Alert systems are a must needed part of all reliable applications. They’re the vigilant guardians that notify us of critical events, enabling timely intervention and preventing potential disasters. A well-designed alert system is important for maintaining application health, ensuring business continuity, and improving overall user experience. This post goes into the key components and considerations for building effective alert systems.</p>
 <section id="understanding-the-core-components" class="level2">
 <h2 data-anchor-id="understanding-the-core-components">Understanding the Core Components</h2>
 <p>A robust alert system typically comprises several core components working in concert:</p>
 <ol type="1">
 <li><p><strong>Event Source:</strong> This is the origin of the alert. It could be anything from application logs monitoring CPU usage exceeding a threshold, database errors, network outages, or user behavior anomalies.</p></li>
 <li><p><strong>Monitoring System:</strong> This system continuously observes the event sources, collecting data and looking for conditions that trigger alerts. This might involve using dedicated monitoring tools (e.g., Prometheus, Nagios), custom scripts, or application-level monitoring.</p></li>
-<li><p><strong>Alerting Engine:</strong> The heart of the system, this component analyzes the data from the monitoring system, determines if thresholds have been breached, and decides whether to generate an alert. It may employ sophisticated logic, including deduplication, aggregation, and correlation of events.</p></li>
+<li><p><strong>Alerting Engine:</strong> The heart of the system, this component analyzes the data from the monitoring system, determines if thresholds have been breached, and decides whether to generate an alert. It may employ complex logic, including deduplication, aggregation, and correlation of events.</p></li>
 <li><p><strong>Notification System:</strong> This component delivers the alerts to the appropriate recipients. Methods include email, SMS, push notifications, PagerDuty integration, Slack integrations, or even physical alerts (lights, sirens – for critical situations).</p></li>
 <li><p><strong>Alert Management System:</strong> This manages the lifecycle of alerts, including acknowledging, resolving, and tracking their status. Features like escalation policies, suppression rules, and reporting capabilities are key aspects of alert management.</p></li>
 <li><p><strong>Storage &amp; Analytics:</strong> A system to store alert history, allowing for analysis of trends, identification of recurring issues, and performance optimization.</p></li>

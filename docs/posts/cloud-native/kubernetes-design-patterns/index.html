@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Kubernetes, the ubiquitous container orchestration platform, empowers developers to build and deploy scalable and resilient applications. However, effectively leveraging Kubernetes’s capabilities requires understanding and applying appropriate design patterns. This post dives deep into several crucial Kubernetes design patterns, providing explanations, diagrams, and code snippets to illustrate their practical implementation.</p>
+<p>Kubernetes, the ubiquitous container orchestration platform, empowers developers to build and deploy scalable and resilient applications. However, effectively leveraging Kubernetes’s capabilities requires understanding and applying appropriate design patterns. This post explores several important Kubernetes design patterns, providing explanations, diagrams, and code snippets to illustrate their practical implementation.</p>
 <section id="the-sidecar-pattern" class="level2">
 <h2 data-anchor-id="the-sidecar-pattern">1. The Sidecar Pattern</h2>
 <p>The Sidecar pattern involves deploying a supporting container alongside your main application container within the same Pod. This supporting container shares the same lifecycle as the main container but provides auxiliary functions. This is ideal for tasks like logging, monitoring, and providing specialized services.</p>

@@ -191,8 +191,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p><strong>Scalability:</strong> A single server can only handle a limited number of concurrent sessions. Scaling out requires distributing session data across multiple servers, which introduces complexity in managing consistency and availability.</p></li>
 <li><p><strong>Performance:</strong> Retrieving and storing session data must be fast to avoid impacting application responsiveness. Slow session management can lead to noticeable delays for users.</p></li>
-<li><p><strong>Security:</strong> Session data often contains sensitive information, requiring robust security measures to prevent unauthorized access and manipulation. Vulnerabilities in session management can lead to severe security breaches.</p></li>
-<li><p><strong>State Management:</strong> Maintaining consistent state across multiple servers and handling session expiration and invalidation are crucial aspects of efficient session management.</p></li>
+<li><p><strong>Security:</strong> Session data often contains sensitive information, requiring security measures to prevent unauthorized access and manipulation. Vulnerabilities in session management can lead to severe security breaches.</p></li>
+<li><p><strong>State Management:</strong> Maintaining consistent state across multiple servers and handling session expiration and invalidation are important aspects of efficient session management.</p></li>
 </ul>
 </section>
 <section id="session-management-strategies" class="level2">
@@ -342,9 +342,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-anchor-id="choosing-the-right-strategy">Choosing the Right Strategy</h2>
 <p>The optimal session management strategy depends on various factors, including the application’s scale, performance requirements, budget, and security considerations. Factors to consider include:</p>
 <ul>
-<li><strong>Expected Traffic:</strong> For small-scale applications, a database-backed approach might be sufficient. For high-traffic applications, a distributed cache is typically necessary.</li>
-<li><strong>Security Requirements:</strong> Sensitive data requires robust security measures, potentially involving encryption and secure storage mechanisms.</li>
-<li><strong>Budget:</strong> In-memory data stores and distributed caches can be expensive.</li>
+<li><p><strong>Expected Traffic:</strong> For small-scale applications, a database-backed approach might be sufficient. For high-traffic applications, a distributed cache is typically necessary.</p></li>
+<li><p><strong>Security Requirements:</strong> Sensitive data requires security measures, potentially involving encryption and secure storage mechanisms.</p></li>
+<li><p><strong>Budget:</strong> In-memory data stores and distributed caches can be expensive.</p></li>
 </ul>
 
 

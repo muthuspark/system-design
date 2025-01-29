@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In the world of distributed systems, ensuring consistency and order amidst concurrent operations is a significant challenge. Traditional timestamps often fall short in these scenarios, leading to potential inconsistencies and data corruption. This is where vector clocks come to the rescue. Vector clocks provide a robust mechanism for tracking the causal order of events in a distributed environment, offering a superior alternative to simple scalar timestamps. This post goes into the intricacies of vector clocks, explaining their functionality, implementation, and advantages.</p>
+<p>In the world of distributed systems, ensuring consistency and order amidst concurrent operations is a significant challenge. Traditional timestamps often fall short in these scenarios, leading to potential inconsistencies and data corruption. This is where vector clocks come to the rescue. Vector clocks provide a mechanism for tracking the causal order of events in a distributed environment, offering a superior alternative to simple scalar timestamps. This post goes into the complexities of vector clocks, explaining their functionality, implementation, and advantages.</p>
 <section id="what-are-vector-clocks" class="level2">
 <h2 data-anchor-id="what-are-vector-clocks">What are Vector Clocks?</h2>
 <p>Unlike scalar timestamps which assign a single, monotonically increasing value to each event, a vector clock assigns a vector of integers. Each element in this vector represents a process in the distributed system. The value at a specific index reflects the number of events that have occurred in the corresponding process up to a given point.</p>
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>vc2.increment() <span class="co"># vc2 becomes [1 1 0]</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>vc.update(vc2.clock)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Clock after update: </span><span class="sc">{</span>vc<span class="sc">}</span><span class="ss">"</span>) <span class="co"># Output: [1 1 0]</span></span></code></pre></div>
-<p>This example demonstrates the core functions: incrementing the local clock and updating with a clock from another process using element-wise maximum. The <code>process_id</code> attribute simulates the unique ID of each process. A real-world implementation would need more sophisticated process ID handling.</p>
+<p>This example demonstrates the core functions: incrementing the local clock and updating with a clock from another process using element-wise maximum. The <code>process_id</code> attribute simulates the unique ID of each process. A real-world implementation would need more complex process ID handling.</p>
 </section>
 <section id="comparing-vector-clocks-causality-and-concurrency" class="level2">
 <h2 data-anchor-id="comparing-vector-clocks-causality-and-concurrency">Comparing Vector Clocks: Causality and Concurrency</h2>

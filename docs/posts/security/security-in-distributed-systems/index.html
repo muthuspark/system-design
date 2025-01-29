@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Distributed systems, with their inherent complexity and interconnectedness, present unique security challenges not found in monolithic applications. Ensuring security in these environments requires a multifaceted approach, addressing vulnerabilities at every layer, from the underlying infrastructure to the application logic. This post explores the key aspects of security in distributed systems, examining common threats and mitigation strategies.</p>
+<p>Distributed systems, with their inherent complexity and interconnectedness, present unique security challenges not found in monolithic applications. Ensuring security in these environments requires an approach addressing vulnerabilities at every layer, from the underlying infrastructure to the application logic. This post explores the key aspects of security in distributed systems, examining common threats and mitigation strategies.</p>
 <section id="understanding-the-expanded-attack-surface" class="level2">
 <h2 data-anchor-id="understanding-the-expanded-attack-surface">Understanding the Expanded Attack Surface</h2>
 <p>The distributed nature of these systems significantly expands the attack surface. Unlike a single server, a distributed system comprises numerous components, often geographically dispersed and interacting through various networks. This introduces several new avenues for exploitation:</p>
@@ -193,12 +193,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Network Dependencies:</strong> The reliance on networks introduces vulnerabilities to network-based attacks, including denial-of-service (DoS) attacks, man-in-the-middle (MitM) attacks, and eavesdropping.</p></li>
 <li><p><strong>Data in Transit and at Rest:</strong> Protecting data both while it’s being transmitted across the network and while it’s stored on various nodes is critical.</p></li>
 <li><p><strong>Inter-service Communication:</strong> Security measures need to be implemented to secure communication between different services within the distributed system.</p></li>
-<li><p><strong>Data Consistency and Integrity:</strong> Maintaining data consistency and integrity across multiple nodes is challenging and requires robust mechanisms to prevent data corruption or manipulation.</p></li>
+<li><p><strong>Data Consistency and Integrity:</strong> Maintaining data consistency and integrity across multiple nodes is challenging and requires mechanisms to prevent data corruption or manipulation.</p></li>
 </ul>
 </section>
 <section id="key-security-considerations" class="level2">
 <h2 data-anchor-id="key-security-considerations">Key Security Considerations</h2>
-<p>Addressing the challenges outlined above requires a holistic approach encompassing several crucial aspects:</p>
+<p>Addressing the challenges outlined above requires an approach encompassing several important aspects:</p>
 <section id="authentication-and-authorization" class="level3">
 <h3 data-anchor-id="authentication-and-authorization">1. Authentication and Authorization</h3>
 <p>Robust authentication and authorization mechanisms are paramount. This involves verifying the identity of users and services accessing the system and controlling their access privileges.</p>
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-encryption" class="level3">
 <h3 data-anchor-id="data-encryption">2. Data Encryption</h3>
-<p>Protecting data in transit and at rest is crucial. Encryption techniques safeguard data from unauthorized access.</p>
+<p>Protecting data in transit and at rest is important. Encryption techniques safeguard data from unauthorized access.</p>
 <ul>
 <li><p><strong>Data in Transit:</strong> TLS/SSL is essential for securing communication channels.</p></li>
 <li><p><strong>Data at Rest:</strong> Disk encryption and database encryption protect data stored on servers and databases.</p></li>
@@ -287,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="auditing-and-logging" class="level3">
 <h3 data-anchor-id="auditing-and-logging">5. Auditing and Logging</h3>
-<p>Comprehensive auditing and logging mechanisms are crucial for tracking system activities, identifying security breaches, and conducting post-incident analysis. Logs should be securely stored and protected from unauthorized access.</p>
+<p>Comprehensive auditing and logging mechanisms are important for tracking system activities, identifying security breaches, and conducting post-incident analysis. Logs should be securely stored and protected from unauthorized access.</p>
 </section>
 <section id="regular-security-assessments" class="level3">
 <h3 data-anchor-id="regular-security-assessments">6. Regular Security Assessments</h3>

@@ -150,15 +150,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Leader election is a fundamental problem in distributed systems. It’s the process of selecting a single node from a group of nodes to act as the leader, responsible for coordinating tasks, making decisions, and managing resources. This leader acts as a single point of control, simplifying the system’s overall architecture and facilitating efficient operation. However, the selection process must be robust and fault-tolerant, handling node failures and network partitions gracefully. This post explores various leader election algorithms and provides code examples to illustrate their implementation.</p>
-<section id="why-leader-election-is-crucial" class="level2">
-<h2 data-anchor-id="why-leader-election-is-crucial">Why Leader Election is Crucial</h2>
+<p>Leader election is a fundamental problem in distributed systems. It’s the process of selecting a single node from a group of nodes to act as the leader, responsible for coordinating tasks, making decisions, and managing resources. This leader acts as a single point of control, simplifying the system’s overall architecture and ensuring efficient operation. However, the selection process must be fault-tolerant, handling node failures and network partitions gracefully. This post explores various leader election algorithms and provides code examples to illustrate their implementation.</p>
+<section id="why-leader-election-is-important" class="level2">
+<h2 data-anchor-id="why-leader-election-is-important">Why Leader Election is important</h2>
 <p>In distributed systems, where multiple nodes operate independently but need to coordinate, a leader is often necessary for several reasons:</p>
 <ul>
 <li><strong>Centralized Control:</strong> A single leader simplifies decision-making and avoids conflicts between nodes.</li>
 <li><strong>Resource Management:</strong> The leader can manage shared resources, preventing resource starvation and ensuring fairness.</li>
 <li><strong>Fault Tolerance:</strong> By electing a new leader when the current one fails, the system can maintain its functionality.</li>
-<li><strong>Data Consistency:</strong> Leader election can be a crucial part of ensuring data consistency across the distributed system.</li>
+<li><strong>Data Consistency:</strong> Leader election can be a important part of ensuring data consistency across the distributed system.</li>
 </ul>
 </section>
 <section id="common-leader-election-algorithms" class="level2">

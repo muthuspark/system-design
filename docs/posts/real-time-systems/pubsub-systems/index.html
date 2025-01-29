@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Publish/Subscribe (Pub/Sub) systems are a powerful messaging paradigm that decouples the components of an application, enabling scalable and resilient architectures. Unlike traditional request-response models, Pub/Sub allows for one-to-many communication, where a single message published by a “publisher” can be delivered to multiple “subscribers” interested in that specific message type. This architecture is crucial for building event-driven systems and real-time applications.</p>
+<p>Publish/Subscribe (Pub/Sub) systems are a powerful messaging paradigm that decouples the components of an application, enabling scalable and resilient architectures. Unlike traditional request-response models, Pub/Sub allows for one-to-many communication, where a single message published by a “publisher” can be delivered to multiple “subscribers” interested in that specific message type. This architecture is important for building event-driven systems and real-time applications.</p>
 <section id="core-concepts-publishers-subscribers-and-topics" class="level2">
 <h2 data-anchor-id="core-concepts-publishers-subscribers-and-topics">Core Concepts: Publishers, Subscribers, and Topics</h2>
 <p>At the heart of any Pub/Sub system lie three key components:</p>
@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Several popular technologies implement the Pub/Sub paradigm:</p>
 <ul>
 <li><p><strong>Kafka:</strong> A high-throughput, distributed streaming platform commonly used for building real-time data pipelines and event streaming applications.</p></li>
-<li><p><strong>RabbitMQ:</strong> A robust message broker that supports various messaging patterns, including Pub/Sub.</p></li>
+<li><p><strong>RabbitMQ:</strong> A message broker that supports various messaging patterns, including Pub/Sub.</p></li>
 <li><p><strong>Google Cloud Pub/Sub:</strong> A fully managed, scalable Pub/Sub service offered by Google Cloud Platform.</p></li>
 <li><p><strong>Amazon Simple Notification Service (SNS):</strong> A managed Pub/Sub service provided by Amazon Web Services.</p></li>
 </ul>
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-anchor-id="advanced-topics-message-ordering-durability-and-dead-letter-queues">Advanced Topics: Message Ordering, Durability, and Dead-Letter Queues</h2>
 <p>Pub/Sub systems often offer advanced features to handle complex scenarios:</p>
 <ul>
-<li><p><strong>Message Ordering:</strong> Guaranteeing message delivery order can be crucial for some applications. Many systems provide mechanisms to achieve this, but it often comes at the cost of throughput.</p></li>
+<li><p><strong>Message Ordering:</strong> Guaranteeing message delivery order can be important for some applications. Many systems provide mechanisms to achieve this, but it often comes at the cost of throughput.</p></li>
 <li><p><strong>Message Durability:</strong> Ensuring messages are not lost even in case of system failures requires persistent storage and acknowledgement mechanisms.</p></li>
 <li><p><strong>Dead-Letter Queues (DLQs):</strong> These are special queues where messages that fail processing are moved. This allows for monitoring and retry mechanisms, preventing message loss.</p></li>
 </ul>

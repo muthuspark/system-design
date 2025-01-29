@@ -190,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The foundation of container security lies in the image itself. A compromised base image can lead to vulnerabilities across all instances deployed from it. Best practices for image security include:</p>
 <ul>
 <li><p><strong>Using Minimal Base Images:</strong> Start with a slim base image containing only the necessary packages. This reduces the attack surface. For example, instead of a full-fledged Ubuntu image, consider using a smaller, purpose-built distribution like Alpine Linux.</p></li>
-<li><p><strong>Regularly Updating Images:</strong> Outdated images are rife with known vulnerabilities. Implement automated processes for updating base images and application dependencies. Regularly scanning images for vulnerabilities is crucial. Tools like Clair, Trivy, and Anchore provide vulnerability scanning capabilities.</p></li>
+<li><p><strong>Regularly Updating Images:</strong> Outdated images are rife with known vulnerabilities. Implement automated processes for updating base images and application dependencies. Regularly scanning images for vulnerabilities is important. Tools like Clair, Trivy, and Anchore provide vulnerability scanning capabilities.</p></li>
 <li><p><strong>Multi-Stage Builds:</strong> Use multi-stage builds in your Dockerfiles to separate build-time dependencies from runtime dependencies. This significantly reduces the size of the final image and removes sensitive information (like build tools) from the production environment.</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Container orchestration platforms like Kubernetes require their own security considerations.</p>
 <ul>
 <li><p><strong>RBAC (Role-Based Access Control):</strong> Implement RBAC to control access to cluster resources based on user roles and permissions. This prevents unauthorized access and modification of your cluster.</p></li>
-<li><p><strong>Pod Security Policies (PSPs) / Pod Security Admission:</strong> Define policies that control the security settings of pods, ensuring that they adhere to your security requirements. (Note: PSPs are deprecated in Kubernetes 1.25+, use Pod Security Admission instead.)</p></li>
+<li><p><strong>Pod Security Policies (PSPs) / Pod Security Admission:</strong> Define policies that control the security settings of pods, ensuring they meet your security requirements. (Note: PSPs are deprecated in Kubernetes 1.25+, use Pod Security Admission instead.)</p></li>
 <li><p><strong>Network Policies:</strong> Similar to runtime network security, Kubernetes network policies control traffic flow between pods within the cluster.</p></li>
 <li><p><strong>Admission Controllers:</strong> Use admission controllers to enforce policies and validate requests before they’re applied to the cluster.</p></li>
 <li><p><strong>Regular Security Audits:</strong> Conduct regular security audits of your Kubernetes cluster to identify and address potential vulnerabilities and misconfigurations.</p></li>

@@ -184,31 +184,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Event-driven architecture (EDA) is a powerful concept for building scalable and resilient distributed systems. It shifts the focus from synchronous request-response interactions to asynchronous event processing, allowing for greater flexibility, decoupling, and independent scalability of components. This post will explore the intricacies of EDA in the context of distributed systems, covering its core concepts, benefits, challenges, and practical implementation considerations.</p>
+<p>Event-driven architecture (EDA) is a powerful concept for building scalable and resilient distributed systems. It shifts the focus from synchronous request-response interactions to asynchronous event processing, allowing for greater flexibility, decoupling, and independent scalability of components. This post will look at the complexities of EDA in the context of distributed systems, covering its core concepts, benefits, challenges, and practical implementation considerations.</p>
 <section id="core-concepts" class="level2">
 <h2 data-anchor-id="core-concepts">Core Concepts</h2>
 <p>At the heart of EDA lies the concept of <strong>events</strong>. An event is a significant occurrence in the system, such as a new order being placed, a payment being processed, or a user updating their profile. These events are typically asynchronous; they happen independently of any specific request.</p>
 <p>Components in an EDA communicate by producing and consuming events. <strong>Event producers</strong> generate events, while <strong>event consumers</strong> react to these events. The communication is facilitated by an <strong>event bus</strong>, a central messaging system that acts as an intermediary.</p>
 <p>The key characteristics of EDA include:</p>
 <ul>
-<li><strong>Asynchronous Communication:</strong> Components don’t directly interact; they communicate via events on the event bus.</li>
-<li><strong>Decoupling:</strong> Producers and consumers are independent and unaware of each other’s existence. This allows for independent development, deployment, and scaling.</li>
-<li><strong>Loose Coupling:</strong> Changes in one part of the system are less likely to affect other parts, making the system more robust and maintainable.</li>
-<li><strong>Scalability:</strong> The event bus can handle a high volume of events, allowing the system to scale horizontally.</li>
+<li><p><strong>Asynchronous Communication:</strong> Components don’t directly interact; they communicate via events on the event bus.</p></li>
+<li><p><strong>Decoupling:</strong> Producers and consumers are independent and unaware of each other’s existence. This allows for independent development, deployment, and scaling.</p></li>
+<li><p><strong>Loose Coupling:</strong> Changes in one part of the system are less likely to affect other parts, making the system more maintainable.</p></li>
+<li><p><strong>Scalability:</strong> The event bus can handle a high volume of events, allowing the system to scale horizontally.</p></li>
 </ul>
 </section>
 <section id="event-bus-implementations" class="level2">
 <h2 data-anchor-id="event-bus-implementations">Event Bus Implementations</h2>
 <p>Several technologies can serve as event buses in a distributed system. Popular choices include:</p>
 <ul>
-<li><strong>Message Queues:</strong> Such as <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://kafka.apache.org/">Kafka</a>, and <a href="https://activemq.apache.org/">ActiveMQ</a>. These offer robust message delivery guarantees and often include features like message ordering and persistence.</li>
-<li><strong>Publish-Subscribe Systems:</strong> These systems allow publishers to send events to topics (channels), and subscribers can register to receive events from specific topics. Examples include Redis Pub/Sub and Kafka.</li>
-<li><strong>Cloud-based Eventing Services:</strong> Cloud providers like AWS (SNS, SQS), Google Cloud (Pub/Sub), and Azure (Event Hub) offer managed eventing services that simplify deployment and management.</li>
+<li><p><strong>Message Queues:</strong> Such as <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://kafka.apache.org/">Kafka</a>, and <a href="https://activemq.apache.org/">ActiveMQ</a>. These offer message delivery guarantees and often include features like message ordering and persistence.</p></li>
+<li><p><strong>Publish-Subscribe Systems:</strong> These systems allow publishers to send events to topics (channels), and subscribers can register to receive events from specific topics. Examples include Redis Pub/Sub and Kafka.</p></li>
+<li><p><strong>Cloud-based Eventing Services:</strong> Cloud providers like AWS (SNS, SQS), Google Cloud (Pub/Sub), and Azure (Event Hub) offer managed eventing services that simplify deployment and management.</p></li>
 </ul>
 </section>
 <section id="architectural-patterns" class="level2">
 <h2 data-anchor-id="architectural-patterns">Architectural Patterns</h2>
-<p>Several architectural patterns leverage EDA:</p>
+<p>Several architectural patterns use EDA:</p>
 <p><strong>1. Microservices Architecture:</strong> EDA is a natural fit for microservices. Each microservice can produce and consume events related to its specific domain, enabling loose coupling and independent scaling.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
