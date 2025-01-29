@@ -92,7 +92,7 @@ This Python code reads a CSV file, processes it in batches of a specified size, 
 
 ## Tools and Technologies
 
-Numerous tools and technologies facilitate batch processing, including:
+Numerous tools and technologies enable batch processing, including:
 
 - **Apache Hadoop: ** Distributed framework for storage and processing of large data sets.
 - **Apache Spark: ** Fast, general-purpose cluster computing system for large-scale data processing.

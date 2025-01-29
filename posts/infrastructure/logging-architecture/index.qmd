@@ -10,7 +10,7 @@ Logging is a critical aspect of software development, important for debugging, m
 
 ## 1. Log Levels: The Foundation of Structured Logging
 
-Before delving into architecture, we need to understand log levels. These categorize log messages by severity, allowing you to filter and prioritize information. Common levels include:
+Before understanding log levels, we need to understand log levels. These categorize log messages by severity, allowing you to filter and prioritize information. Common levels include:
 
 -   **DEBUG:** Detailed information useful for debugging.
 -   **INFO:** Normal operational messages.
@@ -220,7 +220,7 @@ def check_log_storage():
 
 ## 8. Monitoring and Alerting
 
-Effective **monitoring** and **alerting** are essential components of a reliable system, ensuring that you stay informed about the system's health and can quickly address issues before they impact users. Here’s a deeper dive into the key aspects of this process:
+Effective **monitoring** and **alerting** are essential components of a reliable system, ensuring that you stay informed about the system's health and can quickly address issues before they impact users. Here’s a look at the key aspects of this process:
 
 ### 1. **Monitoring Key Metrics**
 

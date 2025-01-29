@@ -7,7 +7,7 @@ Distributed systems, while offering scalability and resilience, introduce a new 
 
 ## Understanding the Problem: Race Conditions in Distributed Systems
 
-Before we dive into solutions, let's understand the problem. A race condition occurs when multiple processes or threads access and manipulate shared data concurrently, leading to unpredictable and often incorrect results. In a distributed environment, this is exacerbated by network latency and the lack of a single, shared memory space.
+Before we understand the problem, let's consider the following: A race condition occurs when multiple processes or threads access and manipulate shared data concurrently, leading to unpredictable and often incorrect results. In a distributed environment, this is exacerbated by network latency and the lack of a single, shared memory space.
 
 Consider a simple scenario: two services, Service A and Service B, both need to decrement a counter stored in a database. If they both read the counter (say, 5), then decrement it independently and write it back, the final value might be 4 instead of 3, losing a decrement operation. This is a classic race condition.
 
@@ -104,7 +104,7 @@ except Exception as e:
 
 ### 3. ZooKeeper
 
-ZooKeeper, a highly reliable distributed coordination service, provides robust distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks. The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock. For more information, see the [ZooKeeper documentation](https://zookeeper.apache.org/doc/r3.6.1/zookeeperProgrammers.html#sc%20RECIPES).
+ZooKeeper, a highly reliable distributed coordination service, provides distributed locking capabilities. It utilizes its hierarchical naming service and watches to implement locks. The first process to create an ephemeral node under a lock node acquires the lock. When the process holding the lock dies, the ephemeral node is automatically deleted, allowing others to acquire the lock. For more information, see the [ZooKeeper documentation](https://zookeeper.apache.org/doc/r3.6.1/zookeeperProgrammers.html#sc%20RECIPES).
 
 **Advantages:** Highly reliable, handles failures gracefully, built-in features for distributed coordination.
 
@@ -112,7 +112,7 @@ ZooKeeper, a highly reliable distributed coordination service, provides robust d
 
 ### 4. Etcd
 
-Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for robust lock management. For more information, see the [Etcd documentation](https://etcd.io/).
+Etcd, another popular distributed key-value store, also offers primitives for distributed locking, similar to ZooKeeper, using leases and watches for lock management. For more information, see the [Etcd documentation](https://etcd.io/).
 
 **Advantages:** High availability, scalability, simple API.
 

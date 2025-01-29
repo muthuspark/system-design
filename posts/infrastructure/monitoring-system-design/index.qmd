@@ -3,7 +3,7 @@ title: "Monitoring System Design"
 categories: [ "Infrastructure" ]
 ---
 
-Monitoring systems are the lifeblood of any robust application. They provide important information about the health, performance, and behavior of your software, allowing you to proactively identify and resolve issues before they impact users.
+Monitoring systems are the lifeblood of any application. They provide important information about the health, performance, and behavior of your software, allowing you to proactively identify and resolve issues before they impact users.
  Designing an effective monitoring system, however, is a complex undertaking requiring careful consideration of several key aspects. This post goes into the important components and considerations for building a detailed monitoring solution.
 
 ## 1. Defining Objectives and Scope
@@ -16,7 +16,7 @@ For example, a simple web application might only need to monitor CPU usage, memo
 
 The next step involves identifying the sources of the data you need to monitor. This could include:
 
--   **Application Logs:** These provide valuable information about the internal workings of your application, including errors, warnings, and debug messages.
+-   **Application Logs:** These provide information about the internal workings of your application, including errors, warnings, and debug messages.
 -   **System Metrics:** Operating system metrics such as CPU utilization, memory usage, disk I/O, and network traffic are important indicators of system health.
 -   **Application Metrics:** These metrics are specific to your application and often include performance counters, business KPIs (Key Performance Indicators), and custom events.
 -   **Infrastructure Metrics:** Metrics related to your infrastructure, such as network bandwidth, storage capacity, and server availability.

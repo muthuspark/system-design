@@ -4,7 +4,7 @@ categories: [ "Cloud Native" ]
 ---
 
 
-The modern application landscape is increasingly complex, built from a multitude of microservices communicating with each other.  Managing this web of inter-service communication presents significant challenges related to security, observability, and resilience.
+The modern application is increasingly complex, built from a multitude of microservices communicating with each other. Managing this web of inter-service communication presents significant challenges related to security, observability, and resilience.
  This is where service mesh architecture comes in, providing a dedicated infrastructure layer to handle these complexities.  This post will look at the core concepts of service mesh, its benefits, common components, and popular implementations.
 
 ## What is a Service Mesh?

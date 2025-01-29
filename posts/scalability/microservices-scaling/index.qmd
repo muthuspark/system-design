@@ -4,7 +4,7 @@ categories: [ "Scalability" ]
 ---
 
 
-Scaling microservices is a critical aspect of building robust and resilient applications. Unlike monolithic applications, where scaling often involves replicating the entire application, microservices allow for granular scaling—scaling individual services based on their specific needs. This targeted approach leads to more efficient resource utilization and improved cost-effectiveness. However, it also introduces complexities that require careful planning and execution. This post explores various strategies for scaling microservices, highlighting their advantages and disadvantages.
+Scaling microservices is a critical aspect of building and resilient applications. Unlike monolithic applications, where scaling often involves replicating the entire application, microservices allow for granular scaling—scaling individual services based on their specific needs. This targeted approach leads to more efficient resource utilization and improved cost-effectiveness. However, it also introduces complexities that require careful planning and execution. This post explores various strategies for scaling microservices, highlighting their advantages and disadvantages.
 
 ## Understanding Scaling Dimensions
 

@@ -139,7 +139,7 @@ print(f"Session Data: {session_data}")
 delete_session(session_id)
 ```
 
-This is a simplified example; a production-ready system would require more robust error handling and security features.
+This is a simplified example; a production-ready system would require more error handling and security features.
 
 ## Choosing the Right Strategy
 

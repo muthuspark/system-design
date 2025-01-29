@@ -745,7 +745,7 @@ The color coding indicates: - Services (pink fill) - Databases (blue fill) - Pip
     -   Search Analytics: Monitors and improves search performance
         -   Tracks popular searches
         -   Analyzes query patterns
-        -   Provides insights for optimization
+- Provides optimization
 
 -   Data Layer
 
@@ -773,7 +773,7 @@ This architecture provides:
 -   High availability with replicated indices
 -   Real-time search capabilities
 -   Performance optimization through caching
--   Robust monitoring and analytics
+- Monitoring and analytics
 -   Data consistency through the indexing pipeline
 
 The design prioritizes both search relevance and system performance while maintaining data consistency across the platform.

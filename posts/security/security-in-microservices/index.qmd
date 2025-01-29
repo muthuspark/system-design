@@ -26,7 +26,7 @@ Unlike monolithic applications, microservices communicate extensively with each 
 * **Complexity:** The sheer number of services and their interdependencies make security management more complex than in monolithic architectures.
 
 
-## Implementing Robust Security Measures
+## Implementing Security Measures
 
 Addressing these challenges requires a detailed security strategy.  Let's look at key implementation aspects:
 
@@ -49,7 +49,7 @@ graph LR
     end
 ```
 
-* **Authentication and Authorization:**  Implement robust authentication mechanisms (e.g., OAuth 2.0, JWT) to verify the identity of clients and services.  Authorization controls access to specific resources based on user roles and permissions.
+* **Authentication and Authorization:** Implement authentication mechanisms (e.g., OAuth 2.0, JWT) to verify the identity of clients and services. Authorization controls access to specific resources based on user roles and permissions.
 
 * **Secure Protocols:**  Use HTTPS for all inter-service communication to encrypt data in transit.
 
@@ -94,7 +94,7 @@ Effective monitoring and logging are important for detecting and responding to s
 
 Secure coding practices are vital:
 
-* **Secure Coding Standards:** Adhere to secure coding standards and best practices to minimize vulnerabilities in the code.
+* **Secure Coding Standards:** Follow secure coding standards and best practices to minimize vulnerabilities in the code.
 
 * **Static and Dynamic Application Security Testing (SAST/DAST):** Integrate SAST and DAST tools into the development pipeline to identify security flaws early in the development process.
 

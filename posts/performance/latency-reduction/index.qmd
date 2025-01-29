@@ -8,7 +8,7 @@ Latency, the delay between a request and a response, is the enemy of a smooth us
 
 ## Understanding Latency Sources
 
-Before we dive into solutions, it's important to understand where latency originates. Latency isn't a single entity but rather a collection of delays accumulated across different stages of a request's journey. These stages can include:
+Before understanding where latency originates, it's important to note that latency isn't a single entity but rather a collection of delays accumulated across different stages of a request's journey. These stages can include:
 
 -   **Network Latency:** This is the time it takes for data to travel across networks, from client to server and back. Factors like geographical distance, network congestion, and the quality of the network infrastructure all contribute to network latency.
 

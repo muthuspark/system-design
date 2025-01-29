@@ -75,7 +75,7 @@ The core of a search engine lies in its ranking algorithms, determining which pa
 
 ## 5. Infrastructure and Scalability: Handling Billions of Queries
 
-Handling the massive scale of web searches requires robust and scalable infrastructure. This involves:
+Handling the massive scale of web searches requires scalable infrastructure. This involves:
 
 -   **Distributed Systems:** Distributing the workload across many servers to handle the volume of requests.
 -   **Caching:** Storing frequently accessed data in memory for faster retrieval.

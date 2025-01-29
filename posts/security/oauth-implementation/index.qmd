@@ -8,7 +8,7 @@ OAuth (Open Authorization) is a widely used authorization framework that allows 
 
 ## Understanding the Core Components
 
-Before delving into implementation details, let's define the key players in the OAuth ecosystem:
+Before implementation details, let's define the key players in the OAuth ecosystem:
 
 * **Resource Owner:** The user who owns the data.
 * **Resource Server:** The server hosting the protected resources (data).

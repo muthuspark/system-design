@@ -7,7 +7,7 @@ APIs (Application Programming Interfaces) are the backbone of modern software, e
 
 ## Understanding API Vulnerabilities
 
-Before delving into security measures, it's essential to understand the common vulnerabilities that APIs face. Many vulnerabilities stem from poor design and implementation. Here are some key areas of concern:
+Before understanding the common vulnerabilities that APIs face, it's essential to understand the common vulnerabilities that APIs face. Many vulnerabilities stem from poor design and implementation. Here are some key areas of concern:
 
 -   **Authentication & Authorization:** Failing to properly authenticate users and authorize their access to specific resources is a major vulnerability. Attackers can exploit weak authentication mechanisms or unauthorized access to sensitive data.
 
@@ -19,7 +19,7 @@ Before delving into security measures, it's essential to understand the common v
 
 -   **Denial of Service (DoS):** DoS attacks flood an API with requests, making it unavailable to legitimate users.
 
-## Implementing Robust API Security Measures
+## Implementing API Security Measures
 
 Securing your APIs requires a multi-layered approach, combining various security controls and practices.
 
@@ -68,7 +68,9 @@ app = Flask(__name__)
 def example_api():
     user_input = request.form.get('input')
     if user_input:
-        sanitized_input = user_input.replace("'", "''") # Simple example, use a dedicated library for robust sanitization
+```python
+sanitized_input = user_input.replace("'", "''")  # Simple example, use a dedicated library for sanitization
+```
         # ... use sanitized_input in your code ...
     return 'OK'
 ```

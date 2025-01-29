@@ -8,7 +8,7 @@ Alert systems are a must needed part of all reliable applications. They're the v
 
 ## Understanding the Core Components
 
-A robust alert system typically comprises several core components working in concert:
+An alert system typically comprises several core components working in concert:
 
 1.  **Event Source:** This is the origin of the alert. It could be anything from application logs monitoring CPU usage exceeding a threshold, database errors, network outages, or user behavior anomalies.
 

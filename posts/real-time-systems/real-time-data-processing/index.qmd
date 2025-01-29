@@ -16,7 +16,7 @@ The foundation of real-time data processing lies in its ability to handle high-v
 
 ## Architectures for Real-Time Processing
 
-Several architectural patterns facilitate real-time data processing. Let's look at two prominent ones:
+Several architectural patterns enable real-time data processing. Let's look at two prominent ones:
 
 ### 1. Lambda Architecture
 

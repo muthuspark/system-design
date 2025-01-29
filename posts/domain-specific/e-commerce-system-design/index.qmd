@@ -4,7 +4,7 @@ categories: [ "Domain-Specific" ]
 ---
 
 
-Designing a robust and scalable e-commerce system is a complex undertaking, demanding careful consideration of various architectural components and their interactions. This post goes into the key aspects of designing such a system, exploring the architecture, key components, and technologies involved.
+Designing a scalable e-commerce system is a complex undertaking, demanding careful consideration of various architectural components and their interactions. This post goes into the key aspects of designing such a system, exploring the architecture, key components, and technologies involved.
 
 ## 1. Architectural Overview
 

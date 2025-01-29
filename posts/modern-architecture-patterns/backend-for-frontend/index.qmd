@@ -4,7 +4,7 @@ categories: [ "Modern Architecture Patterns" ]
 ---
 
 
-The modern web application landscape is increasingly complex.  We're moving away from monolithic architectures towards microservices, leading to a proliferation of backend services.  This presents a challenge: how do we efficiently expose this granular backend to our various frontend applications (web, mobile, IoT, etc.) without overwhelming them with unnecessary data or complexity?  The answer, often, is a **Backend for Frontend (BFF)**.
+The modern web application is increasingly complex. We're moving away from monolithic architectures towards microservices, leading to a proliferation of backend services. This presents a challenge: how do we efficiently expose this granular backend to our various frontend applications (web, mobile, IoT, etc.) without overwhelming them with unnecessary data or complexity? The answer, often, is a **Backend for Frontend (BFF)**.
 
 ## What is a Backend for Frontend (BFF)?
 

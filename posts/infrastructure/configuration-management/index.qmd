@@ -74,7 +74,7 @@ graph LR
 
 This diagram illustrates a basic CI/CD pipeline integrated with CM. The developer's changes are committed, triggering automated tests. Upon successful tests, the configuration is deployed, followed by monitoring and validation. Failure at any stage leads to notifications and potential rollback.
 
-## A Deeper Dive into IaC with Terraform
+## IaC with Terraform
 
 Terraform, a popular IaC tool, allows you to define and manage infrastructure in a declarative manner. Consider provisioning a simple virtual machine:
 

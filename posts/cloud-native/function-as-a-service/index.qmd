@@ -135,7 +135,7 @@ This deployment model comparison shows a spectrum from high abstraction (FaaS) t
 
 - Application architecture requirements
 - Required level of control over the environment
-- Team expertise and resources
+Team resources
 - Scalability needs
 - Cost considerations
 - Security requirements

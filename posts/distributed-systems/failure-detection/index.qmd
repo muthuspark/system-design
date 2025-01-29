@@ -3,13 +3,13 @@ title: "Failure Detection"
 categories: [ "Distributed Systems" ]
 ---
 
-Failure detection is important in building robust and reliable systems. Whether you're managing a complex microservice architecture or a single server application, the ability to quickly and accurately identify failures is paramount. This post will look at the various strategies and techniques used for failure detection, examining their strengths and weaknesses, and providing practical examples to illustrate their application.
+Failure detection is important in building reliable systems. Whether you're managing a complex microservice architecture or a single server application, the ability to quickly and accurately identify failures is paramount. This post will look at the various strategies and techniques used for failure detection, examining their strengths and weaknesses, and providing practical examples to illustrate their application.
 
 ## Types of Failures
 
 Before exploring detection methods, it's important to understand the different types of failures we aim to detect:
 
--   **Hardware Failures:** These encompass issues like disk drive crashes, CPU malfunctions, or power outages. These are often abrupt and catastrophic.
+-   **Hardware Failures:** These are issues like disk drive crashes, CPU malfunctions, or power outages. These are often abrupt and catastrophic.
 
 -   **Software Failures:** These range from simple bugs and exceptions to more complex issues like deadlocks or memory leaks. They can be intermittent or persistent.
 
@@ -69,7 +69,7 @@ Tools like Prometheus and Grafana are commonly used for this purpose.
 
 ### 3. Exception Handling and Logging
 
-Robust exception handling and detailed logging within the application itself provide valuable insights into internal failures. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.
+Robust exception handling and detailed logging within the application provide insights into internal failures. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.
 
 ```{mermaid}
 sequenceDiagram

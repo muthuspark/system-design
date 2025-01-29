@@ -10,7 +10,7 @@ In today's volatile business environment, disruptions are inevitable. Natural di
 
 Business continuity is the process of creating systems of prevention and recovery to deal with potential threats to a company. The goal is to minimize disruption to normal business operations in the event of a disaster or other unforeseen circumstances. It's not just about recovering from an incident; it's about proactively mitigating risks and ensuring the continued delivery of critical services and products.
 
-A robust BC plan considers various aspects, including:
+A BC plan considers various aspects, including:
 
 -   **Risk Assessment:** Identifying potential threats and vulnerabilities.
 -   **Business Impact Analysis (BIA):** Determining the potential impact of disruptions on different business functions.

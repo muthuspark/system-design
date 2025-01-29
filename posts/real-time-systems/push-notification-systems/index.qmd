@@ -8,7 +8,7 @@ Push notifications have become an indispensable part of the modern mobile applic
 
 ## Understanding the Architecture
 
-A robust push notification system involves several key components working in concert:
+A push notification system involves several key components working in concert:
 
 -   **App Server:** This is the central hub of the system. It receives requests from the application, handles user data, and sends messages to the notification service. It often includes features for managing user segments, scheduling notifications, and analyzing notification performance.
 

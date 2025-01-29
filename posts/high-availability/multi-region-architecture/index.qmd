@@ -73,4 +73,4 @@ A service discovery mechanism allows application components to dynamically locat
 
 ### 5. Monitoring and Logging:
 
-Centralized monitoring and logging across all regions provide real-time insights into application performance and health. This facilitates quick identification and resolution of issues.
+Centralized monitoring and logging across all regions provide real-time information on application performance and health. This facilitates quick identification and resolution of issues.

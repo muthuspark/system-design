@@ -120,7 +120,7 @@ This forms a Chang-Roberts ring algorithm implementation, ensuring single leader
 
 ### 3. Paxos Algorithm
 
-Paxos is a more complex and robust algorithm, designed for highly fault-tolerant environments. It uses multiple rounds of message passing to ensure consensus on the leader selection. While the details of Paxos are quite intricate, its core principle involves proposing candidates and reaching agreement among a quorum of nodes. It handles network partitions and node failures more gracefully than the simpler algorithms. For more information, please refer to the [Distributed Consensus](/posts/distributed-systems/distributed-consensus/index.html) page.
+Paxos is a more complex algorithm, designed for highly fault-tolerant environments. It uses multiple rounds of message passing to ensure consensus on the leader selection. While the details of Paxos are quite intricate, its core principle involves proposing candidates and reaching agreement among a quorum of nodes. It handles network partitions and node failures more gracefully than simpler algorithms. For more information, please refer to the [Distributed Consensus](/posts/distributed-systems/distributed-consensus/index.html) page.
 
 ## Choosing the Right Algorithm
 

@@ -3,7 +3,7 @@ title: "Payment Processing Systems"
 categories: [ "Domain-Specific" ]
 ---
 
-Payment processing systems help in silently facilitating the billions of transactions that occur daily. From swiping a card at a grocery store to clicking "Buy Now" on an e-commerce site, these systems are the backbone of our digital and physical economies. This post will look at the complexities of payment processing systems, breaking down their components, functionality, and the technologies that power them.
+Payment processing systems silently handle the billions of transactions that occur daily. From swiping a card at a grocery store to clicking "Buy Now" on an e-commerce site, these systems are the backbone of our digital and physical economies. This post will look at the complexities of payment processing systems, breaking down their components, functionality, and the technologies that power them.
 
 ## Understanding the Core Components
 

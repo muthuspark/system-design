@@ -27,7 +27,7 @@ Let's examine some common vulnerabilities and how to mitigate them:
 
 **Mitigation:**
 
--   **Implement robust authentication mechanisms:** Use OAuth 2.0, OpenID Connect (OIDC), or JWT (JSON Web Tokens) for secure authentication. Employ multi-factor authentication (MFA) whenever possible.
+-   **Implement authentication mechanisms:** Use OAuth 2.0, OpenID Connect (OIDC), or JWT (JSON Web Tokens) for secure authentication. Employ multi-factor authentication (MFA) whenever possible.
 -   **Principle of least privilege:** Grant users only the necessary permissions to perform their tasks. Avoid granting excessive privileges.
 -   **Regular password policy updates:** Enforce strong password policies and regularly update them.
 

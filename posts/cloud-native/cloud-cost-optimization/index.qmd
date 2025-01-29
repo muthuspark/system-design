@@ -7,7 +7,7 @@ Cloud computing offers unparalleled scalability and flexibility, but uncontrolle
 
 ## Understanding Your Cloud Spending
 
-Before you can optimize, you need to understand where your money is going. Most cloud providers offer detailed billing reports and cost analysis tools. Leverage these to identify your top spenders:
+Before you can optimize, you need to understand where your money is going. Most cloud providers offer detailed billing reports and cost analysis tools. Use these to identify your top spenders.
 
 -   **Identify Top Services:** Which services (e.g., compute, storage, databases) consume the most resources? This allows you to focus your optimization efforts on the areas with the highest impact.
 
@@ -83,7 +83,7 @@ Network costs can be surprisingly high. Optimize by:
 
 ### 7. Monitoring and Alerting
 
-Implement robust monitoring and alerting systems to proactively identify potential cost issues. Set up alerts for:
+Implement monitoring and alerting systems to proactively identify potential cost issues. Set up alerts for:
 
 -   **High resource utilization:** Notify you when resources are nearing their limits.
 -   **Unnecessary spending:** Alert you when unexpected spikes in costs occur.

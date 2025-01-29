@@ -3,7 +3,7 @@ title: "Quorum-based Systems"
 categories: [ "Distributed Systems" ]
 ---
 
-Quorum systems are fundamental to the functioning of many distributed applications, providing a robust mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will look at the complexities of quorum systems, exploring their mechanisms, various types, and applications.
+Quorum systems are fundamental to the functioning of many distributed applications, providing a mechanism for achieving consensus and ensuring data consistency in environments where nodes may fail or be unreliable. This blog post will look at the complexities of quorum systems, exploring their mechanisms, various types, and applications.
 
 
 ## Understanding the Core Concept: Quorum

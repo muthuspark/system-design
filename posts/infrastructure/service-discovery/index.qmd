@@ -67,7 +67,7 @@ graph LR
 
 ## Popular Service Discovery Tools
 
-Several robust tools facilitate service discovery, including:
+Several tools facilitate service discovery, including:
 
 -   **Consul:** A popular choice offering service discovery, key-value store, and more.
 -   **Eureka (Netflix):** A mature and widely adopted solution, particularly within the Netflix ecosystem.

@@ -3,7 +3,7 @@ title: "RESTful API Design"
 categories: [ "API Design" ]
 ---
 
-Designing a robust and scalable RESTful API is important for modern application development. This guide explores the core principles of RESTful API design, providing practical examples and best practices to help you build efficient and maintainable APIs.
+Designing a and scalable RESTful API is important for modern application development. This guide explores the core principles of RESTful API design, providing practical examples and best practices to help you build efficient and maintainable APIs.
 
 ## Understanding RESTful Principles
 

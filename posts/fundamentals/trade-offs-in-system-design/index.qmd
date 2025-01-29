@@ -75,7 +75,7 @@ Implementing strong password policies with complex requirements enhances securit
 
 ## 5. Flexibility vs. Maintainability
 
-Highly flexible systems, designed to adapt to changing requirements, can become harder to maintain over time. The added complexity of supporting numerous configurations and options can make debugging, updates, and feature additions more challenging.
+Highly flexible systems, designed to meet changing requirements, can become harder to maintain over time. The added complexity of supporting numerous configurations and options can make debugging, updates, and feature additions more challenging.
 
 **Example:**
 

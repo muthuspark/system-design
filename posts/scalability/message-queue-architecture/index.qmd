@@ -33,7 +33,7 @@ This diagram shows two producers sending messages to a single queue, which is th
 
 ## Advanced Concepts
 
-Let's delve into some more complex aspects of message queue architecture:
+Let's explore some more complex aspects of message queue architecture:
 
 **1. Message Broker:** This term is often used interchangeably with "message queue," but it's more encompassing. A message broker manages multiple queues, exchanges (for routing messages), and provides advanced features like message persistence, security, and monitoring.
 

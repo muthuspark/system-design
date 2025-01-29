@@ -4,7 +4,7 @@ categories: [ "Cloud Native" ]
 ---
 
 
-Serverless architecture has rapidly emerged as a powerful paradigm shift in application development.  Instead of managing servers, developers focus solely on writing and deploying code, leaving the underlying infrastructure management to a cloud provider. This approach offers significant advantages in terms of scalability, cost-efficiency, and developer productivity.  Let's look at the complexities of this innovative architecture.
+Serverless architecture has rapidly emerged as a powerful shift in application development.  Instead of managing servers, developers focus solely on writing and deploying code, leaving the underlying infrastructure management to a cloud provider. This approach offers significant advantages in terms of scalability, cost-efficiency, and developer productivity. Let's look at the complexities of this innovative architecture.
 
 ## What is Serverless Architecture?
 

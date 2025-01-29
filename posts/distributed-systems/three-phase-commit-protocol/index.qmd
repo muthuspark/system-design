@@ -8,7 +8,7 @@ The Three-Phase Commit (3PC) protocol is a distributed consensus algorithm used 
 
 ## Understanding the Problem: Limitations of Two-Phase Commit
 
-Before delving into 3PC, let's briefly review the shortcomings of 2PC that 3PC attempts to address.  In 2PC, a coordinator manages the transaction, coordinating between participants.  If the coordinator fails during the commit phase, participants may be left in an indeterminate state, requiring manual intervention.  This blocking scenario is a major drawback, especially in critical systems.
+Before reviewing the shortcomings of 2PC that 3PC attempts to address, let's briefly consider them. In 2PC, a coordinator manages the transaction, coordinating between participants. If the coordinator fails during the commit phase, participants may be left in an indeterminate state, requiring manual intervention. This blocking scenario is a major drawback, especially in critical systems.
 
 
 ```{mermaid}
