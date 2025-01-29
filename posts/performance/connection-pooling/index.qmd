@@ -9,7 +9,7 @@ Connection pooling is a important technique for enhancing the performance and ef
 
 ## Understanding the Problem: The Cost of Connection Creation
 
-Before we explore the solution, let's understand the problem. Every time your application needs to interact with a database, it typically establishes a new connection.  This process involves several steps:
+Before we look at the solution, let's understand the problem. Every time your application needs to interact with a database, it typically establishes a new connection.  This process involves several steps:
 
 1. **Network Communication:** The application initiates a network request to the database server.
 2. **Authentication:** The server verifies the application's credentials.

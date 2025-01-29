@@ -3,7 +3,7 @@ title: "Horizontal vs Vertical Scaling"
 categories: [ "Scalability" ]
 ---
 
-Scaling your application is important for handling increasing traffic and data loads. But there are two primary approaches: horizontal and vertical scaling. Understanding the differences between these methods is vital for choosing the best strategy to ensure your application remains performant and reliable. This post dives deep into each, comparing their strengths, weaknesses, and ideal use cases.
+Scaling your application is important for handling increasing traffic and data loads. But there are two primary approaches: horizontal and vertical scaling. Understanding the differences between these methods is vital for choosing the best strategy to ensure your application remains performant and reliable. This post explores each, comparing their strengths, weaknesses, and ideal use cases.
 
 ## Vertical Scaling (Scaling Up)
 

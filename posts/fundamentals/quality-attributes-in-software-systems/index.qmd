@@ -8,7 +8,7 @@ Software development is more than just writing code that works; it's about build
 
 ## Key Quality Attributes
 
-We can categorize quality attributes into several key areas.  Let's explore some of the most critical ones:
+We can categorize quality attributes into several key areas.  Let's look at some of the most critical ones:
 
 ### 1. Functionality
 

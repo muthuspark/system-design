@@ -76,5 +76,5 @@ While HMS offer immense potential, several challenges remain:
 The future of HMS likely involves:
 
 -   **Increased use of AI and machine learning:** For more accurate diagnoses and personalized care.
--   **Integration with Electronic Health Records (EHRs):** For a holistic view of patient health.
+-   **Integration with Electronic Health Records (EHRs):** For a view of patient health.
 -   **Greater focus on remote patient monitoring:** To reduce healthcare costs and improve access to care.

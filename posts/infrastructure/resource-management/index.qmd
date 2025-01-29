@@ -3,7 +3,7 @@ title: "Resource Management"
 categories: [ "Infrastructure" ]
 ---
 
-Whether you're managing a small team, a large corporation, or even a personal project, understanding and implementing effective resource management strategies is important for success. This post goes deep into the intricacies of resource management, exploring its various facets and providing practical strategies for improvement.
+Whether you're managing a small team, a large corporation, or even a personal project, understanding and implementing effective resource management strategies is important for success. This post provides an analysis of resource management, exploring its various facets and providing practical strategies for improvement.
 
 ## What is Resource Management?
 
@@ -62,7 +62,7 @@ graph LR
 
 -   **Resource Leveling:** A technique used to smooth out resource utilization over time, preventing peaks and valleys in workload.
 
--   **Project Management Software:** Tools like Jira, Asana, and Trello provide features for task management, resource allocation, and progress tracking. Many offer integrations with other systems for a holistic view of resource utilization.
+-   **Project Management Software:** Tools like Jira, Asana, and Trello provide features for task management, resource allocation, and progress tracking. Many offer integrations with other systems for a view of resource utilization.
 
 ## Code Example (Python - Simple Resource Allocation):
 

@@ -4,7 +4,7 @@ categories: [ "Fundamentals" ]
 ---
 
 
-System Requirements Analysis (SRA) is a critical phase in the software development lifecycle (SDLC).  It bridges the gap between a vague idea or business need and a concrete, buildable system.  This detailed analysis ensures that the final product meets the client's expectations, is feasible to develop, and operates efficiently.  This post will explore the intricacies of SRA, encompassing its methodologies, techniques, and deliverables.
+System Requirements Analysis (SRA) is a critical phase in the software development lifecycle (SDLC).  It bridges the gap between a vague idea or business need and a concrete, buildable system.  This detailed analysis ensures that the final product meets the client's expectations, is feasible to develop, and operates efficiently.  This post will look at the intricacies of SRA, encompassing its methodologies, techniques, and deliverables.
 
 
 ## Understanding the Purpose of SRA

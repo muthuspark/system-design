@@ -3,7 +3,7 @@ title: "Container Orchestration"
 categories: [ "Infrastructure" ]
 ---
 
-Containerization has revolutionized software development and deployment. However, managing a single container is vastly different from managing hundreds or thousands. This is where container orchestration comes in. It automates the deployment, scaling, and management of containerized applications across a cluster of machines. This blog post dives deep into the world of container orchestration, exploring its core concepts, benefits, and popular tools.
+Containerization has revolutionized software development and deployment. However, managing a single container is vastly different from managing hundreds or thousands. This is where container orchestration comes in. It automates the deployment, scaling, and management of containerized applications across a cluster of machines. This blog post explores the world of container orchestration, exploring its core concepts, benefits, and popular tools.
 
 ## What is Container Orchestration?
 

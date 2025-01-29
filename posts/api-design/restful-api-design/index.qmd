@@ -3,7 +3,7 @@ title: "RESTful API Design"
 categories: [ "API Design" ]
 ---
 
-Designing a robust and scalable RESTful API is important for modern application development. This comprehensive guide explores the core principles of RESTful API design, providing practical examples and best practices to help you build efficient and maintainable APIs.
+Designing a robust and scalable RESTful API is important for modern application development. This guide explores the core principles of RESTful API design, providing practical examples and best practices to help you build efficient and maintainable APIs.
 
 ## Understanding RESTful Principles
 
@@ -246,7 +246,7 @@ curl -X GET "https://api.example.com/v1/users?page=2&limit=20&sort=created_at&or
 
 ### Error Handling
 
-Consistent error handling is critical for a well-designed API. Use standard HTTP status codes to indicate success or failure:
+Consistent error handling is important in a well-designed API. Use standard HTTP status codes to indicate success or failure:
 
 -   2xx: Success
 -   4xx: Client error (e.g., 400 Bad Request, 404 Not Found)

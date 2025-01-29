@@ -21,7 +21,7 @@ The distributed nature of these systems significantly expands the attack surface
 
 ## Key Security Considerations
 
-Addressing the challenges outlined above requires a holistic approach encompassing several important aspects:
+Addressing the challenges outlined above requires an approach encompassing several important aspects:
 
 ### 1. Authentication and Authorization
 

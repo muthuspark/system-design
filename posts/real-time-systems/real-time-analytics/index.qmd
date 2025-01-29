@@ -3,7 +3,7 @@ title: "Real-Time Analytics"
 categories: [ "Real-Time Systems" ]
 ---
 
-Real-time analytics is the process of analyzing data as it's generated, providing immediate insights and enabling rapid responses. Unlike batch processing, which analyzes data in batches at set intervals, real-time analytics offers a continuous stream of information, important for businesses operating in dynamic environments. This post provides an in-depth analysis of real-time analytics, exploring its benefits, challenges, and practical applications.
+Real-time analytics is the process of analyzing data as it's generated, providing immediate insights and enabling rapid responses. Unlike batch processing, which analyzes data in batches at set intervals, real-time analytics offers a continuous stream of information, important for businesses operating in dynamic environments. This post provides an analysis of real-time analytics, exploring its benefits, challenges, and practical applications.
 
 ## The Core of Real-Time Analytics
 

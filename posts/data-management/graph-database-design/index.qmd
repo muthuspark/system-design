@@ -248,4 +248,4 @@ RETURN p.name as Poster,
 ORDER BY PostCount DESC
 ```
 
-Neo4j's graph database provides a powerful way to model and query connected data. The Cypher query language offers an intuitive syntax for graph operations, making it accessible for developers familiar with SQL. As you build more complex applications, explore Neo4j's rich ecosystem of tools and libraries for visualization, analysis, and integration.
+Neo4j's graph database provides a powerful way to model and query connected data. The Cypher query language offers an intuitive syntax for graph operations, making it accessible for developers familiar with SQL. As you build more complex applications, look at Neo4j's rich ecosystem of tools and libraries for visualization, analysis, and integration.

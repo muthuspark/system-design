@@ -3,7 +3,7 @@ title: "API Documentation"
 categories: [ "API Design" ]
 ---
 
-API documentation is often overlooked, yet it's the bedrock of successful software integration. A well-written API document acts as a bridge between developers and your API, enabling them to understand its capabilities and effectively utilize its functionalities. Poor documentation, conversely, leads to frustration, integration errors, and ultimately, a negative impact on your API's adoption rate. This comprehensive guide goes into the important aspects of crafting effective API documentation, ensuring your API is understood and utilized to its full potential.
+API documentation is often overlooked, yet it's the bedrock of successful software integration. A well-written API document acts as a bridge between developers and your API, enabling them to understand its capabilities and effectively utilize its functionalities. Poor documentation, conversely, leads to frustration, integration errors, and ultimately, a negative impact on your API's adoption rate. This guide goes into the important aspects of designing effective API documentation, ensuring your API is understood and utilized to its full potential.
 
 ## Why is Good API Documentation important?
 

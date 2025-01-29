@@ -3,7 +3,7 @@ title: "Strong Consistency"
 categories: [ "Distributed Systems" ]
 ---
 
-Strong consistency, in the context of distributed systems, refers to a guarantee that all clients see the same view of data at all times. This contrasts sharply with weaker consistency models, where temporary inconsistencies might exist due to network latency or the asynchronous nature of distributed operations. While seemingly ideal, achieving strong consistency often comes at the cost of performance and scalability. This post goes deep into the intricacies of strong consistency, exploring its implications, implementation challenges, and various approaches.
+Strong consistency, in the context of distributed systems, refers to a guarantee that all clients see the same view of data at all times. This contrasts sharply with weaker consistency models, where temporary inconsistencies might exist due to network latency or the asynchronous nature of distributed operations. While seemingly ideal, achieving strong consistency often comes at the cost of performance and scalability. This post provides an analysis of strong consistency, exploring its implications, implementation challenges, and various approaches.
 
 ## What is Strong Consistency?
 

@@ -3,7 +3,7 @@ title: "Webhook Architecture"
 categories: [ "API Design" ]
 ---
 
-Webhooks, also known as reverse APIs or HTTP push APIs, represent a powerful architectural pattern for real-time data synchronization between applications. Unlike traditional polling mechanisms, where a client repeatedly checks a server for updates, webhooks enable the server to proactively push updates to the client as soon as they occur. This results in significant improvements in efficiency, responsiveness, and resource utilization. This post will explore the intricacies of webhook architecture, covering various aspects from its fundamental components to advanced implementation considerations.
+Webhooks, also known as reverse APIs or HTTP push APIs, represent a powerful architectural pattern for real-time data synchronization between applications. Unlike traditional polling mechanisms, where a client repeatedly checks a server for updates, webhooks enable the server to proactively push updates to the client as soon as they occur. This results in significant improvements in efficiency, responsiveness, and resource utilization. This post will look at the intricacies of webhook architecture, covering various aspects from its fundamental components to advanced implementation considerations.
 
 ## The Core Components of a Webhook Architecture
 

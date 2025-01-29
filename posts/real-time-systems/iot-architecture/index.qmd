@@ -4,7 +4,7 @@ categories: [ "Real-Time Systems" ]
 ---
 
 
-The Internet of Things (IoT) has rapidly evolved from a futuristic concept to a ubiquitous reality, transforming how we interact with our environment.  Understanding the underlying architecture of an IoT system is important for developers, businesses, and anyone seeking to leverage its potential.  This post goes deep into the different architectural patterns, components, and considerations involved in building robust and scalable IoT solutions.
+The Internet of Things (IoT) has rapidly evolved from a futuristic concept to a ubiquitous reality, transforming how we interact with our environment.  Understanding the underlying architecture of an IoT system is important for developers, businesses, and anyone seeking to leverage its potential.  This post provides an analysis of the different architectural patterns, components, and considerations involved in building robust and scalable IoT solutions.
 
 ## Core Components of IoT Architecture
 

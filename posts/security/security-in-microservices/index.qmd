@@ -26,7 +26,7 @@ Unlike monolithic applications, microservices communicate extensively with each 
 
 ## Implementing Robust Security Measures
 
-Addressing these challenges requires a comprehensive security strategy.  Let's explore key implementation aspects:
+Addressing these challenges requires a comprehensive security strategy.  Let's look at key implementation aspects:
 
 ### 1. Secure Inter-Service Communication
 

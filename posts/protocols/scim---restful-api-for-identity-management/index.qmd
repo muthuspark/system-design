@@ -41,7 +41,7 @@ graph TD
 
 ## SCIM RESTful API
 
-SCIM provides a RESTful API for managing user and group resources. Let’s explore its key aspects.
+SCIM provides a RESTful API for managing user and group resources. Let’s look at its key aspects.
 
 ### a. Resources
 SCIM defines two primary resources:

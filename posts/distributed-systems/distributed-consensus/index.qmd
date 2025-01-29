@@ -20,7 +20,7 @@ These challenges necessitate sophisticated algorithms that can tolerate failures
 
 ## Key Algorithms for Achieving Distributed Consensus
 
-Several algorithms have been developed to solve the distributed consensus problem, each with its strengths and weaknesses. We'll explore some of the most prominent ones:
+Several algorithms have been developed to solve the distributed consensus problem, each with its strengths and weaknesses. We'll look at some of the most prominent ones:
 
 ### 1. Paxos
 

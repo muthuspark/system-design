@@ -3,7 +3,7 @@ title: "Function as a Service"
 categories: [ "Cloud Native" ]
 ---
 
-Function as a Service (FaaS), a core component of serverless computing, is rapidly transforming how we build and deploy applications. Instead of managing entire servers, FaaS allows developers to deploy individual functions—small, self-contained units of code—that execute in response to specific events. This approach offers significant advantages in terms of cost-effectiveness, scalability, and developer productivity. Let's explore FaaS in detail.
+Function as a Service (FaaS), a core component of serverless computing, is rapidly transforming how we build and deploy applications. Instead of managing entire servers, FaaS allows developers to deploy individual functions—small, self-contained units of code—that execute in response to specific events. This approach offers significant advantages in terms of cost-effectiveness, scalability, and developer productivity. Let's look at FaaS in detail.
 
 ## What is FaaS?
 

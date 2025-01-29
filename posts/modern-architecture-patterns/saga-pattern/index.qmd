@@ -3,7 +3,7 @@ title: "Saga Pattern"
 categories: [ "Modern Architecture Patterns" ]
 ---
 
-The microservices architecture offers numerous benefits, including scalability, independent deployments, and technology diversity. However, managing transactions spanning multiple services presents a significant challenge. This is where the Saga pattern comes in – a powerful technique for coordinating distributed transactions across microservices without relying on a centralized, two-phase commit (2PC) mechanism. This post will explore the Saga pattern in detail, examining its different approaches and highlighting its strengths and weaknesses.
+The microservices architecture offers numerous benefits, including scalability, independent deployments, and technology diversity. However, managing transactions spanning multiple services presents a significant challenge. This is where the Saga pattern comes in – a powerful technique for coordinating distributed transactions across microservices without relying on a centralized, two-phase commit (2PC) mechanism. This post will look at the Saga pattern in detail, examining its different approaches and highlighting its strengths and weaknesses.
 
 ## Understanding the Problem: Distributed Transactions
 

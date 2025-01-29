@@ -19,7 +19,7 @@ Before diving into specific strategies, let's establish the core concepts:
 
 ## Common Caching Strategies
 
-Let's explore some popular caching strategies:
+Let's look at some popular caching strategies:
 
 ### 1. Write-Through Caching
 

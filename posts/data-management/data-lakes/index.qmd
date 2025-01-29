@@ -7,7 +7,7 @@ Data has become the lifeblood of modern businesses. The sheer volume, velocity, 
 
 ## What is a Data Lake?
 
-Unlike traditional data warehouses, which focus on structured data and require rigid schemas, a data lake embraces raw data in its native format. Think of it as a central repository where you can store structured, semi-structured, and unstructured data – everything from CSV files and JSON documents to images, videos, and sensor readings. This flexibility is a key advantage, allowing organizations to explore and analyze data without the constraints of predefined schemas.
+Unlike traditional data warehouses, which focus on structured data and require rigid schemas, a data lake embraces raw data in its native format. Think of it as a central repository where you can store structured, semi-structured, and unstructured data – everything from CSV files and JSON documents to images, videos, and sensor readings. This flexibility is a key advantage, allowing organizations to look at and analyze data without the constraints of predefined schemas.
 
 ## Architecture of a Data Lake
 
