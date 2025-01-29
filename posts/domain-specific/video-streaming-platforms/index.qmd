@@ -82,12 +82,14 @@ graph LR
 #### Frontend Layer
 
 - Content Delivery Network (CDN):
+
   - Distributed network of servers for content delivery
   - Caches video segments close to users' locations
   - Reduces latency and improves streaming quality
   - Handles high-bandwidth video delivery efficiently
 
 - Video Encoder:
+
   - Processes uploaded videos into multiple quality levels
   - Creates adaptive bitrate streams (240p, 360p, 720p, 1080p, etc.)
   - Generates thumbnails and preview segments
@@ -96,6 +98,7 @@ graph LR
 #### Backend Services
 
 - Authentication Service:
+
   - Manages user authentication and authorization
   - Handles OAuth and social logins
   - Issues and validates JWT tokens
@@ -103,6 +106,7 @@ graph LR
   - Rate limiting and security measures
 
 - Content Management System (CMS):
+
   - Manages video metadata and organization
   - Handles video upload processing
   - Content moderation and filtering
@@ -110,6 +114,7 @@ graph LR
   - Content scheduling and publishing
 
 - Recommendation Engine:
+
   - Personalized content suggestions
   - Uses machine learning algorithms
   - Processes user viewing history
@@ -118,6 +123,7 @@ graph LR
   - A/B testing for recommendation strategies
 
 - Payment Gateway:
+
   - Handles subscription payments
   - Processes transactions securely
   - Manages recurring billing
@@ -125,6 +131,7 @@ graph LR
   - Integrates with payment providers
 
 - Analytics Service:
+
   - Tracks user engagement metrics
   - Monitors system performance
   - Generates business insights
@@ -134,6 +141,7 @@ graph LR
 #### Database Layer
 
 - Main Database (e.g., PostgreSQL):
+
   - Stores user profiles and authentication data
   - Manages video metadata
   - Handles payment and subscription data
@@ -141,6 +149,7 @@ graph LR
   - Transaction history
 
 - Redis Cache:
+
   - Caches frequently accessed data
   - Session management
   - Rate limiting
@@ -148,6 +157,7 @@ graph LR
   - Temporary data storage
 
 - Elasticsearch:
+
   - Powers search functionality
   - Stores analytics data
   - Enables complex queries
@@ -157,6 +167,7 @@ graph LR
 Key Flows in the Architecture:
 
 1. Video Playback Flow:
+
 ```{mermaid}
 sequenceDiagram
     %% Video Playback Flow
@@ -183,6 +194,7 @@ sequenceDiagram
 ```
 
 2. Authentication Flow:
+
 ```{mermaid}
 sequenceDiagram
     participant AS as Auth Service
@@ -201,6 +213,7 @@ sequenceDiagram
 ```
 
 3. Content Discovery Flow:
+
 ```{mermaid}
 sequenceDiagram
     participant RE as Recommendation Engine
@@ -221,6 +234,7 @@ sequenceDiagram
 ```
 
 4. Analytics Flow:
+
 ```{mermaid}
 sequenceDiagram
     participant ANA as Analytics Service
@@ -238,30 +252,35 @@ sequenceDiagram
 System Features:
 
 - Scalability:
+
     - Horizontal scaling of services
     - CDN distribution
     - Caching layers
     - Load balancing
 
 - Reliability:
+
     - Service redundancy
     - Data replication
     - Error handling
     - Failover mechanisms
 
 - Performance:
+
     - CDN for content delivery
     - Caching strategies
     - Optimized video encoding
     - Database indexing
 
 - Security:
+
     - Authentication/Authorization
     - Content protection
     - Secure payments
     - DDoS protection
 
 - Monitoring:
+
     - System metrics
     - User analytics
     - Performance monitoring
