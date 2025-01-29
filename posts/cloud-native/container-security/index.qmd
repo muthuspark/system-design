@@ -89,7 +89,8 @@ Container orchestration platforms like Kubernetes require their own security con
 
 -   **RBAC (Role-Based Access Control):** Implement RBAC to control access to cluster resources based on user roles and permissions. This prevents unauthorized access and modification of your cluster.
 
--   **Pod Security Policies (PSPs) / Pod Security Admission:** Define policies that control the security settings of pods, ensuring that they adhere to your security requirements. (Note: PSPs are deprecated in Kubernetes 1.25+, use Pod Security Admission instead.)
+-   **Pod Security Policies (PSPs) / Pod Security Admission:** Define policies that control the security settings of pods, ensuring they meet your security requirements.
+ (Note: PSPs are deprecated in Kubernetes 1.25+, use Pod Security Admission instead.)
 
 -   **Network Policies:** Similar to runtime network security, Kubernetes network policies control traffic flow between pods within the cluster.
 

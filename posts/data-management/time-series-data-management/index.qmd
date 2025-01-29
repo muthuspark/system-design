@@ -132,7 +132,8 @@ A time-series database allows efficient querying and analysis of data based on t
 ### 5. **Analytics**
 Once data is stored, it can be used for various **analytics** purposes:
 
-- **Dashboards (V1)**: Visualize real-time data in graphical formats (charts, graphs, etc.) for monitoring system performance or sensor readings. Dashboards provide actionable insights at a glance.
+- **Dashboards (V1)**: Visualize real-time data in graphical formats (charts, graphs, etc.) for monitoring system performance or sensor readings. Dashboards provide actionable information at a glance.
+
 - **Alerts (V2)**: Trigger notifications or alerts based on predefined thresholds. For example, if system metrics exceed certain limits, an alert can be sent to administrators.
 - **Reports (V3)**: Generate detailed reports from historical data, such as weekly or monthly performance summaries.
 

@@ -20,7 +20,8 @@ A typical IoT architecture comprises several key components, each playing a vita
 
 * **Cloud Platform:** This is the central hub for data storage, processing, and analysis.  Cloud platforms provide scalable infrastructure, advanced analytics capabilities, and various services like machine learning and data visualization.  Popular cloud providers include AWS IoT Core, Azure IoT Hub, and Google Cloud IoT Core.
 
-* **Applications & User Interface:** This layer presents data insights and enables users to interact with the IoT system.  Applications can range from simple dashboards displaying sensor readings to complex AI-powered applications performing predictive maintenance or optimizing resource allocation.
+* **Applications & User Interface:** This layer presents data and enables users to interact with the IoT system.
+  Applications can range from simple dashboards displaying sensor readings to complex AI-powered applications performing predictive maintenance or optimizing resource allocation.
 
 
 ## Common IoT Architectural Patterns

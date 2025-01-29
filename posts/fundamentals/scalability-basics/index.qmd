@@ -5,7 +5,8 @@ categories: [ "Fundamentals" ]
 
 ## What is Scalability?
 
-Scalability refers to a system's ability to handle a growing amount of work, whether that's increased user traffic, data storage needs, or processing demands. A scalable system can adapt to these changes gracefully, without significant performance degradation or requiring major architectural overhauls. The opposite is a system that struggles and becomes unstable under increased load.
+Scalability refers to a system's ability to handle a growing amount of work, whether that's increased user traffic, data storage needs, or processing demands. A scalable system can handle these changes gracefully, without significant performance degradation or requiring major architectural overhauls.
+ The opposite is a system that struggles and becomes unstable under increased load.
 
 ## Types of Scalability
 

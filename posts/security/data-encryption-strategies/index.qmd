@@ -4,7 +4,8 @@ categories: [ "Security" ]
 ---
 
 Data security is critical in today's digital landscape. Protecting sensitive information from unauthorized access is important, and encryption is important to build any security strategy.
- This guide explores various data encryption strategies, explaining their strengths, weaknesses, and appropriate use cases. We will delve into both symmetric and asymmetric encryption, highlighting key algorithms and practical implementation considerations.
+ This guide explores various data encryption strategies, explaining their strengths, weaknesses, and appropriate use cases. We will discuss both symmetric and asymmetric encryption, highlighting key algorithms and practical implementation considerations.
+
 
 ## 1. Symmetric Encryption: The Shared Secret
 

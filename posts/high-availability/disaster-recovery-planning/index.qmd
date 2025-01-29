@@ -69,13 +69,15 @@ The DRP should be reviewed and updated regularly to reflect changes in the organ
 
 ## 6. Documenting the Recovery Process
 
-Maintain detailed logs throughout the recovery process. These logs will be invaluable for post-incident analysis and future DRP improvements. The logs should record:
+Maintain detailed logs throughout the recovery process. These logs will be useful for post-incident analysis and future DRP improvements.
+ The logs should record:
 
 -   **Timestamp of events:** Precise times of failures, recovery actions, etc.
 -   **Actions taken:** A chronological record of steps taken during recovery.
 -   **Personnel involved:** Who was responsible for each action.
 -   **Challenges encountered:** Any obstacles or delays experienced during recovery.
--   **Lessons learned:** Insights gained from the incident to inform future DRP enhancements.
+-   **Lessons learned:** Lessons gained from the incident to inform future DRP enhancements.
+
 
 ## 7. Communication and Coordination
 

@@ -7,7 +7,8 @@ Health monitoring systems are rapidly evolving, transforming how we approach hea
 
 ## What are Health Monitoring Systems?
 
-Health monitoring systems (HMS) are technological solutions that continuously or intermittently track and analyze various health parameters. This data can range from basic vital signs (heart rate, blood pressure, temperature) to more complex physiological indicators (blood glucose levels, ECG data, sleep patterns). The collected data provides insights into an individual's health, enabling timely interventions and personalized care.
+Health monitoring systems (HMS) are technological solutions that continuously or intermittently track and analyze various health parameters. This data can range from basic vital signs (heart rate, blood pressure, temperature) to more complex physiological indicators (blood glucose levels, ECG data, sleep patterns). The collected data provides information on an individual's health, enabling timely interventions and personalized care.
+
  These systems can be deployed in various settings, including hospitals, homes, and even wearable devices.
 
 ## Types of Health Monitoring Systems
@@ -18,7 +19,8 @@ HMS can be broadly categorized based on their scope and deployment:
 
 -   **In-Hospital Monitoring:** This involves continuous monitoring of patients within a hospital setting, using complex equipment and often incorporating real-time alerts for critical events.
 
--   **Wearable Health Monitors:** These are consumer-focused devices, like smartwatches and fitness trackers, which track basic health metrics and often provide feedback and insights to the user.
+-   **Wearable Health Monitors:** These are consumer-focused devices, like smartwatches and fitness trackers, which track basic health metrics and often provide feedback to the user.
+
 
 -   **Continuous Glucose Monitoring (CGM):** Specifically designed for diabetics, CGMs continuously track glucose levels, providing real-time data and alerts for hypo- or hyperglycemia.
 

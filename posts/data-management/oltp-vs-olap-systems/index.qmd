@@ -101,7 +101,8 @@ graph TD
 
 ## OLAP Systems
 
-OLAP systems, on the other hand, are designed for **analytical processing**. They focus on extracting meaningful insights from large amounts of data, supporting complex queries and aggregations. Think of business intelligence dashboards, financial reporting, and market analysis tools. Speed is still important, but the focus shifts to efficient analysis of aggregated data rather than individual transactions.
+OLAP systems, on the other hand, are designed for **analytical processing**. They focus on extracting meaningful information from large amounts of data, supporting complex queries and aggregations.
+ Think of business intelligence dashboards, financial reporting, and market analysis tools. Speed is still important, but the focus shifts to efficient analysis of aggregated data rather than individual transactions.
 
 **Key Characteristics of OLAP Systems:**
 

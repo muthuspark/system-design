@@ -3,7 +3,8 @@ title: "Security in Distributed Systems"
 categories: [ "Security" ]
 ---
 
-Distributed systems, with their inherent complexity and interconnectedness, present unique security challenges not found in monolithic applications. Ensuring security in these environments requires a multifaceted approach, addressing vulnerabilities at every layer, from the underlying infrastructure to the application logic. This post explores the key aspects of security in distributed systems, examining common threats and mitigation strategies.
+Distributed systems, with their inherent complexity and interconnectedness, present unique security challenges not found in monolithic applications. Ensuring security in these environments requires an approach addressing vulnerabilities at every layer, from the underlying infrastructure to the application logic.
+ This post explores the key aspects of security in distributed systems, examining common threats and mitigation strategies.
 
 ## Understanding the Expanded Attack Surface
 

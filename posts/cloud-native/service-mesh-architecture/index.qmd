@@ -15,7 +15,8 @@ A service mesh is a dedicated infrastructure layer built to handle service-to-se
 * **Load Balancing:** Distributing traffic across multiple instances of a service to ensure high availability and performance.
 * **Traffic Management:** Routing traffic based on various criteria, such as version, location, or weight.
 * **Security:** Encrypting traffic, authenticating services, and authorizing access.
-* **Observability:** Monitoring and tracing requests, providing insights into performance and debugging.
+* **Observability:** Monitoring and tracing requests, providing performance and debugging information.
+
 * **Resilience:** Handling failures gracefully through techniques like retries, circuit breakers, and timeouts.
 
 ## Architectural Components of a Service Mesh
@@ -55,7 +56,8 @@ graph LR
 Implementing a service mesh offers numerous advantages:
 
 * **Improved Security:** Centralized security policies simplify the management of encryption, authentication, and authorization.
-* **Enhanced Observability:** Detailed monitoring and tracing provide detailed insights into service performance and behavior.
+* **Enhanced Observability:** Detailed monitoring and tracing provide detailed information on service performance and behavior.
+
 * **Increased Resilience:** Built-in resilience patterns such as retries and circuit breakers improve the fault tolerance of the application.
 
 * **Simplified Development:** Developers can focus on business logic, delegating network management to the service mesh.

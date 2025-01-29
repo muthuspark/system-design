@@ -155,7 +155,8 @@ Selecting the appropriate grant type is important for security and functionality
 
 * **Security:** Authorization code grant is generally the most secure.
 * **Client Type:** Implicit grant is suitable for browser-based clients, while client credentials are for server-to-server interactions.
-* **User Involvement:**  Resource Owner Password Credentials should be avoided unless absolutely necessary due to inherent security risks.
+* **User Involvement:** Resource Owner Password Credentials should be avoided unless absolutely necessary due to security risks.
+
 
 
 

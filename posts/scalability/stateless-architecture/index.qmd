@@ -3,7 +3,8 @@ title: "Stateless Architecture"
 categories: [ "Scalability" ]
 ---
 
-Stateless architecture is a design pattern where each request to an application contains all the information necessary to process it. The application doesn't retain any information about previous requests or user interactions between requests. This contrasts with stateful architecture, where the application maintains a persistent memory of past interactions. This seemingly simple difference has profound implications for scalability, resilience, and maintainability.
+Stateless architecture is a design pattern where each request to an application contains all the information necessary to process it. The application doesn't retain any information about previous requests or user interactions between requests. This contrasts with stateful architecture, where the application maintains a persistent memory of past interactions. This seemingly simple difference affects scalability, resilience, and maintainability.
+
 
 ## The Advantages of Statelessness
 

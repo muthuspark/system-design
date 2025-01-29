@@ -75,7 +75,8 @@ Security is critical in payment processing. Several measures are in place to pro
 
 -   **Encryption:** Data is encrypted during transmission to prevent unauthorized access.
 -   **Tokenization:** Sensitive data is replaced with non-sensitive tokens.
--   **PCI DSS Compliance:** Merchants must adhere to Payment Card Industry Data Security Standard to protect cardholder data.
+-   **PCI DSS Compliance:** Merchants must follow Payment Card Industry Data Security Standard to protect cardholder data.
+
 
 ## Choosing the Right Payment Processor
 

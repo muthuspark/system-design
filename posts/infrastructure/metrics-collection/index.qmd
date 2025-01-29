@@ -19,7 +19,8 @@ For example, if you're running an e-commerce website, your objectives might incl
 
 ## Choosing the Right Metrics: The Key Performance Indicators (KPIs)
 
-Once you've defined your objectives, you need to identify the key performance indicators (KPIs) that will help you track progress towards those objectives. KPIs are specific, measurable, achievable, relevant, and time-bound (SMART) metrics that provide insights into the success of your efforts.
+Once you've defined your objectives, you need to identify the key performance indicators (KPIs) that will help you track progress towards those objectives. KPIs are specific, measurable, achievable, relevant, and time-bound (SMART) metrics that show the success of your efforts.
+
 
 Let's consider a software application. Possible KPIs could be:
 
@@ -37,7 +38,8 @@ There are several methods for collecting metrics, each with its strengths and we
 
 -   **Application Performance Monitoring (APM) Tools:** These tools provide real-time insights into the performance of your applications, allowing you to identify and address bottlenecks. Examples include Datadog, New Relic, and Dynatrace. These typically collect metrics through agents embedded in your application.
 
--   **Log Analysis:** Examining application logs can provide insights into errors, performance issues, and user behavior.
+-   **Log Analysis:** Examining application logs can provide information on errors, performance issues, and user behavior.
+
  Tools like ELK stack (Elasticsearch, Logstash, Kibana) are commonly used for log aggregation and analysis.
 
 -   **Database Monitoring:** Monitoring your database performance is important for ensuring the availability and responsiveness of your application. Tools like Prometheus and Grafana can be used to monitor database metrics such as query execution time, connection pool usage, and storage space utilization.

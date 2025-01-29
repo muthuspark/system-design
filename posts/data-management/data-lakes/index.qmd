@@ -44,7 +44,8 @@ graph LR
 
 **5. Data Discovery & Access Layer:** This layer provides tools and services for discovering, searching, and accessing data within the data lake. Metadata management is important here, enabling users to understand the data's structure, schema, and origin. Technologies like Apache Hive Metastore or cloud-based metadata catalogs are commonly employed.
 
-**6. Data Visualization & Analytics:** This layer provides tools for analyzing and visualizing the processed data. Business intelligence (BI) tools, data visualization platforms, and machine learning algorithms are used to extract insights and support decision-making.
+**6. Data Visualization & Analytics:** This layer provides tools for analyzing and visualizing the processed data. Business intelligence (BI) tools, data visualization platforms, and machine learning algorithms are used to support decision-making.
+
 
 ## Code Example (Python with PySpark):
 

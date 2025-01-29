@@ -13,7 +13,8 @@ An Anti-Corruption Layer isn't about fighting corruption in a societal sense; in
 
 -   **Legacy systems:** Outdated, poorly documented systems with inconsistent data formats and APIs.
 -   **Third-party APIs:** External services with unpredictable behavior, changing specifications, or potential security flaws.
--   **Databases with inconsistent schema:** Data sources that don't adhere to your internal data model.
+-   **Databases with inconsistent schema:** Data sources that don't match your internal data model.
+
 -   **User interfaces with varied input formats:** Handling inconsistent input from different sources (web forms, mobile apps, etc.).
 
 The ACL acts as a translator and validator, transforming data between the incompatible formats and ensuring that only clean, consistent data reaches your core application logic.

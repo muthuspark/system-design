@@ -3,7 +3,8 @@ title: "Logging Architecture"
 categories: [ "Infrastructure" ]
 ---
 
-Logging is a critical aspect of software development, important for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application's logs are effectively collected, processed, and analyzed, providing insights into its behavior and performance.
+Logging is a critical aspect of software development, important for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application's logs are effectively collected, processed, and analyzed, providing information about its behavior and performance.
+
  This post explores various aspects of building a logging architecture.
 
 
@@ -280,7 +281,8 @@ There are several tools available that offer monitoring and alerting capabilitie
 
 -   **Infrastructure Monitoring Tools**: Tools like **Prometheus**, **Nagios**, **Datadog**, and **Amazon CloudWatch** are designed to monitor system-level metrics such as CPU usage, memory consumption, network traffic, and disk I/O. These tools often come with built-in alerting and anomaly detection capabilities.
 
--   **Application Performance Monitoring (APM)**: Tools like **New Relic**, **AppDynamics**, or **Elastic APM** provide deeper insights into your application’s performance. They can trace individual requests, measure response times, and monitor errors at the application level.
+-   **Application Performance Monitoring (APM)**: Tools like **New Relic**, **AppDynamics**, or **Elastic APM** provide deeper understanding of your application’s performance.
+ They can trace individual requests, measure response times, and monitor errors at the application level.
 
 -   **Log Aggregation and Monitoring**: Tools like **ELK Stack (Elasticsearch, Logstash, Kibana)**, **Splunk**, and **Graylog** allow you to collect, index, and visualize logs from various parts of your system. This enables faster troubleshooting and pattern detection when issues arise.
 

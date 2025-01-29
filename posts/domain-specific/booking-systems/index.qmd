@@ -26,13 +26,15 @@ graph LR
 
 **Booking Engine:** The core logic resides here.  It handles requests from the UI, checks availability, processes payments, updates the calendar, and manages the overall booking workflow.
 
-**Database:** This stores all pertinent data, including customer information, booking details, pricing, and resource availability.  Database choices vary widely, from relational databases like MySQL or PostgreSQL to NoSQL solutions like MongoDB.
+**Database:** This stores all data, including customer information, booking details, pricing, and resource availability.
+  Database choices vary widely, from relational databases like MySQL or PostgreSQL to NoSQL solutions like MongoDB.
 
 **Payment Gateway:**  Integrates with payment processors (e.g., Stripe, PayPal) to securely handle transactions.  Security is paramount, requiring compliance with industry standards (PCI DSS).
 
 **Calendar/Scheduler:**  Manages resource scheduling, ensuring no double-booking occurs. This component is especially important for managing time-sensitive resources.
 
-**Reporting & Analytics:** Provides insights into booking patterns, revenue generation, and other key metrics. This data is vital for business decision-making.
+**Reporting & Analytics:** Provides data on booking patterns, revenue generation, and other key metrics.
+ This data is vital for business decision-making.
 
 **Notification System:** Sends confirmations, reminders, and updates to both users and administrators.  Methods include email, SMS, and in-app notifications.
 

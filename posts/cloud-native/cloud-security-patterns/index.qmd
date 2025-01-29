@@ -4,7 +4,8 @@ categories: [ "Cloud Native" ]
 ---
 
 
-The cloud offers unparalleled scalability and flexibility, but it also introduces a new set of security challenges.  Traditional security perimeters blur, and responsibility for security is shared between the cloud provider and the organization.  Navigating this landscape requires an understanding of cloud security patterns – proven architectural approaches that mitigate risks and bolster security posture.
+The cloud offers unparalleled scalability and flexibility, but it also introduces a new set of security challenges.  Traditional security perimeters blur, and responsibility for security is shared between the cloud provider and the organization.  Navigating this requires an understanding of cloud security patterns – proven architectural approaches that mitigate risks and bolster security posture.
+
   This post goes into several key patterns, exploring their implementation and benefits.
 
 
@@ -124,7 +125,8 @@ A WAF protects web applications from common attacks such as SQL injection, cross
 
 ## 9. Logging and Monitoring
 
-Comprehensive logging and monitoring are critical for detecting and responding to security incidents.  Centralized logging platforms and security information and event management (SIEM) systems provide insights into system activity.
+Comprehensive logging and monitoring are critical for detecting and responding to security incidents.  Centralized logging platforms and security information and event management (SIEM) systems provide information on system activity.
+
 
 
 

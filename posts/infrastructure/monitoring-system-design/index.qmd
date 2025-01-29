@@ -3,7 +3,8 @@ title: "Monitoring System Design"
 categories: [ "Infrastructure" ]
 ---
 
-Monitoring systems are the lifeblood of any robust application. They provide important insights into the health, performance, and behavior of your software, allowing you to proactively identify and resolve issues before they impact users. Designing an effective monitoring system, however, is a complex undertaking requiring careful consideration of several key aspects. This post goes into the important components and considerations for building a detailed monitoring solution.
+Monitoring systems are the lifeblood of any robust application. They provide important information about the health, performance, and behavior of your software, allowing you to proactively identify and resolve issues before they impact users.
+ Designing an effective monitoring system, however, is a complex undertaking requiring careful consideration of several key aspects. This post goes into the important components and considerations for building a detailed monitoring solution.
 
 ## 1. Defining Objectives and Scope
 

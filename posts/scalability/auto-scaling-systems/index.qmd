@@ -16,7 +16,8 @@ Auto-scaling addresses this challenge by automatically adjusting the number of r
 
 A typical auto-scaling system consists of several key components:
 
--   **Monitoring System:** Continuously monitors various metrics, such as CPU utilization, memory usage, network traffic, request latency, and error rates. These metrics provide insights into the current system load and performance. Examples include Prometheus, Datadog, and CloudWatch.
+-   **Monitoring System:** Continuously monitors various metrics, such as CPU utilization, memory usage, network traffic, request latency, and error rates. These metrics provide the current system load and performance.
+ Examples include Prometheus, Datadog, and CloudWatch.
 
 -   **Scaling Logic:** This component analyzes the metrics collected by the monitoring system and determines whether scaling up or down is necessary. It employs algorithms and rules to make scaling decisions based on predefined thresholds or complex machine learning models.
 

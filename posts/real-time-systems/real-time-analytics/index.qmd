@@ -15,9 +15,11 @@ Real-time analytics relies on several key components working in concert:
 
 3.  **Data Storage:** Processed data needs to be stored temporarily or persistently. Options include in-memory databases (like Redis), columnar databases (like ClickHouse), and NoSQL databases. The choice depends on the specific requirements of the application.
 
-4.  **Analytics Engine:** This component performs the actual analytics, applying algorithms and models to extract meaningful insights from the data. This can include simple aggregations, complex machine learning models, or custom algorithms.
+4.  **Analytics Engine:** This component performs the actual analytics, applying algorithms and models to extract meaningful information from the data.
+ This can include simple aggregations, complex machine learning models, or custom algorithms.
 
-5.  **Visualization and Reporting:** Finally, the insights gained need to be presented in a clear and understandable format. Dashboards and visualizations are key for enabling users to monitor data and react to trends in real-time.
+5.  **Visualization and Reporting:** Finally, the gained information needs to be presented in a clear and understandable format.
+ Dashboards and visualizations are key for enabling users to monitor data and react to trends in real-time.
 
 ## Architectural Diagram
 
@@ -75,7 +77,8 @@ This is a basic illustration. Real-world applications require more error handlin
 Real-time analytics finds applications in numerous domains:
 
 -   **Fraud Detection:** Identifying fraudulent transactions in real-time, minimizing losses.
--   **Customer Relationship Management (CRM):** Providing immediate insights into customer behavior, allowing for personalized interactions.
+-   **Customer Relationship Management (CRM):** Providing immediate access to customer behavior, allowing for personalized interactions.
+
 -   **Supply Chain Management:** Optimizing logistics and inventory based on real-time demand.
 -   **Financial Markets:** Analyzing market trends and making rapid trading decisions.
 -   **Healthcare:** Monitoring patient vitals and providing timely alerts.
