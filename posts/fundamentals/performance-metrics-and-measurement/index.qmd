@@ -10,7 +10,7 @@ Performance measurement is important in any successful organization, whether it'
 Before you even think about collecting data, you need to clearly define the metrics that matter most to your organization. This involves understanding your goals and objectives.
  What are you trying to achieve? Are you focusing on increasing revenue, improving customer satisfaction, boosting efficiency, or something else entirely? Once you have a clear understanding of your objectives, you can begin to identify the metrics that will best reflect your progress towards those goals.
 
-A poorly chosen metric can lead to misleading conclusions and ultimately hinder progress. For example, simply focusing on the number of units sold might overlook important aspects like customer satisfaction or product quality. A balanced scorecard approach is often recommended, encompassing various perspectives:
+A poorly chosen metric can lead to misleading conclusions and ultimately hinder progress. For example, simply focusing on the number of units sold might overlook important aspects like customer satisfaction or product quality. A balanced scorecard approach is often recommended, considering various perspectives:
 
 -   **Financial:** Revenue, profit margin, return on investment (ROI)
 -   **Customer:** Customer satisfaction (CSAT), Net Promoter Score (NPS), churn rate

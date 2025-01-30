@@ -23,7 +23,7 @@ The distributed nature of these systems expands the attack surface. Unlike a sin
 
 ## Key Security Considerations
 
-Addressing the challenges outlined above requires an approach encompassing many important aspects:
+Addressing the challenges outlined above requires an approach with many important aspects:
 
 ### 1. Authentication and Authorization
 

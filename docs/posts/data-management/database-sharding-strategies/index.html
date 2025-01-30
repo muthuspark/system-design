@@ -9,6 +9,163 @@
 
 <title>Database Sharding Strategies – System Design Notes</title>
 <style>
+html {
+  color: #1a1a1a;
+  background-color: #fdfdfd;
+}
+body {
+  margin: 0 auto;
+  max-width: 36em;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+@media (max-width: 600px) {
+  body {
+    font-size: 0.9em;
+    padding: 12px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+}
+@media print {
+  html {
+    background-color: white;
+  }
+  body {
+    background-color: transparent;
+    color: black;
+    font-size: 12pt;
+  }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+}
+p {
+  margin: 1em 0;
+}
+a {
+  color: #1a1a1a;
+}
+a:visited {
+  color: #1a1a1a;
+}
+img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
+  max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.4em;
+}
+h5, h6 {
+  font-size: 1em;
+  font-style: italic;
+}
+h6 {
+  font-weight: normal;
+}
+ol, ul {
+  padding-left: 1.7em;
+  margin-top: 1em;
+}
+li > ol, li > ul {
+  margin-top: 0;
+}
+ul > li:not(:has(> p)) > ul,
+ol > li:not(:has(> p)) > ul,
+ul > li:not(:has(> p)) > ol,
+ol > li:not(:has(> p)) > ol {
+  margin-bottom: 0;
+}
+ul > li:not(:has(> p)) > ul > li:has(> p),
+ol > li:not(:has(> p)) > ul > li:has(> p),
+ul > li:not(:has(> p)) > ol > li:has(> p),
+ol > li:not(:has(> p)) > ol > li:has(> p) {
+  margin-top: 1rem;
+}
+blockquote {
+  margin: 1em 0 1em 1.7em;
+  padding-left: 1em;
+  border-left: 2px solid #e6e6e6;
+  color: #606060;
+}
+code {
+  font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+  font-size: 85%;
+  margin: 0;
+  hyphens: manual;
+}
+pre {
+  margin: 1em 0;
+  overflow: auto;
+}
+pre code {
+  padding: 0;
+  overflow: visible;
+  overflow-wrap: normal;
+}
+.sourceCode {
+ background-color: transparent;
+ overflow: visible;
+}
+hr {
+  background-color: #1a1a1a;
+  border: none;
+  height: 1px;
+  margin: 1em 0;
+}
+table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+  margin-bottom: 0.75em;
+}
+tbody {
+  margin-top: 0.5em;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+}
+th {
+  border-top: 1px solid #1a1a1a;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+  padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+  margin-bottom: 4em;
+  text-align: center;
+}
+#TOC li {
+  list-style: none;
+}
+#TOC ul {
+  padding-left: 1.3em;
+}
+#TOC > ul {
+  padding-left: 0;
+}
+#TOC a:not(:hover) {
+  text-decoration: none;
+}
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -20,50 +177,43 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
 <link href="../../../favicon.ico" rel="icon">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-ee5e052b81fc94e1f9bb89611f476562.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<meta property="og:title" content="Database Sharding Strategies – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
+</head><body><div class="header">
+    <nav>
+        <div>
+            <div class="logo">
+                <a href="../../../" aria-label="Home">
+                    <span>System Design Notes - Home</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="../../../about.html">
+                            <span class="menu-text">About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/muthuspark">
+                            <span class="menu-text">Github</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/krimuthu">
+                            <span class="menu-text">Twitter</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 <meta name="mermaid-theme" content="neutral">
 <script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
@@ -71,88 +221,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Database Sharding Strategies – System Design Notes">
-<meta property="og:description" content="">
-<meta property="og:site_name" content="System Design Notes">
-</head>
 
-<body class="nav-fixed fullcontent">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">System Design Notes</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+
+
+<header id="title-block-header">
 <h1 class="title">Database Sharding Strategies</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Data Management</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
 
 </header>
 
 
 <p>Database sharding is a important technique for scaling your database horizontally. When a single database server can no longer handle the volume of data or requests, sharding distributes the data across multiple servers, improving performance and availability. However, choosing the right sharding strategy is critical, as a poorly implemented strategy can lead to performance bottlenecks and operational complexities. This post explores various sharding strategies, their advantages, disadvantages, and implementation considerations.</p>
-<section id="understanding-the-fundamentals" class="level2">
-<h2 data-anchor-id="understanding-the-fundamentals">Understanding the Fundamentals</h2>
+<h2 id="understanding-the-fundamentals">Understanding the Fundamentals</h2>
 <p>Before diving into specific strategies, let’s clarify some key terms:</p>
 <ul>
 <li><strong>Shard:</strong> A single database server or a group of servers that holds a subset of the total data.</li>
@@ -161,12 +242,9 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Data Distribution:</strong> The method of distributing data across shards.</li>
 <li><strong>Global Index:</strong> An index that spans across all shards, required for certain types of queries.</li>
 </ul>
-</section>
-<section id="common-sharding-strategies" class="level2">
-<h2 data-anchor-id="common-sharding-strategies">Common Sharding Strategies</h2>
+<h2 id="common-sharding-strategies">Common Sharding Strategies</h2>
 <p>Several popular strategies exist for sharding a database. The best choice depends on your specific data model, query patterns, and application requirements.</p>
-<section id="range-based-sharding" class="level3">
-<h3 data-anchor-id="range-based-sharding">1. Range-Based Sharding</h3>
+<h3 id="range-based-sharding">1. Range-Based Sharding</h3>
 <p>In range-based sharding, the shard key’s value range is divided amongst the shards. For example, if your shard key is <code>user_id</code>, you might assign shards as follows:</p>
 <ul>
 <li>Shard 1: <code>user_id</code> from 1 to 1000</li>
@@ -176,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p></p><figure class="figure"><p></p>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[Application] --&gt; B[Router]
@@ -240,14 +318,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>Advantages:</strong> Simple to implement and understand.</p>
 <p><strong>Disadvantages:</strong> Can lead to hotspots if data distribution is uneven. Adding or removing shards can be complex and require significant data migration. Range queries across multiple shards can be inefficient.</p>
-</section>
-<section id="hash-based-sharding" class="level3">
-<h3 data-anchor-id="hash-based-sharding">2. Hash-Based Sharding</h3>
+<h3 id="hash-based-sharding">2. Hash-Based Sharding</h3>
 <p>Hash-based sharding uses a hash function to distribute data across shards. The hash function maps the shard key to a shard ID. This offers better data distribution than range-based sharding.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p></p><figure class="figure"><p></p>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[Application] --&gt; B[Router]
@@ -303,14 +379,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Load distribution</li>
 <li>Data locality</li>
 </ul>
-</section>
-<section id="directory-based-sharding-consistent-hashing" class="level3">
-<h3 data-anchor-id="directory-based-sharding-consistent-hashing">3. Directory-Based Sharding (Consistent Hashing)</h3>
+<h3 id="directory-based-sharding-consistent-hashing">3. Directory-Based Sharding (Consistent Hashing)</h3>
 <p>Directory-based sharding uses a consistent hashing algorithm to map shard keys to shards. This improves scalability and simplifies adding or removing shards without requiring large-scale data migration. A central directory or metadata service keeps track of the mapping between shard keys and shard locations.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p></p><figure class="figure"><p></p>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[Application] --&gt; B[Directory Service]
@@ -363,16 +437,11 @@ ul.task-list li input[type="checkbox"] {
 <li>Dynamic node addition/removal</li>
 </ul>
 <p>When adding/removing nodes, only neighboring nodes are affected, making scaling operations efficient.</p>
-</section>
-<section id="key-based-sharding" class="level3">
-<h3 data-anchor-id="key-based-sharding">4. Key-Based Sharding</h3>
+<h3 id="key-based-sharding">4. Key-Based Sharding</h3>
 <p>This strategy assigns shards based on specific key values or patterns in the shard key. For instance, you might assign all users from a specific region to a single shard.</p>
 <p><strong>Advantages:</strong> Can be efficient for queries related to the key used for sharding.</p>
 <p><strong>Disadvantages:</strong> Can lead to uneven distribution and hotspots if not carefully planned. Adding new shards requires careful consideration of key distribution.</p>
-</section>
-</section>
-<section id="choosing-the-right-strategy" class="level2">
-<h2 data-anchor-id="choosing-the-right-strategy">Choosing the Right Strategy</h2>
+<h2 id="choosing-the-right-strategy">Choosing the Right Strategy</h2>
 <p>The optimal sharding strategy depends on your application’s specific needs. Consider the following factors:</p>
 <ul>
 <li><strong>Data distribution:</strong> How evenly is your data distributed across the potential shard keys?</li>
@@ -380,9 +449,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Scalability requirements:</strong> How much do you expect your data to grow?</li>
 <li><strong>Operational complexity:</strong> How much operational overhead are you willing to accept?</li>
 </ul>
-<section id="comparison-of-database-sharding-strategies-features-and-trade-offs" class="level3">
-<h3 data-anchor-id="comparison-of-database-sharding-strategies-features-and-trade-offs"><strong>Comparison of Database Sharding Strategies: Features and Trade-offs</strong></h3>
-<table class="caption-top table">
+<h3 id="comparison-of-database-sharding-strategies-features-and-trade-offs"><strong>Comparison of Database Sharding Strategies: Features and Trade-offs</strong></h3>
+<table class="caption-top" style="width:100%;">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 22%">
@@ -519,10 +587,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Performance vs Features: Range-Based best for sequential access, Hash-Based for uniform distribution</li>
 <li>Maintenance vs Scalability: Directory-Based offers best scaling but highest maintenance</li>
 </ul>
-</section>
-</section>
-<section id="implementation-considerations" class="level2">
-<h2 data-anchor-id="implementation-considerations">Implementation Considerations</h2>
+<h2 id="implementation-considerations">Implementation Considerations</h2>
 <p>Implementing sharding effectively requires careful planning and execution. Key aspects include:</p>
 <ul>
 <li><strong>Shard key selection:</strong> Choose a shard key that is highly selective and leads to even data distribution.</li>
@@ -533,207 +598,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/system-design\.muthu\.co\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-});
-</script>
-</div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>Copyright 2025, Muthukrishnan</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
+<footer>Copyright 2025 - Muthukrishnan</footer>
 
 
 

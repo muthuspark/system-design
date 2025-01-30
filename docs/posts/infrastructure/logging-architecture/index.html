@@ -9,6 +9,163 @@
 
 <title>Logging Architecture – System Design Notes</title>
 <style>
+html {
+  color: #1a1a1a;
+  background-color: #fdfdfd;
+}
+body {
+  margin: 0 auto;
+  max-width: 36em;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+@media (max-width: 600px) {
+  body {
+    font-size: 0.9em;
+    padding: 12px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+}
+@media print {
+  html {
+    background-color: white;
+  }
+  body {
+    background-color: transparent;
+    color: black;
+    font-size: 12pt;
+  }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+}
+p {
+  margin: 1em 0;
+}
+a {
+  color: #1a1a1a;
+}
+a:visited {
+  color: #1a1a1a;
+}
+img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
+  max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.4em;
+}
+h5, h6 {
+  font-size: 1em;
+  font-style: italic;
+}
+h6 {
+  font-weight: normal;
+}
+ol, ul {
+  padding-left: 1.7em;
+  margin-top: 1em;
+}
+li > ol, li > ul {
+  margin-top: 0;
+}
+ul > li:not(:has(> p)) > ul,
+ol > li:not(:has(> p)) > ul,
+ul > li:not(:has(> p)) > ol,
+ol > li:not(:has(> p)) > ol {
+  margin-bottom: 0;
+}
+ul > li:not(:has(> p)) > ul > li:has(> p),
+ol > li:not(:has(> p)) > ul > li:has(> p),
+ul > li:not(:has(> p)) > ol > li:has(> p),
+ol > li:not(:has(> p)) > ol > li:has(> p) {
+  margin-top: 1rem;
+}
+blockquote {
+  margin: 1em 0 1em 1.7em;
+  padding-left: 1em;
+  border-left: 2px solid #e6e6e6;
+  color: #606060;
+}
+code {
+  font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+  font-size: 85%;
+  margin: 0;
+  hyphens: manual;
+}
+pre {
+  margin: 1em 0;
+  overflow: auto;
+}
+pre code {
+  padding: 0;
+  overflow: visible;
+  overflow-wrap: normal;
+}
+.sourceCode {
+ background-color: transparent;
+ overflow: visible;
+}
+hr {
+  background-color: #1a1a1a;
+  border: none;
+  height: 1px;
+  margin: 1em 0;
+}
+table {
+  margin: 1em 0;
+  border-collapse: collapse;
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+  margin-bottom: 0.75em;
+}
+tbody {
+  margin-top: 0.5em;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+}
+th {
+  border-top: 1px solid #1a1a1a;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+  padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+  margin-bottom: 4em;
+  text-align: center;
+}
+#TOC li {
+  list-style: none;
+}
+#TOC ul {
+  padding-left: 1.3em;
+}
+#TOC > ul {
+  padding-left: 0;
+}
+#TOC a:not(:hover) {
+  text-decoration: none;
+}
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -20,6 +177,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { line-height: 1.25; }
@@ -57,47 +215,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
 <link href="../../../favicon.ico" rel="icon">
-<script src="../../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-5c1aa57916d092647891b8a3fe59897e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-ee5e052b81fc94e1f9bb89611f476562.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<meta property="og:title" content="Logging Architecture – System Design Notes">
+<meta property="og:site_name" content="System Design Notes">
+</head><body><div class="header">
+    <nav>
+        <div>
+            <div class="logo">
+                <a href="../../../" aria-label="Home">
+                    <span>System Design Notes - Home</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li>
+                        <a href="../../../about.html">
+                            <span class="menu-text">About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/muthuspark">
+                            <span class="menu-text">Github</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/krimuthu">
+                            <span class="menu-text">Twitter</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 <meta name="mermaid-theme" content="neutral">
 <script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
@@ -105,89 +255,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="Logging Architecture – System Design Notes">
-<meta property="og:description" content="">
-<meta property="og:site_name" content="System Design Notes">
-</head>
 
-<body class="nav-fixed fullcontent">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">System Design Notes</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+
+
+<header id="title-block-header">
 <h1 class="title">Logging Architecture</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Infrastructure</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
 
 </header>
 
 
 <p>Logging is a critical aspect of software development, important for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application’s logs are effectively collected, processed, and analyzed, providing information about its behavior and performance.</p>
 <p>This post explores various aspects of building a logging architecture.</p>
-<section id="log-levels-the-foundation-of-structured-logging" class="level2">
-<h2 data-anchor-id="log-levels-the-foundation-of-structured-logging">1. Log Levels: The Foundation of Structured Logging</h2>
+<h2 id="log-levels-the-foundation-of-structured-logging">1. Log Levels: The Foundation of Structured Logging</h2>
 <p>Before understanding log levels, we need to understand log levels. These categorize log messages by severity, allowing you to filter and prioritize information. Common levels include:</p>
 <ul>
 <li><strong>DEBUG:</strong> Detailed information useful for debugging.</li>
@@ -197,9 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>CRITICAL:</strong> Critical errors that halt the application.</li>
 </ul>
 <p>Effective use of log levels prevents log overload and facilitates efficient troubleshooting.</p>
-</section>
-<section id="log-message-structure-beyond-simple-strings" class="level2">
-<h2 data-anchor-id="log-message-structure-beyond-simple-strings">2. Log Message Structure: Beyond Simple Strings</h2>
+<h2 id="log-message-structure-beyond-simple-strings">2. Log Message Structure: Beyond Simple Strings</h2>
 <p>Simple string-based logging is often insufficient. Structured logging uses a standardized format, often JSON, to encode log messages with key-value pairs. This enables efficient searching, filtering, and analysis using tools like Elasticsearch, Kibana, or Splunk.</p>
 <p><strong>Example (Python with <code>structlog</code>):</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> structlog</span>
@@ -208,16 +287,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>logger.info(<span class="st">"user_login"</span>, user_id<span class="op">=</span><span class="dv">123</span>, status<span class="op">=</span><span class="st">"success"</span>, ip_address<span class="op">=</span><span class="st">"192.168.1.1"</span>)</span></code></pre></div>
 <p>This generates a structured log message, easily parsed and analyzed.</p>
-</section>
-<section id="architectural-patterns-centralized-vs.-decentralized" class="level2">
-<h2 data-anchor-id="architectural-patterns-centralized-vs.-decentralized">3. Architectural Patterns: Centralized vs.&nbsp;Decentralized</h2>
+<h2 id="architectural-patterns-centralized-vs.-decentralized">3. Architectural Patterns: Centralized vs.&nbsp;Decentralized</h2>
 <p>There are two primary architectural patterns for logging:</p>
 <p><strong>A. Centralized Logging:</strong></p>
 <p>This approach uses a central logging server (e.g., using ELK stack, Graylog) to collect logs from all application components.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p></p><figure class="figure"><p></p>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Application 1] --&gt; B(Log Server);
@@ -247,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
-<p></p><figure class="figure"><p></p>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Application 1] --&gt; B(Local Log Storage);
@@ -271,9 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Difficulty in correlating logs across different components.</li>
 <li>Requires a distributed log aggregation mechanism for centralized analysis.</li>
 </ul>
-</section>
-<section id="choosing-the-right-logging-library" class="level2">
-<h2 data-anchor-id="choosing-the-right-logging-library">4. Choosing the Right Logging Library</h2>
+<h2 id="choosing-the-right-logging-library">4. Choosing the Right Logging Library</h2>
 <p>The choice of logging library depends on the programming language and specific requirements. Popular options include:</p>
 <ul>
 <li><strong>Python:</strong> <code>logging</code>, <code>structlog</code>, <code>loguru</code></li>
@@ -281,9 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Node.js:</strong> <code>winston</code>, <code>bunyan</code></li>
 <li><strong>.NET:</strong> <code>Serilog</code>, <code>NLog</code></li>
 </ul>
-</section>
-<section id="log-aggregation-and-analysis" class="level2">
-<h2 data-anchor-id="log-aggregation-and-analysis">5. Log Aggregation and Analysis</h2>
+<h2 id="log-aggregation-and-analysis">5. Log Aggregation and Analysis</h2>
 <p>Once logs are collected (either centrally or decentrally), you need a mechanism for aggregation and analysis. This typically involves using tools like:</p>
 <ul>
 <li><strong>Elasticsearch, Logstash, Kibana (ELK Stack):</strong> A popular open-source solution for log management.</li>
@@ -291,18 +364,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Splunk:</strong> A commercial log management solution with powerful features.</li>
 <li><strong>CloudWatch (AWS), Cloud Logging (Google Cloud), Log Analytics (Azure):</strong> Cloud-based log management services.</li>
 </ul>
-</section>
-<section id="security-considerations" class="level2">
-<h2 data-anchor-id="security-considerations">6. Security Considerations</h2>
+<h2 id="security-considerations">6. Security Considerations</h2>
 <p>Logging architecture should consider security implications:</p>
 <ul>
 <li><strong>Sensitive data masking:</strong> Avoid logging sensitive information like passwords or credit card details.</li>
 <li><strong>Access control:</strong> Restrict access to log data based on roles and permissions.</li>
 <li><strong>Secure log storage and transmission:</strong> Protect log data from unauthorized access and tampering.</li>
 </ul>
-</section>
-<section id="log-rotation-and-retention" class="level2">
-<h2 data-anchor-id="log-rotation-and-retention">7. Log Rotation and Retention</h2>
+<h2 id="log-rotation-and-retention">7. Log Rotation and Retention</h2>
 <p>Implement log rotation policies to manage storage space. Establish clear retention policies to comply with regulations and security best practices.</p>
 <p>Here’s a detailed log rotation strategy with examples:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example logrotate configuration</span></span>
@@ -392,12 +461,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Log access audit trail</li>
 <li>Separate logs by severity/type</li>
 </ol>
-</section>
-<section id="monitoring-and-alerting" class="level2">
-<h2 data-anchor-id="monitoring-and-alerting">8. Monitoring and Alerting</h2>
+<h2 id="monitoring-and-alerting">8. Monitoring and Alerting</h2>
 <p>Effective <strong>monitoring</strong> and <strong>alerting</strong> are essential components of a reliable system, ensuring that you stay informed about the system’s health and can quickly address issues before they impact users. Here’s a look at the key aspects of this process:</p>
-<section id="monitoring-key-metrics" class="level3">
-<h3 data-anchor-id="monitoring-key-metrics">1. <strong>Monitoring Key Metrics</strong></h3>
+<h3 id="monitoring-key-metrics">1. <strong>Monitoring Key Metrics</strong></h3>
 <p>Monitoring involves continuously tracking various system metrics to detect abnormal behavior, potential bottlenecks, and performance issues. Key metrics to monitor include:</p>
 <ul>
 <li><p><strong>Log Volume</strong>: The volume of logs being generated by your application is an important indicator of system activity. Sudden spikes or drops in log volume can signal issues such as service outages, increased traffic, or logging misconfigurations.</p>
@@ -415,9 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Infrastructure Metrics</strong>: These include CPU usage, memory consumption, disk I/O, and network throughput. Monitoring these ensures that your system has enough resources to handle current workloads and alerts you when capacity is being exceeded or resources are over-utilized.</p></li>
 <li><p><strong>Application-Specific Metrics</strong>: Depending on the nature of your application, you might also want to track custom metrics such as queue lengths, number of active users, or the rate of specific transactions (e.g., API calls, database queries).</p></li>
 </ul>
-</section>
-<section id="setting-up-alerts" class="level3">
-<h3 data-anchor-id="setting-up-alerts">2. <strong>Setting Up Alerts</strong></h3>
+<h3 id="setting-up-alerts">2. <strong>Setting Up Alerts</strong></h3>
 <p>Alerts are automated notifications triggered when a monitored metric crosses a predefined threshold. To ensure your system operates smoothly, configure alerts that cover both infrastructure and application-specific events. Here’s how to approach this:</p>
 <ul>
 <li><p><strong>Threshold-Based Alerts</strong>: Define thresholds for critical metrics. For instance:</p>
@@ -435,9 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Anomaly Detection</strong>: Beyond simple threshold-based alerts, many monitoring tools offer anomaly detection. These tools use machine learning algorithms to identify patterns in your data and raise alerts when metrics deviate from the normal range, even if they don’t cross hard thresholds. This helps detect subtle issues that might otherwise go unnoticed.</p></li>
 <li><p><strong>Downtime Alerts</strong>: If a critical service goes down (e.g., your API becomes unavailable), the monitoring system should trigger an alert immediately. This is typically done by setting up health checks for key components of your application.</p></li>
 </ul>
-</section>
-<section id="integrating-alerting-systems" class="level3">
-<h3 data-anchor-id="integrating-alerting-systems">3. <strong>Integrating Alerting Systems</strong></h3>
+<h3 id="integrating-alerting-systems">3. <strong>Integrating Alerting Systems</strong></h3>
 <p>Alerting systems can integrate with various notification channels to ensure you or your team are immediately informed when issues arise. Common alerting methods include:</p>
 <ul>
 <li><p><strong>Email</strong>: Basic alerts are often sent via email. However, this method may not be ideal for urgent issues that require immediate action.</p></li>
@@ -445,18 +507,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Chat Platforms (Slack, Microsoft Teams)</strong>: Integrating your alerting system with team collaboration tools like Slack or Microsoft Teams allows alerts to be posted directly in specific channels, where your team can quickly discuss and respond to incidents.</p></li>
 <li><p><strong>Incident Management Tools (PagerDuty, Opsgenie)</strong>: For critical production issues, consider using an incident management tool like PagerDuty, which can escalate alerts to on-call engineers, track incident resolution, and ensure timely responses.</p></li>
 </ul>
-</section>
-<section id="types-of-monitoring-tools" class="level3">
-<h3 data-anchor-id="types-of-monitoring-tools">4. <strong>Types of Monitoring Tools</strong></h3>
+<h3 id="types-of-monitoring-tools">4. <strong>Types of Monitoring Tools</strong></h3>
 <p>There are many tools available that offer monitoring and alerting capabilities for both infrastructure and applications:</p>
 <ul>
 <li><p><strong>Infrastructure Monitoring Tools</strong>: Tools like <strong>Prometheus</strong>, <strong>Nagios</strong>, <strong>Datadog</strong>, and <strong>Amazon CloudWatch</strong> are designed to monitor system-level metrics such as CPU usage, memory consumption, network traffic, and disk I/O. These tools often come with built-in alerting and anomaly detection capabilities.</p></li>
 <li><p><strong>Application Performance Monitoring (APM)</strong>: Tools like <strong>New Relic</strong>, <strong>AppDynamics</strong>, or <strong>Elastic APM</strong> provide deeper understanding of your application’s performance. They can trace individual requests, measure response times, and monitor errors at the application level.</p></li>
 <li><p><strong>Log Aggregation and Monitoring</strong>: Tools like <strong>ELK Stack (Elasticsearch, Logstash, Kibana)</strong>, <strong>Splunk</strong>, and <strong>Graylog</strong> allow you to collect, index, and visualize logs from various parts of your system. This enables faster troubleshooting and pattern detection when issues arise.</p></li>
 </ul>
-</section>
-<section id="best-practices-for-monitoring-and-alerting" class="level3">
-<h3 data-anchor-id="best-practices-for-monitoring-and-alerting">5. <strong>Best Practices for Monitoring and Alerting</strong></h3>
+<h3 id="best-practices-for-monitoring-and-alerting">5. <strong>Best Practices for Monitoring and Alerting</strong></h3>
 <p>To ensure your monitoring and alerting system is effective, follow these best practices:</p>
 <ul>
 <li><p><strong>Avoid Alert Fatigue</strong>: If you configure too many alerts, especially for non-critical events, your team may start to ignore them. Focus on setting up alerts that are actionable and correspond to significant issues.</p></li>
@@ -470,9 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Escalation Policies</strong>: Set up escalation policies so that if an alert is not acknowledged within a certain timeframe, it escalates to a higher level of responsibility, ensuring issues are resolved quickly.</p></li>
 <li><p><strong>Regularly Review Monitoring Configuration</strong>: Over time, the performance of your application and infrastructure may change. Periodically review your monitoring setup to ensure it still accurately reflects the system’s behavior and workload.</p></li>
 </ul>
-</section>
-<section id="proactive-vs.-reactive-monitoring" class="level3">
-<h3 data-anchor-id="proactive-vs.-reactive-monitoring">6. <strong>Proactive vs.&nbsp;Reactive Monitoring</strong></h3>
+<h3 id="proactive-vs.-reactive-monitoring">6. <strong>Proactive vs.&nbsp;Reactive Monitoring</strong></h3>
 <p>In addition to monitoring system failures (reactive monitoring), it’s important to implement <strong>proactive monitoring</strong> that tracks trends over time and helps you identify potential problems before they become critical. For instance:</p>
 <ul>
 <li><p><strong>Capacity Planning</strong>: Monitoring resource utilization trends over time allows you to anticipate when you’ll need to scale up your infrastructure.</p></li>
@@ -480,208 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/system-design\.muthu\.co\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-});
-</script>
-</div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p>Copyright 2025, Muthukrishnan</p>
-</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
+<footer>Copyright 2025 - Muthukrishnan</footer>
 
 
 

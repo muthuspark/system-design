@@ -3,7 +3,7 @@ title: "Container Security"
 categories: [ "Cloud Native" ]
 ---
 
-Containers have revolutionized software development and deployment, offering portability, scalability, and efficiency. However, this agility comes with new security challenges. Securing your containerized applications requires a multi-layered approach, encompassing image security, runtime security, and orchestration security. This post goes into each layer, providing practical advice and illustrating concepts with examples.
+Containers have revolutionized software development and deployment, offering portability, scalability, and efficiency. However, this agility comes with new security challenges. Securing your containerized applications requires a multi-layered approach, including image security, runtime security, and orchestration security. This post goes into each layer, providing practical advice and illustrating concepts with examples.
 
 ## 1. Image Security: Building Secure Foundations
 

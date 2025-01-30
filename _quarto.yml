@@ -25,12 +25,14 @@ website:
 
 format:
   html:
-    theme: 
-      light: litera
-      dark: solar
+    theme: pandoc
     css: styles.css
     mermaid:
       theme: neutral
     minimal: true
+    include-in-header: 
+      - header.html
+    include-after-body: 
+      - footer.html
 
 editor: visual
