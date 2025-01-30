@@ -13,6 +13,8 @@ website:
   page-footer:
     left: |
       Copyright 2025, Muthukrishnan
+  google-analytics: 
+    tracking-id: 'G-K8N81FG076'
   site-url: https://system-design.muthu.co/
   site-path: '/'
   navbar:
