@@ -151,3 +151,154 @@ nav ul {
 .category-section ul {
     padding-left: 0 !important;
 }
+
+.listing-no-matching {
+    display: none !important;
+}
+
+/* Grid layout */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Profile section */
+.profile-section {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    font-size: 1em;
+    font-weight: normal;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-button {
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-button:hover {
+    opacity: 0.7;
+    color: white;
+}
+
+.social-button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Content section */
+.content-section {
+    padding: 20px;
+    padding-top: 0 !important;
+}
+
+.bio {
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.education-item,
+.experience-item {
+    margin-bottom: 30px;
+}
+
+.institution {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.location {
+    color: #666;
+    font-style: italic;
+}
+
+.degree {
+    margin-top: 5px;
+}
+
+.date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-section {
+        order: -1;
+    }
+
+    .profile-image {
+        max-width: 300px;
+    }
+
+    .content-section {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .profile-name {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.patents small {
+    display: block;
+    margin-bottom: 10px;
+}
+.books {
+    display: flex;
+    flex-direction: row;
+    grid-gap: 10px;
+}

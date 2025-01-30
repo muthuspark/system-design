@@ -9,10 +9,10 @@ website:
   reader-mode: true
   page-navigation: true
   open-graph: true
+  favicon: favicon.ico
   page-footer:
     left: |
       Copyright 2025, Muthukrishnan
-  favicon: favicon.ico
   site-url: https://system-design.muthu.co/
   site-path: '/'
   navbar:
@@ -31,6 +31,7 @@ format:
       theme: neutral
     minimal: true
     include-in-header: 
+      - favicon.html
       - header.html
     include-after-body: 
       - footer.html
