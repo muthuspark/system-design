@@ -4,11 +4,11 @@ categories: [ "Infrastructure" ]
 ---
 
 Monitoring systems are the lifeblood of any application. They provide important information about the health, performance, and behavior of your software, allowing you to proactively identify and resolve issues before they impact users.
- Designing an effective monitoring system, however, is a complex undertaking requiring careful consideration of several key aspects. This post goes into the important components and considerations for building a detailed monitoring solution.
+ Designing an effective monitoring system, however, is a complex undertaking requiring careful consideration of many key aspects. This post goes into the important components and considerations for building a detailed monitoring solution.
 
 ## 1. Defining Objectives and Scope
 
-Before diving into the technical details, it's important to clearly define the goals of your monitoring system. What specific aspects of your application do you need to monitor? What metrics are most important? Are you primarily focused on performance, security, or availability? The answers to these questions will significantly influence the design and implementation of your system.
+Before diving into the technical details, it's important to clearly define the goals of your monitoring system. What specific aspects of your application do you need to monitor? What metrics are most important? Are you primarily focused on performance, security, or availability? The answers to these questions will influence the design and implementation of your system.
 
 For example, a simple web application might only need to monitor CPU usage, memory consumption, and response times. A complex microservices architecture, on the other hand, will require a much more complex system capable of tracking inter-service communication, latency, and error rates across multiple components.
 
@@ -116,7 +116,7 @@ graph TB
     E --> F
 ```
 
-The monitoring system architecture consists of several key layers:
+The monitoring system architecture consists of many key layers:
 
 **1. Sources Layer**
 

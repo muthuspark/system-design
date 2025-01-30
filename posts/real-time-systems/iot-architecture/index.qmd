@@ -9,7 +9,7 @@ The Internet of Things (IoT) has rapidly evolved from a futuristic concept to a 
 
 ## Core Components of IoT Architecture
 
-A typical IoT architecture comprises several key components, each playing a vital role in the overall system functionality.  These components interact in a complex yet structured manner to collect, process, and utilize data from connected devices.
+A typical IoT architecture comprises many key components, each playing an important role in the overall system functionality.  These components interact in a complex yet structured manner to collect, process, and utilize data from connected devices.
 
 * **Things (Devices):** These are the physical objects embedded with sensors, actuators, and communication capabilities.  Examples include smart thermostats, wearable fitness trackers, industrial sensors, and smart home appliances.  They are the data sources of any IoT system.
 

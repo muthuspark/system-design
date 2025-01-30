@@ -99,13 +99,13 @@ graph LR
 
 ## Technology Choices
 
-The choice of technology significantly impacts the performance and scalability of the gaming server.  Common choices include:
+The choice of technology impacts the performance and scalability of the gaming server. Common choices include:
 
 * **Programming Languages:** C++, C#, Java, Go are frequently used due to their performance characteristics.
 * **Game Engines:**  Unity, Unreal Engine, Godot provide frameworks for game development and often include networking features.
 * **Databases:**  NoSQL databases (e.g., MongoDB, Cassandra) are often preferred for their scalability and ability to handle high write loads.  Relational databases (e.g., PostgreSQL, MySQL) might be used for structured data.
 * **Message Queues:**  RabbitMQ, Kafka are used for asynchronous communication and handling high-volume data streams.
-* **Caching:** Redis, Memcached can significantly improve performance by caching frequently accessed data.
+* **Caching:** Redis, Memcached can improve performance by caching frequently accessed data.
 
 
 ## Example Code Snippet (Conceptual -  C# with Unity Networking):

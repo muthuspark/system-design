@@ -184,10 +184,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Push notifications have become an indispensable part of the modern mobile application landscape. They allow apps to send timely updates and relevant information directly to users’ devices, even when the app isn’t actively running. This capability significantly enhances user engagement and retention. This post will look at the complexities of push notification systems, their architecture, different protocols, and implementation considerations.</p>
+<p>Push notifications have become an indispensable part of the modern mobile application landscape. They allow apps to send timely updates and relevant information directly to users’ devices, even when the app isn’t actively running. This capability enhances user engagement and retention. This post will look at the complexities of push notification systems, their architecture, different protocols, and implementation considerations.</p>
 <section id="understanding-the-architecture" class="level2">
 <h2 data-anchor-id="understanding-the-architecture">Understanding the Architecture</h2>
-<p>A push notification system involves several key components working in concert:</p>
+<p>A push notification system involves many key components working in concert:</p>
 <ul>
 <li><p><strong>App Server:</strong> This is the central hub of the system. It receives requests from the application, handles user data, and sends messages to the notification service. It often includes features for managing user segments, scheduling notifications, and analyzing notification performance.</p></li>
 <li><p><strong>Notification Service (Push Provider):</strong> This is a third-party service (like Firebase Cloud Messaging, Apple Push Notification service (APNs), or Amazon SNS) that manages the actual delivery of notifications to devices. These services handle the complexities of connecting to different operating systems and managing the device tokens.</p></li>

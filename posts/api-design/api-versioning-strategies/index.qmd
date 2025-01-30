@@ -5,7 +5,7 @@ categories: [ "API Design" ]
 
 
 API versioning is a important aspect of API design and maintenance.  As your API evolves and adds new features or makes breaking changes, you need a strategy to manage different versions concurrently, ensuring backwards compatibility for existing clients while allowing for progress.
-  Choosing the right strategy depends on factors like your API's complexity, anticipated growth, and the technical capabilities of your clients.  This post explores several common API versioning strategies, their pros and cons, and provides examples.
+  Choosing the right strategy depends on factors like your API's complexity, anticipated growth, and the technical capabilities of your clients.  This post explores many common API versioning strategies, their pros and cons, and provides examples.
 
 
 ## 1. URI Versioning

@@ -3,7 +3,7 @@ title: "Kubernetes Design Patterns"
 categories: [ "Cloud Native" ]
 ---
 
-Kubernetes, the ubiquitous container orchestration platform, empowers developers to build and deploy scalable and resilient applications. However, effectively leveraging Kubernetes's capabilities requires understanding and applying appropriate design patterns. This post explores several important Kubernetes design patterns, providing explanations, diagrams, and code snippets to illustrate their practical implementation.
+Kubernetes, the ubiquitous container orchestration platform, empowers developers to build and deploy scalable and resilient applications. However, effectively leveraging Kubernetes's capabilities requires understanding and applying appropriate design patterns. This post explores many important Kubernetes design patterns, providing explanations, diagrams, and code snippets to illustrate their practical implementation.
 
 ## 1. The Sidecar Pattern
 

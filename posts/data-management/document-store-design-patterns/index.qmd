@@ -4,7 +4,7 @@ categories: [ "Data Management" ]
 ---
 
 
-Document stores, like MongoDB and Couchbase, offer flexibility and scalability unmatched by relational databases.  However, this flexibility comes with the responsibility of carefully designing your data model to avoid performance bottlenecks and maintain data integrity.  Choosing the right design pattern is important for the success of your application. This post explores several key document store design patterns, illustrating their strengths and weaknesses with examples.
+Document stores, like MongoDB and Couchbase, offer flexibility and scalability unmatched by relational databases.  However, this flexibility comes with the responsibility of carefully designing your data model to avoid performance bottlenecks and maintain data integrity.  Choosing the right design pattern is important for the success of your application. This post explores many key document store design patterns, illustrating their strengths and weaknesses with examples.
 
 ## 1. Embedded Documents:  Nested Data for Tight Relationships
 

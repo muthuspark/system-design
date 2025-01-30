@@ -6,7 +6,7 @@ categories: [ "Cloud Native" ]
 
 The cloud offers unparalleled scalability and flexibility, but it also introduces a new set of security challenges.  Traditional security perimeters blur, and responsibility for security is shared between the cloud provider and the organization.  Navigating this requires an understanding of cloud security patterns – proven architectural approaches that mitigate risks and bolster security posture.
 
-  This post goes into several key patterns, exploring their implementation and benefits.
+  This post goes into many key patterns, exploring their implementation and benefits.
 
 
 ## 1. Shared Responsibility Model

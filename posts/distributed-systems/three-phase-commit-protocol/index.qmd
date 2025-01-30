@@ -4,7 +4,7 @@ categories: [ "Distributed Systems" ]
 ---
 
 
-The Three-Phase Commit (3PC) protocol is a distributed consensus algorithm used in distributed systems to ensure atomicity and durability across multiple nodes involved in a transaction.  It's an extension of the Two-Phase Commit (2PC) protocol, aiming to improve its resilience to network partitions. While 2PC can leave a system in a blocking state during a network failure, 3PC attempts to mitigate this by adding a third phase that allows nodes to potentially proceed independently under certain conditions. However, it's important to understand that 3PC doesn't eliminate the possibility of blocking entirely, though it significantly reduces the likelihood.
+The Three-Phase Commit (3PC) protocol is a distributed consensus algorithm used in distributed systems to ensure atomicity and durability across multiple nodes involved in a transaction. It's an extension of the Two-Phase Commit (2PC) protocol, aiming to improve its resilience to network partitions. While 2PC can leave a system in a blocking state during a network failure, 3PC attempts to mitigate this by adding a third phase that allows nodes to potentially proceed independently under certain conditions. However, it's important to understand that 3PC doesn't eliminate the possibility of blocking entirely, though it reduces the likelihood.
 
 ## Understanding the Problem: Limitations of Two-Phase Commit
 
@@ -39,7 +39,7 @@ This diagram shows a simple 2PC scenario.  Note that all participants rely on th
 
 **Phase 2: Pre-commit:** If the coordinator receives "yes" votes from all participants, it sends a "pre-commit" message.  Participants who received a "pre-commit" perform the actual write operation and send an acknowledgement to the coordinator.  If the coordinator receives any "no" votes or experiences a network partition, it initiates an abort.
 
-**Phase 3: Commit/Abort:** This is where 3PC differs significantly from 2PC.
+Phase 3: Commit/Abort: This is where 3PC differs from 2PC.
 * **Scenario 1 (Coordinator receives all "yes" votes in phase 2):** The coordinator sends a "commit" message to all participants. The transaction is committed.
 * **Scenario 2 (Coordinator fails after phase 2 and receives all "yes" votes):** This is a key difference from 2PC. Participants proceed to commit the transaction after a predefined timeout.  This mitigates the risk of a single point of failure.
 * **Scenario 3 (Coordinator fails or receives a "no" vote before or during phase 2):** The coordinator (or a participant if a timeout is reached) will send an "abort" message and the transaction is aborted.

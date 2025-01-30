@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="implementing-active-passive-key-components" class="level2">
 <h2 data-anchor-id="implementing-active-passive-key-components">Implementing Active-Passive: Key Components</h2>
-<p>A successful active-passive setup relies on several important components:</p>
+<p>A successful active-passive setup relies on many important components:</p>
 <ul>
 <li><p><strong>Shared Storage:</strong> Both the active and passive nodes must access a shared storage system (e.g., SAN, NAS, cloud storage) for data persistence. This ensures data consistency between nodes during a failover. Changes made by the active node are replicated to the passive node in real-time or near real-time.</p></li>
 <li><p><strong>Heartbeat Monitoring:</strong> A heartbeat mechanism constantly monitors the active node’s status. This can involve simple network pings or more complex health checks. If the heartbeat fails, it triggers the failover process.</p></li>

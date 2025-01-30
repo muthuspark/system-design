@@ -8,7 +8,7 @@ Distributed systems, with their complexity and interconnectedness, present uniqu
 
 ## Understanding the Expanded Attack Surface
 
-The distributed nature of these systems significantly expands the attack surface. Unlike a single server, a distributed system comprises numerous components, often geographically dispersed and interacting through various networks. This introduces several new avenues for exploitation:
+The distributed nature of these systems expands the attack surface. Unlike a single server, a distributed system comprises numerous components, often geographically dispersed and interacting through various networks. This introduces many new avenues for exploitation:
 
 -   **Increased Number of Entry Points:** Each node, service, and communication channel represents a potential entry point for attackers. A compromise in a single node can potentially lead to a cascading failure, compromising the entire system.
 
@@ -23,7 +23,7 @@ The distributed nature of these systems significantly expands the attack surface
 
 ## Key Security Considerations
 
-Addressing the challenges outlined above requires an approach encompassing several important aspects:
+Addressing the challenges outlined above requires an approach encompassing many important aspects:
 
 ### 1. Authentication and Authorization
 

@@ -7,7 +7,7 @@ In today's digital world, speed is king. A slow-loading website can lead to frus
 
 ## What is a Content Delivery Network (CDN)?
 
-A CDN is a geographically distributed network of servers that work together to deliver content to users based on their location. Instead of serving all website traffic from a single server, a CDN replicates your website's static content – images, CSS files, JavaScript files, videos, etc. – across multiple servers located in data centers around the world. When a user requests your website, the CDN directs them to the server geographically closest to them, significantly reducing latency and improving loading times.
+A CDN is a geographically distributed network of servers that work together to deliver content to users based on their location. Instead of serving all website traffic from a single server, a CDN replicates your website's static content – images, CSS files, JavaScript files, videos, etc. – across multiple servers located in data centers around the world. When a user requests your website, the CDN directs them to the server geographically closest to them, reducing latency and improving loading times.
 
 Imagine a global web of interconnected servers, each holding a copy of your website's static assets. When a user in London accesses your site, they are served content from a London-based server, while a user in Tokyo receives content from a Tokyo-based server. This proximity dramatically cuts down on the distance data has to travel, leading to faster loading speeds and a smoother user experience.
 
@@ -134,7 +134,7 @@ CDNs are not one-size-fits-all solutions. Different providers offer various feat
 
 ## Choosing the Right CDN
 
-Selecting a suitable CDN requires careful consideration of several factors, including:
+Selecting a suitable CDN requires careful consideration of many factors, including:
 
 -   **Your website's traffic volume and content type.**
 -   **Your target audience's geographical distribution.**

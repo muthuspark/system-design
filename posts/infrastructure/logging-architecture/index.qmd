@@ -259,7 +259,7 @@ Alerts are automated notifications triggered when a monitored metric crosses a p
     -   Database connection errors occur repeatedly within a short window.
     -   Application crashes or instances become unresponsive.
 
--   **Anomaly Detection**: Beyond simple threshold-based alerts, many monitoring tools offer anomaly detection. These tools use machine learning algorithms to identify patterns in your data and raise alerts when metrics deviate significantly from the normal range, even if they don't cross hard thresholds. This helps detect subtle issues that might otherwise go unnoticed.
+-   **Anomaly Detection**: Beyond simple threshold-based alerts, many monitoring tools offer anomaly detection. These tools use machine learning algorithms to identify patterns in your data and raise alerts when metrics deviate from the normal range, even if they don't cross hard thresholds. This helps detect subtle issues that might otherwise go unnoticed.
 
 -   **Downtime Alerts**: If a critical service goes down (e.g., your API becomes unavailable), the monitoring system should trigger an alert immediately. This is typically done by setting up health checks for key components of your application.
 
@@ -277,7 +277,7 @@ Alerting systems can integrate with various notification channels to ensure you 
 
 ### 4. **Types of Monitoring Tools**
 
-There are several tools available that offer monitoring and alerting capabilities for both infrastructure and applications:
+There are many tools available that offer monitoring and alerting capabilities for both infrastructure and applications:
 
 -   **Infrastructure Monitoring Tools**: Tools like **Prometheus**, **Nagios**, **Datadog**, and **Amazon CloudWatch** are designed to monitor system-level metrics such as CPU usage, memory consumption, network traffic, and disk I/O. These tools often come with built-in alerting and anomaly detection capabilities.
 

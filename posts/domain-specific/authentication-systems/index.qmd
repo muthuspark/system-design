@@ -8,7 +8,7 @@ Authentication is a part of every secure system build by engineers. It's the pro
 
 ## Types of Authentication Systems
 
-Authentication systems can be broadly categorized into several types, each with its own mechanisms and security considerations.
+Authentication systems can be broadly categorized into many types, each with its own mechanisms and security considerations.
 
 ### 1. Something You Know: Password-Based Authentication
 
@@ -76,7 +76,7 @@ This method analyzes user behavior patterns like typing rhythm, mouse movements,
 
 MFA combines multiple authentication methods, requiring users to prove their identity using two or more factors. For example, password + one-time code from an authenticator app.
 
-**Strengths:** Significantly enhances security by adding layers of protection.
+**Strengths:** Enhances security by adding layers of protection.
 
 **Weaknesses:** Can be inconvenient for users, requiring extra steps during authentication.
 
@@ -101,7 +101,7 @@ Various protocols handle the actual communication and verification process durin
 
 ## Security Considerations
 
-Regardless of the chosen authentication system, several security best practices must be followed:
+Regardless of the chosen authentication system, many security best practices must be followed:
 
 -   **Strong password policies:** Enforce complex passwords with minimum length, character variety, and regular changes.
 -   **Password hashing:** Never store passwords in plain text. Use strong one-way hashing algorithms.

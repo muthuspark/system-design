@@ -38,7 +38,7 @@ Stress testing pushes your application beyond its expected limits to determine i
 
 **Methodology:**
 
-Similar to load testing, but with significantly higher user loads and potentially more complex scenarios designed to stress different aspects of the system. The goal is to identify failure modes and determine how gracefully the system degrades under extreme conditions.
+Similar to load testing, but with higher user loads and potentially more complex scenarios designed to stress different aspects of the system. The goal is to identify failure modes and determine how gracefully the system degrades under extreme conditions.
 
 **Example:** Gradually increasing the number of virtual users in a load test until the system crashes or becomes unresponsive.
 

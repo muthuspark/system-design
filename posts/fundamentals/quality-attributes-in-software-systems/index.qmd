@@ -8,7 +8,7 @@ Software development is more than just writing code that works; it's about build
 
 ## Key Quality Attributes
 
-We can categorize quality attributes into several key areas.  Let's look at some of the most critical ones:
+We can categorize quality attributes into many key areas.  Let's look at some of the most critical ones:
 
 ### 1. Functionality
 
@@ -32,7 +32,7 @@ graph LR
 
 ### 3. Performance
 
-Performance encompasses several aspects, including speed, responsiveness, resource utilization (CPU, memory, network), and scalability.  A highly performant system responds quickly to user requests and handles large workloads efficiently.
+Performance encompasses many aspects, including speed, responsiveness, resource utilization (CPU, memory, network), and scalability.  A highly performant system responds quickly to user requests and handles large workloads efficiently.
 
 **Measuring Performance:** Response times, throughput, resource utilization, and load testing results are used for performance evaluation.
 
@@ -64,7 +64,7 @@ end_time = time.time()
 print(f"Optimized time: {end_time - start_time:.4f} seconds")
 ```
 
-The optimized version uses list comprehension for significantly faster execution.
+The optimized version uses list comprehension for faster execution.
 
 
 ### 4. Usability

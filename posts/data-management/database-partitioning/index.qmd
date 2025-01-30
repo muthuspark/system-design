@@ -8,7 +8,7 @@ Database partitioning is a powerful technique used to improve the performance, s
 
 ## Understanding the Need for Partitioning
 
-As databases grow, several performance bottlenecks can emerge:
+As databases grow, many performance bottlenecks can emerge:
 
 * **Slow Queries:**  Queries that scan entire tables can become incredibly slow as the data volume increases.
 * **Resource Contention:** Multiple concurrent queries can lead to resource contention, impacting overall database performance.
@@ -69,7 +69,7 @@ graph LR
 
 ## Choosing the Right Partitioning Strategy
 
-The optimal partitioning strategy depends on several factors:
+The optimal partitioning strategy depends on many factors:
 
 * **Data Characteristics:**  The nature and distribution of your data dictate the best approach.
 * **Query Patterns:**  The types of queries you frequently execute influence partitioning key selection.

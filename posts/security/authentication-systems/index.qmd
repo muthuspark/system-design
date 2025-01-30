@@ -7,7 +7,7 @@ Authentication is the process of verifying the identity of a user, device, or ot
 
 ## Understanding the Fundamentals
 
-At its heart, authentication boils down to answering one question: "Are you who you say you are?" This seemingly simple question involves a complex interplay of factors and technologies. An authentication system relies on several key principles:
+At its heart, authentication boils down to answering one question: "Are you who you say you are?" This seemingly simple question involves a complex interplay of factors and technologies. An authentication system relies on many key principles:
 
 -   **Something you know:** Passwords, PINs, security questions. This is the most common approach but also the most vulnerable to brute-force attacks and phishing.
 -   **Something you have:** Smart cards, security tokens, mobile devices. These add an extra layer of security beyond knowledge-based authentication.

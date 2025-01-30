@@ -3,7 +3,7 @@ title: "Session Management at Scale"
 categories: [ "Scalability" ]
 ---
 
-Session management is a critical aspect of any web application, especially those dealing with a large number of concurrent users. Effectively managing user sessions at scale requires careful consideration of several factors, including security, performance, and scalability. This post goes into the complexities of session management at scale, exploring various strategies and the challenges they present.
+Session management is a critical aspect of any web application, especially those dealing with a large number of concurrent users. Effectively managing user sessions at scale requires careful consideration of many factors, including security, performance, and scalability. This post goes into the complexities of session management at scale, exploring various strategies and the challenges they present.
 
 ## Understanding the Challenges
 
@@ -59,7 +59,7 @@ graph LR
 
 **Pros:**
 
--   **High Performance:** Significantly faster than database lookups.
+-   **High Performance:** Faster than database lookups.
 -   **Scalability:** Can be clustered for high availability and scalability.
 
 **Cons:**

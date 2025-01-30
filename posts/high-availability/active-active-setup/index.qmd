@@ -45,14 +45,14 @@ This setup provides redundancy and fault tolerance - if one server fails, the ot
 ## Benefits of an Active-Active Setup
 
 -   **High Availability:** The most significant advantage is the elimination of single points of failure. If one system fails, the other continues to operate, ensuring uninterrupted service.
--   **Increased Scalability:** Both systems handle traffic concurrently, significantly boosting the overall capacity and ability to handle increased demand.
+-   **Increased Scalability:** Both systems handle traffic concurrently, boosting the overall capacity and ability to handle increased demand.
 -   **Improved Performance:** By distributing the workload, Active-Active setups can reduce response times and improve overall application performance. Geographic distribution can further improve performance by reducing latency for users in different locations.
 
 -   **Enhanced Resilience:** The system is more resistant to various failures, including hardware malfunctions, software bugs, and network issues.
 
 ## Challenges of Implementing an Active-Active Setup
 
-While Active-Active offers substantial benefits, implementing it effectively presents several challenges:
+While Active-Active offers substantial benefits, implementing it effectively presents many challenges:
 
 -   **Data Synchronization:** Maintaining data consistency across both active systems is important. Techniques like database replication and message queues are vital for ensuring data integrity.
 -   **Session Management:** Properly managing user sessions across both servers is essential to prevent user data loss or inconsistencies. Sticky sessions (where a user is always directed to the same server) can be problematic in Active-Active environments, requiring complex session management strategies.

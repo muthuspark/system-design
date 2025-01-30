@@ -32,7 +32,7 @@ This diagram shows two topics (Topic A and Topic B). Publishers 1 and 2 publish 
 
 ## Benefits of Using Pub/Sub Systems
 
-Pub/Sub systems offer several compelling advantages:
+Pub/Sub systems offer many compelling advantages:
 
 * **Loose Coupling:** Publishers and subscribers are independent and unaware of each other's existence. This reduces dependencies and improves system maintainability.
 

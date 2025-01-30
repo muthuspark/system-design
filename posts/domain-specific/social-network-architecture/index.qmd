@@ -9,7 +9,7 @@ This article will look at the key architectural components and design decisions 
 
 ## The Core Components
 
-A typical social network architecture can be broken down into several key components:
+A typical social network architecture can be broken down into many key components:
 
 #### **1. Frontend:**
 

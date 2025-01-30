@@ -21,7 +21,7 @@ A BC plan considers various aspects, including:
 
 ## Key Components of a Business Continuity Plan
 
-A detailed BC plan typically includes several key components:
+A detailed BC plan typically includes many key components:
 
 **1. Risk Assessment:**
 

@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The master-slave architecture, also known as the primary-replica architecture, is a widely used database replication pattern. It involves a primary server (the master) handling all write operations and one or more secondary servers (the slaves) that replicate data from the master. This design offers several benefits, but also comes with its own set of limitations and challenges. This post will look at the details of this architecture, exploring its advantages, disadvantages, and various implementation aspects.</p>
+<p>The master-slave architecture, also known as the primary-replica architecture, is a widely used database replication pattern. It involves a primary server (the master) handling all write operations and one or more secondary servers (the slaves) that replicate data from the master. This design offers many benefits, but also comes with its own set of limitations and challenges. This post will look at the details of this architecture, exploring its advantages, disadvantages, and various implementation aspects.</p>
 <section id="how-master-slave-architecture-works" class="level2">
 <h2 data-anchor-id="how-master-slave-architecture-works">How Master-Slave Architecture Works</h2>
 <p>The core principle is simple: the master server is the single source of truth. All write operations – INSERT, UPDATE, DELETE – are directed exclusively to the master. The master then propagates these changes to the slave servers through a replication process. Slave servers, in turn, primarily handle read operations, thereby offloading the read load from the master. This distribution of workload improves performance and scalability, particularly for applications with a high read-to-write ratio.</p>
@@ -454,7 +454,7 @@ Checksum: 0x1A2B3C4D               # Data integrity verification</code></pre>
 <section id="advantages-of-master-slave-architecture" class="level2">
 <h2 data-anchor-id="advantages-of-master-slave-architecture">Advantages of Master-Slave Architecture</h2>
 <ul>
-<li><p><strong>Improved Read Performance:</strong> By offloading read operations to the slave servers, the master can focus on write operations, leading to significantly improved read performance.</p></li>
+<li><p><strong>Improved Read Performance:</strong> By offloading read operations to the slave servers, the master can focus on write operations, leading to improved read performance.</p></li>
 <li><p><strong>Increased Scalability:</strong> Adding more slave servers allows for handling an increasing number of read requests.</p></li>
 <li><p><strong>High Availability (with limitations):</strong> In some configurations, if the master fails, one of the slaves can be promoted to become the new master (though this requires careful planning and implementation).</p></li>
 <li><p><strong>Data Backup and Recovery:</strong> Slaves can serve as backups of the master database, enabling data recovery in case of master failure.</p></li>

@@ -14,7 +14,7 @@ The primary goal of SRA is to meticulously define what the system needs to do an
 
 ## Key Steps in System Requirements Analysis
 
-SRA typically involves several iterative steps:
+SRA typically involves many iterative steps:
 
 1. **Requirements Elicitation:** This initial stage involves gathering information from various sources, including stakeholders (clients, users, developers, etc.).  Techniques used include interviews, questionnaires, workshops, document analysis, and observation.  The goal is to understand the problem domain, user needs, and business objectives.
 

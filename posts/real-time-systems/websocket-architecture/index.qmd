@@ -38,7 +38,7 @@ sequenceDiagram
 
 ## WebSocket Architecture Components
 
-A typical WebSocket architecture consists of several key components:
+A typical WebSocket architecture consists of many key components:
 
 -   **Client:** The browser or application initiating the connection and receiving/sending data. Often uses JavaScript libraries like `ws` or built-in browser APIs.
 -   **Server:** The server managing multiple WebSocket connections, handling data routing, and potentially interacting with databases or other back-end systems. Popular server-side frameworks include Node.js with Socket.IO, Python with `asyncio` and `websockets`, and Java with Spring WebSocket.

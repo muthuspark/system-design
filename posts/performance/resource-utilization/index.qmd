@@ -109,7 +109,7 @@ end_time = time.time()
 print(f"Processing time: {end_time - start_time} seconds")
 ```
 
-The second example demonstrates significantly improved efficiency through the use of list comprehension.
+The second example demonstrates improved efficiency through the use of list comprehension.
 
 
 

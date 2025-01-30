@@ -35,7 +35,7 @@ This diagram illustrates a simplified flow.  The complexity increases with diffe
 
 ## OAuth 2.0 Grant Types
 
-OAuth 2.0 defines several grant types, each suitable for different scenarios.  We'll examine the most common ones:
+OAuth 2.0 defines many grant types, each suitable for different scenarios.  We'll examine the most common ones:
 
 ### 1. Authorization Code Grant
 

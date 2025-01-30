@@ -7,7 +7,7 @@ Video streaming has revolutionized how we consume entertainment, news, and educa
 
 ## The Architecture of a Video Streaming Platform
 
-A typical video streaming platform comprises several interconnected components working in harmony. Let's visualize this with a Diagram:
+A typical video streaming platform comprises many interconnected components working in harmony. Let's visualize this with a Diagram:
 
 ```{mermaid}
 graph LR

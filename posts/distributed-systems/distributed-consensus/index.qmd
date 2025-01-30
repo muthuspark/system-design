@@ -181,7 +181,7 @@ This differs from Raft/Paxos through its explicit recovery phase and ZooKeeper-s
 
 ## Code Example (Simplified Raft-inspired concept):
 
-This is a highly simplified example, illustrating the basic principles of a leader-follower approach. A real-world implementation would be significantly more complex.
+This is a highly simplified example, illustrating the basic principles of a leader-follower approach. A real-world implementation would be more complex.
 
 ``` python
 

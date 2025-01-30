@@ -184,10 +184,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Connection pooling is a important technique for enhancing the performance and efficiency of database applications. It significantly reduces the overhead associated with repeatedly establishing and closing connections to a database server, leading to faster response times and improved resource utilization. This post goes into the complexities of connection pooling, explaining its benefits, how it works, and showcasing examples in various programming languages.</p>
+<p>Connection pooling is an important technique for enhancing the performance and efficiency of database applications. It reduces the overhead associated with repeatedly establishing and closing connections to a database server, leading to faster response times and improved resource utilization. This post goes into the complexities of connection pooling, explaining its benefits, how it works, and showcasing examples in various programming languages.</p>
 <section id="understanding-the-problem-the-cost-of-connection-creation" class="level2">
 <h2 data-anchor-id="understanding-the-problem-the-cost-of-connection-creation">Understanding the Problem: The Cost of Connection Creation</h2>
-<p>Before we look at the solution, let’s understand the problem. Every time your application needs to interact with a database, it typically establishes a new connection. This process involves several steps:</p>
+<p>Before we look at the solution, let’s understand the problem. Every time your application needs to interact with a database, it typically establishes a new connection. This process involves many steps:</p>
 <ol type="1">
 <li><strong>Network Communication:</strong> The application initiates a network request to the database server.</li>
 <li><strong>Authentication:</strong> The server verifies the application’s credentials.</li>

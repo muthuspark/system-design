@@ -27,7 +27,7 @@ graph TD
 
 ## Key Components of OIDC
 
-OIDC introduces several key components: 1. **ID Token**: A JWT that contains information about the authenticated user. 2. **UserInfo Endpoint**: A RESTful endpoint that returns claims about the user. 3. **Discovery Endpoint**: Provides metadata about the OIDC provider. 4. **Dynamic Client Registration**: Allows clients to register with the OIDC provider dynamically.
+OIDC introduces many key components: 1. **ID Token**: A JWT that contains information about the authenticated user. 2. **UserInfo Endpoint**: A RESTful endpoint that returns claims about the user. 3. **Discovery Endpoint**: Provides metadata about the OIDC provider. 4. **Dynamic Client Registration**: Allows clients to register with the OIDC provider dynamically.
 
 ```{mermaid}
 graph TD

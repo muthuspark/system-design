@@ -13,7 +13,7 @@ SAML is widely adopted in enterprise environments, particularly for integrating 
 
 ## Key Components of SAML
 
-SAML consists of several key components: 1. **Assertions**: XML-based statements that convey authentication, attribute, and authorization information. 2. **Protocols**: Define how SAML requests and responses are exchanged. 3. **Bindings**: Specify how SAML messages are transported (e.g., HTTP POST, Redirect). 4. **Profiles**: Define how SAML is used in specific scenarios (e.g., Web Browser SSO).
+SAML consists of many key components: 1. **Assertions**: XML-based statements that convey authentication, attribute, and authorization information. 2. **Protocols**: Define how SAML requests and responses are exchanged. 3. **Bindings**: Specify how SAML messages are transported (e.g., HTTP POST, Redirect). 4. **Profiles**: Define how SAML is used in specific scenarios (e.g., Web Browser SSO).
 
 ```{mermaid}
 graph TD

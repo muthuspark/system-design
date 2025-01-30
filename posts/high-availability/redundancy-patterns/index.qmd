@@ -4,7 +4,7 @@ categories: [ "High Availability", "Software Architecture", "Best Practices" ]
 ---
 
 Redundancy, while sometimes beneficial in hardware systems for fault tolerance, is often a significant source of problems in software. It leads to increased complexity, making code harder to understand, maintain, and debug. It also increases the risk of inconsistencies and errors when updates are made. Understanding common redundancy patterns is important for writing clean, efficient code.
- This post explores several recurring patterns of redundancy and suggests strategies for avoiding them.
+ This post explores many recurring patterns of redundancy and suggests strategies for avoiding them.
 
 ## 1. Data Redundancy
 
@@ -35,7 +35,7 @@ erDiagram
 
 Code redundancy involves writing the same or very similar code multiple times in different parts of a program. This makes the code larger, harder to read, and more prone to errors. Maintaining consistency across multiple copies of the same code becomes a nightmare.
 
-**Example:** Imagine a function to calculate the area of a rectangle that is repeated several times with slight variations in variable names.
+**Example:** Imagine a function to calculate the area of a rectangle that is repeated many times with slight variations in variable names.
 
 **Python Example (Redundant):**
 

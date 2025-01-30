@@ -33,7 +33,7 @@ graph LR
     D --> E["Player (Viewer)"];
 ```
 
-This simplified diagram shows a basic workflow. However, real-world architectures are significantly more complex.
+This simplified diagram shows a basic workflow. However, real-world architectures are more complex.
 
 **Diagram 2: Advanced Live Streaming Architecture with Transcoding and Redundancy**
 

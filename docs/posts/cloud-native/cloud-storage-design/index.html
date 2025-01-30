@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Cloud storage has become an indispensable part of modern computing, offering scalability, accessibility, and cost-effectiveness unmatched by traditional on-premise solutions. However, designing an efficient cloud storage system is a complex undertaking, requiring careful consideration of numerous factors. This post goes into the architectural nuances of cloud storage design, exploring key components, trade-offs, and best practices.</p>
 <section id="architectural-layers" class="level2">
 <h2 data-anchor-id="architectural-layers">Architectural Layers</h2>
-<p>A typical cloud storage system comprises several interconnected layers:</p>
+<p>A typical cloud storage system comprises many interconnected layers:</p>
 <p><strong>1. User Interface (UI) Layer:</strong> This is the layer users interact with. It can range from simple command-line interfaces (CLIs) to complex web-based portals. The UI handles user authentication, authorization, data upload/download requests, and metadata management.</p>
 <p><strong>2. API Layer:</strong> This layer provides a programmatic interface for interacting with the storage system. It translates user requests into internal operations and returns results back to the user. RESTful APIs are commonly used, allowing for integration with various applications and platforms.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Example API request (using JavaScript fetch)</span></span>
@@ -268,11 +268,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="scalability-and-performance" class="level2">
 <h2 data-anchor-id="scalability-and-performance">Scalability and Performance</h2>
-<p>Scalability and performance are critical considerations. Horizontal scaling (adding more servers) is important for handling increasing data volumes and user traffic. Efficient data access mechanisms, such as content delivery networks (CDNs), caching, and optimized data retrieval algorithms, contribute significantly to performance.</p>
+<p>Scalability and performance are critical considerations. Horizontal scaling (adding more servers) is important for handling increasing data volumes and user traffic. Efficient data access mechanisms, such as content delivery networks (CDNs), caching, and optimized data retrieval algorithms, contribute to performance.</p>
 </section>
 <section id="security" class="level2">
 <h2 data-anchor-id="security">Security</h2>
-<p>Security is a vital aspect of cloud storage design. Data encryption (both in transit and at rest) is essential. Access control mechanisms, including role-based access control (RBAC) and granular permission settings, are required to prevent unauthorized access. Regular security audits and vulnerability assessments are also necessary.</p>
+<p>Security is an important aspect of cloud storage design. Data encryption (both in transit and at rest) is essential. Access control mechanisms, including role-based access control (RBAC) and granular permission settings, are required to prevent unauthorized access. Regular security audits and vulnerability assessments are also necessary.</p>
 
 
 </section>

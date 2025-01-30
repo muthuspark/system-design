@@ -133,7 +133,7 @@ Maintaining data consistency is important.  Several strategies exist for invalid
 
 ## Choosing the Right Strategy
 
-The optimal caching strategy depends on several factors:
+The optimal caching strategy depends on many factors:
 
 * **Data characteristics:** How often is data accessed? How frequently is it updated?
 * **Application requirements:** What are the performance requirements? How important is data consistency?

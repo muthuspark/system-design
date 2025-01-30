@@ -32,7 +32,7 @@ graph LR
 
 Running oversized instances is a major source of waste. Analyze your application's resource requirements (CPU, memory, storage) and choose the smallest instance type that meets those needs. Regularly review instance sizes and downsize if possible.
 
-**Example (AWS):** Switching from a `m5.xlarge` to a `t3.medium` instance can significantly reduce costs if your workload doesn't require the extra resources.
+**Example (AWS):** Switching from a `m5.xlarge` to a `t3.medium` instance can reduce costs if your workload doesn't require the extra resources.
 
 ``` bash
 aws ec2 describe-instances --instance-ids i-xxxxxxxxxxxxxxxxx # Check instance type

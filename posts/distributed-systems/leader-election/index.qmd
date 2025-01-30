@@ -9,7 +9,7 @@ Leader election is a fundamental problem in distributed systems. It's the proces
 
 ## Why Leader Election is important
 
-In distributed systems, where multiple nodes operate independently but need to coordinate, a leader is often necessary for several reasons:
+In distributed systems, where multiple nodes operate independently but need to coordinate, a leader is often necessary for many reasons:
 
 -   **Centralized Control:** A single leader simplifies decision-making and avoids conflicts between nodes.
 -   **Resource Management:** The leader can manage shared resources, preventing resource starvation and ensuring fairness.

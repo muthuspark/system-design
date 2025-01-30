@@ -9,7 +9,7 @@ Booking systems are the unsung heroes of modern commerce, silently orchestrating
 
 ## Architectural Overview
 
-A typical booking system comprises several interconnected components working in harmony. The following mermaid diagram illustrates a simplified architecture:
+A typical booking system comprises many interconnected components working in harmony. The following mermaid diagram illustrates a simplified architecture:
 
 ```{mermaid}
 graph LR

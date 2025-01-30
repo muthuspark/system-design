@@ -63,7 +63,7 @@ High-performance systems often come with a high price tag. Faster processors, mo
 
 **Example:**
 
-Using high-performance SSDs for storage might drastically improve read/write speeds but significantly increase costs compared to using traditional hard disk drives. Similarly, choosing a larger server instance provides better performance but increases the ongoing operational costs.
+Using high-performance SSDs for storage might drastically improve read/write speeds but increase costs compared to using traditional hard disk drives. Similarly, choosing a larger server instance provides better performance but increases the ongoing operational costs.
 
 ## 4. Security vs. Usability
 

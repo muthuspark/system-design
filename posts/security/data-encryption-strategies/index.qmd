@@ -97,7 +97,7 @@ graph LR
 
 **Weaknesses:**
 
--   Significantly slower than symmetric encryption.
+- Slower than symmetric encryption.
 -   Key management can be more complex.
 
 ## 3. Hybrid Encryption: Combining the Best of Both Worlds

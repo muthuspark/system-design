@@ -80,7 +80,7 @@ With multiple instances of each microservice, a service discovery mechanism is i
 
 ### 5. Containerization and Orchestration
 
-Containerization (Docker) and orchestration (Kubernetes) significantly simplify microservices deployment and scaling.  Kubernetes automatically manages the lifecycle of containers, including scaling based on resource utilization or defined policies.
+Containerization (Docker) and orchestration (Kubernetes) simplify microservices deployment and scaling. Kubernetes automatically manages the lifecycle of containers, including scaling based on resource utilization or defined policies.
 
 
 ### 6. API Gateways

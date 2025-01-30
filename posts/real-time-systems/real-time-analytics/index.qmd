@@ -7,11 +7,11 @@ Real-time analytics is the process of analyzing data as it's generated, providin
 
 ## The Core of Real-Time Analytics
 
-Real-time analytics relies on several key components working in concert:
+Real-time analytics relies on many key components working in concert:
 
 1.  **Data Ingestion:** This involves capturing data from various sources in real-time. These sources can include web servers, mobile apps, social media platforms, IoT devices, and more. Data ingestion systems need to handle high volumes of data with low latency.
 
-2.  **Data Processing:** Once ingested, raw data needs processing to transform it into a usable format. This often involves cleaning, filtering, and aggregating the data. Stream processing frameworks like Apache Kafka, Apache Flink, and Apache Spark Streaming play a vital role here.
+2.  **Data Processing:** Once ingested, raw data needs processing to transform it into a usable format. This often involves cleaning, filtering, and aggregating the data. Stream processing frameworks like Apache Kafka, Apache Flink, and Apache Spark Streaming play an important role here.
 
 3.  **Data Storage:** Processed data needs to be stored temporarily or persistently. Options include in-memory databases (like Redis), columnar databases (like ClickHouse), and NoSQL databases. The choice depends on the specific requirements of the application.
 

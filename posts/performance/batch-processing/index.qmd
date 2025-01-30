@@ -23,7 +23,7 @@ This is the basic workflow: data comes in from a source, accumulates, forms a ba
 
 ## Advantages of Batch Processing
 
-Batch processing offers several key benefits:
+Batch processing offers many key benefits:
 
 - **Efficiency: ** Because you’re working with batches of data, there’s much less overhead than if you were working with records individually. You’re minimizing database interactions, network calls, and other resource-intensive operations.
 

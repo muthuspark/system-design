@@ -8,7 +8,7 @@ Geographic distribution, also known as spatial distribution, describes the place
 
 ## Types of Geographic Distributions
 
-Geographic distributions aren't uniform; they exhibit distinct patterns influenced by numerous factors.  We can broadly categorize them into several types:
+Geographic distributions aren't uniform; they exhibit distinct patterns influenced by numerous factors.  We can broadly categorize them into many types:
 
 * **Clumped Distribution:**  Individuals aggregate in patches, often due to resource availability, social behavior, or reproductive strategies. Think of herds of elephants around watering holes or human settlements concentrated around fertile river valleys.
 

@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Redundancy, while sometimes beneficial in hardware systems for fault tolerance, is often a significant source of problems in software. It leads to increased complexity, making code harder to understand, maintain, and debug. It also increases the risk of inconsistencies and errors when updates are made. Understanding common redundancy patterns is important for writing clean, efficient code. This post explores several recurring patterns of redundancy and suggests strategies for avoiding them.</p>
+<p>Redundancy, while sometimes beneficial in hardware systems for fault tolerance, is often a significant source of problems in software. It leads to increased complexity, making code harder to understand, maintain, and debug. It also increases the risk of inconsistencies and errors when updates are made. Understanding common redundancy patterns is important for writing clean, efficient code. This post explores many recurring patterns of redundancy and suggests strategies for avoiding them.</p>
 <section id="data-redundancy" class="level2">
 <h2 data-anchor-id="data-redundancy">1. Data Redundancy</h2>
 <p>Data redundancy occurs when the same piece of information is stored in multiple locations within a system. This is perhaps the most prevalent form of redundancy and often stems from poorly designed data models or a lack of normalization.</p>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="code-redundancy" class="level2">
 <h2 data-anchor-id="code-redundancy">2. Code Redundancy</h2>
 <p>Code redundancy involves writing the same or very similar code multiple times in different parts of a program. This makes the code larger, harder to read, and more prone to errors. Maintaining consistency across multiple copies of the same code becomes a nightmare.</p>
-<p><strong>Example:</strong> Imagine a function to calculate the area of a rectangle that is repeated several times with slight variations in variable names.</p>
+<p><strong>Example:</strong> Imagine a function to calculate the area of a rectangle that is repeated many times with slight variations in variable names.</p>
 <p><strong>Python Example (Redundant):</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_rectangle_area_1(length, width):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> length <span class="op">*</span> width</span>

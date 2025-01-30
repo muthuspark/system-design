@@ -27,7 +27,7 @@ This diagram shows the active node (A) handling user requests and accessing a sh
 
 ## Implementing Active-Passive: Key Components
 
-A successful active-passive setup relies on several important components:
+A successful active-passive setup relies on many important components:
 
 -   **Shared Storage:** Both the active and passive nodes must access a shared storage system (e.g., SAN, NAS, cloud storage) for data persistence. This ensures data consistency between nodes during a failover. Changes made by the active node are replicated to the passive node in real-time or near real-time.
 

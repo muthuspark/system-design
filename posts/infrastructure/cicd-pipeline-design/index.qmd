@@ -7,7 +7,7 @@ Continuous Integration/Continuous Delivery (CI/CD) pipelines are the backbone of
 
 ## Understanding the Core Components
 
-A typical CI/CD pipeline consists of several key stages:
+A typical CI/CD pipeline consists of many key stages:
 
 1.  **Source Code Management (SCM):** This is where your code resides. Popular choices include Git (GitHub, GitLab, Bitbucket), Mercurial, and SVN. The pipeline triggers automatically upon code changes committed to the SCM.
 
@@ -135,4 +135,4 @@ A important aspect of CI/CD is handling failures gracefully. Implement rollback 
 
 ## Optimizing for Speed and Efficiency
 
-Optimize your pipeline for speed and efficiency. Parallel processing, caching, and efficient testing strategies can significantly reduce pipeline execution time.
+Optimize your pipeline for speed and efficiency. Parallel processing, caching, and efficient testing strategies can reduce pipeline execution time.

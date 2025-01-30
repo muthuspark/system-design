@@ -7,7 +7,7 @@ Message queues rovide a important layer of abstraction, decoupling different par
 
 ## Understanding the Fundamentals
 
-At its core, a message queue is a central repository where messages are stored and retrieved. These messages represent tasks, events, or data that need to be processed by different components of an application. This asynchronous communication pattern differs significantly from synchronous approaches where components interact directly, leading to tight coupling and potential bottlenecks.
+At its core, a message queue is a central repository where messages are stored and retrieved. These messages represent tasks, events, or data that need to be processed by different components of an application. This asynchronous communication pattern differs from synchronous approaches where components interact directly, leading to tight coupling and potential bottlenecks.
 
 The architecture typically involves:
 
@@ -33,7 +33,7 @@ This diagram shows two producers sending messages to a single queue, which is th
 
 ## Advanced Concepts
 
-Let's explore some more complex aspects of message queue architecture:
+Let's look at some more complex aspects of message queue architecture:
 
 **1. Message Broker:** This term is often used interchangeably with "message queue," but it's more encompassing. A message broker manages multiple queues, exchanges (for routing messages), and provides advanced features like message persistence, security, and monitoring.
 

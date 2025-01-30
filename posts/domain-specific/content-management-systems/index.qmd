@@ -7,11 +7,11 @@ Content Management Systems (CMS) power countless websites, blogs, and online app
 
 ## What is a Content Management System (CMS)?
 
-At its core, a CMS is a software application designed to simplify content creation and management. It provides a user-friendly interface, often referred to as a "dashboard," where users can easily add, edit, delete, and organize content. This eliminates the need for direct interaction with code, making website maintenance significantly more accessible to non-technical users. A CMS handles many backend tasks automatically, including database management, security, and updates.
+At its core, a CMS is a software application designed to simplify content creation and management. It provides a user-friendly interface, often referred to as a "dashboard," where users can easily add, edit, delete, and organize content. This eliminates the need for direct interaction with code, making website maintenance more accessible to non-technical users. A CMS handles many backend tasks automatically, including database management, security, and updates.
 
 ## The Architecture of a CMS
 
-A typical CMS architecture involves several key components working together seamlessly. Let's visualize this with a Diagram:
+A typical CMS architecture involves many key components working together seamlessly. Let's visualize this with a Diagram:
 
 ```{mermaid}
 graph LR

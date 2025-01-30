@@ -7,12 +7,12 @@ Throughput, the rate at which a system processes data or completes tasks, is a c
 
 ## Identifying Bottlenecks: The Foundation of Improvement
 
-Before implementing any optimization, identifying the bottlenecks in your system is important. A bottleneck is any part of the system that significantly restricts the overall throughput. These could be anything from database queries to network latency to inefficient algorithms.
+Before implementing any optimization, identifying the bottlenecks in your system is important. A bottleneck is any part of the system that restricts the overall throughput. These could be anything from database queries to network latency to inefficient algorithms.
 
 **Common Bottleneck Areas:**
 
 -   **Database:** Slow queries, inefficient indexing, or inadequate hardware can cripple throughput.
--   **Network:** High latency, bandwidth limitations, or network congestion can significantly impact performance.
+-   **Network:** High latency, bandwidth limitations, or network congestion can impact performance.
 -   **Application Code:** Inefficient algorithms, poorly written code, or memory leaks can reduce processing speed.
 -   **Hardware:** Insufficient CPU, RAM, or storage capacity can limit the system's processing power.
 
@@ -30,11 +30,11 @@ graph LR
     style C fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
-In this example, the database (C) is the bottleneck. Optimizing other parts of the system won't significantly improve throughput until the database issue is addressed.
+In this example, the database (C) is the bottleneck. Optimizing other parts of the system won't improve throughput until the database issue is addressed.
 
 ## Strategies for Throughput Improvement
 
-Once bottlenecks are identified, several strategies can be employed to improve throughput:
+Once bottlenecks are identified, many strategies can be employed to improve throughput:
 
 ### 1. Database Optimization
 
@@ -53,7 +53,7 @@ CREATE INDEX idx_user_name ON users (username);
 
 ### 2. Application Code Optimization
 
--   **Algorithmic Improvements:** Replace inefficient algorithms with more efficient ones. For example, using a hash table instead of a linear search can significantly reduce search time.
+-   **Algorithmic Improvements:** Replace inefficient algorithms with more efficient ones. For example, using a hash table instead of a linear search can reduce search time.
 
 -   **Code Profiling:** Use profiling tools to identify performance hotspots in your application code. These tools provide detailed information on execution time, memory usage, and function calls.
 
@@ -87,7 +87,7 @@ asyncio.run(main())
 
 -   **Increased CPU Power:** More processing power allows for faster execution of tasks.
 -   **More RAM:** Sufficient RAM prevents swapping to disk, which drastically slows down performance.
--   **Faster Storage:** Solid-state drives (SSDs) offer significantly faster read/write speeds compared to traditional hard disk drives (HDDs).
+-   **Faster Storage:** Solid-state drives (SSDs) offer faster read/write speeds compared to traditional hard disk drives (HDDs).
 -   **Network Upgrades:** Improved network bandwidth and reduced latency are important for systems that heavily rely on network communication.
 
 ### 4. Network Optimization

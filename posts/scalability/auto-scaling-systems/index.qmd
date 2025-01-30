@@ -14,7 +14,7 @@ Auto-scaling addresses this challenge by automatically adjusting the number of r
 
 ## Key Components of an Auto-Scaling System
 
-A typical auto-scaling system consists of several key components:
+A typical auto-scaling system consists of many key components:
 
 -   **Monitoring System:** Continuously monitors various metrics, such as CPU utilization, memory usage, network traffic, request latency, and error rates. These metrics provide the current system load and performance.
  Examples include Prometheus, Datadog, and CloudWatch.
@@ -165,7 +165,7 @@ Auto-scaling is not a "set-it-and-forget-it" system; continuous testing and moni
 #### 5. **Cost Optimization**
 Auto-scaling is designed to optimize performance, but without a well-thought-out strategy, it can quickly lead to higher operational costs. Here are some ways to minimize costs while benefiting from dynamic scaling:
 
-- **Leverage Spot Instances**: Spot instances, offered by cloud providers like AWS, are significantly cheaper than regular instances. These can be used for workloads that are tolerant to interruptions, helping to reduce costs when scaling out.
+**Leverage Spot Instances**: Spot instances, offered by cloud providers like AWS, are cheaper than regular instances. These can be used for workloads that are tolerant to interruptions, helping to reduce costs when scaling out.
   
 - **Adjust Scaling Based on Time or Load Patterns**: If you know when your application experiences peak traffic (e.g., daytime hours) or quiet periods (e.g., overnight), you can pre-adjust scaling policies to have more instances available during peak hours and scale down during off-peak times.
   

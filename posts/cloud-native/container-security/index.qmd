@@ -13,7 +13,7 @@ The foundation of container security lies in the image itself. A compromised bas
 
 -   **Regularly Updating Images:** Outdated images are rife with known vulnerabilities. Implement automated processes for updating base images and application dependencies. Regularly scanning images for vulnerabilities is important. Tools like Clair, Trivy, and Anchore provide vulnerability scanning capabilities.
 
--   **Multi-Stage Builds:** Use multi-stage builds in your Dockerfiles to separate build-time dependencies from runtime dependencies. This significantly reduces the size of the final image and removes sensitive information (like build tools) from the production environment.
+-   **Multi-Stage Builds:** Use multi-stage builds in your Dockerfiles to separate build-time dependencies from runtime dependencies. This reduces the size of the final image and removes sensitive information (like build tools) from the production environment.
 
 ``` dockerfile
 

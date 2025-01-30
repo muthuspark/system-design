@@ -3,7 +3,7 @@ title: "Architectural Patterns Overview"
 categories: [ "Fundamentals" ]
 ---
 
-Architectural patterns are high-level design blueprints that guide the structure and organization of a software system. Choosing the right pattern significantly impacts maintainability, scalability, and performance. This post explores several important architectural patterns, providing explanations, illustrative diagrams, and code snippets where appropriate.
+Architectural patterns are high-level design blueprints that guide the structure and organization of a software system. Choosing the right pattern impacts maintainability, scalability, and performance. This post explores many important architectural patterns, providing explanations, illustrative diagrams, and code snippets where appropriate.
 
 ## 1. Layered Pattern
 

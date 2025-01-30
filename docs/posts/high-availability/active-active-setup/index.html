@@ -200,14 +200,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-anchor-id="benefits-of-an-active-active-setup">Benefits of an Active-Active Setup</h2>
 <ul>
 <li><p><strong>High Availability:</strong> The most significant advantage is the elimination of single points of failure. If one system fails, the other continues to operate, ensuring uninterrupted service.</p></li>
-<li><p><strong>Increased Scalability:</strong> Both systems handle traffic concurrently, significantly boosting the overall capacity and ability to handle increased demand.</p></li>
+<li><p><strong>Increased Scalability:</strong> Both systems handle traffic concurrently, boosting the overall capacity and ability to handle increased demand.</p></li>
 <li><p><strong>Improved Performance:</strong> By distributing the workload, Active-Active setups can reduce response times and improve overall application performance. Geographic distribution can further improve performance by reducing latency for users in different locations.</p></li>
 <li><p><strong>Enhanced Resilience:</strong> The system is more resistant to various failures, including hardware malfunctions, software bugs, and network issues.</p></li>
 </ul>
 </section>
 <section id="challenges-of-implementing-an-active-active-setup" class="level2">
 <h2 data-anchor-id="challenges-of-implementing-an-active-active-setup">Challenges of Implementing an Active-Active Setup</h2>
-<p>While Active-Active offers substantial benefits, implementing it effectively presents several challenges:</p>
+<p>While Active-Active offers substantial benefits, implementing it effectively presents many challenges:</p>
 <ul>
 <li><strong>Data Synchronization:</strong> Maintaining data consistency across both active systems is important. Techniques like database replication and message queues are vital for ensuring data integrity.</li>
 <li><strong>Session Management:</strong> Properly managing user sessions across both servers is essential to prevent user data loss or inconsistencies. Sticky sessions (where a user is always directed to the same server) can be problematic in Active-Active environments, requiring complex session management strategies.</li>

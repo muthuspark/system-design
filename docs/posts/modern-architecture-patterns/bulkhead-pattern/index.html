@@ -202,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="implementation-strategies" class="level2">
 <h2 data-anchor-id="implementation-strategies">Implementation Strategies</h2>
-<p>The Bulkhead pattern can be implemented in several ways, depending on the resources you want to protect:</p>
+<p>The Bulkhead pattern can be implemented in many ways, depending on the resources you want to protect:</p>
 <p><strong>1. Thread Pools:</strong></p>
 <p>Limit the number of threads used to access a specific resource. If one resource becomes unresponsive, other threads remain available to handle other tasks. This is often implemented using Java’s <code>ExecutorService</code> or similar constructs in other languages.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">ExecutorService</span> executor <span class="op">=</span> <span class="bu">Executors</span><span class="op">.</span><span class="fu">newFixedThreadPool</span><span class="op">(</span><span class="dv">10</span><span class="op">);</span> <span class="co">// Limit to 10 threads</span></span>

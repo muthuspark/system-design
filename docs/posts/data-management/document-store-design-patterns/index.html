@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Document stores, like MongoDB and Couchbase, offer flexibility and scalability unmatched by relational databases. However, this flexibility comes with the responsibility of carefully designing your data model to avoid performance bottlenecks and maintain data integrity. Choosing the right design pattern is important for the success of your application. This post explores several key document store design patterns, illustrating their strengths and weaknesses with examples.</p>
+<p>Document stores, like MongoDB and Couchbase, offer flexibility and scalability unmatched by relational databases. However, this flexibility comes with the responsibility of carefully designing your data model to avoid performance bottlenecks and maintain data integrity. Choosing the right design pattern is important for the success of your application. This post explores many key document store design patterns, illustrating their strengths and weaknesses with examples.</p>
 <section id="embedded-documents-nested-data-for-tight-relationships" class="level2">
 <h2 data-anchor-id="embedded-documents-nested-data-for-tight-relationships">1. Embedded Documents: Nested Data for Tight Relationships</h2>
 <p>The embedded documents pattern is ideal when you have a one-to-many relationship between documents where the child documents are strongly related to the parent and rarely exist independently. Embedding the child documents within the parent document reduces the number of database queries needed to retrieve related data.</p>

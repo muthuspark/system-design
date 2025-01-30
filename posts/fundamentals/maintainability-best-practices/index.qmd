@@ -3,7 +3,7 @@ title: "Maintainability Best Practices"
 categories: [ "Fundamentals" ]
 ---
 
-Software development is rarely a one-and-done affair. The code you write today will likely need modifications, updates, and bug fixes in the future. This is where maintainability comes into play. Maintainable code is easier to understand, modify, and debug, saving time, money, and frustration down the line. This post goes into several key best practices to help you build software that stands the test of time.
+Software development is rarely a one-and-done affair. The code you write today will likely need modifications, updates, and bug fixes in the future. This is where maintainability comes into play. Maintainable code is easier to understand, modify, and debug, saving time, money, and frustration down the line. This post goes into many key best practices to help you build software that stands the test of time.
 
 ## 1. Write Clean and Readable Code
 
@@ -323,7 +323,7 @@ class Order:
 
 ## 10. Use of Design Patterns
 
-Employing appropriate design patterns can improve code structure, make it more reusable, and simplify maintenance. Understanding common patterns like MVC, Singleton, Factory, etc. can significantly improve the maintainability of your projects.
+Employing appropriate design patterns can improve code structure, make it more reusable, and simplify maintenance. Understanding common patterns like MVC, Singleton, Factory, etc. can improve the maintainability of your projects.
 
 
 ## 11. Error Handling and Logging

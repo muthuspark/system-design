@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rightsizing-instances" class="level3">
 <h3 data-anchor-id="rightsizing-instances">1. Rightsizing Instances</h3>
 <p>Running oversized instances is a major source of waste. Analyze your application’s resource requirements (CPU, memory, storage) and choose the smallest instance type that meets those needs. Regularly review instance sizes and downsize if possible.</p>
-<p><strong>Example (AWS):</strong> Switching from a <code>m5.xlarge</code> to a <code>t3.medium</code> instance can significantly reduce costs if your workload doesn’t require the extra resources.</p>
+<p><strong>Example (AWS):</strong> Switching from a <code>m5.xlarge</code> to a <code>t3.medium</code> instance can reduce costs if your workload doesn’t require the extra resources.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 describe-instances <span class="at">--instance-ids</span> i-xxxxxxxxxxxxxxxxx <span class="co"># Check instance type</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 stop-instances <span class="at">--instance-ids</span> i-xxxxxxxxxxxxxxxxx <span class="co"># Stop unused instances</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 modify-instance-attribute <span class="at">--instance-id</span> i-xxxxxxxxxxxxxxxxx <span class="at">--instance-type</span> t3.medium <span class="co"># Change instance type</span></span></code></pre></div>

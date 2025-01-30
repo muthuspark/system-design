@@ -85,7 +85,7 @@ graph TB
 
 ## Choosing the Right Approach
 
-The choice between orchestration and choreography depends on several factors, including the complexity of the business process, the number of services involved, and the team's familiarity with event-driven architectures. Orchestration is generally simpler to understand and debug for smaller sagas, while choreography becomes more advantageous as the system grows in complexity and scale.
+The choice between orchestration and choreography depends on many factors, including the complexity of the business process, the number of services involved, and the team's familiarity with event-driven architectures. Orchestration is generally simpler to understand and debug for smaller sagas, while choreography becomes more advantageous as the system grows in complexity and scale.
 
 ## Eventual Consistency and Error Handling
 

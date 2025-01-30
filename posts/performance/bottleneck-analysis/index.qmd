@@ -8,7 +8,7 @@ Bottlenecks.  They're the silent killers of efficiency, silently strangling your
 
 ## Understanding Bottlenecks
 
-A bottleneck is simply a point in a system where the flow of work is restricted, causing a slowdown or complete stoppage. Imagine a highway with one lane closed due to construction.  That closed lane becomes a bottleneck, causing traffic to back up behind it, even if the rest of the highway is wide open.  Similarly, in any system, a single slow step can significantly impact the overall performance.
+A bottleneck is simply a point in a system where the flow of work is restricted, causing a slowdown or complete stoppage. Imagine a highway with one lane closed due to construction. That closed lane becomes a bottleneck, causing traffic to back up behind it, even if the rest of the highway is wide open. Similarly, in any system, a single slow step can impact the overall performance.
 
 **Identifying the Root Cause:**
 
@@ -20,7 +20,7 @@ Bottlenecks can manifest in various forms, depending on the system being analyze
 
 * **Resource Bottlenecks:** These are limitations in available resources such as CPU, memory, disk I/O, network bandwidth, or database connections.  A web server might be bottlenecked by its CPU if it's constantly at 100% utilization, preventing it from handling new requests.
 
-* **Process Bottlenecks:** These occur when a specific step or process in a workflow is significantly slower than others, hindering the overall progress. In a manufacturing plant, a slow assembly line stage can create a process bottleneck.
+* **Process Bottlenecks:** These occur when a specific step or process in a workflow is slower than others, hindering the overall progress. In a manufacturing plant, a slow assembly line stage can create a process bottleneck.
 
 * **Data Bottlenecks:** These involve limitations in data transfer or processing speed.  A slow network connection can bottleneck data transfer between servers, or a poorly designed database query can bottleneck data retrieval.
 
@@ -109,7 +109,7 @@ This diagram visually indicates that Stage 2 (Assembly) is the bottleneck due to
 
 ## Resolving Bottlenecks
 
-Once bottlenecks have been identified, several strategies can be employed to resolve them:
+Once bottlenecks have been identified, many strategies can be employed to resolve them:
 
 * **Hardware Upgrades:**  Increasing CPU, memory, or disk I/O capacity can alleviate resource bottlenecks.
 

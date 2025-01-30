@@ -16,7 +16,7 @@ Unlike relational data, which focuses on structured relationships between entiti
 
 ## Challenges in Managing Time-Series Data
 
-Effectively managing time-series data demands addressing several challenges:
+Effectively managing time-series data demands addressing many challenges:
 
 -   **Data Storage:** Traditional relational databases struggle with the volume and velocity of time-series data. Specialized databases are often needed.
 -   **Data Ingestion:** Real-time ingestion and efficient handling of high-velocity data streams are important.

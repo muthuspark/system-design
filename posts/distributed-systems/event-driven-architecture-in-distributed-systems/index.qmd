@@ -63,7 +63,7 @@ graph LR
 
 ## Implementing EDA
 
-Implementing an EDA involves several key steps:
+Implementing an EDA involves many key steps:
 
 1.  **Event Definition:** Clearly define the events that will be used in the system. This includes the event name, schema, and any relevant metadata.
 

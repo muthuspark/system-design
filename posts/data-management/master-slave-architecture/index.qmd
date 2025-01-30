@@ -3,7 +3,7 @@ title: "Master-Slave Architecture"
 categories: [ "Data Management" ]
 ---
 
-The master-slave architecture, also known as the primary-replica architecture, is a widely used database replication pattern. It involves a primary server (the master) handling all write operations and one or more secondary servers (the slaves) that replicate data from the master. This design offers several benefits, but also comes with its own set of limitations and challenges. This post will look at the details of this architecture, exploring its advantages, disadvantages, and various implementation aspects.
+The master-slave architecture, also known as the primary-replica architecture, is a widely used database replication pattern. It involves a primary server (the master) handling all write operations and one or more secondary servers (the slaves) that replicate data from the master. This design offers many benefits, but also comes with its own set of limitations and challenges. This post will look at the details of this architecture, exploring its advantages, disadvantages, and various implementation aspects.
 
 ## How Master-Slave Architecture Works
 
@@ -243,7 +243,7 @@ Checksum: 0x1A2B3C4D               # Data integrity verification
 
 ## Advantages of Master-Slave Architecture
 
--   **Improved Read Performance:** By offloading read operations to the slave servers, the master can focus on write operations, leading to significantly improved read performance.
+-   **Improved Read Performance:** By offloading read operations to the slave servers, the master can focus on write operations, leading to improved read performance.
 
 -   **Increased Scalability:** Adding more slave servers allows for handling an increasing number of read requests.
 

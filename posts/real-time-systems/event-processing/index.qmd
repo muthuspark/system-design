@@ -18,7 +18,7 @@ Events are typically represented as structured data, often in JSON or XML format
 
 ## Event Processing Architecture
 
-A typical event processing architecture involves several key components:
+A typical event processing architecture involves many key components:
 
 ```{mermaid}
 graph LR

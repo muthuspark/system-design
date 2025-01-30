@@ -4,7 +4,7 @@ categories: [ "API Design" ]
 ---
 
 
-API Gateways have become indispensable components of modern microservices architectures. They act as a central point of entry for all client requests, abstracting the complexities of the backend services and providing important functionalities like authentication, authorization, rate limiting, and request transformation.  However, the optimal design of an API Gateway isn't one-size-fits-all.  Choosing the right pattern depends on the specific needs of your application and its anticipated scale. This post explores several common API Gateway patterns, illustrating their strengths and weaknesses with diagrams and code snippets.
+API Gateways have become indispensable components of modern microservices architectures. They act as a central point of entry for all client requests, abstracting the complexities of the backend services and providing important functionalities like authentication, authorization, rate limiting, and request transformation.  However, the optimal design of an API Gateway isn't one-size-fits-all.  Choosing the right pattern depends on the specific needs of your application and its anticipated scale. This post explores many common API Gateway patterns, illustrating their strengths and weaknesses with diagrams and code snippets.
 
 
 ## 1. The Simple Gateway Pattern

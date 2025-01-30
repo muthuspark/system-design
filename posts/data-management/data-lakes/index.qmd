@@ -11,7 +11,7 @@ Unlike traditional data warehouses, which focus on structured data and require r
 
 ## Architecture of a Data Lake
 
-A typical data lake architecture comprises several key components:
+A typical data lake architecture comprises many key components:
 
 ```{mermaid}
 graph LR

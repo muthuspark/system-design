@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Eventual consistency is a consistency model used in distributed systems where data consistency is eventually reached, but not immediately after an update. Unlike strong consistency, where all nodes see the same data at all times, eventual consistency allows for temporary discrepancies. This trade-off between immediate consistency and availability often leads to significant performance improvements, making it a popular choice for many large-scale applications.</p>
 <section id="what-is-eventual-consistency" class="level2">
 <h2 data-anchor-id="what-is-eventual-consistency">What is Eventual Consistency?</h2>
-<p>In essence, eventual consistency guarantees that if no new updates are made to the data, eventually all nodes will reflect the same state. The “eventually” part is important – there’s no defined timeframe for when this consistency will be achieved. The time it takes can vary significantly depending on network latency, system load, and the specific implementation.</p>
+<p>In essence, eventual consistency guarantees that if no new updates are made to the data, eventually all nodes will reflect the same state. The “eventually” part is important – there’s no defined timeframe for when this consistency will be achieved. The time it takes can vary depending on network latency, system load, and the specific implementation.</p>
 <p>Think of it like a group of friends updating a shared Google Doc. One friend makes a change, but it doesn’t immediately appear for the others. There might be a slight delay before the changes replicate across all their devices. However, given enough time, everyone will see the same version of the document – this is eventual consistency in action.</p>
 </section>
 <section id="how-eventual-consistency-works" class="level2">
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>High Availability:</strong> The system can tolerate temporary failures of individual nodes without impacting overall availability.</li>
 <li><strong>Scalability:</strong> Asynchronous replication makes it easier to scale the system horizontally, adding more nodes as needed.</li>
-<li><strong>Performance:</strong> Avoiding the need for immediate synchronization can significantly improve performance, particularly in geographically distributed systems with high latency.</li>
+<li><strong>Performance:</strong> Avoiding the need for immediate synchronization can improve performance, particularly in geographically distributed systems with high latency.</li>
 <li><strong>Simplicity:</strong> Implementing eventual consistency can often be simpler than enforcing strong consistency.</li>
 </ul>
 </section>

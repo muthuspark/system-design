@@ -8,7 +8,7 @@ Rate limiting is a important technique for protecting your APIs and servers from
 
 ## Why is Rate Limiting Important?
 
-The importance of rate limiting stems from several key factors:
+The importance of rate limiting stems from many key factors:
 
 * **Preventing Denial of Service (DoS) attacks:**  A common attack vector involves flooding a server with requests, rendering it unavailable to legitimate users. Rate limiting acts as a strong defense mechanism against these attacks.
 

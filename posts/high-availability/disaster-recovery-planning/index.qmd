@@ -8,7 +8,7 @@ Disaster recovery planning (DRP) is important for any organization, regardless o
 
 ## 1. Risk Assessment: Identifying Potential Threats
 
-The foundation of any effective DRP is a thorough risk assessment. This involves identifying potential threats that could disrupt your operations. These threats can be categorized into several groups:
+The foundation of any effective DRP is a thorough risk assessment. This involves identifying potential threats that could disrupt your operations. These threats can be categorized into many groups:
 
 -   **Natural Disasters:** Earthquakes, floods, hurricanes, wildfires.
 -   **Human-caused Disasters:** Terrorism, sabotage, accidents.

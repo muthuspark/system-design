@@ -26,7 +26,7 @@ HMS can be broadly categorized based on their scope and deployment:
 
 ## Architecture of a Typical Remote Patient Monitoring System
 
-A typical RPM system involves several interconnected components:
+A typical RPM system involves many interconnected components:
 
 ```{mermaid}
 graph TB
@@ -70,7 +70,7 @@ Security and privacy are critical in HMS. Data encryption, secure transmission p
 
 ## Challenges and Future Directions
 
-While HMS offer immense potential, several challenges remain:
+While HMS offer immense potential, many challenges remain:
 
 -   **Data Interoperability:** Seamless integration between different systems and devices is important.
 -   **Data Security and Privacy:** Protecting sensitive patient data requires constant vigilance.
