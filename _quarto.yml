@@ -35,7 +35,5 @@ format:
     include-in-header: 
       - favicon.html
       - header.html
-    include-after-body: 
-      - footer.html
 
 editor: visual
