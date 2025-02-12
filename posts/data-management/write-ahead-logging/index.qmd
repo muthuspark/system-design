@@ -3,7 +3,7 @@ title: "Write-Ahead Logging"
 categories: [ "Data Management" ]
 ---
 
-Write-Ahead Logging (WAL) is a important technique used in databases and other systems to ensure data durability and consistency, even in the face of crashes or power failures. Instead of directly writing changes to the main data storage, WAL first records these changes in a log file. Only after the log record is safely written is the data itself updated. This guarantees that even if a system fails before completing a write operation, the changes can be recovered from the log upon restart.
+Write-Ahead Logging (WAL) is an important technique used in databases and other systems to ensure data durability and consistency, even in the face of crashes or power failures. Instead of directly writing changes to the main data storage, WAL first records these changes in a log file. Only after the log record is safely written is the data itself updated. This guarantees that even if a system fails before completing a write operation, the changes can be recovered from the log upon restart.
 
 ## How Write-Ahead Logging Works
 

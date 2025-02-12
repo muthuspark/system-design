@@ -49,7 +49,7 @@ The Kappa Architecture improves on the Lambda Architecture by eliminating the ne
 
 ## Key Technologies
 
-Several technologies play a important role in real-time data processing:
+Several technologies play an important role in real-time data processing:
 
 -   [**Apache Kafka:**](https://kafka.apache.org/) A distributed streaming platform, ideal for ingesting and distributing data streams.
 -   [**Apache Flink:**](https://flink.apache.org/) A powerful stream processing engine for stateful computations and windowing operations.

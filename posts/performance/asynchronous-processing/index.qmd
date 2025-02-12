@@ -42,7 +42,7 @@ The implementation of asynchronous processing varies depending on the programmin
 
 ### JavaScript (Node.js) with Promises and Async/Await
 
-JavaScript, particularly with Node.js, is well-suited for asynchronous operations.  Promises and async/await are important tools for managing asynchronous code effectively.
+JavaScript, especially with Node.js, is well-suited for asynchronous operations.  Promises and async/await are important tools for managing asynchronous code effectively.
 
 ```javascript
 async function fetchData() {

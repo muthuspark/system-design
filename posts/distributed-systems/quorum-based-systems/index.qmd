@@ -75,7 +75,7 @@ print(is_quorum(['A', 'B', 'C'])) # False (2 + 1 + 1 = 4 >= 4)
 
 **3. Path Quorum Systems:**
 
-These are particularly useful in distributed systems with a hierarchical or network-like structure. A quorum is defined as a path connecting two specified nodes, ensuring connectivity and resilience.
+These are especially useful in distributed systems with a hierarchical or network-like structure. A quorum is defined as a path connecting two specified nodes, ensuring connectivity and resilience.
 
 ```{mermaid}
 graph TD

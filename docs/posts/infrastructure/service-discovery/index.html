@@ -278,7 +278,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </header>
 
 
-<p>Service discovery is a important component of modern microservices architectures. In a microservices environment, numerous independent services communicate with each other to provide a complete application. Knowing the location and availability of these services becomes a complex challenge, and this is where service discovery shines. This post will look at the complexities of service discovery, exploring different approaches, implementation strategies, and the benefits it brings to your system’s resilience and scalability.</p>
+<p>Service discovery is an important component of modern microservices architectures. In a microservices environment, numerous independent services communicate with each other to provide a complete application. Knowing the location and availability of these services becomes a complex challenge, and this is where service discovery shines. This post will look at the complexities of service discovery, exploring different approaches, implementation strategies, and the benefits it brings to your system’s resilience and scalability.</p>
 <h2 id="what-is-service-discovery">What is Service Discovery?</h2>
 <p>Imagine a large city with numerous businesses (services). Each business needs a way to find its customers (other services) and for customers to find them. Service discovery acts as the city’s directory, providing a centralized mechanism for services to register their location (IP address and port) and for other services to locate them. This dynamic mechanism allows services to be added, removed, and moved without affecting the overall system stability.</p>
 <p>Instead of hardcoding service addresses in the application code, a service registry keeps track of all available services and their current state (e.g., healthy, unhealthy). Clients needing to access a specific service query the registry to obtain the necessary information to initiate communication.</p>
@@ -346,7 +346,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>Several tools enable service discovery, including:</p>
 <ul>
 <li><strong>Consul:</strong> A popular choice offering service discovery, key-value store, and more.</li>
-<li><strong>Eureka (Netflix):</strong> A mature and widely adopted solution, particularly within the Netflix ecosystem.</li>
+<li><strong>Eureka (Netflix):</strong> A mature and widely adopted solution, especially within the Netflix ecosystem.</li>
 <li><strong>etcd:</strong> A distributed key-value store often used for service discovery and configuration management.</li>
 <li><strong>ZooKeeper:</strong> A highly reliable, distributed coordination service commonly employed in large-scale deployments.</li>
 <li><strong>Kubernetes Service:</strong> Kubernetes natively provides service discovery through its Service resource.</li>

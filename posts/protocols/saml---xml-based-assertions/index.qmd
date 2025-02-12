@@ -3,13 +3,13 @@ title: "SAML - XML-based assertions"
 categories: [ "Protocols" ]
 ---
 
-Security Assertion Markup Language (SAML) is an XML-based open standard for exchanging authentication and authorization data between parties, particularly between an Identity Provider (IdP) and a Service Provider (SP). SAML is widely used for Single Sign-On (SSO) in enterprise environments, enabling users to log in once and access multiple applications without re-authenticating.
+Security Assertion Markup Language (SAML) is an XML-based open standard for exchanging authentication and authorization data between parties, especially between an Identity Provider (IdP) and a Service Provider (SP). SAML is widely used for Single Sign-On (SSO) in enterprise environments, enabling users to log in once and access multiple applications without re-authenticating.
 
 ## What is SAML?
 
 SAML is an XML-based standard that allows secure communication of authentication and authorization data between an Identity Provider (IdP) and a Service Provider (SP). It is primarily used for **Single Sign-On (SSO)**, enabling users to authenticate once and access multiple services without needing to log in again.
 
-SAML is widely adopted in enterprise environments, particularly for integrating with cloud applications, federated identity management, and cross-domain authentication.
+SAML is widely adopted in enterprise environments, especially for integrating with cloud applications, federated identity management, and cross-domain authentication.
 
 ## Key Components of SAML
 

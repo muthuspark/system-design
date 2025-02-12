@@ -7,7 +7,7 @@ The master-slave architecture, also known as the primary-replica architecture, i
 
 ## How Master-Slave Architecture Works
 
-The core principle is simple: the master server is the single source of truth. All write operations – INSERT, UPDATE, DELETE – are directed exclusively to the master. The master then propagates these changes to the slave servers through a replication process. Slave servers, in turn, primarily handle read operations, thereby offloading the read load from the master. This distribution of workload improves performance and scalability, particularly for applications with a high read-to-write ratio.
+The core principle is simple: the master server is the single source of truth. All write operations – INSERT, UPDATE, DELETE – are directed exclusively to the master. The master then propagates these changes to the slave servers through a replication process. Slave servers, in turn, primarily handle read operations, thereby offloading the read load from the master. This distribution of workload improves performance and scalability, especially for applications with a high read-to-write ratio.
 
 Here's a visual representation using a Diagram:
 

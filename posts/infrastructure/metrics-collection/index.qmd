@@ -79,7 +79,7 @@ Choosing the right data storage solution is vital for efficient metrics collecti
 
 -   **Time-series databases:** These databases are optimized for storing and querying time-stamped data, making them ideal for metrics collection. Examples include Prometheus, InfluxDB, and TimescaleDB.
 
--   **Relational databases:** While not as optimized for time-series data as dedicated time-series databases, relational databases can be used for metrics collection, particularly if you need to combine metrics with other types of data.
+-   **Relational databases:** While not as optimized for time-series data as dedicated time-series databases, relational databases can be used for metrics collection, especially if you need to combine metrics with other types of data.
 
 
 

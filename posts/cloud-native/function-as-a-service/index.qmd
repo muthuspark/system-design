@@ -94,7 +94,7 @@ Lets break down the key aspects of each deployment model and explain their diffe
 
 ### Function-as-a-Service (FaaS):
 
-The topmost path in our diagram shows the FaaS model, where developers only need to focus on writing the function code itself. When using FaaS, the platform (like AWS Lambda, Azure Functions, or Google Cloud Functions) handles everything else. This includes managing the infrastructure, scaling, operating system, runtime environment, and even the function's execution context. The platform automatically allocates resources when the function is triggered and deallocates them when the function completes its execution. This model is particularly well-suited for event-driven architectures and microservices.
+The topmost path in our diagram shows the FaaS model, where developers only need to focus on writing the function code itself. When using FaaS, the platform (like AWS Lambda, Azure Functions, or Google Cloud Functions) handles everything else. This includes managing the infrastructure, scaling, operating system, runtime environment, and even the function's execution context. The platform automatically allocates resources when the function is triggered and deallocates them when the function completes its execution. This model is especially well-suited for event-driven architectures and microservices.
 
 ### Containers:
 
@@ -102,7 +102,7 @@ The middle path represents container-based deployment. With containers, develope
 
 ### Virtual Machines (VMs):
 
-The bottom path shows the traditional VM-based deployment model. This approach gives developers the most control but also the most responsibility. When using VMs, developers must manage the entire system stack, including the operating system, networking, security patches, and all dependencies. This model is particularly useful for applications that need full system access, specific operating system configurations, or legacy applications that weren't designed for containerization.
+The bottom path shows the traditional VM-based deployment model. This approach gives developers the most control but also the most responsibility. When using VMs, developers must manage the entire system stack, including the operating system, networking, security patches, and all dependencies. This model is especially useful for applications that need full system access, specific operating system configurations, or legacy applications that weren't designed for containerization.
 
 Key Differences in Management Responsibilities:
 

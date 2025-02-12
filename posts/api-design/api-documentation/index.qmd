@@ -99,7 +99,7 @@ Several tools can help in creating and managing API documentation:
 
 -   **Postman:** A popular API development environment that also facilitates documentation creation.
 
--   **Read the Docs:** A platform for hosting documentation, particularly useful for open-source projects.
+-   **Read the Docs:** A platform for hosting documentation, especially useful for open-source projects.
 
 ## Maintaining Your API Documentation
 

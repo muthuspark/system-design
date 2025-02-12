@@ -5,7 +5,7 @@ categories: [ "Modern Architecture Patterns" ]
 
 The integrity of your software is paramount. A single vulnerability can cause months, even years, of development effort to be lost and open your system to catastrophic consequences.
  While security measures are important at all layers, the concept of an "Anti-Corruption Layer" (ACL) deserves special attention.
- It acts as a important buffer, protecting your core application logic from the unpredictable and often malicious world outside. This post will look at the complexities of the ACL, providing a perspective into its purpose, design, and implementation.
+ It acts as an important buffer, protecting your core application logic from the unpredictable and often malicious world outside. This post will look at the complexities of the ACL, providing a perspective into its purpose, design, and implementation.
 
 ## What is an Anti-Corruption Layer?
 

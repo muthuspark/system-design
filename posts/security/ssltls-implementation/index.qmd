@@ -7,7 +7,7 @@ Secure Sockets Layer (SSL) and its successor, Transport Layer Security (TLS), ar
 
 ## The SSL/TLS Handshake: A Step-by-Step Guide
 
-The heart of SSL/TLS is the handshake, a important negotiation process establishing a secure connection. Let's visualize it with a Diagram:
+The heart of SSL/TLS is the handshake, an important negotiation process establishing a secure connection. Let's visualize it with a Diagram:
 
 ```{mermaid}
 graph TB

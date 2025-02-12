@@ -128,7 +128,7 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, User>
 
 ## When to Use CQRS
 
-CQRS is particularly beneficial in scenarios with:
+CQRS is especially beneficial in scenarios with:
 
 * High read-write ratios.
 * Complex data models.

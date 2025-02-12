@@ -312,7 +312,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 stop-instances <span class="at">--instance-ids</span> i-xxxxxxxxxxxxxxxxx <span class="co"># Stop unused instances</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ec2 modify-instance-attribute <span class="at">--instance-id</span> i-xxxxxxxxxxxxxxxxx <span class="at">--instance-type</span> t3.medium <span class="co"># Change instance type</span></span></code></pre></div>
 <h3 id="reserved-instancessavings-plans">2. Reserved Instances/Savings Plans</h3>
-<p>Reserved Instances (AWS) and Savings Plans (AWS, Azure, GCP) offer significant discounts for committing to a certain amount of compute capacity for a specific period. These are particularly beneficial for predictable workloads.</p>
+<p>Reserved Instances (AWS) and Savings Plans (AWS, Azure, GCP) offer significant discounts for committing to a certain amount of compute capacity for a specific period. These are especially beneficial for predictable workloads.</p>
 <h3 id="spot-instancespreemptible-vms">3. Spot Instances/Preemptible VMs</h3>
 <p>Spot Instances (AWS) and Preemptible VMs (GCP) provide heavily discounted compute capacity. These are ideal for fault-tolerant applications that can handle interruptions. However, be aware that these instances can be terminated with short notice.</p>
 <h3 id="storage-optimization">4. Storage Optimization</h3>

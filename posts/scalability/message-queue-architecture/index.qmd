@@ -3,7 +3,7 @@ title: "Message Queue Architecture"
 categories: [ "Scalability" ]
 ---
 
-Message queues rovide a important layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this guide, we'll look at the complexities of message queue architecture, covering key components, common use cases, and best practices.
+Message queues rovide an important layer of abstraction, decoupling different parts of a system and enabling asynchronous communication. This allows for greater flexibility, resilience, and performance. In this guide, we'll look at the complexities of message queue architecture, covering key components, common use cases, and best practices.
 
 ## Understanding the Fundamentals
 

@@ -282,7 +282,7 @@ Having other developers review your code before merging it into the main branch 
 
 ## 9. Refactoring
 
-Regularly refactoring your code—improving its structure and design without changing its functionality—is a important part of long-term maintainability. This helps to prevent technical debt from accumulating.
+Regularly refactoring your code—improving its structure and design without changing its functionality—is an important part of long-term maintainability. This helps to prevent technical debt from accumulating.
 
 **Example**
 

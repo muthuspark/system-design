@@ -46,7 +46,7 @@ Several patterns are commonly used in event processing:
 
 * **Event Sourcing:** This pattern stores the entire history of events that have occurred, allowing for reconstruction of the system state at any point in time.  This provides excellent auditability and simplifies data recovery.
 
-* **CQRS (Command Query Responsibility Segregation):** This pattern separates the commands that modify data from the queries that read data. This improves scalability and performance, particularly in high-volume systems.
+* **CQRS (Command Query Responsibility Segregation):** This pattern separates the commands that modify data from the queries that read data. This improves scalability and performance, especially in high-volume systems.
 
 * **Complex Event Processing (CEP):** CEP involves detecting patterns and relationships between events over time, allowing for more complex analysis and reaction.  For instance, identifying a fraud attempt by detecting a sequence of suspicious events.
 

@@ -118,7 +118,7 @@ class Participant:
 
 ##  Limitations of Three-Phase Commit
 
-Despite its improvements over 2PC, 3PC is not a silver bullet. It still suffers from performance overhead and the possibility of blocking scenarios (though less likely).  Network partitions can still cause problems, particularly during the pre-commit or commit phases, potentially leading to inconsistent states.  The added complexity compared to 2PC also adds to the maintenance overhead.
+Despite its improvements over 2PC, 3PC is not a silver bullet. It still suffers from performance overhead and the possibility of blocking scenarios (though less likely).  Network partitions can still cause problems, especially during the pre-commit or commit phases, potentially leading to inconsistent states.  The added complexity compared to 2PC also adds to the maintenance overhead.
 
 
 

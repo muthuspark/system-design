@@ -42,7 +42,7 @@ aws ec2 modify-instance-attribute --instance-id i-xxxxxxxxxxxxxxxxx --instance-t
 
 ### 2. Reserved Instances/Savings Plans
 
-Reserved Instances (AWS) and Savings Plans (AWS, Azure, GCP) offer significant discounts for committing to a certain amount of compute capacity for a specific period. These are particularly beneficial for predictable workloads.
+Reserved Instances (AWS) and Savings Plans (AWS, Azure, GCP) offer significant discounts for committing to a certain amount of compute capacity for a specific period. These are especially beneficial for predictable workloads.
 
 ### 3. Spot Instances/Preemptible VMs
 

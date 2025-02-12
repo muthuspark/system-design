@@ -383,7 +383,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span></code></pre></div>
 <h2 id="limitations-of-three-phase-commit">Limitations of Three-Phase Commit</h2>
-<p>Despite its improvements over 2PC, 3PC is not a silver bullet. It still suffers from performance overhead and the possibility of blocking scenarios (though less likely). Network partitions can still cause problems, particularly during the pre-commit or commit phases, potentially leading to inconsistent states. The added complexity compared to 2PC also adds to the maintenance overhead.</p>
+<p>Despite its improvements over 2PC, 3PC is not a silver bullet. It still suffers from performance overhead and the possibility of blocking scenarios (though less likely). Network partitions can still cause problems, especially during the pre-commit or commit phases, potentially leading to inconsistent states. The added complexity compared to 2PC also adds to the maintenance overhead.</p>
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>

@@ -16,7 +16,7 @@ In a typical multi-master setup, multiple servers operate independently as maste
 
 * **High Availability and Fault Tolerance:**  The failure of a single master doesn't bring down the entire system. Other masters continue to operate, ensuring uninterrupted service.
 * **Scalability and Performance:** Distributed write operations across multiple masters lead to increased throughput and improved response times, especially for applications with high write loads.
-* **Geographic Distribution:**  Masters can be located in different geographical regions, reducing latency for users located far from a central server. This is particularly beneficial for globally distributed applications.
+* **Geographic Distribution:**  Masters can be located in different geographical regions, reducing latency for users located far from a central server. This is especially beneficial for globally distributed applications.
 * **Offline Capabilities:**  Even with network partitions, individual masters can continue to function, making the system more resilient.
 
 

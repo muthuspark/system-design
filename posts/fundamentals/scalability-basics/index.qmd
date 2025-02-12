@@ -21,7 +21,7 @@ graph LR
     style B fill:#ccf,stroke:#333,stroke-width:2px
 ```
 
-**2. Horizontal Scaling (Scaling Out):** This involves adding more machines to your system. Each machine handles a portion of the workload, distributing the load across multiple resources. This is generally more flexible and cost-effective for handling significant growth.
+**2. Horizontal Scaling (Scaling Out):** This involves adding more machines to your system. Each machine handles a part of the workload, distributing the load across multiple resources. This is generally more flexible and cost-effective for handling significant growth.
 
 ```{mermaid}
 graph LR

@@ -3,7 +3,7 @@ title: "Service Discovery"
 categories: [ "Infrastructure" ]
 ---
 
-Service discovery is a important component of modern microservices architectures. In a microservices environment, numerous independent services communicate with each other to provide a complete application. Knowing the location and availability of these services becomes a complex challenge, and this is where service discovery shines. This post will look at the complexities of service discovery, exploring different approaches, implementation strategies, and the benefits it brings to your system's resilience and scalability.
+Service discovery is an important component of modern microservices architectures. In a microservices environment, numerous independent services communicate with each other to provide a complete application. Knowing the location and availability of these services becomes a complex challenge, and this is where service discovery shines. This post will look at the complexities of service discovery, exploring different approaches, implementation strategies, and the benefits it brings to your system's resilience and scalability.
 
 ## What is Service Discovery?
 
@@ -70,7 +70,7 @@ graph LR
 Several tools enable service discovery, including:
 
 -   **Consul:** A popular choice offering service discovery, key-value store, and more.
--   **Eureka (Netflix):** A mature and widely adopted solution, particularly within the Netflix ecosystem.
+-   **Eureka (Netflix):** A mature and widely adopted solution, especially within the Netflix ecosystem.
 -   **etcd:** A distributed key-value store often used for service discovery and configuration management.
 -   **ZooKeeper:** A highly reliable, distributed coordination service commonly employed in large-scale deployments.
 -   **Kubernetes Service:** Kubernetes natively provides service discovery through its Service resource.

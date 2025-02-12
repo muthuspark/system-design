@@ -92,7 +92,7 @@ This simplified example shows how the Ambassador intercepts requests, performs a
 
 ## When to Use the Ambassador Pattern
 
-The Ambassador pattern is particularly beneficial when:
+The Ambassador pattern is especially beneficial when:
 
 * You have many microservices with overlapping cross-cutting concerns.
 * You need to easily manage security, logging, and monitoring across multiple services.

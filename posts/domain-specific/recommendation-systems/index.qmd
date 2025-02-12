@@ -4,7 +4,7 @@ categories: [ "Domain-Specific" ]
 ---
 
 
-Recommendation systems have become ubiquitous in our digital lives.  From suggesting movies on Netflix to recommending products on Amazon, these systems play a important role in shaping our online experiences and driving engagement. But how do these systems actually work? This post will look at the mechanics of recommendation systems, exploring different approaches and providing a detailed understanding of their inner workings.
+Recommendation systems have become ubiquitous in our digital lives.  From suggesting movies on Netflix to recommending products on Amazon, these systems play an important role in shaping our online experiences and driving engagement. But how do these systems actually work? This post will look at the mechanics of recommendation systems, exploring different approaches and providing a detailed understanding of their inner workings.
 
 
 ## Types of Recommendation Systems

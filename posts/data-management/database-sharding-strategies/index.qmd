@@ -3,7 +3,7 @@ title: "Database Sharding Strategies"
 categories: [ "Data Management" ]
 ---
 
-Database sharding is a important technique for scaling your database horizontally. When a single database server can no longer handle the volume of data or requests, sharding distributes the data across multiple servers, improving performance and availability. However, choosing the right sharding strategy is critical, as a poorly implemented strategy can lead to performance bottlenecks and operational complexities. This post explores various sharding strategies, their advantages, disadvantages, and implementation considerations.
+Database sharding is an important technique for scaling your database horizontally. When a single database server can no longer handle the volume of data or requests, sharding distributes the data across multiple servers, improving performance and availability. However, choosing the right sharding strategy is critical, as a poorly implemented strategy can lead to performance bottlenecks and operational complexities. This post explores various sharding strategies, their advantages, disadvantages, and implementation considerations.
 
 ## Understanding the Fundamentals
 

@@ -41,7 +41,7 @@ This asynchronous nature allows for high availability and scalability.  Even if 
 
 * **High Availability:**  The system can tolerate temporary failures of individual nodes without impacting overall availability.
 * **Scalability:**  Asynchronous replication makes it easier to scale the system horizontally, adding more nodes as needed.
-* **Performance:** Avoiding the need for immediate synchronization can improve performance, particularly in geographically distributed systems with high latency.
+* **Performance:** Avoiding the need for immediate synchronization can improve performance, especially in geographically distributed systems with high latency.
 * **Simplicity:**  Implementing eventual consistency can often be simpler than enforcing strong consistency.
 
 

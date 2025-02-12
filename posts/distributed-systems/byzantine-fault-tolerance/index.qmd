@@ -4,7 +4,7 @@ categories: [ "Distributed Systems" ]
 ---
 
 
-Byzantine Fault Tolerance (BFT) is a important concept in distributed systems, addressing the challenge of maintaining system consistency and correctness even when some components behave maliciously or fail unpredictably.  Unlike simpler fault tolerance mechanisms that assume failures are benign (e.g., crashes), BFT tackles the more complex scenario where faulty nodes might send conflicting or incorrect information deliberately.  This blog post will look at the complexities of BFT, exploring its underlying principles, practical applications, and the challenges involved in its implementation.
+Byzantine Fault Tolerance (BFT) is an important concept in distributed systems, addressing the challenge of maintaining system consistency and correctness even when some components behave maliciously or fail unpredictably.  Unlike simpler fault tolerance mechanisms that assume failures are benign (e.g., crashes), BFT tackles the more complex scenario where faulty nodes might send conflicting or incorrect information deliberately.  This blog post will look at the complexities of BFT, exploring its underlying principles, practical applications, and the challenges involved in its implementation.
 
 
 ## Understanding the Byzantine Generals Problem

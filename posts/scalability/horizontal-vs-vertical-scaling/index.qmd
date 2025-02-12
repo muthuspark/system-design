@@ -39,7 +39,7 @@ graph LR
 
 ## Horizontal Scaling (Scaling Out)
 
-Horizontal scaling, also known as scaling out, involves adding more servers to your application's infrastructure. Each server handles a portion of the overall workload, distributing the load across multiple machines. Imagine adding more cars to a fleet of delivery trucks – each handles its own set of deliveries.
+Horizontal scaling, also known as scaling out, involves adding more servers to your application's infrastructure. Each server handles a part of the overall workload, distributing the load across multiple machines. Imagine adding more cars to a fleet of delivery trucks – each handles its own set of deliveries.
 
 **Advantages:**
 

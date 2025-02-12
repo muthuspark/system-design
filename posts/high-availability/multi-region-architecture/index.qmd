@@ -10,7 +10,7 @@ The internet is a global network, and your applications should be too. A single-
 
 Moving beyond a single region provides a wealth of advantages:
 
--   **High Availability:** If one region experiences an outage, your application continues to operate from other regions. This ensures continuous service and minimizes downtime, a important factor for business continuity.
+-   **High Availability:** If one region experiences an outage, your application continues to operate from other regions. This ensures continuous service and minimizes downtime, an important factor for business continuity.
 
 -   **Disaster Recovery:** Natural disasters, power outages, or even large-scale internet disruptions are mitigated. Data replication and geographically dispersed infrastructure ensure business continuity even in catastrophic events.
 
