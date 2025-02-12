@@ -18,7 +18,7 @@ The Bulkhead pattern addresses this problem by dividing resources into pools.  E
 
 * **Improved Resilience:**  Isolation prevents a failure in one area from affecting other parts of the system.
 * **Enhanced Availability:**  Even if one component fails, others can continue operating normally.
-* **Graceful Degradation:**  The system can continue functioning, albeit at a reduced capacity, during periods of high load or failure.
+* **Graceful Degradation:**  The system can continue functioning, although at a reduced capacity, during periods of high load or failure.
 * **Resource Protection:**  Limits the impact of resource exhaustion or denial-of-service attacks.
 
 ## Implementation Strategies

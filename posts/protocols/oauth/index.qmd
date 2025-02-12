@@ -13,7 +13,7 @@ OAuth is not an authentication protocol (that's OpenID Connect), but rather a wa
 
 ## 2. Why OAuth?
 
-Before OAuth, applications often required users to share their credentials (username and password) to access their data. This approach had several drawbacks: - **Security Risks**: Sharing passwords with third-party apps is risky. - **Limited Control**: Users couldn’t control what data the app could access. - **Revocation Challenges**: Users couldn’t easily revoke access without changing their password.
+Before OAuth, applications often required users to share their credentials (username and password) to access their data. This approach had many drawbacks: - **Security Risks**: Sharing passwords with third-party apps is risky. - **Limited Control**: Users couldn’t control what data the app could access. - **Revocation Challenges**: Users couldn’t easily revoke access without changing their password.
 
 OAuth solves these problems by providing a secure and standardized way to grant access to resources.
 
@@ -61,7 +61,7 @@ sequenceDiagram
 
 ## 5. OAuth Grant Types
 
-OAuth supports multiple grant types to accommodate different use cases. Let’s explore the most common ones.
+OAuth supports multiple grant types to accommodate different use cases. Let’s look at the most common ones.
 
 ### a. Authorization Code Grant
 
