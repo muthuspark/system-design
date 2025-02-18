@@ -3,7 +3,7 @@ title: "CAP Theorem / Brewer's theorem"
 categories: [ "Distributed Systems" ]
 ---
 
-The CAP theorem, also known as Brewer's theorem, is a fundamental concept in distributed systems. It states that in a distributed data store, it's impossible to simultaneously provide more than two out of the following three guarantees:
+The CAP theorem, also known as Brewer's theorem states that in a distributed data store, it's impossible to simultaneously provide more than two out of the following three guarantees:
 
 -   **Consistency (C):** All nodes see the same data at the same time. Every read receives the most recently written data, or an error.
 -   **Availability (A):** Every request receives a response, without guarantee that it contains the most recent write.

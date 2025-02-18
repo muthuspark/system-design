@@ -6,7 +6,8 @@ categories: [ "Real-Time Systems" ]
 # Stream Processing: Real-Time Data Handling
 
 Stream processing is a powerful technique for handling continuous streams of data. Unlike batch processing, which operates on static datasets, stream processing analyzes data as it arrives, allowing for immediate and rapid responses.
- This makes it ideal for applications requiring real-time analytics, such as fraud detection, sensor monitoring, and social media analysis.
+
+This makes it ideal for applications requiring real-time analytics, such as fraud detection, sensor monitoring, and social media analysis.
 
 ## Core Concepts
 
