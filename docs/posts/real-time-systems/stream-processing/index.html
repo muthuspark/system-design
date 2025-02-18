@@ -282,6 +282,22 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>Stream processing is a powerful technique for handling continuous streams of data. Unlike batch processing, which operates on static datasets, stream processing analyzes data as it arrives, allowing for immediate and rapid responses.</p>
 <p>This makes it ideal for applications requiring real-time analytics, such as fraud detection, sensor monitoring, and social media analysis.</p>
 <h2 id="core-concepts">Core Concepts</h2>
+<p><strong>Event Streams</strong></p>
+<p>An event stream is an unbounded sequence of events ordered by time. Each event typically contains:</p>
+<ul>
+<li>Payload: The actual data</li>
+<li>Timestamp: When the event occurred</li>
+<li>Metadata: Additional context about the event</li>
+<li>Key: Optional identifier for partitioning</li>
+</ul>
+<p><strong>Stream Processing Guarantees</strong></p>
+<p>Stream processing systems must provide various processing guarantees:</p>
+<ul>
+<li>Exactly-once Processing: Ensures each event is processed exactly once, crucial for financial transactions and critical systems.</li>
+<li>At-least-once Processing: Events are guaranteed to be processed, but may be processed multiple times. Suitable for scenarios where duplicate processing - is acceptable.</li>
+<li>At-most-once Processing: Events are processed at most once, potentially losing some events. Acceptable for use cases where data loss is tolerable, like metrics collection.</li>
+</ul>
+<p><strong>Architectural Components</strong></p>
 <p>At its heart, stream processing involves three key stages:</p>
 <ol type="1">
 <li><p><strong>Ingestion:</strong> This is where the data stream enters the system. Sources can include various data sources, like message queues (Kafka, RabbitMQ), databases (Cassandra, MongoDB), or APIs.</p></li>
@@ -304,6 +320,117 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
+<h2 id="detailed-event-streaming-architecture">Detailed event streaming architecture</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    subgraph Sources["Event Sources"]
+        A1[IoT Devices]
+        A2[User Activities]
+        A3[System Logs]
+        A4[External APIs]
+    end
+
+    subgraph Ingestion["Ingestion Layer"]
+        B1[Kafka Connect]
+        B2[Event Gateway]
+        B3[Load Balancer]
+    end
+
+    subgraph Processing["Stream Processing"]
+        C1[Stream Processor 1]
+        C2[Stream Processor 2]
+        C3[Stream Processor N]
+        D1[(State Store)]
+        D2[(Checkpoint Store)]
+    end
+
+    subgraph Storage["Storage Layer"]
+        E1[(Event Log)]
+        E2[(Time Series DB)]
+        E3[(Document Store)]
+    end
+
+    subgraph Consumers["Event Consumers"]
+        F1[Analytics Dashboard]
+        F2[Alert System]
+        F3[Data Lake]
+        F4[ML Pipeline]
+    end
+
+    %% Source connections
+    A1 --&gt; B2
+    A2 --&gt; B2
+    A3 --&gt; B1
+    A4 --&gt; B1
+
+    %% Ingestion connections
+    B1 --&gt; B3
+    B2 --&gt; B3
+    B3 --&gt; C1
+    B3 --&gt; C2
+    B3 --&gt; C3
+
+    %% Processing connections
+    C1 &lt;--&gt; D1
+    C2 &lt;--&gt; D1
+    C3 &lt;--&gt; D1
+    C1 --&gt; D2
+    C2 --&gt; D2
+    C3 --&gt; D2
+
+    %% Storage connections
+    C1 --&gt; E1
+    C2 --&gt; E1
+    C3 --&gt; E1
+    C1 --&gt; E2
+    C2 --&gt; E2
+    C3 --&gt; E2
+    C1 --&gt; E3
+    C2 --&gt; E3
+    C3 --&gt; E3
+
+    %% Consumer connections
+    E1 --&gt; F1
+    E2 --&gt; F1
+    E2 --&gt; F2
+    E1 --&gt; F3
+    E3 --&gt; F3
+    E3 --&gt; F4
+
+    classDef sourceStyle fill:#e1f5fe,stroke:#01579b
+    classDef processingStyle fill:#e8f5e9,stroke:#2e7d32
+    classDef storageStyle fill:#fff3e0,stroke:#ef6c00
+    classDef consumerStyle fill:#f3e5f5,stroke:#7b1fa2
+
+    class A1,A2,A3,A4 sourceStyle
+    class C1,C2,C3 processingStyle
+    class E1,E2,E3,D1,D2 storageStyle
+    class F1,F2,F3,F4 consumerStyle
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The diagram shows a complete event streaming pipeline, starting with different event sources (IoT devices, user activities, system logs, and external APIs) that feed into the ingestion layer. The ingestion layer, powered by Kafka Connect and an Event Gateway, distributes data through a load balancer to multiple stream processors.</p>
+<p>The stream processors work in parallel, maintaining state and checkpoints for reliability. They process events and route them to three types of storage:</p>
+<ul>
+<li>Event Logs for raw data</li>
+<li>Time Series DB for temporal data</li>
+<li>Document Store for structured data.</li>
+</ul>
+<p>Finally, four different types of consumers utilize this processed data:</p>
+<ul>
+<li>Analytics Dashboards for visualization</li>
+<li>Alert Systems for monitoring</li>
+<li>Data Lake for long-term storage</li>
+<li>ML Pipelines for advanced analytics.</li>
+</ul>
+<p>Scalability in this system is achieved through parallel processing, reliability through state management and checkpointing, and flexibility through different storage and consumption options.</p>
 <h2 id="popular-stream-processing-frameworks">Popular Stream Processing Frameworks</h2>
 <p>Several frameworks aid the development of stream processing applications. Some of the most popular choices include:</p>
 <ul>
