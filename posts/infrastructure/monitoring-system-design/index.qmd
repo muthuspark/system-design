@@ -1,5 +1,6 @@
 ---
 title: "Monitoring System Design"
+description: "Learn monitoring system design for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns."
 categories: [ "Infrastructure" ]
 ---
 

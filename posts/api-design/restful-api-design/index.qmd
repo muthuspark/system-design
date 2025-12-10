@@ -1,5 +1,6 @@
 ---
 title: "RESTful API Design"
+description: "Master restful api design principles and best practices. Learn to design robust, scalable, and developer-friendly APIs."
 categories: [ "API Design" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Function as a Service"
+description: "Explore function as a service for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

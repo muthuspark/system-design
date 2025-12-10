@@ -1,5 +1,6 @@
 ---
 title: "Geographic Distribution"
+description: "Understand geographic distribution for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance."
 categories: [ "High Availability" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Cost-Benefit Analysis in Design"
+description: "Learn the fundamentals of cost-benefit analysis in design in system design. Understand core concepts, best practices, and practical applications."
 categories: [ "Fundamentals" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Security in Microservices"
+description: "Comprehensive guide to security in microservices in system design. Learn security best practices, implementation strategies, and common pitfalls."
 categories: [ "Security" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Service Discovery"
+description: "Learn service discovery for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns."
 categories: [ "Infrastructure" ]
 ---
 

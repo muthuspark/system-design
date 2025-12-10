@@ -1,5 +1,6 @@
 ---
 title: "Container Security"
+description: "Explore container security for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

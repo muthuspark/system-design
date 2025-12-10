@@ -1,5 +1,6 @@
 ---
 title: "Time-Series Data Management"
+description: "Master time-series data management techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

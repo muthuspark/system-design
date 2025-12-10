@@ -1,5 +1,6 @@
 ---
 title: "Database Connection Pooling"
+description: "Learn database connection pooling patterns for building scalable systems. Discover techniques to handle growth and improve performance."
 categories: [ "Scalability" ]
 ---
 

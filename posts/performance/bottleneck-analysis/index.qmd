@@ -1,5 +1,6 @@
 ---
 title: "Bottleneck Analysis"
+description: "Optimize system performance with bottleneck analysis. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

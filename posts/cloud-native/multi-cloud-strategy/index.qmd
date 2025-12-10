@@ -1,5 +1,6 @@
 ---
 title: "Multi-Cloud Strategy"
+description: "Explore multi-cloud strategy for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

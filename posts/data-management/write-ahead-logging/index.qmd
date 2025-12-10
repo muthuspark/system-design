@@ -1,5 +1,6 @@
 ---
 title: "Write-Ahead Logging"
+description: "Master write-ahead logging techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

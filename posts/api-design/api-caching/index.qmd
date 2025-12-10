@@ -1,6 +1,7 @@
 ---
-Title: "API Caching"
-Categories: ["API Design"]
+title: "API Caching"
+description: "Master API caching principles and best practices. Learn to design robust, scalable, and developer-friendly APIs with effective caching strategies."
+categories: ["API Design"]
 ---
 
 API caching is an important technique for optimizing the performance and scalability of applications that heavily rely on external APIs. By storing API responses, latency can be reduced, server load can be minimized, and associated costs can be lowered. This article will look at the complexities of API caching, including different strategies, implementation techniques, and best practices.

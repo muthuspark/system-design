@@ -1,5 +1,6 @@
 ---
 title: "Load Balancing Algorithms"
+description: "Learn load balancing algorithms patterns for building scalable systems. Discover techniques to handle growth and improve performance."
 categories: [ "Scalability" ]
 ---
 

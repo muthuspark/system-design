@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes Design Patterns"
+description: "Explore kubernetes design patterns for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

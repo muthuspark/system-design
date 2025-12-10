@@ -1,5 +1,6 @@
 ---
 title: "Alert System Design"
+description: "Learn alert system design for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns."
 categories: [ "Infrastructure" ]
 ---
 

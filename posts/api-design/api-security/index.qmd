@@ -1,5 +1,6 @@
 ---
 title: "API Security"
+description: "Master api security principles and best practices. Learn to design robust, scalable, and developer-friendly APIs."
 categories: [ "API Design" ]
 ---
 

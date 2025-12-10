@@ -1,5 +1,6 @@
 ---
 title: "OLTP vs OLAP Systems"
+description: "Master oltp vs olap systems techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

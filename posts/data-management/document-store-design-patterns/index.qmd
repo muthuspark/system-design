@@ -1,5 +1,6 @@
 ---
 title: "Document Store Design Patterns"
+description: "Master document store design patterns techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

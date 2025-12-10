@@ -1,5 +1,6 @@
 ---
 title: "Logging Architecture"
+description: "Learn logging architecture for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns."
 categories: [ "Infrastructure" ]
 ---
 

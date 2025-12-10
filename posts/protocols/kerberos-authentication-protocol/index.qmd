@@ -1,5 +1,6 @@
 ---
 title: "Kerberos authentication protocol"
+description: "Understand kerberos authentication protocol in detail. Learn how this protocol works, its use cases, and implementation considerations."
 categories: [ "Protocols" ]
 ---
 

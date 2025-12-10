@@ -1,5 +1,6 @@
 ---
 title: "Push Notification Systems"
+description: "Build real-time systems with push notification systems. Learn architecture patterns for low-latency, event-driven applications."
 categories: [ "Real-Time Systems" ]
 ---
 

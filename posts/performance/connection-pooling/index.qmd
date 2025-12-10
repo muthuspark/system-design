@@ -1,5 +1,6 @@
 ---
 title: "Connection Pooling"
+description: "Optimize system performance with connection pooling. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

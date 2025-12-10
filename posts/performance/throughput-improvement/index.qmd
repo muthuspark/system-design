@@ -1,5 +1,6 @@
 ---
 title: "Throughput Improvement"
+description: "Optimize system performance with throughput improvement. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

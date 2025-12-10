@@ -2,10 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Muthukrishnan">
+<meta name="description" content="Learn monitoring system design for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
 
 <title>Monitoring System Design – System Design Notes</title>
 <style>
@@ -122,8 +124,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -179,8 +181,9 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -191,7 +194,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -229,7 +232,13 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
 <meta property="og:title" content="Monitoring System Design – System Design Notes">
+<meta property="og:description" content="Learn monitoring system design for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
 <meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Monitoring System Design – System Design Notes">
+<meta name="twitter:description" content="Learn monitoring system design for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
+<meta name="twitter:creator" content="@krimuthu">
+<meta name="twitter:site" content="@krimuthu">
+<meta name="twitter:card" content="summary_large_image">
 </head><body><div class="navigation-header">
     <nav>
         <div>
@@ -260,6 +269,47 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
         </div>
     </nav>
 </div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "System Design Notes",
+  "url": "https://system-design.muthu.co/",
+  "description": "Comprehensive system design tutorials and notes covering distributed systems, scalability, high availability, microservices, API design, and software architecture patterns.",
+  "author": {
+    "@type": "Person",
+    "name": "Muthukrishnan",
+    "url": "https://system-design.muthu.co/about.html",
+    "jobTitle": "Engineering Manager",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Sanas AI"
+    }
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Muthukrishnan"
+  },
+  "inLanguage": "en",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://system-design.muthu.co/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://system-design.muthu.co/"
+  }]
+}
+</script>
 <meta name="mermaid-theme" content="neutral">
 <script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
@@ -274,6 +324,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 <header id="title-block-header">
 <h1 class="title">Monitoring System Design</h1>
+<p class="author">Muthukrishnan</p>
 
 </header>
 

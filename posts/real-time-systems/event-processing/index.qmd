@@ -1,5 +1,6 @@
 ---
 title: "Event Processing"
+description: "Build real-time systems with event processing. Learn architecture patterns for low-latency, event-driven applications."
 categories: [ "Real-Time Systems" ]
 ---
 

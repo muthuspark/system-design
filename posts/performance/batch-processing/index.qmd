@@ -1,5 +1,6 @@
 ---
 title: "Batch Processing"
+description: "Optimize system performance with batch processing. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

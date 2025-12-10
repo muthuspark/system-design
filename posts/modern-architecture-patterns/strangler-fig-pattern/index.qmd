@@ -1,5 +1,6 @@
 ---
 title: "Strangler Fig Pattern"
+description: "Understand the strangler fig pattern in modern software architecture. Learn when and how to apply this pattern effectively."
 categories: [ "Modern Architecture Patterns" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Auto-scaling Systems"
+description: "Learn auto-scaling systems patterns for building scalable systems. Discover techniques to handle growth and improve performance."
 categories: [ "Scalability" ]
 ---
 

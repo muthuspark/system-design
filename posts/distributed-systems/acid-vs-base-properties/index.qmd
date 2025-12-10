@@ -1,5 +1,6 @@
 ---
 title: "ACID vs BASE Database Consistency Models"
+description: "Deep dive into acid vs base database consistency models for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases."
 categories: [ "Distributed Systems" ]
 ---
 

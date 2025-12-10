@@ -7,5 +7,13 @@ freeze: true
 # Enable banner style title blocks
 title-block-banner: true
 page-navigation: true
+
+# SEO settings
+author: "Muthukrishnan"
+lang: en
+
+# Date settings for SEO
+date-format: "YYYY-MM-DD"
+
 include-after-body:
   - ../footer.html

@@ -1,5 +1,6 @@
 ---
 title: "Content Management Systems"
+description: "System design deep dive into content management systems. Learn architecture patterns, challenges, and solutions for this domain."
 categories: [ "Domain-Specific" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Asynchronous Processing"
+description: "Optimize system performance with asynchronous processing. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Leader Election"
+description: "Deep dive into leader election for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases."
 categories: [ "Distributed Systems" ]
 ---
 

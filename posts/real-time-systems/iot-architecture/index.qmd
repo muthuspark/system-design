@@ -1,5 +1,6 @@
 ---
 title: "IoT Architecture"
+description: "Build real-time systems with iot architecture. Learn architecture patterns for low-latency, event-driven applications."
 categories: [ "Real-Time Systems" ]
 ---
 

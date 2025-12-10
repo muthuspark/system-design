@@ -1,5 +1,6 @@
 ---
 title: "Booking Systems"
+description: "System design deep dive into booking systems. Learn architecture patterns, challenges, and solutions for this domain."
 categories: [ "Domain-Specific" ]
 ---
 # Decoding the Complexity of Booking Systems

@@ -1,5 +1,6 @@
 ---
 title: "gRPC Implementation"
+description: "Master grpc implementation principles and best practices. Learn to design robust, scalable, and developer-friendly APIs."
 categories: [ "API Design" ]
 ---
 

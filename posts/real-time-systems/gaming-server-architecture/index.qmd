@@ -1,5 +1,6 @@
 ---
 title: "Gaming Server Architecture"
+description: "Build real-time systems with gaming server architecture. Learn architecture patterns for low-latency, event-driven applications."
 categories: [ "Real-Time Systems" ]
 ---
 

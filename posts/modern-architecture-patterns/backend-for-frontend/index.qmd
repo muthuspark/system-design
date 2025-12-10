@@ -1,5 +1,6 @@
 ---
 title: "Backend for Frontend"
+description: "Understand the backend for frontend in modern software architecture. Learn when and how to apply this pattern effectively."
 categories: [ "Modern Architecture Patterns" ]
 ---
 

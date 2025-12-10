@@ -1,5 +1,8 @@
 ---
-title: ""
+title: "System Design Notes"
+pagetitle: "System Design Notes - Learn Distributed Systems, Scalability & Architecture"
+description: "Learn system design with 140+ comprehensive tutorials on distributed systems, scalability patterns, high availability, microservices, API design, and software architecture best practices."
+image: profile.png
 listing:
   contents: posts
   sort: "title"

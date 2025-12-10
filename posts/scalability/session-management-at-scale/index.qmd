@@ -1,5 +1,6 @@
 ---
 title: "Session Management at Scale"
+description: "Learn session management at scale patterns for building scalable systems. Discover techniques to handle growth and improve performance."
 categories: [ "Scalability" ]
 ---
 

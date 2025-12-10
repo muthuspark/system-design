@@ -1,5 +1,6 @@
 ---
 title: "Circuit Breaker Pattern"
+description: "Understand the circuit breaker pattern in modern software architecture. Learn when and how to apply this pattern effectively."
 categories: [ "Modern Architecture Patterns" ]
 ---
 

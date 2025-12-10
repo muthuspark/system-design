@@ -1,5 +1,6 @@
 ---
 title: "Resource Utilization"
+description: "Optimize system performance with resource utilization. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

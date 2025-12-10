@@ -1,5 +1,6 @@
 ---
 title: "Event-Driven Architecture in Distributed Systems"
+description: "Deep dive into event-driven architecture in distributed systems for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases."
 categories: [ "Distributed Systems" ]
 ---
 

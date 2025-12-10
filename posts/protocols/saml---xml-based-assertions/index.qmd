@@ -1,5 +1,6 @@
 ---
 title: "SAML - XML-based assertions"
+description: "Understand saml - xml-based assertions in detail. Learn how this protocol works, its use cases, and implementation considerations."
 categories: [ "Protocols" ]
 ---
 

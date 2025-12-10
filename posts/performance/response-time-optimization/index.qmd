@@ -1,5 +1,6 @@
 ---
 title: "Response Time Optimization"
+description: "Optimize system performance with response time optimization. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

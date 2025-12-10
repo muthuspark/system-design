@@ -1,5 +1,6 @@
 ---
 title: "Mobile Backend Architecture"
+description: "System design deep dive into mobile backend architecture. Learn architecture patterns, challenges, and solutions for this domain."
 categories: [ "Domain-Specific" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Data Consistency Models"
+description: "Master data consistency models techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "E-commerce System Design"
+description: "System design deep dive into e-commerce system design. Learn architecture patterns, challenges, and solutions for this domain."
 categories: [ "Domain-Specific" ]
 ---
 

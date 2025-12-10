@@ -1,5 +1,6 @@
 ---
 title: "Resource Management"
+description: "Learn resource management for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns."
 categories: [ "Infrastructure" ]
 ---
 

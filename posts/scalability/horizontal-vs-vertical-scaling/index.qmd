@@ -1,5 +1,6 @@
 ---
 title: "Horizontal vs Vertical Scaling"
+description: "Learn horizontal vs vertical scaling patterns for building scalable systems. Discover techniques to handle growth and improve performance."
 categories: [ "Scalability" ]
 ---
 

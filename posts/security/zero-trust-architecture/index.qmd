@@ -1,5 +1,6 @@
 ---
 title: "Zero Trust Architecture"
+description: "Comprehensive guide to zero trust architecture in system design. Learn security best practices, implementation strategies, and common pitfalls."
 categories: [ "Security" ]
 ---
 

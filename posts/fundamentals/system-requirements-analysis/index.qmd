@@ -1,5 +1,6 @@
 ---
 title: "System Requirements Analysis"
+description: "Learn the fundamentals of system requirements analysis in system design. Understand core concepts, best practices, and practical applications."
 categories: [ "Fundamentals" ]
 ---
 

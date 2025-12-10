@@ -1,5 +1,6 @@
 ---
 title: "Service Level Agreements"
+description: "Understand service level agreements for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance."
 categories: [ "High Availability" ]
 ---
 

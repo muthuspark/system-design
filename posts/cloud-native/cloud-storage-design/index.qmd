@@ -1,5 +1,6 @@
 ---
 title: "Cloud Storage Design"
+description: "Explore cloud storage design for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

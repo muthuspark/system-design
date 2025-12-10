@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/distributed-systems/acid-vs-base-properties/index.html",
+      "/posts/api-design/api-caching/index.html",
       "/posts/api-design/api-documentation/index.html",
       "/posts/api-design/api-gateway-patterns/index.html",
       "/posts/api-design/api-security/index.html",
@@ -138,7 +139,6 @@
       "/posts/data-management/time-series-data-management/index.html",
       "/posts/fundamentals/trade-offs-in-system-design/index.html",
       "/posts/distributed-systems/two-phase-commit-protocol/index.html",
-      "/posts/api-design/api-caching/index.html",
       "/posts/distributed-systems/vector-clocks/index.html",
       "/posts/domain-specific/video-streaming-platforms/index.html",
       "/posts/real-time-systems/websocket-architecture/index.html",

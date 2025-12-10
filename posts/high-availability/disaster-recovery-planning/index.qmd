@@ -1,5 +1,6 @@
 ---
 title: "Disaster Recovery Planning"
+description: "Understand disaster recovery planning for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance."
 categories: [ "High Availability" ]
 ---
 

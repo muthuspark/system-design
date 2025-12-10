@@ -1,5 +1,6 @@
 ---
 title: "GraphQL Architecture"
+description: "Master graphql architecture principles and best practices. Learn to design robust, scalable, and developer-friendly APIs."
 categories: [ "API Design" ]
 ---
 

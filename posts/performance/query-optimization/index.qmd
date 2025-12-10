@@ -1,5 +1,6 @@
 ---
 title: "Query Optimization"
+description: "Optimize system performance with query optimization. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

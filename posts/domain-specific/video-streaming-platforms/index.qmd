@@ -1,5 +1,6 @@
 ---
 title: "Video Streaming Platforms"
+description: "System design deep dive into video streaming platforms. Learn architecture patterns, challenges, and solutions for this domain."
 categories: [ "Domain-Specific" ]
 ---
 

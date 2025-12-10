@@ -1,5 +1,6 @@
 ---
 title: "Webhook Architecture"
+description: "Master webhook architecture principles and best practices. Learn to design robust, scalable, and developer-friendly APIs."
 categories: [ "API Design" ]
 ---
 

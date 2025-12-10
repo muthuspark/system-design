@@ -1,5 +1,6 @@
 ---
 title: "CI/CD Pipeline Design"
+description: "Learn ci/cd pipeline design for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns."
 categories: [ "Infrastructure" ]
 ---
 

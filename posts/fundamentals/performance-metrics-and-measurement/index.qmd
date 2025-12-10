@@ -1,5 +1,6 @@
 ---
 title: "Performance Metrics and Measurement"
+description: "Learn the fundamentals of performance metrics and measurement in system design. Understand core concepts, best practices, and practical applications."
 categories: [ "Fundamentals" ]
 ---
 

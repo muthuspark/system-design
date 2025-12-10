@@ -1,5 +1,6 @@
 ---
 title: "JSON Web Tokens (JWT)"
+description: "Understand json web tokens (jwt) in detail. Learn how this protocol works, its use cases, and implementation considerations."
 categories: [ "Protocols" ]
 ---
 

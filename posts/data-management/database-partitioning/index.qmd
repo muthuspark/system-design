@@ -1,5 +1,6 @@
 ---
 title: "Database Partitioning"
+description: "Master database partitioning techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

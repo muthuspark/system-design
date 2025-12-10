@@ -1,5 +1,6 @@
 ---
 title: "Master-Slave Architecture"
+description: "Master master-slave architecture techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "SCIM - RESTful API for identity management"
+description: "Understand scim - restful api for identity management in detail. Learn how this protocol works, its use cases, and implementation considerations."
 categories: [ "Protocols" ]
 ---
 

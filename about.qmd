@@ -1,5 +1,7 @@
 ---
-title: "About me"
+title: "About Muthukrishnan - Engineering Manager & System Design Expert"
+pagetitle: "About Muthukrishnan - System Design Notes Author"
+description: "Muthukrishnan is an Engineering Manager at Sanas AI with 16+ years of experience building scalable SaaS applications. Author of system design tutorials and holder of 5 patents."
 image: profile.png
 ---
 ```{=html}

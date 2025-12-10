@@ -1,5 +1,6 @@
 ---
 title: "Performance Testing Methodologies"
+description: "Optimize system performance with performance testing methodologies. Learn techniques, metrics, and strategies for faster, more efficient systems."
 categories: [ "Performance" ]
 ---
 

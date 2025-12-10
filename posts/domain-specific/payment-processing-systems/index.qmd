@@ -1,5 +1,6 @@
 ---
 title: "Payment Processing Systems"
+description: "System design deep dive into payment processing systems. Learn architecture patterns, challenges, and solutions for this domain."
 categories: [ "Domain-Specific" ]
 ---
 

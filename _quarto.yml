@@ -3,12 +3,21 @@ project:
   output-dir: docs
   preview:
     port: 4200
+  resources:
+    - robots.txt
+    - CNAME
+    - ads.txt
 
 website:
   title: "System Design Notes"
+  description: "Comprehensive system design tutorials and notes covering distributed systems, scalability, high availability, microservices, API design, and software architecture patterns for engineers."
   reader-mode: true
   page-navigation: true
   open-graph: true
+  twitter-card:
+    site: "@krimuthu"
+    creator: "@krimuthu"
+    card-style: summary_large_image
   favicon: favicon.ico
   page-footer:
     left: |
@@ -32,9 +41,10 @@ format:
     mermaid:
       theme: neutral
     minimal: true
-    include-in-header: 
+    include-in-header:
       - favicon.html
       - header.html
+      - structured-data.html
     include-after-body:
       - text: |
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>

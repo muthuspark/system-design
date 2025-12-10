@@ -1,5 +1,6 @@
 ---
 title: "Database Sharding Strategies"
+description: "Master database sharding strategies techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture."
 categories: [ "Data Management" ]
 ---
 

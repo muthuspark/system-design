@@ -1,5 +1,6 @@
 ---
 title: "Real-Time Analytics"
+description: "Build real-time systems with real-time analytics. Learn architecture patterns for low-latency, event-driven applications."
 categories: [ "Real-Time Systems" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "OpenID Connect (OIDC)"
+description: "Understand openid connect (oidc) in detail. Learn how this protocol works, its use cases, and implementation considerations."
 categories: [ "Protocols" ]
 ---
 

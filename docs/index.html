@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Learn system design with 140+ comprehensive tutorials on distributed systems, scalability patterns, high availability, microservices, API design, and software architecture best practices.">
 
-<title>System Design Notes</title>
+<title>System Design Notes - Learn Distributed Systems, Scalability &amp; Architecture – System Design Notes</title>
 <style>
 html {
   color: #1a1a1a;
@@ -122,8 +123,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -194,9 +195,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-freeze','listing-title-block-banner','listing-page-navigation','listing-include-after-body','listing-title','listing-categories','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-Title','listing-Categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-freeze','listing-title-block-banner','listing-page-navigation','listing-author','listing-lang','listing-date-format','listing-include-after-body','listing-title','listing-description','listing-categories','listing-path','listing-outputHref','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-freeze","listing-title-block-banner","listing-page-navigation","listing-include-after-body","listing-title","listing-categories","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-Title","listing-Categories"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-freeze","listing-title-block-banner","listing-page-navigation","listing-author","listing-lang","listing-date-format","listing-include-after-body","listing-title","listing-description","listing-categories","listing-path","listing-outputHref","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -225,8 +226,20 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-<meta property="og:title" content="– System Design Notes">
+<meta property="og:title" content="System Design Notes - Learn Distributed Systems, Scalability &amp; Architecture">
+<meta property="og:description" content="Learn system design with 140+ comprehensive tutorials on distributed systems, scalability patterns, high availability, microservices, API design, and software architecture best practices.">
+<meta property="og:image" content="https://system-design.muthu.co/profile.png">
 <meta property="og:site_name" content="System Design Notes">
+<meta property="og:image:height" content="491">
+<meta property="og:image:width" content="465">
+<meta name="twitter:title" content="System Design Notes - Learn Distributed Systems, Scalability &amp; Architecture">
+<meta name="twitter:description" content="Learn system design with 140+ comprehensive tutorials on distributed systems, scalability patterns, high availability, microservices, API design, and software architecture best practices.">
+<meta name="twitter:image" content="https://system-design.muthu.co/profile.png">
+<meta name="twitter:creator" content="@krimuthu">
+<meta name="twitter:site" content="@krimuthu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="491">
+<meta name="twitter:image-width" content="465">
 </head><body><div class="navigation-header">
     <nav>
         <div>
@@ -257,6 +270,47 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
         </div>
     </nav>
 </div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "System Design Notes",
+  "url": "https://system-design.muthu.co/",
+  "description": "Comprehensive system design tutorials and notes covering distributed systems, scalability, high availability, microservices, API design, and software architecture patterns.",
+  "author": {
+    "@type": "Person",
+    "name": "Muthukrishnan",
+    "url": "https://system-design.muthu.co/about.html",
+    "jobTitle": "Engineering Manager",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Sanas AI"
+    }
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Muthukrishnan"
+  },
+  "inLanguage": "en",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://system-design.muthu.co/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://system-design.muthu.co/"
+  }]
+}
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -265,7 +319,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 
+<header id="title-block-header">
+<h1 class="title">System Design Notes</h1>
 
+</header>
 
 
 
@@ -977,6 +1034,12 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
             <ul>
               
                 <li>
+                  <a href="./posts/api-design/api-caching/index.html" title="API Caching">
+                    API Caching
+                  </a>
+                </li>
+              
+                <li>
                   <a href="./posts/api-design/api-documentation/index.html" title="API Documentation">
                     API Documentation
                   </a>
@@ -1332,7 +1395,5 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     border-radius: 4px;
   }
 </style>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
+<div class="listing-no-matching d-none">No matching items</div>
 </div></body></html>

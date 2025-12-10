@@ -1,5 +1,6 @@
 ---
 title: "Infrastructure as Code"
+description: "Learn infrastructure as code for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns."
 categories: [ "Infrastructure" ]
 ---
 

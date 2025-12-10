@@ -1,5 +1,6 @@
 ---
 title: "Redundancy Patterns"
+description: "Comprehensive guide to redundancy patterns in system design. Learn concepts, patterns, and best practices for building scalable systems."
 categories: [ "High Availability", "Software Architecture", "Best Practices" ]
 ---
 

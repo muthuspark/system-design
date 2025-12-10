@@ -1,5 +1,6 @@
 ---
 title: "API Documentation"
+description: "Master api documentation principles and best practices. Learn to design robust, scalable, and developer-friendly APIs."
 categories: [ "API Design" ]
 ---
 

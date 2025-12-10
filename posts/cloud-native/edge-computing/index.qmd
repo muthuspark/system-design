@@ -1,5 +1,6 @@
 ---
 title: "Edge Computing"
+description: "Explore edge computing for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

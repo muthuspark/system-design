@@ -1,5 +1,6 @@
 ---
 title: "API Security"
+description: "Comprehensive guide to api security in system design. Learn security best practices, implementation strategies, and common pitfalls."
 categories: [ "Security" ]
 ---
 

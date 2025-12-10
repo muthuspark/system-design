@@ -1,5 +1,6 @@
 ---
 title: "Serverless Architecture"
+description: "Explore serverless architecture for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

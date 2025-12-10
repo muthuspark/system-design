@@ -1,5 +1,6 @@
 ---
 title: "Business Continuity"
+description: "Understand business continuity for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance."
 categories: [ "High Availability" ]
 ---
 

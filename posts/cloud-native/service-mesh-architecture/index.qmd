@@ -1,5 +1,6 @@
 ---
 title: "Service Mesh Architecture"
+description: "Explore service mesh architecture for cloud-native applications. Learn patterns, services, and strategies for cloud deployment."
 categories: [ "Cloud Native" ]
 ---
 

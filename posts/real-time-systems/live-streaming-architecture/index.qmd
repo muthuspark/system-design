@@ -1,5 +1,6 @@
 ---
 title: "Live Streaming Architecture"
+description: "Build real-time systems with live streaming architecture. Learn architecture patterns for low-latency, event-driven applications."
 categories: [ "Real-Time Systems" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "API Versioning Strategies"
+description: "Master api versioning strategies principles and best practices. Learn to design robust, scalable, and developer-friendly APIs."
 categories: [ "API Design" ]
 ---
 

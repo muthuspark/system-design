@@ -1,5 +1,6 @@
 ---
 title: "OAuth - Open Authorization"
+description: "Understand oauth - open authorization in detail. Learn how this protocol works, its use cases, and implementation considerations."
 categories: [ "Protocols" ]
 ---
 

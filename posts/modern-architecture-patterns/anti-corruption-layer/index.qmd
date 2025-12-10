@@ -1,5 +1,6 @@
 ---
 title: "Anti-Corruption Layer"
+description: "Understand the anti-corruption layer in modern software architecture. Learn when and how to apply this pattern effectively."
 categories: [ "Modern Architecture Patterns" ]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Microservices Scaling"
+description: "Learn microservices scaling patterns for building scalable systems. Discover techniques to handle growth and improve performance."
 categories: [ "Scalability" ]
 ---
 
