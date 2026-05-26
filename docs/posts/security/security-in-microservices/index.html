@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Comprehensive guide to security in microservices in system design. Learn security best practices, implementation strategies, and common pitfalls.">
 
-<title>System Design Notes - Security in Microservices</title>
+<title>Security in Microservices – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -180,8 +187,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -194,10 +199,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Security in Microservices">
+<meta property="og:title" content="Security in Microservices – System Design Notes">
 <meta property="og:description" content="Comprehensive guide to security in microservices in system design. Learn security best practices, implementation strategies, and common pitfalls.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Security in Microservices">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Security in Microservices – System Design Notes">
 <meta name="twitter:description" content="Comprehensive guide to security in microservices in system design. Learn security best practices, implementation strategies, and common pitfalls.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -291,6 +296,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Microservices architecture offers numerous benefits, including scalability, flexibility, and independent deployability. However, this distributed nature also introduces significant security challenges. Securing a microservices environment requires an approach that goes beyond traditional monolithic application security. This post goes into the key security concerns and best practices for building secure microservices.</p>
 <h2 id="the-unique-security-challenges-of-microservices">The Unique Security Challenges of Microservices</h2>
 <p>Unlike monolithic applications, microservices communicate extensively with each other, creating a larger attack surface. This inter-service communication is a primary vulnerability. Here’s a breakdown of the key challenges:</p>
@@ -309,9 +315,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <ul>
 <li><strong>API Gateways:</strong> An API gateway acts as a central point of entry for all external requests, enforcing security policies like authentication, authorization, and rate limiting.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Client] --&gt; B(API Gateway);
@@ -325,6 +332,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -365,6 +373,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

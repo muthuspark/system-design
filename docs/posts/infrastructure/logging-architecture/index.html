@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Learn logging architecture for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
 
-<title>System Design Notes - Logging Architecture</title>
+<title>Logging Architecture – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -177,6 +184,7 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -214,8 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -228,10 +234,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Logging Architecture">
+<meta property="og:title" content="Logging Architecture – System Design Notes">
 <meta property="og:description" content="Learn logging architecture for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Logging Architecture">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Logging Architecture – System Design Notes">
 <meta name="twitter:description" content="Learn logging architecture for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -325,6 +331,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Logging is a critical aspect of software development, important for debugging, monitoring, and auditing applications. A well-designed logging architecture ensures that your application’s logs are effectively collected, processed, and analyzed, providing information about its behavior and performance.</p>
 <p>This post explores various aspects of building a logging architecture.</p>
 <h2 id="log-levels-the-foundation-of-structured-logging">1. Log Levels: The Foundation of Structured Logging</h2>
@@ -350,9 +357,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>There are two primary architectural patterns for logging:</p>
 <p><strong>A. Centralized Logging:</strong></p>
 <p>This approach uses a central logging server (e.g., using ELK stack, Graylog) to collect logs from all application components.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Application 1] --&gt; B(Log Server);
@@ -361,6 +369,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     B --&gt; E[Log Analysis &amp; Visualization];
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -378,9 +387,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </ul>
 <p><strong>B. Decentralized Logging:</strong></p>
 <p>Each application component manages its own logs, often writing them to local files or databases.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Application 1] --&gt; B(Local Log Storage);
@@ -388,6 +398,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     E[Application 3] --&gt; F(Local Log Storage);
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -592,6 +603,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

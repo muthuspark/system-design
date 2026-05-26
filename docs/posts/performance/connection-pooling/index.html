@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Optimize system performance with connection pooling. Learn techniques, metrics, and strategies for faster, more efficient systems.">
 
-<title>System Design Notes - Connection Pooling</title>
+<title>Connection Pooling – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -177,6 +184,7 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -214,8 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -228,10 +234,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Connection Pooling">
+<meta property="og:title" content="Connection Pooling – System Design Notes">
 <meta property="og:description" content="Optimize system performance with connection pooling. Learn techniques, metrics, and strategies for faster, more efficient systems.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Connection Pooling">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Connection Pooling – System Design Notes">
 <meta name="twitter:description" content="Optimize system performance with connection pooling. Learn techniques, metrics, and strategies for faster, more efficient systems.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -325,6 +331,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Connection pooling is an important technique for enhancing the performance and efficiency of database applications. It reduces the overhead associated with repeatedly establishing and closing connections to a database server, leading to faster response times and improved resource utilization. This post goes into the complexities of connection pooling, explaining its benefits, how it works, and showcasing examples in various programming languages.</p>
 <h2 id="understanding-the-problem-the-cost-of-connection-creation">Understanding the Problem: The Cost of Connection Creation</h2>
 <p>Before we look at the solution, let’s understand the problem. Every time your application needs to interact with a database, it typically establishes a new connection. This process involves many steps:</p>
@@ -344,9 +351,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <li><strong>Configuration:</strong> Parameters defining the pool’s size (maximum number of connections), connection timeout, and other relevant settings.</li>
 </ol>
 <p>Here’s a Diagram illustrating the process:</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Application] --&gt; B(Request Connection);
@@ -360,6 +368,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -466,6 +475,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

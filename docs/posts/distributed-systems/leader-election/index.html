@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Deep dive into leader election for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases.">
 
-<title>System Design Notes - Leader Election</title>
+<title>Leader Election – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -180,8 +187,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -194,10 +199,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Leader Election">
+<meta property="og:title" content="Leader Election – System Design Notes">
 <meta property="og:description" content="Deep dive into leader election for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Leader Election">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Leader Election – System Design Notes">
 <meta name="twitter:description" content="Deep dive into leader election for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -291,6 +296,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Leader election is a fundamental problem in distributed systems. It’s the process of selecting a single node from a group of nodes to act as the leader, responsible for coordinating tasks, making decisions, and managing resources. This leader acts as a single point of control, simplifying the system’s overall architecture and ensuring efficient operation. However, the selection process must be fault-tolerant, handling node failures and network partitions gracefully. This post explores various leader election algorithms and provides code examples to illustrate their implementation.</p>
 <h2 id="why-leader-election-is-important">Why Leader Election is important</h2>
 <p>In distributed systems, where multiple nodes operate independently but need to coordinate, a leader is often necessary for many reasons:</p>
@@ -311,9 +317,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <li><strong>No Response from Higher-ID Nodes:</strong> If the initiating node receives no response from higher-ID nodes, it declares itself the leader and broadcasts a “leader” message to all other nodes.</li>
 </ol>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Node A] --&gt; B{Leader Failure?};
@@ -327,6 +334,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     G --&gt; D;
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -364,9 +372,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <li><strong>Leader Election:</strong> The node with the highest ID becomes the leader and broadcasts its leadership to the ring.</li>
 </ol>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Node 1] --&gt; B[Node 2];
@@ -381,6 +390,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     G --&gt; H[Broadcast Leadership];
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -411,6 +421,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

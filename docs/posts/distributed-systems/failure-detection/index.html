@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Deep dive into failure detection for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases.">
 
-<title>System Design Notes - Failure Detection</title>
+<title>Failure Detection – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -177,6 +184,7 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -214,8 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -228,10 +234,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Failure Detection">
+<meta property="og:title" content="Failure Detection – System Design Notes">
 <meta property="og:description" content="Deep dive into failure detection for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Failure Detection">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Failure Detection – System Design Notes">
 <meta name="twitter:description" content="Deep dive into failure detection for distributed systems. Learn implementation patterns, trade-offs, and real-world use cases.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -325,6 +331,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Failure detection is important in building reliable systems. Whether you’re managing a complex microservice architecture or a single server application, the ability to quickly and accurately identify failures is paramount. This post will look at the various strategies and techniques used for failure detection, examining their strengths and weaknesses, and providing practical examples to illustrate their application.</p>
 <h2 id="types-of-failures">Types of Failures</h2>
 <p>Before exploring detection methods, it’s important to understand the different types of failures we aim to detect:</p>
@@ -338,9 +345,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>Several strategies can be employed for failure detection, often used in conjunction for optimal coverage:</p>
 <h3 id="heartbeat-monitoring">1. Heartbeat Monitoring</h3>
 <p>This is a fundamental technique where the monitored component (e.g., a server, microservice) periodically sends a “heartbeat” signal to a central monitoring system. The absence of a heartbeat within a predefined timeframe triggers an alert, indicating a potential failure.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Monitored Component] --&gt; B(Heartbeat Signal);
@@ -348,6 +356,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     C -- No Heartbeat --&gt; D[Alert Triggered];
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -371,9 +380,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    time.sleep(<span class="dv">1</span>)</span></code></pre></div>
 <h3 id="monitoring-key-metrics">2. Monitoring Key Metrics</h3>
 <p>This approach involves continuously tracking critical performance indicators (KPIs) such as CPU usage, memory consumption, disk I/O, network throughput, and request latency. Significant deviations from established baselines trigger alerts, suggesting potential problems.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Application] --&gt; B(Metrics);
@@ -381,15 +391,17 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     C -- Threshold Exceeded --&gt; D[Alert Triggered];
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <p>Tools like Prometheus and Grafana are commonly used for this purpose.</p>
 <h3 id="exception-handling-and-logging">3. Exception Handling and Logging</h3>
 <p>Robust exception handling and detailed logging within the application provide internal failure information. Analyzing log files can help identify recurring errors, pinpoint the root cause of failures, and assist in proactive mitigation.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant C as Client
@@ -421,6 +433,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -444,9 +457,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>This helps in: - Real-time error detection - Root cause analysis - Pattern identification - Proactive issue resolution - System reliability improvement</p>
 <h3 id="health-checks">4. Health Checks</h3>
 <p>Applications can expose dedicated health check endpoints that return a status indicating their operational state. These checks can be simple (e.g., returning “OK”) or more sophisticated, verifying database connectivity, external service availability, or internal component functionality.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant M as Monitoring System
@@ -476,6 +490,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -504,9 +519,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="timeouts-and-retries">5. Timeouts and Retries</h3>
 <p>When interacting with external services or components, implementing timeouts and retry mechanisms can prevent applications from hanging indefinitely due to unresponsive dependencies. Timeouts provide a graceful failure mechanism, while retries offer a chance to recover from transient network issues.</p>
 <p>For example, when making a request to an external API, a timeout can be set to 5 seconds. If the API doesn’t respond within that time, the request is terminated and a retry can be triggered. This approach can be used to handle temporary network issues or high latency.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant C as Client
@@ -531,6 +547,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -566,6 +583,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

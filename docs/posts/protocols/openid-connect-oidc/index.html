@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Understand openid connect (oidc) in detail. Learn how this protocol works, its use cases, and implementation considerations.">
 
-<title>System Design Notes - OpenID Connect (OIDC)</title>
+<title>OpenID Connect (OIDC) – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -180,8 +187,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -194,10 +199,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - OpenID Connect (OIDC)">
+<meta property="og:title" content="OpenID Connect (OIDC) – System Design Notes">
 <meta property="og:description" content="Understand openid connect (oidc) in detail. Learn how this protocol works, its use cases, and implementation considerations.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - OpenID Connect (OIDC)">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="OpenID Connect (OIDC) – System Design Notes">
 <meta name="twitter:description" content="Understand openid connect (oidc) in detail. Learn how this protocol works, its use cases, and implementation considerations.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -291,6 +296,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>OpenID Connect (OIDC) is an identity layer built on top of the OAuth 2.0 protocol. It enables clients to verify the identity of users based on the authentication performed by an authorization server and to obtain basic profile information about the user in an interoperable and REST-like manner. OIDC is widely used for Single Sign-On (SSO) and user authentication in modern web and mobile applications.</p>
 <p>In this blog post, we will look at the OpenID Connect protocol in detail, including its components, workflows, and key concepts.</p>
 <h2 id="what-is-openid-connect">What is OpenID Connect?</h2>
@@ -298,9 +304,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>OIDC is widely used for: - <strong>Single Sign-On (SSO)</strong>: Users can log in once and access multiple applications. - <strong>User Authentication</strong>: Applications can verify the identity of users. - <strong>Profile Information</strong>: Applications can retrieve basic user profile information.</p>
 <h2 id="how-oidc-extends-oauth-2.0">How OIDC Extends OAuth 2.0</h2>
 <p>OAuth 2.0 is primarily an <strong>authorization</strong> protocol, while OIDC adds an <strong>authentication</strong> layer on top of it. Here’s how OIDC extends OAuth 2.0: - Introduces the <strong>ID Token</strong> for user authentication. - Adds the <strong>UserInfo endpoint</strong> to retrieve user profile information. - Standardizes the authentication process.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[OAuth 2.0] --&gt;|Authorization| B[Access Tokens]
@@ -309,14 +316,16 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     C --&gt;|User Profile| E[UserInfo Endpoint]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h2 id="key-components-of-oidc">Key Components of OIDC</h2>
 <p>OIDC introduces many key components: 1. <strong>ID Token</strong>: A JWT that contains information about the authenticated user. 2. <strong>UserInfo Endpoint</strong>: A RESTful endpoint that returns claims about the user. 3. <strong>Discovery Endpoint</strong>: Provides metadata about the OIDC provider. 4. <strong>Dynamic Client Registration</strong>: Allows clients to register with the OIDC provider dynamically.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[OpenID Connect] --&gt; B[ID Token]
@@ -325,14 +334,16 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     A --&gt; E[Dynamic Client Registration]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h2 id="oidc-workflow">OIDC Workflow</h2>
 <p>The OIDC workflow involves the following steps: 1. The <strong>Client</strong> redirects the user to the <strong>Authorization Server</strong> for authentication. 2. The user authenticates and grants consent. 3. The <strong>Authorization Server</strong> issues an <strong>ID Token</strong> and optionally an <strong>Access Token</strong>. 4. The <strong>Client</strong> can use the <strong>Access Token</strong> to call the <strong>UserInfo Endpoint</strong> for additional user information.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant User
@@ -348,15 +359,17 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     AuthorizationServer-&gt;&gt;Client: Returns UserInfo
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h2 id="id-tokens-and-userinfo-endpoint">ID Tokens and UserInfo Endpoint</h2>
 <h3 id="id-token">ID Token</h3>
 <p>The ID Token is a JWT that contains claims about the authenticated user. Example claims include: - <code>sub</code> (subject): A unique identifier for the user. - <code>iss</code> (issuer): The URL of the authorization server. - <code>aud</code> (audience): The client ID of the application. - <code>exp</code> (expiration): The expiration time of the token.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[ID Token] --&gt; B[Header]
@@ -365,14 +378,16 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     C --&gt; E[Claims: sub, iss, aud, exp, etc.]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h3 id="userinfo-endpoint">UserInfo Endpoint</h3>
 <p>The UserInfo endpoint is a RESTful API that returns additional claims about the user. The client accesses it using the <strong>Access Token</strong>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant Client
@@ -382,6 +397,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     AuthorizationServer-&gt;&gt;Client: Returns UserInfo (e.g., name, email, profile)
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -389,9 +405,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>OIDC supports multiple flows to accommodate different types of clients and use cases.</p>
 <h3 id="a.-authorization-code-flow">a. Authorization Code Flow</h3>
 <p>This is the most secure and widely used flow. It involves two steps: 1. The client obtains an <strong>Authorization Code</strong>. 2. The client exchanges the code for an <strong>ID Token</strong> and <strong>Access Token</strong>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant User
@@ -407,14 +424,16 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     AuthorizationServer-&gt;&gt;Client: Issues ID Token and Access Token
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h3 id="b.-implicit-flow">b. Implicit Flow</h3>
 <p>This flow is designed for browser-based applications. It directly returns the <strong>ID Token</strong> and optionally the <strong>Access Token</strong> without the intermediate authorization code step.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant User
@@ -428,14 +447,16 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     AuthorizationServer-&gt;&gt;Client: Redirects with ID Token (and Access Token)
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h3 id="c.-hybrid-flow">c.&nbsp;Hybrid Flow</h3>
 <p>This flow combines elements of the Authorization Code and Implicit flows. It returns an <strong>ID Token</strong> and an <strong>Authorization Code</strong> in the initial response.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant User
@@ -451,6 +472,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     AuthorizationServer-&gt;&gt;Client: Issues Access Token
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -459,6 +481,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

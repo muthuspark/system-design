@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Master data consistency models techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture.">
 
-<title>System Design Notes - Data Consistency Models</title>
+<title>Data Consistency Models – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -180,8 +187,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -194,10 +199,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Data Consistency Models">
+<meta property="og:title" content="Data Consistency Models – System Design Notes">
 <meta property="og:description" content="Master data consistency models techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Data Consistency Models">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Data Consistency Models – System Design Notes">
 <meta name="twitter:description" content="Master data consistency models techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -291,6 +296,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Data consistency is an important aspect of building reliable distributed systems. It dictates how data is synchronized across multiple nodes or replicas, ensuring that all copies of the data remain consistent and reflect the same state. However, achieving perfect consistency across a distributed environment comes with significant challenges. This post provides an analysis of various data consistency models, exploring their strengths and weaknesses, and providing illustrative examples.</p>
 <h2 id="the-challenges-of-distributed-data">The Challenges of Distributed Data</h2>
 <p>Before diving into specific models, it’s essential to understand the complexities of maintaining consistency in a distributed setting. These challenges stem from factors like:</p>
@@ -306,9 +312,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p><strong>Strengths:</strong> Simplest to understand and reason about. Provides the highest level of consistency.</p>
 <p><strong>Weaknesses:</strong> Very difficult and expensive to achieve in practice, especially in geographically distributed systems. High latency and reduced availability during network partitions.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant Client
@@ -325,6 +332,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     deactivate Node B
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -333,9 +341,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p><strong>Strengths:</strong> Easier to implement than strict consistency. Offers good consistency guarantees.</p>
 <p><strong>Weaknesses:</strong> Can still be challenging to achieve in high-concurrency environments. Doesn’t guarantee real-time consistency.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant Client1
@@ -350,6 +359,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     Node--&gt;&gt;Client2: x=20
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -379,6 +389,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

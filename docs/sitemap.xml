@@ -2,586 +2,586 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://system-design.muthu.co/about.html</loc>
-    <lastmod>2026-05-26T05:06:02.117Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.123Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/health-monitoring-systems/index.html</loc>
-    <lastmod>2026-05-26T05:06:01.662Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/failover-strategies/index.html</loc>
-    <lastmod>2026-05-26T05:06:01.027Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/service-level-agreements/index.html</loc>
-    <lastmod>2026-05-26T05:06:00.312Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/disaster-recovery-planning/index.html</loc>
-    <lastmod>2026-05-26T05:05:59.623Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/active-passive-setup/index.html</loc>
-    <lastmod>2026-05-26T05:05:58.947Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.195Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/protocols/scim---restful-api-for-identity-management/index.html</loc>
-    <lastmod>2026-05-26T05:05:58.331Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/protocols/json-web-tokens-jwt/index.html</loc>
-    <lastmod>2026-05-26T05:05:57.614Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/protocols/oauth/index.html</loc>
-    <lastmod>2026-05-26T05:05:56.925Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/metrics-collection/index.html</loc>
-    <lastmod>2026-05-26T05:05:56.243Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.197Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/service-discovery/index.html</loc>
-    <lastmod>2026-05-26T05:05:55.540Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/monitoring-system-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:54.848Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.197Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/logging-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:54.095Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.197Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/infrastructure-as-code/index.html</loc>
-    <lastmod>2026-05-26T05:05:52.965Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.197Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/resource-utilization/index.html</loc>
-    <lastmod>2026-05-26T05:05:52.078Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/latency-reduction/index.html</loc>
-    <lastmod>2026-05-26T05:05:51.403Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/query-optimization/index.html</loc>
-    <lastmod>2026-05-26T05:05:50.717Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/performance-testing-methodologies/index.html</loc>
-    <lastmod>2026-05-26T05:05:50.049Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/bottleneck-analysis/index.html</loc>
-    <lastmod>2026-05-26T05:05:49.312Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.199Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/horizontal-vs-vertical-scaling/index.html</loc>
-    <lastmod>2026-05-26T05:05:48.621Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.203Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/session-management-at-scale/index.html</loc>
-    <lastmod>2026-05-26T05:05:47.912Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.206Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/stateless-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:47.208Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.206Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/auto-scaling-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:46.528Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.202Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/database-connection-pooling/index.html</loc>
-    <lastmod>2026-05-26T05:05:45.582Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.203Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/rate-limiting/index.html</loc>
-    <lastmod>2026-05-26T05:05:44.852Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.167Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/webhook-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:44.192Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.167Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/grpc-implementation/index.html</loc>
-    <lastmod>2026-05-26T05:05:43.521Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.167Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/graphql-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:42.564Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.166Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/api-versioning-strategies/index.html</loc>
-    <lastmod>2026-05-26T05:05:41.888Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.166Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/booking-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:40.808Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/mobile-backend-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:40.139Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/social-network-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:39.321Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.178Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/e-commerce-system-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:37.907Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/authentication-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:37.268Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/database-sharding-strategies/index.html</loc>
-    <lastmod>2026-05-26T05:05:36.593Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/multi-master-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:35.600Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/write-ahead-logging/index.html</loc>
-    <lastmod>2026-05-26T05:05:34.905Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.173Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/database-partitioning/index.html</loc>
-    <lastmod>2026-05-26T05:05:34.226Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/master-slave-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:33.364Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/document-store-design-patterns/index.html</loc>
-    <lastmod>2026-05-26T05:05:32.148Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/data-warehousing/index.html</loc>
-    <lastmod>2026-05-26T05:05:31.376Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/oltp-vs-olap-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:30.518Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.171Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/security-in-microservices/index.html</loc>
-    <lastmod>2026-05-26T05:05:29.662Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.207Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/zero-trust-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:28.979Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.208Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/ssltls-implementation/index.html</loc>
-    <lastmod>2026-05-26T05:05:28.271Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.207Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/security-in-distributed-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:27.331Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.207Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/jwt-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:26.690Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.207Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/iot-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:26.023Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/gaming-server-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:25.343Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/stream-processing/index.html</loc>
-    <lastmod>2026-05-26T05:05:24.690Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.202Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/real-time-data-processing/index.html</loc>
-    <lastmod>2026-05-26T05:05:23.971Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.202Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/live-streaming-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:23.307Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/circuit-breaker-pattern/index.html</loc>
-    <lastmod>2026-05-26T05:05:22.663Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/saga-pattern/index.html</loc>
-    <lastmod>2026-05-26T05:05:22.031Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/anti-corruption-layer/index.html</loc>
-    <lastmod>2026-05-26T05:05:21.360Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/ambassador-pattern/index.html</loc>
-    <lastmod>2026-05-26T05:05:20.691Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/function-as-a-service/index.html</loc>
-    <lastmod>2026-05-26T05:05:20.033Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.169Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/multi-cloud-strategy/index.html</loc>
-    <lastmod>2026-05-26T05:05:19.251Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.169Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/cloud-security-patterns/index.html</loc>
-    <lastmod>2026-05-26T05:05:18.540Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.167Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/service-mesh-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:17.667Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.169Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/container-security/index.html</loc>
-    <lastmod>2026-05-26T05:05:17.000Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.169Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/vector-clocks/index.html</loc>
-    <lastmod>2026-05-26T05:05:16.332Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/leader-election/index.html</loc>
-    <lastmod>2026-05-26T05:05:15.648Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.175Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/quorum-based-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:14.900Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.175Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/strong-consistency/index.html</loc>
-    <lastmod>2026-05-26T05:05:14.189Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.176Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/distributed-locking/index.html</loc>
-    <lastmod>2026-05-26T05:05:13.468Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/byzantine-fault-tolerance/index.html</loc>
-    <lastmod>2026-05-26T05:05:12.793Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/three-phase-commit-protocol/index.html</loc>
-    <lastmod>2026-05-26T05:05:12.094Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/eventual-consistency/index.html</loc>
-    <lastmod>2026-05-26T05:05:11.416Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/scalability-basics/index.html</loc>
-    <lastmod>2026-05-26T05:05:10.722Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.194Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/quality-attributes-in-software-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:10.091Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.192Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/reliability-principles/index.html</loc>
-    <lastmod>2026-05-26T05:05:09.452Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.192Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/maintainability-best-practices/index.html</loc>
-    <lastmod>2026-05-26T05:05:08.752Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.191Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/cost-benefit-analysis-in-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:08.329Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.191Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/architectural-patterns-overview/index.html</loc>
-    <lastmod>2026-05-26T05:05:09.101Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.189Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/trade-offs-in-system-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:09.766Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.195Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/system-requirements-analysis/index.html</loc>
-    <lastmod>2026-05-26T05:05:10.407Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.194Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/fundamentals/performance-metrics-and-measurement/index.html</loc>
-    <lastmod>2026-05-26T05:05:11.071Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.191Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/two-phase-commit-protocol/index.html</loc>
-    <lastmod>2026-05-26T05:05:11.783Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/distributed-transactions/index.html</loc>
-    <lastmod>2026-05-26T05:05:12.427Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/event-driven-architecture-in-distributed-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:13.141Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/failure-detection/index.html</loc>
-    <lastmod>2026-05-26T05:05:13.858Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/cap-theorem-deep-dive/index.html</loc>
-    <lastmod>2026-05-26T05:05:14.528Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/distributed-consensus/index.html</loc>
-    <lastmod>2026-05-26T05:05:15.273Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.174Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/distributed-systems/acid-vs-base-properties/index.html</loc>
-    <lastmod>2026-05-26T05:05:16.007Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.173Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/cloud-cost-optimization/index.html</loc>
-    <lastmod>2026-05-26T05:05:16.673Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.167Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/serverless-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:17.343Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.169Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/cloud-storage-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:17.994Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.167Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/kubernetes-design-patterns/index.html</loc>
-    <lastmod>2026-05-26T05:05:18.930Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.169Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/cloud-native/edge-computing/index.html</loc>
-    <lastmod>2026-05-26T05:05:19.617Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.169Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/backend-for-frontend/index.html</loc>
-    <lastmod>2026-05-26T05:05:20.380Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/sidecar-pattern/index.html</loc>
-    <lastmod>2026-05-26T05:05:21.011Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/bulkhead-pattern/index.html</loc>
-    <lastmod>2026-05-26T05:05:21.690Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/strangler-fig-pattern/index.html</loc>
-    <lastmod>2026-05-26T05:05:22.351Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/modern-architecture-patterns/cqrs-pattern/index.html</loc>
-    <lastmod>2026-05-26T05:05:23.011Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.198Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/event-processing/index.html</loc>
-    <lastmod>2026-05-26T05:05:23.664Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/pubsub-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:24.301Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/websocket-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:25.003Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.202Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/real-time-analytics/index.html</loc>
-    <lastmod>2026-05-26T05:05:25.676Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/real-time-systems/push-notification-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:26.357Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/authentication-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:27.011Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.206Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/authorization-models/index.html</loc>
-    <lastmod>2026-05-26T05:05:27.747Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.206Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/oauth-implementation/index.html</loc>
-    <lastmod>2026-05-26T05:05:28.610Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.207Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/data-encryption-strategies/index.html</loc>
-    <lastmod>2026-05-26T05:05:29.318Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.207Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/security/api-security/index.html</loc>
-    <lastmod>2026-05-26T05:05:29.994Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.206Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/replication-strategies/index.html</loc>
-    <lastmod>2026-05-26T05:05:31.021Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.173Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/time-series-data-management/index.html</loc>
-    <lastmod>2026-05-26T05:05:31.798Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.173Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/graph-database-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:32.744Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/nosql-database-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:33.877Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.171Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/data-lakes/index.html</loc>
-    <lastmod>2026-05-26T05:05:34.578Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/data-consistency-models/index.html</loc>
-    <lastmod>2026-05-26T05:05:35.242Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.170Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/data-management/polyglot-persistence/index.html</loc>
-    <lastmod>2026-05-26T05:05:36.102Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.173Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/recommendation-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:36.940Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.178Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/payment-processing-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:37.576Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/content-management-systems/index.html</loc>
-    <lastmod>2026-05-26T05:05:38.250Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.177Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/video-streaming-platforms/index.html</loc>
-    <lastmod>2026-05-26T05:05:39.774Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.189Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/domain-specific/search-engine-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:40.486Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.178Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/api-caching/index.html</loc>
-    <lastmod>2026-05-26T05:05:41.333Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.165Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/api-gateway-patterns/index.html</loc>
-    <lastmod>2026-05-26T05:05:42.229Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.166Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/restful-api-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:43.190Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.167Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/api-documentation/index.html</loc>
-    <lastmod>2026-05-26T05:05:43.859Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.166Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/api-design/api-security/index.html</loc>
-    <lastmod>2026-05-26T05:05:44.527Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.166Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/content-delivery-networks/index.html</loc>
-    <lastmod>2026-05-26T05:05:45.227Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.202Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/load-balancing-algorithms/index.html</loc>
-    <lastmod>2026-05-26T05:05:46.054Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.204Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/caching-strategies/index.html</loc>
-    <lastmod>2026-05-26T05:05:46.869Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.202Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/message-queue-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:05:47.552Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.206Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/scalability/microservices-scaling/index.html</loc>
-    <lastmod>2026-05-26T05:05:48.260Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.206Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/asynchronous-processing/index.html</loc>
-    <lastmod>2026-05-26T05:05:48.974Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.199Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/response-time-optimization/index.html</loc>
-    <lastmod>2026-05-26T05:05:49.723Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/throughput-improvement/index.html</loc>
-    <lastmod>2026-05-26T05:05:50.382Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/connection-pooling/index.html</loc>
-    <lastmod>2026-05-26T05:05:51.065Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.199Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/performance/batch-processing/index.html</loc>
-    <lastmod>2026-05-26T05:05:51.742Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.199Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/alert-system-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:52.434Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/configuration-management/index.html</loc>
-    <lastmod>2026-05-26T05:05:53.479Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/container-orchestration/index.html</loc>
-    <lastmod>2026-05-26T05:05:54.461Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.197Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/cicd-pipeline-design/index.html</loc>
-    <lastmod>2026-05-26T05:05:55.197Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/infrastructure/resource-management/index.html</loc>
-    <lastmod>2026-05-26T05:05:55.898Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.197Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/protocols/kerberos-authentication-protocol/index.html</loc>
-    <lastmod>2026-05-26T05:05:56.554Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.200Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/protocols/saml---xml-based-assertions/index.html</loc>
-    <lastmod>2026-05-26T05:05:57.258Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/protocols/openid-connect-oidc/index.html</loc>
-    <lastmod>2026-05-26T05:05:57.971Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.201Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/redundancy-patterns/index.html</loc>
-    <lastmod>2026-05-26T05:05:58.623Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/geographic-distribution/index.html</loc>
-    <lastmod>2026-05-26T05:05:59.268Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/active-active-setup/index.html</loc>
-    <lastmod>2026-05-26T05:05:59.968Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.195Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/business-continuity/index.html</loc>
-    <lastmod>2026-05-26T05:06:00.691Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.195Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/posts/high-availability/multi-region-architecture/index.html</loc>
-    <lastmod>2026-05-26T05:06:01.341Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.196Z</lastmod>
   </url>
   <url>
     <loc>https://system-design.muthu.co/index.html</loc>
-    <lastmod>2026-05-26T05:06:01.886Z</lastmod>
+    <lastmod>2026-05-26T05:02:49.165Z</lastmod>
   </url>
 </urlset>

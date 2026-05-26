@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Understand saml - xml-based assertions in detail. Learn how this protocol works, its use cases, and implementation considerations.">
 
-<title>System Design Notes - SAML - XML-based assertions</title>
+<title>SAML - XML-based assertions – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -177,6 +184,7 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -214,8 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -228,10 +234,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - SAML - XML-based assertions">
+<meta property="og:title" content="SAML - XML-based assertions – System Design Notes">
 <meta property="og:description" content="Understand saml - xml-based assertions in detail. Learn how this protocol works, its use cases, and implementation considerations.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - SAML - XML-based assertions">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="SAML - XML-based assertions – System Design Notes">
 <meta name="twitter:description" content="Understand saml - xml-based assertions in detail. Learn how this protocol works, its use cases, and implementation considerations.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -325,15 +331,17 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Security Assertion Markup Language (SAML) is an XML-based open standard for exchanging authentication and authorization data between parties, especially between an Identity Provider (IdP) and a Service Provider (SP). SAML is widely used for Single Sign-On (SSO) in enterprise environments, enabling users to log in once and access multiple applications without re-authenticating.</p>
 <h2 id="what-is-saml">What is SAML?</h2>
 <p>SAML is an XML-based standard that allows secure communication of authentication and authorization data between an Identity Provider (IdP) and a Service Provider (SP). It is primarily used for <strong>Single Sign-On (SSO)</strong>, enabling users to authenticate once and access multiple services without needing to log in again.</p>
 <p>SAML is widely adopted in enterprise environments, especially for integrating with cloud applications, federated identity management, and cross-domain authentication.</p>
 <h2 id="key-components-of-saml">Key Components of SAML</h2>
 <p>SAML consists of many key components: 1. <strong>Assertions</strong>: XML-based statements that convey authentication, attribute, and authorization information. 2. <strong>Protocols</strong>: Define how SAML requests and responses are exchanged. 3. <strong>Bindings</strong>: Specify how SAML messages are transported (e.g., HTTP POST, Redirect). 4. <strong>Profiles</strong>: Define how SAML is used in specific scenarios (e.g., Web Browser SSO).</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[SAML] --&gt; B[Assertions]
@@ -342,6 +350,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     A --&gt; E[Profiles]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -364,10 +373,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>These assertions provide additional information about the user, such as roles, email, or department.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">saml:Assertion</span>&gt;</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">saml:AttributeStatement</span>&gt;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">saml:Attribute</span><span class="ot"> Name=</span><span class="st">"Email"</span>&gt;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">saml:Attribute</span> <span class="ot">Name=</span><span class="st">"Email"</span>&gt;</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">saml:AttributeValue</span>&gt;user@example.com&lt;/<span class="kw">saml:AttributeValue</span>&gt;</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">saml:Attribute</span>&gt;</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">saml:Attribute</span><span class="ot"> Name=</span><span class="st">"Role"</span>&gt;</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">saml:Attribute</span> <span class="ot">Name=</span><span class="st">"Role"</span>&gt;</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">saml:AttributeValue</span>&gt;Admin&lt;/<span class="kw">saml:AttributeValue</span>&gt;</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">saml:Attribute</span>&gt;</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">saml:AttributeStatement</span>&gt;</span>
@@ -375,7 +384,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="c.-authorization-decision-assertions">c.&nbsp;Authorization Decision Assertions</h3>
 <p>These assertions specify whether a user is authorized to access a specific resource.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">saml:Assertion</span>&gt;</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">saml:AuthorizationDecisionStatement</span><span class="ot"> Decision=</span><span class="st">"Permit"</span><span class="ot"> Resource=</span><span class="st">"https://example.com/resource"</span>&gt;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">saml:AuthorizationDecisionStatement</span> <span class="ot">Decision=</span><span class="st">"Permit"</span> <span class="ot">Resource=</span><span class="st">"https://example.com/resource"</span>&gt;</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">saml:Subject</span>&gt;</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">saml:NameID</span>&gt;user@example.com&lt;/<span class="kw">saml:NameID</span>&gt;</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">saml:Subject</span>&gt;</span>
@@ -383,9 +392,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">saml:Assertion</span>&gt;</span></code></pre></div>
 <h2 id="saml-workflow">SAML Workflow</h2>
 <p>The SAML workflow involves the following steps: 1. The user attempts to access a resource at the <strong>Service Provider (SP)</strong>. 2. The SP generates a <strong>SAML Authentication Request</strong> and redirects the user to the <strong>Identity Provider (IdP)</strong>. 3. The user authenticates with the IdP. 4. The IdP generates a <strong>SAML Response</strong> containing the assertion and sends it back to the SP. 5. The SP validates the assertion and grants access to the user.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">sequenceDiagram
     participant User
@@ -400,15 +410,17 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     ServiceProvider-&gt;&gt;User: Grants Access
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h2 id="saml-bindings-and-profiles">SAML Bindings and Profiles</h2>
 <h3 id="saml-bindings">SAML Bindings</h3>
 <p>Bindings define how SAML messages are transported. Common bindings include: - <strong>HTTP POST</strong>: SAML messages are sent as form data in an HTTP POST request. - <strong>HTTP Redirect</strong>: SAML messages are encoded in the URL and sent via an HTTP redirect.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[SAML Bindings] --&gt; B[HTTP POST]
@@ -416,14 +428,16 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     A --&gt; D[SOAP]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h3 id="saml-profiles">SAML Profiles</h3>
 <p>Profiles define how SAML is used in specific scenarios. The most common profile is the <strong>Web Browser SSO Profile</strong>, which enables SSO for web applications.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     A[SAML Profiles] --&gt; B[Web Browser SSO]
@@ -431,6 +445,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     A --&gt; D[Attribute Query]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -446,6 +461,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

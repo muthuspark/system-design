@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Master api documentation principles and best practices. Learn to design robust, scalable, and developer-friendly APIs.">
 
-<title>System Design Notes - API Documentation</title>
+<title>API Documentation – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -177,6 +184,7 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -214,8 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -228,10 +234,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - API Documentation">
+<meta property="og:title" content="API Documentation – System Design Notes">
 <meta property="og:description" content="Master api documentation principles and best practices. Learn to design robust, scalable, and developer-friendly APIs.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - API Documentation">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="API Documentation – System Design Notes">
 <meta name="twitter:description" content="Master api documentation principles and best practices. Learn to design robust, scalable, and developer-friendly APIs.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -325,6 +331,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>API documentation is often overlooked, yet it’s the bedrock of successful software integration. A well-written API document acts as a bridge between developers and your API, enabling them to understand its capabilities and effectively utilize its functionalities. Poor documentation, conversely, leads to frustration, integration errors, and ultimately, a negative impact on your API’s adoption rate. This guide goes into the important aspects of designing effective API documentation, ensuring your API is understood and utilized to its full potential.</p>
 <h2 id="why-is-good-api-documentation-important">Why is Good API Documentation important?</h2>
 <p>Imagine trying to assemble furniture without instructions. Frustrating, right? API integration is similar. Without clear, concise documentation, developers struggle to understand how your API works, leading to:</p>
@@ -359,9 +366,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p><strong>Endpoint:</strong> <code>/users/{userId}</code></p>
 <p><strong>Method:</strong> <code>GET</code></p>
 <p><strong>Description:</strong> Retrieves user information based on the provided user ID.</p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A["Client"] --&gt; B["GET /users/{userId}"]
@@ -374,6 +382,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     G --&gt; A
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -406,6 +415,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

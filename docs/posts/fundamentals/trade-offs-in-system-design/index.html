@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Learn the fundamentals of trade-offs in system design in system design. Understand core concepts, best practices, and practical applications.">
 
-<title>System Design Notes - Trade-offs in System Design</title>
+<title>Trade-offs in System Design – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -180,8 +187,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -194,10 +199,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Trade-offs in System Design">
+<meta property="og:title" content="Trade-offs in System Design – System Design Notes">
 <meta property="og:description" content="Learn the fundamentals of trade-offs in system design in system design. Understand core concepts, best practices, and practical applications.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Trade-offs in System Design">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Trade-offs in System Design – System Design Notes">
 <meta name="twitter:description" content="Learn the fundamentals of trade-offs in system design in system design. Understand core concepts, best practices, and practical applications.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -291,6 +296,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <h2 id="consistency-vs.-availability-vs.-partition-tolerance-cap-theorem">1. Consistency vs.&nbsp;Availability vs.&nbsp;Partition Tolerance (CAP Theorem)</h2>
 <p>The CAP theorem is a critical aspect in any distributed systems design. It states that a distributed data store can only provide two out of the three guarantees:</p>
 <ul>
@@ -303,9 +309,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>A system prioritizing <strong>Consistency and Partition Tolerance</strong> (CP) might use a two-phase commit protocol, ensuring data integrity even during network splits. However, this can lead to reduced availability as operations might stall during partition recovery.</p>
 <p>A system prioritizing <strong>Availability and Partition Tolerance</strong> (AP) might use a strategy like eventual consistency, guaranteeing high availability even during network disruptions, but accepting potential inconsistencies in the data.</p>
 <p><strong>Diagram (CP System):</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Client] --&gt; B(Node 1);
@@ -319,13 +326,15 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style E fill:#f9f,stroke:#333,stroke-width:2px
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <p><strong>Diagram (AP System):</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Client] --&gt; B[Node 1]
@@ -337,6 +346,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style F fill:#ccf,stroke:#333,stroke-width:2px
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -359,6 +369,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 

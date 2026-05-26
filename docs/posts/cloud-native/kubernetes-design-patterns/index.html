@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Explore kubernetes design patterns for cloud-native applications. Learn patterns, services, and strategies for cloud deployment.">
 
-<title>System Design Notes - Kubernetes Design Patterns</title>
+<title>Kubernetes Design Patterns – System Design Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 html {
   color: #1a1a1a;
   background-color: #fdfdfd;
@@ -63,6 +66,10 @@ a:visited {
   color: #1a1a1a;
 }
 img {
+  max-width: 100%;
+}
+svg {
+  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -120,8 +127,8 @@ pre code {
  overflow: visible;
 }
 hr {
-  background-color: #1a1a1a;
   border: none;
+  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -177,6 +184,7 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -214,8 +222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
-<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -228,10 +234,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Design Notes - Kubernetes Design Patterns">
+<meta property="og:title" content="Kubernetes Design Patterns – System Design Notes">
 <meta property="og:description" content="Explore kubernetes design patterns for cloud-native applications. Learn patterns, services, and strategies for cloud deployment.">
-<meta property="og:site-name" content="System Design Notes">
-<meta name="twitter:title" content="System Design Notes - Kubernetes Design Patterns">
+<meta property="og:site_name" content="System Design Notes">
+<meta name="twitter:title" content="Kubernetes Design Patterns – System Design Notes">
 <meta name="twitter:description" content="Explore kubernetes design patterns for cloud-native applications. Learn patterns, services, and strategies for cloud deployment.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -325,6 +331,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
+
 <p>Kubernetes, the ubiquitous container orchestration platform, empowers developers to build and deploy scalable and resilient applications. However, effectively leveraging Kubernetes’s capabilities requires understanding and applying appropriate design patterns. This post explores many important Kubernetes design patterns, providing explanations, diagrams, and code snippets to illustrate their practical implementation.</p>
 <h2 id="the-sidecar-pattern">1. The Sidecar Pattern</h2>
 <p>The Sidecar pattern involves deploying a supporting container alongside your main application container within the same Pod. This supporting container shares the same lifecycle as the main container but provides auxiliary functions. This is ideal for tasks like logging, monitoring, and providing specialized services.</p>
@@ -349,9 +356,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">containerPort</span><span class="kw">:</span><span class="at"> </span><span class="dv">9100</span></span></code></pre></div>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Main Application Container] --&gt; B(Sidecar Container);
@@ -362,6 +370,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -392,9 +401,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">port</span><span class="kw">:</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">number</span><span class="kw">:</span><span class="at"> </span><span class="dv">80</span></span></code></pre></div>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[External Client] --&gt; B(Ingress Controller);
@@ -406,6 +416,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -420,15 +431,17 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p><strong>Example (Custom Resource Adapter):</strong></p>
 <p>An adapter might translate calls to a custom resource into calls to Kubernetes deployments or stateful sets.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Application] --&gt; B(Adapter);
     B --&gt; C[Kubernetes API];
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -442,9 +455,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p><strong>Example (Node Agent):</strong></p>
 <p>A DaemonSet could deploy a logging agent on each node.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Node 1] --&gt; B(Pod);
@@ -458,6 +472,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -488,9 +503,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> my-app-container</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">image</span><span class="kw">:</span><span class="at"> my-app-image</span></span></code></pre></div>
 <p><strong>Diagram:</strong></p>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Deployment] --&gt; B(ReplicaSet);
@@ -499,12 +515,14 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     B --&gt; E{Pod 3};
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
+
 
 
 
