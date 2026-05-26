@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Understand geographic distribution for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance.">
 
-<title>Geographic Distribution – System Design Notes</title>
+<title>System Design Notes - Geographic Distribution</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Geographic Distribution – System Design Notes">
+<meta property="og:title" content="System Design Notes - Geographic Distribution">
 <meta property="og:description" content="Understand geographic distribution for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Geographic Distribution – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Geographic Distribution">
 <meta name="twitter:description" content="Understand geographic distribution for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,7 +325,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Geographic distribution, also known as spatial distribution, describes the placement of organisms or features across a geographic area. Understanding these patterns is important in various fields, from ecology and epidemiology to urban planning and marketing. This post will look at the complexities of geographic distribution, exploring its key aspects, methods of analysis, and practical applications.</p>
 <h2 id="types-of-geographic-distributions">Types of Geographic Distributions</h2>
 <p>Geographic distributions aren’t uniform; they exhibit distinct patterns influenced by numerous factors. We can broadly categorize them into many types:</p>
@@ -337,10 +333,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <li><p><strong>Uniform Distribution:</strong> Individuals are evenly spaced, typically resulting from competition for resources or territoriality. Examples include penguins nesting on beaches or certain plant species inhibiting the growth of nearby competitors through allelopathy.</p></li>
 <li><p><strong>Random Distribution:</strong> Individuals are scattered without a discernible pattern, suggesting a relatively homogenous environment with no significant interactions between individuals or resources. This pattern is less common in nature.</p></li>
 </ul>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Geographic Distributions] --&gt; B(Clumped);
@@ -353,7 +348,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     D --&gt; I[Homogenous Environment];
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -364,10 +358,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <li><p><strong>Biotic Factors:</strong> These are living components, including interactions between species (predation, competition, symbiosis), the availability of food, and disease. The distribution of a predator species will directly impact the distribution of its prey.</p></li>
 <li><p><strong>Human Activity:</strong> Human influence is undeniable, altering landscapes through deforestation, urbanization, agriculture, and pollution. This dramatically changes species distributions, leading to habitat loss and fragmentation.</p></li>
 </ul>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Geographic Distribution] --&gt; B(Abiotic Factors);
@@ -385,7 +378,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -429,8 +421,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

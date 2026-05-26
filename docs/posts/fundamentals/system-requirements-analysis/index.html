@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Learn the fundamentals of system requirements analysis in system design. Understand core concepts, best practices, and practical applications.">
 
-<title>System Requirements Analysis – System Design Notes</title>
+<title>System Design Notes - System Requirements Analysis</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="System Requirements Analysis – System Design Notes">
+<meta property="og:title" content="System Design Notes - System Requirements Analysis">
 <meta property="og:description" content="Learn the fundamentals of system requirements analysis in system design. Understand core concepts, best practices, and practical applications.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="System Requirements Analysis – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - System Requirements Analysis">
 <meta name="twitter:description" content="Learn the fundamentals of system requirements analysis in system design. Understand core concepts, best practices, and practical applications.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,7 +325,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>System Requirements Analysis (SRA) is a critical phase in the software development lifecycle (SDLC). It bridges the gap between a vague idea or business need and a concrete, buildable system. This detailed analysis ensures that the final product meets the client’s expectations, is feasible to develop, and operates efficiently. This post will look at the complexities of SRA, its methodologies, techniques, and deliverables.</p>
 <h2 id="understanding-the-purpose-of-sra">Understanding the Purpose of SRA</h2>
 <p>The primary goal of SRA is to define what the system needs to do and how it should perform. This goes beyond simply listing desired features; it goes into the functional and non-functional requirements, constraints, and risks associated with the project. A well-executed SRA prevents costly rework later in the development process, reduces ambiguity, and ensures a shared understanding among stakeholders.</p>
@@ -344,10 +340,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h2 id="modeling-techniques-in-sra">Modeling Techniques in SRA</h2>
 <p>Several modeling techniques are instrumental in visualizing and understanding the system’s requirements. Here are a few examples:</p>
 <p><strong>1. Use Case Diagram:</strong> This diagram illustrates the interactions between actors (users or external systems) and the system.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">usecaseDiagram
     actor User
@@ -361,15 +356,13 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     }
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <p><strong>2. Data Flow Diagram (DFD):</strong> A DFD depicts the flow of data through the system. It shows data sources, processes, data stores, and data sinks.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Data Source] --&gt; B(Process 1);
@@ -379,15 +372,13 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     C --&gt; D;
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <p><strong>3. Entity-Relationship Diagram (ERD):</strong> An ERD models the entities (objects) within the system and the relationships between them.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">erDiagram
     CUSTOMER ||--o{ ORDER
@@ -414,7 +405,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     }
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -437,8 +427,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

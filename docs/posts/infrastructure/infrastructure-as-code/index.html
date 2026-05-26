@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Learn infrastructure as code for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
 
-<title>Infrastructure as Code – System Design Notes</title>
+<title>System Design Notes - Infrastructure as Code</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -180,45 +176,12 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +194,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Infrastructure as Code – System Design Notes">
+<meta property="og:title" content="System Design Notes - Infrastructure as Code">
 <meta property="og:description" content="Learn infrastructure as code for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Infrastructure as Code – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Infrastructure as Code">
 <meta name="twitter:description" content="Learn infrastructure as code for modern infrastructure. Discover DevOps practices, automation strategies, and deployment patterns.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,7 +291,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Infrastructure as Code (IaC) is transforming how organizations manage and deploy their IT infrastructure. Instead of manually configuring servers, networks, and other components, IaC uses code to define and provision these resources. This approach offers numerous advantages, including increased efficiency, consistency, repeatability, and reduced errors. This post will look at the complexities of IaC, exploring its benefits, common tools, and practical examples.</p>
 <h2 id="understanding-the-core-principles-of-iac">Understanding the Core Principles of IaC</h2>
 <p>At its heart, IaC treats infrastructure as software. This means that infrastructure components are defined, versioned, and managed using the same principles and tools used for software development. This shift allows for automation, collaboration, and a more agile approach to infrastructure management.</p>
@@ -351,32 +313,31 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </ul>
 <h2 id="iac-in-action-a-terraform-example">IaC in Action: A Terraform Example</h2>
 <p>Let’s illustrate IaC with a simple Terraform example that creates an EC2 instance on AWS.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode terraform"><code class="sourceCode terraform"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">terraform</span> {</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">required_providers</span> {</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    aws <span class="op">=</span> {</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="kw">source</span>  <span class="op">=</span> <span class="st">"hashicorp/aws"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      version <span class="op">=</span> <span class="st">"~&gt; 4.0"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">provider</span> <span class="st">"aws"</span> {</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  region <span class="op">=</span> <span class="st">"us-west-2"</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="kw">resource</span> <span class="st">"aws_instance"</span> <span class="st">"example"</span> {</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  ami           <span class="op">=</span> <span class="st">"ami-0c55b31ad2299a701"</span> <span class="co"># Replace with a suitable AMI ID</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  instance_type <span class="op">=</span> <span class="st">"t2.micro"</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre class="terraform"><code>
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~&gt; 4.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b31ad2299a701" # Replace with a suitable AMI ID
+  instance_type = "t2.micro"
+}</code></pre>
 <p>This simple Terraform code defines an EC2 instance with a specific AMI and instance type. Running <code>terraform init</code>, <code>terraform plan</code>, and <code>terraform apply</code> will create the instance in the specified AWS region.</p>
 <h2 id="iac">IaC</h2>
 <p>Diagrams are a fantastic tool for visualizing infrastructure defined by IaC. Let’s illustrate a simple network topology:</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Internet] --&gt; B(Load Balancer);
@@ -386,7 +347,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     D --&gt; E;
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -394,10 +354,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h2 id="managing-complex-infrastructures-with-iac">Managing Complex Infrastructures with IaC</h2>
 <p>IaC isn’t just for small projects. It shines when managing large and complex infrastructures. Consider a scenario involving multiple environments (development, testing, production) across different cloud providers. IaC allows you to define the infrastructure once and deploy it consistently across all environments.</p>
 <p>Imagine a more complex scenario depicted below:</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     subgraph Development
@@ -417,7 +376,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     G --&gt; J;
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -425,8 +383,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

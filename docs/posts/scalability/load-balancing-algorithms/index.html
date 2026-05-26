@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Learn load balancing algorithms patterns for building scalable systems. Discover techniques to handle growth and improve performance.">
 
-<title>Load Balancing Algorithms – System Design Notes</title>
+<title>System Design Notes - Load Balancing Algorithms</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -184,6 +180,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -196,10 +194,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Load Balancing Algorithms – System Design Notes">
+<meta property="og:title" content="System Design Notes - Load Balancing Algorithms">
 <meta property="og:description" content="Learn load balancing algorithms patterns for building scalable systems. Discover techniques to handle growth and improve performance.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Load Balancing Algorithms – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Load Balancing Algorithms">
 <meta name="twitter:description" content="Learn load balancing algorithms patterns for building scalable systems. Discover techniques to handle growth and improve performance.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -293,7 +291,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Load balancing is an important aspect of any system architecture designed to handle a significant volume of requests. Without it, a single server could become overwhelmed, leading to slowdowns, outages, and an overall degraded user experience. Load balancing distributes incoming traffic across multiple servers, ensuring that no single server is overloaded while maximizing resource utilization and minimizing latency. This post goes into the various algorithms employed in load balancing, explaining their strengths and weaknesses with illustrative examples.</p>
 <h2 id="types-of-load-balancers">Types of Load Balancers</h2>
 <p>Before diving into algorithms, it’s important to understand the different types of load balancers:</p>
@@ -306,10 +303,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="round-robin">1. Round Robin</h3>
 <p>This is the simplest algorithm. It distributes requests sequentially to each server in a predefined order.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     C[Client]
@@ -325,7 +321,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -355,10 +350,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="least-connections">2. Least Connections</h3>
 <p>This algorithm directs requests to the server with the fewest active connections.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     C[Client]
@@ -379,7 +373,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     LB -.-&gt; S3
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -405,10 +398,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="weighted-round-robin">3. Weighted Round Robin</h3>
 <p>Similar to Round Robin, but each server is assigned a weight reflecting its capacity. Servers with higher weights receive proportionally more requests.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     C[Client]
@@ -429,7 +421,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     LB --&gt;|3 of 6 requests| S3
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -455,10 +446,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="ip-hash">4. IP Hash</h3>
 <p>This algorithm uses the client’s IP address to hash it to a specific server. This ensures that requests from the same client always go to the same server, which can be beneficial for applications requiring session persistence.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
 A[Client IP: 192.168.1.10] --&gt; B(Load Balancer);
@@ -468,16 +458,14 @@ B -- IP Hash --&gt; D{Server 2};
 style B fill:#f9f,stroke:#333,stroke-width:2px
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h3 id="source-ip-hash">5. Source IP Hash</h3>
 <p>Similar to IP Hash, but uses a hash function to map client IP addresses to servers. More than simple modulo-based hashing.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph "Clients"
@@ -507,7 +495,6 @@ style B fill:#f9f,stroke:#333,stroke-width:2px
     LB --&gt;|Hash=3| S3
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -532,10 +519,9 @@ style B fill:#f9f,stroke:#333,stroke-width:2px
 </ul>
 <h3 id="consistent-hashing">6. Consistent Hashing</h3>
 <p>A more advanced technique that minimizes the impact of adding or removing servers. It uses a hash function to map both servers and clients to a ring, distributing clients across servers more evenly.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     subgraph "Hash Ring (0-360°)"
@@ -567,7 +553,6 @@ style B fill:#f9f,stroke:#333,stroke-width:2px
     nearest server"| S3
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -592,7 +577,7 @@ style B fill:#f9f,stroke:#333,stroke-width:2px
 </ul>
 <h2 id="choosing-the-right-algorithm">Choosing the Right Algorithm</h2>
 <p>The choice of load balancing algorithm depends on the specific needs of the application.</p>
-<table class="caption-top">
+<table>
 <colgroup>
 <col style="width: 12%">
 <col style="width: 14%">
@@ -673,8 +658,6 @@ style B fill:#f9f,stroke:#333,stroke-width:2px
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

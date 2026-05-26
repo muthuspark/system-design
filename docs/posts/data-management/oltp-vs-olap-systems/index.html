@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Master oltp vs olap systems techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture.">
 
-<title>OLTP vs OLAP Systems – System Design Notes</title>
+<title>System Design Notes - OLTP vs OLAP Systems</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="OLTP vs OLAP Systems – System Design Notes">
+<meta property="og:title" content="System Design Notes - OLTP vs OLAP Systems">
 <meta property="og:description" content="Master oltp vs olap systems techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="OLTP vs OLAP Systems – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - OLTP vs OLAP Systems">
 <meta name="twitter:description" content="Master oltp vs olap systems techniques for scalable data systems. Explore strategies, patterns, and best practices for data architecture.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,7 +325,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Understanding the differences between OLTP (Online Transaction Processing) and OLAP (Online Analytical Processing) systems is important for anyone working with databases. These two systems serve vastly different purposes and employ contrasting architectures to achieve their goals. While they might seem like just different ways to handle data, their core functionalities and design principles are fundamentally distinct. This post will look at the specifics of each system, comparing and contrasting their characteristics to illuminate their unique strengths.</p>
 <h2 id="oltp-systems">OLTP Systems</h2>
 <p>OLTP systems are designed for <strong>transactional processing</strong>. They handle frequent, short, and simple data modifications, ensuring that data integrity and consistency are maintained even under heavy load. Think of online banking, e-commerce platforms, and inventory management systems. These systems need to be incredibly fast and reliable, processing individual transactions rapidly and accurately.</p>
@@ -346,10 +342,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb1"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Customers (CustomerID, FirstName, LastName, Email)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="dv">12345</span>, <span class="st">'John'</span>, <span class="st">'Doe'</span>, <span class="st">'john.doe@example.com'</span>);</span></code></pre></div>
 <p><strong>Diagram illustrating a simple OLTP architecture:</strong></p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TD
     Users[("Users")]
@@ -404,7 +399,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     class DBServer,Primary,Replica1,Replica2,Backup db
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -443,11 +437,11 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Sales</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> ProductCategory;</span></code></pre></div>
 <p><strong>Diagram illustrating a simplified OLAP architecture:</strong></p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
+
 <pre class="mermaid mermaid-js">graph TD
     Users[("Business Users")]
     BITools["BI Tools&lt;br/&gt;Tableau/PowerBI"]
@@ -506,7 +500,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     class ETL,DW etl
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -528,7 +521,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <li>Query performance</li>
 </ul>
 <h2 id="key-differences-summarized">Key Differences Summarized:</h2>
-<table class="caption-top">
+<table>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -576,7 +569,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </table>
 <h2 id="oltp-and-olap-software-solutions">OLTP and OLAP Software Solutions</h2>
 <h3 id="oltp-software-solutions">OLTP Software Solutions</h3>
-<table class="caption-top">
+<table>
 <colgroup>
 <col style="width: 23%">
 <col style="width: 23%">
@@ -637,7 +630,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </tbody>
 </table>
 <h3 id="olap-software-solutions">OLAP Software Solutions</h3>
-<table class="caption-top">
+<table>
 <colgroup>
 <col style="width: 23%">
 <col style="width: 23%">
@@ -710,7 +703,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </tbody>
 </table>
 <h3 id="integration-software">Integration Software</h3>
-<table class="caption-top">
+<table>
 <colgroup>
 <col style="width: 23%">
 <col style="width: 23%">
@@ -753,7 +746,7 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </tbody>
 </table>
 <h3 id="selection-criteria">Selection Criteria</h3>
-<table class="caption-top">
+<table>
 <colgroup>
 <col style="width: 40%">
 <col style="width: 59%">
@@ -782,8 +775,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

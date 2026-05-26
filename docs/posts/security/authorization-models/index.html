@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Comprehensive guide to authorization models in system design. Learn security best practices, implementation strategies, and common pitfalls.">
 
-<title>Authorization Models – System Design Notes</title>
+<title>System Design Notes - Authorization Models</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -184,6 +180,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -196,10 +194,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Authorization Models – System Design Notes">
+<meta property="og:title" content="System Design Notes - Authorization Models">
 <meta property="og:description" content="Comprehensive guide to authorization models in system design. Learn security best practices, implementation strategies, and common pitfalls.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Authorization Models – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Authorization Models">
 <meta name="twitter:description" content="Comprehensive guide to authorization models in system design. Learn security best practices, implementation strategies, and common pitfalls.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -293,15 +291,13 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Authorization is a critical aspect of security, defining <em>what</em> a user or system is allowed to do after successful authentication (verifying their identity). It’s the gatekeeper that ensures only authorized entities can access specific resources and perform certain actions. This post explores various authorization models, their strengths and weaknesses, and how they are implemented.</p>
 <h2 id="role-based-access-control-rbac">1. Role-Based Access Control (RBAC)</h2>
 <p>RBAC is the most widely adopted model. It assigns permissions to roles, and users are assigned to those roles. This simplifies management, as permissions are managed at the role level, rather than individually for each user.</p>
 <p><strong>Diagram:</strong></p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     subgraph Users[Users]
@@ -369,7 +365,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style P4 fill:#ffe6cc
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -396,10 +391,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </ul>
 <h2 id="attribute-based-access-control-abac">2. Attribute-Based Access Control (ABAC)</h2>
 <p>ABAC is a more fine-grained model that uses attributes of the user, the resource, and the environment to determine access. This allows for highly dynamic and context-aware authorization decisions.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     subgraph Inputs
@@ -450,7 +444,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style D1 fill:#FFB6C1,stroke:#333
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -500,10 +493,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </ul>
 <h2 id="access-control-lists-acls">3. Access Control Lists (ACLs)</h2>
 <p>ACLs are a simple model where each resource has a list of users or groups and the permissions they have for that resource.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph Users
@@ -541,7 +533,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style S3 fill:#e6e6ff
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -559,10 +550,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </ul>
 <h2 id="ownership-based-access-control-obac">4. Ownership-Based Access Control (OBAC)</h2>
 <p>OBAC is centered around the concept of ownership. The owner of a resource has full control over it, and can grant permissions to others. This is often combined with other models to provide a more effective system.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     subgraph Users
@@ -612,7 +602,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style Data fill:#f9f9f9
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -663,8 +652,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

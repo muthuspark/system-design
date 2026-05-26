@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Learn microservices scaling patterns for building scalable systems. Discover techniques to handle growth and improve performance.">
 
-<title>Microservices Scaling – System Design Notes</title>
+<title>System Design Notes - Microservices Scaling</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Microservices Scaling – System Design Notes">
+<meta property="og:title" content="System Design Notes - Microservices Scaling">
 <meta property="og:description" content="Learn microservices scaling patterns for building scalable systems. Discover techniques to handle growth and improve performance.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Microservices Scaling – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Microservices Scaling">
 <meta name="twitter:description" content="Learn microservices scaling patterns for building scalable systems. Discover techniques to handle growth and improve performance.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,7 +325,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Scaling microservices is a critical aspect of building and resilient applications. Unlike monolithic applications, where scaling often involves replicating the entire application, microservices allow for granular scaling—scaling individual services based on their specific needs. This targeted approach leads to more efficient resource utilization and improved cost-effectiveness. However, it also introduces complexities that require careful planning and execution. This post explores various strategies for scaling microservices, highlighting their advantages and disadvantages.</p>
 <h2 id="understanding-scaling-dimensions">Understanding Scaling Dimensions</h2>
 <p>Before diving into specific strategies, it’s important to understand the different dimensions of scaling:</p>
@@ -339,10 +335,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h2 id="common-microservices-scaling-strategies">Common Microservices Scaling Strategies</h2>
 <h3 id="load-balancing">1. Load Balancing</h3>
 <p>Distributing incoming requests across multiple instances of a microservice is essential for horizontal scaling. Load balancers sit in front of your service instances and direct traffic based on various algorithms (round-robin, least connections, etc.).</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Client] --&gt; LB[Load Balancer];
@@ -351,7 +346,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     LB --&gt; S3[Service Instance 3];
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -366,10 +360,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <ul>
 <li><strong>Read replicas:</strong> Offloading read operations to separate database instances to reduce the load on the primary database.</li>
 </ul>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Client] --&gt; LB[Load Balancer];
@@ -379,7 +372,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     S2 --&gt; DB2[Read Replica];
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -389,10 +381,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </ul>
 <h3 id="asynchronous-communication">3. Asynchronous Communication</h3>
 <p>Using message queues (e.g., RabbitMQ, Kafka) to decouple microservices improves scalability and resilience. Instead of direct synchronous calls, services communicate asynchronously, allowing them to scale independently.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     S1[Service 1] --&gt; MQ[Message Queue];
@@ -402,7 +393,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -439,8 +429,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

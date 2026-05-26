@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Understand health monitoring systems for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance.">
 
-<title>Health Monitoring Systems – System Design Notes</title>
+<title>System Design Notes - Health Monitoring Systems</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -184,6 +180,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -196,10 +194,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Health Monitoring Systems – System Design Notes">
+<meta property="og:title" content="System Design Notes - Health Monitoring Systems">
 <meta property="og:description" content="Understand health monitoring systems for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Health Monitoring Systems – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Health Monitoring Systems">
 <meta name="twitter:description" content="Understand health monitoring systems for high availability systems. Learn patterns to achieve uptime, resilience, and fault tolerance.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -293,7 +291,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Health monitoring systems are rapidly evolving, transforming how we approach healthcare. These systems play an important role in preventative care, early disease detection, and improved patient outcomes. This post goes into the architecture, functionalities, and technologies behind these vital systems.</p>
 <h2 id="what-are-health-monitoring-systems">What are Health Monitoring Systems?</h2>
 <p>Health monitoring systems (HMS) are technological solutions that continuously or intermittently track and analyze various health parameters. This data can range from basic vital signs (heart rate, blood pressure, temperature) to more complex physiological indicators (blood glucose levels, ECG data, sleep patterns). The collected data provides information on an individual’s health, enabling timely interventions and personalized care.</p>
@@ -308,10 +305,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 </ul>
 <h2 id="architecture-of-a-typical-remote-patient-monitoring-system">Architecture of a Typical Remote Patient Monitoring System</h2>
 <p>A typical RPM system involves many interconnected components:</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph TB
     Patient["Patient"] --&gt; Sensors["Wearable Sensors/Devices"]
@@ -327,7 +323,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     class Processing,Storage process
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -368,8 +363,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

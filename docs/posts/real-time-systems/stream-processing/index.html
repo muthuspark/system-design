@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Build real-time systems with stream processing. Learn architecture patterns for low-latency, event-driven applications.">
 
-<title>Stream Processing – System Design Notes</title>
+<title>System Design Notes - Stream Processing</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Stream Processing – System Design Notes">
+<meta property="og:title" content="System Design Notes - Stream Processing">
 <meta property="og:description" content="Build real-time systems with stream processing. Learn architecture patterns for low-latency, event-driven applications.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Stream Processing – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Stream Processing">
 <meta name="twitter:description" content="Build real-time systems with stream processing. Learn architecture patterns for low-latency, event-driven applications.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,7 +325,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <h1 id="stream-processing-real-time-data-handling">Stream Processing: Real-Time Data Handling</h1>
 <p>Stream processing is a powerful technique for handling continuous streams of data. Unlike batch processing, which operates on static datasets, stream processing analyzes data as it arrives, allowing for immediate and rapid responses.</p>
 <p>This makes it ideal for applications requiring real-time analytics, such as fraud detection, sensor monitoring, and social media analysis.</p>
@@ -355,10 +351,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <li><p><strong>Processing:</strong> This stage involves transforming and analyzing the ingested data. This could include filtering, aggregation, windowing, and joining operations. Many stream processing systems offer powerful query languages (like SQL) for defining these operations.</p></li>
 <li><p><strong>Output:</strong> The results of the processing stage are written to a destination. These destinations can be dashboards, databases, or other applications that consume the processed data.</p></li>
 </ol>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Data Sources] --&gt; B(Ingestion);
@@ -367,15 +362,13 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style C fill:#f9f,stroke:#333,stroke-width:2px
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
 <h2 id="detailed-event-streaming-architecture">Detailed event streaming architecture</h2>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TD
     subgraph Sources["Event Sources"]
@@ -463,7 +456,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     class F1,F2,F3,F4 consumerStyle
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -527,10 +519,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p>This code defines a stream processing application that reads text lines from a Kafka topic (“text-lines”), splits them into words, groups by word, and counts the occurrences of each word. The results are written to another Kafka topic (“word-counts”).</p>
 <h2 id="windowing-and-aggregation">Windowing and Aggregation</h2>
 <p>Many real-time applications require analyzing data within specific time windows. Windowing allows grouping data into time-based intervals, enabling calculations like average, sum, and count over a defined period.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Data Stream] --&gt; B(Windowing);
@@ -541,7 +532,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     end
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -558,8 +548,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

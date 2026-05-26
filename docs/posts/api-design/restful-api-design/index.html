@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Master restful api design principles and best practices. Learn to design robust, scalable, and developer-friendly APIs.">
 
-<title>RESTful API Design – System Design Notes</title>
+<title>System Design Notes - RESTful API Design</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="RESTful API Design – System Design Notes">
+<meta property="og:title" content="System Design Notes - RESTful API Design">
 <meta property="og:description" content="Master restful api design principles and best practices. Learn to design robust, scalable, and developer-friendly APIs.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="RESTful API Design – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - RESTful API Design">
 <meta name="twitter:description" content="Master restful api design principles and best practices. Learn to design robust, scalable, and developer-friendly APIs.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -323,7 +320,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <p class="author">Muthukrishnan</p>
 
 </header>
-
 
 <p>Designing a and scalable RESTful API is important for modern application development. This guide explores the core principles of RESTful API design, providing practical examples and best practices to help you build efficient and maintainable APIs.</p>
 <h2 id="understanding-restful-principles">Understanding RESTful Principles</h2>
@@ -488,165 +484,118 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h2 id="api-documentation">API Documentation</h2>
 <p>Clear and detailed API documentation is essential for developers using your API. Tools like Swagger/OpenAPI can help you generate interactive documentation from your API specifications.</p>
 <h2 id="diagram-user-api-interactions">Diagram: User API Interactions</h2>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <svg width="672" height="480" viewbox="0.00 0.00 562.18 410.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 406)">
-<title>G</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-406 558.18,-406 558.18,4 -4,4"></polygon>
-<g id="clust1" class="cluster">
-<title>cluster_GET</title>
-<polygon fill="none" stroke="lightblue" points="99.7,-263 99.7,-394 515.87,-394 515.87,-263 99.7,-263"></polygon>
-<text text-anchor="middle" x="307.78" y="-377.4" font-family="Times,serif" font-size="14.00">GET Requests</text>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_POST</title>
-<polygon fill="none" stroke="lightgreen" points="112.02,-178 112.02,-255 546.18,-255 546.18,-178 112.02,-178"></polygon>
-<text text-anchor="middle" x="329.1" y="-238.4" font-family="Times,serif" font-size="14.00">POST Request</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_PUT</title>
-<polygon fill="none" stroke="lightyellow" points="100.22,-93 100.22,-170 520.78,-170 520.78,-93 100.22,-93"></polygon>
-<text text-anchor="middle" x="310.5" y="-153.4" font-family="Times,serif" font-size="14.00">PUT Request</text>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_DELETE</title>
-<polygon fill="none" stroke="lightcoral" points="82,-8 82,-85 516.98,-85 516.98,-8 82,-8"></polygon>
-<text text-anchor="middle" x="299.49" y="-68.4" font-family="Times,serif" font-size="14.00">DELETE Request</text>
-</g>
-<!-- Client -->
-<g id="node1" class="node">
-<title>Client</title>
-<polygon fill="none" stroke="black" points="54,-222 0,-222 0,-186 54,-186 54,-222"></polygon>
-<text text-anchor="middle" x="27" y="-199.8" font-family="Times,serif" font-size="14.00">Client</text>
-</g>
-<!-- GET_users -->
-<g id="node2" class="node">
-<title>GET_users</title>
-<ellipse fill="none" stroke="black" cx="179.62" cy="-343" rx="54.51" ry="18"></ellipse>
-<text text-anchor="middle" x="179.62" y="-338.8" font-family="Times,serif" font-size="14.00">GET /users</text>
-</g>
-<!-- Client&#45;&gt;GET_users -->
-<g id="edge6" class="edge">
-<title>Client-&gt;GET_users</title>
-<path fill="none" stroke="black" d="M31.88,-222.41C38.1,-247.32 52.7,-291.47 82,-316 92.22,-324.55 104.95,-330.41 117.79,-334.41"></path>
-<polygon fill="black" stroke="black" points="117.02,-337.82 127.59,-337.12 118.89,-331.08 117.02,-337.82"></polygon>
-</g>
-<!-- GET_user_details -->
-<g id="node3" class="node">
-<title>GET_user_details</title>
-<ellipse fill="none" stroke="black" cx="179.62" cy="-289" rx="71.84" ry="18"></ellipse>
-<text text-anchor="middle" x="179.62" y="-284.8" font-family="Times,serif" font-size="14.00">GET /users/123</text>
-</g>
-<!-- Client&#45;&gt;GET_user_details -->
-<g id="edge8" class="edge">
-<title>Client-&gt;GET_user_details</title>
-<path fill="none" stroke="black" d="M41.79,-222.15C51.78,-234.15 66.24,-249.38 82,-259 92.13,-265.18 103.65,-270.19 115.11,-274.21"></path>
-<polygon fill="black" stroke="black" points="114.1,-277.57 124.69,-277.37 116.29,-270.92 114.1,-277.57"></polygon>
-</g>
-<!-- POST_users -->
-<g id="node6" class="node">
-<title>POST_users</title>
-<ellipse fill="none" stroke="black" cx="179.62" cy="-204" rx="59.69" ry="18"></ellipse>
-<text text-anchor="middle" x="179.62" y="-199.8" font-family="Times,serif" font-size="14.00">POST /users</text>
-</g>
-<!-- Client&#45;&gt;POST_users -->
-<g id="edge7" class="edge">
-<title>Client-&gt;POST_users</title>
-<path fill="none" stroke="black" d="M54.24,-204C69.67,-204 89.97,-204 109.68,-204"></path>
-<polygon fill="black" stroke="black" points="109.91,-207.5 119.91,-204 109.91,-200.5 109.91,-207.5"></polygon>
-</g>
-<!-- PUT_users -->
-<g id="node8" class="node">
-<title>PUT_users</title>
-<ellipse fill="none" stroke="black" cx="179.62" cy="-119" rx="71.28" ry="18"></ellipse>
-<text text-anchor="middle" x="179.62" y="-114.8" font-family="Times,serif" font-size="14.00">PUT /users/123</text>
-</g>
-<!-- Client&#45;&gt;PUT_users -->
-<g id="edge9" class="edge">
-<title>Client-&gt;PUT_users</title>
-<path fill="none" stroke="black" d="M54.24,-189.19C78.16,-175.69 113.8,-155.58 140.8,-140.34"></path>
-<polygon fill="black" stroke="black" points="142.61,-143.34 149.6,-135.38 139.17,-137.24 142.61,-143.34"></polygon>
-</g>
-<!-- DELETE_users -->
-<g id="node10" class="node">
-<title>DELETE_users</title>
-<ellipse fill="none" stroke="black" cx="179.62" cy="-34" rx="89.73" ry="18"></ellipse>
-<text text-anchor="middle" x="179.62" y="-29.8" font-family="Times,serif" font-size="14.00">DELETE /users/123</text>
-</g>
-<!-- Client&#45;&gt;DELETE_users -->
-<g id="edge10" class="edge">
-<title>Client-&gt;DELETE_users</title>
-<path fill="none" stroke="black" d="M32.8,-185.68C40.01,-161.17 55.65,-117.51 82,-89 95.04,-74.89 112.56,-63.43 129.09,-54.71"></path>
-<polygon fill="black" stroke="black" points="130.79,-57.77 138.14,-50.14 127.63,-51.52 130.79,-57.77"></polygon>
-</g>
-<!-- List_of_Users -->
-<g id="node4" class="node">
-<title>List_of_Users</title>
-<polygon fill="none" stroke="black" points="421.71,-361 335.39,-343 421.71,-325 508.03,-343 421.71,-361"></polygon>
-<text text-anchor="middle" x="421.71" y="-338.8" font-family="Times,serif" font-size="14.00">List of Users</text>
-</g>
-<!-- GET_users&#45;&gt;List_of_Users -->
-<g id="edge1" class="edge">
-<title>GET_users-&gt;List_of_Users</title>
-<path fill="none" stroke="black" d="M234.5,-343C261.2,-343 294.26,-343 325.08,-343"></path>
-<polygon fill="black" stroke="black" points="325.43,-346.5 335.43,-343 325.43,-339.5 325.43,-346.5"></polygon>
-</g>
-<!-- User_Details -->
-<g id="node5" class="node">
-<title>User_Details</title>
-<polygon fill="none" stroke="black" points="421.71,-307 338.22,-289 421.71,-271 505.19,-289 421.71,-307"></polygon>
-<text text-anchor="middle" x="421.71" y="-284.8" font-family="Times,serif" font-size="14.00">User Details</text>
-</g>
-<!-- GET_user_details&#45;&gt;User_Details -->
-<g id="edge2" class="edge">
-<title>GET_user_details-&gt;User_Details</title>
-<path fill="none" stroke="black" d="M251.68,-289C275.5,-289 302.42,-289 327.67,-289"></path>
-<polygon fill="black" stroke="black" points="328,-292.5 338,-289 328,-285.5 328,-292.5"></polygon>
-</g>
-<!-- New_User_Created -->
-<g id="node7" class="node">
-<title>New_User_Created</title>
-<polygon fill="none" stroke="black" points="421.71,-222 305.26,-204 421.71,-186 538.16,-204 421.71,-222"></polygon>
-<text text-anchor="middle" x="421.71" y="-199.8" font-family="Times,serif" font-size="14.00">New User Created</text>
-</g>
-<!-- POST_users&#45;&gt;New_User_Created -->
-<g id="edge3" class="edge">
-<title>POST_users-&gt;New_User_Created</title>
-<path fill="none" stroke="black" d="M239.35,-204C256.26,-204 275.38,-204 294.71,-204"></path>
-<polygon fill="black" stroke="black" points="294.82,-207.5 304.82,-204 294.82,-200.5 294.82,-207.5"></polygon>
-</g>
-<!-- User_Updated -->
-<g id="node9" class="node">
-<title>User_Updated</title>
-<polygon fill="none" stroke="black" points="421.71,-137 330.56,-119 421.71,-101 512.86,-119 421.71,-137"></polygon>
-<text text-anchor="middle" x="421.71" y="-114.8" font-family="Times,serif" font-size="14.00">User Updated</text>
-</g>
-<!-- PUT_users&#45;&gt;User_Updated -->
-<g id="edge4" class="edge">
-<title>PUT_users-&gt;User_Updated</title>
-<path fill="none" stroke="black" d="M251.03,-119C272.73,-119 297.05,-119 320.35,-119"></path>
-<polygon fill="black" stroke="black" points="320.62,-122.5 330.62,-119 320.62,-115.5 320.62,-122.5"></polygon>
-</g>
-<!-- User_Deleted -->
-<g id="node11" class="node">
-<title>User_Deleted</title>
-<polygon fill="none" stroke="black" points="421.71,-52 334.66,-34 421.71,-16 508.76,-34 421.71,-52"></polygon>
-<text text-anchor="middle" x="421.71" y="-29.8" font-family="Times,serif" font-size="14.00">User Deleted</text>
-</g>
-<!-- DELETE_users&#45;&gt;User_Deleted -->
-<g id="edge5" class="edge">
-<title>DELETE_users-&gt;User_Deleted</title>
-<path fill="none" stroke="black" d="M269.34,-34C287.26,-34 306.18,-34 324.35,-34"></path>
-<polygon fill="black" stroke="black" points="324.35,-37.5 334.35,-34 324.35,-30.5 324.35,-37.5"></polygon>
-</g>
-</g>
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-406 558.18,-406 558.18,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+cluster_GET
+</title>
+<polygon fill="none" stroke="lightblue" points="99.7,-263 99.7,-394 515.87,-394 515.87,-263 99.7,-263"></polygon> <text text-anchor="middle" x="307.78" y="-377.4" font-family="Times,serif" font-size="14.00">GET Requests</text> </g> <g id="clust2" class="cluster">
+<title>
+cluster_POST
+</title>
+<polygon fill="none" stroke="lightgreen" points="112.02,-178 112.02,-255 546.18,-255 546.18,-178 112.02,-178"></polygon> <text text-anchor="middle" x="329.1" y="-238.4" font-family="Times,serif" font-size="14.00">POST Request</text> </g> <g id="clust3" class="cluster">
+<title>
+cluster_PUT
+</title>
+<polygon fill="none" stroke="lightyellow" points="100.22,-93 100.22,-170 520.78,-170 520.78,-93 100.22,-93"></polygon> <text text-anchor="middle" x="310.5" y="-153.4" font-family="Times,serif" font-size="14.00">PUT Request</text> </g> <g id="clust4" class="cluster">
+<title>
+cluster_DELETE
+</title>
+<polygon fill="none" stroke="lightcoral" points="82,-8 82,-85 516.98,-85 516.98,-8 82,-8"></polygon> <text text-anchor="middle" x="299.49" y="-68.4" font-family="Times,serif" font-size="14.00">DELETE Request</text> </g> <!-- Client --> <g id="node1" class="node">
+<title>
+Client
+</title>
+<polygon fill="none" stroke="black" points="54,-222 0,-222 0,-186 54,-186 54,-222"></polygon> <text text-anchor="middle" x="27" y="-199.8" font-family="Times,serif" font-size="14.00">Client</text> </g> <!-- GET_users --> <g id="node2" class="node">
+<title>
+GET_users
+</title>
+<ellipse fill="none" stroke="black" cx="179.62" cy="-343" rx="54.51" ry="18"></ellipse> <text text-anchor="middle" x="179.62" y="-338.8" font-family="Times,serif" font-size="14.00">GET /users</text> </g> <!-- Client&#45;&gt;GET_users --> <g id="edge6" class="edge">
+<title>
+Client-&gt;GET_users
+</title>
+<path fill="none" stroke="black" d="M31.88,-222.41C38.1,-247.32 52.7,-291.47 82,-316 92.22,-324.55 104.95,-330.41 117.79,-334.41"></path> <polygon fill="black" stroke="black" points="117.02,-337.82 127.59,-337.12 118.89,-331.08 117.02,-337.82"></polygon> </g> <!-- GET_user_details --> <g id="node3" class="node">
+<title>
+GET_user_details
+</title>
+<ellipse fill="none" stroke="black" cx="179.62" cy="-289" rx="71.84" ry="18"></ellipse> <text text-anchor="middle" x="179.62" y="-284.8" font-family="Times,serif" font-size="14.00">GET /users/123</text> </g> <!-- Client&#45;&gt;GET_user_details --> <g id="edge8" class="edge">
+<title>
+Client-&gt;GET_user_details
+</title>
+<path fill="none" stroke="black" d="M41.79,-222.15C51.78,-234.15 66.24,-249.38 82,-259 92.13,-265.18 103.65,-270.19 115.11,-274.21"></path> <polygon fill="black" stroke="black" points="114.1,-277.57 124.69,-277.37 116.29,-270.92 114.1,-277.57"></polygon> </g> <!-- POST_users --> <g id="node6" class="node">
+<title>
+POST_users
+</title>
+<ellipse fill="none" stroke="black" cx="179.62" cy="-204" rx="59.69" ry="18"></ellipse> <text text-anchor="middle" x="179.62" y="-199.8" font-family="Times,serif" font-size="14.00">POST /users</text> </g> <!-- Client&#45;&gt;POST_users --> <g id="edge7" class="edge">
+<title>
+Client-&gt;POST_users
+</title>
+<path fill="none" stroke="black" d="M54.24,-204C69.67,-204 89.97,-204 109.68,-204"></path> <polygon fill="black" stroke="black" points="109.91,-207.5 119.91,-204 109.91,-200.5 109.91,-207.5"></polygon> </g> <!-- PUT_users --> <g id="node8" class="node">
+<title>
+PUT_users
+</title>
+<ellipse fill="none" stroke="black" cx="179.62" cy="-119" rx="71.28" ry="18"></ellipse> <text text-anchor="middle" x="179.62" y="-114.8" font-family="Times,serif" font-size="14.00">PUT /users/123</text> </g> <!-- Client&#45;&gt;PUT_users --> <g id="edge9" class="edge">
+<title>
+Client-&gt;PUT_users
+</title>
+<path fill="none" stroke="black" d="M54.24,-189.19C78.16,-175.69 113.8,-155.58 140.8,-140.34"></path> <polygon fill="black" stroke="black" points="142.61,-143.34 149.6,-135.38 139.17,-137.24 142.61,-143.34"></polygon> </g> <!-- DELETE_users --> <g id="node10" class="node">
+<title>
+DELETE_users
+</title>
+<ellipse fill="none" stroke="black" cx="179.62" cy="-34" rx="89.73" ry="18"></ellipse> <text text-anchor="middle" x="179.62" y="-29.8" font-family="Times,serif" font-size="14.00">DELETE /users/123</text> </g> <!-- Client&#45;&gt;DELETE_users --> <g id="edge10" class="edge">
+<title>
+Client-&gt;DELETE_users
+</title>
+<path fill="none" stroke="black" d="M32.8,-185.68C40.01,-161.17 55.65,-117.51 82,-89 95.04,-74.89 112.56,-63.43 129.09,-54.71"></path> <polygon fill="black" stroke="black" points="130.79,-57.77 138.14,-50.14 127.63,-51.52 130.79,-57.77"></polygon> </g> <!-- List_of_Users --> <g id="node4" class="node">
+<title>
+List_of_Users
+</title>
+<polygon fill="none" stroke="black" points="421.71,-361 335.39,-343 421.71,-325 508.03,-343 421.71,-361"></polygon> <text text-anchor="middle" x="421.71" y="-338.8" font-family="Times,serif" font-size="14.00">List of Users</text> </g> <!-- GET_users&#45;&gt;List_of_Users --> <g id="edge1" class="edge">
+<title>
+GET_users-&gt;List_of_Users
+</title>
+<path fill="none" stroke="black" d="M234.5,-343C261.2,-343 294.26,-343 325.08,-343"></path> <polygon fill="black" stroke="black" points="325.43,-346.5 335.43,-343 325.43,-339.5 325.43,-346.5"></polygon> </g> <!-- User_Details --> <g id="node5" class="node">
+<title>
+User_Details
+</title>
+<polygon fill="none" stroke="black" points="421.71,-307 338.22,-289 421.71,-271 505.19,-289 421.71,-307"></polygon> <text text-anchor="middle" x="421.71" y="-284.8" font-family="Times,serif" font-size="14.00">User Details</text> </g> <!-- GET_user_details&#45;&gt;User_Details --> <g id="edge2" class="edge">
+<title>
+GET_user_details-&gt;User_Details
+</title>
+<path fill="none" stroke="black" d="M251.68,-289C275.5,-289 302.42,-289 327.67,-289"></path> <polygon fill="black" stroke="black" points="328,-292.5 338,-289 328,-285.5 328,-292.5"></polygon> </g> <!-- New_User_Created --> <g id="node7" class="node">
+<title>
+New_User_Created
+</title>
+<polygon fill="none" stroke="black" points="421.71,-222 305.26,-204 421.71,-186 538.16,-204 421.71,-222"></polygon> <text text-anchor="middle" x="421.71" y="-199.8" font-family="Times,serif" font-size="14.00">New User Created</text> </g> <!-- POST_users&#45;&gt;New_User_Created --> <g id="edge3" class="edge">
+<title>
+POST_users-&gt;New_User_Created
+</title>
+<path fill="none" stroke="black" d="M239.35,-204C256.26,-204 275.38,-204 294.71,-204"></path> <polygon fill="black" stroke="black" points="294.82,-207.5 304.82,-204 294.82,-200.5 294.82,-207.5"></polygon> </g> <!-- User_Updated --> <g id="node9" class="node">
+<title>
+User_Updated
+</title>
+<polygon fill="none" stroke="black" points="421.71,-137 330.56,-119 421.71,-101 512.86,-119 421.71,-137"></polygon> <text text-anchor="middle" x="421.71" y="-114.8" font-family="Times,serif" font-size="14.00">User Updated</text> </g> <!-- PUT_users&#45;&gt;User_Updated --> <g id="edge4" class="edge">
+<title>
+PUT_users-&gt;User_Updated
+</title>
+<path fill="none" stroke="black" d="M251.03,-119C272.73,-119 297.05,-119 320.35,-119"></path> <polygon fill="black" stroke="black" points="320.62,-122.5 330.62,-119 320.62,-115.5 320.62,-122.5"></polygon> </g> <!-- User_Deleted --> <g id="node11" class="node">
+<title>
+User_Deleted
+</title>
+<polygon fill="none" stroke="black" points="421.71,-52 334.66,-34 421.71,-16 508.76,-34 421.71,-52"></polygon> <text text-anchor="middle" x="421.71" y="-29.8" font-family="Times,serif" font-size="14.00">User Deleted</text> </g> <!-- DELETE_users&#45;&gt;User_Deleted --> <g id="edge5" class="edge">
+<title>
+DELETE_users-&gt;User_Deleted
+</title>
+<path fill="none" stroke="black" d="M269.34,-34C287.26,-34 306.18,-34 324.35,-34"></path> <polygon fill="black" stroke="black" points="324.35,-37.5 334.35,-34 324.35,-30.5 324.35,-37.5"></polygon> </g> </g>
 </svg>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -668,8 +617,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

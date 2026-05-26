@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Learn the fundamentals of quality attributes in software systems in system design. Understand core concepts, best practices, and practical applications.">
 
-<title>Quality Attributes in Software Systems – System Design Notes</title>
+<title>System Design Notes - Quality Attributes in Software Systems</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Quality Attributes in Software Systems – System Design Notes">
+<meta property="og:title" content="System Design Notes - Quality Attributes in Software Systems">
 <meta property="og:description" content="Learn the fundamentals of quality attributes in software systems in system design. Understand core concepts, best practices, and practical applications.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Quality Attributes in Software Systems – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Quality Attributes in Software Systems">
 <meta name="twitter:description" content="Learn the fundamentals of quality attributes in software systems in system design. Understand core concepts, best practices, and practical applications.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,7 +325,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Software development is more than just writing code that works; it’s about building systems that meet specific quality attributes. These attributes define the overall goodness of the software, impacting its usability, maintainability, and overall success. Understanding and prioritizing these attributes is important for delivering high-quality software that meets user needs and business objectives. This post goes into the key quality attributes, their importance, and how to consider them throughout the software development lifecycle.</p>
 <h2 id="key-quality-attributes">Key Quality Attributes</h2>
 <p>We can categorize quality attributes into many key areas. Let’s look at some of the most critical ones:</p>
@@ -338,10 +334,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="reliability">2. Reliability</h3>
 <p>Reliability refers to the software’s ability to perform its functions without failure under specified conditions for a specified period. High reliability means minimal downtime and predictable behavior.</p>
 <p><strong>Measuring Reliability:</strong> Mean Time Between Failures (MTBF), Mean Time To Recovery (MTTR), and failure rate are key metrics.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[System Running] --&gt; B{Failure?}
@@ -349,7 +344,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     B -- No --&gt; D[MTBF increases] --&gt; A
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -391,10 +385,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <h3 id="scalability">8. Scalability</h3>
 <p>Scalability refers to the system’s ability to handle increasing amounts of work, data, or users. A scalable system can grow gracefully without significant performance degradation.</p>
 <p><strong>Measuring Scalability:</strong> Load testing, stress testing, and performance benchmarking under varying loads are used to evaluate scalability.</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Small Load] --&gt; B(System Performance) --&gt; C[Good Response Time]
@@ -403,7 +396,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     E -- No --&gt; G[Good Scalability]
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -412,8 +404,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 

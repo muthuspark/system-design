@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Muthukrishnan">
 <meta name="description" content="Explore function as a service for cloud-native applications. Learn patterns, services, and strategies for cloud deployment.">
 
-<title>Function as a Service – System Design Notes</title>
+<title>System Design Notes - Function as a Service</title>
 <style>
 html {
   color: #1a1a1a;
@@ -63,10 +63,6 @@ a:visited {
   color: #1a1a1a;
 }
 img {
-  max-width: 100%;
-}
-svg {
-  height; auto;
   max-width: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -124,8 +120,8 @@ pre code {
  overflow: visible;
 }
 hr {
+  background-color: #1a1a1a;
   border: none;
-  border-top: 1px solid #1a1a1a;
   height: 1px;
   margin: 1em 0;
 }
@@ -181,7 +177,6 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -219,6 +214,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link href="../../../favicon.ico" rel="icon">
+<link href="../../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K8N81FG076"></script>
 
 <script type="text/javascript">
@@ -231,10 +228,10 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-<meta property="og:title" content="Function as a Service – System Design Notes">
+<meta property="og:title" content="System Design Notes - Function as a Service">
 <meta property="og:description" content="Explore function as a service for cloud-native applications. Learn patterns, services, and strategies for cloud deployment.">
-<meta property="og:site_name" content="System Design Notes">
-<meta name="twitter:title" content="Function as a Service – System Design Notes">
+<meta property="og:site-name" content="System Design Notes">
+<meta name="twitter:title" content="System Design Notes - Function as a Service">
 <meta name="twitter:description" content="Explore function as a service for cloud-native applications. Learn patterns, services, and strategies for cloud deployment.">
 <meta name="twitter:creator" content="@krimuthu">
 <meta name="twitter:site" content="@krimuthu">
@@ -328,15 +325,13 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 </header>
 
-
 <p>Function as a Service (FaaS), a core component of serverless computing, is rapidly transforming how we build and deploy applications. Instead of managing entire servers, FaaS allows developers to deploy individual functions—small, self-contained units of code—that execute in response to specific events. This approach offers significant advantages in terms of cost-effectiveness, scalability, and developer productivity. Let’s look at FaaS in detail.</p>
 <h2 id="what-is-faas">What is FaaS?</h2>
 <p>At its core, FaaS is about event-driven architecture. Your code doesn’t run constantly; it only runs when triggered by an event. This event could be anything from a new file uploaded to cloud storage to a change in a database, a user interaction on a website, or a scheduled task. The FaaS provider (e.g., AWS Lambda, Google Cloud Functions, Azure Functions) manages the underlying infrastructure, including scaling, server maintenance, and security. You only pay for the compute time your functions consume—no charges for idle time.</p>
 <p>Here’s a simple illustration using a Diagram:</p>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A["Event Source (e.g., HTTP request, database change)"] --&gt; B[FaaS Platform]
@@ -345,7 +340,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     D --&gt; E["Event Sink (e.g., another service, user interface)"]
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -389,10 +383,9 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
 <p>This function is triggered by an event (new file upload to S3), downloads the image, processes it, and uploads the processed version. The FaaS platform handles all the infrastructure and scaling.</p>
 <h2 id="comparing-faas-with-other-deployment-models">Comparing FaaS with other deployment models</h2>
-<div class="cell" data-layout-align="default">
+<div class="cell">
 <div class="cell-output-display">
 <div>
-<p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">graph LR
     A[Developer] --&gt; B[FaaS]
@@ -417,7 +410,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
     style H fill:#cfc,stroke:#333,stroke-width:2px
 </pre>
 </div>
-<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -481,8 +473,6 @@ gtag('config', 'G-K8N81FG076', { 'anonymize_ip': true});
 
 
 <footer>Copyright 2025 - Muthukrishnan</footer>
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
 
 
 
